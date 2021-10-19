@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\DoctorController;
 use App\Http\Controllers\Backend\OptionController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
@@ -75,6 +76,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         });
 
         Route::post('delete', [RoleController::class, 'delete'])->middleware('permission:role_delete')->name('role.delete');
+    });
+    Route::group(['prefix' => 'doctor'], function () {
+        Route::get('/', [DoctorController::class, 'index'])->name('doctor.list');
     });
 
 })

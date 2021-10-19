@@ -16,18 +16,19 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::where('email', 'dev@hsmile.com')->first();
-        if (!$user) {
-            $user = User::create([
-                'user_code' => '88888888',
-                'name' => 'Admin',
-                'email' => 'dev@hsmile.com',
-                'email_verified_at' => now(),
-                'password' => bcrypt('12345678'),
-                'status' => CommonStatus::Active
-            ]);
-        }
-        //set permission
-        $user->assignRole(RoleEnum::Admin);
+        // User::factory(20)->create();
+        // $user = User::where('email', 'dev@hsmile.com')->first();
+        // if (!$user) {
+        //     $user = User::create([
+        //         'user_code' => '88888888',
+        //         'name' => 'Admin',
+        //         'email' => 'dev@hsmile.com',
+        //         'email_verified_at' => now(),
+        //         'password' => bcrypt('12345678'),
+        //         'status' => CommonStatus::Active
+        //     ]);
+        // }
+        // //set permission
+        // $user->assignRole(RoleEnum::Admin);
     }
 }
