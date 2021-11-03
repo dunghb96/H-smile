@@ -20,7 +20,7 @@
 <!-- Easing -->
 <script src="{{asset('frontend/js/jquery.easing.min.js')}}"></script>
 <!-- Gmap helper -->
-<script src="{{asset('frontend/http://maps.google.com/maps/api/js?key=AIzaSyB2uu6KHbLc_y7fyAVA4dpqSVM4w9ZnnUw')}}"></script>
+{{-- <script src="{{asset('frontend/http://maps.google.com/maps/api/js?key=AIzaSyB2uu6KHbLc_y7fyAVA4dpqSVM4w9ZnnUw')}}"></script> --}}
 <!--Gmap script-->
 <script src="{{asset('frontend/js/gmaps.js')}}"></script>
 <script src="{{asset('frontend/js/map-helper.js')}}"></script>
