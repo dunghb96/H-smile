@@ -1,11 +1,11 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    
+
     <a href="/admin/dashboard" class="brand-link">
         <img src="/backend/dist/img/AdminLTELogo.png" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">{{ config('app.name', 'Laravel') }}</span>
     </a>
-    
+
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
@@ -94,6 +94,15 @@
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
                             Đăng xuất
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a href="{{ route('post.list') }}" class="nav-link">
+                        <i class="nav-icon far fa-newspaper"></i>
+                        <p>
+                            Bài viết
                         </p>
                     </a>
                 </li>
