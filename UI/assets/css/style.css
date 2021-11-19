@@ -27,6 +27,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
 }
 
+
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
@@ -180,7 +181,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #2c4964;
 }
 #header .logo img {
-  max-height: 40px;
+ width: 200px;
 }
 
 /**
@@ -783,6 +784,10 @@ section {
     opacity: 0;
   }
 }
+#text-1 p{
+  text-align: justify;
+  
+}
 /*--------------------------------------------------------------
 # Counts
 --------------------------------------------------------------*/
@@ -1125,7 +1130,6 @@ p{
 .faq .faq-list a {
   display: block;
   position: relative;
-  font-family: "Poppins", sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 500;
@@ -1146,10 +1150,7 @@ p{
   right: 0;
   top: 0;
 }
-.faq .faq-list p {
-  margin-bottom: 0;
-  padding: 10px 0 0 0;
-}
+
 .faq .faq-list .icon-show {
   display: none;
 }
@@ -1394,7 +1395,18 @@ p{
     transform: rotate(360deg);
   }
 }
-
+/*-----new
+--------------------------*/
+#new h5 {
+  color: #1977cc;
+}
+#new img {
+  border-radius: 10px;
+  height: 200px;
+}
+#detail-new p{
+  text-align: justify;
+}
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
