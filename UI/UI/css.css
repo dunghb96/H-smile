@@ -1,0 +1,14 @@
+.row_Nhasi{
+    display: flex;
+    justify-content: space-between;
+}
+.nhasi_21WAkas{
+    margin-top: 180px;
+
+}
+.info_nhasi{
+    text-transform: capitalize;
+}
+.info_nhasi>img{
+    border-radius: 100%;
+}
