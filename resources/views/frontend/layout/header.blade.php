@@ -25,12 +25,12 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Trang chủ</a></li>
-          <li><a class="nav-link scrollto" href="#about">Nha sĩ</a></li>
-          <li><a class="nav-link scrollto" href="#services">Dịch vụ</a></li>
-          <li><a class="nav-link scrollto" href="#departments">Bảng giá</a></li>
-          <li><a class="nav-link scrollto" href="news.html">Tin tức</a></li>
-          <li><a class="nav-link scrollto" href="about.html">Về H-Smile</a></li>
-          <li><a class="nav-link scrollto" href="contact.html">Liên hệ</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('doctor.list') }}">Nha sĩ</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('service.list') }}">Dịch vụ</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('price.list') }}">Bảng giá</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('blog.list') }}">Tin tức</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('about') }}">Về H-Smile</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('contact') }}">Liên hệ</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

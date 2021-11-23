@@ -17,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('frontend.home.index');
 });
-Route::get('/doctor',function(){ return view('frontend.doctor.list_doctor'); });
-Route::get('/about',function(){ return view('frontend.about.index'); });
-Route::get('/blog',function(){ return view('frontend.blog.list_blog'); });
-Route::get('/contact',function(){ return view('frontend.contact.index'); });
-Route::get('/service',function(){ return view('frontend.service.list_service'); });
-Route::get('/price',function(){ return view('frontend.price.index'); });
+Route::get('/doctor',function(){ return view('frontend.doctor.list_doctor'); })->name('doctor.list');
+Route::get('/about',function(){ return view('frontend.about.index'); })->name('about');
+Route::get('/blog',function(){ return view('frontend.blog.list_blog'); })->name('blog.list');
+Route::get('/contact',function(){ return view('frontend.contact.index'); })->name('contact');
+Route::get('/service',function(){ return view('frontend.service.list_service'); })->name('service.list');
+Route::get('/price',function(){ return view('frontend.price.index'); })->name('price.list');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('hsmile.home');
 
