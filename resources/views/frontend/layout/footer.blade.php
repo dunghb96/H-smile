@@ -1,151 +1,74 @@
-<!--Start Footer Contact Info Area-->
-<section class="footer-contact-info-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6">
-                <div class="single-footer-contact-box left-icon wow fadeInDown" data-wow-delay="100ms">
-                    <div class="icon-holder">
-                        <span class="icon-gps"></span>
-                    </div>
-                    <div class="text-holder">
-                        <h3>Vị trí của chúng tôi</h3>
-                        <p>32 Me Tri, Nam Tu Liem, Ha Noi</p>
-                        <a class="btn-two" href="#">Tìm vị trí của chúng tôi</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div class="single-footer-contact-box right-box wow fadeInUp" data-wow-delay="100ms">
-                    <div class="icon-holder">
-                        <span class="icon-calendar"></span>
-                    </div>
-                    <div class="text-holder">
-                        <h3>Hẹn</h3>
-                        <p>Thực hiện cuộc hẹn của bạn qua trực tuyến bây giờ.</p>
-                        <a class="btn-two" href="datlichhen.html">Đặt lịch hẹn</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--End Footer Contact Info Area-->
+<!-- ======= Footer ======= -->
+<footer id="footer">
 
-<!--Start footer area-->
-<footer class="footer-area">
-    <div class="container">
+    <div class="footer-top">
+      <div class="container">
         <div class="row">
 
-            <!--Start single footer widget-->
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
-                <div class="single-footer-widget marbtm50">
-                    <div class="about-us">
-                        <div class="footer-logo fix">
-                            <a href="index-2.html">
-                                <img src="images/resources/logo-2.png" alt="Awesome Logo">
-                            </a>
-                        </div>
-                        <div class="text-box fix">
-                            <p>H-Smile được bắt đầu vào năm 1995 như một phòng khám nha khoa tư nhân nhỏ ở
-                                Binghamton, NY, Hoa Kỳ. Tìm kiếm dịch vụ chăm sóc nha khoa giá cả phải chăng?
-                            </p>
-                            <p class="bottom-text">Lấy một ví dụ tầm thường, mà trong chúng ta từng đảm nhận thể
-                                chất vất vả
-                                Tập thể dục, ngoại trừ để có được.</p>
-                        </div>
-                        <div class="button fix">
-                            <a class="btn-one" href="#">Đọc thêm</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End single footer widget-->
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <img src="{{ asset('frontend/assets/img/logo/logo1.png')}}" width="150px"  alt="" > <br>
+            <p>
+              Số 1 Ngô Văn Sở, Trần Hưng Đạo, Hoàn Kiếm, Hà Nội<br>
+              <strong>Phone:</strong>+84 988 077 68<br>
+              <strong>Email:</strong>hsmile@gmail.com<br>
+            </p>
+          </div>
 
-            <!--Start single footer widget-->
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
-                <div class="single-footer-widget martop6 marbtm50">
-                    <div class="title">
-                        <h3>Chuyên ngành</h3>
-                    </div>
-                    <ul class="specialities">
-                        <li><a href="#">Cấy ghép nha khoa</a></li>
-                        <li><a href="#">Nha khoa laser</a></li>
-                        <li><a href="#">Chỉnh răng</a></li>
-                        <li><a href="#">Nha chu</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!--End single footer widget-->
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Liên kết</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Trang chủ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Nha sĩ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Dịch vụ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Bảng giá</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Tin tức</a></li>
+            </ul>
+          </div>
 
-            <!--Start single footer widget-->
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
-                <div class="single-footer-widget martop6 pdbtm50">
-                    <div class="title">
-                        <h3>Tiện nghi</h3>
-                    </div>
-                    <ul class="facilities">
-                        <li><a href="#">X-quang răng cá nhân</a></li>
-                        <li><a href="#">Phòng chăm sóc đặc biệt</a></li>
-                        <li><a href="#">Ngân hàng máu</a></li>
-                        <li><a href="#">Khu vực chăm sóc quan trọng</a></li>
-                        <li><a href="#">Phòng thí nghiệm</a></li>
-                        <li><a href="#">Quy mô và làm sạch</a></li>
-                        <li><a href="#">Chất bịt kín fissure</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!--End single footer widget-->
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Dịch vụ</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Bọc răng sứ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Niềng răng thẩm mỹ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Bệnh lý nha chu</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Điều trị tủy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Chăm sóc răng miệng</a></li>
+            </ul>
+          </div>
 
-            <!--Start single footer widget-->
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
-                <div class="single-footer-widget martop6 pdtop-50">
-                    <div class="title">
-                        <h3>Giờ mở cửa</h3>
-                    </div>
-                    <ul class="opening-hours">
-                        <li>Thứ 2 <span class="float-right">8.30am–6.30pm</span></li>
-                        <li>Thứ 3 <span class="float-right">10.00am–8.00pm</span></li>
-                        <li>Thứ 4 <span class="float-right">8.30am–6.30pm</span></li>
-                        <li>Thứ 5 <span class="float-right">8.30am–7.00pm</span></li>
-                        <li>Thứ 6 <span class="float-right">8.30am–3.00pm</span></li>
-                        <li>Thứ 7 <span class="float-right">8.30am–2.00pm</span></li>
-                        <li>Chủ nhật <span class="float-right clr-green">Đóng</span></li>
-                    </ul>
-                </div>
-            </div>
-            <!--End single footer widget-->
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Giờ làm việc</h4>
+            <p> Thứ 2 - Thứ 6:<a href="" style="margin-left: 35px;">09:00-20:00</a> </p>
+            <p>Thứ 7 - Chủ nhật: <a href="" style="margin-left: 16px;">09:00-18:00</a> </p>
+          </div>
 
         </div>
+      </div>
     </div>
-</footer>
-<!--End footer area-->
 
-<!--Start footer bottom area-->
-<section class="footer-bottom-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                <div class="inner clearfix">
-                    <div class="footer-social-links float-left">
-                        <ul class="sociallinks-style-one">
-                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="copyright-text text-center">
-                        <p>© <a href="#">H-Smile</a> 2018, All Rights Reserved.</p>
-                    </div>
-                    <ul class="footer-menu float-right">
-                        <li><a href="#">Điều khoản & Điều kiện</a></li>
-                        <li><a href="#">Chính sách bảo mật</a></li>
-                    </ul>
-                </div>
-            </div>
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>H-Smile</span></strong>. All Rights Reserved
         </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
+          Designed by <a href="https://bootstrapmade.com/">177</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
     </div>
-</section>
-<!--End footer bottom area-->
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

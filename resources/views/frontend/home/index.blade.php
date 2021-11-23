@@ -1,35 +1,42 @@
 @extends('frontend.layout.index')
 @section('content')
 
-<!--Main Slider-->
-@include('frontend.home.module.slider')
-<!--End Main Slider-->
+<!-- ======= Hero Section ======= -->
+   @include('frontend.home.module.hero')
+<!-- End Hero -->
 
-<!--Start About Area-->
-@include('frontend.home.module.about')
-<!--End About Area-->
+  <main id="main">
+    <!-- ======= Why Us Section ======= -->
+    @include('frontend.home.module.why-us')
+    <!-- End Why Us Section -->
 
-<!--Start Highlights area-->
-@include('frontend.home.module.highlights')
-<!--End Highlights area-->
+    <!-- ======= About Section ======= -->
+    @include('frontend.home.module.about')
+    <!-- End About Section -->
 
-<!--Start services style1 area-->
-@include('frontend.home.module.services')
-<!--End services style1 area-->
+    <!-- ======= Counts Section ======= -->
+    @include('frontend.home.module.counts')
+    <!-- End Counts Section -->
 
-<!--Start team area v2-->
-@include('frontend.home.module.team')
-<!--End team area v2-->
+    <!-- ======= Services Section ======= -->
+    @include('frontend.home.module.services')
+    <!-- End Services Section -->
 
-<!--Start works area-->
-@include('frontend.home.module.works')
-<!--End works area-->
+    <!-- ======= Doctors Section ======= -->
+    @include('frontend.home.module.doctors')
+    <!-- End Doctors Section -->
 
-<!--Start Testimonial area-->
-@include('frontend.home.module.testimonial')
-<!--End Testimonial area-->
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    @include('frontend.home.module.faq')
+    <!-- End Frequently Asked Questions Section -->
 
-<!--Start latest blog area-->
-@include('frontend.home.module.latest-blog')
-<!--End latest blog area-->
+    <!-- ======= Testimonials Section ======= -->
+    @include('frontend.home.module.testimonials')
+    <!-- End Testimonials Section -->
+
+    <!-- ======= Gallery Section ======= -->
+    <!-- End Contact Section -->
+
+  </main>
+  <!-- End #main -->
 @endsection
