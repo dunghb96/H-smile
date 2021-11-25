@@ -5,6 +5,8 @@ use App\Http\Controllers\Backend\OptionController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\PatientController;
+use App\Models\Patients;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -82,6 +84,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::get('/',[PostController::class,'index'])->name('post.list');
         Route::get('add-new',[PostController::class,'create'])->name('post.add');
         Route::post('add-new',[PostController::class,'store']);
+        Route::get('detail/{id}',[PostController::class,'get'])->name('post.detail');
         Route::get('edit/{id}',[PostController::class,'edit'])->name('post.edit');
         Route::post('edit/{id}',[PostController::class,'save']);
         Route::get('delete',[PostController::class,'remove'])->name('post.delete');
@@ -89,6 +92,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
 
     Route::prefix('contact')->group(function () {
         Route::get('/',[PostController::class,'index'])->name('contact.list');
+        Route::get('add-new',[PostController::class,'create'])->name('contact.add');
+        Route::post('add-new',[PostController::class,'store']);
+        Route::get('edit/{id}',[PostController::class,'edit'])->name('contact.edit');
+        Route::post('edit/{id}',[PostController::class,'save']);
+        Route::get('delete',[PostController::class,'remove'])->name('contact.delete');
+    });
+    Route::prefix('patient')->group(function () {
+        Route::get('/',[PatientController::class,'index'])->name('patient.list');
         Route::get('add-new',[PostController::class,'create'])->name('contact.add');
         Route::post('add-new',[PostController::class,'store']);
         Route::get('edit/{id}',[PostController::class,'edit'])->name('contact.edit');

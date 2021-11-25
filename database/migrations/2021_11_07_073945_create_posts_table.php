@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('thumbnail');
             $table->unsignedBigInteger('user_id');
             $table->string('short_desc');
-            $table->string('content');
+            $table->text('content');
             $table->timestamps();
         });
     }

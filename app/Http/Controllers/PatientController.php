@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Post;
+use App\Models\Patients;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class PatientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,18 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(2);
-        return view('backend.post.index', compact('posts'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('backend.post.add');
+        $data = Patients::paginate(10);
+        return view('backend.patient.index', compact('data'));
     }
 
     /**
@@ -37,7 +26,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect()->route('post.list');
+        //
     }
 
     /**
@@ -46,19 +35,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function get($id)
-    {
-        $post = Post::find($id);
-        return view('backend.post.detail', compact('post'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function show($id)
     {
         //
     }

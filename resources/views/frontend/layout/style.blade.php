@@ -17,5 +17,6 @@
   <link href="{{asset('frontend/assets/css/style.css')}}" rel="stylesheet">
   <link href="{{asset('frontend/assets/css/css.css')}}" rel="stylesheet">
   <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet">
+  <link href="{{asset('frontend/css/css.css')}}" rel="stylesheet">
 
   @yield('head')
