@@ -106,6 +106,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a href="{{ route('service.index') }}" class="nav-link">
+                        <i class="nav-icon far fa-newspaper"></i>
+                        <p>
+                            Dịch vụ
+                        </p>
+                    </a>
+                </li>
 
             </ul>
         </nav>

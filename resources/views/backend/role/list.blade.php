@@ -34,14 +34,14 @@ Danh sách quyền
                                                 {{ $role->name }}
                                             </td>
                                             <td>
-                                            @if($role->name <> "Admin")
-                                                @can('edit_roles')
+                                                @if($role->name <> "Admin")
+                                                    @can('edit_roles')
                                                     @include('backend.components.button.edit', ['route' => route('role.edit', $role->id)])
-                                                @endcan
-                                                @can('delete_roles')
+                                                    @endcan
+                                                    @can('delete_roles')
                                                     @include('backend.components.button.delete', ['route' => route('role.delete'), 'id' => $role->id])
-                                                @endcan
-                                            @endif
+                                                    @endcan
+                                                    @endif
                                             </td>
                                         </tr>
                                         @endforeach
