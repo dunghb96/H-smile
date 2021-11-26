@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\OptionController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\ServiceController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -77,6 +78,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('delete', [RoleController::class, 'delete'])->middleware('permission:role_delete')->name('role.delete');
     });
 
-})
+});
 
-?>
+Route::prefix('service')->group(function(){
+        Route::get('/',[ServiceController::class,'index'])->name('service');
+        Route::get('addService',[ServiceController::class,'AddForm'])->name('addService');
+        Route::post('addService',[ServiceController::class,'SaveAdd']);
+        Route::get('editService/{id}',[ServiceController::class,'EditForm'])->name('editService');
+        Route::post('editService/{id}',[ServiceController::class,'SaveEdit']);
+        Route::get('deleteService/{id}',[ServiceController::class,'Delete'])->name('deleteService');
+});
