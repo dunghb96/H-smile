@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
 use App\Enums\CommonStatus;
 use App\Models\Client;
 use App\Models\News;
@@ -13,9 +14,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends BaseController
 {
-    public function index()
+    public function service()
     {
-        // return view('frontend.home.index');
+        $service = Service::paginate(6);
+        return view('frontend.home.index', compact('service'));
     }
-
 }

@@ -12,5 +12,4 @@ class service extends Model
     protected $table = 'services';
     protected $fillable = ['name', 'price', 'description', 'status',];
     protected $primaryKey = 'id';
-    const LIMIT = 20;
 }

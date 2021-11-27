@@ -38,7 +38,7 @@ Thêm mới tài khoản
 
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <input type="text" class="form-control" name="Description" value="{{ old('Description') }}" />
+                                    <input type="text" class="form-control" name="description" value="{{ old('description') }}" />
                                     @error('password')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror

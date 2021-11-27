@@ -38,10 +38,8 @@ Thêm mới tài khoản
 
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <input type="text" class="form-control" name="Description" value="{{ old('Description',$service->description) }}" />
-                                    @error('password')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
+                                    <input type="text" class="form-control" name="description" value="{{ old('description',$service->description) }}" />
+
                                 </div>
 
                                 <div class="form-group row">
