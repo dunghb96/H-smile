@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    @include('backend.layouts.content-header', ['page' => 'Danh sách bài viết'])
+    @include('backend.layouts.content-header', ['page' => 'Danh sách lịch khám'])
 
     <div class="content-wrapper">
         <div class="content">
@@ -27,6 +27,7 @@
                                                 <th scope="col">Tuổi</th>
                                                 <th scope="col">Lý do khám</th>
                                                 <th scope="col">Giờ đăng ký</th>
+                                                <th scope="col">Trạng thái</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
@@ -38,6 +39,7 @@
                                                 <td> {{ $row->Patients->birth_date ?? '' }} </td>
                                                 <td> {{ $row->Patients->reason ?? '' }} </td>
                                                 <td> {{ $row->shift_time }} </td>
+                                                <td> {{ $row->status }} </td>
                                                 <td> <a href="{{ route('post.detail', ['id'=>$row->id]) }}" class="btn btn-warning"> Xem chi tiết </a> </td>
                                             </tr>
                                             @endforeach

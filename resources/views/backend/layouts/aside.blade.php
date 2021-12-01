@@ -30,6 +30,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a href="{{ route('appointment.index') }}" class="nav-link ">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Lịch Khám
+                        </p>
+                    </a>
+                </li>
 
                 @canany(['setting_website'])
                 <li class="nav-item {{ request()->is('admin/setting/*') ? 'menu-open' : '' }}">

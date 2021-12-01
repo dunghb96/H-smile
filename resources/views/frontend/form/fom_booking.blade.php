@@ -12,7 +12,7 @@
                 </p>
             </div>
             <br>
-            <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
+            <form action="" method="post" role="form" class="php-email-form">
                 <div class="row">
                     <div class="col-md-4 form-group">
                         <input type="text" name="name" class="form-control" id="name" placeholder="Họ Và Tên"
@@ -25,17 +25,40 @@
                         <div class="validate"></div>
                     </div>
                     <div class="col-md-4 form-group mt-3 mt-md-0">
-                        <input type="number" class="form-control" name="phone" id="phone" placeholder="Số Điện Thoại"
+                        Giới tính : &nbsp;
+                        <input type="radio"  name="gender" id="gender" value="0"> Nam &nbsp;
+                        <input type="radio"  name="gender" id="gender" value="1"> Nữ
+                        <div class="validate"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <input type="text" name="address" class="form-control" id="address" placeholder="Địa chỉ"
+                            data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <input type="number" class="form-control" name="age" id="age" placeholder="Tuổi"
+                            data-rule="age" data-msg="Please enter a valid email">
+                        <div class="validate"></div>
+                    </div>
+                    <div class="col-md-4 form-group mt-3 mt-md-0">
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Số Điện Thoại"
                             data-rule="minlen:4" data-msg="Please enter at least 4 chars">
                         <div class="validate"></div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4 form-group mt-3">
-                        <input type="date" name="date" class="form-control datepicker" id="date" placeholder="Ngày Hẹn"
-                            data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                    <div class="col-md-6 form-group">
+                        <textarea class="form-control" name="reason" rows="5" placeholder="Lý do khám"></textarea>
                         <div class="validate"></div>
                     </div>
+                    <div class="col-md-6 form-group">
+                        <textarea class="form-control" name="status_desc" rows="5" placeholder="Mô tả triệu chứng"></textarea>
+                    <div class="validate"></div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-4 form-group mt-3">
                         <select name="department" id="department" class="form-select">
                             <option value="">Dịch Vụ</option>
@@ -56,6 +79,11 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-4 form-group mt-3">
+                        <input type="date" name="date" class="form-control datepicker" id="date" placeholder="Ngày Hẹn"
+                            data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <div class="validate"></div>
+                    </div>
                     <div class="col-md-4 form-group mt-3">
                         <select name="doctor" id="doctor" class="form-select">
                             <option value="">Ca khám</option>
