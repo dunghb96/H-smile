@@ -2,6 +2,7 @@
 
 <?php
 
+use App\Http\Controllers\Backend\AppointmentController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\OptionController;
 use App\Http\Controllers\Backend\PostController;
@@ -117,6 +118,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::get('editService/{id}', [ServiceController::class, 'edit'])->name('service.edit');
         Route::post('editService/{id}', [ServiceController::class, 'update']);
         Route::get('deleteService/{id}', [ServiceController::class, 'Delete'])->name('service.delete');
+    });
+    Route::prefix('appointment')->group(function () {
+        Route::get('/', [AppointmentController::class, 'index'])->name('appointment.index');
+        // Route::get('addService', [ServiceController::class, 'create'])->name('service.add');
+        // Route::post('addService', [ServiceController::class, 'store']);
+        // Route::get('editService/{id}', [ServiceController::class, 'edit'])->name('service.edit');
+        // Route::post('editService/{id}', [ServiceController::class, 'update']);
+        // Route::get('deleteService/{id}', [ServiceController::class, 'Delete'])->name('service.delete');
     });
 })
 

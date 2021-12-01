@@ -36,7 +36,7 @@
                                     </p>
                                 </div>
                                 <div class="row">
-                                    <a href="" class="btn btn-warning"> Sửa </a>
+                                    <a href="" class="btn btn-warning"> Sửa </a>&nbsp;
 
                                     <a href="" class="btn btn-danger"> Xóa </a>
                                 </div>
