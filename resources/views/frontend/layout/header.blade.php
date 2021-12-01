@@ -24,7 +24,7 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Trang chủ</a></li>
+          <li><a class="nav-link scrollto active" href="{{ route('home') }}">Trang chủ</a></li>
           <li><a class="nav-link scrollto" href="{{ route('doctor.list') }}">Nha sĩ</a></li>
           <li><a class="nav-link scrollto" href="{{ route('service.list') }}">Dịch vụ</a></li>
           <li><a class="nav-link scrollto" href="{{ route('price.list') }}">Bảng giá</a></li>
@@ -35,7 +35,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="form.html" class="appointment-btn scrollto"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+      <a href="{{ route('form') }}" class="appointment-btn scrollto"><svg xmlns="http://www.w3.org/2000/svg" width="20"
         height="19" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16" style="color: azure;">
         <path
           d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />

@@ -3,7 +3,6 @@
     <main id="main">
         <!-- ======= Breadcrumbs Section ======= -->
         <section class="breadcrumbs">
-            </div>
         </section><!-- End Breadcrumbs Section -->
 
         <section class="inner-page">

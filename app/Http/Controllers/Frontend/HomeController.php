@@ -19,4 +19,8 @@ class HomeController extends BaseController
         $service = Service::paginate(6);
         return view('frontend.home.index', compact('service'));
     }
+    public function form()
+    {
+        return view('frontend.form.fom_booking');
+    }
 }

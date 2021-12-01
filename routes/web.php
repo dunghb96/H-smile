@@ -38,6 +38,7 @@ Route::get('/price', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('hsmile.home');
 Route::get('/service', [showController::class, 'index'])->name('service.list');
-Route::get('/', [HomeController::class, 'service']);
+Route::get('/', [HomeController::class, 'service'])->name('home');
+Route::get('/form-booking', [HomeController::class, 'form'])->name('form');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');

@@ -1,7 +1,9 @@
 @extends('frontend.layout.index')
 @section('content')
+<main id="main">
+    <section class="breadcrumbs">
+    </section>
     <section>
-        <br><br><br>
         <center>
             <h2>ĐỘI NGŨ NHA SĨ</h2>
         </center>
@@ -81,4 +83,5 @@
             </div>
         </div>
     </section>
+</main>
 @endsection
