@@ -41,9 +41,9 @@ Danh sách bài viết
                                             <td> {{ $item->price }} </td>
                                             <td> {{ $item->description }} </td>
                                             <td>@if($item->status==1)
-                                                <span class="text text-danger">Tạm Ngưng</span>
+                                                <span class="text text-danger">Ẩn </span>
                                                 @elseif($item->status==2)
-                                                <span class="text text-warning">Đang Tiến Hành</span>
+                                                <span class="text text-warning">Hiện</span>
                                                 @else
                                                 <span class="text text-success">Hoàn Thành</span>
                                                 @endif
@@ -59,6 +59,9 @@ Danh sách bài viết
                                 <hr>
                                 <!-- Pagination -->
 
+                            </div>
+                            <div class="col-md-12">
+                                {{$service->links()}}
                             </div>
                         </div>
                     </div>

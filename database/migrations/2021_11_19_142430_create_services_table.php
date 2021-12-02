@@ -13,10 +13,12 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
+        ini_set('memory_limit', -1);
+
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->integer('parent_id');
-            $table->string('name',256);
+            $table->string('name', 256);
             $table->integer('price');
             $table->string('image')->nullable();
             $table->string('description')->nullable();

@@ -16,7 +16,7 @@
           <div class="icon"><img src="{{asset('frontend/assets/img/icon/teeth-1.jpg')}}" alt="" srcset=""></div>
           <h4><a href="">{{$item -> name}}</a></h4>
           <p style=" display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;
- overflow: hidden;">{{$item->description}}</p>
+ overflow: hidden;">{!!$item->description!!}</p>
         </div>
       </div>
       @endforeach

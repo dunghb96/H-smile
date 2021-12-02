@@ -9,18 +9,37 @@ use Illuminate\Support\Facades\Redis;
 
 class ServiceController extends Controller
 {
+    private $htmlSlelect;
+    public function __construct()
+    {
+        $this->htmlSlelect = '';
+    }
+
     public function index()
     {
-        $service = service::all();
+        $service = service::paginate(5);
         return view('backend.service.index', compact('service'));
     }
     public function create()
     {
-
-
-        return view('backend.service.add');
+        $service = service::all();
+        $htmlOption = $this->categoryRecusive(0);
+        return view('backend.service.add', compact('service', 'htmlOption'));
     }
 
+
+    public function categoryRecusive($id, $text = '')
+    {
+        $service = service::all();
+        foreach ($service as $value) {
+            if ($value['parent_id'] == $id) {
+                $this->htmlSlelect .= "<option value='" . $value['id'] . "'>" . $text . $value['name'] . "</option>";
+                $this->categoryRecusive($value['id'], $text . '--');
+            }
+        }
+
+        return $this->htmlSlelect;
+    }
 
     public function store(Request $request)
     {
@@ -43,8 +62,8 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $service = service::find($id);
-
-        return view('backend.service.edit', compact('service'));
+        $htmlOption = $this->categoryRecusive(0);
+        return view('backend.service.edit', compact('service', 'htmlOption'));
     }
     public function update($id, Request $request)
     {
