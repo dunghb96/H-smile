@@ -42,9 +42,9 @@ class LoginController extends Controller
 
     protected function credentials(Request $request)
     {
-        $this->validate($request, [
-            'captcha' => 'required|captcha'
-        ]);
+//        $this->validate($request, [
+//            'captcha' => 'required|captcha'
+//        ]);
 
         $data = $request->only($this->username(), 'password');
         $data['status'] = CommonStatus::Active;

@@ -36,7 +36,7 @@ class UserController extends BaseController
         return view('backend.user.add', compact( 'roles'));
     }
 
-    public function postAdd(UserAddRequest $request)
+    public function postAdd(Request $request)
     {
         DB::transaction(function () use ($request) {
             $user = new User;

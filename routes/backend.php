@@ -6,6 +6,8 @@ use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Backend\SlideController;
+use App\Http\Controllers\Backend\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,47 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+    //Slides
+    Route::group(['prefix' => 'slide'], function () {
+        Route::get('', [SlideController::class, 'index'])->middleware('permission:show_list_slides')->name('slide.list');
+
+
+        Route::group(['middleware' => 'permission:add_slides'], function () {
+            Route::get('add', [SlideController::class, 'getAdd'])->name('slide.add');
+            Route::post('add', [SlideController::class, 'postAdd']);
+        });
+
+        Route::group(['middleware' => 'permission:edit_slides'], function () {
+            Route::get('edit/{id}', [SlideController::class, 'getEdit'])->name('slide.edit');
+            Route::post('edit/{id}', [SlideController::class, 'postEdit']);
+        });
+
+            Route::post('delete', [SlideController::class, 'delete'])->middleware('permission:delete_slides')->name('slide.delete');
+
+    });
+
+
+    //Slides
+    Route::group(['prefix' => 'news'], function () {
+        Route::get('', [NewsController::class, 'index'])->middleware('permission:show_list_news')->name('news.list');
+
+
+        Route::group(['middleware' => 'permission:add_news'], function () {
+            Route::get('add', [NewsController::class, 'getAdd'])->name('news.add');
+            Route::post('add', [NewsController::class, 'postAdd']);
+        });
+
+        Route::group(['middleware' => 'permission:edit_news'], function () {
+            Route::get('edit/{id}', [NewsController::class, 'getEdit'])->name('news.edit');
+            Route::post('edit/{id}', [NewsController::class, 'postEdit']);
+        });
+
+        Route::post('delete', [NewsController::class, 'delete'])->middleware('permission:delete_news')->name('news.delete');
+
+    });
+
 
     //Settings
     Route::group(['prefix' => 'setting'], function () {

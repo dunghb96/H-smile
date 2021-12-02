@@ -58,7 +58,7 @@ return [
         ]
     ],
 
-    
+
 
     'services' => [
         'title' => 'Services',
@@ -70,7 +70,7 @@ return [
         ]
     ],
 
-    
+
 
     'news' => [
         'title' => 'News',
@@ -82,7 +82,7 @@ return [
         ]
     ],
 
-    
+
 
     'menu' => [
         'title' => 'Menu',
@@ -95,7 +95,7 @@ return [
         'title' => 'Settings',
         'permissions' => [
             'genaral_settings' => 'Genaral settings',
-            
+
         ]
     ],
 
