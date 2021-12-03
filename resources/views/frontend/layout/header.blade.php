@@ -64,9 +64,9 @@
                         </div>
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li class="dropdown current"><a href="index.html">TRANG CHỦ</a></li>
-                                <li><a href="gioithieu.html">GIỚI THIỆU</a></li>
-                                <li class="dropdown"><a href="chuyennganh.html">DỊCH VỤ</a>
+                                <li class="dropdown current"><a href="{{ route('home') }}">TRANG CHỦ</a></li>
+                                <li><a href="{{ route('about') }}">GIỚI THIỆU</a></li>
+                                <li class="dropdown"><a href="{{ route('service.list') }}">DỊCH VỤ</a>
                                     <ul>
                                         <li><a href="cayghepnhakhoa.html">Cấy ghép nha khoa</a></li>
                                         <li><a href="nhakhoalaser.html">Nha khoa laser</a></li>
@@ -74,15 +74,15 @@
                                         <li><a href="nhachu.html">Nha chu</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="bacsi.html">Bác sĩ</a></li>
-                                <li class="dropdown"><a href="banggia.html">BẢNG GIÁ</a></li>
-                                <li class="dropdown"><a href="blog.html">TIN TỨC</a>
+                                <li><a href="{{ route('doctor.list') }}">Bác sĩ</a></li>
+                                <li class="dropdown"><a href="{{ route('price.list') }}">BẢNG GIÁ</a></li>
+                                <li class="dropdown"><a href="">TIN TỨC</a>
                                     <ul>
                                         <li><a href="blog.html">Ưu đãi</a></li>
-                                        <li><a href="blog-large.html">Kiến thức</a></li>
+                                        <li><a href="{{ route('blog.list') }}">Kiến thức</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="lienhe.html">LIÊN HỆ</a></li>
+                                <li><a href="{{ route('contact') }}">LIÊN HỆ</a></li>
 
                             </ul>
                         </div>
