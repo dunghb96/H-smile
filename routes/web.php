@@ -33,9 +33,7 @@ Route::get('/contact', function () {
 // Route::get('/service', function () {
 //     return view('frontend.service.list_service');
 // })->name('service.list');
-Route::get('/price', function () {
-    return view('frontend.price.index');
-})->name('price.list');
+Route::get('/price', [HomeController::class, 'price'])->name('price.list');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('hsmile.home');
 Route::get('/service', [showController::class, 'index'])->name('service.list');
@@ -46,4 +44,3 @@ Route::post('/form-booking', [HomeController::class, 'postData']);
 Route::post('form-booking', [HomeController::class, 'postData'])->name('postData');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
-

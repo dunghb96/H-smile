@@ -44,8 +44,7 @@ Danh sách bài viết
                                                 <span class="text text-danger">Ẩn </span>
                                                 @elseif($item->status==2)
                                                 <span class="text text-warning">Hiện</span>
-                                                @else
-                                                <span class="text text-success">Hoàn Thành</span>
+
                                                 @endif
                                             </td>
                                             <td>

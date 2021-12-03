@@ -12,4 +12,9 @@ class service extends Model
     protected $table = 'services';
     protected $fillable = ['name', 'price', 'description', 'status', 'parent_id', 'slug'];
     protected $primaryKey = 'id';
+
+    public function serviceChildrent()
+    {
+        return $this->hasMany(Service::class, 'parent_id');
+    }
 }

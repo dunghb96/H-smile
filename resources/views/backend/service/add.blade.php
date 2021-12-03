@@ -19,20 +19,20 @@ Thêm mới tài khoản
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputDescription">Tên Danh Mục</label>
+                                    <label for="inputDescription">Tên dich vu</label>
                                     <input name="name" id="slug" value="{{old('name')}}" onkeyup="ChangeToSlug()" class="form-control" rows="5">
                                     @error('ten_danh_muc')
                                     <div class="text-danger">{{$message}}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputProjectLeader">Slug danh mục</label>
+                                    <label for="inputProjectLeader">Slug </label>
                                     <input type="text" name="slug" id="convert_slug" value="{{old('slug')}}" class="form-control" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputStatus">danh muc cha</label>
+                                    <label for="inputStatus">Dich vu</label>
                                     <select class="form-control custom-select" name="parent_id">
-                                        <option value="0">----danh muc cha</option>
+                                        <option value="0">----dinh vu</option>
                                         {!! $htmlOption !!}
                                     </select>
 

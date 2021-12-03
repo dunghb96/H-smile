@@ -17,7 +17,7 @@ class ServiceController extends Controller
 
     public function index()
     {
-        $service = service::paginate(5);
+        $service = service::paginate(10);
         return view('backend.service.index', compact('service'));
     }
     public function create()
@@ -30,7 +30,7 @@ class ServiceController extends Controller
 
     public function categoryRecusive($id, $text = '')
     {
-        $service = service::all();
+        $service = Service::where('parent_id', 0)->get();
         foreach ($service as $value) {
             if ($value['parent_id'] == $id) {
                 $this->htmlSlelect .= "<option value='" . $value['id'] . "'>" . $text . $value['name'] . "</option>";
