@@ -1,80 +1,159 @@
-<section id="doctors" class="doctors">
+<!--Start team area v2-->
+<section class="team-area-v2">
     <div class="container">
-
-      <div class="section-title">
-        <h2>Nha sĩ</h2>
-        <p>Đội ngũ nha sĩ tại H-Smile là những chuyên gia tràn đầy nhiệt huyết và dồi dào kinh nghiệm trong việc
-          điều trị những trường hợp bệnh nha từ đơn giản đến phức tạp.</p>
-      </div>
-
-      <div class="row">
-
-        <div class="col-lg-6">
-          <div class="member d-flex align-items-start">
-            <div class="pic"><img src="{{asset('frontend/assets/img/doctors/doctors-1.jpg')}}" class="img-fluid" alt=""></div>
-            <div class="member-info">
-              <h4>Nguyễn Kiều Ngân</h4>
-              <span>- Nha sĩ chuyên khoa Răng Hàm Mặt
-                – Đại học Y Hà Nội <br>
-                - Chuyên gia Invisalign</span>
-              <br>
-              <div class="social">
-                <a href="">Tìm hiểu thêm về nha sĩ</a>
-              </div>
-            </div>
-          </div>
+        <div class="sec-title">
+            <h3>Nha sĩ chuyên nghiệp</h3>
+            <h1>Đội ngũ có trình độ cao</h1>
         </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="single-team-slider">
+                    <ul class="slider-content clearfix bxslider float-left">
+                        <li>
+                            <div class="single-team-slide clearfix">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="top">
+                                            <h2>Tiến sĩ Daryl Cornelius</h2>
+                                            <h3>Bác sĩ cấy ghép</h3>
+                                        </div>
+                                        <div class="text">
+                                            <p>Tiến sĩ Daryl Cornelius là một bác sĩ phẫu thuật nha khoa nổi
+                                                tiếng và là một bác sĩ cấy ghép nha khoa được chứng nhận. Ông là
+                                                giám đốc nha khoa Doc.DMD, Hoa Kỳ. Là một nhà cấy ghép, Tiến sĩ
+                                                Daryl Cornelius đã có kinh nghiệm to lớn về cấy ghép nha khoa
+                                                trong hơn 19 năm.</p>
+                                        </div>
+                                        <div class="pgrs-bar-wrapper">
+                                            <div class="inner-box">
+                                                <ul class="pgrs-bar">
+                                                    <li>
+                                                        <h5>Cấy ghép</h5>
+                                                        <div class="box">
+                                                            <div class="inner wow fadeInLeft"
+                                                                data-wow-duration="2s" data-wow-delay="0s"
+                                                                data-wow-offset="0" style="width: 75%;">
+                                                                <span>75%</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="button">
+                                            <a href="#">Đặt Cuộc hẹn</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-5 col-lg-7 col-md-10 col-sm-12">
+                                        <div class="img-holder">
+                                            <img src="{{asset('frontend/images/team/team-1.png')}}" alt="Awesome Image">
+                                            <ul class="team-social-links">
+                                                <li><a href="#"><i class="fa fa-facebook"
+                                                            aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"
+                                                            aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-linkedin"
+                                                            aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"
+                                                            aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="single-team-slide clearfix">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="top">
+                                            <h2>Tiến sĩ Robert B. Moreau</h2>
+                                            <h3>Prosthodontist</h3>
+                                        </div>
+                                        <div class="text">
+                                            <p>Tiến sĩ Robert B. Moreau là một bác sĩ phẫu thuật nha khoa nổi
+                                                tiếng và là một bác sĩ cấy ghép nha khoa được chứng nhận. Ông là
+                                                giám đốc nha khoa Doc.DMD, Hoa Kỳ. Là một nhà cấy ghép, Tiến sĩ
+                                                Daryl Cornelius đã có kinh nghiệm to lớn về cấy ghép nha khoa
+                                                trong hơn 19 năm.</p>
+                                        </div>
+                                        <div class="pgrs-bar-wrapper">
+                                            <div class="inner-box">
+                                                <ul class="pgrs-bar">
+                                                    <li>
+                                                        <h5>Cấy ghép</h5>
+                                                        <div class="box">
+                                                            <div class="inner wow fadeInLeft"
+                                                                data-wow-duration="2s" data-wow-delay="0s"
+                                                                data-wow-offset="0" style="width: 75%;">
+                                                                <span>75%</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="button">
+                                            <a href="#">Đặt Cuộc hẹn</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-5 col-lg-7 col-md-10 col-sm-12">
+                                        <div class="img-holder">
+                                            <img src="{{asset('frontend/images/team/team-2.png')}}" alt="Awesome Image">
+                                            <ul class="team-social-links">
+                                                <li><a href="#"><i class="fa fa-facebook"
+                                                            aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"
+                                                            aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-linkedin"
+                                                            aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"
+                                                            aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <div class="col-lg-6 mt-4 mt-lg-0">
-          <div class="member d-flex align-items-start">
-            <div class="pic"><img src="{{asset('frontend/assets/img/doctors/doctors-2.jpg')}}" class="img-fluid" alt=""></div>
-            <div class="member-info">
-              <h4>Nguyễn Thị Kim Dung</h4>
-              <span>- Nha sĩ chuyên khoa Răng Hàm Mặt
-                – Đại học Y Hà Nội <br>
-                - Chuyên gia chỉnh nha</span>
-              <br>
-              <div class="social">
-                <a href="">Tìm hiểu thêm về nha sĩ</a>
-              </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="slider-pager float-right">
+                        <ul class="thumb-box style2">
+                            <li>
+                                <a class="active" data-slide-index="0" href="#">
+                                    <div class="img-holder">
+                                        <img src="{{asset('frontend/images/team/team-thumb-1.jpg')}}" alt="Awesome Image">
+                                    </div>
+                                    <div class="text-holder">
+                                        <h6>Tiến sĩ Daryl Cornelius</h6>
+                                        <span>Bác sĩ cấy ghép</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-slide-index="1" href="#">
+                                    <div class="img-holder">
+                                        <img src="{{asset('frontend/images/team/team-thumb-2.jpg')}}" alt="Awesome Image">
+                                    </div>
+                                    <div class="text-holder">
+                                        <h6>Tiến sĩ Robert B. Moreau</h6>
+                                        <span>Prosthodontist</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="slider-pager arrow-button">
+                        <div class="center">
+                            <ul class="nav-link list-inline">
+                                <li id="slider-prev"></li>
+                                <li id="slider-next"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-
-        <div class="col-lg-6 mt-4">
-          <div class="member d-flex align-items-start">
-            <div class="pic"><img src="{{asset('frontend/assets/img/doctors/doctors-3.jpg')}}" class="img-fluid" alt=""></div>
-            <div class="member-info">
-              <h4>Vũ Đức Dũng</h4>
-              <span>- Nha sĩ chuyên khoa Răng Hàm Mặt
-                – Đại học Y Hà Nội <br>
-                - Chuyên gia Invisalign</span>
-              <br>
-              <div class="social">
-                <a href="">Tìm hiểu thêm về nha sĩ</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6 mt-4">
-          <div class="member d-flex align-items-start">
-            <div class="pic"><img src="{{asset('frontend/assets/img/doctors/doctors-4.jpg')}}" class="img-fluid" alt=""></div>
-            <div class="member-info">
-              <h4>Ninh Duy MinhB</h4>
-              <span>- Nha sĩ chuyên khoa Răng Hàm Mặt
-                – Đại học Y Hà Nội <br>
-                - Chuyên gia chỉnh nha</span>
-              <br>
-              <div class="social">
-                <a href="">Tìm hiểu thêm về nha sĩ</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a href="#" class="more-btn" style="font-size: 16px;text-align: right;">Xem thêm</a>
-
-      </div>
-
     </div>
-  </section>
+</section>
+<!--End team area v2-->

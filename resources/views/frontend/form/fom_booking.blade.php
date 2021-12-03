@@ -12,7 +12,7 @@
                 </p>
             </div>
             <br>
-            <form action="" method="post" role="form" class="php-email-form">
+            <form action="{{ route('postData') }}" method="post" role="form" class="php-email-form" >
                 <div class="row">
                     <div class="col-md-4 form-group">
                         <input type="text" name="name" class="form-control" id="name" placeholder="Họ Và Tên"

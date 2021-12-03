@@ -1,42 +1,20 @@
 @extends('frontend.layout.index')
 @section('content')
 
-<!-- ======= Hero Section ======= -->
-   @include('frontend.home.module.hero')
-<!-- End Hero -->
+@include('frontend.home.module.slider')
 
-  <main id="main">
-    <!-- ======= Why Us Section ======= -->
-    @include('frontend.home.module.why-us')
-    <!-- End Why Us Section -->
+@include('frontend.home.module.about')
 
-    <!-- ======= About Section ======= -->
-    @include('frontend.home.module.about')
-    <!-- End About Section -->
+@include('frontend.home.module.services')
 
-    <!-- ======= Counts Section ======= -->
-    @include('frontend.home.module.counts')
-    <!-- End Counts Section -->
+@include('frontend.home.module.doctors')
 
-    <!-- ======= Services Section ======= -->
-    @include('frontend.home.module.services')
-    <!-- End Services Section -->
+@include('frontend.home.module.example')
 
-    <!-- ======= Doctors Section ======= -->
-    @include('frontend.home.module.doctors')
-    <!-- End Doctors Section -->
+@include('frontend.home.module.testimonials')
 
-    <!-- ======= Frequently Asked Questions Section ======= -->
-    @include('frontend.home.module.faq')
-    <!-- End Frequently Asked Questions Section -->
+@include('frontend.home.module.blog')
 
-    <!-- ======= Testimonials Section ======= -->
-    @include('frontend.home.module.testimonials')
-    <!-- End Testimonials Section -->
+@include('frontend.home.module.start_footer')
 
-    <!-- ======= Gallery Section ======= -->
-    <!-- End Contact Section -->
-
-  </main>
-  <!-- End #main -->
 @endsection

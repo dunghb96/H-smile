@@ -1,34 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <title>Home || H-Smile </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>H-Smile</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-   @include('frontend.layout.style')
-  <!-- =======================================================
-  * Template Name: Medilab - v4.6.0
-  * Template URL: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    @include('frontend.layout.style')
 </head>
 
 <body>
+    <div class="boxed_wrapper">
+        <div class="preloader"></div>
 
-  @include('frontend.layout.header')
+        @include('frontend.layout.header')
 
 
-  @yield('content')
+        @yield('content')
 
 
-  @include('frontend.layout.footer')
+        @include('frontend.layout.footer')
+    </div>
+    <div class="scroll-to-top scroll-to-target thm-bg-clr" data-target="html">
+        <span class="fa fa-angle-up"></span>
+    </div>
 
- @include('frontend.layout.script')
+    @include('frontend.layout.script')
 
 </body>
 

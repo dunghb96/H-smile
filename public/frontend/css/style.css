@@ -314,7 +314,8 @@ li {
     align-items: center;
 }
 
-
+.owl-nav-style-one{}
+.owl-nav-style-one .owl-controls { }
 .owl-nav-style-one.owl-theme .owl-nav [class*="owl-"] {
     background: #ffffff none repeat scroll 0 0;
     border-radius: 50%;
@@ -337,7 +338,8 @@ li {
     color: #172272;
 }
 
-
+.owl-nav-style-two{}
+.owl-nav-style-two .owl-controls { }
 .owl-nav-style-two.owl-theme .owl-nav [class*="owl-"] {
     background: #fff none repeat scroll 0 0;
     border-radius: 0%;
@@ -1110,7 +1112,6 @@ select:focus {
 }
 .header-style1-logo a {
     display: block;
-    text-align: left;
 }
 .header-contact-info{
     position: relative;
@@ -2807,7 +2808,7 @@ select:focus {
 }
 .single-work-slide .img-holder{
     position: relative;
-    display: flex;
+    display: block;
     overflow: hidden;
 }
 .single-work-slide .img-holder:before{
@@ -2827,24 +2828,24 @@ select:focus {
 }
 .single-work-slide .text-holder{
     position: relative;
-    display: flex;
+    display: block;
 }
 .single-work-slide .text-holder .sec-title{
-    display: flex;
+    display: block;
     padding-bottom: 38px;
 }
 .single-work-slide .text-holder .inner-content{
-    display: flex;
+    display: block;
 }
 .single-work-slide .text-holder .inner-content h3 {
-    margin: 0 0 20px;
+    margin: 0 0 19px;
 }
 .single-work-slide .text-holder .inner-content p{
-    margin: 10px;
+    margin: 0;
 }
 .single-work-slide .text-holder .inner-content ul{
-    display: flex;
-    margin-top: 10px;
+    display: block;
+    margin-top: 20px;
 }
 .single-work-slide .text-holder .inner-content ul li{
     color: #8b8b8b;
@@ -3289,7 +3290,7 @@ select:focus {
 .footer-contact-info-area {
     position: relative;
     display: block;
-    margin-bottom: 30px;    
+    margin-bottom: -83px;
 }
 .single-footer-contact-box {
     position: relative;
@@ -6116,7 +6117,7 @@ select:focus {
 .single-price-box{
     position: relative;
     display: block;
-    background: lightgrey;
+    background: #f5f5f5;
     padding: 27px 30px 30px;
     transform: translate3d(0px, 0px, 0px);
     transition: all 500ms ease;
@@ -6133,6 +6134,7 @@ select:focus {
     width: 100%;
     height: 10px;
     content: "";
+    background: #32b6a1;
     transform: scaleX(0);
     transition: .5s ease;    
 }
@@ -6207,7 +6209,7 @@ select:focus {
     margin-top: 30px;
 }
 .single-price-box .table-footer a{
-    background: whitesmoke;
+    background: transparent;
     color: #32b6a1;
     border: 2px solid #32b6a1;
     padding: 17px 55px 17px;
@@ -6215,7 +6217,7 @@ select:focus {
     transition-delay: 0.5s;
 }
 .single-price-box:hover .table-footer a{
-    background: blue;
+    background: #32b6a1;
     color: #ffffff;
 }
 
@@ -6229,61 +6231,65 @@ select:focus {
 .pricing-plan-area.style2{
     position: relative;
     display: block;
-    padding: 90px 0 60px;
+    padding: 0px 0 60px;
 }
 .pricing-plan-area.style2 .single-price-box {
-    position: relative;
-    display: block;
-    background: lightgrey;
-    padding: 27px 30px 30px;
-    transform: translate3d(0px, 0px, 0px);
-    transition: all 500ms ease;
-    transition-delay: 0.5s;
-    margin-bottom: 40px;
+    background: #ffffff;
+    border-top: 3px solid #8bc43f;
+    border-bottom: 3px solid #32b6a1;
 }
 .pricing-plan-area.style2 .single-price-box:hover{
-    transform: translate3d(0px, -20px, 0px);
+    -webkit-box-shadow: 0px 3px 7px 2px #D9D9D9; 
+    box-shadow: 0px 3px 7px 2px #D9D9D9;
 }
 .pricing-plan-area.style2 .single-price-box:before{
     position: absolute;
+    top: 0;
     left: 0;
-    bottom: -10px;
-    width: 100%;
-    height: 10px;
+    bottom: 0;
+    height: 100%;
+    width: 3px;
     content: "";
-    background: blue;
-    transform: scaleX(0);
-    transition: .5s ease;    
+    transform: scaleY(1);
+    background: rgb(136,196,66); 
+    background: -moz-linear-gradient(top, rgba(136,196,66,1) 0%, rgba(51,182,160,1) 100%); 
+    background: -webkit-linear-gradient(top, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%); 
+    background: linear-gradient(to bottom, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88c442', endColorstr='#33b6a0',GradientType=0 ); 
 }
 .pricing-plan-area.style2 .single-price-box:after{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 3px;
+    content: "";
     transform: scaleY(1);
-    transition: .5s ease;
+    background: rgb(136,196,66); 
+    background: -moz-linear-gradient(top, rgba(136,196,66,1) 0%, rgba(51,182,160,1) 100%); 
+    background: -webkit-linear-gradient(top, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%); 
+    background: linear-gradient(to bottom, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88c442', endColorstr='#33b6a0',GradientType=0 ); 
 }
 .pricing-plan-area.style2 .single-price-box .table-header .package {
-    position: relative;
-    display: block;
     padding-top: 15px;
-    padding-bottom: 13px;
+    padding-bottom: 4px;
 }
 .pricing-plan-area.style2 .single-price-box .price-list ul {
     display: block;
-    padding: 21px 0 19px;
+    padding: 0px 0 0px;
 }
 .pricing-plan-area.style2 .single-price-box .table-footer {
-    position: relative;
-    display: block;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .pricing-plan-area.style2 .single-price-box .table-footer a {
-    background: whitesmoke;
-    color: #32b6a1;
-    border: 2px solid #32b6a1;
-    padding: 17px 55px 17px;
-    transition: all 500ms ease;
-    transition-delay: 0.5s;
+    color: #303030;
+    border: 2px solid #eeeeee;
 }
 .pricing-plan-area.style2 .single-price-box:hover .table-footer a{
-    background: blue;
+    background: #32b6a1;
+    border-color: #32b6a1;
     color: #ffffff;
 }
 
@@ -7328,7 +7334,6 @@ box-shadow: 0px 1px 15px 3px #f9f9f9;
     font-weight: 500;
     line-height: 16px;
     transition: all 500ms ease;
-    text-align: center;
 }
 .follow-us-instagram a i{
     color: #8bc43f;
@@ -7336,7 +7341,6 @@ box-shadow: 0px 1px 15px 3px #f9f9f9;
     font-weight: 400;
     display: inline-block;
     padding-right: 9px;
-    text-align: center;
 }
 .follow-us-instagram a:hover{
     color: #8bc43f;    
