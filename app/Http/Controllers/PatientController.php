@@ -24,9 +24,10 @@ class PatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function postData(Request $request)
     {
-        //
+        dd(1);
+        dd($request->all());
     }
 
     /**

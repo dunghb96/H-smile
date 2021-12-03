@@ -23,4 +23,9 @@ class HomeController extends BaseController
     {
         return view('frontend.form.fom_booking');
     }
+    public function postData(Request $request)
+    {
+        dd(1);
+        dd($request->all());
+    }
 }

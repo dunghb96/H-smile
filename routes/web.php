@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Frontend\showController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,5 +41,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/service', [showController::class, 'index'])->name('service.list');
 Route::get('/', [HomeController::class, 'service'])->name('home');
 Route::get('/form-booking', [HomeController::class, 'form'])->name('form');
+Route::post('/form-booking', [HomeController::class, 'postData']);
+
+Route::post('form-booking', [HomeController::class, 'postData'])->name('postData');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
+

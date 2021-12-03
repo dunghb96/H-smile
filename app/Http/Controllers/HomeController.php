@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function postData(Request $request)
+    {
+        dd(1);
+        dd($request->all());
+    }
 }
