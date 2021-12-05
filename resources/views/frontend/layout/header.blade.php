@@ -38,7 +38,7 @@
                         </ul>
                     </div>
                     <div class="header-style1-button float-right">
-                        <a href="datlichhen.html"><span class="icon-date"></span>ĐẶT LỊCH HẸN</a>
+                        <a href="{{ route('form') }}"><span class="icon-date"></span>ĐẶT LỊCH HẸN</a>
                     </div>
                 </div>
             </div>
