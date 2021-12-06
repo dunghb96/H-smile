@@ -1,7 +1,6 @@
 @extends('frontend.layout.index')
 @section('content')
-    <section class="breadcrumbs">
-    </section>
+    @include('frontend.layout.breadcrumb')
     <section class="inner-page">
 
         <div class="container">

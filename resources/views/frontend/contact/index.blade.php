@@ -1,81 +1,185 @@
 @extends('frontend.layout.index')
 @section('content')
-    <main id="main">
-        <!-- ======= Breadcrumbs Section ======= -->
-        <section class="breadcrumbs">
-        </section>
-        <!-- End Breadcrumbs Section -->
-        <section class="inner-page">
-            <div class="container">
-                <section id="contact" class="contact">
-                    <div class="container">
-                        <div class="section-title">
-                            <h2>Liên hệ</h2>
-                            <p>Chất lượng cuộc sống ngày càng tăng cao dẫn đến nhu cầu khám chữa và chăm sóc răng miệng
-                                cũng được chú trọng hơn. Là cơ sở đi đầu trong việc cung cấp những dịch vụ khám chữa
-                                răng hàm mặt và chỉnh nha chất lượng cao, H-Smile được khách hàng tín nhiệm
-                                bởi đội ngũ bác sĩ chuyên môn cao và cơ sở vật chất hiện đại đạt chuẩn quốc tế</p>
-                        </div>
-                    </div>
-                    <div>
-                        <iframe style="border:0; width: 100%; height: 350px;"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.307443384207!2d105.84752411437815!3d21.02038099344149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab928ae4efdb%3A0xdc9feb22c4e3ecce!2zMSBOZ8O0IFbEg24gU-G7nywgVHLhuqduIEjGsG5nIMSQ4bqhbywgSG_DoG4gS2nhur9tLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1636623294768!5m2!1svi!2s"
-                            frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <div class="container">
-                        <div class="row mt-5">
 
-                            <div class="col-lg-4">
-                                <div class="info">
-                                    <div class="address">
-                                        <i class="bi bi-geo-alt"></i>
-                                        <h4>Vị trí:</h4>
-                                        <p>Số 1 Ngô Văn Sở, Trần Hưng Đạo, Hoàn Kiếm, Hà Nội</p>
-                                    </div>
-                                    <div class="email">
-                                        <i class="bi bi-envelope"></i>
-                                        <h4>Email:</h4>
-                                        <p>hsmile@gmail.com</p>
-                                    </div>
-                                    <div class="phone">
-                                        <i class="bi bi-phone"></i>
-                                        <h4>Call:</h4>
-                                        <p> +84 988 077 68</p>
+@include('frontend.layout.breadcrumb')
+
+<!--Start Contact info map area-->
+<section class="contact-info-map-area">
+    <div class="container">
+        <div class="sec-title max-width text-center">
+            <h1>Chúng tôi ở đây để giúp bạn, đừng ngần ngại.</h1>
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="contact-info-map">
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <div class="contact-info-left">
+                                <div class="contact-title">
+                                    <h2>Gửi tin nhắn của bạn cho chúng tôi</h2>
+                                    <p>Đừng ngại ngùng, Gửi tin nhắn của bạn hoặc thông qua hình thức, chuyên gia của chúng tôi sẽ giúp bạn càng sớm càng tốt.</p>
+                                </div>
+                                <div class="state-select-box2">
+                                    <div class="state-content">
+                                        <div class="state" id="value1">
+                                            <ul>
+                                                <li>
+                                                    <div class="text">
+                                                        <h5>Địa chỉ</h5>
+                                                        <p>Me Tri Ha, Nam Tu Liem, Ha Noi</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="text">
+                                                        <h5>Phone</h5>
+                                                        <p>Phone 1: 0986 523 361<br> Phone 2: 0978 325 491</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="text">
+                                                        <h5>Email</h5>
+                                                        <p>vantruongdz.2001@gmail.com</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="state" id="value2">
+                                            <ul>
+                                                <li>
+                                                    <div class="text">
+                                                        <h5>Địa chỉ</h5>
+                                                        <p>487B Nguyen Đình Chieu, Phuong 2, Quan 3, TP HCM</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="text">
+                                                        <h5>Phone</h5>
+                                                        <p>Phone 1: 0986 523 361<br> Phone 2: 0978 325 491</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="text">
+                                                        <h5>Email</h5>
+                                                        <p>vantruongdz.2001@gmail.com</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="state" id="value3">
+                                            <ul>
+                                                <li>
+                                                    <div class="text">
+                                                        <h5>Địa chỉ</h5>
+                                                        <p>36 Đien Bien Phu, TP Nam Đinh.</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="text">
+                                                        <h5>Phone</h5>
+                                                        <p>Phone 1: 0986 523 361<br> Phone 2: 0978 325 491</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="text">
+                                                        <h5>Email</h5>
+                                                        <p>vantruongdz.2001@gmail.com</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="state" id="value4">
+                                            <ul>
+                                                <li>
+                                                    <div class="text">
+                                                        <h5>Địa chỉ</h5>
+                                                        <p>Ninh Kieu, TP Đa Nang</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="text">
+                                                        <h5>Phone</h5>
+                                                        <p>Phone 1: 0986 523 361<br> Phone 2: 0978 325 491.</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="text">
+                                                        <h5>Email</h5>
+                                                        <p>vantruongdz.2001@gmail.com</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-8 mt-5 mt-lg-0">
-                                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                                    <div class="row">
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" name="name" class="form-control" id="name"
-                                                placeholder="Họ và tên" required>
-                                        </div>
-                                        <div class="col-md-6 form-group mt-3 mt-md-0">
-                                            <input type="email" class="form-control" name="Email" id="email"
-                                                placeholder="Email" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group mt-3">
-                                        <input type="number" class="form-control" name="" id="Số điện thoại"
-                                            placeholder="Subject" required>
-                                    </div>
-                                    <div class="form-group mt-3">
-                                        <textarea class="form-control" name="message" rows="5" placeholder="Lời nhắn"
-                                            required></textarea>
-                                    </div>
-                                    <div class="my-3">
-                                        <div class="loading">Loading</div>
-                                        <div class="error-message"></div>
-                                        <div class="sent-message">Tin nhắn của bạn đã được gửi. Cảm ơn bạn!</div>
-                                    </div>
-                                    <div class="text-center"><button type="submit">Gửi</button></div>
-                                </form>
+                        </div>
+                        <div class="col-xl-8">
+                            <div class="google-map-box">
+                                <div
+                                    class="google-map"
+                                    id="contact-google-map"
+                                    data-map-lat="40.584160"
+                                    data-map-lng="-74.415543"
+                                    data-icon-path="images/resources/map-marker.png"
+                                    data-map-title="Brooklyn, New York, United Kingdom"
+                                    data-map-zoom="12"
+                                    data-markers='{
+                                        "marker-1": [40.584160, -74.415543, "<h4>Head Office</h4><p>44/108 Brooklyn, UK</p>"],
+                                        "marker-2": [40.602230, -74.689910, "<h4>Head Office</h4><p>44/108 Brooklyn, UK</p>"],
+                                        "marker-3": [35.616959, -87.838852, "<h4>Head Office</h4><p>44/108 Brooklyn, UK</p>"]
+
+                                    }'>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </div>
+</section>
+<!--End Contact info map area-->
+
+<!--Start contact form area-->
+<section class="contact-form-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="contact-form">
+                    <div class="contact-title">
+                        <h2>Gửi tin nhắn của bạn cho chúng tôi</h2>
+                        <p>Gửi tin nhắn của bạn UsDont hãy nhút nhát, Gửi tin nhắn hoặc quiries của bạn thông qua biểu mẫu dưới đây, nhóm chuyên gia của chúng tôi sẽ giúp bạn càng sớm càng tốt.</p>
+                    </div>
+                    <form id="contact-form" name="contact_form" class="default-form" action="http://st.ourhtmldemo.com/new/Dento/inc/sendmail.php" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-box">
+                                    <input type="text" name="form_name" value="" placeholder="Tên của bạn.*" required="">
+                                </div>
+                                <div class="input-box">
+                                    <input type="email" name="form_email" value="" placeholder="Mail của bạn*" required="">
+                                </div>
+                                <div class="input-box">
+                                    <input type="text" name="form_phone" value="" placeholder="Điện thoại">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-box">
+                                    <textarea name="form_message" placeholder="Thư của bạn..." required=""></textarea>
+                                </div>
+                                <div class="button-box">
+                                    <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
+                                    <button class="btn-one" type="submit" data-loading-text="Please wait...">Gửi thư của bạn</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--End contact form area-->
+
 @endsection
