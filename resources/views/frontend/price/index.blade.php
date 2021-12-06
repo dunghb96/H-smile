@@ -1,8 +1,8 @@
 @extends('frontend.layout.index')
+
 @section('content')
 
     @include('frontend.layout.breadcrumb')
-    <br><br>
 
     <section class="pricing-plan-area style2">
         <div class="container">
@@ -223,23 +223,22 @@
                                 <h3>Gold</h3>
                                 <span>*rates are subject to change</span>
                             </div>
-                        @endsection
+
+                        </div>
+                        <div class="price-list">
+                            <ul>
+                                <li>Free Equipment Use</li>
+                                <li>24/7 Emergency Monitoring</li>
+                                <li>Senior Discount Available</li>
+                                <li>Free Monitoring for Spouse</li>
+                                <li>Monitored in the USA</li>
+                            </ul>
+                        </div>
 
                     </div>
-                    <div class="price-list">
-                        <ul>
-                            <li>Free Equipment Use</li>
-                            <li>24/7 Emergency Monitoring</li>
-                            <li>Senior Discount Available</li>
-                            <li>Free Monitoring for Spouse</li>
-                            <li>Monitored in the USA</li>
-                        </ul>
-                    </div>
-
                 </div>
+                <!--End single price box-->
             </div>
-            <!--End single price box-->
         </div>
-    </div>
-</section>
+    </section>
 @endsection
