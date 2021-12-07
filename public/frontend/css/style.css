@@ -93,7 +93,7 @@ body {
     color: #8b8b8b;
     font-weight: 400;
     line-height: 24px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Rubik', sans-serif;
 }
 button:focus{
     outline: none;
@@ -104,51 +104,16 @@ button {
     background: transparent;
     padding: 0;
 }
-h1,  h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
     color: #303030;
     font-weight: 700;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 h1{
     font-size: 36px;
     line-height: 40px;
 }
-.section-title {
-    text-align: center;
-    padding-bottom: 30px;
-  }
-  .section-title h2 {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    position: relative;
-    color: #045326;
-  }
-  .section-title h2::before {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 120px;
-    height: 1px;
-    background: #ddd;
-    bottom: 1px;
-    left: calc(50% - 60px);
-  }
-  .section-title h2::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 40px;
-    height: 3px;
-    background: #7ED957;
-    bottom: 0;
-    left: calc(50% - 20px);
-  }
-  .section-title p {
-    margin-bottom: 0;
-  }
 h3 {
     font-size: 20px; 
     line-height: 24px;
@@ -273,75 +238,9 @@ li {
     line-height: 24px;
     margin: 16px 0 0;
 }
-.why-about h3{
-    margin-bottom: 10px;
-}
-.why-about p{
-    text-align: justify;
-}
-.doctors {
-    background: #fff;
-  }
-  .doctors .member {
-    position: relative;
-    box-shadow: 0px 2px 15px rgba(44, 73, 100, 0.08);
-    padding: 30px;
-    border-radius: 10px;
-  }
-  .doctors .member .pic {
-    overflow: hidden;
-    width: 180px;
-    border-radius: 50%;
-  }
-  .doctors .member .pic img {
-    transition: ease-in-out 0.3s;
-  }
-  .doctors .member:hover img {
-    transform: scale(1.1);
-  }
-  .doctors .member .member-info {
-    padding-left: 30px;
-  }
-  .doctors .member h4 {
-    font-weight: 700;
-    margin-bottom: 5px;
-    font-size: 20px;
-    color: #2c4964;
-  }
-  .doctors .member span {
-    display: block;
-    font-size: 15px;
-    padding-bottom: 10px;
-    position: relative;
-    font-weight: 500;
-  }
-  .doctors .member span::after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 50px;
-    height: 1px;
-    background: #b2c8dd;
-    bottom: 0;
-    left: 0;
-  }
-  .doctors .member p {
-    margin: 10px 0 0 0;
-    font-size: 14px;
-  }
-  .doctors .member .social {
-    background-color: #14914a;
-    border-radius: 5px;
-    width: 200px;
-    text-align: center;
-  }
-  .doctors .member .social a{
-    color: white;
-  }
-  .doctors .member .social:hover{
-    background-color: #045326;
-   
-  }
+
+
+
 
 
 .parallax-bg-one {
@@ -2084,7 +1983,7 @@ select:focus {
 	font-weight: 700;
     text-transform: none;
 	line-height: 1.2em;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 .main-slider #rev_slider_two_wrapper .slide-content .big-title {
 	color: #ffffff;
@@ -4998,7 +4897,7 @@ select:focus {
     position: relative;
     display: block;
     padding: 45px 20px 40px;
-    border: 2px solid #72918c;
+    border: 2px solid #233d39;
     margin-bottom: 40px;
     transition: all 500ms ease;
 }
@@ -5018,12 +4917,11 @@ select:focus {
     color: #ffffff;
 }
 .single-mission-vision-box p{
-    color: #000;
-    font-size: 14px;
+    color: #ffffff;
+    font-size: 18px;
     font-weight: 500;
     line-height: 30px;
     margin: 0 0 23px;
-    text-align: justify;
 }
 .single-mission-vision-box a{
     color: #ffffff;
