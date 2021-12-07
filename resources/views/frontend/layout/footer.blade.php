@@ -9,17 +9,20 @@
                     <div class="about-us">
                         <div class="footer-logo fix">
                             <a href="index-2.html">
-                                <img src="{{asset('frontend/images/resources/logo2.png')}}" alt="Awesome Logo">
+                                <img src="{{asset('frontend/images/resources/logo-2.png')}}" alt="Awesome Logo">
                             </a>
                         </div>
                         <div class="text-box fix">
-                        <p>
-                            Số 1 Ngô Văn Sở, Trần Hưng Đạo, Hoàn Kiếm, Hà Nội<br>
-                            <strong>Phone:</strong>+84 988 077 68<br>
-                            <strong>Email:</strong>hsmile@gmail.com<br>
+                            <p>H-Smile được bắt đầu vào năm 1995 như một phòng khám nha khoa tư nhân nhỏ ở
+                                Binghamton, NY, Hoa Kỳ. Tìm kiếm dịch vụ chăm sóc nha khoa giá cả phải chăng?
                             </p>
+                            <p class="bottom-text">Lấy một ví dụ tầm thường, mà trong chúng ta từng đảm nhận thể
+                                chất vất vả
+                                Tập thể dục, ngoại trừ để có được.</p>
                         </div>
-                        
+                        <div class="button fix">
+                            <a class="btn-one" href="#">Đọc thêm</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -101,7 +104,7 @@
                         </ul>
                     </div>
                     <div class="copyright-text text-center">
-                        <p>© <a href="#">H-Smile</a> 2021, All Rights Reserved.</p>
+                        <p>© <a href="#">H-Smile</a> 2018, All Rights Reserved.</p>
                     </div>
                     <ul class="footer-menu float-right">
                         <li><a href="#">Điều khoản & Điều kiện</a></li>

@@ -5,29 +5,33 @@
 
 <!--Start blog area-->
 <section id="blog-area" class="blog-default-area">
-    <div class="section-title">
-        <h2>Tin Tức</h2>
-    </div>
     <div class="container">
         <div class="row">
             <!--Start single blog post-->
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="single-blog-post">
                     <div class="img-holder">
-                        <img src="{{asset('frontend/images/blog/a-1.jpg')}}" alt="Awesome Image">
+                        <img src="{{asset('frontend/images/blog/v1-1.jpg')}}" alt="Awesome Image">
                         <div class="categorie-button">
-                            <a class="btn-one" href="#">H-Smile</a>
+                            <a class="btn-one" href="#">Healthy Teeth</a>
                         </div>
                     </div>
                     <div class="text-holder">
-                        <h3 class="blog-title"><a href="blog-single.html">Răng xỉn màu. Nguyên nhân do đâu và cách khắc phục.</a></h3>
-                        <div class="text-box">
-                            <p>Hàm răng trắng khiến nụ cười của bạn rạng ngời và tỏa sáng tự tin. Tuy nhiên có tới trên 90% trong số chúng ta gặp phải tình trạng răng ...</p>
+                        <div class="meta-box">
+                            <div class="author-thumb">
+                                <img src="{{asset('frontend/images/blog/author-1.png')}}" alt="Image">
+                            </div>
+                            <ul class="meta-info">
+                                <li><a href="#">By Megan Clarks</a></li>
+                                <li><a href="#">Nov 14, 2018</a></li>
+                            </ul>
                         </div>
-                        <small class="text-muted">Ngày 26/04/2021</small>
-
+                        <h3 class="blog-title"><a href="blog-single.html">What you need to know teeth?</a></h3>
+                        <div class="text-box">
+                            <p>It not only helps you to chew and eat your food frames your faceany missing tooth can major impact your quality of life.</p>
+                        </div>
                         <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Tiếp tục đọc</a>
+                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
                         </div>
                     </div>
                 </div>
@@ -37,20 +41,27 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="single-blog-post">
                     <div class="img-holder">
-                        <img src="{{asset('frontend/images/blog/a-2.jpg')}}" alt="Awesome Image">
+                        <img src="{{asset('frontend/images/blog/v1-2.jpg')}}" alt="Awesome Image">
                         <div class="categorie-button">
-                            <a class="btn-one" href="#">H-Smile</a>
+                            <a class="btn-one" href="#">Technology</a>
                         </div>
                     </div>
                     <div class="text-holder">
-                        <h3 class="blog-title"><a href="blog-single.html">Viêm lợi sau khi bọc răng sứ. Nguyên nhân và cách khắc phục.</a></h3>
-                        <div class="text-box">
-                            <p>Hàm răng trắng khiến nụ cười của bạn rạng ngời và tỏa sáng tự tin. Tuy nhiên có tới trên 90% trong số chúng ta gặp phải tình trạng răng ...</p>
+                        <div class="meta-box">
+                            <div class="author-thumb">
+                                <img src="{{asset('frontend/images/blog/author-2.png')}}" alt="Image">
+                            </div>
+                            <ul class="meta-info">
+                                <li><a href="#">By Megan Clarks</a></li>
+                                <li><a href="#">Nov 14, 2018</a></li>
+                            </ul>
                         </div>
-                        <small class="text-muted">Ngày 26/04/2021</small>
-
+                        <h3 class="blog-title"><a href="blog-single.html">A guide for dentists and patients</a></h3>
+                        <div class="text-box">
+                            <p>No one rejects, dislikes our avoids pleasures itself, because it is all pleasure, but because those who do not know.</p>
+                        </div>
                         <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Tiếp tục đọc</a>
+                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
                         </div>
                     </div>
                 </div>
@@ -60,20 +71,27 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="single-blog-post">
                     <div class="img-holder">
-                        <img src="{{asset('frontend/images/blog/a-3.jpg')}}" alt="Awesome Image">
+                        <img src="{{asset('frontend/images/blog/v1-3.jpg')}}" alt="Awesome Image">
                         <div class="categorie-button">
-                            <a class="btn-one" href="#">H-Smile</a>
+                            <a class="btn-one" href="#">Dental Care</a>
                         </div>
                     </div>
                     <div class="text-holder">
-                        <h3 class="blog-title"><a href="blog-single.html">Răng xỉn màu. Nguyên nhân do đâu và cách khắc phục.</a></h3>
-                        <div class="text-box">
-                            <p>Hàm răng trắng khiến nụ cười của bạn rạng ngời và tỏa sáng tự tin. Tuy nhiên có tới trên 90% trong số chúng ta gặp phải tình trạng răng ...</p>
+                        <div class="meta-box">
+                            <div class="author-thumb">
+                                <img src="{{asset('frontend/images/blog/author-3.png')}}" alt="Image">
+                            </div>
+                            <ul class="meta-info">
+                                <li><a href="#">By Megan Clarks</a></li>
+                                <li><a href="#">Nov 14, 2018</a></li>
+                            </ul>
                         </div>
-                        <small class="text-muted">Ngày 26/04/2021</small>
-
+                        <h3 class="blog-title"><a href="blog-single.html">Should i go for a smile design?</a></h3>
+                        <div class="text-box">
+                            <p>Nor again is there anyone who love pursues or desires to obtain pain of itself, bepain, but occasionally circumstances.</p>
+                        </div>
                         <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Tiếp tục đọc</a>
+                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
                         </div>
                     </div>
                 </div>
@@ -84,43 +102,57 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="single-blog-post">
                     <div class="img-holder">
-                        <img src="{{asset('frontend/images/blog/a-4.jpg')}}" alt="Awesome Image">
+                        <img src="{{asset('frontend/images/blog/v1-4.jpg')}}" alt="Awesome Image">
                         <div class="categorie-button">
-                            <a class="btn-one" href="#">H-Smile</a>
+                            <a class="btn-one" href="#">Dental Care</a>
                         </div>
                     </div>
                     <div class="text-holder">
-                        <h3 class="blog-title"><a href="blog-single.html">Răng xỉn màu. Nguyên nhân do đâu và cách khắc phục.</a></h3>
-                        <div class="text-box">
-                            <p>Hàm răng trắng khiến nụ cười của bạn rạng ngời và tỏa sáng tự tin. Tuy nhiên có tới trên 90% trong số chúng ta gặp phải tình trạng răng ...</p>
+                        <div class="meta-box">
+                            <div class="author-thumb">
+                                <img src="{{asset('frontend/images/blog/author-3.png')}}" alt="Image">
+                            </div>
+                            <ul class="meta-info">
+                                <li><a href="#">By Megan Clarks</a></li>
+                                <li><a href="#">Nov 14, 2018</a></li>
+                            </ul>
                         </div>
-                        <small class="text-muted">Ngày 26/04/2021</small>
-
+                        <h3 class="blog-title"><a href="blog-single.html">Should i go for a smile design?</a></h3>
+                        <div class="text-box">
+                            <p>Nor again is there anyone who love pursues or desires to obtain pain of itself, bepain, but occasionally circumstances.</p>
+                        </div>
                         <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Tiếp tục đọc</a>
+                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
                         </div>
                     </div>
                 </div>
             </div>
             <!--End single blog post-->
              <!--Start single blog post-->
-             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="single-blog-post">
                     <div class="img-holder">
-                        <img src="{{asset('frontend/images/blog/a-5.jpg')}}" alt="Awesome Image">
+                        <img src="{{asset('frontend/images/blog/v1-5.jpg')}}" alt="Awesome Image">
                         <div class="categorie-button">
-                            <a class="btn-one" href="#">H-Smile</a>
+                            <a class="btn-one" href="#">Healthy Teeth</a>
                         </div>
                     </div>
                     <div class="text-holder">
-                        <h3 class="blog-title"><a href="blog-single.html">Răng xỉn màu. Nguyên nhân do đâu và cách khắc phục.</a></h3>
-                        <div class="text-box">
-                            <p>Hàm răng trắng khiến nụ cười của bạn rạng ngời và tỏa sáng tự tin. Tuy nhiên có tới trên 90% trong số chúng ta gặp phải tình trạng răng ...</p>
+                        <div class="meta-box">
+                            <div class="author-thumb">
+                                <img src="{{asset('frontend/images/blog/author-1.png')}}" alt="Image">
+                            </div>
+                            <ul class="meta-info">
+                                <li><a href="#">By Megan Clarks</a></li>
+                                <li><a href="#">Nov 14, 2018</a></li>
+                            </ul>
                         </div>
-                        <small class="text-muted">Ngày 26/04/2021</small>
-
+                        <h3 class="blog-title"><a href="blog-single.html">What you need to know teeth?</a></h3>
+                        <div class="text-box">
+                            <p>It not only helps you to chew and eat your food frames your faceany missing tooth can major impact your quality of life.</p>
+                        </div>
                         <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Tiếp tục đọc</a>
+                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
                         </div>
                     </div>
                 </div>
@@ -130,20 +162,27 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="single-blog-post">
                     <div class="img-holder">
-                        <img src="{{asset('frontend/images/blog/a-6.jpg')}}" alt="Awesome Image">
+                        <img src="{{asset('frontend/images/blog/v1-6.jpg')}}" alt="Awesome Image">
                         <div class="categorie-button">
-                            <a class="btn-one" href="#">H-Smile</a>
+                            <a class="btn-one" href="#">Technology</a>
                         </div>
                     </div>
                     <div class="text-holder">
-                        <h3 class="blog-title"><a href="blog-single.html">Răng xỉn màu. Nguyên nhân do đâu và cách khắc phục.</a></h3>
-                        <div class="text-box">
-                            <p>Hàm răng trắng khiến nụ cười của bạn rạng ngời và tỏa sáng tự tin. Tuy nhiên có tới trên 90% trong số chúng ta gặp phải tình trạng răng ...</p>
+                        <div class="meta-box">
+                            <div class="author-thumb">
+                                <img src="{{asset('frontend/images/blog/author-2.png')}}" alt="Image">
+                            </div>
+                            <ul class="meta-info">
+                                <li><a href="#">By Megan Clarks</a></li>
+                                <li><a href="#">Nov 14, 2018</a></li>
+                            </ul>
                         </div>
-                        <small class="text-muted">Ngày 26/04/2021</small>
-
+                        <h3 class="blog-title"><a href="blog-single.html">A guide for dentists and patients</a></h3>
+                        <div class="text-box">
+                            <p>No one rejects, dislikes our avoids pleasures itself, because it is all pleasure, but because those who do not know.</p>
+                        </div>
                         <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Tiếp tục đọc</a>
+                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
                         </div>
                     </div>
                 </div>
@@ -151,7 +190,94 @@
             <!--End single blog post-->
 
             <!--Start single blog post-->
-          
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                <div class="single-blog-post">
+                    <div class="img-holder">
+                        <img src="{{asset('frontend/images/blog/v1-7.jpg')}}" alt="Awesome Image">
+                        <div class="categorie-button">
+                            <a class="btn-one" href="#">Technology</a>
+                        </div>
+                    </div>
+                    <div class="text-holder">
+                        <div class="meta-box">
+                            <div class="author-thumb">
+                                <img src="{{asset('frontend/images/blog/author-2.png')}}" alt="Image">
+                            </div>
+                            <ul class="meta-info">
+                                <li><a href="#">By Megan Clarks</a></li>
+                                <li><a href="#">Nov 14, 2018</a></li>
+                            </ul>
+                        </div>
+                        <h3 class="blog-title"><a href="blog-single.html">A guide for dentists and patients</a></h3>
+                        <div class="text-box">
+                            <p>No one rejects, dislikes our avoids pleasures itself, because it is all pleasure, but because those who do not know.</p>
+                        </div>
+                        <div class="readmore-button">
+                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End single blog post-->
+            <!--Start single blog post-->
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                <div class="single-blog-post">
+                    <div class="img-holder">
+                        <img src="{{asset('frontend/images/blog/v1-8.jpg')}}" alt="Awesome Image">
+                        <div class="categorie-button">
+                            <a class="btn-one" href="#">Dental Care</a>
+                        </div>
+                    </div>
+                    <div class="text-holder">
+                        <div class="meta-box">
+                            <div class="author-thumb">
+                                <img src="{{asset('frontend/images/blog/author-3.png')}}" alt="Image">
+                            </div>
+                            <ul class="meta-info">
+                                <li><a href="#">By Megan Clarks</a></li>
+                                <li><a href="#">Nov 14, 2018</a></li>
+                            </ul>
+                        </div>
+                        <h3 class="blog-title"><a href="blog-single.html">Should i go for a smile design?</a></h3>
+                        <div class="text-box">
+                            <p>Nor again is there anyone who love pursues or desires to obtain pain of itself, bepain, but occasionally circumstances.</p>
+                        </div>
+                        <div class="readmore-button">
+                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End single blog post-->
+            <!--Start single blog post-->
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                <div class="single-blog-post">
+                    <div class="img-holder">
+                        <img src="{{asset('frontend/images/blog/v1-9.jpg')}}" alt="Awesome Image">
+                        <div class="categorie-button">
+                            <a class="btn-one" href="#">Healthy Teeth</a>
+                        </div>
+                    </div>
+                    <div class="text-holder">
+                        <div class="meta-box">
+                            <div class="author-thumb">
+                                <img src="{{asset('frontend/images/blog/author-1.png')}}" alt="Image">
+                            </div>
+                            <ul class="meta-info">
+                                <li><a href="#">By Megan Clarks</a></li>
+                                <li><a href="#">Nov 14, 2018</a></li>
+                            </ul>
+                        </div>
+                        <h3 class="blog-title"><a href="blog-single.html">What you need to know teeth?</a></h3>
+                        <div class="text-box">
+                            <p>It not only helps you to chew and eat your food frames your faceany missing tooth can major impact your quality of life.</p>
+                        </div>
+                        <div class="readmore-button">
+                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!--End single blog post-->
         </div>
         <div class="row">

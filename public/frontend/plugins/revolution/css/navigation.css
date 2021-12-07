@@ -18,6 +18,8 @@ website:    http://www.themepunch.com
   z-index:100;
     border-radius:50%;
 }
+.ares.tparrows:hover {
+}
 .ares.tparrows:before {
   font-family: "revicons";
   font-size:25px;
@@ -226,7 +228,8 @@ border-radius:30px 0px 0px 30px;
 	background:#eee; 
 }
 
-
+.ares .tp-tab-mask {
+}
 
 /* MEDIA QUERIES */
 @media only screen and (max-width: 960px) {
@@ -278,7 +281,8 @@ website:    http://www.themepunch.com
 
 
 /* BULLETS */
-
+.custom.tp-bullets {
+}
 .custom.tp-bullets:before {
 	content:" ";
 	position:absolute;

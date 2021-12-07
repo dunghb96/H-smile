@@ -6,7 +6,7 @@
 <section class="about-area home2">
     <div class="container">
         <div class="section-title">
-            <h2>Giới Thiệu</h2>
+            <h2>Giới thiệu</h2>
             <p>Nha khoa thẩm mỹ quốc tế H-Smile được thành lập năm 2021, với tôn chỉ giúp đỡ
                  khách hàng thay đổi cuộc sống thông qua nụ cười mới mang lại hạnh phúc và sự 
                  thành công. H-Smile quan tâm và chú trọng đến vấn đề sức khỏe và tính thẩm mỹ 

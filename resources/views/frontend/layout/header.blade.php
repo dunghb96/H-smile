@@ -1,4 +1,5 @@
 
+
 <!--Start header style1 area-->
 <header class="header-style1-area">
     <div class="container">
@@ -18,8 +19,8 @@
                                         <span class="icon-support"></span>
                                     </div>
                                     <div class="text">
-                                        <p>+84 988 077 68</p>
-                                        <span>hsmile@gmail.com</span>
+                                        <p>0986 523 361</p>
+                                        <span>vantruongdz.2001@gmail.com</span>
                                     </div>
                                 </div>
                             </li>
@@ -29,8 +30,8 @@
                                         <span class="icon-gps"></span>
                                     </div>
                                     <div class="text">
-                                        <p>Số 1 Ngô Văn Sở, Trần </p>
-                                        <span>Hưng Đạo Hoàn Kiếm,Hà Nội</span>
+                                        <p>32 Me Tri Street</p>
+                                        <span>HÀ NỘI</span>
                                     </div>
                                 </div>
                             </li>
@@ -74,8 +75,13 @@
                                     </ul>
                                 </li>
                                 <li><a href="{{ route('doctor.list') }}">Bác sĩ</a></li>
-                                <li ><a href="{{ route('price.list') }}">BẢNG GIÁ</a></li>
-                                <li ><a href="{{ route('blog.list') }}">TIN TỨC</a></li>
+                                <li class="dropdown"><a href="{{ route('price.list') }}">BẢNG GIÁ</a></li>
+                                <li class="dropdown"><a href="">TIN TỨC</a>
+                                    <ul>
+                                        <li><a href="blog.html">Ưu đãi</a></li>
+                                        <li><a href="{{ route('blog.list') }}">Kiến thức</a></li>
+                                    </ul>
+                                </li>
                                 <li><a href="{{ route('contact') }}">LIÊN HỆ</a></li>
 
                             </ul>
