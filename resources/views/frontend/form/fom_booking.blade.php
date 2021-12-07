@@ -1,111 +1,143 @@
 @extends('frontend.layout.index')
 @section('content')
     @include('frontend.layout.breadcrumb')
-    <section class="inner-page">
-
-        <div class="container">
-            <div class="section-title">
-                <h2>ĐẶT LỊCH HẸN</h2>
-                <p style="text-align: center;"><i>Vui lòng để lại thông tin, nhu cầu của quý khách.</i> </p>
-                <p style="text-align: center;"><i> Nha khoa H-Smile sẽ liên hệ đến Quý Khách trong thời gian sớm nhất</i>
-                </p>
+    <!--Start Appointment area -->
+<div class="appointment-area2" id="app">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="sec-title max-width text-center">
+                    <h1>Đặt lịch hẹn</h1>
+                    <p>Tại đây, bạn có thể yêu cầu các bác sĩ có thời gian sẵn sàng và bạn có thể có được thời gian đến bệnh viện thăm khám hoàn hảo.</p>
+                </div>
             </div>
-            <br>
-            <form action="{{ route('postData') }}" method="post" role="form" class="php-email-form" >
-                <div class="row">
-                    <div class="col-md-4 form-group">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Họ Và Tên"
-                            data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-md-4 form-group mt-3 mt-md-0">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email"
-                            data-rule="email" data-msg="Please enter a valid email">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-md-4 form-group mt-3 mt-md-0">
-                        Giới tính : &nbsp;
-                        <input type="radio"  name="gender" id="gender" value="0"> Nam &nbsp;
-                        <input type="radio"  name="gender" id="gender" value="1"> Nữ
-                        <div class="validate"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 form-group">
-                        <input type="text" name="address" class="form-control" id="address" placeholder="Địa chỉ"
-                            data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-md-4 form-group mt-3 mt-md-0">
-                        <input type="number" class="form-control" name="age" id="age" placeholder="Tuổi"
-                            data-rule="age" data-msg="Please enter a valid email">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-md-4 form-group mt-3 mt-md-0">
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Số Điện Thoại"
-                            data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <textarea class="form-control" name="reason" rows="5" placeholder="Lý do khám"></textarea>
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <textarea class="form-control" name="status_desc" rows="5" placeholder="Mô tả triệu chứng"></textarea>
-                    <div class="validate"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 form-group mt-3">
-                        <select name="department" id="department" class="form-select">
-                            <option value="">Dịch Vụ</option>
-                            <option value="Department 1">Dịch Vụ 1</option>
-                            <option value="Department 2">Dịch Vụ 2</option>
-                            <option value="Department 3">Dịch Vụ 3</option>
-                        </select>
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-md-4 form-group mt-3">
-                        <select name="doctor" id="doctor" class="form-select">
-                            <option value="">Nha sĩ</option>
-                            <option value="Doctor 1">Nha sĩ 1</option>
-                            <option value="Doctor 2">Nha sĩ 2</option>
-                            <option value="Doctor 3">Nha sĩ 3</option>
-                        </select>
-                        <div class="validate"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 form-group mt-3">
-                        <input type="date" name="date" class="form-control datepicker" id="date" placeholder="Ngày Hẹn"
-                            data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-md-4 form-group mt-3">
-                        <select name="doctor" id="doctor" class="form-select">
-                            <option value="">Ca khám</option>
-                            <option value="time 1">Ca 1</option>
-                            <option value="time 2">Ca 2</option>
-                            <option value="time 3">Ca 3</option>
-                            <option value="time 4">Ca 4</option>
-                            <option value="time 5">Ca 5</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group mt-3">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Ghi Chú"></textarea>
-                    <div class="validate"></div>
-                </div>
-                <br>
-                <div class="text-center">
-                    <button type="submit"
-                        style="border: none;background-color: #1977cc;color: white;width: 80px;height:50px;border-radius: 10px;">Đặt lịch
-                    </button>
-                </div>
-            </form>
         </div>
-    </section>
-
+        <div class="row">
+            <div class="col-xl-8" style="margin: 0 auto;">
+                <div class="appointment-form-left">
+                    <form id="appointment_form" action="{{ route('postData') }}" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="single-box">
+                                    <div class="title">
+                                        <h5>Chọn nha sĩ</h5>
+                                    </div>
+                                    <div class="input-box">
+                                        <select class="selectmenu">
+                                            <option value="1" selected="selected">Tiến sĩ Daryl Cornelius</option>
+                                            <option value="2">Evelynne Mirando</option>
+                                            <option value="3">Tiến sĩ Robert B. Moreau</option>
+                                            <option value="4">Tiến sĩ Greg House</option>
+                                            <option value="5">Tiến sĩ Sarah Johnson</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="single-box">
+                                    <div class="title">
+                                        <h5>Thời gian </h5>
+                                    </div>
+                                    <div class="input-box">
+                                        <input  type="text" name="date" placeholder="Ngày" id="datepicker">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="single-box">
+                                    <div class="title">
+                                        <h5>Chọn giờ khám</h5>
+                                    </div>
+                                    <div class="input-box">
+                                        <div class="available-time">
+                                            <ul>
+                                                <li class="active">9.00am</li>
+                                                <li>11.30am</li>
+                                                <li>12.00pm</li>
+                                                <li>3.00pm</li>
+                                                <li>4.00pm</li>
+                                                <li>5.00pm</li>
+                                                <li>5.30pm</li>
+                                                <li>6.00pm</li>
+                                                <li>7.00pm</li>
+                                                <li>7.30pm</li>
+                                            </ul>
+                                            <input type="hidden" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="single-box">
+                                    <div class="title">
+                                        <h5>Thông tin <br><br> của bạn </h5>
+                                    </div>
+                                    <div class="input-box">
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <input type="text" name="name" placeholder="Tên bệnh nhân*" >
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <select name="" class="selectmenu">
+                                                    <option value="1"  selected="selected">Dịch vụ</option>
+                                                    <option value="2">Cấy ghép nha khoa</option>
+                                                    <option value="3">Nha khoa Laser</option>
+                                                    <option value="4">Chỉnh nha</option>
+                                                    <option value="5"> Nha chu </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <input type="text" name="phone" value="" placeholder="Số điện thoại*" >
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <input type="text" name="age" value="" placeholder="Tuổi*">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <input type="text" name="eamil" value="" placeholder="Email*" >
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <textarea name="form_description" placeholder="Miêu tả..."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <div class="button-box">
+                                                    <button class="btn-one" type="submit">Lựa chọn</button>
+                                                    <a class="btn-one" >Xem lịch đã đặt</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Appointment area -->
 @endsection
+@section('style')
+<style>
+    tr .col2 {
+        text-align: right;
+    }
+</style>
+@endsection
+
+

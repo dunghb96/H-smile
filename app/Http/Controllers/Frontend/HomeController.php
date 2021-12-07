@@ -30,7 +30,6 @@ class HomeController extends BaseController
     }
     public function postData(Request $request)
     {
-        dd(1);
         dd($request->all());
     }
 }
