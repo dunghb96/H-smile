@@ -1,5 +1,3 @@
-
-
 <!--Start header style1 area-->
 <header class="header-style1-area">
     <div class="container">
@@ -55,8 +53,7 @@
                 <div class="inner-content clearfix">
                     <nav class="main-menu style1">
                         <div class="navbar-header clearfix">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                data-target=".navbar-collapse">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -68,10 +65,9 @@
                                 <li><a href="{{ route('about') }}">GIỚI THIỆU</a></li>
                                 <li class="dropdown"><a href="{{ route('service.list') }}">DỊCH VỤ</a>
                                     <ul>
-                                        <li><a href="cayghepnhakhoa.html">Cấy ghép nha khoa</a></li>
-                                        <li><a href="nhakhoalaser.html">Nha khoa laser</a></li>
-                                        <li><a href="chinhnha.html">Chỉnh nha</a></li>
-                                        <li><a href="nhachu.html">Nha chu</a></li>
+                                        @foreach($service as $item)
+                                        <li><a href="cayghepnhakhoa.html">{{$item->name}}</a></li>
+                                        @endforeach
                                     </ul>
                                 </li>
                                 <li><a href="{{ route('doctor.list') }}">Bác sĩ</a></li>

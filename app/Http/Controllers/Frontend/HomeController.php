@@ -16,18 +16,20 @@ class HomeController extends BaseController
 {
     public function service()
     {
-        $service = Service::paginate(6);
-        return view('frontend.home.index', compact('service'));
+        $service = Service::where('parent_id', 0)->get();
+        $serviceHeader = Service::orderby('id', 'DESC')->where('parent_id', 0)->get();
+        return view('frontend.home.index', compact('service', 'serviceHeader'));
     }
     public function price()
     {
-        $serviceParent = Service::where('parent_id', 0)->get();
-        return view('frontend.price.index', compact('serviceParent'));
+        $service = Service::where('parent_id', 0)->get();
+        return view('frontend.price.index', compact('service'));
     }
     public function form()
     {
         return view('frontend.form.fom_booking');
     }
+
     public function postData(Request $request)
     {
         dd($request->all());

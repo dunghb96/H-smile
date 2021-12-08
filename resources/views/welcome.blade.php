@@ -73,8 +73,7 @@
                         <div class="inner-content clearfix">
                             <nav class="main-menu style1">
                                 <div class="navbar-header clearfix">
-                                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                        data-target=".navbar-collapse">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
@@ -93,7 +92,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="bacsi.html">Bác sĩ</a></li>
-                                        <li class="dropdown"><a href="blog.html">DỊCH VỤ</a>
+                                        <li class="dropdown"><a href="blog.html">123</a>
                                             <ul>
                                                 <li><a href="blog.html">Nha khoa tổng quát</a></li>
                                                 <li><a href="blog-large.html">Nha khoa phục hồi</a></li>
@@ -185,57 +184,24 @@
             <div class="rev_slider_wrapper fullwidthbanner-container" id="rev_slider_one_wrapper" data-source="gallery">
                 <div class="rev_slider fullwidthabanner" id="rev_slider_one" data-version="5.4.1">
                     <ul>
-                        <li data-description="Slide Description" data-easein="default" data-easeout="default"
-                            data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade"
-                            data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1689"
-                            data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3=""
-                            data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
-                            data-rotate="0" data-saveperformance="off" data-slotamount="default"
-                            data-thumb="images/slides/v1-1.jpg')}}" data-title="Slide Title"
-                            data-transition="parallaxvertical">
+                        <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1689" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/slides/v1-1.jpg')}}" data-title="Slide Title" data-transition="parallaxvertical">
 
-                            <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10"
-                                data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina=""
-                                src="{{asset('frontend/images/slides/v1-1.jpg')}}">
+                            <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="{{asset('frontend/images/slides/v1-1.jpg')}}">
 
-                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                                data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on"
-                                data-type="text" data-height="none" data-width="['700','700','650','360']"
-                                data-whitespace="normal" data-hoffset="['15','15','15','15']"
-                                data-voffset="['-110','-100','-100','-105']" data-x="['left','left','left','left']"
-                                data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
-                                style="z-index: 7; white-space: nowrap;">
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['700','700','650','360']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['-110','-100','-100','-105']" data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
                                 <div class="slide-content left-slide">
                                     <div class="big-title">
                                         <br>Nha khoa hiện đại trong một bình tĩnh &<br> cảm giác thư giãn.
                                     </div>
                                 </div>
                             </div>
-                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                                data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on"
-                                data-type="text" data-height="none" data-whitespace="normal"
-                                data-width="['700','700','650','400']" data-hoffset="['15','15','15','15']"
-                                data-voffset="['65','55','30','15']" data-x="['left','left','left','left']"
-                                data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
-                                style="z-index: 7; white-space: nowrap;">
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-whitespace="normal" data-width="['700','700','650','400']" data-hoffset="['15','15','15','15']" data-voffset="['65','55','30','15']" data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
                                 <div class="slide-content left-slide">
                                     <div class="text">Duy trì một nha sĩ được đào tạo chuyên sâu, có trình độ và kinh
                                         nghiệm.</div>
                                 </div>
                             </div>
-                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                                data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on"
-                                data-type="text" data-height="none" data-width="['700','700','650','400']"
-                                data-whitespace="normal" data-hoffset="['15','15','15','15']"
-                                data-voffset="['140','130','110','105']" data-x="['left','left','left','left']"
-                                data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
-                                style="z-index: 7; white-space: nowrap;">
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['700','700','650','400']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['140','130','110','105']" data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
                                 <div class="slide-content left-slide">
                                     <div class="btn-box">
                                         <a class="btn-one" href="#">Đặc sản Oue</a>
@@ -244,59 +210,25 @@
                             </div>
                         </li>
 
-                        <li data-description="Slide Description" data-easein="default" data-easeout="default"
-                            data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade"
-                            data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1687"
-                            data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3=""
-                            data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
-                            data-rotate="0" data-saveperformance="off" data-slotamount="default"
-                            data-thumb="images/slides/v1-2.jpg')}}" data-title="Slide Title"
-                            data-transition="parallaxvertical">
+                        <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1687" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/slides/v1-2.jpg')}}" data-title="Slide Title" data-transition="parallaxvertical">
 
-                            <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10"
-                                data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina=""
-                                src="{{asset('frontend/images/slides/v1-2.jpg')}}">
+                            <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="{{asset('frontend/images/slides/v1-2.jpg')}}">
 
-                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                                data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on"
-                                data-type="text" data-height="none" data-width="['900','900','800','560']"
-                                data-whitespace="normal" data-hoffset="['15','15','15','15']"
-                                data-voffset="['-90','-100','-90','-100']"
-                                data-x="['center','center','center','center']"
-                                data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
-                                style="z-index: 7; white-space: nowrap;">
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['900','900','800','560']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['-90','-100','-90','-100']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
                                 <div class="slide-content middle-slide text-center">
                                     <div class="big-title">
                                         Một nụ cười hấp dẫn làm cho ấn tượng lâu dài!
                                     </div>
                                 </div>
                             </div>
-                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                                data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on"
-                                data-type="text" data-height="none" data-whitespace="normal"
-                                data-width="['900','900','800','560']" data-hoffset="['15','15','15','15']"
-                                data-voffset="['30','10','10','0']" data-x="['center','center','center','center']"
-                                data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
-                                style="z-index: 7; white-space: nowrap;">
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-whitespace="normal" data-width="['900','900','800','560']" data-hoffset="['15','15','15','15']" data-voffset="['30','10','10','0']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
                                 <div class="slide-content middle-slide text-center">
                                     <div class="text">Hơn 200 nha sĩ tham gia với chúng tôi trong việc cho<span>Bạn là
                                             người giỏi nhất của hiện đại</span><br> chăm sóc răng miệng, ở lại với nụ
                                         cười khỏe mạnh.</div>
                                 </div>
                             </div>
-                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                                data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on"
-                                data-type="text" data-height="none" data-width="['900','900','800','560']"
-                                data-whitespace="normal" data-hoffset="['15','15','15','15']"
-                                data-voffset="['120','100','105','100']" data-x="['center','center','center','center']"
-                                data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
-                                style="z-index: 7; white-space: nowrap;">
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['900','900','800','560']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['120','100','105','100']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
                                 <div class="slide-content middle-slide text-center">
                                     <div class="btn-box">
                                         <a class="btn-one" href="#">Tìm hiểu thêm</a>
@@ -305,27 +237,10 @@
                             </div>
                         </li>
 
-                        <li data-description="Slide Description" data-easein="default" data-easeout="default"
-                            data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade"
-                            data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1688"
-                            data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3=""
-                            data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
-                            data-rotate="0" data-saveperformance="off" data-slotamount="default"
-                            data-thumb="images/slides/v1-3.jpg')}}" data-title="Slide Title"
-                            data-transition="parallaxvertical">
-                            <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10"
-                                data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina=""
-                                src="{{asset('frontend/images/slides/v1-3.jpg')}}">
+                        <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1688" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/slides/v1-3.jpg')}}" data-title="Slide Title" data-transition="parallaxvertical">
+                            <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="{{asset('frontend/images/slides/v1-3.jpg')}}">
 
-                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                                data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on"
-                                data-type="text" data-height="none" data-width="['600','600','650','400']"
-                                data-whitespace="normal" data-hoffset="['15','15','15','15']"
-                                data-voffset="['-75','-75','-80','-90']" data-x="['right','right','right','right']"
-                                data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
-                                style="z-index: 7; white-space: nowrap;">
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['600','600','650','400']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['-75','-75','-80','-90']" data-x="['right','right','right','right']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
                                 <div class="slide-content">
                                     <div class="big-title">
                                         Nụ cười khỏe mạnh<br> thông qua khoa học<br> và nghệ thuật.
@@ -333,15 +248,7 @@
                                 </div>
                             </div>
 
-                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                                data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on"
-                                data-type="text" data-height="none" data-whitespace="normal"
-                                data-width="['600','600','650','400']" data-hoffset="['15','15','15','15']"
-                                data-voffset="['65','50','30','15']" data-x="['right','right','right','right']"
-                                data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
-                                style="z-index: 7; white-space: nowrap;">
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-whitespace="normal" data-width="['600','600','650','400']" data-hoffset="['15','15','15','15']" data-voffset="['65','50','30','15']" data-x="['right','right','right','right']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
                                 <br><br>
                                 <div class="slide-content">
                                     <div class="text">Duy trì một nha sĩ được đào tạo chuyên sâu, có trình độ và kinh
@@ -349,15 +256,7 @@
                                 </div>
                             </div>
 
-                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                                data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on"
-                                data-type="text" data-height="none" data-width="['600','600','650','400']"
-                                data-whitespace="normal" data-hoffset="['15','15','15','15']"
-                                data-voffset="['140','120','110','105']" data-x="['right','right','right','right']"
-                                data-y="['middle','middle','middle','middle']"
-                                data-textalign="['top','top','top','top']"
-                                data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
-                                style="z-index: 7; white-space: nowrap;">
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['600','600','650','400']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['140','120','110','105']" data-x="['right','right','right','right']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
                                 <div class="slide-content">
                                     <div class="btn-box">
                                         <a class="btn-one" href="#">Gặp gỡ các bác sĩ của chúng tôi</a>
@@ -518,7 +417,7 @@
             <div class="container">
                 <div class="sec-title max-width text-center">
                     <h3>CHUYÊN NGÀNH</h3>
-                    <h1>Dịch vụ chăm sóc nha khoa</h1>
+                    <h1>Dịch vụ chăm sóc nha khoa123213123</h1>
                     <p>Răng của bạn đóng một vai trò quan trọng trong cuộc sống hàng ngày của bạn. Nó không chỉ giúp bạn
                         nhai và ăn thức ăn của bạn, nhưng đóng khung khuôn mặt của bạn. Bất kỳ răng bị mất có thể có tác
                         động lớn đến chất lượng cuộc sống của bạn. </p>
@@ -793,9 +692,7 @@
                                                             <li>
                                                                 <h5>Cấy ghép</h5>
                                                                 <div class="box">
-                                                                    <div class="inner wow fadeInLeft"
-                                                                        data-wow-duration="2s" data-wow-delay="0s"
-                                                                        data-wow-offset="0" style="width: 75%;">
+                                                                    <div class="inner wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0s" data-wow-offset="0" style="width: 75%;">
                                                                         <span>75%</span>
                                                                     </div>
                                                                 </div>
@@ -811,14 +708,10 @@
                                                 <div class="img-holder">
                                                     <img src="{{asset('frontend/images/team/team-1.png')}}" alt="Awesome Image">
                                                     <ul class="team-social-links">
-                                                        <li><a href="#"><i class="fa fa-facebook"
-                                                                    aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-twitter"
-                                                                    aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-linkedin"
-                                                                    aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-google-plus"
-                                                                    aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -846,9 +739,7 @@
                                                             <li>
                                                                 <h5>Cấy ghép</h5>
                                                                 <div class="box">
-                                                                    <div class="inner wow fadeInLeft"
-                                                                        data-wow-duration="2s" data-wow-delay="0s"
-                                                                        data-wow-offset="0" style="width: 75%;">
+                                                                    <div class="inner wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0s" data-wow-offset="0" style="width: 75%;">
                                                                         <span>75%</span>
                                                                     </div>
                                                                 </div>
@@ -864,14 +755,10 @@
                                                 <div class="img-holder">
                                                     <img src="{{asset('frontend/images/team/team-2.png')}}" alt="Awesome Image">
                                                     <ul class="team-social-links">
-                                                        <li><a href="#"><i class="fa fa-facebook"
-                                                                    aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-twitter"
-                                                                    aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-linkedin"
-                                                                    aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-google-plus"
-                                                                    aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -949,8 +836,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -958,8 +844,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -973,8 +858,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -982,8 +866,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -997,8 +880,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -1006,8 +888,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -1026,8 +907,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -1035,8 +915,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -1050,8 +929,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -1059,8 +937,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -1074,8 +951,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -1083,8 +959,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -1103,8 +978,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -1112,8 +986,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -1127,8 +1000,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -1136,8 +1008,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -1151,8 +1022,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -1160,8 +1030,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -1180,8 +1049,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -1189,8 +1057,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -1204,8 +1071,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -1213,8 +1079,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -1228,8 +1093,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -1237,8 +1101,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -1257,8 +1120,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -1266,8 +1128,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -1281,8 +1142,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -1290,8 +1150,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>
@@ -1305,8 +1164,7 @@
                                                 <div class="row mar0">
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
                                                             <div class="before">
                                                                 <a href="#">Trước</a>
                                                             </div>
@@ -1314,8 +1172,7 @@
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
                                                         <div class="img-holder">
-                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}"
-                                                                alt="Awesome Image">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
                                                             <div class="after">
                                                                 <a href="#">Sau</a>
                                                             </div>

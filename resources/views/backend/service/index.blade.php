@@ -27,6 +27,7 @@ Danh sách bài viết
                                             <th scope="col">Image</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Description</th>
+                                            <th scope="col">Parent_ID</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -40,6 +41,7 @@ Danh sách bài viết
 
                                             <td> {{ $item->price }} </td>
                                             <td> {{ $item->description }} </td>
+                                            <td> {{ $item->parent_id   }}</td>
                                             <td>@if($item->status==1)
                                                 <span class="text text-danger">Ẩn </span>
                                                 @elseif($item->status==2)
