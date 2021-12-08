@@ -1,5 +1,5 @@
 <!--Start breadcrumb area-->
-<section class="breadcrumb-area" style="background-image: url('{{ asset('images/resources/breadcrumb-bg.jpg') }}');">
+<section class="breadcrumb-area" style="background-image: url('{{ asset('frontend/images/resources/breadcrumb-bg.jpg') }}');">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
