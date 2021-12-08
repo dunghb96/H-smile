@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookingPostRequest;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,9 +26,8 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function postData(Request $request)
+    public function postData(BookingPostRequest $request)
     {
-        dd(1);
-        dd($request->all());
+
     }
 }

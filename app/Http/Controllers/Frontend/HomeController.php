@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Enums\CommonStatus;
+use App\Http\Requests\BookingPostRequest;
 use App\Models\Client;
 use App\Models\News;
 use App\Models\Service;
@@ -30,8 +31,8 @@ class HomeController extends BaseController
         return view('frontend.form.fom_booking');
     }
 
-    public function postData(Request $request)
+    public function postData(BookingPostRequest $request)
     {
-        dd($request->all());
+        dd(1);
     }
 }

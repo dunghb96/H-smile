@@ -21,30 +21,16 @@
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
                                     <div class="title">
-                                        <h5>Chọn nha sĩ</h5>
-                                    </div>
-                                    <div class="input-box">
-                                        <select class="selectmenu">
-                                            <option value="1" selected="selected">Tiến sĩ Daryl Cornelius</option>
-                                            <option value="2">Evelynne Mirando</option>
-                                            <option value="3">Tiến sĩ Robert B. Moreau</option>
-                                            <option value="4">Tiến sĩ Greg House</option>
-                                            <option value="5">Tiến sĩ Sarah Johnson</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12">
-                                <div class="single-box">
-                                    <div class="title">
                                         <h5>Thời gian </h5>
                                     </div>
                                     <div class="input-box">
-                                        <input  type="text" name="date" placeholder="Ngày" id="datepicker">
+                                        @error('date')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input  type="text" name="date" placeholder="Chọn ngày hẹn" id="my_date_picker" >
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         <div class="row">
@@ -82,36 +68,74 @@
                                     <div class="input-box">
                                         <div class="row">
                                             <div class="col-xl-6">
+                                                @error('name')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                                 <input type="text" name="name" placeholder="Tên bệnh nhân*" >
                                             </div>
                                             <div class="col-xl-6">
-                                                <select name="" class="selectmenu">
-                                                    <option value="1"  selected="selected">Dịch vụ</option>
-                                                    <option value="2">Cấy ghép nha khoa</option>
-                                                    <option value="3">Nha khoa Laser</option>
-                                                    <option value="4">Chỉnh nha</option>
-                                                    <option value="5"> Nha chu </option>
-                                                </select>
+                                                @error('age')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                                <input type="text" name="age" value="" placeholder="Tuổi*" >
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-xl-6">
+                                                @error('phone')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                                 <input type="text" name="phone" value="" placeholder="Số điện thoại*" >
                                             </div>
                                             <div class="col-xl-6">
-                                                <input type="text" name="age" value="" placeholder="Tuổi*">
+                                                @error('gender')
+                                                    <span class="text-danger">{{ $message }}</span><br>
+                                                @enderror
+                                                Giới tính :
+                                                <input type="radio" name="gender" value="0" > Nam<br>
+                                                &emsp;&emsp;&emsp;&emsp;&ensp;  <input type="radio" name="gender" value="1"> Nữ
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-xl-12">
-                                                <input type="text" name="eamil" value="" placeholder="Email*" >
+                                                @error('email')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                                <input type="text" name="email" value="" placeholder="Email*" >
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                Chọn dịch vụ
+                                                <select class="form-control" id="sel1" name="service" >
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                                @error('service')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-xl-6">
+                                                Chọn nha sĩ
+                                                <select class="form-control" id="sel1" name="doctor" >
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                </select>
+                                                @error('doctor')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div><br><br>
                                         <div class="row">
                                             <div class="col-xl-12">
                                                 <textarea name="form_description" placeholder="Miêu tả..."></textarea>
                                             </div>
                                         </div>
+
                                         <div class="row">
                                             <div class="col-xl-12">
                                                 <div class="button-box">
@@ -133,6 +157,7 @@
 <!--End Appointment area -->
 @endsection
 @section('style')
+<link href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css' rel='stylesheet'>
 <style>
     tr .col2 {
         text-align: right;
@@ -140,4 +165,21 @@
 </style>
 @endsection
 
+
+@section('script')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
+<script>
+    $(document).ready(function() {
+
+        $(function() {
+            $( "#my_date_picker" ).datepicker({
+                dateFormat: 'dd-mm-yy',
+                dayNamesMin: [ "CN", "2", "3", "4", "5", "6", "7" ],
+                monthNames: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ]
+            });
+        });
+    })
+</script>
+@endsection
 
