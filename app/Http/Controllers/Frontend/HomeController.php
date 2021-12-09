@@ -30,6 +30,11 @@ class HomeController extends BaseController
     {
         return view('frontend.form.fom_booking');
     }
+    public function serviceForHeader()
+    {
+        $service = Service::where('parent_id', 0)->get();
+        return view('frontend.layout.header', compact('service'));
+    }
 
     public function postData(BookingPostRequest $request)
     {
