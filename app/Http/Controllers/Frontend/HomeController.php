@@ -21,14 +21,17 @@ class HomeController extends BaseController
         $serviceHeader = Service::orderby('id', 'DESC')->where('parent_id', 0)->get();
         return view('frontend.home.index', compact('service', 'serviceHeader'));
     }
+
     public function price()
     {
         $service = Service::where('parent_id', 0)->get();
         return view('frontend.price.index', compact('service'));
     }
-    public function form()
+
+    public function serviceForHeader()
     {
-        return view('frontend.form.fom_booking');
+        $service = Service::where('parent_id', 0)->get();
+        return view('frontend.layout.header', compact('service'));
     }
 
     public function postData(BookingPostRequest $request)
