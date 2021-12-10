@@ -45,8 +45,8 @@ Thêm mới tài khoản
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputSpentBudget">Mô tả danh mục</label>
-                                    <input type="text" value="{{old('description')}}" name="description" style="height: 110px" class="form-control" size="5">
+                                    <label for="inputSpentBudget">Mô tả dịch vụ</label>
+                                    <textarea type="text" class="form-control ckeditor" value="{{old('description')}}" id="content" name="description"></textarea>
                                     @error('mo_ta')
                                     <div class="text-danger">{{$message}}</div>
                                     @enderror
@@ -96,6 +96,9 @@ Thêm mới tài khoản
 </div>
 
 </div>
+<script>
+    CKEDITOR.replace('content');
+</script>
 @endsection
 
 @push('css')
@@ -105,6 +108,7 @@ Thêm mới tài khoản
 @push('js')
 <script src="{{ asset('backend/plugins/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('backend/dist/js/pages/form/select2/select2.init.js') }}"></script>
+<script src="{{ asset('backend/ckeditor/ckeditor.js') }}"></script>
 <script type="text/javascript">
     function ChangeToSlug() {
         var slug;

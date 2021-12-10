@@ -52,7 +52,7 @@ Thêm tin
 
                                 <div class="form-group">
                                     <label>Nội dung</label>
-                                    <textarea type="text" class="form-control ckeditor" id="content" name="content" >{{ !! $new->content  }}</textarea>
+                                    <textarea type="text" class="form-control ckeditor" id="content" name="content">{{ $new->content  }}</textarea>
                                     @error('content')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -77,9 +77,7 @@ Thêm tin
 
 </div>
 <script>
-
     CKEDITOR.replace('content');
-
 </script>
 @endsection
 

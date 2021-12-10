@@ -40,7 +40,7 @@ Danh sách bài viết
                                             <td><img src="{{asset('storage/'.$item->image)}}" style="width: 70px;"></td>
 
                                             <td> {{ $item->price }} </td>
-                                            <td> {{ $item->description }} </td>
+                                            <td> {!! $item->description !!} </td>
                                             <td> {{ $item->parent_id   }}</td>
                                             <td>@if($item->status==1)
                                                 <span class="text text-danger">Ẩn </span>
