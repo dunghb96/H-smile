@@ -23,12 +23,13 @@ Danh sách bài viết
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Image</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Description</th>
+                                            <th scope="col">Tên dịch vụ</th>
+                                            <th scope="col">Ảnh</th>
+                                            <th scope="col">Giá</th>
+                                            <th scope="col">Mô tả</th>
+                                            <th scope="col">Nội dung</th>
                                             <th scope="col">Parent_ID</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Trạng thái</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -40,7 +41,8 @@ Danh sách bài viết
                                             <td><img src="{{asset('storage/'.$item->image)}}" style="width: 70px;"></td>
 
                                             <td> {{ $item->price }} </td>
-                                            <td> {!! $item->description !!} </td>
+                                            <td style="width: 5px;"> {!! $item->short_desc !!} </td>
+                                            <td style="width:200px"> {!! $item->description !!} </td>
                                             <td> {{ $item->parent_id   }}</td>
                                             <td>@if($item->status==1)
                                                 <span class="text text-danger">Ẩn </span>

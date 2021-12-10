@@ -43,6 +43,10 @@ Thêm mới tài khoản
                                     <input type="text" class="form-control" name="price" value="{{ old('price',$service->price) }}" />
 
                                 </div>
+                                <div class="form-group">
+                                    <label>Mô tả</label>
+                                    <textarea type="text" class="form-control ckeditor" id="content1" name="short_desc">{{ $service->short_desc  }}</textarea>
+                                </div>
 
                                 <div class="form-group">
                                     <label>Description</label>

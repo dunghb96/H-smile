@@ -10,7 +10,7 @@ class service extends Model
 {
     use HasFactory;
     protected $table = 'services';
-    protected $fillable = ['name', 'price', 'description', 'status', 'parent_id', 'slug'];
+    protected $fillable = ['name', 'price', 'short_desc', 'description', 'status', 'parent_id', 'slug'];
     protected $primaryKey = 'id';
 
     public function serviceChildrent()

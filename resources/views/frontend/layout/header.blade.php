@@ -64,11 +64,11 @@
                                 <li class="dropdown current"><a href="{{ route('home') }}">TRANG CHỦ</a></li>
                                 <li><a href="{{ route('about') }}">GIỚI THIỆU</a></li>
                                 <li class="dropdown"><a href="{{ route('service.list') }}">DỊCH VỤ</a>
-                                   
+
                                 </li>
                                 <li><a href="{{ route('doctor.list') }}">Bác sĩ</a></li>
                                 <li class="dropdown"><a href="{{ route('price.list') }}">BẢNG GIÁ</a></li>
-                                <li class="dropdown"><a href="">TIN TỨC</a>
+                                <li class="dropdown"><a href="{{ route('blog.list') }}">TIN TỨC</a>
                                     <ul>
                                         <li><a href="blog.html">Ưu đãi</a></li>
                                         <li><a href="{{ route('blog.list') }}">Kiến thức</a></li>

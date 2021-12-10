@@ -15,4 +15,9 @@ class showController extends Controller
 
         return view('frontend.service.list_service', compact('service'));
     }
+    public function detail($id)
+    {
+        $service = Service::find($id);
+        return view('frontend.service.detail_service', compact('service'));
+    }
 }
