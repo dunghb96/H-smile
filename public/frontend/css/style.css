@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #303030;
     font-weight: 700;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 h1{
     font-size: 36px;
@@ -1139,6 +1139,7 @@ select:focus {
 .header-contact-info ul li .single-item{
     position: relative;
     display: block;
+    margin-top: 10px;
 }
 .header-contact-info ul li .single-item .icon{
     width: 50px;
@@ -1983,7 +1984,8 @@ select:focus {
 	font-weight: 700;
     text-transform: none;
 	line-height: 1.2em;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+
 }
 .main-slider #rev_slider_two_wrapper .slide-content .big-title {
 	color: #ffffff;
@@ -1992,7 +1994,7 @@ select:focus {
 .main-slider #rev_slider_two_wrapper .slide-content .big-title span{
     font-size: 24px;
     font-weight: 400;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }
 .main-slider .slide-content .text{
 	position: relative;
@@ -2001,11 +2003,12 @@ select:focus {
 	font-weight: 400;
 	line-height: 1.6em;
     display: block;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }
 .main-slider .slide-content .btn-box{}
 .main-slider .slide-content .btn-box a{
     padding: 21px 50px 21px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 .main-slider #rev_slider_two_wrapper .slide-content .border-box{
     max-width: 570px;

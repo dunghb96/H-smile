@@ -18,7 +18,7 @@
                                     </div>
                                     <div class="text">
                                         <p>0986 523 361</p>
-                                        <span>vantruongdz.2001@gmail.com</span>
+                                        <span>hsmile@gmail.com</span>
                                     </div>
                                 </div>
                             </li>
@@ -28,8 +28,8 @@
                                         <span class="icon-gps"></span>
                                     </div>
                                     <div class="text">
-                                        <p>32 Me Tri Street</p>
-                                        <span>HÀ NỘI</span>
+                                        <p>Số 1 Ngô Văn Sở, Trần </p>
+                                        <span>Hưng Đạo, Hoàn Kiếm, Hà Nội</span>
                                     </div>
                                 </div>
                             </li>
@@ -64,11 +64,7 @@
                                 <li class="dropdown current"><a href="{{ route('home') }}">TRANG CHỦ</a></li>
                                 <li><a href="{{ route('about') }}">GIỚI THIỆU</a></li>
                                 <li class="dropdown"><a href="{{ route('service.list') }}">DỊCH VỤ</a>
-                                    <ul>
-                                        @foreach($service as $item)
-                                        <li><a href="cayghepnhakhoa.html">{{$item->name}}</a></li>
-                                        @endforeach
-                                    </ul>
+                                   
                                 </li>
                                 <li><a href="{{ route('doctor.list') }}">Bác sĩ</a></li>
                                 <li class="dropdown"><a href="{{ route('price.list') }}">BẢNG GIÁ</a></li>
