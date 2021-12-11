@@ -45,13 +45,6 @@ Thêm mới tài khoản
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Mô tả</label>
-                                    <textarea type="text" class="form-control ckeditor" name="short_desc" value="{{ old('short_desc') }}"></textarea>
-                                    @error('email')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
                                     <label for="inputSpentBudget">Mô tả dịch vụ</label>
                                     <textarea type="text" class="form-control ckeditor" value="{{old('description')}}" id="content" name="description"></textarea>
                                     @error('mo_ta')

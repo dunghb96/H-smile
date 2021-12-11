@@ -5,12 +5,9 @@
 
 <!--Start Specialities Single Area-->
 <section class="specialities-single-area">
-
     <div class="container">
         <div class="row">
-
             <div class="col-xl-8">
-
                 <div class="specialities-single-content">
                     <div class="specialities-title fix">
                         <div class="icon-holder">
@@ -19,16 +16,18 @@
                             </span>
                         </div>
                         <div class="title-holder">
-                            <h2>{{$service->name}}</h2>
+                            <h2>Chỉnh nha là gì?</h2>
                         </div>
                     </div>
                     <div class="specialities-top-content">
-                        {!!$service->description!!}
-                        <div>
+                        <p>Làm thế nào tất cả ý tưởng sai lầm này về việc tố cáo niềm vui và ca ngợi nỗi đau đã được sinh ra và tôi sẽ cung cấp cho bạn một tài khoản đầy đủ về hệ thống, và giải thích những lời dạy thực tế của nhà thám hiểm vĩ đại về sự thật, người xây dựng hạnh phúc bậc thầy của con người. Không ai từ chối, không thích, hoặc tránh chính niềm vui, bởi vì đó là niềm vui, nhưng bởi vì những người không biết cách theo đuổi niềm vui một cách hợp lý gặp phải hậu quả.</p>
+                        <div class="specialities-carousel owl-carousel owl-theme">
                             <div class="single-item">
                                 <img src="{{asset('frontend/images/services/service-single/specialities-1.jpg')}}" alt="Awesome Image">
                             </div>
-
+                            <div class="single-item">
+                                <img src="{{asset('frontend/images/services/service-single/specialities-1.jpg')}}" alt="Awesome Image">
+                            </div>
                         </div>
                     </div>
                     <div class="what-wedo-content">
@@ -84,7 +83,7 @@
                                                 <img src="{{asset('frontend/images/services/service-single/wedo-3.png')}}" alt="Awesome Image">
                                             </div>
                                             <div class="text">
-                                                <h3>Tái tạo </h3>
+                                                <h3>Tái tạo  </h3>
                                                 <p>Để lấy một ví dụ tầm thường, ai trong chúng ta đã từng thực hiện bài tập thể dục ... </p>
                                                 <a class="btn-two" href="#"><span class="icon-plus"></span>Đọc thêm</a>
                                             </div>
@@ -133,7 +132,7 @@
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6">
-                                <div class="video-holder-box2" style="background-image: url(images/services/service-single/video-bg.jpg);">
+                                <div class="video-holder-box2" style="background-image: url(images/services/service-single/video-bg.jpg')}});">
                                     <div class="icon-holder">
                                         <div class="icon">
                                             <div class="inner">
@@ -162,19 +161,30 @@
                                             </tr>
                                         </thead>
                                         <tbody class="table-body">
-                                            @if($service->serviceChildrent->count())
                                             <tr>
-                                                @foreach($service->serviceChildrent as $service1)
                                                 <td>
-                                                    <p>{{$service1->name}}</p>
+                                                    <p>Hệ thống kích hoạt ánh sáng Zoom</p>
                                                 </td>
                                                 <td>
-                                                    <span>{{$service1->price}}</span>
+                                                    <span>$70 - $85</span>
                                                 </td>
-                                                @endforeach
                                             </tr>
-                                            @endif
-
+                                            <tr>
+                                                <td>
+                                                    <p>Hệ thống kích hoạt ngoài ánh sáng</p>
+                                                </td>
+                                                <td>
+                                                    <span>$110 - $135</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p>Opalescence tăng cường hệ thống kích hoạt hóa học</p>
+                                                </td>
+                                                <td>
+                                                    <span>$75 - $90</span>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -218,9 +228,6 @@
                     </div>
 
                 </div>
-
-
-
             </div>
 
             <div class="col-xl-4 col-lg-7 col-md-9 col-sm-12">
@@ -228,17 +235,16 @@
                     <!--Start Single sidebar-->
                     <div class="single-sidebar">
                         <div class="inner">
-                            <h3>{{$service->name}}</h3>
-
-                            @if($service->serviceChildrent->count())
+                            <h3>Cấy ghép nha khoa</h3>
                             <ul class="specialities-categories">
-                                @foreach($service->serviceChildrent as $service1)
-                                <li class="active"><a href="#">{{$service1->name}}</a></li>
-
-                                @endforeach
+                                <li><a href="#">Làm trắng răng</a></li>
+                                <li class="active"><a href="#">Ván lạng / Gia công</a></li>
+                                <li><a href="#">Khử sắc tố kẹo cao su</a></li>
+                                <li><a href="#">Du lịch lại kẹo cao su</a></li>
+                                <li><a href="#">Tái cấu trúc men</a></li>
+                                <li><a href="#">Chỉnh nha nhỏ</a></li>
+                                <li><a href="#">Phẫu thuật mặt</a></li>
                             </ul>
-                            @endif
-
                         </div>
                     </div>
                     <!--End Single sidebar-->
@@ -285,7 +291,6 @@
 
         </div>
     </div>
-
 </section>
 <!--End Specialities Single Area-->
 

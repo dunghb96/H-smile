@@ -32,11 +32,11 @@
                             {{$item->name}}
                         </h3>
                         <p style="overflow: hidden; text-overflow: ellipsis;line-height: 20px;-webkit-line-clamp: 3;display: -webkit-box;-webkit-box-orient: vertical;
-                            "> {!!$item->short_desc!!}</p>
+                            "> {{$item->description}}</p>
                         <div class="readmore">
                             <a href="#"><span class="icon-plus"></span></a>
                             <div class="overlay-button">
-                                <a href="{{route('service.detail',['id'=>$item->id])}}">
+                                <a href="#">
                                     Đọc thêm</a>
                             </div>
                         </div>

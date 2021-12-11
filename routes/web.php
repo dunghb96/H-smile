@@ -38,8 +38,6 @@ Route::get('/price', [HomeController::class, 'price'])->name('price.list');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('hsmile.home');
 Route::get('/service', [showController::class, 'index'])->name('service.list');
-Route::get('detail/{id}', [showController::class, 'detail'])->name('service.detail');
-Route::get('/blog', [HomeController::class, 'blog'])->name('blog.list');
 Route::get('/', [HomeController::class, 'service'])->name('home');
 Route::get('/form-booking', [HomeController::class, 'form'])->name('form');
 // Route::post('/form-booking', [HomeController::class, 'postData']);

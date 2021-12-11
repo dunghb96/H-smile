@@ -26,12 +26,6 @@ class HomeController extends BaseController
         $service = Service::where('parent_id', 0)->get();
         return view('frontend.price.index', compact('service'));
     }
-
-    public function blog()
-    {
-        $blog = News::paginate(10);
-        return view('frontend.blog.list_blog', compact('blog'));
-    }
     public function form()
     {
         return view('frontend.form.fom_booking');
