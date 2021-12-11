@@ -1,132 +1,1699 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html>
 
-        <title>Laravel</title>
+<head>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}}
-        </style>
+    <!-- Fixing Internet Explorer-->
+    <!--[if lt IE 9]>
+        <script src="{{asset('frontend/http://html5shiv.googlecode.com/svn/trunk/html5.js')}}"></script>
+        <script src="{{asset('frontend/js/html5shiv.js')}}"></script>
+    <![endif]-->
 
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+</head>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+<body>
+    <div class="boxed_wrapper">
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
-                </div>
+        <div class="preloader"></div>123231414124
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
+
+        <!--Start header style1 area-->
+        <header class="header-style1-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                        <div class="inner-content clearfix">
+                            <div class="header-style1-logo float-left">
+                                <a href="index.html">
+                                    <img src="{{asset('frontend/images/resources/logo.png')}}" alt="Awesome Logo">
+                                </a>
                             </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
+                            <div class="header-contact-info float-left">
+                                <ul>
+                                    <li>
+                                        <div class="single-item">
+                                            <div class="icon">
+                                                <span class="icon-support"></span>
+                                            </div>
+                                            <div class="text">
+                                                <p>0986 523 361</p>
+                                                <span>vantruongdz.2001@gmail.com</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="single-item">
+                                            <div class="icon">
+                                                <span class="icon-gps"></span>
+                                            </div>
+                                            <div class="text">
+                                                <p>32 Me Tri Street</p>
+                                                <span>HÀ NỘI</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
+                            <div class="header-style1-button float-right">
+                                <a href="datlichhen.html"><span class="icon-date"></span>ĐẶT LỊCH HẸN</a>
                             </div>
                         </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
-
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
-                            </a>
-
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
                 </div>
             </div>
+        </header>
+        <!--End header style1 area-->
+
+        <!--Start mainmenu area-->
+        <section class="mainmenu-area ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="inner-content clearfix">
+                            <nav class="main-menu style1">
+                                <div class="navbar-header clearfix">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse clearfix">
+                                    <ul class="navigation clearfix">
+                                        <li class="dropdown current"><a href="index.html">TRANG CHỦ</a></li>
+                                        <li><a href="gioithieu.html">GIỚI THIỆU</a></li>
+                                        <li class="dropdown"><a href="chuyennganh.html">Chuyên ngành</a>
+                                            <ul>
+                                                <li><a href="cayghepnhakhoa.html">Cấy ghép nha khoa</a></li>
+                                                <li><a href="nhakhoalaser.html">Nha khoa laser</a></li>
+                                                <li><a href="chinhnha.html">Chỉnh nha</a></li>
+                                                <li><a href="nhachu.html">Nha chu</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="bacsi.html">Bác sĩ</a></li>
+                                        <li class="dropdown"><a href="blog.html">123</a>
+                                            <ul>
+                                                <li><a href="blog.html">Nha khoa tổng quát</a></li>
+                                                <li><a href="blog-large.html">Nha khoa phục hồi</a></li>
+                                                <li><a href="blog-single.html">Nha khoa trẻ em</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a href="banggia.html">BẢNG GIÁ</a></li>
+                                        <li class="dropdown"><a href="blog.html">TIN TỨC</a>
+                                            <ul>
+                                                <li><a href="blog.html">Ưu đãi</a></li>
+                                                <li><a href="blog-large.html">Kiến thức</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="lienhe.html">LIÊN HỆ</a></li>
+
+                                    </ul>
+                                </div>
+                            </nav>
+
+                            <div class="mainmenu-right">
+                                <div class="toggler-button">
+                                    <div class="nav-toggler hidden-bar-opener">
+                                        <div class="inner">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End mainmenu area-->
+        <br><br>
+        <!-- Hidden Navigation Bar -->
+        <section class="hidden-bar right-align">
+            <div class="hidden-bar-closer">
+                <button><span class="flaticon-remove"></span></button>
+            </div>
+            <div class="hidden-bar-wrapper">
+                <div class="logo">
+                    <a href="index.html"><img src="{{asset('frontend/images/resources/logo-3.png')}}" alt="" /></a>
+                </div>
+                <div class="contact-info-box">
+                    <h3>Thông tin liên hệ</h3>
+                    <ul>
+                        <li>
+                            <h5>Địa chỉ</h5>
+                            <p>32 Me Tri Street</p>
+                        </li>
+                        <li>
+                            <h5>Điện thoại</h5>
+                            <p>Phone: 0986 523 361</p>
+                        </li>
+                        <li>
+                            <h5>Email</h5>
+                            <p>vantruongdz.2001@gmail.com</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="newsletter-form-box">
+                    <h3>Đăng ký nhận bản tin</h3>
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <input type="email" name="email" placeholder="Địa chỉ Email...">
+                                <button type="submit"><span class="flaticon-arrow"></span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="offer-box text-center">
+                    <div class="big-title">50% <span>Offer</span></div>
+                    <h3>Bảo hành 5 năm</h3>
+                    <a class="btn-one" href="banggia.html">Gói giá </a>
+                </div>
+                <div class="copy-right-text">
+                    <p>© H-Smile 2018, All Rights Reserved.</p>
+                </div>
+            </div>
+        </section>
+        <!-- End Hidden Bar -->
+
+        <!--Main Slider-->
+        <section class="main-slider">
+            <div class="rev_slider_wrapper fullwidthbanner-container" id="rev_slider_one_wrapper" data-source="gallery">
+                <div class="rev_slider fullwidthabanner" id="rev_slider_one" data-version="5.4.1">
+                    <ul>
+                        <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1689" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/slides/v1-1.jpg')}}" data-title="Slide Title" data-transition="parallaxvertical">
+
+                            <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="{{asset('frontend/images/slides/v1-1.jpg')}}">
+
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['700','700','650','360']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['-110','-100','-100','-105']" data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
+                                <div class="slide-content left-slide">
+                                    <div class="big-title">
+                                        <br>Nha khoa hiện đại trong một bình tĩnh &<br> cảm giác thư giãn.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-whitespace="normal" data-width="['700','700','650','400']" data-hoffset="['15','15','15','15']" data-voffset="['65','55','30','15']" data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
+                                <div class="slide-content left-slide">
+                                    <div class="text">Duy trì một nha sĩ được đào tạo chuyên sâu, có trình độ và kinh
+                                        nghiệm.</div>
+                                </div>
+                            </div>
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['700','700','650','400']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['140','130','110','105']" data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
+                                <div class="slide-content left-slide">
+                                    <div class="btn-box">
+                                        <a class="btn-one" href="#">Đặc sản Oue</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1687" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/slides/v1-2.jpg')}}" data-title="Slide Title" data-transition="parallaxvertical">
+
+                            <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="{{asset('frontend/images/slides/v1-2.jpg')}}">
+
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['900','900','800','560']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['-90','-100','-90','-100']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
+                                <div class="slide-content middle-slide text-center">
+                                    <div class="big-title">
+                                        Một nụ cười hấp dẫn làm cho ấn tượng lâu dài!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-whitespace="normal" data-width="['900','900','800','560']" data-hoffset="['15','15','15','15']" data-voffset="['30','10','10','0']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
+                                <div class="slide-content middle-slide text-center">
+                                    <div class="text">Hơn 200 nha sĩ tham gia với chúng tôi trong việc cho<span>Bạn là
+                                            người giỏi nhất của hiện đại</span><br> chăm sóc răng miệng, ở lại với nụ
+                                        cười khỏe mạnh.</div>
+                                </div>
+                            </div>
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['900','900','800','560']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['120','100','105','100']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
+                                <div class="slide-content middle-slide text-center">
+                                    <div class="btn-box">
+                                        <a class="btn-one" href="#">Tìm hiểu thêm</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1688" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/slides/v1-3.jpg')}}" data-title="Slide Title" data-transition="parallaxvertical">
+                            <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="{{asset('frontend/images/slides/v1-3.jpg')}}">
+
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['600','600','650','400']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['-75','-75','-80','-90']" data-x="['right','right','right','right']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
+                                <div class="slide-content">
+                                    <div class="big-title">
+                                        Nụ cười khỏe mạnh<br> thông qua khoa học<br> và nghệ thuật.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-whitespace="normal" data-width="['600','600','650','400']" data-hoffset="['15','15','15','15']" data-voffset="['65','50','30','15']" data-x="['right','right','right','right']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
+                                <br><br>
+                                <div class="slide-content">
+                                    <div class="text">Duy trì một nha sĩ được đào tạo chuyên sâu, có trình độ và kinh
+                                        nghiệm.</div>
+                                </div>
+                            </div>
+
+                            <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['600','600','650','400']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['140','120','110','105']" data-x="['right','right','right','right']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
+                                <div class="slide-content">
+                                    <div class="btn-box">
+                                        <a class="btn-one" href="#">Gặp gỡ các bác sĩ của chúng tôi</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!--End Main Slider-->
+
+        <!--Start About Area-->
+        <section class="about-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="about-logo-box">
+                            <div class="sec-title">
+                                <h1>Nhiệm vụ về nha khoa H-Smile của chúng tôi</h1>
+                            </div>
+                            <ul class="fix">
+                                <li class="wow fadeInDown" data-wow-delay="300ms">
+                                    <img src="{{asset('frontend/images/resources/certificate-1.png')}}" alt="Image">
+                                </li>
+                                <li class="wow fadeInUp" data-wow-delay="600ms">
+                                    <img src="{{asset('frontend/images/resources/certificate-2.png')}}" alt="Image">
+                                </li>
+                                <li class="wow fadeInUp" data-wow-delay="900ms">
+                                    <img src="{{asset('frontend/images/resources/certificate-3.png')}}" alt="Image">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="about-text-holder">
+                            <p> H-Smile được bắt đầu vào năm 1995 như một phòng khám nha khoa tư nhân nhỏ ở Binghamton,
+                                NY, Hoa Kỳ. Tìm kiếm dịch vụ chăm sóc nha khoa giá cả phải chăng?</p>
+                            <p>Lấy một ví dụ tầm thường, ai trong chúng ta từng thực hiện tập thể dục tốn nhiều công
+                                sức, ngoại trừ để có được một số lợi thế từ nó? Nhưng ai có quyền tìm ra lỗi lầm với một
+                                người đàn ông chọn tận hưởng một niềm vui không có hậu quả khó chịu, nỗi đau dẫn đến
+                                niềm vui ca ngợi những lời dạy của nhà thám hiểm vĩ đại...</p>
+                            <div class="author-box fix">
+                                <div class="img-box">
+                                    <img src="{{asset('frontend/images/resources/ceo.png')}}" alt="Awesome Image">
+                                </div>
+                                <div class="text-box">
+                                    <h3>Dr. Jerome Sinclair</h3>
+                                    <span>CEO & Founder</span>
+                                </div>
+                                <div class="signatire-box">
+                                    <img src="{{asset('frontend/images/resources/signature.png')}}" alt="Signature">
+                                </div>
+                            </div>
+                            <div class="read-more">
+                                <a class="btn-two" href="#"><span class="flaticon-next"></span>Xem thêm về chúng tôi</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End About Area-->
+
+        <!--Start Highlights area-->
+        <section class="highlights-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 wow fadeInUp" data-wow-delay="600ms">
+                        <!--Start single box-->
+                        <div class="single-box float-left text-center">
+                            <div class="icon-holder">
+                                <span class="icon-support-1"></span>
+                            </div>
+                            <h3>TƯ VẤN</h3>
+                            <span class="border-box"></span>
+                            <p>Lấy ví dụ tầm thường, thực hiện công việc khó khăn.</p>
+                            <a href="#">Bắt đầu</a>
+                        </div>
+                        <!--End single box-->
+                        <!--Start single box-->
+                        <div class="single-middle-box float-left text-center">
+                            <div class="icon-holder">
+                                <span class="icon-support-1"></span>
+                            </div>
+                            <h3>TƯ VẤN ĐIỆN TỬ</h3>
+                            <form name="visit-form" action="#" method="post">
+                                <div class="row mar-ninus10">
+                                    <div class="col-xl-4 pd10">
+                                        <div class="input-box">
+                                            <input type="text" name="form_name" value="" placeholder="Tên" required="">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 pd10">
+                                        <div class="input-box">
+                                            <input type="text" name="form_phone" value="" placeholder="Điện thoại">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 pd10">
+                                        <div class="input-box">
+                                            <select class="selectmenu">
+                                                <option selected="selected">Bộ phận</option>
+                                                <option>Cấy ghép nha khoa</option>
+                                                <option>Nha khoa laser</option>
+                                                <option>Chỉnh răng</option>
+                                                <option>Nha chu</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mar-ninus10">
+                                    <div class="col-xl-4 pd10">
+                                        <div class="input-box">
+                                            <input type="text" name="time" placeholder="Thời gian">
+                                            <div class="icon-box">
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 pd10">
+                                        <div class="input-box">
+                                            <input type="text" name="date" placeholder="Ngày" id="datepicker">
+                                            <div class="icon-box">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 pd10">
+                                        <div class="button-box">
+                                            <button class="btn-one" type="submit">Gửi Thông tin</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!--End single box-->
+                        <!--Start single box-->
+                        <div class="single-box float-right text-center">
+                            <div class="icon-holder">
+                                <span class="icon-support-1"></span>
+                            </div>
+                            <h3>Tìm Bác sĩ</h3>
+                            <span class="border-box"></span>
+                            <p>Lấy ví dụ tầm thường, mà thực hiện công việc khó khăn.</p>
+                            <a href="#">Gặp gỡ đội ngũ của chúng tôi</a>
+                        </div>
+                        <!--End single box-->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End Highlights area-->
+
+        <!--Start services style1 area-->
+        <section class="services-style1-area sec-pd1">
+            <div class="container">
+                <div class="sec-title max-width text-center">
+                    <h3>CHUYÊN NGÀNH</h3>
+                    <h1>Dịch vụ chăm sóc nha khoa123213123</h1>
+                    <p>Răng của bạn đóng một vai trò quan trọng trong cuộc sống hàng ngày của bạn. Nó không chỉ giúp bạn
+                        nhai và ăn thức ăn của bạn, nhưng đóng khung khuôn mặt của bạn. Bất kỳ răng bị mất có thể có tác
+                        động lớn đến chất lượng cuộc sống của bạn. </p>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="services-carousel owl-carousel owl-theme">
+                            <!--Start single solution style1-->
+                            <div class="single-solution-style1">
+                                <div class="img-holder">
+                                    <img src="{{asset('frontend/images/services/1.jpg')}}" alt="Awesome Image">
+                                    <div class="icon-holder">
+                                        <div class="inner-content">
+                                            <div class="box">
+                                                <span class="icon-teeth-1"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>Cấy ghép nha khoa</h3>
+                                    <p>Tố cáo niềm vui và ca ngợi nỗi đau đã được sinh ra và chúng tôi sẽ cung cấp cho
+                                        bạn một tài khoản đầy đủ về hệ thống.</p>
+                                    <div class="readmore">
+                                        <a href="#"><span class="flaticon-next"></span></a>
+                                        <div class="overlay-button">
+                                            <a href="#">Đọc thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End single solution style1-->
+                            <!--Start single solution style1-->
+                            <div class="single-solution-style1">
+                                <div class="img-holder">
+                                    <img src="{{asset('frontend/images/services/2.jpg')}}" alt="Awesome Image">
+                                    <div class="icon-holder">
+                                        <div class="inner-content">
+                                            <div class="box">
+                                                <span class="icon-teeth-2"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>Nha khoa thẩm mỹ</h3>
+                                    <p>Biết cách theo đuổi niềm vui một cách hợp lý gặp phải hậu quả mà cực kỳ bất cứ ai
+                                        yêu thích theo đuổi.</p>
+                                    <div class="readmore">
+                                        <a href="#"><span class="flaticon-next"></span></a>
+                                        <div class="overlay-button">
+                                            <a href="#">Đọc thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End single solution style1-->
+                            <!--Start single solution style1-->
+                            <div class="single-solution-style1">
+                                <div class="img-holder">
+                                    <img src="{{asset('frontend/images/services/3.jpg')}}" alt="Awesome Image">
+                                    <div class="icon-holder">
+                                        <div class="inner-content">
+                                            <div class="box">
+                                                <span class="icon-dentist"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>Nha khoa laser</h3>
+                                    <p>Lấy một ví dụ tầm thường, mà chúng ta từng thực hiện tập thể dục tốn nhiều công
+                                        sức, để có được một số lợi thế.</p>
+                                    <div class="readmore">
+                                        <a href="#"><span class="flaticon-next"></span></a>
+                                        <div class="overlay-button">
+                                            <a href="#">Đọc thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End single solution style1-->
+
+                            <!--Start single solution style1-->
+                            <div class="single-solution-style1">
+                                <div class="img-holder">
+                                    <img src="{{asset('frontend/images/services/1.jpg')}}" alt="Awesome Image">
+                                    <div class="icon-holder">
+                                        <div class="inner-content">
+                                            <div class="box">
+                                                <span class="icon-teeth-1"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>Cấy ghép nha khoa</h3>
+                                    <p>Tố cáo niềm vui và ca ngợi nỗi đau đã được sinh ra và chúng tôi sẽ cung cấp cho
+                                        bạn một tài khoản đầy đủ về hệ thống.</p>
+                                    <div class="readmore">
+                                        <a href="#"><span class="flaticon-next"></span></a>
+                                        <div class="overlay-button">
+                                            <a href="#">Đọc thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End single solution style1-->
+                            <!--Start single solution style1-->
+                            <div class="single-solution-style1">
+                                <div class="img-holder">
+                                    <img src="{{asset('frontend/images/services/2.jpg')}}" alt="Awesome Image">
+                                    <div class="icon-holder">
+                                        <div class="inner-content">
+                                            <div class="box">
+                                                <span class="icon-teeth-2"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>Nha khoa thẩm mỹ</h3>
+                                    <p>Biết cách theo đuổi niềm vui một cách hợp lý gặp phải hậu quả mà cực kỳ bất cứ ai
+                                        yêu thích theo đuổi.</p>
+                                    <div class="readmore">
+                                        <a href="#"><span class="flaticon-next"></span></a>
+                                        <div class="overlay-button">
+                                            <a href="#">Đọc thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End single solution style1-->
+                            <!--Start single solution style1-->
+                            <div class="single-solution-style1">
+                                <div class="img-holder">
+                                    <img src="{{asset('frontend/images/services/3.jpg')}}" alt="Awesome Image">
+                                    <div class="icon-holder">
+                                        <div class="inner-content">
+                                            <div class="box">
+                                                <span class="icon-dentist"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>Nha khoa laser</h3>
+                                    <p>Lấy một ví dụ tầm thường, mà chúng ta từng thực hiện tập thể dục tốn nhiều công
+                                        sức, để có được một số lợi thế.</p>
+                                    <div class="readmore">
+                                        <a href="#"><span class="flaticon-next"></span></a>
+                                        <div class="overlay-button">
+                                            <a href="#">Đọc thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End single solution style1-->
+
+                            <!--Start single solution style1-->
+                            <div class="single-solution-style1">
+                                <div class="img-holder">
+                                    <img src="{{asset('frontend/images/services/1.jpg')}}" alt="Awesome Image">
+                                    <div class="icon-holder">
+                                        <div class="inner-content">
+                                            <div class="box">
+                                                <span class="icon-teeth-1"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>Cấy ghép nha khoa</h3>
+                                    <p>Tố cáo niềm vui và ca ngợi nỗi đau đã được sinh ra và chúng tôi sẽ cung cấp cho
+                                        bạn một tài khoản đầy đủ về hệ thống.</p>
+                                    <div class="readmore">
+                                        <a href="#"><span class="flaticon-next"></span></a>
+                                        <div class="overlay-button">
+                                            <a href="#">Đọc thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End single solution style1-->
+                            <!--Start single solution style1-->
+                            <div class="single-solution-style1">
+                                <div class="img-holder">
+                                    <img src="{{asset('frontend/images/services/2.jpg')}}" alt="Awesome Image">
+                                    <div class="icon-holder">
+                                        <div class="inner-content">
+                                            <div class="box">
+                                                <span class="icon-teeth-2"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>Nha khoa thẩm mỹ</h3>
+                                    <p>Biết cách theo đuổi niềm vui một cách hợp lý gặp phải hậu quả mà cực kỳ bất cứ ai
+                                        yêu thích theo đuổi.</p>
+                                    <div class="readmore">
+                                        <a href="#"><span class="flaticon-next"></span></a>
+                                        <div class="overlay-button">
+                                            <a href="#">Đọc thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End single solution style1-->
+                            <!--Start single solution style1-->
+                            <div class="single-solution-style1">
+                                <div class="img-holder">
+                                    <img src="{{asset('frontend/images/services/3.jpg')}}" alt="Awesome Image">
+                                    <div class="icon-holder">
+                                        <div class="inner-content">
+                                            <div class="box">
+                                                <span class="icon-dentist"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-holder">
+                                    <h3>Nha khoa laser</h3>
+                                    <p>Lấy một ví dụ tầm thường, mà chúng ta từng thực hiện tập thể dục tốn nhiều công
+                                        sức, để có được một số lợi thế.</p>
+                                    <div class="readmore">
+                                        <a href="#"><span class="flaticon-next"></span></a>
+                                        <div class="overlay-button">
+                                            <a href="#">Đọc thêm</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End single solution style1-->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!--End services style1 area-->
+
+        <!--Start team area v2-->
+        <section class="team-area-v2">
+            <div class="container">
+                <div class="sec-title">
+                    <h3>Nha sĩ chuyên nghiệp</h3>
+                    <h1>Đội ngũ có trình độ cao</h1>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="single-team-slider">
+                            <ul class="slider-content clearfix bxslider float-left">
+                                <li>
+                                    <div class="single-team-slide clearfix">
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                                                <div class="top">
+                                                    <h2>Tiến sĩ Daryl Cornelius</h2>
+                                                    <h3>Bác sĩ cấy ghép</h3>
+                                                </div>
+                                                <div class="text">
+                                                    <p>Tiến sĩ Daryl Cornelius là một bác sĩ phẫu thuật nha khoa nổi
+                                                        tiếng và là một bác sĩ cấy ghép nha khoa được chứng nhận. Ông là
+                                                        giám đốc nha khoa Doc.DMD, Hoa Kỳ. Là một nhà cấy ghép, Tiến sĩ
+                                                        Daryl Cornelius đã có kinh nghiệm to lớn về cấy ghép nha khoa
+                                                        trong hơn 19 năm.</p>
+                                                </div>
+                                                <div class="pgrs-bar-wrapper">
+                                                    <div class="inner-box">
+                                                        <ul class="pgrs-bar">
+                                                            <li>
+                                                                <h5>Cấy ghép</h5>
+                                                                <div class="box">
+                                                                    <div class="inner wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0s" data-wow-offset="0" style="width: 75%;">
+                                                                        <span>75%</span>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="button">
+                                                    <a href="#">Đặt Cuộc hẹn</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-5 col-lg-7 col-md-10 col-sm-12">
+                                                <div class="img-holder">
+                                                    <img src="{{asset('frontend/images/team/team-1.png')}}" alt="Awesome Image">
+                                                    <ul class="team-social-links">
+                                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="single-team-slide clearfix">
+                                        <div class="row">
+                                            <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                                                <div class="top">
+                                                    <h2>Tiến sĩ Robert B. Moreau</h2>
+                                                    <h3>Prosthodontist</h3>
+                                                </div>
+                                                <div class="text">
+                                                    <p>Tiến sĩ Robert B. Moreau là một bác sĩ phẫu thuật nha khoa nổi
+                                                        tiếng và là một bác sĩ cấy ghép nha khoa được chứng nhận. Ông là
+                                                        giám đốc nha khoa Doc.DMD, Hoa Kỳ. Là một nhà cấy ghép, Tiến sĩ
+                                                        Daryl Cornelius đã có kinh nghiệm to lớn về cấy ghép nha khoa
+                                                        trong hơn 19 năm.</p>
+                                                </div>
+                                                <div class="pgrs-bar-wrapper">
+                                                    <div class="inner-box">
+                                                        <ul class="pgrs-bar">
+                                                            <li>
+                                                                <h5>Cấy ghép</h5>
+                                                                <div class="box">
+                                                                    <div class="inner wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0s" data-wow-offset="0" style="width: 75%;">
+                                                                        <span>75%</span>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="button">
+                                                    <a href="#">Đặt Cuộc hẹn</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-5 col-lg-7 col-md-10 col-sm-12">
+                                                <div class="img-holder">
+                                                    <img src="{{asset('frontend/images/team/team-2.png')}}" alt="Awesome Image">
+                                                    <ul class="team-social-links">
+                                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="slider-pager float-right">
+                                <ul class="thumb-box style2">
+                                    <li>
+                                        <a class="active" data-slide-index="0" href="#">
+                                            <div class="img-holder">
+                                                <img src="{{asset('frontend/images/team/team-thumb-1.jpg')}}" alt="Awesome Image">
+                                            </div>
+                                            <div class="text-holder">
+                                                <h6>Tiến sĩ Daryl Cornelius</h6>
+                                                <span>Bác sĩ cấy ghép</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-slide-index="1" href="#">
+                                            <div class="img-holder">
+                                                <img src="{{asset('frontend/images/team/team-thumb-2.jpg')}}" alt="Awesome Image">
+                                            </div>
+                                            <div class="text-holder">
+                                                <h6>Tiến sĩ Robert B. Moreau</h6>
+                                                <span>Prosthodontist</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="slider-pager arrow-button">
+                                <div class="center">
+                                    <ul class="nav-link list-inline">
+                                        <li id="slider-prev"></li>
+                                        <li id="slider-next"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End team area v2-->
+
+        <!--Start works area-->
+        <section class="works-area">
+            <div class="container wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <div class="sec-title-box text-center">
+                    <h3>Chúng tôi hứa sẽ chăm sóc bệnh nhân tận tình.</h3>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="works-content">
+                            <div class="works-tab-box">
+                                <div class="tabmenu-box text-center">
+                                    <ul class="tab-btns tab-buttons">
+                                        <li class="p-tab-btn active-btn" data-tab="#p-tab-1"><span>Implants</span></li>
+                                        <li class="p-tab-btn" data-tab="#p-tab-2"><span>Thereaphy</span></li>
+                                        <li class="p-tab-btn" data-tab="#p-tab-3"><span>surgery</span></li>
+                                        <li class="p-tab-btn" data-tab="#p-tab-4"><span>Braces</span></li>
+                                        <li class="p-tab-btn" data-tab="#p-tab-5"><span>Cleaning</span></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content-box">
+
+                                    <div class="single-tab-content active-tab" id="p-tab-1">
+                                        <div class="tab-content-carousel owl-carousel owl-theme">
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                        </div>
+                                    </div>
+
+                                    <div class="single-tab-content" id="p-tab-2">
+                                        <div class="tab-content-carousel owl-carousel owl-theme">
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                        </div>
+                                    </div>
+
+                                    <div class="single-tab-content" id="p-tab-3">
+                                        <div class="tab-content-carousel owl-carousel owl-theme">
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                        </div>
+                                    </div>
+
+                                    <div class="single-tab-content" id="p-tab-4">
+                                        <div class="tab-content-carousel owl-carousel owl-theme">
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                        </div>
+                                    </div>
+
+                                    <div class="single-tab-content" id="p-tab-5">
+                                        <div class="tab-content-carousel owl-carousel owl-theme">
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                            <!--Start Single Item-->
+                                            <div class="single-item">
+                                                <div class="row mar0">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-before-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="before">
+                                                                <a href="#">Trước</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pd0">
+                                                        <div class="img-holder">
+                                                            <img src="{{asset('frontend/images/resources/teeth-after-1.jpg')}}" alt="Awesome Image">
+                                                            <div class="after">
+                                                                <a href="#">Sau</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--End Single Item-->
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End works area-->
+
+        <!--Start Testimonial area-->
+        <section class="testimonial-area">
+            <div class="container inner-content">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="sec-title float-left">
+                            <h3>Phản hồi</h3>
+                            <h1>Khách hàng của chúng tôi nói gì?</h1>
+                        </div>
+                        <div class="button float-right">
+                            <a class="btn-one" href="#">Đọc thêm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="testimonial-carousel owl-carousel owl-theme">
+                            <!--Start Single Testimonial Item-->
+                            <div class="single-testimonial-item text-center">
+                                <div class="text-holder">
+                                    <p>Đó là một trải nghiệm trọn đời với bạn guys....it chắc chắn là phòng khám nha
+                                        khoa tốt nhất mà tôi từng đến thăm.</p>
+                                    <div class="img-holder">
+                                        <img src="{{asset('frontend/images/testimonial/1.png')}}" alt="Awesome Image">
+                                    </div>
+                                </div>
+                                <div class="name">
+                                    <h3>Erick Frederick</h3>
+                                    <span>Denver</span>
+                                </div>
+                            </div>
+                            <!--End Single Testimonial Item-->
+                            <!--Start Single Testimonial Item-->
+                            <div class="single-testimonial-item text-center">
+                                <div class="text-holder">
+                                    <p>Bây giờ tôi đã có răng của tôi trở lại, tôi có thể ăn bất cứ điều gì tôi thích
+                                        một lần nữa. Tôi muốn giới thiệu trung tâm dento cho tất cả mọi người.</p>
+                                    <div class="img-holder">
+                                        <img src="{{asset('frontend/images/testimonial/2.png')}}" alt="Awesome Image">
+                                    </div>
+                                </div>
+                                <div class="name">
+                                    <h3>Evelynne Celie</h3>
+                                    <span>Houston</span>
+                                </div>
+                            </div>
+                            <!--End Single Testimonial Item-->
+
+                            <!--Start Single Testimonial Item-->
+                            <div class="single-testimonial-item text-center">
+                                <div class="text-holder">
+                                    <p>Đó là một trải nghiệm trọn đời với bạn guys....it chắc chắn là phòng khám nha
+                                        khoa tốt nhất mà tôi từng đến thăm.</p>
+                                    <div class="img-holder">
+                                        <img src="{{asset('frontend/images/testimonial/1.png')}}" alt="Awesome Image">
+                                    </div>
+                                </div>
+                                <div class="name">
+                                    <h3>Erick Frederick</h3>
+                                    <span>Denver</span>
+                                </div>
+                            </div>
+                            <!--End Single Testimonial Item-->
+                            <!--Start Single Testimonial Item-->
+                            <div class="single-testimonial-item text-center">
+                                <div class="text-holder">
+                                    <p>Bây giờ tôi đã có răng của tôi trở lại, tôi có thể ăn bất cứ điều gì tôi thích
+                                        một lần nữa. Tôi muốn giới thiệu trung tâm dento cho tất cả mọi người.</p>
+                                    <div class="img-holder">
+                                        <img src="{{asset('frontend/images/testimonial/2.png')}}" alt="Awesome Image">
+                                    </div>
+                                </div>
+                                <div class="name">
+                                    <h3>Evelynne Celie</h3>
+                                    <span>Houston</span>
+                                </div>
+                            </div>
+                            <!--End Single Testimonial Item-->
+
+                            <!--Start Single Testimonial Item-->
+                            <div class="single-testimonial-item text-center">
+                                <div class="text-holder">
+                                    <p>Đó là một trải nghiệm trọn đời với bạn guys....it chắc chắn là phòng khám nha
+                                        khoa tốt nhất mà tôi từng đến thăm.</p>
+                                    <div class="img-holder">
+                                        <img src="{{asset('frontend/images/testimonial/1.png')}}" alt="Awesome Image">
+                                    </div>
+                                </div>
+                                <div class="name">
+                                    <h3>Erick Frederick</h3>
+                                    <span>Denver</span>
+                                </div>
+                            </div>
+                            <!--End Single Testimonial Item-->
+                            <!--Start Single Testimonial Item-->
+                            <div class="single-testimonial-item text-center">
+                                <div class="text-holder">
+                                    <p>Bây giờ tôi đã có răng của tôi trở lại, tôi có thể ăn bất cứ điều gì tôi thích
+                                        một lần nữa. Tôi muốn giới thiệu trung tâm dento cho tất cả mọi người.</p>
+                                    <div class="img-holder">
+                                        <img src="{{asset('frontend/images/testimonial/2.png')}}" alt="Awesome Image">
+                                    </div>
+                                </div>
+                                <div class="name">
+                                    <h3>Evelynne Celie</h3>
+                                    <span>Houston</span>
+                                </div>
+                            </div>
+                            <!--End Single Testimonial Item-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End Testimonial area-->
+
+        <!--Start latest blog area-->
+        <section class="latest-blog-area sec-pd1">
+            <div class="container inner-content">
+                <div class="sec-title max-width text-center">
+                    <h3>Tin tức & Mẹo</h3>
+                    <h1>Mới nhất từ blog của chúng tôi</h1>
+                    <p>Răng của bạn đóng một vai trò quan trọng trong cuộc sống hàng ngày của bạn. Nó không chỉ giúp bạn
+                        nhai và ăn thức ăn của bạn, nhưng đóng khung khuôn mặt của bạn. Bất kỳ răng bị mất có thể có tác
+                        động lớn đến chất lượng cuộc sống của bạn.</p>
+                </div>
+                <div class="row">
+                    <!--Start single blog post-->
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                        <div class="single-blog-post">
+                            <div class="img-holder">
+                                <img src="{{asset('frontend/images/blog/lat-blog-1.jpg')}}" alt="Awesome Image">
+                                <div class="categorie-button">
+                                    <a class="btn-one" href="#">Răng khỏe mạnh</a>
+                                </div>
+                            </div>
+                            <div class="text-holder">
+                                <div class="meta-box">
+                                    <div class="author-thumb">
+                                        <img src="{{asset('frontend/images/blog/author-1.png')}}" alt="Image">
+                                    </div>
+                                    <ul class="meta-info">
+                                        <li><a href="#">Bởi Megan Clarks</a></li>
+                                        <li><a href="#">Nov 14, 2018</a></li>
+                                    </ul>
+                                </div>
+                                <h3 class="blog-title"><a href="blog-single.html">Hướng dẫn cho nha sĩ và bệnh nhân</a>
+                                </h3>
+                                <div class="text-box">
+                                    <p>Không ai từ chối, không thích chúng ta tránh những thú vui, bởi vì tất cả chỉ là
+                                        niềm vui, nhưng bởi vì những người không biết.</p>
+                                </div>
+                                <div class="readmore-button">
+                                    <a class="btn-two" href="#"><span class="flaticon-next"></span>Tiếp tục đọc</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End single blog post-->
+                    <!--Start single blog post-->
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                        <div class="single-blog-post">
+                            <div class="img-holder">
+                                <img src="{{asset('frontend/images/blog/lat-blog-2.jpg')}}" alt="Awesome Image">
+                                <div class="categorie-button">
+                                    <a class="btn-one" href="#">Công nghệ</a>
+                                </div>
+                            </div>
+                            <div class="text-holder">
+                                <div class="meta-box">
+                                    <div class="author-thumb">
+                                        <img src="{{asset('frontend/images/blog/author-2.png')}}" alt="Image">
+                                    </div>
+                                    <ul class="meta-info">
+                                        <li><a href="#">Bởi Megan Clarks</a></li>
+                                        <li><a href="#">Nov 14, 2018</a></li>
+                                    </ul>
+                                </div>
+                                <h3 class="blog-title"><a href="blog-single.html">Tôi có nên đi cho một thiết kế nụ
+                                        cười?</a></h3>
+                                <div class="text-box">
+                                    <p>Cũng không một lần nữa có bất cứ ai yêu thích theo đuổi hoặc mong muốn có được
+                                        nỗi đau của chính nó, bepain, nhưng đôi khi hoàn cảnh.</p>
+                                </div>
+                                <div class="readmore-button">
+                                    <a class="btn-two" href="#"><span class="flaticon-next"></span>Tiếp tục đọc</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End single blog post-->
+                    <!--Start single blog post-->
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                        <div class="single-blog-post">
+                            <div class="img-holder">
+                                <img src="{{asset('frontend/images/blog/lat-blog-3.jpg')}}" alt="Awesome Image">
+                                <div class="categorie-button">
+                                    <a class="btn-one" href="#">Chăm sóc răng miệng</a>
+                                </div>
+                            </div>
+                            <div class="text-holder">
+                                <div class="meta-box">
+                                    <div class="author-thumb">
+                                        <img src="{{asset('frontend/images/blog/author-3.png')}}" alt="Image">
+                                    </div>
+                                    <ul class="meta-info">
+                                        <li><a href="#">Bởi Megan Clarks</a></li>
+                                        <li><a href="#">Nov 14, 2018</a></li>
+                                    </ul>
+                                </div>
+                                <h3 class="blog-title"><a href="blog-single.html">Những điều bạn cần biết về răng?</a>
+                                </h3>
+                                <div class="text-box">
+                                    <p>Nó không chỉ giúp bạn nhai và ăn khung thức ăn của bạn răng bị mất mặt của bạn có
+                                        thể ảnh hưởng lớn đến chất lượng cuộc sống của bạn.</p>
+                                </div>
+                                <div class="readmore-button">
+                                    <a class="btn-two" href="#"><span class="flaticon-next"></span>Tiếp tục đọc</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End single blog post-->
+                </div>
+            </div>
+        </section>
+        <!--End latest blog area-->
+
+        <!--Start newsletter area-->
+        <section class="newsletter-area">
+            <div class="container">
+                <div class="newsletter-title text-center">
+                    <h3>Đăng ký Bản tin</h3>
+                    <span>Đăng ký chúng tôi và nhận tin tức, cập nhật và ưu đãi mới nhất trong hộp thư đến của
+                        bạn.</span>
+                </div>
+                <form class="newsletter-form" action="#">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-12">
+                            <input type="text" name="fname" placeholder="First Name">
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-12">
+                            <input type="text" name="lname" placeholder="Last Name">
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-12">
+                            <input type="email" name="email" placeholder="Email">
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-12">
+                            <button class="btn-one" type="submit">Đăng ký</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!--End newsletter area-->
+
+        <!--Start Footer Contact Info Area-->
+        <section class="footer-contact-info-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="single-footer-contact-box left-icon wow fadeInDown" data-wow-delay="100ms">
+                            <div class="icon-holder">
+                                <span class="icon-gps"></span>
+                            </div>
+                            <div class="text-holder">
+                                <h3>Vị trí của chúng tôi</h3>
+                                <p>32 Me Tri, Nam Tu Liem, Ha Noi</p>
+                                <a class="btn-two" href="#">Tìm vị trí của chúng tôi</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="single-footer-contact-box right-box wow fadeInUp" data-wow-delay="100ms">
+                            <div class="icon-holder">
+                                <span class="icon-calendar"></span>
+                            </div>
+                            <div class="text-holder">
+                                <h3>Hẹn</h3>
+                                <p>Thực hiện cuộc hẹn của bạn qua trực tuyến bây giờ.</p>
+                                <a class="btn-two" href="datlichhen.html">Đặt lịch hẹn</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End Footer Contact Info Area-->
+
+        <!--Start footer area-->
+        <footer class="footer-area">
+            <div class="container">
+                <div class="row">
+
+                    <!--Start single footer widget-->
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                        <div class="single-footer-widget marbtm50">
+                            <div class="about-us">
+                                <div class="footer-logo fix">
+                                    <a href="index-2.html">
+                                        <img src="{{asset('frontend/images/resources/logo-2.png')}}" alt="Awesome Logo">
+                                    </a>
+                                </div>
+                                <div class="text-box fix">
+                                    <p>H-Smile được bắt đầu vào năm 1995 như một phòng khám nha khoa tư nhân nhỏ ở
+                                        Binghamton, NY, Hoa Kỳ. Tìm kiếm dịch vụ chăm sóc nha khoa giá cả phải chăng?
+                                    </p>
+                                    <p class="bottom-text">Lấy một ví dụ tầm thường, mà trong chúng ta từng đảm nhận thể
+                                        chất vất vả
+                                        Tập thể dục, ngoại trừ để có được.</p>
+                                </div>
+                                <div class="button fix">
+                                    <a class="btn-one" href="#">Đọc thêm</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End single footer widget-->
+
+                    <!--Start single footer widget-->
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                        <div class="single-footer-widget martop6 marbtm50">
+                            <div class="title">
+                                <h3>Chuyên ngành</h3>
+                            </div>
+                            <ul class="specialities">
+                                <li><a href="#">Cấy ghép nha khoa</a></li>
+                                <li><a href="#">Nha khoa laser</a></li>
+                                <li><a href="#">Chỉnh răng</a></li>
+                                <li><a href="#">Nha chu</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--End single footer widget-->
+
+                    <!--Start single footer widget-->
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                        <div class="single-footer-widget martop6 pdbtm50">
+                            <div class="title">
+                                <h3>Tiện nghi</h3>
+                            </div>
+                            <ul class="facilities">
+                                <li><a href="#">X-quang răng cá nhân</a></li>
+                                <li><a href="#">Phòng chăm sóc đặc biệt</a></li>
+                                <li><a href="#">Ngân hàng máu</a></li>
+                                <li><a href="#">Khu vực chăm sóc quan trọng</a></li>
+                                <li><a href="#">Phòng thí nghiệm</a></li>
+                                <li><a href="#">Quy mô và làm sạch</a></li>
+                                <li><a href="#">Chất bịt kín fissure</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--End single footer widget-->
+
+                    <!--Start single footer widget-->
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                        <div class="single-footer-widget martop6 pdtop-50">
+                            <div class="title">
+                                <h3>Giờ mở cửa</h3>
+                            </div>
+                            <ul class="opening-hours">
+                                <li>Thứ 2 <span class="float-right">8.30am–6.30pm</span></li>
+                                <li>Thứ 3 <span class="float-right">10.00am–8.00pm</span></li>
+                                <li>Thứ 4 <span class="float-right">8.30am–6.30pm</span></li>
+                                <li>Thứ 5 <span class="float-right">8.30am–7.00pm</span></li>
+                                <li>Thứ 6 <span class="float-right">8.30am–3.00pm</span></li>
+                                <li>Thứ 7 <span class="float-right">8.30am–2.00pm</span></li>
+                                <li>Chủ nhật <span class="float-right clr-green">Đóng</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--End single footer widget-->
+
+                </div>
+            </div>
+        </footer>
+        <!--End footer area-->
+
+        <!--Start footer bottom area-->
+        <section class="footer-bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="inner clearfix">
+                            <div class="footer-social-links float-left">
+                                <ul class="sociallinks-style-one">
+                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="copyright-text text-center">
+                                <p>© <a href="#">H-Smile</a> 2018, All Rights Reserved.</p>
+                            </div>
+                            <ul class="footer-menu float-right">
+                                <li><a href="#">Điều khoản & Điều kiện</a></li>
+                                <li><a href="#">Chính sách bảo mật</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End footer bottom area-->
+
+    </div>
+
+    <!--Scroll to top-->
+    <div class="scroll-to-top scroll-to-target thm-bg-clr" data-target="html"><span class="fa fa-angle-up"></span></div>
+
+    <!-- Color Palate / Color Switcher -->
+    <div class="color-palate">
+        <div class="color-trigger">
+            <i class="fa fa-gear"></i>
         </div>
-    </body>
+        <div class="color-palate-head">
+            <h6>Chọn Màu của bạn</h6>
+        </div>
+        <div class="various-color clearfix">
+            <div class="colors-list">
+                <span class="palate default-color active" data-theme-file="css/color-themes/default-theme.css"></span>
+                <span class="palate teal-color" data-theme-file="css/color-themes/teal-theme.css"></span>
+                <span class="palate navy-color" data-theme-file="css/color-themes/navy-theme.css"></span>
+                <span class="palate yellow-color" data-theme-file="css/color-themes/yellow-theme.css"></span>
+                <span class="palate blue-color" data-theme-file="css/color-themes/blue-theme.css"></span>
+                <span class="palate purple-color" data-theme-file="css/color-themes/purple-theme.css"></span>
+                <span class="palate olive-color" data-theme-file="css/color-themes/olive-theme.css"></span>
+                <span class="palate red-color" data-theme-file="css/color-themes/red-theme.css"></span>
+            </div>
+        </div>
+        <div class="palate-foo">
+            <span>Bạn có thể dễ dàng thay đổi và chuyển đổi màu sắc.</span>
+        </div>
+    </div>
+    <!-- /.End Of Color Palate -->
+
+    <!-- main jQuery -->
+    <script src="{{asset('frontend/js/jquery.js')}}"></script>
+    <!-- Wow Script -->
+    <script src="{{asset('frontend/js/wow.js')}}"></script>
+    <!-- bootstrap -->
+    <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
+    <!-- bx slider -->
+    <script src="{{asset('frontend/js/jquery.bxslider.min.js')}}"></script>
+    <!-- count to -->
+    <script src="{{asset('frontend/js/jquery.countTo.js')}}"></script>
+    <script src="{{asset('frontend/js/appear.js')}}"></script>
+    <!-- owl carousel -->
+    <script src="{{asset('frontend/js/owl.js')}}"></script>
+    <!-- validate -->
+    <script src="{{asset('frontend/js/validation.js')}}"></script>
+    <!-- mixit up -->
+    <script src="{{asset('frontend/js/jquery.mixitup.min.js')}}"></script>
+    <!-- isotope script-->
+    <script src="{{asset('frontend/js/isotope.js')}}"></script>
+    <!-- Easing -->
+    <script src="{{asset('frontend/js/jquery.easing.min.js')}}"></script>
+    <!-- Gmap helper -->
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyB2uu6KHbLc_y7fyAVA4dpqSVM4w9ZnnUw"></script>
+    <!--Gmap script-->
+    <script src="{{asset('frontend/js/gmaps.js')}}"></script>
+    <script src="{{asset('frontend/js/map-helper.js')}}"></script>
+    <!-- jQuery ui js -->
+    <script src="{{asset('frontend/assets/jquery-ui-1.11.4/jquery-ui.js')}}"></script>
+    <!-- Language Switche  -->
+    <script src="{{asset('frontend/assets/language-switcher/jquery.polyglot.language.switcher.js')}}"></script>
+    <!-- jQuery timepicker js -->
+    <script src="{{asset('frontend/assets/timepicker/timePicker.js')}}"></script>
+    <!-- Bootstrap select picker js -->
+    <script src="{{asset('frontend/assets/bootstrap-sl-1.12.1/bootstrap-select.js')}}"></script>
+    <!-- html5lightbox js -->
+    <script src="{{asset('frontend/assets/html5lightbox/html5lightbox.js')}}"></script>
+    <!-- html5lightbox js -->
+    <script src="{{asset('frontend/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+    <!--Color Switcher-->
+    <script src="{{asset('frontend/js/color-settings.js')}}"></script>
+
+    <!--Revolution Slider-->
+    <script src="{{asset('frontend/plugins/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
+    <script src="{{asset('frontend/plugins/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
+    <script src="{{asset('frontend/plugins/revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
+    <script src="{{asset('frontend/plugins/revolution/js/extensions/revolution.extension.carousel.min.js')}}"></script>
+    <script src="{{asset('frontend/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js')}}"></script>
+    <script src="{{asset('frontend/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
+    <script src="{{asset('frontend/plugins/revolution/js/extensions/revolution.extension.migration.min.js')}}"></script>
+    <script src="{{asset('frontend/plugins/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
+    <script src="{{asset('frontend/plugins/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
+    <script src="{{asset('frontend/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
+    <script src="{{asset('frontend/plugins/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
+    <script src="{{asset('frontend/js/main-slider-script.js')}}"></script>
+
+    <!-- thm custom script -->
+    <script src="{{asset('frontend/js/custom.js')}}"></script>
+
+
+
+</body>
+
+<!-- Mirrored from st.ourhtmldemo.com/new/Dento/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Jan 2021 02:04:28 GMT -->
+
 </html>

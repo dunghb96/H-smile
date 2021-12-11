@@ -36,7 +36,7 @@ class UserController extends BaseController
         return view('backend.user.add', compact( 'roles'));
     }
 
-    public function postAdd(UserAddRequest $request)
+    public function postAdd(Request $request)
     {
         DB::transaction(function () use ($request) {
             $user = new User;
@@ -128,7 +128,7 @@ class UserController extends BaseController
         return view('backend.user.editProfile', compact('dataUser'));
     }
 
-    public function postEditProfile(UserEditProfileRequest $request)
+    public function postEditProfile(Request $request)
     {
         $user = Auth::user();
         $oldPassword = $request->input('old_password');

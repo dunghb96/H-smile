@@ -1,11 +1,20 @@
+
+
 <?php
 
+use App\Http\Controllers\Backend\AppointmentController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\OptionController;
+use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\Backend\ServiceController;
+use App\Models\Patients;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Backend\SlideController;
+use App\Http\Controllers\Backend\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +36,47 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+    //Slides
+    Route::group(['prefix' => 'slide'], function () {
+        Route::get('', [SlideController::class, 'index'])->middleware('permission:show_list_slides')->name('slide.list');
+
+
+        Route::group(['middleware' => 'permission:add_slides'], function () {
+            Route::get('add', [SlideController::class, 'getAdd'])->name('slide.add');
+            Route::post('add', [SlideController::class, 'postAdd']);
+        });
+
+        Route::group(['middleware' => 'permission:edit_slides'], function () {
+            Route::get('edit/{id}', [SlideController::class, 'getEdit'])->name('slide.edit');
+            Route::post('edit/{id}', [SlideController::class, 'postEdit']);
+        });
+
+            Route::post('delete', [SlideController::class, 'delete'])->middleware('permission:delete_slides')->name('slide.delete');
+
+    });
+
+
+    //Slides
+    Route::group(['prefix' => 'news'], function () {
+        Route::get('', [NewsController::class, 'index'])->middleware('permission:show_list_news')->name('news.list');
+
+
+        Route::group(['middleware' => 'permission:add_news'], function () {
+            Route::get('add', [NewsController::class, 'getAdd'])->name('news.add');
+            Route::post('add', [NewsController::class, 'postAdd']);
+        });
+
+        Route::group(['middleware' => 'permission:edit_news'], function () {
+            Route::get('edit/{id}', [NewsController::class, 'getEdit'])->name('news.edit');
+            Route::post('edit/{id}', [NewsController::class, 'postEdit']);
+        });
+
+        Route::post('delete', [NewsController::class, 'delete'])->middleware('permission:delete_news')->name('news.delete');
+
+    });
+
 
     //Settings
     Route::group(['prefix' => 'setting'], function () {
@@ -77,6 +127,49 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('delete', [RoleController::class, 'delete'])->middleware('permission:role_delete')->name('role.delete');
     });
 
+    Route::prefix('post')->group(function () {
+        Route::get('/', [PostController::class, 'index'])->name('post.list');
+        Route::get('add-new', [PostController::class, 'create'])->name('post.add');
+        Route::post('add-new', [PostController::class, 'store']);
+        Route::get('detail/{id}', [PostController::class, 'get'])->name('post.detail');
+        Route::get('edit/{id}', [PostController::class, 'edit'])->name('post.edit');
+        Route::post('edit/{id}', [PostController::class, 'save']);
+        Route::get('delete', [PostController::class, 'remove'])->name('post.delete');
+    });
+
+    Route::prefix('contact')->group(function () {
+        Route::get('/', [PostController::class, 'index'])->name('contact.list');
+        Route::get('add-new', [PostController::class, 'create'])->name('contact.add');
+        Route::post('add-new', [PostController::class, 'store']);
+        Route::get('edit/{id}', [PostController::class, 'edit'])->name('contact.edit');
+        Route::post('edit/{id}', [PostController::class, 'save']);
+        Route::get('delete', [PostController::class, 'remove'])->name('contact.delete');
+    });
+    Route::prefix('patient')->group(function () {
+        Route::get('/', [PatientController::class, 'index'])->name('patient.list');
+        Route::get('add-new', [PostController::class, 'create'])->name('contact.add');
+        Route::post('add-new', [PostController::class, 'store']);
+        Route::get('edit/{id}', [PostController::class, 'edit'])->name('contact.edit');
+        Route::post('edit/{id}', [PostController::class, 'save']);
+        Route::get('delete', [PostController::class, 'remove'])->name('contact.delete');
+    });
+
+    Route::prefix('service')->group(function () {
+        Route::get('/', [ServiceController::class, 'index'])->name('service.index');
+        Route::get('addService', [ServiceController::class, 'create'])->name('service.add');
+        Route::post('addService', [ServiceController::class, 'store']);
+        Route::get('editService/{id}', [ServiceController::class, 'edit'])->name('service.edit');
+        Route::post('editService/{id}', [ServiceController::class, 'update']);
+        Route::get('deleteService/{id}', [ServiceController::class, 'Delete'])->name('service.delete');
+    });
+    Route::prefix('appointment')->group(function () {
+        Route::get('/', [AppointmentController::class, 'index'])->name('appointment.index');
+        // Route::get('addService', [ServiceController::class, 'create'])->name('service.add');
+        // Route::post('addService', [ServiceController::class, 'store']);
+        // Route::get('editService/{id}', [ServiceController::class, 'edit'])->name('service.edit');
+        // Route::post('editService/{id}', [ServiceController::class, 'update']);
+        // Route::get('deleteService/{id}', [ServiceController::class, 'Delete'])->name('service.delete');
+    });
 })
 
 ?>
