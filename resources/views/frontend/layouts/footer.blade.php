@@ -12,12 +12,11 @@
                             </a>
                         </div>
                         <div class="text-box fix">
-                            <p>Dento was started in the year 1995 as a small private dental clinic in Binghamton, NY, USA. Looking for affordable dental care?</p>
-                            <p class="bottom-text">To take a trivial example, which of us ever undertakes laborious physical
-                                exercise, except to obtain.</p>
+                            <p>H-Sile được thành lập vào năm 2021 với tư cách là một phòng khám nha khoa tư nhân nhỏ ở Hà Nội, Việt Nam. Tìm kiếm dịch vụ chăm sóc răng miệng giá cả phải chăng?</p>
+                            <p class="bottom-text">Để lấy một ví dụ tầm thường, ai trong chúng ta cũng từng thực hiện các bài tập thể dục vất vả, ngoại trừ để đạt được.</p>
                         </div>
                         <div class="button fix">
-                            <a class="btn-one" href="{{ route('hsmile.aboutus') }}">Read More</a>
+                            <a class="btn-one" href="{{ route('hsmile.aboutus') }}">Xem thêm</a>
                         </div>
                     </div>
                 </div>
@@ -28,16 +27,16 @@
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div class="single-footer-widget martop6 marbtm50">
                     <div class="title">
-                        <h3>Specialities</h3>
+                        <h3>Dịch vụ đặc biệt</h3>
                     </div>
                     <ul class="specialities">
-                        <li><a href="#">Dental Implants</a></li>
-                        <li><a href="#">Laser Dentistry</a></li>
-                        <li><a href="#">Cosmetic Dentistry</a></li>
-                        <li><a href="#">Orthodontics</a></li>
-                        <li><a href="#">Pedodontics</a></li>
-                        <li><a href="#">Prosthodontics</a></li>
-                        <li><a href="#">Oral & Maxsillosacial</a></li>
+                        <li><a href="#">Cấy ghép nha khoa</a></li>
+                        <li><a href="#">Nha khoa Laser</a></li>
+                        <li><a href="#">Nha khoa thẩm mỹ</a></li>
+                        <li><a href="#">Chỉnh nha</a></li>
+                        <li><a href="#">Nha khoa</a></li>
+                        <li><a href="#">Tuyến tiền liệt</a></li>
+                        <li><a href="#">Răng miệng & Răng hàm mặt</a></li>
                     </ul>
                 </div>
             </div>
@@ -47,16 +46,16 @@
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div class="single-footer-widget martop6 pdbtm50">
                     <div class="title">
-                        <h3>Facilities</h3>
+                        <h3>Tiện ích</h3>
                     </div>
                     <ul class="facilities">
-                        <li><a href="#">Individual Tooth X-Ray</a></li>
-                        <li><a href="#">Intensive Care Unit</a></li>
-                        <li><a href="#">Blood Bank</a></li>
-                        <li><a href="#">Critical Care Areas</a></li>
-                        <li><a href="#">Laboratories</a></li>
-                        <li><a href="#">Scale and Clean</a></li>
-                        <li><a href="#">Fissure Sealants</a></li>
+                        <li><a href="#">Chụp X-Quang Răng Cá nhân</a></li>
+                        <li><a href="#">Đơn vị chăm sóc đặc biệt</a></li>
+                        <li><a href="#">Ngân hàng máu</a></li>
+                        <li><a href="#">Khu vực chăm sóc quan trọng</a></li>
+                        <li><a href="#">Các phòng thí nghiệm</a></li>
+                        <li><a href="#">Quy mô và sạch sẽ</a></li>
+                        <li><a href="#">Chất trám khe nứt</a></li>
                     </ul>
                 </div>
             </div>
@@ -66,16 +65,16 @@
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
                 <div class="single-footer-widget martop6 pdtop-50">
                     <div class="title">
-                        <h3>Opening Hours</h3>
+                        <h3>Giờ mở cửa</h3>
                     </div>
                     <ul class="opening-hours">
-                        <li>Monday <span class="float-right">8.30am–6.30pm</span></li>
-                        <li>Tuesday <span class="float-right">10.00am–8.00pm</span></li>
-                        <li>Wednesday <span class="float-right">8.30am–6.30pm</span></li>
-                        <li>Thursday <span class="float-right">8.30am–7.00pm</span></li>
-                        <li>Friday <span class="float-right">8.30am–3.00pm</span></li>
-                        <li>Saturday <span class="float-right">8.30am–2.00pm</span></li>
-                        <li>Sunday <span class="float-right clr-green">Closed</span></li>
+                        <li>Thứ Hai <span class="float-right">8.30am–6.30pm</span></li>
+                        <li>Thứ Ba <span class="float-right">10.00am–8.00pm</span></li>
+                        <li>Thứ Tư <span class="float-right">8.30am–6.30pm</span></li>
+                        <li>Thứ Năm <span class="float-right">8.30am–7.00pm</span></li>
+                        <li>Thứ Sáu <span class="float-right">8.30am–3.00pm</span></li>
+                        <li>Thứ Bảy <span class="float-right">8.30am–2.00pm</span></li>
+                        <li>Chủ nhật <span class="float-right clr-green">Đóng cửa</span></li>
                     </ul>
                 </div>
             </div>
@@ -102,11 +101,11 @@
                         </ul>
                     </div>
                     <div class="copyright-text text-center">
-                        <p>© <a href="#">Dento</a> 2018, All Rights Reserved.</p>
+                        <p>© <a href="#">H-Smile</a> 2021, Mọi quyền được bảo lưu.</p>
                     </div>
                     <ul class="footer-menu float-right">
-                        <li><a href="#">Terms & Condition</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Điều khoản & Điều kiện</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
                     </ul>
                 </div>
             </div>
