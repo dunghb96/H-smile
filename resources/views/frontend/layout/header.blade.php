@@ -64,7 +64,11 @@
                                 <li class="dropdown current"><a href="{{ route('home') }}">TRANG CHỦ</a></li>
                                 <li><a href="{{ route('about') }}">GIỚI THIỆU</a></li>
                                 <li class="dropdown"><a href="{{ route('service.list') }}">DỊCH VỤ</a>
-
+                                    <ul>
+                                        {{-- @foreach($service as $item)
+                                        <li><a href="cayghepnhakhoa.html">{{$item->name}}</a></li>
+                                        @endforeach --}}
+                                    </ul>
                                 </li>
                                 <li><a href="{{ route('doctor.list') }}">Bác sĩ</a></li>
                                 <li class="dropdown"><a href="{{ route('price.list') }}">BẢNG GIÁ</a></li>
