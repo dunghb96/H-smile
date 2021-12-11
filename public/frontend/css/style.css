@@ -6779,12 +6779,12 @@ box-shadow: 0px 1px 15px 3px #f9f9f9;
     font-family: 'Rubik', sans-serif;
     transition: all 500ms ease;
 }
-.appointment-right form .input-box .icon-box {
+form .input-box .icon-box {
     position: absolute;
     right: 19px;
     top: 16px;
 }
-.appointment-right form .input-box .icon-box i {
+form .input-box .icon-box i {
     color: #8b8b8b;
     font-size: 14px;
 }

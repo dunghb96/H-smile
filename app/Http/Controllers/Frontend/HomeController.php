@@ -15,12 +15,18 @@ use Illuminate\Http\Request;
 
 class HomeController extends BaseController
 {
+    public function index()
+    {
+        return view('frontend.home.index');
+    }
+
     public function service()
     {
         $service = Service::where('parent_id', 0)->get();
         $serviceHeader = Service::orderby('id', 'DESC')->where('parent_id', 0)->get();
         return view('frontend.home.index', compact('service', 'serviceHeader'));
     }
+
     public function price()
     {
         $service = Service::where('parent_id', 0)->get();

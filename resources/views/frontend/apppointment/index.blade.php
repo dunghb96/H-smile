@@ -65,7 +65,7 @@
                                     <div class="title">
                                         <h5>Ngày</h5>
                                     </div>
-                                    <div class="input-box appointment-right">
+                                    <div class="input-box">
                                         <input type="text" name="date_at" placeholder="Date" id="datepicker">
                                         <div class="icon-box">
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
