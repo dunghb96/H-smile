@@ -33,6 +33,7 @@ class HomeController extends BaseController
     public function serviceForHeader()
     {
         $service = Service::where('parent_id', 0)->get();
+        $serviceHeader = Service::orderby('id', 'DESC')->where('parent_id', 0)->get();
         return view('frontend.layout.header', compact('service'));
     }
 
