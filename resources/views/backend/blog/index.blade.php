@@ -34,8 +34,8 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Hình ảnh</th>
                                             <th>Tiêu đề</th>
+                                            <th>Hình ảnh</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -45,14 +45,11 @@
                             <div class="modal new-user-modal fade" id="addnew">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content pt-0">
-                                        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button> -->
                                         <div class="modal-header mb-1">
                                             <h5 class="modal-title">Thêm bài viết mới</h5>
                                         </div>
                                         <div class="modal-body flex-grow-1">
                                             <form id="frm-add" enctype="multipart/form-data">
-
-                                                <!-- <img id="slide" src="/frontend/images/slides/v1-1.jpg" alt="users avatar" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer"  width="350" /> -->
                                                 <div class="row">
                                                     <div class="form-group col-6">
                                                         <label>Hình ảnh</label>
@@ -78,8 +75,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
+                                                    <label for="title">Mô tả ngắn</label>
+                                                    <input id="short_desc" type="text" class="form-control" name="short_desc" />
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="description">Mô tả</label>
-                                                    <textarea id="description" name="description" rows="10" class="form-control my-editor" placeholder="Chi tiết dịch vụ"></textarea>
+                                                    <textarea id="description" name="content" rows="10" class="form-control my-editor" placeholder="Bắt đầu bài viết"></textarea>
                                                 </div>
                                                 <button type="button" onclick="save()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
                                                 <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>

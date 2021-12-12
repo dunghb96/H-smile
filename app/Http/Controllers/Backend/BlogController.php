@@ -10,8 +10,9 @@ class BlogController extends BaseController
 {
     public function index()
     {
+        $blogs = Blog::orderBy('created_at', 'DESC')->paginate();
         $blogcates = BlogCategory::where('status','1')->get();
-        return view('backend.blog.index', compact('blogcates'));
+        return view('backend.blog.index', compact('blogcates', 'blogs'));
     }
 
     public function json()
@@ -40,7 +41,7 @@ class BlogController extends BaseController
         $jsonObj = Blog::find($id);
         echo json_encode($jsonObj);
     }
-    
+
     public function edit(Request $request)
     {
         $id = $request->id;

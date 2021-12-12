@@ -111,8 +111,7 @@
      $("#addnew").modal('show');
      $(".modal-title").html('Thêm slide mới');
      $('#image').val('');
-     $('#title').val('');
-     $('#description').html('');
+     $('#name').val('');
      url = '/admin/partner/add';
  }
 

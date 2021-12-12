@@ -23,12 +23,21 @@ $(function () {
             // },
             columns: [
                 { data: 'id' },
-                { data: 'name' },
+                { data: 'title' },
+                { data: 'image' },
                 { data: '' }
             ],
             columnDefs: [
                 {
                     targets: 2,
+                        render: function (data, type, full, meta) {
+                            var src = full['image'];
+                            return '<img src="' + src + '" width="200px" >';
+                        },
+                },
+
+                {
+                    targets: 3,
                     render: function (data, type, full, meta) {
                         var html = '';
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
@@ -86,7 +95,13 @@ $(function () {
         var $this = $(this);
         $this.validate({
             rules: {
-                name: {
+                title: {
+                    required: true
+                },
+                image: {
+                    required: true
+                },
+                category: {
                     required: true
                 },
             }
@@ -97,7 +112,9 @@ $(function () {
 function loadadd() {
     $("#addnew").modal('show');
     $(".modal-title").html('Thêm bài viết mới');
-    $('#name').val('');
+    $('#title').val('');
+    $('#category').val(null).trigger('change');
+    $('#short_desc').val('');
     url = '/admin/blog/add';
     iid = 0;
 }
@@ -111,10 +128,9 @@ function loaddata(id) {
         data: { id: id },
         url: "/admin/blog/loaddata",
         success: function (data) {
-            $('#name').val(data.name);
-            $('#short_description').val(data.short_description);
-            $('#content').val(data.content);
-            $('#parent_id').val(data.parent_id).change();
+            $('#title').val(data.title);
+            $('#short_desc').val(data.short_desc);
+            tinyMCE.get('content').setContent(data.content);
             url = '/admin/blog/edit';
             iid = id;
         },
@@ -127,16 +143,19 @@ function loaddata(id) {
 function save() {
     var info = {};
     var isValid = $('#frm-add').valid();
+    tinyMCE.triggerSave();
     if (isValid) {
         if (iid != 0) {
             info.id = iid;
         }
-        info.name = $("#name").val();
+        var info = new FormData($("#frm-add")[0]);
         $.ajax({
             type: "POST",
             dataType: "json",
             data: info,
             url: url,
+            contentType: false,
+            processData: false,
             success: function (data) {
                 if (data.success) {
                     notyfi_success(data.msg);
