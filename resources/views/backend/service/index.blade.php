@@ -64,12 +64,77 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
+                                                <label>Icon</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="icon" name="icon">
+                                                    <label class="custom-file-label" for="image">Chọn Icon</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Hình ảnh</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="image" name="image">
+                                                    <label class="custom-file-label" for="image">Chọn hình ảnh</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="short_description">Mô tả</label>
                                                 <input id="short_description" type="text" class="form-control" name="short_description" placeholder="Mô tả ngắn" />
                                             </div>
                                             <div class="form-group">
                                                 <label for="content">Chi tiết</label>
                                                 <textarea id="content" name="content" rows="3" class="form-control" placeholder="Chi tiết dịch vụ"></textarea>
+                                            </div>
+                                            <button type="button" onclick="save()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
+                                            <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="modal modal-slide-in new-user-modal fade" id="editinfo">
+                                <div class="modal-dialog">
+                                    <form class="modal-content pt-0" id="frm-edit">
+                                        <input type="hidden" name="id" id="iid">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+                                        <div class="modal-header mb-1">
+                                            <h5 class="modal-title">Thêm dịch vụ mới</h5>
+                                        </div>
+                                        <div class="modal-body flex-grow-1">
+                                            <div class="form-group">
+                                                <label for="name">Tên dịch vụ</label>
+                                                <input id="ename" type="text" class="form-control" name="name" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="parent_id">Danh mục</label>
+                                                <select class="form-control" id="eparent_id" name="parent_id" required>
+                                                    <option value="0">ROOT</option>
+                                                    @foreach($services as $service)
+                                                        <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Icon</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="eicon" name="icon">
+                                                    <label class="custom-file-label" for="eicon">Chọn Icon</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Hình ảnh</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="eimage" name="image">
+                                                    <label class="custom-file-label" for="eimage">Chọn hình ảnh</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="short_description">Mô tả</label>
+                                                <input id="eshort_description" type="text" class="form-control" name="short_description" placeholder="Mô tả ngắn" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="content">Chi tiết</label>
+                                                <textarea id="econtent" name="content" rows="3" class="form-control" placeholder="Chi tiết dịch vụ"></textarea>
                                             </div>
                                             <button type="button" onclick="save()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
                                             <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>

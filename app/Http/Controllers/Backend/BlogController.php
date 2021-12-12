@@ -46,7 +46,7 @@ class BlogController extends BaseController
     {
         $id = $request->id;
         $model = Blog::find($id);
-        $result = $model->saveSlide($model, $request);
+        $result = $model->saveBlog($model, $request);
         if($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';

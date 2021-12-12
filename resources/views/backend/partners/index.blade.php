@@ -71,6 +71,7 @@
                             <div class="modal modal-slide-in new-user-modal fade" id="editinfo">
                                 <div class="modal-dialog">
                                     <form class="add-new-user modal-content pt-0" id="frm-edit">
+                                        <input type="hidden" name="id" id="iid">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
                                         <div class="modal-header mb-1">
                                             <h5 class="modal-title">Thêm đối tác mới</h5>

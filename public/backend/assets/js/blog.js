@@ -10,6 +10,12 @@ $(function () {
         dropdownParent: $('#category').parent(),
     })
     $('#category').val(null).trigger('change');
+    $('#ecategory').select2({
+        placeholder: "Chọn danh mục",
+        allowClear: true,
+        dropdownParent: $('#ecategory').parent(),
+    })
+    $('#ecategory').val(null).trigger('change');
 
     'use strict';
     var table_table = $('#tableBasic');
@@ -120,7 +126,7 @@ function loadadd() {
 }
 
 function loaddata(id) {
-    $("#addnew").modal('show');
+    $("#editinfo").modal('show');
     $(".modal-title").html('Cập nhật bài viết');
     $.ajax({
         type: "POST",
@@ -128,9 +134,10 @@ function loaddata(id) {
         data: { id: id },
         url: "/admin/blog/loaddata",
         success: function (data) {
-            $('#title').val(data.title);
-            $('#short_desc').val(data.short_desc);
-            tinyMCE.get('content').setContent(data.content);
+            $('#etitle').val(data.title);
+            $('#eshort_desc').val(data.short_desc);
+            tinyMCE.get('econtent').setContent(data.content);
+            $('#iid').val(id);
             url = '/admin/blog/edit';
             iid = id;
         },
@@ -144,11 +151,9 @@ function save() {
     var info = {};
     var isValid = $('#frm-add').valid();
     tinyMCE.triggerSave();
-    if (isValid) {
-        if (iid != 0) {
-            info.id = iid;
-        }
-        var info = new FormData($("#frm-add")[0]);
+
+    if (iid != 0) {
+        var info = new FormData($("#frm-edit")[0]);
         $.ajax({
             type: "POST",
             dataType: "json",
@@ -159,7 +164,7 @@ function save() {
             success: function (data) {
                 if (data.success) {
                     notyfi_success(data.msg);
-                    $('#addnew').modal('hide');
+                    $('#editinfo').modal('hide');
                     $("#tableBasic").DataTable().ajax.reload(null, false);
                 }
                 else
@@ -169,7 +174,33 @@ function save() {
                 notify_error('Cập nhật không thành công');
             }
         });
+    } else {
+        if (isValid) {
+
+            var info = new FormData($("#frm-add")[0]);
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: info,
+                url: url,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.success) {
+                        notyfi_success(data.msg);
+                        $('#addnew').modal('hide');
+                        $("#tableBasic").DataTable().ajax.reload(null, false);
+                    }
+                    else
+                        notify_error(data.msg);
+                },
+                error: function () {
+                    notify_error('Cập nhật không thành công');
+                }
+            });
+        }
     }
+
 
 }
 

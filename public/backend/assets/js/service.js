@@ -115,6 +115,7 @@ function loadadd() {
 
 function loaddata(id) {
     $("#addnew").modal('show');
+
     $(".modal-title").html('Cập nhật dịch vụ');
     $.ajax({
         type: "POST",
@@ -126,6 +127,7 @@ function loaddata(id) {
             $('#short_description').val(data.short_description);
             $('#content').val(data.content);
             $('#parent_id').val(data.parent_id).change();
+            $('#iid').val(id);
             url = '/admin/service/edit';
             iid = id;
         },
@@ -138,23 +140,20 @@ function loaddata(id) {
 function save() {
     var info = {};
     var isValid = $('#frm-add').valid();
-    if (isValid) {
-        if (iid != 0) {
-            info.id = iid;
-        }
-        info.name = $("#name").val();
-        info.short_description = $("#short_description").val();
-        info.content = $("#content").val();
-        info.parent_id = $("#parent_id").val();
+
+    if (iid != 0) {
+        var info = new FormData($("#frm-edit")[0]);
         $.ajax({
             type: "POST",
             dataType: "json",
             data: info,
             url: url,
+            contentType: false,
+            processData: false,
             success: function (data) {
                 if (data.success) {
                     notyfi_success(data.msg);
-                    $('#addnew').modal('hide');
+                    $('#editinfo').modal('hide');
                     $("#tableBasic").DataTable().ajax.reload(null, false);
                 }
                 else
@@ -164,7 +163,30 @@ function save() {
                 notify_error('Cập nhật không thành công');
             }
         });
+    } else {
+        if (isValid) {
+            var info = new FormData($("#frm-add")[0]);
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: info,
+                url: url,
+                success: function (data) {
+                    if (data.success) {
+                        notyfi_success(data.msg);
+                        $('#addnew').modal('hide');
+                        $("#tableBasic").DataTable().ajax.reload(null, false);
+                    }
+                    else
+                        notify_error(data.msg);
+                },
+                error: function () {
+                    notify_error('Cập nhật không thành công');
+                }
+            });
+        }
     }
+
 
 }
 
