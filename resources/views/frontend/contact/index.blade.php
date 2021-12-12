@@ -8,13 +8,13 @@
             <div class="col-xl-12">
                 <div class="inner-content clearfix">
                     <div class="title float-left">
-                       <h2>Contact Us</h2>
+                       <h2>Liên hệ</h2>
                     </div>
                     <div class="breadcrumb-menu float-right">
                         <ul class="clearfix">
-                            <li><a href="index-2.html">Home</a></li>
+                            <li><a href="index-2.html">Trang chủ</a></li>
                             <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                            <li class="active">Contact Us</li>
+                            <li class="active">Liên hệ</li>
                         </ul>    
                     </div>
                 </div>
@@ -28,7 +28,7 @@
 <section class="contact-info-map-area">
     <div class="container">
         <div class="sec-title max-width text-center">
-            <h1>We are Here to Help You, Don’t Hesitate.</h1>
+            <h1>Hãy đến với H-Smile để sở hữu nụ cười đẹp</h1>
         </div>
         <div class="row">
             <div class="col-xl-12">
@@ -37,124 +37,30 @@
                         <div class="col-xl-4">
                             <div class="contact-info-left">
                                 <div class="contact-title">
-                                    <h2>Send Your Message Us</h2>
-                                    <p>Dont be shy, Send your message or through form, our expert will help you ASAP.</p>
+                                    <h2>Đến với nha khoa thẩm mỹ H-Smile </h2>
+                                    <p>Trải nghiệm sự khác biệt đến từ đội ngũ chuyên nghiệp.</p>
                                 </div>
                                 <div class="state-select-box2">
-                                    <select class="selectmenu area_select">
-                                        <option value="1">North California</option>
-                                        <option value="2">Los Angeles</option>
-                                        <option value="3">San Francisco</option>
-                                        <option value="4">British Columbia</option>
-                                        <option value="5">Nova Scotia</option>
-                                    </select>
                                     <div class="state-content">
+                                       
                                         <div class="state" id="value1">
                                             <ul>
                                                 <li>
                                                     <div class="text">
-                                                        <h5>Address</h5>
-                                                        <p>Romanian  9520 Faires Farm Road,<br> Carlsbad, NC 28213, California.</p>
+                                                        <h5>Địa chỉ</h5>
+                                                        <p>Số 1 Ngô Văn Sở, Trần Hưng Đạo, Hoàn Kiếm, Hà Nội</p>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="text">
                                                         <h5>Phone</h5>
-                                                        <p>Phone 1: +1 555-7890-123<br> Phone 2: (+ 760) 987-65-43210.</p>
+                                                        <p>+84 988 077 68
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="text">
                                                         <h5>Email</h5>
-                                                        <p>supportyou@example.com</p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="state" id="value2">
-                                            <ul>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Address</h5>
-                                                        <p>Romanian  9520 Faires Farm Road,<br> Carlsbad, NC 28213, Los Angeles.</p>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Phone</h5>
-                                                        <p>Phone 1: +1 555-7890-123<br> Phone 2: (+ 760) 987-65-43210.</p>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Email</h5>
-                                                        <p>supportyou@example.com</p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="state" id="value3">
-                                            <ul>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Address</h5>
-                                                        <p>Romanian  9520 Faires Farm Road,<br> Carlsbad, NC 28213, San Francisco.</p>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Phone</h5>
-                                                        <p>Phone 1: +1 555-7890-123<br> Phone 2: (+ 760) 987-65-43210.</p>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Email</h5>
-                                                        <p>supportyou@example.com</p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="state" id="value4">
-                                            <ul>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Address</h5>
-                                                        <p>Romanian  9520 Faires Farm Road,<br> Carlsbad, NC 28213, British Columbia.</p>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Phone</h5>
-                                                        <p>Phone 1: +1 555-7890-123<br> Phone 2: (+ 760) 987-65-43210.</p>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Email</h5>
-                                                        <p>supportyou@example.com</p>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="state" id="value5">
-                                            <ul>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Address</h5>
-                                                        <p>Romanian  9520 Faires Farm Road,<br> Carlsbad, NC 28213, Nova Scotia.</p>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Phone</h5>
-                                                        <p>Phone 1: +1 555-7890-123<br> Phone 2: (+ 760) 987-65-43210.</p>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="text">
-                                                        <h5>Email</h5>
-                                                        <p>supportyou@example.com</p>
+                                                        <p>hsmile@gmail.com</p>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -165,21 +71,9 @@
                         </div>
                         <div class="col-xl-8">
                             <div class="google-map-box">
-                                <div 
-                                    class="google-map" 
-                                    id="contact-google-map" 
-                                    data-map-lat="40.584160" 
-                                    data-map-lng="-74.415543" 
-                                    data-icon-path="/frontend/images/resources/map-marker.png" 
-                                    data-map-title="Brooklyn, New York, United Kingdom" 
-                                    data-map-zoom="12" 
-                                    data-markers='{
-                                        "marker-1": [40.584160, -74.415543, "<h4>Head Office</h4><p>44/108 Brooklyn, UK</p>"],
-                                        "marker-2": [40.602230, -74.689910, "<h4>Head Office</h4><p>44/108 Brooklyn, UK</p>"],
-                                        "marker-3": [35.616959, -87.838852, "<h4>Head Office</h4><p>44/108 Brooklyn, UK</p>"]
-
-                                    }'>
-                                </div>   
+                            <iframe style="border:0; width: 100%; height: 350px;"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.307443384207!2d105.84752411437815!3d21.02038099344149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab928ae4efdb%3A0xdc9feb22c4e3ecce!2zMSBOZ8O0IFbEg24gU-G7nywgVHLhuqduIEjGsG5nIMSQ4bqhbywgSG_DoG4gS2nhur9tLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1636623294768!5m2!1svi!2s"
+                            frameborder="0" allowfullscreen></iframe> 
                             </div> 
                         </div>
                     </div>
@@ -197,29 +91,29 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="contact-form">
                     <div class="contact-title">
-                        <h2>Send Your Message Us</h2>
-                        <p>Dont be shy, Send your message or quiries through below form, our expert team will help you ASAP.</p>
+                        <h2>Gửi tin nhắn của bạn cho chúng tôi</h2>
+                        <p>Đừng ngại, Hãy gửi tin nhắn hoặc thắc mắc của bạn qua biểu mẫu dưới đây, nhóm chuyên gia của chúng tôi sẽ giúp bạn CÀNG SỚM CÀNG TỐT.</p>
                     </div>
                     <form id="contact-form" name="contact_form" class="default-form" action="http://st.ourhtmldemo.com/new/Dento/inc/sendmail.php" method="post">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="input-box">   
-                                    <input type="text" name="form_name" value="" placeholder="Your Name*" required="">
+                                    <input type="text" name="form_name" value="" placeholder="Tên của bạn*" required="">
                                 </div>
                                 <div class="input-box"> 
-                                    <input type="email" name="form_email" value="" placeholder="Your Mail*" required="">
+                                    <input type="email" name="form_email" value="" placeholder="Mail của bạn*" required="">
                                 </div>
                                 <div class="input-box"> 
-                                    <input type="text" name="form_phone" value="" placeholder="Phone">
+                                    <input type="text" name="form_phone" value="" placeholder="Số điện thoại">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="input-box">    
-                                    <textarea name="form_message" placeholder="Your Message.." required=""></textarea>
+                                    <textarea name="form_message" placeholder="Lời nhắn" required=""></textarea>
                                 </div>
                                 <div class="button-box">
                                     <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="">
-                                    <button class="btn-one" type="submit" data-loading-text="Please wait...">Send Your Message</button>    
+                                    <button class="btn-one" type="submit" data-loading-text="Please wait...">Gửi</button>    
                                 </div>     
                             </div>
                         </div>

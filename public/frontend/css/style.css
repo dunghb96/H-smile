@@ -170,7 +170,7 @@ li {
     font-weight: 500;
     padding: 21px 30px 21px;
     text-transform: uppercase;
-    font-family: 'Rubik', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     transition: all 500ms ease;
     border-radius: 30px;
 }
@@ -1311,12 +1311,10 @@ select:focus {
     border: 2px solid #32b6a1;
     border-radius: 30px;
     color: #ffffff;
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 16px;
     line-height: 46px;
-    text-transform: uppercase;
     text-align: center;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Poppins', sans-serif;
     transition: all 500ms ease;
 }
 .header-style2-button a span:before {
@@ -8130,6 +8128,8 @@ form .input-box .icon-box i {
     padding: 21px 0 21px;
     cursor: pointer;
     display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 

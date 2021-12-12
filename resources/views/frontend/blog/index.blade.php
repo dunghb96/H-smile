@@ -8,13 +8,13 @@
             <div class="col-xl-12">
                 <div class="inner-content clearfix">
                     <div class="title float-left">
-                        <h2>Blog Default</h2>
+                        <h2>Tin Tức</h2>
                     </div>
                     <div class="breadcrumb-menu float-right">
                         <ul class="clearfix">
-                            <li><a href="index-2.html">Home</a></li>
+                            <li><a href="index-2.html">Trang chủ</a></li>
                             <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                            <li class="active">Blog Default</li>
+                            <li class="active">Tin tức</li>
                         </ul>
                     </div>
                 </div>

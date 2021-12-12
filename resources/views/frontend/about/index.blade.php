@@ -8,13 +8,13 @@
             <div class="col-xl-12">
                 <div class="inner-content clearfix">
                     <div class="title float-left">
-                       <h2>About Us</h2>
+                       <h2>Giới thiêu</h2>
                     </div>
                     <div class="breadcrumb-menu float-right">
                         <ul class="clearfix">
                             <li><a href="index-2.html">Home</a></li>
                             <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                            <li class="active">About Us</li>
+                            <li class="active">Giới thiệu</li>
                         </ul>    
                     </div>
                 </div>
@@ -36,27 +36,20 @@
             <div class="col-xl-6">
                 <div class="inner-content">
                     <div class="sec-title">
-                        <h3>About Us</h3>
-                        <h1>Mission and Story About<br> Our Dento</h1>
+                        <h3>Về chúng tôi</h3>
+                        <h1>Sứ mệnh của H-Smile</h1>
                     </div>
                     <div class="about-text-holder">
-                        <p>Dento was started in the year 1995 as a small private dental clinic in Binghamton, NY, USA. Looking for affordable dental care?</p>
-                        <p>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, pain  resultant pleasure praising teachings of the great explorer...</p>
-                        <div class="author-box fix">
-                            <div class="img-box">
-                                <img src="/frontend/images/resources/ceo.png" alt="Awesome Image">
-                            </div>
-                            <div class="text-box">
-                                <h3>Dr. Jerome Sinclair</h3>
-                                <span>CEO & Founder</span>
-                            </div>
-                            <div class="signatire-box">
-                                <img src="/frontend/images/resources/signature.png" alt="Signature">
-                            </div>
-                        </div>
-                        <div class="read-more">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>More About Us</a>
-                        </div>
+                        <p>Nha khoa thẩm mỹ quốc tế H-Smile được thành lập với tôn chỉ giúp đỡ khách hàng thay đổi cuộc sống thông 
+                            qua nụ cười mới mang lại hạnh phúc và sự thành công. H-Smile quan tâm và chú trọng đến vấn đề sức khỏe và tính
+                             thẩm mỹ cao trong dịch vụ nha khoa. Chúng tôi cam kết tư vấn thật tâm, hiệu quả và cung cấp dịch vụ chất lượng
+                              hoàn hảo đem lại sự trải nghiệm tuyệt vời nhất cho khách hàng trên mỗi hệ thống của nha khoa H-Smile.</p>
+                        <p>H-Smile hiểu rằng, mỗi khách hàng đến với chúng tôi luôn có 1 câu chuyện riêng, một nhu cầu và mong muốn riêng.</p>
+                        <p>Thấu hiểu được tâm lý đó H-Smile lựa chọn giải pháp tối ưu cho khách hàng trong quá trình tư vấn nha khoa thẩm mỹ. 
+                            Đặc biệt, chúng tôi tự hào rằng các kỹ thuật thẩm mỹ nha của H-Smile được cập nhật thường xuyên, là công nghệ 
+                            tiên tiến và mới nhất trên thế giời, bảo toàn răng gốc tối đa, an toàn, bêng vững theo thời gian. Hữu xạ tự 
+                            nhiên hương đó cũng là lý do vì sao H-Smile lại có tỷ lệ giới thiệu khách hàng từ khách hàng cũ cao nhất 
+                            trong giới nha khoa thẩm mỹ.</p>
                     </div>
                 </div>
             </div>
@@ -78,13 +71,13 @@
                                 <span class="icon-tooth-3"></span>    
                             </div>
                             <h1>
-                                <span class="timer" data-from="1" data-to="4257" data-speed="5000" data-refresh-interval="50">4257</span>
+                                <span class="timer" data-from="1" data-to="177" data-speed="5000" data-refresh-interval="50">4257</span>
                             </h1>
                             <div class="title">
-                                <h3>Projects Completed</h3>
+                                <h3>Ca Khám Chữa </h3>
                             </div>
                             <div class="text">
-                                <p>Nor again is there anyone who loves or pursues or desires obtain.</p>
+                                <p>Khách hàng hài lòng về dịch vụ của phòng khám</p>
                             </div>
                         </div>
                     </li>
@@ -96,13 +89,13 @@
                                 <span class="icon-doctor-1"></span>    
                             </div>
                             <h1>
-                                <span class="timer" data-from="1" data-to="18" data-speed="5000" data-refresh-interval="50">18</span>
+                                <span class="timer" data-from="1" data-to="7" data-speed="5000" data-refresh-interval="50">18</span>
                             </h1>
                             <div class="title">
-                                <h3>Expert Dentists</h3>
+                                <h3>Nha Sĩ</h3>
                             </div>
                             <div class="text">
-                                <p>Desires to obtain pain of itself, because all circumstances occur.</p>
+                                <p>Có trình độ, kinh nghiệm chuyên môn cao,cùng với đó là sự tận tâm y đức trong công việc</p>
                             </div>
                         </div>
                     </li>
@@ -114,13 +107,13 @@
                                 <span class="icon-hospital"></span>    
                             </div>
                             <h1>
-                                <span class="timer" data-from="1" data-to="6" data-speed="5000" data-refresh-interval="50">6</span>
+                                <span class="timer" data-from="0" data-to="1" data-speed="5000" data-refresh-interval="50">6</span>
                             </h1>
                             <div class="title">
-                                <h3>Branches In City</h3>
+                                <h3>Chi Nhánh</h3>
                             </div>
                             <div class="text">
-                                <p>Know  pursue pleasure rationally that all consequences service.</p>
+                                <p>Duy nhất tại Hà Nôi</p>
                             </div>
                         </div>
                     </li>
@@ -139,27 +132,27 @@
             <!--Start single mission vision box-->
             <div class="col-xl-4 col-lg-4">
                 <div class="single-mission-vision-box text-center wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                    <h6>Our Mission</h6>
-                    <p>To provide outstanding dental care with a commitment of honesty, integrity & quality...</p>
-                    <a class="btn-two" href="#">Read More</a>    
+                    <h6>NHIỆM VỤ CỦA CHÚNG TÔI</h6>
+                    <p>Cung cấp dịch vụ chăm sóc răng miệng vượt trội với cam kết trung thực, toàn vẹn & chất lượng ..</p>
+                    <a class="btn-two" href="#">Đọc thêm</a>    
                 </div>
             </div>
             <!--End single mission vision box-->
             <!--Start single mission vision box-->
             <div class="col-xl-4 col-lg-4">
                 <div class="single-mission-vision-box text-center wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                    <h6>Our Vision</h6>
-                    <p>To be widely recognized as one of  world’s leading & most preferred dental care service...</p>
-                    <a class="btn-two" href="#">Read More</a>    
+                    <h6>TẦM NHÌN CỦA CHÚNG TÔI</h6>
+                    <p>Được công nhận rộng rãi là một trong những dịch vụ chăm sóc răng miệng hàng đầu và được ưa chuộng nhất trên thế giới ...</p>
+                    <a class="btn-two" href="#">Đọc thêm</a>    
                 </div>
             </div>
             <!--End single mission vision box-->
             <!--Start single mission vision box-->
             <div class="col-xl-4 col-lg-4">
                 <div class="single-mission-vision-box text-center wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                    <h6>Philosophy</h6>
-                    <p>We play an active role in our community to make it abetter place to live and work...</p>
-                    <a class="btn-two" href="#">Read More</a>    
+                    <h6>Triết lý</h6>
+                    <p>Chúng tôi đóng một vai trò tích cực trong cộng đồng của mình để biến nó thành nơi sinh sống và làm việc ...</p>
+                    <a class="btn-two" href="#">Đọc thêm</a>    
                 </div>
             </div>
             <!--End single mission vision box-->
@@ -172,9 +165,9 @@
 <section class="choose-area">
     <div class="container">
         <div class="sec-title max-width text-center">
-            <h3>Why Choose Us</h3>
-            <h1>Advantages & Technologies</h1>
-            <p>Your teeth play an important part in your daily life. It not only helps you to chew and eat your food, but frames your face. Any missing tooth can have a major impact on your quality of life.</p>
+            <h3>Tại Sao Chọn Chúng Tôi</h3>
+            <h1>Ưu điểm & Công nghệ</h1>
+            <p>Răng đóng một vai trò quan trọng trong cuộc sống hàng ngày của bạn. Nó không chỉ giúp bạn nhai và ăn thức ăn mà còn giúp tạo khuôn mặt của bạn. Bất kỳ chiếc răng nào bị mất đều có thể gây ảnh hưởng lớn đến chất lượng cuộc sống của bạn.</p>
         </div>
         <div class="row">
             <!--Start single choose box-->
@@ -199,7 +192,7 @@
                     <div class="icon-holder">
                         <span class="icon-doctor"></span>
                     </div>
-                    <h3>Caring & Higly Qulified Doctors</h3>    
+                    <h3>Bác sĩ chăm sóc & được kiểm định cao</h3>    
                 </div>
             </div>
             <!--End single choose box-->
@@ -212,7 +205,7 @@
                     <div class="icon-holder">
                         <span class="icon-dentist-2"></span>
                     </div>
-                    <h3>Use Best Equipments in Our Clinic</h3>    
+                    <h3>Sử dụng các thiết bị tốt nhất trong phòng khám </h3>    
                 </div>
             </div>
             <!--End single choose box-->
@@ -225,44 +218,10 @@
                     <div class="icon-holder">
                         <span class="icon-ui"></span>
                     </div>
-                    <h3>Online Appointment Facility</h3>    
+                    <h3>Đặt hẹn trực tuyến</h3>    
                 </div>
             </div>
             <!--End single choose box-->
-        </div>
-        <div class="row">
-            <div class="col-xl-6">
-                <div class="choose-carousel owl-carousel owl-theme" style="background-image: url(/frontend/images/parallax-background/choose-carousel-bg.jpg);">
-                    <div class="single-choose-item text-center">
-                        <h6>Technologies</h6>
-                        <h3>Cad - Cam Dentistry</h3>
-                        <p>Cad - Cams are the latest dental innovations which give a micron level accuracy in the fit of the dental prosthesis. </p>
-                    </div>
-                    <div class="single-choose-item text-center">
-                        <h6>Technologies</h6>
-                        <h3>Cad - Cam Dentistry</h3>
-                        <p>Cad - Cams are the latest dental innovations which give a micron level accuracy in the fit of the dental prosthesis. </p>
-                    </div>
-                    <div class="single-choose-item text-center">
-                        <h6>Technologies</h6>
-                        <h3>Cad - Cam Dentistry</h3>
-                        <p>Cad - Cams are the latest dental innovations which give a micron level accuracy in the fit of the dental prosthesis. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6">
-                <div class="video-holder-box" style="background-image: url(/frontend/images/parallax-background/video-holder-bg.jpg);">
-                    <div class="icon-holder">
-                        <div class="icon">
-                            <div class="inner">
-                                <a class="html5lightbox" title="Dento Video Gallery" href="https://www.youtube.com/watch?v=p25gICT63ek">
-                                    <span class="flaticon-multimedia"></span>
-                                </a>
-                            </div>   
-                        </div>
-                    </div>    
-                </div>
-            </div>
         </div>
     </div>
 </section> 
@@ -272,8 +231,8 @@
 <section class="team-area gray-bg">
     <div class="container">
         <div class="sec-title text-center">
-            <h3>Professional Dentists</h3>
-            <h1>Highly Qualified Team</h1>
+            <h3>Nha Sĩ Chuyên Nghiệp</h3>
+            <h1>Đội có trình độ cao</h1>
         </div> 
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">

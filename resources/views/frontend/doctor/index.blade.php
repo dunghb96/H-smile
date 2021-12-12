@@ -8,13 +8,13 @@
             <div class="col-xl-12">
                 <div class="inner-content clearfix">
                     <div class="title float-left">
-                       <h2>Meet Our Doctors</h2>
+                       <h2>Gặp Gỡ Các Nha Sĩ Của Chúng Tôi</h2>
                     </div>
                     <div class="breadcrumb-menu float-right">
                         <ul class="clearfix">
-                            <li><a href="index-2.html">Home</a></li>
+                            <li><a href="index-2.html">Trang chủ</a></li>
                             <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                            <li class="active">Doctors</li>
+                            <li class="active">Nha sĩ</li>
                         </ul>    
                     </div>
                 </div>
@@ -34,8 +34,8 @@
                     <div class="single-sidebar">
                         <div class="doctor-tab-box tabs-box">
                             <ul class="tab-btns tab-buttons clearfix">
-                                <li data-tab="#doctor" class="tab-btn left"><span>Doctor Name</span></li>
-                                <li data-tab="#specialization" class="tab-btn active-btn right"><span>Specialization</span></li>
+                                <li data-tab="#doctor" class="tab-btn left"><span>Tên Nha Sĩ</span></li>
+                                <li data-tab="#specialization" class="tab-btn active-btn right"><span>Chuyên Môn</span></li>
                             </ul>
                             <div class="tabs-content">
                                 <div class="tab" id="doctor">
@@ -44,11 +44,11 @@
                                             <div class="col-xl-12 col-lg-12">
                                                 <div class="input-box">
                                                     <select class="selectmenu">
-                                                        <option selected="selected">Dr. Daryl Cornelius</option>
-                                                        <option>Evelynne Mirando</option>
-                                                        <option>Dr. Robert B. Moreau</option>
-                                                        <option>Dr. Greg House</option>
-                                                        <option>Dr. Sarah Johnson</option>
+                                                        <option selected="selected">Nha sĩ 1</option>
+                                                        <option>Nha sĩ 2</option>
+                                                        <option>Nha sĩ 3</option>
+                                                        <option>Nha sĩ 4</option>
+                                                        <option>Nha sĩ 5</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -56,7 +56,7 @@
                                         <div class="row">
                                             <div class="col-xl-12">
                                                 <div class="button-box">
-                                                    <button class="btn-one" type="submit">Find a Doctor</button>    
+                                                    <button class="btn-one" type="submit">Tìm</button>    
                                                 </div> 
                                             </div>
                                         </div>    
@@ -68,13 +68,12 @@
                                             <div class="col-xl-12 col-lg-12">
                                                 <div class="input-box">
                                                     <select class="selectmenu">
-                                                        <option selected="selected">Cosmetic Surgeon</option>
-                                                        <option>Dental Implants</option>
-                                                        <option>Cosmetic Dentistry</option>
-                                                        <option>Laser Dentistry</option>
-                                                        <option>Orthodontics</option>
-                                                        <option>Endodontics</option>
-                                                        <option>Periodontics</option>
+                                                        <option selected="selected">Chuyên môn 1</option>
+                                                        <option>Chuyên môn 2</option>
+                                                        <option>Chuyên môn 3</option>
+                                                        <option>Chuyên môn 4</option>
+                                                        <option>Chuyên môn 5</option>
+                                                        
                                                     </select>
                                                 </div>
                                             </div>

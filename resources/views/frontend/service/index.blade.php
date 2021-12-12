@@ -8,13 +8,13 @@
             <div class="col-xl-12">
                 <div class="inner-content clearfix">
                     <div class="title float-left">
-                        <h2>Specialities</h2>
+                        <h2>Dịch Vụ</h2>
                     </div>
                     <div class="breadcrumb-menu float-right">
                         <ul class="clearfix">
-                            <li><a href="index-2.html">Home</a></li>
+                            <li><a href="index-2.html">Trang chủ</a></li>
                             <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                            <li class="active">Specialities</li>
+                            <li class="active">Dịch vụ</li>
                         </ul>
                     </div>
                 </div>
@@ -28,9 +28,9 @@
 <section class="services-style1-area spec-page">
     <div class="container">
         <div class="sec-title max-width text-center">
-            <h3>Specialities</h3>
-            <h1>Dental Care Services</h1>
-            <p>Your teeth play an important part in your daily life. It not only helps you to chew and eat your food, but frames your face. Any missing tooth can have a major impact on your quality of life. </p>
+            <h3>Dịch Vụ</h3>
+            <h1>Dịch vụ chăm sóc răng miệng</h1>
+            <p>Dịch vụ tại H-Smile cung cấp đầy đủ các loại hình dịch vụ nha khoa theo tiêu chuẩn quốc tế.</p>
         </div>
         <div class="row">
             <!--Start single solution style1-->
@@ -220,7 +220,7 @@
                         <div class="icon-holder">
                             <span class="icon-doctor"></span>
                         </div>
-                        <h3>Caring & Higly Qulified Doctors</h3>
+                        <h3>Bác sĩ chăm sóc và được kiểm định cao</h3>
                     </div>
                     <!--End single choose box-->
                     <!--Start single choose box-->
@@ -231,7 +231,7 @@
                         <div class="icon-holder">
                             <span class="icon-dentist-2"></span>
                         </div>
-                        <h3>Use Best Equipments in Our Clinic</h3>
+                        <h3>Sử dụng các thiết bị tốt nhất trong phòng khám của chúng tôi</h3>
                     </div>
                     <!--End single choose box-->
                     <!--Start single choose box-->
@@ -242,7 +242,7 @@
                         <div class="icon-holder">
                             <span class="icon-ui"></span>
                         </div>
-                        <h3>Online Appointment Facility</h3>
+                        <h3>Đặt lịch hẹn trực tuyến</h3>
                     </div>
                     <!--End single choose box-->
 
@@ -265,7 +265,7 @@
                         <div class="icon-holder">
                             <span class="icon-doctor"></span>
                         </div>
-                        <h3>Caring & Higly Qulified Doctors</h3>
+                        <h3>Bác sĩ chăm sóc và được kiểm định cao</h3>
                     </div>
                     <!--End single choose box-->
                     <!--Start single choose box-->
@@ -276,7 +276,7 @@
                         <div class="icon-holder">
                             <span class="icon-dentist-2"></span>
                         </div>
-                        <h3>Use Best Equipments in Our Clinic</h3>
+                        <h3>Sử dụng các thiết bị tốt nhất trong phòng khám của chúng tôi</h3>
                     </div>
                     <!--End single choose box-->
                     <!--Start single choose box-->
@@ -287,7 +287,7 @@
                         <div class="icon-holder">
                             <span class="icon-ui"></span>
                         </div>
-                        <h3>Online Appointment Facility</h3>
+                        <h3>Đặt lịch hẹn trực tuyến</h3>
                     </div>
                     <!--End single choose box-->
                 </div>
@@ -296,7 +296,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="choose-bottom-text">
-                    <p>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some but who has any right to find fault with a man who chooses.</p>
+                    <p>H-Smile thành công từ những nụ cười</p>
                 </div>
             </div>
         </div>
@@ -310,10 +310,10 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="sec-title max-width text-center">
-                    <h3>Testimonials</h3>
-                    <h1>What Our Customers Say?</h1>
-                    <p>Your teeth play an important part in your daily life. It not only helps you to chew and eat your food, but frames your face. Any missing tooth can have a major impact on your quality of life. </p>
-                    <a class="btn-one" href="#">More Reviews</a>
+                    <h3>Đánh Giá</h3>
+                    <h1>Khách hàng nói gì về H-Smile</h1>
+                    <p>Tổng hợp nhận xét của khách hàng với nha khoa H-Smile </p>
+                    <a class="btn-one" href="#">Xem thêm</a>
                 </div>
             </div>
         </div>
