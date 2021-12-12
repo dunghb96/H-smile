@@ -10,7 +10,7 @@ class BlogCategoryController extends BaseController
     public function index()
     {
         $slides = BlogCategory::orderBy('created_at', 'DESC')->paginate();
-        return view('backend.blog-categoty.index', compact('slides'));
+        return view('backend.blog-category.index', compact('slides'));
     }
 
     public function json()
@@ -22,7 +22,7 @@ class BlogCategoryController extends BaseController
     public function add(Request $request)
     {
         $model = new BlogCategory();
-        $result = $model->saveBlogCategory($model, $request);
+        $result = $model->saveBlogCate($model, $request);
         if($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
@@ -44,7 +44,7 @@ class BlogCategoryController extends BaseController
     {
         $id = $request->id;
         $model = BlogCategory::find($id);
-        $result = $model->saveSlide($model, $request);
+        $result = $model->saveBlogCate($model, $request);
         if($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';

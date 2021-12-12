@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Blog;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 
 class BlogController extends BaseController
 {
     public function index()
     {
-        $slides = Blog::orderBy('created_at', 'DESC')->paginate();
-        return view('backend.blog.index', compact('slides'));
+        $blogcates = BlogCategory::where('status','1')->get();
+        return view('backend.blog.index', compact('blogcates'));
     }
 
     public function json()

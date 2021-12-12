@@ -44,19 +44,19 @@
                     <span class="menu-title text-truncate" data-i18n="Chat">Slide</span>
                 </a>
             </li>
-            <li class="nav-item {{ request()->is(['admin/blog','admin.blog_category']) ? 'active' : '' }}">
+            <li class="nav-item {{ request()->is(['admin/blog','admin/blog-category']) ? 'has-sub sidebar-group-active open' : '' }}">
                 <a class="d-flex align-items-center" href="#">
                     <i data-feather="file-text"></i>
                     <span class="menu-title text-truncate" data-i18n="Invoice">Blog</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
+                    <li class="{{ request()->is('admin/blog-category') ? 'active' : '' }}">
                         <a class="d-flex align-items-center" href="{{ route('admin.blog_category') }}">
                             <i data-feather="circle"></i>
                             <span class="menu-item text-truncate" data-i18n="List">Danh mục</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ request()->is('admin/blog') ? 'active' : '' }}">
                         <a class="d-flex align-items-center" href="{{ route('admin.blog') }}">
                             <i data-feather="circle"></i>
                             <span class="menu-item text-truncate" data-i18n="Preview">Bài viết</span>
