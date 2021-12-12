@@ -30,7 +30,7 @@ $(function () {
                     targets: 1,
                     render: function (data, type, full, meta) {
                         var src = full['image'];
-                        return '<img src="' + src + '" >';
+                        return '<img src="' + src + '" width="200px" >';
                     },
                 },
                 {
@@ -103,22 +103,25 @@ $(function () {
 function loadadd() {
     $("#addnew").modal('show');
     $(".modal-title").html('Thêm slide mới');
+    $('#image').val('');
     $('#title').val('');
-    $('#description').val('');
+    $('#description').html('');
     url = '/admin/slide/add';
 }
 
 function loaddata(id) {
-    $("#addnew").modal('show');
+    $("#editinfo").modal('show');
     $(".modal-title").html('Cập nhật slide');
     $.ajax({
         type: "POST",
         dataType: "json",
         data: { id: id },
-        url: "/admin/service/loaddata",
+        url: "/admin/slide/loaddata",
         success: function (data) {
-            $('#title').val(data.title);
-            $('#description').val(data.description);
+            $('#iid').val(id);
+            $('#etitle').val(data.title);
+            tinyMCE.get('edescription').setContent(data.description);
+            
             url = '/admin/slide/edit';
             iid = id;
         },
@@ -131,22 +134,21 @@ function loaddata(id) {
 function save() {
     var info = {};
     var isValid = $('#frm-add').valid();
-    if (isValid) {
-        if (iid != 0) {
-            info.id = iid;
-        }
-        info.title = $("#title").val();
-        info.description = $("#description").val();
-        info.image = $("#image").val();
+    tinyMCE.triggerSave();
+    
+    if (iid != 0) {
+        var info = new FormData($("#frm-edit")[0]);
         $.ajax({
             type: "POST",
             dataType: "json",
             data: info,
             url: url,
+            contentType: false,
+            processData: false,
             success: function (data) {
                 if (data.success) {
                     notyfi_success(data.msg);
-                    $('#addnew').modal('hide');
+                    $('#editinfo').modal('hide');
                     $("#tableBasic").DataTable().ajax.reload(null, false);
                 }
                 else
@@ -156,7 +158,32 @@ function save() {
                 notify_error('Cập nhật không thành công');
             }
         });
+    } else {
+        if (isValid) {
+            var info = new FormData($("#frm-add")[0]);
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: info,
+                url: url,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    if (data.success) {
+                        notyfi_success(data.msg);
+                        $('#addnew').modal('hide');
+                        $("#tableBasic").DataTable().ajax.reload(null, false);
+                    }
+                    else
+                        notify_error(data.msg);
+                },
+                error: function () {
+                    notify_error('Cập nhật không thành công');
+                }
+            });
+        }
     }
+
 
 }
 

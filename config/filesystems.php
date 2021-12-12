@@ -37,8 +37,8 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => public_path('upload'),
-            'url' => '/upload',
+            'root' => public_path('uploads'),
+            'url' => '/uploads',
         ],
 
         's3' => [

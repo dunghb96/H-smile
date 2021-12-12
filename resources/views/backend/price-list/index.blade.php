@@ -43,7 +43,7 @@
                                 </table>
                             </div>
 
-                            <div class="modal fade text-left" id="ngansach" tabindex="-1" aria-labelledby="myModalLabel18" aria-hidden="true" role="dialog">
+                            <div class="modal fade text-left" id="addnew" tabindex="-1" aria-labelledby="myModalLabel18" aria-hidden="true" role="dialog">
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
