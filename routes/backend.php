@@ -100,6 +100,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     Route::group(['prefix' => 'employee'], function () {
         Route::get('/', [EmployeeController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.employee');
         Route::get('/json', [EmployeeController::class, 'json']);
+        Route::post('/add', [EmployeeController::class, 'add']);
+        Route::post('/loaddata', [EmployeeController::class, 'loaddata']);
+        Route::post('/edit', [EmployeeController::class, 'edit']);
+        Route::post('/del', [EmployeeController::class, 'del']);
 
     });
 

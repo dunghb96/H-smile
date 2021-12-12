@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Employee;
 use App\Models\Role;
+use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmployeeController extends BaseController
@@ -15,8 +17,9 @@ class EmployeeController extends BaseController
 
     public function index()
     {
-        $roles  = Role::orderBy('name')->get();
-        return view('backend.employee.index',compact('roles'));
+        $services = Service::where('status',1)->get();
+        $roles = Role::orderBy('name')->get();
+        return view('backend.employee.index',compact('roles','services'));
     }
 
     public function json()
@@ -28,8 +31,17 @@ class EmployeeController extends BaseController
     public function add(Request $request) 
     {
         $model = new Employee();
-        $model->saveemployee($model,$request);
-        if($model->save()){
+        $employee = $model->saveEmployee($model,$request);
+        $user = new User();
+        $data = [
+            'employee' => $employee->id,
+            'name' => $request->username,
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => $request->role
+        ];
+        $result = $model->saveUser($user, $data);
+        if($result){
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
         } else {
@@ -39,9 +51,13 @@ class EmployeeController extends BaseController
         echo json_encode($jsonObj);
     }
 
-    public function loaddata($id)
+    public function loaddata(Request $request)
     {
+        $id = $request->id;
         $employee = Employee::find($id);
+        $user = User::where('employee', $id)->get();
+        $employee['username'] = $user[0]['name'];
+        $employee['rolesOfUser'] = User::findOrFail($user[0]['id'])->roles->pluck('id');
         echo json_encode($employee);
     }
 
@@ -65,7 +81,11 @@ class EmployeeController extends BaseController
         $id = $request->input('id');
         $model = Employee::find($id);
         $model->status = 0;
-        if($model->save()){
+        $model->save();
+        $user = User::where('employee', $id)->get();
+        $user = User::find($user[0]['id']);
+        $user->status = 0;
+        if($user->save()){
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
         } else {

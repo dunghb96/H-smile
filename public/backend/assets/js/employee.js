@@ -115,7 +115,7 @@ $(function () {
                 var isValid = $(this).parent().siblings('form').valid();
                 if (isValid) {
                     // alert('Submitted..!!');
-                    saveadd();
+                    save();
                 }
             });
     }
@@ -314,18 +314,39 @@ function loadadd() {
     iid = 0;
 }
 
+function changeType() {
+    var opt = $("#type").val();
+    if (opt == 1) {
+        $('.service_input').removeClass('d-none');
+    } else {
+        $('.service_input').addClass('d-none');
+    }
+
+}
+
 function loaddata(id) {
     $("#addnew").modal('show');
-    $(".modal-title").html('Cập nhật dịch vụ');
+    $(".modal-title").html('Cập nhật nhân sự');
     $.ajax({
-        type: "GET",
+        type: "POST",
         dataType: "json",
-        url: "/admin/employee/loaddata/" + id,
+        data: { id: id },
+        url: "/admin/employee/loaddata",
         success: function (data) {
             $('#name').val(data.name);
+            $('#phone_number').val(data.phone_number);
+            $('#email').val(data.email);
+            $('#position').val(data.position);
+            $('#majors').val(data.majors);
+            $('#type').val(data.type).change();
             $('#short_description').val(data.short_description);
-            $('#content').val(data.content);
-            $('#parent_id').val(data.parent_id).change();
+            if (data.services) {
+                services = data.services.split(',');
+                $('#service').val(services).change();
+            }
+            $('#username').val(data.username);
+            $('#password').val('');
+            $('#role').val(data.rolesOfUser).change();
             url = '/admin/employee/edit';
             iid = id;
         },
@@ -335,33 +356,81 @@ function loaddata(id) {
     });
 }
 
-function saveadd() {
+function save() {
     var info = {};
-    info.name = $("#name").val();
-    info.position = $("#position").val();
-    info.email = $("#email").val();
-    info.phone_number = $("#phone_number").val();
-    info.username = $("#username").val();
-    info.password = $("#password").val();
-    info.role = $("#role").val();
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        data: info,
-        url: url,
-        success: function (data) {
-            if (data.success) {
-                notyfi_success(data.msg);
-                $('#addnew').modal('hide');
-                $("#tableBasic").DataTable().ajax.reload(null, false);
+    if (iid != 0) {
+        info.id = iid;
+        info.name = $("#name").val();
+        info.type = $("#type").val();
+        info.position = $("#position").val();
+        info.majors = $("#majors").val();
+        info.email = $("#email").val();
+        info.phone_number = $("#phone_number").val();
+        info.short_description = $("#short_description").val();
+        info.username = $("#username").val();
+        info.password = $("#epassword").val();
+        info.role = $("#role").val();
+        var service = $("#service").val();
+        let services = '';
+        service.forEach(function (item) {
+            services += item + ',';
+        });
+        info.services = services.slice(0, -1);
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: info,
+            url: url,
+            success: function (data) {
+                if (data.success) {
+                    notyfi_success(data.msg);
+                    $('#addnew').modal('hide');
+                    $("#tableBasic").DataTable().ajax.reload(null, false);
+                } else
+                    notify_error(data.msg);
+            },
+            error: function () {
+                notify_error('Cập nhật không thành công');
             }
-            else
-                notify_error(data.msg);
-        },
-        error: function () {
-            notify_error('Cập nhật không thành công');
+        });
+    } else {
+        if (isValid) {
+            info.name = $("#name").val();
+            info.type = $("#type").val();
+            info.position = $("#position").val();
+            info.majors = $("#majors").val();
+            info.email = $("#email").val();
+            info.phone_number = $("#phone_number").val();
+            info.short_description = $("#short_description").val();
+            info.username = $("#username").val();
+            info.password = $("#password").val();
+            info.role = $("#role").val();
+            var service = $("#service").val();
+            let services = '';
+            service.forEach(function (item) {
+                services += item + ',';
+            });
+            info.services = services.slice(0, -1);
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: info,
+                url: url,
+                success: function (data) {
+                    if (data.success) {
+                        notyfi_success(data.msg);
+                        $('#addnew').modal('hide');
+                        $("#tableBasic").DataTable().ajax.reload(null, false);
+                    } else
+                        notify_error(data.msg);
+                },
+                error: function () {
+                    notify_error('Cập nhật không thành công');
+                }
+            });
         }
-    });
+    }
+    
 }
 
 function del(id) {

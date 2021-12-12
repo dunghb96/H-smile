@@ -22,6 +22,7 @@ class CreateEmployeesTable extends Migration
             $table->string('position',256)->nullable();
             $table->string('short_description',256);
             $table->integer('type');
+            $table->string('services')->nullable();
             $table->integer('status');
             $table->timestamps();
         });
