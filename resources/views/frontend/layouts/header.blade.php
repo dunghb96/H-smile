@@ -46,7 +46,7 @@
                 <div class="inner-content clearfix">
                     <div class="header-style2-logo float-left">
                         <a href="{{ route('hsmile.home') }}">
-                            <img src="/frontend/images/logo/logo1.png" alt="Awesome Logo" style="height: 60px;">
+                            <img src="/frontend/images/resources/logo-2.png" alt="Awesome Logo" style="height: 60px;">
                         </a>
                     </div>
                     <div class="header-middle clearfix float-left">

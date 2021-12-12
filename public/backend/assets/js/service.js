@@ -59,23 +59,7 @@ $(function () {
                 ">",
             displayLength: 10,
             lengthMenu: [10, 20, 30, 50, 70, 100],
-            // drawCallback: function (settings) {
-            //     var api = this.api();
-            //     var rows = api.rows({page: 'current'}).nodes();
-            //     var last = null;
-            //     api
-            //         .column(2, {page: 'current'})
-            //         .data()
-            //         .each(function (group, i) {
-            //             if (last !== group) {
-            //                 $(rows)
-            //                     .eq(i)
-            //                     .before('<tr class="group"><td colspan="8" style="font-weight: bold">' + group + '</td></tr>');
-            //
-            //                 last = group;
-            //             }
-            //         });
-            // },
+
             language: {
                 sLengthMenu: "Show _MENU_",
                 search: "Search",

@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Backend\SlideController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\PriceListController;
+use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\SettingController;
 
 /*
@@ -106,6 +107,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::get('/', [DoctorController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.doctor');
         Route::get('/json', [DoctorController::class, 'json']);
 
+    });
+    Route::group(['prefix' => 'partner'], function () {
+        Route::get('/', [PartnerController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.partner');
+        Route::get('/json', [PartnerController::class, 'json']);
+        Route::post('/add', [PartnerController::class, 'add'])->name('admin.partner.add');
+        Route::post('/loaddata', [PartnerController::class, 'loaddata']);
+        Route::post('/edit', [PartnerController::class, 'edit']);
+        Route::post('/del', [PartnerController::class, 'del']);
     });
 
 

@@ -45,7 +45,7 @@ class ServiceController extends BaseController
         $jsonObj = Service::find($id);
         echo json_encode($jsonObj);
     }
-    
+
     public function edit(Request $request)
     {
         $id = $request->id;
