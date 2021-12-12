@@ -30,6 +30,7 @@ class Employee extends Model
 
     public function saveUser($model, $request)
     {
+        $model->employee = $request['employee'];
         $model->name = $request['name'];
         $model->email = $request['email'];
         $model->password = bcrypt($request['password']);

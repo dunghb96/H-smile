@@ -145,7 +145,7 @@
                                                             </div>
                                                         </div>
                                                         <div id="tab2" class="content">
-                                                            <form>
+                                                            <form id="frm">
                                                                 <div class="row">
                                                                     <div class="form-group col-md-6">
                                                                         <label class="form-label" for="username">Tên đăng nhập</label>

@@ -44,10 +44,29 @@
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
                                     <div class="title">
+                                        <h5>Dịch vụ</h5>
+                                    </div>
+                                    <div class="input-box">
+                                        <select class="selectmenu select2" name="service" id="service" onchange="changeSV()">
+                                            <option value="" selected="selected">Chọn dịch vụ</option>
+                                            @foreach($services as $service)
+                                            <option value="{{ $service->id }}">
+                                                {{ $service->name }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="single-box">
+                                    <div class="title">
                                         <h5>Bác sĩ</h5>
                                     </div>
                                     <div class="input-box">
-                                        <select class="selectmenu select2" name="doctor">
+                                        <select class="selectmenu select2" name="doctor" id="doctor">
                                             <option value="" selected="selected">Chọn bác sĩ</option>
                                             @foreach($doctors as $doctor)
                                             <option value="{{ $doctor->id }}">

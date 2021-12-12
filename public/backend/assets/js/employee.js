@@ -74,6 +74,9 @@ $(function () {
                     type: {
                         required: true
                     },
+                    short_description: {
+                        required: true
+                    },
                     username: {
                         required: true
                     },
@@ -317,9 +320,9 @@ function loadadd() {
 function changeType() {
     var opt = $("#type").val();
     if (opt == 1) {
-        $('.service_input').removeClass('d-none');
+        $('#service_input').removeClass('d-none');
     } else {
-        $('.service_input').addClass('d-none');
+        $('#service_input').addClass('d-none');
     }
 
 }
@@ -358,6 +361,7 @@ function loaddata(id) {
 
 function save() {
     var info = {};
+    var isValid = $('#frm').valid();
     if (iid != 0) {
         info.id = iid;
         info.name = $("#name").val();

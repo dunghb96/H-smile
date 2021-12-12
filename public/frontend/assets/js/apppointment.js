@@ -1,6 +1,8 @@
 $(function () {
 
     'use strict';
+    // $('#doctor').attr('disabled',true);
+    $('#doctor').val('').attr("disabled", true);
 
     var time = $('#time li');
     var timeat = $('#time .active').text();
@@ -16,6 +18,13 @@ $(function () {
 
 })
 
+// function changeSV() {
+//     var opt = $("#phong_ban").val();
+//     return_combobox_multi('#vi_tri', baseApi + '/vitri/combo?phongban=' + opt, 'Lựa chọn vị trí');
+//     $('#vi_tri').val('').attr("disabled", false);
+
+// }
+
 function loaddata() {
-    
+
 }

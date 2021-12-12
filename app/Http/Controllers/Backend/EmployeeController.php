@@ -31,7 +31,7 @@ class EmployeeController extends BaseController
     public function add(Request $request) 
     {
         $model = new Employee();
-        $employee = $model->saveEmployee($model,$request);
+        $employee = $model->saveEmployee($model, $request);
         $user = new User();
         $data = [
             'employee' => $employee->id,
