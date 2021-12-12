@@ -20,9 +20,11 @@ class CreateServicesTable extends Migration
             $table->integer('parent_id');
             $table->string('name', 256);
             $table->string('slug', 256);
-            $table->integer('price');
+            $table->integer('price')->nullable();
+            $table->string('icon')->nullable();
             $table->string('image')->nullable();
-            $table->string('description')->nullable();
+            $table->string('content')->nullable();
+            $table->string('short_description')->nullable();
             $table->integer('status');
             $table->timestamps();
         });

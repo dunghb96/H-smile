@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Models\service;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
-class ServiceController extends Controller
+class ServiceController extends BaseController
 {
     public function __construct()
     {

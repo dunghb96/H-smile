@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Backend\SlideController;
 use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\PriceListController;
 use App\Http\Controllers\Backend\SettingController;
 
 /*
@@ -45,7 +46,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     Route::group(['prefix' => 'setting'], function () {
         Route::get('/', [SettingController::class, 'index'])->name('admin.setting');
         Route::post('/save', [SettingController::class, 'del']);
-
     });
 
     Route::group(['prefix' => 'slide'], function () {
@@ -84,6 +84,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/del', [ServiceController::class, 'del']);
 
     });
+
+    Route::group(['prefix' => 'price-list'], function () {
+        Route::get('/', [PriceListController::class, 'index'])->name('admin.price_list');
+        Route::get('/json', [PriceListController::class, 'json']);
+        Route::post('/add', [PriceListController::class, 'add']);
+        Route::post('/loaddata', [PriceListController::class, 'loaddata']);
+        Route::post('/edit', [PriceListController::class, 'edit']);
+        Route::post('/del', [PriceListController::class, 'del']);
+
+    });
+
 
     Route::group(['prefix' => 'employee'], function () {
         Route::get('/', [EmployeeController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.employee');
