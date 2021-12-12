@@ -9,87 +9,147 @@ use Illuminate\Support\Facades\Redis;
 
 class ServiceController extends Controller
 {
-    private $htmlSlelect;
     public function __construct()
     {
-        $this->htmlSlelect = '';
+        parent:: __construct();
     }
 
     public function index()
     {
-        $service = service::paginate(10);
-        return view('backend.service.index', compact('service'));
-    }
-    public function create()
-    {
-        $service = service::all();
-        $htmlOption = $this->categoryRecusive(0);
-        return view('backend.service.add', compact('service', 'htmlOption'));
+        $services = Service::where('status','1')->get();
+        return view('backend.service.index', compact('services'));
     }
 
-
-    public function categoryRecusive($id, $text = '')
+    public function json()
     {
-        $service = Service::where('parent_id', 0)->get();
-        foreach ($service as $value) {
-            if ($value['parent_id'] == $id) {
-                $this->htmlSlelect .= "<option value='" . $value['id'] . "'>" . $text . $value['name'] . "</option>";
-                $this->categoryRecusive($value['id'], $text . '--');
-            }
+        $jsonObj['data'] = Service::where('status','1')->get();
+        echo json_encode($jsonObj);
+    }
+
+    public function add(Request $request)
+    {
+        $model = new Service();
+        $result = $model->saveService($model, $request);
+        if($result) {
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        } else {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
         }
-
-        return $this->htmlSlelect;
+        echo json_encode($jsonObj);
     }
 
-    public function store(Request $request)
+    public function loaddata(Request $request)
     {
-
-
-        $model = new service();
-        $model->fill($request->all());
-        if ($request->hasFile('image')) {
-            $newFileName = uniqid() . '-' . $request->image->getClientOriginalName();
-            $path = $request->image->storeAs('public/uploads/image', $newFileName);
-            $model->image = str_replace('public/', '', $path);
-        }
-        $model->save();
-        return redirect(route('service.index'))->with('status', 'Thêm mới thành công');
+        $id = $request->id;
+        $jsonObj = Service::find($id);
+        echo json_encode($jsonObj);
     }
-
-
-
-
-    public function edit($id)
+    
+    public function edit(Request $request)
     {
-        $service = service::find($id);
-        $htmlOption = $this->categoryRecusive(0);
-        return view('backend.service.edit', compact('service', 'htmlOption'));
-    }
-    public function update($id, Request $request)
-    {
-
-        // dd($request->all());
-
+        $id = $request->id;
         $model = service::find($id);
-        $model->fill($request->all());
-        if ($request->hasFile('image')) {
-            $newFileName = uniqid() . '-' . $request->image->getClientOriginalName();
-            $path = $request->image->storeAs('public/uploads/image', $newFileName);
-            $model->image = str_replace('public/', '', $path);
+        $result = $model->saveService($model, $request);
+        if($result) {
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        } else {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
         }
-        $model->save();
-        return redirect(route('service.index'))->with('status', 'sửa thành công mới thành công');
+        echo json_encode($jsonObj);
     }
 
-
-
-
-    public function Delete($id, Request $request)
+    public function del(Request $request)
     {
-        // Truyen::destroy($id);
-        $service = service::find($id);
-        unlink("storage/" . $service->image);
-        service::where("id", $service->id)->delete();
-        return redirect()->back()->with('status', 'xoá thành công');
+        $id = $request->id;
+        $model = service::find($id);
+        $model->status = 0;
+        $result = $model->save();
+        if($result) {
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        } else {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+        }
+        echo json_encode($jsonObj);
     }
+
+
+
+    // public function create()
+    // {
+    //     $service = service::all();
+    //     $htmlOption = $this->categoryRecusive(0);
+    //     return view('backend.service.add', compact('service', 'htmlOption'));
+    // }
+
+
+    // public function categoryRecusive($id, $text = '')
+    // {
+    //     $service = Service::where('parent_id', 0)->get();
+    //     foreach ($service as $value) {
+    //         if ($value['parent_id'] == $id) {
+    //             $this->htmlSlelect .= "<option value='" . $value['id'] . "'>" . $text . $value['name'] . "</option>";
+    //             $this->categoryRecusive($value['id'], $text . '--');
+    //         }
+    //     }
+
+    //     return $this->htmlSlelect;
+    // }
+
+    // public function store(Request $request)
+    // {
+
+
+    //     $model = new service();
+    //     $model->fill($request->all());
+    //     if ($request->hasFile('image')) {
+    //         $newFileName = uniqid() . '-' . $request->image->getClientOriginalName();
+    //         $path = $request->image->storeAs('public/uploads/image', $newFileName);
+    //         $model->image = str_replace('public/', '', $path);
+    //     }
+    //     $model->save();
+    //     return redirect(route('service.index'))->with('status', 'Thêm mới thành công');
+    // }
+
+
+
+
+    // public function edit($id)
+    // {
+    //     $service = service::find($id);
+    //     $htmlOption = $this->categoryRecusive(0);
+    //     return view('backend.service.edit', compact('service', 'htmlOption'));
+    // }
+    // public function update($id, Request $request)
+    // {
+
+    //     // dd($request->all());
+
+    //     $model = service::find($id);
+    //     $model->fill($request->all());
+    //     if ($request->hasFile('image')) {
+    //         $newFileName = uniqid() . '-' . $request->image->getClientOriginalName();
+    //         $path = $request->image->storeAs('public/uploads/image', $newFileName);
+    //         $model->image = str_replace('public/', '', $path);
+    //     }
+    //     $model->save();
+    //     return redirect(route('service.index'))->with('status', 'sửa thành công mới thành công');
+    // }
+
+
+
+
+    // public function Delete($id, Request $request)
+    // {
+    //     // Truyen::destroy($id);
+    //     $service = service::find($id);
+    //     unlink("storage/" . $service->image);
+    //     service::where("id", $service->id)->delete();
+    //     return redirect()->back()->with('status', 'xoá thành công');
+    // }
 }

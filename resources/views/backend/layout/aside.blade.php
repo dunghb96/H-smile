@@ -26,28 +26,43 @@
                 <a class="d-flex align-items-center" href="{{ route('admin.dashboard') }}">
                     <i data-feather="home"></i>
                     <span class="menu-title text-truncate" data-i18n="Dashboards">Dashboard</span>
+                </a>
             </li>
             <li class=" navigation-header">
                 <span data-i18n="Apps &amp; Pages">Truy cập nhanh</span>
                 <i data-feather="more-horizontal"></i>
             </li>
-            <li class=" nav-item">
-                <a class="d-flex align-items-center" href="#">
+            <li class="nav-item {{ request()->is('admin/setting') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.setting') }}">
                     <i data-feather="message-square"></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Thông tin website</span>
                 </a>
             </li>
-            <li class=" nav-item">
-                <a class="d-flex align-items-center" href="#">
+            <li class="nav-item {{ request()->is('admin/slide') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.slide') }}">
                     <i data-feather="message-square"></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Slide</span>
                 </a>
             </li>
-            <li class=" nav-item">
+            <li class="nav-item {{ request()->is(['admin/blog','admin.blog_category']) ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="#">
-                    <i data-feather="message-square"></i>
-                    <span class="menu-title text-truncate" data-i18n="Chat">Bài viết</span>
+                    <i data-feather="file-text"></i>
+                    <span class="menu-title text-truncate" data-i18n="Invoice">Blog</span>
                 </a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="d-flex align-items-center" href="{{ route('admin.blog_category') }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="List">Danh mục</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="d-flex align-items-center" href="{{ route('admin.blog') }}">
+                            <i data-feather="circle"></i>
+                            <span class="menu-item text-truncate" data-i18n="Preview">Bài viết</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class=" nav-item {{ request()->is('admin/service') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.service') }}">
@@ -101,12 +116,6 @@
                     <span class="menu-title text-truncate" data-i18n="Chat">Bác sĩ</span>
                 </a>
             </li>
-            <!-- <li class=" nav-item">
-                <a class="d-flex align-items-center" href="{{ route('user.list') }}">
-                    <i data-feather="message-square"></i>
-                    <span class="menu-title text-truncate" data-i18n="Chat">Tài khoản</span>
-                </a>
-            </li> -->
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#">
                     <i data-feather="message-square"></i>

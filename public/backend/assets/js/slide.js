@@ -4,12 +4,6 @@
 var url = '';
 var iid = 0;
 $(function () {
-    $('#parent_id').select2({
-        placeholder: "Chọn danh mục",
-        allowClear: true,
-        dropdownParent: $('#parent_id').parent(),
-    })
-    $('#parent_id').val('0').trigger('change');
 
     'use strict';
     var table_table = $('#tableBasic');
@@ -21,17 +15,24 @@ $(function () {
     // --------------------------------------------------------------------
     if (table_table.length) {
         var table = table_table.DataTable({
-            ajax: '/admin/service/json',
+            ajax: '/admin/slide/json',
             // select: {
             //     style: 'single'
             // },
             columns: [
                 { data: 'id' },
-                { data: 'name' },
-                { data: 'short_description' },
+                { data: 'image' },
+                { data: 'title' },
                 { data: '' }
             ],
             columnDefs: [
+                {
+                    targets: 1,
+                    render: function (data, type, full, meta) {
+                        var src = full['image'];
+                        return '<img src="' + src + '" >';
+                    },
+                },
                 {
                     targets: 3,
                     render: function (data, type, full, meta) {
@@ -59,23 +60,6 @@ $(function () {
                 ">",
             displayLength: 10,
             lengthMenu: [10, 20, 30, 50, 70, 100],
-            // drawCallback: function (settings) {
-            //     var api = this.api();
-            //     var rows = api.rows({page: 'current'}).nodes();
-            //     var last = null;
-            //     api
-            //         .column(2, {page: 'current'})
-            //         .data()
-            //         .each(function (group, i) {
-            //             if (last !== group) {
-            //                 $(rows)
-            //                     .eq(i)
-            //                     .before('<tr class="group"><td colspan="8" style="font-weight: bold">' + group + '</td></tr>');
-            //
-            //                 last = group;
-            //             }
-            //         });
-            // },
             language: {
                 sLengthMenu: "Show _MENU_",
                 search: "Search",
@@ -108,10 +92,7 @@ $(function () {
         var $this = $(this);
         $this.validate({
             rules: {
-                name: {
-                    required: true
-                },
-                parent_id: {
+                image: {
                     required: true
                 }
             }
@@ -121,28 +102,24 @@ $(function () {
 
 function loadadd() {
     $("#addnew").modal('show');
-    $(".modal-title").html('Thêm dịch vụ mới');
-    $('#name').val('');
+    $(".modal-title").html('Thêm slide mới');
+    $('#title').val('');
     $('#description').val('');
-    $('#parent_id').val('0').change();
-    url = '/admin/service/add';
-    iid = 0;
+    url = '/admin/slide/add';
 }
 
 function loaddata(id) {
     $("#addnew").modal('show');
-    $(".modal-title").html('Cập nhật dịch vụ');
+    $(".modal-title").html('Cập nhật slide');
     $.ajax({
         type: "POST",
         dataType: "json",
         data: { id: id },
         url: "/admin/service/loaddata",
         success: function (data) {
-            $('#name').val(data.name);
-            $('#short_description').val(data.short_description);
-            $('#content').val(data.content);
-            $('#parent_id').val(data.parent_id).change();
-            url = '/admin/service/edit';
+            $('#title').val(data.title);
+            $('#description').val(data.description);
+            url = '/admin/slide/edit';
             iid = id;
         },
         error: function () {
@@ -158,10 +135,9 @@ function save() {
         if (iid != 0) {
             info.id = iid;
         }
-        info.name = $("#name").val();
-        info.short_description = $("#short_description").val();
-        info.content = $("#content").val();
-        info.parent_id = $("#parent_id").val();
+        info.title = $("#title").val();
+        info.description = $("#description").val();
+        info.image = $("#image").val();
         $.ajax({
             type: "POST",
             dataType: "json",
@@ -199,7 +175,7 @@ function del(id) {
     }).then(function (result) {
         if (result.value) {
             $.ajax({
-                url: "/admin/service/del",
+                url: "/admin/slide/del",
                 type: 'post',
                 dataType: "json",
                 data: { id: id },

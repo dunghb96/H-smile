@@ -13,7 +13,7 @@
 <script src="/backend/app-assets/vendors/js/editors/quill/highlight.min.js"></script>
 <script src="/backend/app-assets/vendors/js/editors/quill/quill.min.js"></script>
 <script src="/backend/app-assets/vendors/js/extensions/dragula.min.js"></script>
-
+<script src="/backend/plugins/tinymce/tinymce.min.js"></script>
 
 <!-- <script src="/backend/app-assets/vendors/js/extensions/jstree.min.js"></script>
 <script src="/backend/app-assets/vendors/js/file-uploaders/dropzone.min.js"></script>
