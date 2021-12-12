@@ -14,7 +14,7 @@
 07. Categories area style
 08. Fact counter area style
 09. Latest Blog area style
-10. Latest blog area style 
+10. Latest blog area style
 11. Testimonial area style
 12. Brand area style
 13. Single service style
@@ -85,7 +85,7 @@
    Base Css
 ===============================================*/
 html,
-body { 
+body {
     height: 100%;
 }
 body {
@@ -115,12 +115,12 @@ h1{
     line-height: 40px;
 }
 h3 {
-    font-size: 20px; 
+    font-size: 20px;
     line-height: 24px;
     display: block;
 }
 h4 {
-    font-size: 16px; 
+    font-size: 16px;
     line-height: 22px;
     display: block;
 }
@@ -260,7 +260,7 @@ li {
     top: 0;
     width: 100%;
     z-index: -1;
-} 
+}
 .parallax-bg-two {
     background-attachment: fixed;
     background-position: center top;
@@ -278,7 +278,7 @@ li {
     top: 0;
     width: 100%;
     z-index: -1;
-} 
+}
 
 .flex-box {
     display: flex;
@@ -327,7 +327,7 @@ li {
     margin: 0 0 0 0px;
     padding: 0;
     width: 50px;
-    border: 1px solid #f3f3f3;    
+    border: 1px solid #f3f3f3;
     transition: all 700ms ease 0s;
 }
 .owl-nav-style-one.owl-theme .owl-nav .owl-next {
@@ -492,20 +492,20 @@ li {
     width: 100%;
     min-width: 320px;
     min-height: 400px;
-    overflow: hidden;  
+    overflow: hidden;
 }
 
 /*________________Preloader_______________ */
-.preloader{ 
-    position:fixed; 
-    left:0px; 
-    top:0px; 
-    width:100%; 
-    height:100%; 
-    z-index:999999999999999999; 
-    background-color:#f4f6f4; 
-    background-position:center center; 
-    background-repeat:no-repeat; 
+.preloader{
+    position:fixed;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    z-index:999999999999999999;
+    background-color:#f4f6f4;
+    background-position:center center;
+    background-repeat:no-repeat;
     background-image:url(../images/icon/preloader.gif);
 }
 
@@ -517,7 +517,7 @@ li {
     100% {margin-top: 0;}
 }
 .mainmenu-area.stricky-fixed {
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -529,7 +529,7 @@ li {
     transition: all .25s ease-in-out;
 }
 .header-style2-area.stricky-fixed {
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -599,16 +599,16 @@ select:focus {
 }
 
 #contact-form input[type="text"].error{
-    border-color: red;    
+    border-color: red;
 }
 #contact-form input[type="email"].error{
-  border-color: red;    
+  border-color: red;
 }
 #contact-form select.error {
   border-color: red;
 }
 #contact-form textarea.error{
-  border-color: red;    
+  border-color: red;
 }
 
 
@@ -658,7 +658,7 @@ select:focus {
     transition: all 500ms ease;
 }
 .post-pagination li a.right:hover{
-    color: #8bc43f;    
+    color: #8bc43f;
 }
 .post-pagination li a.right i {
     font-size: 26px;
@@ -700,7 +700,7 @@ select:focus {
 .post-pagination2 li:last-child a{
     border: none;
 }
-.post-pagination2 li.active a, 
+.post-pagination2 li.active a,
 .post-pagination2 li:hover a {
     background: #32b6a1;
     border-color: #32b6a1;
@@ -732,7 +732,7 @@ select:focus {
     border-color: #eeeeee;
 }
 .post-pagination2 li a.left:hover i{
-    color: #32b6a1;    
+    color: #32b6a1;
 }
 
 .post-pagination2 li a.right {
@@ -748,7 +748,7 @@ select:focus {
     background: none;
 }
 .post-pagination2 li a.right:hover{
-    color: #32b6a1;   
+    color: #32b6a1;
 }
 .post-pagination2 li a.right i {
     position: relative;
@@ -760,7 +760,7 @@ select:focus {
     transition: all 500ms ease;
 }
 .post-pagination2 li a.right:hover i{
-    color: #32b6a1;      
+    color: #32b6a1;
 }
 
 
@@ -775,19 +775,19 @@ select:focus {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.80);
     transition: all 500ms ease;
-    transition-delay: 0.10s;    
+    transition-delay: 0.10s;
     opacity: 0;
     z-index: 2;
 }
 .overlay-style-one .box{
     display: table;
     height: 100%;
-    width: 100%;    
+    width: 100%;
 }
 .overlay-style-one .box .content{
     display: table-cell;
     text-align: center;
-    vertical-align: middle;    
+    vertical-align: middle;
 }
 
 
@@ -808,7 +808,7 @@ select:focus {
     margin-right: 4px;
 }
 .review-box ul li:last-child{
-    margin-right: 0px;    
+    margin-right: 0px;
 }
 .review-box ul li i {
     font-size: 14px;
@@ -841,7 +841,7 @@ select:focus {
     margin-right: 10px;
 }
 .sociallinks-style-two li:last-child{
-    margin-right: 0px;    
+    margin-right: 0px;
 }
 .sociallinks-style-two li a i {
     border: 2px solid #e5e5e5;
@@ -918,7 +918,7 @@ select:focus {
     transition-delay: .1s;
 }
 .top-left ul li a:hover:before{
-    background: #8bc43f;    
+    background: #8bc43f;
 }
 
 .top-right {
@@ -1072,9 +1072,9 @@ select:focus {
     padding-right: 50px;
 }
 .search-box .form-group input[type="search"]:focus{
-    border-color:#000;	
+    border-color:#000;
 }
-.search-box .form-group button, 
+.search-box .form-group button,
 .search-box .form-group input[type="submit"] {
     background: #303443;
     color: #fff;
@@ -1098,7 +1098,7 @@ select:focus {
 
 
 /*==============================================
-    Header Style1 Area Css        
+    Header Style1 Area Css
 ===============================================*/
 .header-style1-area {
     display: block;
@@ -1164,7 +1164,7 @@ select:focus {
     margin: 0;
 }
 .header-contact-info ul li .single-item .text span{
-    color: #8b8b8b;    
+    color: #8b8b8b;
 }
 .header-style1-button {
     position: relative;
@@ -1209,7 +1209,7 @@ select:focus {
 
 
 /*==============================================
-    Header Style2 Area Css        
+    Header Style2 Area Css
 ===============================================*/
 .header-style2-area {
     display: block;
@@ -1258,11 +1258,11 @@ select:focus {
     opacity: 1;
     padding: 43px 0px 43px;
     transition: all 300ms ease;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Readex Pro', sans-serif;
 }
-.main-menu.style1.style2 .navigation > li:hover > a, 
+.main-menu.style1.style2 .navigation > li:hover > a,
 .main-menu.style1.style2 .navigation > li.current > a {
-    color: #8bc43f; 
+    color: #8bc43f;
 }
 .main-menu.style1.style2 .navigation li a:before {
     position: absolute;
@@ -1314,7 +1314,7 @@ select:focus {
     font-size: 16px;
     line-height: 46px;
     text-align: center;
-    font-family: 'Poppins', sans-serif;
+     font-family: 'Josefin Sans', sans-serif;
     transition: all 500ms ease;
 }
 .header-style2-button a span:before {
@@ -1338,7 +1338,7 @@ select:focus {
 
 
 
-/*** 
+/***
 =====================================================
 	Mainmenu Area style
 =====================================================
@@ -1386,9 +1386,9 @@ select:focus {
     transition: all 300ms ease;
     font-family: 'Poppins', sans-serif;
 }
-.main-menu.style1 .navigation > li:hover > a, 
+.main-menu.style1 .navigation > li:hover > a,
 .main-menu.style1 .navigation > li.current > a {
-    color: #303030; 
+    color: #303030;
 }
 .main-menu.style1 .navigation li a:before {
     position: absolute;
@@ -1507,7 +1507,7 @@ select:focus {
     border-bottom: 3px solid #fec144;
     content: "";
     z-index: -1;
-    border-radius: 6px;    
+    border-radius: 6px;
 }
 .main-menu .navigation > li > ul > li:hover > ul{
 	visibility:visible;
@@ -1545,7 +1545,7 @@ select:focus {
     text-transform: capitalize;
     transition: all 500ms ease 0s;
     padding: 18px 30px 15px;
-    font-family: 'Rubik', sans-serif;    
+    font-family: 'Rubik', sans-serif;
 }
 .main-menu .navigation > li > ul > li > ul > li a:before {
     position: absolute;
@@ -1571,7 +1571,7 @@ select:focus {
 }
 .main-menu .navigation > li > ul > li > ul > li:hover a{
     color: #fec144;
-    padding-left: 45px;  
+    padding-left: 45px;
 }
 **/
 
@@ -1587,7 +1587,7 @@ select:focus {
     font-family: 'FontAwesome';
     content: "\f105";
     font-size: 18px;
-    line-height: 30px; 
+    line-height: 30px;
     display: block;
     top: 0;
     bottom: 0;
@@ -1680,7 +1680,7 @@ select:focus {
     background: #22a28e;
     color: #222222;
 }
-.search-box-style1 form.search-form input[type="search"]:focus + button, 
+.search-box-style1 form.search-form input[type="search"]:focus + button,
 .search-box-style1 form.search-form button:hover {
     background: #2cab97;
     color: #fff;
@@ -1746,7 +1746,7 @@ select:focus {
 
 
 
-/*** 
+/***
 ============================================
 	Hidden Sidebar style
 ============================================
@@ -1762,7 +1762,7 @@ select:focus {
 	transition: all 700ms ease;
 }
 .hidden-bar .mCSB_inside > .mCSB_container{
-	margin-right:0px;	
+	margin-right:0px;
 }
 .hidden-bar.right-align {
 	right: -420px;
@@ -1865,7 +1865,7 @@ select:focus {
 .hidden-bar .newsletter-form-box form input[type="email"] {
     position: relative;
     display: block;
-    width: 100%; 
+    width: 100%;
     height: 50px;
     background: #ffffff;
     border: 1px solid #eeeeee;
@@ -1940,7 +1940,7 @@ select:focus {
 }
 .hidden-bar .offer-box a{
     margin-top: 24px;
-    padding: 16px 30px 16px;    
+    padding: 16px 30px 16px;
 }
 
 .hidden-bar .copy-right-text{
@@ -1956,7 +1956,7 @@ select:focus {
 
 
 
-/*** 
+/***
 =====================================================
 	Main Slider style
 =====================================================
@@ -2021,9 +2021,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    About Area Style      
+    About Area Style
 =============================================
 ***/
 .about-area {
@@ -2071,7 +2071,7 @@ select:focus {
 }
 
 .about-text-holder .author-box .text-box{
-    padding-left: 20px;    
+    padding-left: 20px;
 }
 .about-text-holder .author-box .text-box h3 {
     font-size: 18px;
@@ -2098,9 +2098,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Highlights Area Style      
+    Highlights Area Style
 =============================================
 ***/
 .highlights-area{
@@ -2211,7 +2211,7 @@ select:focus {
 }
 .highlights-area .single-middle-box form .mar-ninus10{
     margin-right: -10px;
-    margin-left: -10px;    
+    margin-left: -10px;
 }
 .highlights-area .single-middle-box form .pd10{
     padding-left: 10px;
@@ -2298,8 +2298,8 @@ select:focus {
     background: #f5f5f5 !important;
     border: 1px solid #f9f9f9 !important;
 }
-.ui-state-highlight, 
-.ui-widget-content .ui-state-highlight, 
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight{
     border: 1px solid #333333 !important;
     background: #333333 !important;
@@ -2309,7 +2309,7 @@ select:focus {
 .ui-datepicker .ui-datepicker-prev {
     left: 5px;
 }
-.ui-datepicker .ui-datepicker-prev, 
+.ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
     border-radius: 30%;
     height: 20px;
@@ -2322,7 +2322,7 @@ select:focus {
 .ui-datepicker .ui-datepicker-next {
     right: 5px;
 }
-.ui-datepicker .ui-datepicker-prev:hover, 
+.ui-datepicker .ui-datepicker-prev:hover,
 .ui-datepicker .ui-datepicker-next:hover {
     top: 7px;
     background: #fff;
@@ -2349,9 +2349,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Services Style1 Area Style      
+    Services Style1 Area Style
 =============================================
 ***/
 .services-style1-area {
@@ -2381,11 +2381,11 @@ select:focus {
 .single-solution-style1 .img-holder{
     position: relative;
     display: block;
-    overflow: hidden; 
+    overflow: hidden;
     z-index: 1;
 }
 .single-solution-style1 .img-holder::after {
-    position: absolute;  
+    position: absolute;
     top: 0;
     bottom: 0;
     right: -100%;
@@ -2394,12 +2394,12 @@ select:focus {
     opacity: 1;
     content: "";
     transition: all 700ms ease;
-    transition-delay: 0.2s; 
+    transition-delay: 0.2s;
     z-index: 2;
-    
+
 }
 .single-solution-style1:hover .img-holder::after{
-    right: 0%; 
+    right: 0%;
 }
 .single-solution-style1 .img-holder img {
     width: 100%;
@@ -2415,13 +2415,13 @@ select:focus {
     width: 80px;
     height: 100%;
     transition: all 700ms ease;
-    transition-delay: 0.5s; 
+    transition-delay: 0.5s;
     z-index: 3;
-    background: rgb(136,196,66); 
-    background: -moz-linear-gradient(top, rgba(136,196,66,1) 0%, rgba(51,182,160,1) 100%); 
-    background: -webkit-linear-gradient(top, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%); 
-    background: linear-gradient(to bottom, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%); 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88c442', endColorstr='#33b6a0',GradientType=0 ); 
+    background: rgb(136,196,66);
+    background: -moz-linear-gradient(top, rgba(136,196,66,1) 0%, rgba(51,182,160,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%);
+    background: linear-gradient(to bottom, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88c442', endColorstr='#33b6a0',GradientType=0 );
 }
 .single-solution-style1 .icon-holder .inner-content{
     display: table;
@@ -2439,7 +2439,7 @@ select:focus {
     color: #ffffff;
 }
 .single-solution-style1:hover .icon-holder{
-    left: -100%;    
+    left: -100%;
 }
 
 .single-solution-style1 .text-holder {
@@ -2549,7 +2549,7 @@ select:focus {
 	display: inline-block;
 }
 .services-style1-area .owl-dots .owl-dot span{
-	display:none;	
+	display:none;
 }
 .services-style1-area .owl-dots .owl-dot.active{
     height: 20px;
@@ -2566,9 +2566,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Works Area Style      
+    Works Area Style
 =============================================
 ***/
 .works-area {
@@ -2623,7 +2623,7 @@ select:focus {
     transition: all 500ms ease;
     font-family: 'Rubik', sans-serif;
 }
-.works-tab-box .tab-btns li.active-btn span, 
+.works-tab-box .tab-btns li.active-btn span,
 .works-tab-box .tab-btns li:hover span{
     background: #32b6a1;
     border-color: #32b6a1;
@@ -2642,7 +2642,7 @@ select:focus {
     top: 0px;
     width: 100%;
     height: auto;
-    visibility: hidden; 
+    visibility: hidden;
 }
 .works-tab-box .single-tab-content.active-tab {
     position: relative;
@@ -2659,7 +2659,7 @@ select:focus {
 	-ms-transform:scaleX(0);
 	-o-transform:scaleX(0);
 	-moz-transform:scaleX(0);
-	transform:scaleX(0);	
+	transform:scaleX(0);
 }
 .works-tab-box .single-tab-content.active-tab .single-item{
 	-webkit-transform:scaleX(1);
@@ -2741,7 +2741,7 @@ select:focus {
 	display: inline-block;
 }
 .works-area .owl-dots .owl-dot span{
-	display:none;	
+	display:none;
 }
 .works-area .owl-dots .owl-dot.active{
     height: 20px;
@@ -2758,9 +2758,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Works Area V2 Style      
+    Works Area V2 Style
 =============================================
 ***/
 .works-area-v2{
@@ -2768,7 +2768,7 @@ select:focus {
     display: block;
     background: #ffffff;
     padding-bottom: 100px;
-    z-index: 1;    
+    z-index: 1;
 }
 .works-area-v2:before{
     position: absolute;
@@ -2862,7 +2862,7 @@ select:focus {
 .single-work-slide .text-holder .inner-content ul li span{
     color: #8bc43f;
     display: inline-block;
-    width: 30px;    
+    width: 30px;
 }
 
 
@@ -2916,9 +2916,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Testimonial Area Style      
+    Testimonial Area Style
 =============================================
 ***/
 .testimonial-area{
@@ -2942,7 +2942,7 @@ select:focus {
     width: 250px;
     height: 251px;
     content: "";
-    z-index: -1;    
+    z-index: -1;
 }
 .testimonial-area .sec-title{}
 .testimonial-area .button {
@@ -3068,7 +3068,7 @@ select:focus {
     transition: all 500ms ease;
 }
 .testimonial-area .owl-dots .owl-dot span{
-	display:none;	
+	display:none;
 }
 .testimonial-area .owl-dots .owl-dot.active{
     background: #32b6a1;
@@ -3086,7 +3086,7 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
     Latest blog Area style
 =============================================
@@ -3098,7 +3098,7 @@ select:focus {
     padding-bottom: 25px;
 }
 .latest-blog-area.pd-btm60{
-    padding-bottom: 60px;    
+    padding-bottom: 60px;
 }
 .single-blog-post {
     position: relative;
@@ -3127,7 +3127,7 @@ select:focus {
     transition: .5s ease;
 }
 .single-blog-post .img-holder img {
-    transition: all 0.5s ease-in-out 0.6s;    
+    transition: all 0.5s ease-in-out 0.6s;
     width: 100%;
 }
 .single-blog-post:hover .img-holder img {
@@ -3217,7 +3217,7 @@ select:focus {
     margin-top: 12px;
 }
 .single-blog-post .text-holder .text-box p{
-    margin: 0;    
+    margin: 0;
 }
 .single-blog-post .text-holder .readmore-button{
     position: relative;
@@ -3231,9 +3231,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Newsletter Area Style      
+    Newsletter Area Style
 =============================================
 ***/
 .newsletter-area {
@@ -3259,7 +3259,7 @@ select:focus {
     display: block;
     width: 100%;
 }
-.newsletter-form input[type="text"], 
+.newsletter-form input[type="text"],
 .newsletter-form input[type="email"]{
     background: #ffffff;
     border: 1px solid #eeeeee;
@@ -3273,7 +3273,7 @@ select:focus {
     border-radius: 30px;
     transition: all 500ms ease;
 }
-.newsletter-form input[type="text"]:focus, 
+.newsletter-form input[type="text"]:focus,
 .newsletter-form input[type="email"]:focus{
     border-color: #8bc43f;
 }
@@ -3283,7 +3283,7 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
     Footer Contact Info Area style
 =============================================
@@ -3320,7 +3320,7 @@ select:focus {
 .single-footer-contact-box.right-box{
     position: relative;
     background: #8bc43f;
-    padding: 37px 50px 32px; 
+    padding: 37px 50px 32px;
     padding-right: 20px;
     z-index: 1;
 }
@@ -3348,7 +3348,7 @@ select:focus {
 .single-footer-contact-box.right-box .icon-holder span:before{
     color: #ffffff;
     font-size: 58px;
-    line-height: 58px;    
+    line-height: 58px;
 }
 .single-footer-contact-box .icon-holder,
 .single-footer-contact-box .text-holder{
@@ -3375,7 +3375,7 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
     Footer area style
 =============================================
@@ -3440,7 +3440,7 @@ select:focus {
     margin-top: 23px;
 }
 .single-footer-widget .about-us .button a{
-    padding: 14px 30px 14px; 
+    padding: 14px 30px 14px;
 }
 
 
@@ -3479,7 +3479,7 @@ select:focus {
     transition: all 0.3s ease-in-out 0.1s;
 }
 .single-footer-widget .specialities li a:hover:before{
-    color: #8bc43f;  
+    color: #8bc43f;
 }
 
 
@@ -3518,7 +3518,7 @@ select:focus {
     transition: all 0.3s ease-in-out 0.1s;
 }
 .single-footer-widget .solutions-links li a:hover:before{
-    color: #8bc43f;  
+    color: #8bc43f;
 }
 
 
@@ -3540,14 +3540,14 @@ select:focus {
     margin-bottom: 0;
 }
 .single-footer-widget .opening-hours li span.clr-green{
-    color: #8bc43f;     
+    color: #8bc43f;
 }
 
 
 
-/*** 
+/***
 =============================================
-    Footer Bottom Area Style      
+    Footer Bottom Area Style
 =============================================
 ***/
 .footer-bottom-area {
@@ -3622,9 +3622,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Welcome Area Style      
+    Welcome Area Style
 =============================================
 ***/
 .welcome-area{
@@ -3650,7 +3650,7 @@ select:focus {
 }
 .single-welcome-box .text-holder{
     position: relative;
-    display: block;    
+    display: block;
 }
 .single-welcome-box .text-holder h3 {
     margin: 0 0 19px;
@@ -3670,7 +3670,7 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
     Fact counter Area style
 =============================================
@@ -3694,7 +3694,7 @@ select:focus {
     top: 0;
     left: 0;
     z-index: -1;
-} 
+}
 .single-fact-counter {
     position: relative;
     display: inline-block;
@@ -3719,7 +3719,7 @@ select:focus {
     margin-bottom: 25px;
 }
 .single-fact-counter .icon span:before{
-    color: #8bc43f; 
+    color: #8bc43f;
     font-size: 88px;
     line-height: 88px;
 }
@@ -3754,7 +3754,7 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
     Fact counter Area style2 style
 =============================================
@@ -3785,9 +3785,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    About Area Home2 Style      
+    About Area Home2 Style
 =============================================
 ***/
 .about-area.home2{
@@ -3796,9 +3796,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Services Style2 Area Style      
+    Services Style2 Area Style
 =============================================
 ***/
 .services-style2-area{
@@ -3825,10 +3825,10 @@ select:focus {
 }
 .single-solution-style2 .text-holder{
     position: relative;
-    display: block;    
+    display: block;
 }
 .single-solution-style2 .text-holder h3{
-    margin: 0 0 19px;    
+    margin: 0 0 19px;
 }
 .single-solution-style2 .text-holder p{
     margin: 0;
@@ -3885,9 +3885,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Appointment Area Style      
+    Appointment Area Style
 =============================================
 ***/
 .appointment-area{
@@ -3918,7 +3918,7 @@ select:focus {
     top: 0;
     left: 0;
     z-index: -1;
-} 
+}
 .appointment-title-box .sec-title{
     padding-bottom: 0;
 }
@@ -4019,15 +4019,15 @@ select:focus {
     border-color: #5ee6d0;
 }
 .appointment-form form .input-box input[type=email]:focus{
-    border-color: #5ee6d0;    
+    border-color: #5ee6d0;
 }
 .appointment-form form .input-box textarea:focus{
-    border-color: #5ee6d0;      
+    border-color: #5ee6d0;
 }
 
 
 
-/*** 
+/***
 =============================================
     Team Area style
 =============================================
@@ -4047,14 +4047,14 @@ select:focus {
     position: relative;
     display: block;
     overflow: hidden;
-    transition: all 500ms ease; 
+    transition: all 500ms ease;
 }
 .single-team-member .img-holder img{
-    transition: all 0.5s ease-in-out 0.6s;    
-    width: 100%;  
+    transition: all 0.5s ease-in-out 0.6s;
+    width: 100%;
 }
 .single-team-member:hover .img-holder img{
-    transform: scale(1.2, 1.2); 
+    transform: scale(1.2, 1.2);
 }
 .single-team-member .img-holder .overlay-style-one{
     position: absolute;
@@ -4090,7 +4090,7 @@ select:focus {
 }
 .single-team-member:hover .text-holder{
     padding: 36px 0 30px;
-    transform: translate3d(0px, 0px, 0px);    
+    transform: translate3d(0px, 0px, 0px);
 }
 .single-team-member .text-holder h3{
     color: #ffffff;
@@ -4136,7 +4136,7 @@ select:focus {
     zoom: none;
 }
 .team-area .owl-dots .owl-dot span{
-	display:none;	
+	display:none;
 }
 .team-area .owl-dots .owl-dot.active{
     height: 20px;
@@ -4153,7 +4153,7 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
     Team Area V2 style
 =============================================
@@ -4191,7 +4191,7 @@ select:focus {
 .single-team-slide .text{
     display: block;
     overflow: hidden;
-    padding-bottom: 30px;    
+    padding-bottom: 30px;
 }
 .single-team-slide .text p{
     margin: 0;
@@ -4264,7 +4264,7 @@ select:focus {
     text-transform: uppercase;
     text-align: center;
     font-family: 'Rubik', sans-serif;
-    transition: all 500ms ease;    
+    transition: all 500ms ease;
 }
 .single-team-slide .button a:hover{
     background: #8bc43f;
@@ -4303,11 +4303,11 @@ select:focus {
     height: 165px;
     border-radius: 30px;
     padding: 23px 0;
-    background: rgb(136,196,66); 
-    background: -moz-linear-gradient(top, rgba(136,196,66,1) 0%, rgba(51,182,160,1) 100%); 
-    background: -webkit-linear-gradient(top, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%); 
-    background: linear-gradient(to bottom, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%); 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88c442', endColorstr='#33b6a0',GradientType=0 ); 
+    background: rgb(136,196,66);
+    background: -moz-linear-gradient(top, rgba(136,196,66,1) 0%, rgba(51,182,160,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%);
+    background: linear-gradient(to bottom, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88c442', endColorstr='#33b6a0',GradientType=0 );
 }
 .single-team-slide .img-holder .team-social-links li{
     display: block;
@@ -4458,7 +4458,7 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
     Testimonial sec Style
 =============================================
@@ -4553,7 +4553,7 @@ select:focus {
 .single-testimonial-style2 .review-box ul li{
     display: inline-block;
     float: none;
-    margin: 0px 3px;    
+    margin: 0px 3px;
 }
 .single-testimonial-style2 .review-box ul li i{
     font-size: 18px;
@@ -4618,7 +4618,7 @@ select:focus {
     color: #cecece;
     font-size: 30px;
     display: block;
-    line-height: 68px;    
+    line-height: 68px;
 }
 .testimonial-sec .owl-nav .owl-next:hover,
 .testimonial-sec .owl-nav .owl-prev:hover{
@@ -4650,7 +4650,7 @@ select:focus {
 	display: inline-block;
 }
 .testimonial-sec .owl-dots .owl-dot span{
-	display:none;	
+	display:none;
 }
 .testimonial-sec .owl-dots .owl-dot.active{
     height: 20px;
@@ -4667,9 +4667,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Warranties Sec Style      
+    Warranties Sec Style
 =============================================
 ***/
 .warranties-sec{
@@ -4770,9 +4770,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Brand Area Style      
+    Brand Area Style
 =============================================
 ***/
 .brand-area{
@@ -4801,7 +4801,7 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
     Breadcrumb area style
 =============================================
@@ -4874,17 +4874,17 @@ select:focus {
     transition: all 500ms ease;
 }
 .breadcrumb-area .breadcrumb-menu ul li.active{
-    color: #8bc43f; 
+    color: #8bc43f;
 }
 .breadcrumb-area .breadcrumb-menu ul li a:hover{
-    color: #8bc43f;     
+    color: #8bc43f;
 }
 
 
 
-/*** 
+/***
 =============================================
-    Mission Vision Area Style      
+    Mission Vision Area Style
 =============================================
 ***/
 .mission-vision-area{
@@ -4930,9 +4930,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Choose Area Style      
+    Choose Area Style
 =============================================
 ***/
 .choose-area{
@@ -4992,7 +4992,7 @@ select:focus {
     top: 0;
     left: 0;
     z-index: -1;
-} 
+}
 
 .single-choose-item{
     position: relative;
@@ -5032,7 +5032,7 @@ select:focus {
     zoom: none;
 }
 .choose-carousel .owl-dots .owl-dot span{
-	display:none;	
+	display:none;
 }
 .choose-carousel .owl-dots .owl-dot.active{
 	background: #8bc43f;
@@ -5065,7 +5065,7 @@ select:focus {
     top: 0;
     left: 0;
     z-index: -1;
-} 
+}
 .video-holder-box .icon-holder{
     display: table;
     width: 100%;
@@ -5092,9 +5092,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Services Style1 Area Spec Page Css     
+    Services Style1 Area Spec Page Css
 =============================================
 ***/
 .services-style1-area.spec-page{
@@ -5114,9 +5114,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Choose Area style2 Style      
+    Choose Area style2 Style
 =============================================
 ***/
 .choose-area.style2{
@@ -5127,13 +5127,13 @@ select:focus {
     background-repeat: no-repeat;
     background-size: cover;
     padding: 100px 0 123px;
-    z-index: 1;    
+    z-index: 1;
 }
 .single-choose-box.style2{
     border: 1px solid #233d39;
     padding: 50px 30px 44px;
     background: transparent;
-    margin-bottom: 0px;    
+    margin-bottom: 0px;
 }
 .single-choose-box.style2 .count span {
     color: #2e4440;
@@ -5217,9 +5217,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Quote Area Style2 Style      
+    Quote Area Style2 Style
 =============================================
 ***/
 .specialities-single-area{
@@ -5369,8 +5369,8 @@ select:focus {
     transition-delay: 0.5s;
 }
 .single-wedo-box:hover{
-    transform: translate3d(0px, -10px, 0px); 
-    -webkit-box-shadow: 0px 3px 9px 0px rgba(180,180,180,0.9); 
+    transform: translate3d(0px, -10px, 0px);
+    -webkit-box-shadow: 0px 3px 9px 0px rgba(180,180,180,0.9);
     box-shadow: 0px 3px 9px 0px rgba(180,180,180,0.9);
 }
 .single-wedo-box .overlay-image {
@@ -5385,7 +5385,7 @@ select:focus {
     opacity: 0;
 }
 .single-wedo-box:hover .overlay-image{
-    transform: scale(1.0); 
+    transform: scale(1.0);
     opacity: 1;
 }
 
@@ -5417,7 +5417,7 @@ select:focus {
     transition-delay: .3s;
 }
 .single-wedo-box:hover .inner .text h3{
-    color: #ffffff;    
+    color: #ffffff;
 }
 .single-wedo-box .inner .text p{
     margin: 0 0 15px;
@@ -5429,10 +5429,10 @@ select:focus {
 }
 .single-wedo-box .inner .text a{
     transition: all 900ms ease;
-    transition-delay: .5s;    
+    transition-delay: .5s;
 }
 .single-wedo-box:hover .inner .text a{
-    color: #8bc43f;    
+    color: #8bc43f;
 }
 .single-wedo-box .inner .text a span:before {
     font-size: 15px;
@@ -5502,7 +5502,7 @@ select:focus {
     left: 0;
     z-index: -1;
     opacity: 0;
-} 
+}
 .video-holder-box2 .icon-holder{
     display: table;
     width: 100%;
@@ -5562,7 +5562,7 @@ select:focus {
 .treatments-pricing-box .pricing-plan .table-heading {
     background: #f5f5f5;
     border: 1px solid #f5f5f5;
-    width: 100%;  
+    width: 100%;
 }
 .treatments-pricing-box .pricing-plan .table-heading tr{}
 .treatments-pricing-box .pricing-plan .table-heading tr th {
@@ -5667,7 +5667,7 @@ select:focus {
     transition-delay: .1s;
 }
 .specialities-sidebar .specialities-categories li:last-child{
-    border: 0px solid   
+    border: 0px solid
 }
 .specialities-sidebar .specialities-categories li a:hover,
 .specialities-sidebar .specialities-categories li.active a{
@@ -5727,7 +5727,7 @@ select:focus {
     transition: all 500ms ease;
 }
 .specialities-sidebar .our-brochures li a:hover .title-holder p{
-    color: #8bc43f;    
+    color: #8bc43f;
 }
 
 
@@ -5761,9 +5761,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Doctor Area Style      
+    Doctor Area Style
 =============================================
 ***/
 .doctor-area{
@@ -5811,7 +5811,7 @@ select:focus {
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
 }
-.doctor-tab-box .tab-btns .tab-btn.active-btn span, 
+.doctor-tab-box .tab-btns .tab-btn.active-btn span,
 .doctor-tab-box .tab-btns .tab-btn:hover span{
     background: #f5f5f5;
     color: #303030;
@@ -5836,7 +5836,7 @@ select:focus {
 	display: none;
 }
 .doctor-tab-box .tabs-content .tab.active-tab{
-	display:block;	
+	display:block;
 }
 
 .doctor-tab-box .button-box{
@@ -5941,7 +5941,7 @@ select:focus {
     transition: all 0.3s ease-in-out 0.3s;
 }
 .single-doctor-item:hover .img-holder img{
-    transform: scale(1.3);    
+    transform: scale(1.3);
 }
 
 .single-doctor-item .img-holder .overlay{
@@ -5963,12 +5963,12 @@ select:focus {
 .single-doctor-item .img-holder .overlay .box{
     display: table;
     height: 100%;
-    width: 100%;    
+    width: 100%;
 }
 .single-doctor-item .img-holder .overlay .box .content{
     display: table-cell;
     text-align: center;
-    vertical-align: middle; 
+    vertical-align: middle;
     padding: 20px;
 }
 .single-doctor-item .img-holder .overlay .box .content a {
@@ -6018,7 +6018,7 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
     Faq Area style
 =============================================
@@ -6086,7 +6086,7 @@ select:focus {
     background: #fff;
     color: #000000;
 }
-.faq-search-box .search-form input[type="search"]:focus + button, 
+.faq-search-box .search-form input[type="search"]:focus + button,
 .faq-search-box .search-form button:hover {
     background: #8bc43f;
     color: #fff;
@@ -6099,9 +6099,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Pricing Plan Area Style      
+    Pricing Plan Area Style
 =============================================
 ***/
 .pricing-plan-area{
@@ -6110,7 +6110,7 @@ select:focus {
     padding: 90px 0 60px;
 }
 .pricing-plan-area .sec-title{
-    padding-bottom: 43px;    
+    padding-bottom: 43px;
 }
 .pricing-plan-area .sec-title p {
     margin: 6px 0 0;
@@ -6126,7 +6126,7 @@ select:focus {
     margin-bottom: 40px;
 }
 .single-price-box:hover{
-    transform: translate3d(0px, -20px, 0px);    
+    transform: translate3d(0px, -20px, 0px);
 }
 .single-price-box:before{
     position: absolute;
@@ -6137,7 +6137,7 @@ select:focus {
     content: "";
     background: #32b6a1;
     transform: scaleX(0);
-    transition: .5s ease;    
+    transition: .5s ease;
 }
 .single-price-box:hover:before {
     transform: scaleY(1);
@@ -6224,9 +6224,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Pricing Plan Area style2 Style      
+    Pricing Plan Area style2 Style
 =============================================
 ***/
 .pricing-plan-area.style2{
@@ -6240,7 +6240,7 @@ select:focus {
     border-bottom: 3px solid #32b6a1;
 }
 .pricing-plan-area.style2 .single-price-box:hover{
-    -webkit-box-shadow: 0px 3px 7px 2px #D9D9D9; 
+    -webkit-box-shadow: 0px 3px 7px 2px #D9D9D9;
     box-shadow: 0px 3px 7px 2px #D9D9D9;
 }
 .pricing-plan-area.style2 .single-price-box:before{
@@ -6252,11 +6252,11 @@ select:focus {
     width: 3px;
     content: "";
     transform: scaleY(1);
-    background: rgb(136,196,66); 
-    background: -moz-linear-gradient(top, rgba(136,196,66,1) 0%, rgba(51,182,160,1) 100%); 
-    background: -webkit-linear-gradient(top, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%); 
-    background: linear-gradient(to bottom, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%); 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88c442', endColorstr='#33b6a0',GradientType=0 ); 
+    background: rgb(136,196,66);
+    background: -moz-linear-gradient(top, rgba(136,196,66,1) 0%, rgba(51,182,160,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%);
+    background: linear-gradient(to bottom, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88c442', endColorstr='#33b6a0',GradientType=0 );
 }
 .pricing-plan-area.style2 .single-price-box:after{
     position: absolute;
@@ -6267,11 +6267,11 @@ select:focus {
     width: 3px;
     content: "";
     transform: scaleY(1);
-    background: rgb(136,196,66); 
-    background: -moz-linear-gradient(top, rgba(136,196,66,1) 0%, rgba(51,182,160,1) 100%); 
-    background: -webkit-linear-gradient(top, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%); 
-    background: linear-gradient(to bottom, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%); 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88c442', endColorstr='#33b6a0',GradientType=0 ); 
+    background: rgb(136,196,66);
+    background: -moz-linear-gradient(top, rgba(136,196,66,1) 0%, rgba(51,182,160,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%);
+    background: linear-gradient(to bottom, rgba(136,196,66,1) 0%,rgba(51,182,160,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88c442', endColorstr='#33b6a0',GradientType=0 );
 }
 .pricing-plan-area.style2 .single-price-box .table-header .package {
     padding-top: 15px;
@@ -6296,7 +6296,7 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
     Testimonial page style
 =============================================
@@ -6330,9 +6330,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Testimonial Sec Style4 Style      
+    Testimonial Sec Style4 Style
 =============================================
 ***/
 .testimonial-sec.style4 {
@@ -6364,7 +6364,7 @@ select:focus {
     width: 80px;
     height: 80px;
     margin: 7px auto 0;
-    border-radius: 50%;    
+    border-radius: 50%;
 }
 .testimonial-sec.style4 .single-testimonial-style2 .img-box img{
     border-radius: 50%;
@@ -6436,9 +6436,9 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
-    Testimonial Sec Style3 Style      
+    Testimonial Sec Style3 Style
 =============================================
 ***/
 .testimonial-sec.style3{
@@ -6500,7 +6500,7 @@ select:focus {
 
 
 
-/*** 
+/***
 =============================================
    Visit timetable area style
 =============================================
@@ -6510,7 +6510,7 @@ select:focus {
     padding-bottom: 100px;
 }
 .visit-timetable-area .sec-title{
-    padding-bottom: 33px;    
+    padding-bottom: 33px;
 }
 .visit-timetable-area .sec-title p {
     margin: 6px 0 0;
@@ -6537,10 +6537,10 @@ select:focus {
     border-collapse: collapse;
 }
 .visit_timetable thead {
-   
+
 }
 .visit_timetable thead tr{
-    
+
 }
 .visit_timetable thead tr th {
     padding: 0;
@@ -6556,7 +6556,7 @@ select:focus {
 .visit_timetable thead tr th .single{
     border: 1px solid #eeeeee;
     text-align: center;
-    padding: 17px 0; 
+    padding: 17px 0;
     margin: 1px;
 }
 
@@ -6572,7 +6572,7 @@ select:focus {
     font-weight: 500;
 }
 .visit_timetable tbody tr td:hover .time-box h5{
-    color: #ffffff;    
+    color: #ffffff;
 }
 
 .visit_timetable tbody{}
@@ -6593,7 +6593,7 @@ select:focus {
 }
 .visit_timetable tbody tr td:hover .single.gray_bg{
     border-color: #0a2722;
-    background: #0a2722;    
+    background: #0a2722;
 }
 
 .visit_timetable tbody tr td {
@@ -6622,7 +6622,7 @@ select:focus {
     transition-delay: .2s;
 }
 .visit_timetable tbody tr td:hover p{
-    color: #8bc43f;    
+    color: #8bc43f;
 }
 .visit_timetable tbody tr td span{
     color: #8b8b8b;
@@ -6632,7 +6632,7 @@ select:focus {
     transition-delay: .3s;
 }
 .visit_timetable tbody tr td:hover span{
-    color: #ffffff;       
+    color: #ffffff;
 }
 .visit_timetable tbody tr td h6{
     color: #32b6a1;
@@ -6648,15 +6648,15 @@ select:focus {
     color: #8bc43f;
 }
 .visit_timetable tbody tr td:hover h6.green{
-    color: #32b6a1;       
+    color: #32b6a1;
 }
 .visit_timetable tbody tr td:hover h6{
-    color: #8bc43f;        
+    color: #8bc43f;
 }
 
 
 
-/*** 
+/***
 =============================================
     Appointment Area style
 =============================================
@@ -6667,7 +6667,7 @@ select:focus {
     padding: 90px 0 100px;
 }
 .appointment-area2 .sec-title{
-    padding-bottom: 43px;    
+    padding-bottom: 43px;
 }
 .appointment-area2 .sec-title p {
     margin: 6px 0 0;
@@ -6677,7 +6677,7 @@ select:focus {
     display: block;
     padding: 50px 50px 20px;
     border-radius: 0 0px 50px 50px;
--webkit-box-shadow: 0px 1px 15px 3px #f9f9f9; 
+-webkit-box-shadow: 0px 1px 15px 3px #f9f9f9;
 box-shadow: 0px 1px 15px 3px #f9f9f9;
 }
 .appointment-form-left form .single-box{
@@ -6804,7 +6804,7 @@ form .input-box .icon-box i {
     color: #8b8b8b;
     font-size: 16px;
     line-height: 40px;
-    font-weight: 400; 
+    font-weight: 400;
 }
 .appointment-right .confirm-booking ul li span{
     color: #8bc43f;
@@ -6824,7 +6824,7 @@ form .input-box .icon-box i {
     margin-top: 15px;
 }
 .appointment-right form .button-box button{
-    padding: 14px 30px 14px; 
+    padding: 14px 30px 14px;
     margin-right: 7px;
     background: #ffffff;
     border: 2px solid #eeeeee;
@@ -6838,7 +6838,7 @@ form .input-box .icon-box i {
 
 
 
-/*** 
+/***
 =============================================
     Blog Default Area style
 =============================================
@@ -6855,7 +6855,7 @@ form .input-box .icon-box i {
 
 
 
-/*** 
+/***
 =============================================
     Blog large Area style
 =============================================
@@ -6962,7 +6962,7 @@ form .input-box .icon-box i {
     transition: all 500ms ease;
 }
 .single-blog-post.blog-large .left-box .share-comment-box ul li:hover a:after{
-    transform: scale(1);        
+    transform: scale(1);
 }
 .single-blog-post.blog-large .left-box .share-comment-box ul li a span:before {
     color: #8b8b8b;
@@ -6973,7 +6973,7 @@ form .input-box .icon-box i {
     transition-delay: .3s;
 }
 .single-blog-post.blog-large .left-box .share-comment-box ul li:hover a span:before{
-    color: #ffffff;    
+    color: #ffffff;
 }
 
 .single-blog-post.blog-large .inner-content{
@@ -7016,7 +7016,7 @@ form .input-box .icon-box i {
     color: #303030;
 }
 .blog-large-area .single-blog-post .text-holder .blog-title a:hover{
-    color: #8bc43f;    
+    color: #8bc43f;
 }
 
 .single-blog-post.blog-large .text-holder .text-box {
@@ -7115,7 +7115,7 @@ form .input-box .icon-box i {
     background: #fff;
     color: #000000;
 }
-.sidebar-wrapper .single-sidebar .search-form input[type="text"]:focus + button, 
+.sidebar-wrapper .single-sidebar .search-form input[type="text"]:focus + button,
 .sidebar-wrapper .single-sidebar .search-form button:hover {
     background: #8bc43f;
     border-color: #8bc43f;
@@ -7157,12 +7157,12 @@ form .input-box .icon-box i {
     transition-delay: .3s;
 }
 .single-sidebar .categories li a:hover span{
-    color: #8bc43f;  
+    color: #8bc43f;
 }
 .single-sidebar .categories li a:hover{
-    color: #8bc43f;   
+    color: #8bc43f;
 }
- 
+
 
 .single-sidebar .recent-post {
     position: relative;
@@ -7193,13 +7193,13 @@ form .input-box .icon-box i {
     border-radius: 0px;
 }
 .single-sidebar .recent-post li .img-holder img {
-    transition: all 0.4s ease-in-out 0.5s;    
+    transition: all 0.4s ease-in-out 0.5s;
     width: 100%;
-    transform: scale(1.1, 1.1);      
+    transform: scale(1.1, 1.1);
 }
 .single-sidebar .recent-post li:hover .img-holder img {
     transition-delay: 0s;
-    transform: scale(1.2, 1.2);    
+    transform: scale(1.2, 1.2);
 }
 .single-sidebar .recent-post li .img-holder .overlay-style-one .box .content a i{
     color: #fff;
@@ -7237,7 +7237,7 @@ form .input-box .icon-box i {
     transition: all 500ms ease;
 }
 .single-sidebar .recent-post li .title-holder .post-title a{
-    color: #303030; 
+    color: #303030;
     transition: all 500ms ease;
 }
 .single-sidebar .recent-post li .title-holder .post-title a:hover{
@@ -7310,10 +7310,10 @@ form .input-box .icon-box i {
    filter: alpha(opacity=100);
    opacity: 1;
    transform: scale(1);
-   transition-delay: 0.1s;    
+   transition-delay: 0.1s;
 }
 .single-sidebar .instagram li:hover .img-holder .overlay-style-one .box .content a:hover i{
-    color: #8bc43f;    
+    color: #8bc43f;
 }
 .single-sidebar .instagram li:hover .img-holder .overlay-style-one {
     filter: alpha(opacity=100);
@@ -7344,7 +7344,7 @@ form .input-box .icon-box i {
     padding-right: 9px;
 }
 .follow-us-instagram a:hover{
-    color: #8bc43f;    
+    color: #8bc43f;
 }
 
 
@@ -7382,10 +7382,10 @@ form .input-box .icon-box i {
     transition-delay: .3s;
 }
 .single-sidebar .archives li a:hover span{
-    color: #8bc43f;  
+    color: #8bc43f;
 }
 .single-sidebar .archives li a:hover{
-    color: #8bc43f;   
+    color: #8bc43f;
 }
 
 
@@ -7435,7 +7435,7 @@ form .input-box .icon-box i {
 
 
 
-/*** 
+/***
 =============================================
     Blog Single Area style
 =============================================
@@ -7748,7 +7748,7 @@ form .input-box .icon-box i {
     vertical-align: middle;
 }
 .author-box-holder .inner-box .text{
-    padding-left: 40px;    
+    padding-left: 40px;
 }
 .author-box-holder .inner-box .text h3{
     font-size: 18px;
@@ -7791,7 +7791,7 @@ form .input-box .icon-box i {
     position: relative;
     display: block;
     width: 50%;
-} 
+}
 .blog-prev-next-option .single.prev {
     position: relative;
     display: block;
@@ -7970,7 +7970,7 @@ form .input-box .icon-box i {
     font-weight: 400;
     height: 55px;
     padding: 0 30px;
-    width: 100%;  
+    width: 100%;
     margin-bottom: 30px;
     transition: all 500ms ease;
 }
@@ -7980,13 +7980,13 @@ form .input-box .icon-box i {
     margin-bottom: 40px;
 }
 .add-comment-box #add-comment-form input[type="text"]:focus{
-    border-color: #32b6a1;    
+    border-color: #32b6a1;
 }
 .add-comment-box #add-comment-form input[type="email"]:focus{
-    border-color: #32b6a1;    
+    border-color: #32b6a1;
 }
 .add-comment-box #add-comment-form textarea:focus{
-    border-color: #32b6a1;       
+    border-color: #32b6a1;
 }
 .add-comment-box #add-comment-form button {
     position: relative;
@@ -8001,7 +8001,7 @@ form .input-box .icon-box i {
 
 
 
-/*** 
+/***
 =============================================
     Contact Info Map Area style
 =============================================
@@ -8072,7 +8072,7 @@ form .input-box .icon-box i {
 
 
 
-/*** 
+/***
 =============================================
     Contact Form Area style
 =============================================
@@ -8112,7 +8112,7 @@ form .input-box .icon-box i {
     padding: 10px 20px;
 }
 .contact-form form input[type="text"]:focus{
-    border-color: #1d1d1d; 
+    border-color: #1d1d1d;
     color: #222222;
 }
 .contact-form form input[type="email"]:focus{
