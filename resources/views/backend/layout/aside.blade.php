@@ -34,13 +34,13 @@
             </li>
             <li class="nav-item {{ request()->is('admin/setting') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.setting') }}">
-                    <i data-feather="message-square"></i>
+                    <i data-feather='settings'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Thông tin website</span>
                 </a>
             </li>
             <li class="nav-item {{ request()->is('admin/slide') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.slide') }}">
-                    <i data-feather="message-square"></i>
+                    <i data-feather='sliders'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Slide</span>
                 </a>
             </li>
@@ -66,25 +66,25 @@
             </li>
             <li class=" nav-item {{ request()->is('admin/service') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.service') }}">
-                    <i data-feather="message-square"></i>
+                    <i data-feather='grid'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Dịch vụ</span>
                 </a>
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#">
-                    <i data-feather="message-square"></i>
+                    <i data-feather='clipboard'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Bảng giá</span>
                 </a>
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#">
-                    <i data-feather="message-square"></i>
+                    <i data-feather='mail'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Liên hệ</span>
                 </a>
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="{{ route('admin.partner') }}">
-                    <i data-feather="message-square"></i>
+                    <i data-feather='users'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Đối tác</span>
                 </a>
             </li>
@@ -95,13 +95,13 @@
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="{{ route('admin.appointment') }}">
-                    <i data-feather="message-square"></i>
+                    <i data-feather='message-square'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Yêu cầu</span>
                 </a>
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="{{ route('admin.patient') }}">
-                    <i data-feather="message-square"></i>
+                    <i data-feather='users'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Bệnh nhân</span>
                 </a>
             </li>
@@ -112,19 +112,19 @@
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="{{ route('admin.employee') }}">
-                    <i data-feather="message-square"></i>
+                    <i data-feather='user-plus'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Nhân sự</span>
                 </a>
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="{{ route('admin.doctor') }}">
-                    <i data-feather="message-square"></i>
+                    <i data-feather='users'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Bác sĩ</span>
                 </a>
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#">
-                    <i data-feather="message-square"></i>
+                    <i data-feather='lock'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Phân quyền</span>
                 </a>
             </li>
