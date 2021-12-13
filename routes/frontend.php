@@ -25,16 +25,19 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('hsmile.home');
 Route::get('/aboutus', [AboutController::class, 'index'])->name('hsmile.aboutus');
-Route::get('/services', [ServiceController::class, 'index'])->name('hsmile.services');
 Route::get('/doctors', [DoctorController::class, 'index'])->name('hsmile.doctors');
 Route::get('/blog', [BlogController::class, 'index'])->name('hsmile.blog');
 Route::get('/price-list', [PriceListController::class, 'index'])->name('hsmile.price_list');
 Route::get('/contact', [ContactController::class, 'index'])->name('hsmile.contact');
 
+Route::group(['prefix' => 'service'], function () {
+    Route::get('/', [ServiceController::class, 'index'])->name('hsmile.services');
+    Route::get('/{id}', [ServiceController::class, 'get'])->name('hsmile.service.detail');
+});
+
 Route::group(['prefix' => 'appointment'], function () {
     Route::get('/', [AppointmentController::class, 'index'])->name('hsmile.appointment');
     Route::post('/', [AppointmentController::class, 'booking'])->name('hsmile.booking');
     Route::post('/get-doctor',[AppointmentController::class, 'getDoctor'] );
-
 });
 // không có frontend/ đâu

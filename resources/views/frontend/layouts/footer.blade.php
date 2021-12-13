@@ -1,3 +1,8 @@
+@php
+    use App\Models\Service;
+    $service = Service::where('status', 1)->where('parent_id', 0)->take(6)->get();
+@endphp
+
 <!--Start footer area-->
 <footer class="footer-area pdtop80">
     <div class="container">
@@ -30,13 +35,9 @@
                         <h3>Dịch vụ đặc biệt</h3>
                     </div>
                     <ul class="specialities">
-                        <li><a href="#">Cấy ghép nha khoa</a></li>
-                        <li><a href="#">Nha khoa Laser</a></li>
-                        <li><a href="#">Nha khoa thẩm mỹ</a></li>
-                        <li><a href="#">Chỉnh nha</a></li>
-                        <li><a href="#">Nha khoa</a></li>
-                        <li><a href="#">Tuyến tiền liệt</a></li>
-                        <li><a href="#">Răng miệng & Răng hàm mặt</a></li>
+                        @foreach ($service as $row)
+                        <li><a href="{{ route('hsmile.service.detail',['id'=>$row->id]) }}">{{ $row->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

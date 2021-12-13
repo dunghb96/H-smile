@@ -7,6 +7,7 @@ use App\Enums\CommonStatus;
 use App\Http\Requests\BookingPostRequest;
 use App\Models\Client;
 use App\Models\News;
+use App\Models\Partner;
 use App\Models\Service;
 use App\Models\Slide;
 use App\Models\StaticPage;
@@ -17,7 +18,10 @@ class HomeController extends BaseController
 {
     public function index()
     {
-        return view('frontend.home.index');
+        $slide = Slide::where('status', 1)->take(3)->get();
+        $service = Service::where('status', 1)->where('parent_id', 0)->take(6)->get();
+        $partner = Partner::where('status', 1)->take(4)->get();
+        return view('frontend.home.index', compact('slide', 'service', 'partner'));
     }
 
     public function service()

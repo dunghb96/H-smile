@@ -6,73 +6,28 @@
     <div class="rev_slider_wrapper fullwidthbanner-container" id="rev_slider_two_wrapper" data-source="gallery">
         <div class="rev_slider fullwidthabanner" id="rev_slider_two" data-version="5.4.1">
             <ul>
-                <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1690" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="/frontend/images/slides/v2-1.jpg" data-title="Slide Title" data-transition="parallaxvertical">
+                @foreach ($slide as $image)
+                    <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1691" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="{{ asset($image->image) }}" data-title="Slide Title" data-transition="parallaxvertical">
 
-                    <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="/frontend/images/slides/v2-1.jpg">
-
-                    <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['700','700','650','400']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['-120','-130','-110','-105']" data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
-                        <div class="slide-content left-slide">
-                            <div class="big-title">
-                                <br>Nha khoa hiện đại <br> trong một cảm giác <br> yên tĩnh và thư thái
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-whitespace="normal" data-width="['700','700','650','400']" data-hoffset="['15','15','15','15']" data-voffset="['50','30','30','15']" data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
-                        <div class="slide-content left-slide">
-                            <div class="text">Đội ngũ nha sĩ được đào tạo chuyên sâu, có trình độ và kinh nghiệm.</div>
-                        </div>
-                    </div>
-                    <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['700','700','650','450']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['125','105','120','105']" data-x="['left','left','left','left']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
-                    </div>
-                </li>
-
-                <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1691" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="/frontend/images/slides/v2-2.jpg" data-title="Slide Title" data-transition="parallaxvertical">
-
-                    <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="/frontend/images/slides/v2-2.jpg">
+                    <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="{{ asset($image->image) }}">
 
                     <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['700','700','700','460']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['-130','-140','-125','-110']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
                         <div class="slide-content text-center">
                             <div class="big-title">
-                                Giúp hàng ngàn nụ cười khỏe và tự tin
+                                {{ $image->title }}
                             </div>
                         </div>
                     </div>
-                    <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['700','700','600','460']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['-30','-40','0','-30']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
-                        <div class="slide-content text-center">
-                            <div class="border-box"> <span> Từ năm 2021 </span></div>
-                        </div>
-                    </div>
+
                     <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-whitespace="normal" data-width="['700','700','700','460']" data-hoffset="['15','15','15','15']" data-voffset="['20','30','25','10']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
                         <div class="slide-content text-center">
-                            <div class="text">Hơn 20 nha sĩ của chúng tôi <span>sẽ mang đến cho bạn dịch vụ chăm sóc răng miệng</span><br> hiện đại nhất, giữ nụ cười khỏe đẹp.</div>
+                            <div class="text">{!! $image->description !!}</div>
                         </div>
                     </div>
                     <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['700','700','700','460']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['110','120','120','90']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
                     </div>
                 </li>
-
-                <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1692" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="/frontend/images/slides/v2-3.jpg" data-title="Slide Title" data-transition="parallaxvertical">
-
-                    <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="/frontend/images/slides/v2-3.jpg">
-
-                    <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['650','600','650','400']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['-85','-95','-90','-75']" data-x="['right','right','right','right']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
-                        <div class="slide-content">
-                            <div class="big-title">
-                                Nụ cười lành mạnh <br> một cách khoa học<br> và nghệ thuật.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-whitespace="normal" data-width="['650','600','650','400']" data-hoffset="['15','15','15','15']" data-voffset="['50','60','30','20']" data-x="['right','right','right','right']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
-                        <div class="slide-content">
-                            <div class="text">Đội ngũ nha sĩ được đào tạo chuyên sâu, có trình độ và kinh nghiệm.</div>
-                        </div>
-                    </div>
-
-                    <div class="tp-caption" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingtop="[0,0,0,0]" data-responsive_offset="on" data-type="text" data-height="none" data-width="['650','600','650','400']" data-whitespace="normal" data-hoffset="['15','15','15','15']" data-voffset="['125','135','120','100']" data-x="['right','right','right','right']" data-y="['middle','middle','middle','middle']" data-textalign="['top','top','top','top']" data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","mask":"x:0;y:0;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]' style="z-index: 7; white-space: nowrap;">
-                    </div>
-                </li>
-
+                @endforeach
             </ul>
         </div>
     </div>
@@ -244,140 +199,44 @@
 <!--End About Area-->
 
 <!--Start services style2 area-->
-<section class="services-style2-area sec-pd1">
+<section class="services-style1-area spec-page">
     <div class="container">
         <div class="sec-title max-width text-center">
-            <h3>Sự khác biệt</h3>
-            <h1>Các dịch vụ chăm sóc răng miệng</h1>
-            <p>Your teeth play an important part in your daily life. It not only helps you to chew and eat your food, but frames your face. Any missing tooth can have a major impact on your quality of life.</p>
+            <h3>Dịch Vụ</h3>
+            <h1>Dịch vụ chăm sóc răng miệng</h1>
+            <p>Dịch vụ tại H-Smile cung cấp đầy đủ các loại hình dịch vụ nha khoa theo tiêu chuẩn quốc tế.</p>
         </div>
         <div class="row">
-            <!--Start single solution style1-->
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                <div class="single-solution-style2 text-center">
-                    <div class="icon-holder">
-                        <span class="icon-implants">
-                            <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span>
-                        </span>
-                    </div>
-                    <div class="text-holder">
-                        <h3>Cấy ghép nha khoa</h3>
-                        <p>Từ chối niềm vui và ca ngợi nỗi đau là chúng tôi sẽ cung cấp cho bạn một hoàn thành.</p>
-                        <div class="readmore">
-                            <a href="#"><span class="flaticon-next"></span></a>
-                            <div class="overlay-button">
-                                <a href="#">Đọc thêm</a>
+            @if (count($service))
+                @foreach ($service as $row)
+                    <!--Start single solution style1-->
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                        <div class="single-solution-style1 wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+                            <div class="img-holder">
+                                <img src="{{ $row->image }}" alt="{{ $row->slug }}">
+                                <div class="icon-holder">
+                                    <div class="inner-content">
+                                        <div class="box">
+                                            <span class="icon-teeth-1"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-holder">
+                                <h3>{{ $row->name }}</h3>
+                                <p>{!! $row->short_description !!}</p>
+                                <div class="readmore">
+                                    <a href="{{ route('hsmile.service.detail',['id'=>$row->id]) }}"><span class="icon-plus"></span></a>
+                                    <div class="overlay-button">
+                                        <a href="{{ route('hsmile.service.detail',['id'=>$row->id]) }}">Xem thêm</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!--End single solution style1-->
-            <!--Start single solution style1-->
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                <div class="single-solution-style2 text-center">
-                    <div class="icon-holder">
-                        <span class="icon-tooth1">
-                            <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span><span class="path11"></span><span class="path12"></span><span class="path13"></span><span class="path14"></span>
-                        </span>
-                    </div>
-                    <div class="text-holder">
-                        <h3>Nha khoa thẩm mỹ</h3>
-                        <p>Biết theo đuổi thú vui một cách lý trí gặp phải hậu quả vô cùng.</p>
-                        <div class="readmore">
-                            <a href="#"><span class="flaticon-next"></span></a>
-                            <div class="overlay-button">
-                                <a href="#">Đọc thêm</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End single solution style1-->
-            <!--Start single solution style1-->
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                <div class="single-solution-style2 text-center">
-                    <div class="icon-holder">
-                        <span class="icon-tool">
-                            <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span>
-                        </span>
-                    </div>
-                    <div class="text-holder">
-                        <h3>Nha khoa Laser</h3>
-                        <p>Lấy một ví dụ tầm thường, mà chúng ta đã từng lao động thể chất.</p>
-                        <div class="readmore">
-                            <a href="#"><span class="flaticon-next"></span></a>
-                            <div class="overlay-button">
-                                <a href="#">Đọc thêm</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End single solution style1-->
-            <!--Start single solution style1-->
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                <div class="single-solution-style2 text-center">
-                    <div class="icon-holder">
-                        <span class="icon-tooth">
-                            <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span>
-                        </span>
-                    </div>
-                    <div class="text-holder">
-                        <h3>Chỉnh nha</h3>
-                        <p>Biết theo đuổi thú vui một cách lý trí gặp phải hậu quả vô cùng.</p>
-                        <div class="readmore">
-                            <a href="#"><span class="flaticon-next"></span></a>
-                            <div class="overlay-button">
-                                <a href="#">Đọc thêm</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End single solution style1-->
-            <!--Start single solution style1-->
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                <div class="single-solution-style2 text-center">
-                    <div class="icon-holder">
-                        <span class="icon-tooth-1">
-                            <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span>
-                        </span>
-                    </div>
-                    <div class="text-holder">
-                        <h3>Nội nha</h3>
-                        <p>To take a trivial example, which us ever to laborious physical exercise.</p>
-                        <div class="readmore">
-                            <a href="#"><span class="flaticon-next"></span></a>
-                            <div class="overlay-button">
-                                <a href="#">Đọc thêm</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End single solution style1-->
-            <!--Start single solution style1-->
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                <div class="single-solution-style2 text-center">
-                    <div class="icon-holder">
-                        <span class="icon-gum">
-                            <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span>
-                        </span>
-                    </div>
-                    <div class="text-holder">
-                        <h3>Nha chu</h3>
-                        <p>Denouncing pleasure & praising pain was we will give you a completed.</p>
-                        <div class="readmore">
-                            <a href="#"><span class="flaticon-next"></span></a>
-                            <div class="overlay-button">
-                                <a href="#">Đọc thêm</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End single solution style1-->
+                    <!--End single solution style1-->
+                @endforeach
+            @endif
         </div>
     </div>
 </section>
@@ -870,26 +729,16 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="brand">
-                    <!--Start single item-->
-                    <li class="single-item">
-                        <a href="#"><img src="/frontend/images/brand/1.png" alt="Awesome Brand Image"></a>
-                    </li>
-                    <!--End single item-->
-                    <!--Start single item-->
-                    <li class="single-item">
-                        <a href="#"><img src="/frontend/images/brand/2.png" alt="Awesome Brand Image"></a>
-                    </li>
-                    <!--End single item-->
-                    <!--Start single item-->
-                    <li class="single-item">
-                        <a href="#"><img src="/frontend/images/brand/3.png" alt="Awesome Brand Image"></a>
-                    </li>
-                    <!--End single item-->
-                    <!--Start single item-->
-                    <li class="single-item">
-                        <a href="#"><img src="/frontend/images/brand/4.png" alt="Awesome Brand Image"></a>
-                    </li>
-                    <!--End single item-->
+                    @if (count($partner))
+                        @foreach ($partner as $row)
+                            <!--Start single item-->
+                            <li class="single-item">
+                                <a href="#"><img src="{{ $row->logo }}" alt="{{ $row->name }}"></a>
+                            </li>
+                            <!--End single item-->
+                        @endforeach
+                    @endif
+
                 </ul>
             </div>
         </div>
