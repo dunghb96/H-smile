@@ -9,7 +9,7 @@
                     </a>
                 </li>
             </ul>
-            <div class="avatar-group">
+            <!-- <div class="avatar-group">
                 <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Billy Hopkins" class="avatar pull-up">
                     <img src="/backend/app-assets/images/portrait/small/avatar-s-9.jpg" alt="Avatar" width="33" height="33" />
                 </div>
@@ -26,11 +26,11 @@
                     <img src="/backend/app-assets/images/portrait/small/avatar-s-20.jpg" alt="Avatar" width="33" height="33" />
                 </div>
                 <h6 class="align-self-center cursor-pointer ml-50 mb-0">+42</h6>
-            </div>
+            </div> -->
 
         </div>
         <ul class="nav navbar-nav align-items-center ml-auto">
-            <li class="nav-item d-none d-lg-block">
+            <!-- <li class="nav-item d-none d-lg-block">
                 <a class="nav-link" href="app-email.html" data-toggle="tooltip" data-placement="top" title="Email">
                     <i class="ficon" data-feather="mail"></i>
                 </a>
@@ -288,7 +288,7 @@
                         <a class="btn btn-primary btn-block" href="javascript:void(0)">Read all notifications</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="nav-item dropdown dropdown-user">
                 <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none">
@@ -301,22 +301,10 @@
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
-                    <a class="dropdown-item" href="accountsettings">
+                    <a class="dropdown-item" href="{{ route('admin.accountsettings') }}">
                         <i class="mr-50" data-feather="user"></i> Profile </a>
-                    <a class="dropdown-item" href="app-email.html">
-                        <i class="mr-50" data-feather="mail"></i> Inbox </a>
-                    <a class="dropdown-item" href="app-todo.html">
-                        <i class="mr-50" data-feather="check-square"></i> Task </a>
-                    <a class="dropdown-item" href="app-chat.html">
-                        <i class="mr-50" data-feather="message-square"></i> Chats </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="page-account-settings.html">
-                        <i class="mr-50" data-feather="settings"></i> Settings </a>
-                    <a class="dropdown-item" href="page-pricing.html">
-                        <i class="mr-50" data-feather="credit-card"></i> Pricing </a>
-                    <a class="dropdown-item" href="page-faq.html">
-                        <i class="mr-50" data-feather="help-circle"></i> FAQ </a>
-                    <a class="dropdown-item" href="javascript:void()" onclick="logout()">
+                    <a class="dropdown-item" href="{{ route('auth.logout') }}">
                         <i class="mr-50" data-feather="power"></i> Logout </a>
                 </div>
             </li>

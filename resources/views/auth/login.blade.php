@@ -7,7 +7,7 @@
     <meta name="description" content="Velo - Văn phòng điện tử">
     <meta name="keywords" content="Velo - Văn phòng điện tử, g-office">
     <meta name="author" content="PIXINVENT">
-    <title>Velo - Văn phòng điện tử</title>
+    <title>Hsmile - Trang quản trị</title>
     <link rel="apple-touch-icon" href="/backend/app-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -52,7 +52,7 @@
                 <div class="auth-inner row m-0">
                     <!-- Brand logo--><a class="brand-logo" href="javascript:void(0);">
                         <img src="template/images/favicon.jpg" width="30" height="30"/>
-                        <h2 class="brand-text text-primary ml-1">G-Office</h2></a>
+                        <h2 class="brand-text text-primary ml-1">H-Smile</h2></a>
                     <!-- /Brand logo-->
                     <!-- Left Text-->
                     <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
@@ -62,7 +62,7 @@
                     <!-- Login-->
                     <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
                         <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
-                            <h2 class="card-title font-weight-bold mb-1">Welcome to G-Office! 👋</h2>
+                            <h2 class="card-title font-weight-bold mb-1">Welcome to H-Smile! 👋</h2>
                             <p class="card-text mb-2">Vui lòng đăng nhập để sử dụng phần mềm</p>
                             <form class="auth-login-form mt-2" action="{{ route('login') }}" method="POST">
                             @csrf
@@ -88,13 +88,12 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-block" tabindex="4">Sign in</button>
                             </form>
-                            <p class="text-center mt-2"><span>Hotline: <a href="callto:0989848886"><span>0989.84.8886</span></a></span></p>
+                            <p class="text-center mt-2"><span>Hotline: <a href="callto:0989848886"><span>0123456789</span></a></span></p>
                             <div class="divider">
                                 <div class="divider-text">or</div>
                             </div>
-                            <p class="text-center">Email: <a href="mailto:info@gemstech.com.vn"><span>info@gemstech.com.vn</span></a></p>
+                            <p class="text-center">Email: <a href="mailto:info@gemstech.com.vn"><span>info@hsmile.com.vn</span></a></p>
 
-<!--                            <div class="auth-footer-btn d-flex justify-content-center"><a class="btn btn-facebook" href="javascript:void(0)"><i data-feather="facebook"></i></a><a class="btn btn-twitter white" href="javascript:void(0)"><i data-feather="twitter"></i></a><a class="btn btn-google" href="javascript:void(0)"><i data-feather="mail"></i></a><a class="btn btn-github" href="javascript:void(0)"><i data-feather="github"></i></a></div>-->
                         </div>
                     </div>
                     <!-- /Login-->

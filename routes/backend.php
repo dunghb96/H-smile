@@ -104,7 +104,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/loaddata', [EmployeeController::class, 'loaddata']);
         Route::post('/edit', [EmployeeController::class, 'edit']);
         Route::post('/del', [EmployeeController::class, 'del']);
-
     });
 
     Route::group(['prefix' => 'doctor'], function () {
@@ -128,7 +127,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/loaddata', [AppointmentController::class, 'loaddata']);
         Route::post('/edit', [AppointmentController::class, 'edit']);
         Route::post('/del', [AppointmentController::class, 'del']);
+    });
 
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('/accountsettings', [UserController::class, 'accountsettings'])->name('admin.accountsettings');
     });
 
     //Slides
