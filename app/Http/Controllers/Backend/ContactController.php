@@ -2,29 +2,25 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
-class ContactController extends Controller
+class ContactController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    function __construct()
     {
-        //
+        parent:: __construct();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function index()
     {
-        //
+        return view('backend.contact.index');
+    }
+
+    public function json()
+    {
+        $jsonObj['data'] = Contact::where('status','1')->get();
+        echo json_encode($jsonObj);
     }
 
     /**

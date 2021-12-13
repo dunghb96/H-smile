@@ -77,7 +77,7 @@
                 </a>
             </li>
             <li class=" nav-item">
-                <a class="d-flex align-items-center" href="#">
+                <a class="d-flex align-items-center" href="{{ route('admin.contact') }}">
                     <i data-feather='mail'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Liên hệ</span>
                 </a>

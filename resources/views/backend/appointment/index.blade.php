@@ -162,5 +162,5 @@
 </div>
 @endsection
 @push('js')
-<script src="/backend/assets/js/apppointment.js"></script>
+<script src="/backend/assets/js/appointment.js"></script>
 @endpush

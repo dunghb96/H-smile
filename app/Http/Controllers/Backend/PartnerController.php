@@ -18,6 +18,7 @@ class PartnerController extends BaseController
         $partners = Partner::orderBy('created_at', 'DESC')->paginate();
         return view('backend.partners.index', compact('partners'));
     }
+    
     public function json()
     {
         $jsonObj['data'] = Partner::orderBy('created_at', 'DESC')->get();

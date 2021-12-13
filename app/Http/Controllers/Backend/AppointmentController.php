@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Appointment;
+use App\Models\Patient;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -21,14 +23,13 @@ class AppointmentController extends Controller
 
     public function json()
     {
-        $list = Appointment::with('Patients', 'Service')->where('status','1')->get();
+        $list = Appointment::with('patients', 'service')->where('status','1')->get();
         $jsonObj['data'] = $list;
         foreach($list as $key => $row){
             $jsonObj['data'][$key]->full_name = $row->patients->full_name;
             $jsonObj['data'][$key]->age       = $row->patients->age;
             $jsonObj['data'][$key]->services = $row->service->name;
-            $jsonObj['data'][$key]->status_word =  Appointment::STATUS[$jsonObj['data'][$key]->status];
-
+            $jsonObj['data'][$key]->status_word =  Appointment::STATUS[$row->status];
         }
         echo json_encode($jsonObj);
     }

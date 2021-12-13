@@ -19,7 +19,7 @@ class Appointment extends Model
 
     public function patients()
     {
-        return $this->hasOne(Patients::class, 'id', 'patient_id');
+        return $this->hasOne(Patient::class, 'id', 'patient_id');
     }
 
     public function service()
