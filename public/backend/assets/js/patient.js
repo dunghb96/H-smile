@@ -79,16 +79,16 @@
              },
              // Buttons with Dropdown
              buttons: [
-                 {
-                     text: "Thêm mới",
-                     className: "add-new btn btn-primary mt-50",
-                     init: function (api, node, config) {
-                         $(node).removeClass("btn-secondary");
-                     },
-                     action: function (e, dt, node, config) {
-                         loadadd();
-                     },
-                 },
+                //  {
+                //      text: "Thêm mới",
+                //      className: "add-new btn btn-primary mt-50",
+                //      init: function (api, node, config) {
+                //          $(node).removeClass("btn-secondary");
+                //      },
+                //      action: function (e, dt, node, config) {
+                //          loadadd();
+                //      },
+                //  },
              ],
              language: {
                  paginate: {
