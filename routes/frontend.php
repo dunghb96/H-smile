@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\AboutController;
-use App\Http\Controllers\Frontend\ApppointmentController;
+use App\Http\Controllers\Frontend\AppointmentController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\DoctorController;
@@ -30,5 +30,11 @@ Route::get('/doctors', [DoctorController::class, 'index'])->name('hsmile.doctors
 Route::get('/blog', [BlogController::class, 'index'])->name('hsmile.blog');
 Route::get('/price-list', [PriceListController::class, 'index'])->name('hsmile.price_list');
 Route::get('/contact', [ContactController::class, 'index'])->name('hsmile.contact');
-Route::get('/apppointment', [ApppointmentController::class, 'index'])->name('hsmile.apppointment');
-Route::post('/apppointment', [ApppointmentController::class, 'booking'])->name('hsmile.booking');
+
+Route::group(['prefix' => 'appointment'], function () {
+    Route::get('/', [AppointmentController::class, 'index'])->name('hsmile.appointment');
+    Route::post('/', [AppointmentController::class, 'booking'])->name('hsmile.booking');
+    Route::post('/get-doctor',[AppointmentController::class, 'getDoctor'] );
+
+});
+// không có frontend/ đâu

@@ -121,7 +121,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/del', [PartnerController::class, 'del']);
     });
 
+    Route::group(['prefix' => 'appointment'], function () {
+        Route::get('/', [AppointmentController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.appointment');
+        Route::get('/json', [AppointmentController::class, 'json']);
+        Route::post('/add', [AppointmentController::class, 'add']);
+        Route::post('/loaddata', [AppointmentController::class, 'loaddata']);
+        Route::post('/edit', [AppointmentController::class, 'edit']);
+        Route::post('/del', [AppointmentController::class, 'del']);
 
+    });
 
     //Slides
     // Route::group(['prefix' => 'slide'], function () {

@@ -94,7 +94,7 @@
                 <i data-feather="more-horizontal"></i>
             </li>
             <li class=" nav-item">
-                <a class="d-flex align-items-center" href="#">
+                <a class="d-flex align-items-center" href="{{ route('admin.appointment') }}">
                     <i data-feather="message-square"></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Yêu cầu</span>
                 </a>

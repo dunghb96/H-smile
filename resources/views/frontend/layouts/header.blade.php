@@ -96,7 +96,7 @@
                         </nav>
                     </div>
                     <div class="header-style2-button float-right">
-                        <a href="{{ route('hsmile.apppointment') }}"><span class="icon-date"></span>Đặt lịch</a>
+                        <a href="{{ route('hsmile.appointment') }}"><span class="icon-date"></span>Đặt lịch</a>
                     </div>
                 </div>
             </div>

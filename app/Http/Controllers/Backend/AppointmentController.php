@@ -19,6 +19,19 @@ class AppointmentController extends Controller
         return view('backend.appointment.index', compact('appointments')) ;
     }
 
+    public function json()
+    {
+        $list = Appointment::with('Patients', 'Service')->where('status','1')->get();
+
+        // dd($list);
+        $jsonObj['data'] = $list;
+        // $jsonObj['data']['patient_name'] = $list->patients->full_name;
+        // $jsonObj['data']['age'] = $list->patients->age;
+        // $jsonObj['data']['service'] = $list->service->name;
+        // dd($jsonObj);
+        echo json_encode($jsonObj);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

@@ -11,8 +11,13 @@ class Appointment extends Model
     protected $table = 'appointments';
     protected $guarded = [];
 
-    public function Patients()
+    public function patients()
     {
         return $this->hasOne(Patients::class, 'id', 'patient_id');
+    }
+
+    public function service()
+    {
+        return $this->hasOne(Service::class, 'id', 'patient_id');
     }
 }

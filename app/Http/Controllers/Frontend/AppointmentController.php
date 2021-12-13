@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Appointment;
+use App\Models\Doctor;
 use App\Models\Employee;
 use App\Models\Patients;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class ApppointmentController extends BaseController
+class AppointmentController extends BaseController
 {
     public function __construct()
     {
@@ -20,7 +21,7 @@ class ApppointmentController extends BaseController
     {
         $doctors = Employee::where('type','1')->where('status','1')->get();
         $services = Service::where('status','1')->get();
-        return view('frontend.apppointment.index',compact('doctors','services'));
+        return view('frontend.appointment.index',compact('doctors','services'));
     }
 
     public function booking(Request $request)
@@ -39,21 +40,21 @@ class ApppointmentController extends BaseController
             'patient_id' => $newPatient->id,
             'doctor_id' => 1,
             'service_id' => $request->service,
-            'appointment_date' =>  Carbon::parse($request->date_at)->format('d/m/Y'),
-            'shift_time' => 2,
+            'date_at' =>  Carbon::parse($request->date_at)->format('Y-m-d'),
+            'time_at' => Carbon::parse($request->time_at)->format('H:i'),
             'status'=> 1,
             'status_notification' => 1,
 
         ];
         $newBooking = Appointment::create($dataAppointment);
 
-        return redirect()->route('hsmile.apppointment')->with(['status' => 'success', 'flash_message' => 'Đặt lịch hẹn thành công!']);
-        // if($model->save()){
-        //     $jsonObj['success'] = true;
-        //     $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
-        // } else {
-        //     $jsonObj['success'] = false;
-        //     $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-        // }
+        return redirect()->route('hsmile.appointment')->with(['status' => 'success', 'flash_message' => 'Đặt lịch hẹn thành công!']);
+    }
+
+    function getDoctor(Request $request)
+    {
+        $service = $request->service;
+        $jsonObj = Employee::where('status',1)->where('type',1)->where('services', 'like', '%'.$service.'%')->get();
+        echo json_encode($jsonObj);
     }
 }

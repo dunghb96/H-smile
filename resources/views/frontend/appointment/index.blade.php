@@ -205,5 +205,5 @@
 @endsection
 
 @push('js')
-<script src="/frontend/assets/js/apppointment.js"></script>
+<script src="/frontend/assets/js/appointment.js"></script>
 @endpush

@@ -7,6 +7,8 @@
     <!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
     <!-- master stylesheet -->
     <link rel="stylesheet" href="/frontend/css/style.css">
     <!-- Responsive stylesheet -->
