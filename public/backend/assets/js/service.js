@@ -5,11 +5,18 @@ var url = '';
 var iid = 0;
 $(function () {
     $('#parent_id').select2({
-        placeholder: "Chọn danh mục",
+        placeholder: "Chọn dịch vụ cha",
         allowClear: true,
         dropdownParent: $('#parent_id').parent(),
     })
     $('#parent_id').val('0').trigger('change');
+
+    $('#eparent_id').select2({
+        placeholder: "Chọn dịch vụ cha",
+        allowClear: true,
+        dropdownParent: $('#eparent_id').parent(),
+    })
+    $('#eparent_id').val('0').trigger('change');
 
     'use strict';
     var table_table = $('#tableBasic');
@@ -97,6 +104,9 @@ $(function () {
                 },
                 parent_id: {
                     required: true
+                },
+                price: {
+                    digits: true
                 }
             }
         });
@@ -107,15 +117,15 @@ function loadadd() {
     $("#addnew").modal('show');
     $(".modal-title").html('Thêm dịch vụ mới');
     $('#name').val('');
-    $('#description').val('');
+    $('#short_description').val('');
+    $('#price').val('');
     $('#parent_id').val('0').change();
     url = '/admin/service/add';
     iid = 0;
 }
 
 function loaddata(id) {
-    $("#addnew").modal('show');
-
+    $("#editinfo").modal('show');
     $(".modal-title").html('Cập nhật dịch vụ');
     $.ajax({
         type: "POST",
@@ -123,9 +133,10 @@ function loaddata(id) {
         data: { id: id },
         url: "/admin/service/loaddata",
         success: function (data) {
-            $('#name').val(data.name);
-            $('#short_description').val(data.short_description);
-            $('#content').val(data.content);
+            $('#ename').val(data.name);
+            $('#eprice').val(data.price);
+            $('#eshort_description').val(data.short_description);
+            $('#econtent').val(data.content);
             $('#parent_id').val(data.parent_id).change();
             $('#iid').val(id);
             url = '/admin/service/edit';
@@ -142,6 +153,7 @@ function save() {
     var isValid = $('#frm-add').valid();
 
     if (iid != 0) {
+        console.log(1);
         var info = new FormData($("#frm-edit")[0]);
         $.ajax({
             type: "POST",
@@ -164,6 +176,7 @@ function save() {
             }
         });
     } else {
+        console.log(2);
         if (isValid) {
             var info = new FormData($("#frm-add")[0]);
             $.ajax({
@@ -171,6 +184,8 @@ function save() {
                 dataType: "json",
                 data: info,
                 url: url,
+                contentType: false,
+                processData: false,
                 success: function (data) {
                     if (data.success) {
                         notyfi_success(data.msg);

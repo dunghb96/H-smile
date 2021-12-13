@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use App\Models\Employee;
 use App\Models\Patients;
 use App\Models\Service;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ApppointmentController extends BaseController
@@ -15,32 +16,34 @@ class ApppointmentController extends BaseController
         parent::__construct();
     }
 
-    public function index() 
+    public function index()
     {
         $doctors = Employee::where('type','1')->where('status','1')->get();
         $services = Service::where('status','1')->get();
         return view('frontend.apppointment.index',compact('doctors','services'));
     }
 
-    public function booking(Request $request) 
+    public function booking(Request $request)
     {
         $dataPatient = [
             'full_name' => $request->name,
             'age' => $request->age,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
+            'status_desc' =>  $request->description,
             'status'=> 1
         ];
         $newPatient = Patients::create($dataPatient);
 
         $dataAppointment = [
             'patient_id' => $newPatient->id,
-            'doctor_id' => $request->doctor,
+            'doctor_id' => 1,
             'service_id' => $request->service,
-            // 'date_at' => $request->date_at,
-            'time_at' => $request->time_at,
-            'description' => $request->description,
-            'status'=> 1
+            'appointment_date' =>  Carbon::parse($request->date_at)->format('d/m/Y'),
+            'shift_time' => 2,
+            'status'=> 1,
+            'status_notification' => 1,
+
         ];
         $newBooking = Appointment::create($dataAppointment);
 
@@ -51,6 +54,6 @@ class ApppointmentController extends BaseController
         // } else {
         //     $jsonObj['success'] = false;
         //     $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-        // } 
+        // }
     }
 }

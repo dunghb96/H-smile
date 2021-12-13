@@ -64,6 +64,10 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
+                                                <label>Giá</label>
+                                                <input type="number" class="form-control" id="price" name="price">
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Icon</label>
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="icon" name="icon">
@@ -113,6 +117,10 @@
                                                         <option value="{{ $service->id }}">{{ $service->name }}</option>
                                                     @endforeach
                                                 </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Giá</label>
+                                                <input type="number" class="form-control" id="eprice" name="price">
                                             </div>
                                             <div class="form-group">
                                                 <label>Icon</label>
