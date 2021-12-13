@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="/frontend/css/color-themes/default-theme.css" id="theme-color-file">
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/frontend/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="/frontend/images/favicon/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/frontend/images/favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/frontend/images/favicon/favicon40x40.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/frontend/images/favicon/favicon40x40.png" sizes="16x16">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&amp ;display=swap" rel="stylesheet">
