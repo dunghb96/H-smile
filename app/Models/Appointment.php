@@ -11,6 +11,12 @@ class Appointment extends Model
     protected $table = 'appointments';
     protected $guarded = [];
 
+    const STATUS = [
+        1 => 'Chờ xác nhận',
+        2 => 'Đã xác nhận',
+        3 => 'Đã hoàn thành',
+    ];
+
     public function patients()
     {
         return $this->hasOne(Patients::class, 'id', 'patient_id');
@@ -18,6 +24,6 @@ class Appointment extends Model
 
     public function service()
     {
-        return $this->hasOne(Service::class, 'id', 'patient_id');
+        return $this->hasOne(Service::class, 'id', 'service_id');
     }
 }

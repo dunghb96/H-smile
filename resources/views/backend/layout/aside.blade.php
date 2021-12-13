@@ -100,7 +100,7 @@
                 </a>
             </li>
             <li class=" nav-item">
-                <a class="d-flex align-items-center" href="#">
+                <a class="d-flex align-items-center" href="{{ route('admin.patient') }}">
                     <i data-feather="message-square"></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Bệnh nhân</span>
                 </a>

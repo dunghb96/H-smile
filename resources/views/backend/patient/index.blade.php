@@ -10,12 +10,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Lịch hẹn</h2>
+                        <h2 class="content-header-title float-left mb-0">Khách hàng</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item">Lịch hẹn
+                                <li class="breadcrumb-item">Khách hàng
                                 </li>
                             </ol>
                         </div>
@@ -33,10 +33,12 @@
                                 <table class="datatables-basic table" id="tableBasic">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Stt</th>
                                             <th>Tên khách hàng</th>
                                             <th>Tuổi</th>
-                                            <th>Dịch vụ</th>
+                                            <th>Số điện thoại</th>
+                                            <th>Email</th>
+                                            <th>Tình trạng</th>
                                             <th>Status</th>
                                             <th></th>
                                         </tr>
@@ -162,5 +164,5 @@
 </div>
 @endsection
 @push('js')
-<script src="/backend/assets/js/apppointment.js"></script>
+<script src="/backend/assets/js/patient.js"></script>
 @endpush

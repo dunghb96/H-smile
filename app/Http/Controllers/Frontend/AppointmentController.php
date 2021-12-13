@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Employee;
-use App\Models\Patients;
+use App\Models\Patient;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -34,7 +34,7 @@ class AppointmentController extends BaseController
             'status_desc' =>  $request->description,
             'status'=> 1
         ];
-        $newPatient = Patients::create($dataPatient);
+        $newPatient = Patient::create($dataPatient);
 
         $dataAppointment = [
             'patient_id' => $newPatient->id,

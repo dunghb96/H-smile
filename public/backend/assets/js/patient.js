@@ -30,14 +30,15 @@
         //  console.log(data);
          var table = table_table.DataTable({
 
-             ajax: '/admin/appointment/json',
+             ajax: '/admin/patient/json',
 
              columns: [
                  { data: 'id' },
                  { data: 'full_name' },
                  { data: 'age' },
-                 { data: 'services' },
-                 { data: 'status_word' },
+                 { data: 'phone_number' },
+                 { data: 'email' },
+                 { data: 'status_desc' },
                  { data: '' }
              ],
              columnDefs: [

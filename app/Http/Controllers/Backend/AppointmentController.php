@@ -22,13 +22,14 @@ class AppointmentController extends Controller
     public function json()
     {
         $list = Appointment::with('Patients', 'Service')->where('status','1')->get();
-
-        // dd($list);
         $jsonObj['data'] = $list;
-        // $jsonObj['data']['patient_name'] = $list->patients->full_name;
-        // $jsonObj['data']['age'] = $list->patients->age;
-        // $jsonObj['data']['service'] = $list->service->name;
-        // dd($jsonObj);
+        foreach($list as $key => $row){
+            $jsonObj['data'][$key]->full_name = $row->patients->full_name;
+            $jsonObj['data'][$key]->age       = $row->patients->age;
+            $jsonObj['data'][$key]->services = $row->service->name;
+            $jsonObj['data'][$key]->status_word =  Appointment::STATUS[$jsonObj['data'][$key]->status];
+
+        }
         echo json_encode($jsonObj);
     }
 
