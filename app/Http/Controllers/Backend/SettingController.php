@@ -10,7 +10,7 @@ class SettingController extends BaseController
     private function optionKeys(): array
     {
         $optionKeys = [
-            'site_favicon','site_logo', 'site_logo_footer', 'video', 
+            'site_favicon','site_logo', 'site_logo_footer', 'video',
             'contact_phone', 'contact_email', 'contact_address', 'contact_google_maps',
             'social_facebook', 'social_line', 'social_zalo', 'social_youtube', 'social_linkedin', 'social_instagram',
             'emails_receive_notification','site_title','site_description'
@@ -33,6 +33,6 @@ class SettingController extends BaseController
             }
         }
 
-        return back()->with(['status' => 'success', 'flash_message' => 'Update sucess']);
+        return back()->with(['status' => 'success', 'flash_message' => 'Update success']);
     }
 }

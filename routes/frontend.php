@@ -29,7 +29,7 @@ Route::get('/doctors', [DoctorController::class, 'index'])->name('hsmile.doctors
 Route::get('/blog', [BlogController::class, 'index'])->name('hsmile.blog');
 Route::get('/price-list', [PriceListController::class, 'index'])->name('hsmile.price_list');
 Route::get('/contact', [ContactController::class, 'index'])->name('hsmile.contact');
-
+Route::post('/contact-post', [ContactController::class, 'post'])->name('hsmile.contact.post');
 Route::group(['prefix' => 'service'], function () {
     Route::get('/', [ServiceController::class, 'index'])->name('hsmile.services');
     Route::get('/{id}', [ServiceController::class, 'get'])->name('hsmile.service.detail');

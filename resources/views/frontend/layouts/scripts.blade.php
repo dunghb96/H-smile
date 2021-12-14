@@ -57,6 +57,7 @@
 
 <!-- thm custom script -->
 <script src="/frontend/js/custom.js"></script>
+@yield('script')
 
 <script>
     $.ajaxSetup({

@@ -25,10 +25,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&amp ;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Fixing Internet Explorer-->
-    <!--[if lt IE 9]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <script src="js/html5shiv.js"></script>
-    <![endif]-->
+    @yield('head')
 
 </head>
