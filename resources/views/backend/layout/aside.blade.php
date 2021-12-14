@@ -1,14 +1,10 @@
 <!-- BEGIN: Main Menu-->
 <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
-    <div class="navbar-header">
+    <div class="navbar-header" style="margin-bottom: 20px;">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto">
                 <a class="navbar-brand" href="{{ route('hsmile.home') }}">
-                    <div class="brand-logo" id="minlogo">
-                        <img src="/backend/assets/img/icon1.jpg" height="24" />
-                    </div>
-                    <h2 class="brand-text">H-SMILE</h2>
-                    <!-- <img src="/backend/assets/img/logo/logo1.png" height="30" alt="logo"> -->
+                    <img width="80%" src="{{ asset('frontend/images/resources/logo.png') }}" />
                 </a>
             </li>
             <li class="nav-item nav-toggle">

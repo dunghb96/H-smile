@@ -14,7 +14,8 @@
         <base href="{{ route('hsmile.home') }}" />
         <title>H-Smile Admin</title>
         <link rel="apple-touch-icon" href="/layout/favicon.png">
-        <link rel="shortcut icon" type="image/x-icon" href="/layout/favicon.png">
+        <link rel="icon" type="image/png" href="/frontend/images/favicon/favicon40x40.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/frontend/images/favicon/favicon40x40.png" sizes="16x16">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
         @includeIf('backend.layout.styles')
         @stack('css')
