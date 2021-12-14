@@ -34,10 +34,12 @@
         </div>
         <div class="row">
             <!--Start single solution style1-->
+
+            @foreach($service as $row)
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                 <div class="single-solution-style1 wow fadeInUp" data-wow-delay="300ms">
                     <div class="img-holder">
-                        <img src="/frontend/images/services/1.jpg" alt="Awesome Image">
+                        <img src="{{ asset($row->image) }}" alt="Awesome Image">
                         <div class="icon-holder">
                             <div class="inner-content">
                                 <div class="box">
@@ -47,148 +49,21 @@
                         </div>
                     </div>
                     <div class="text-holder">
-                        <h3>Dental Implants</h3>
-                        <p>Denouncing pleasure & praising pain was born and wewill give you a complete account of the system.</p>
+                        <h3>{{$row->name}}</h3>
+                        <p>{{$row->short_description}}</p>
                         <div class="readmore">
                             <a href="#"><span class="icon-plus"></span></a>
                             <div class="overlay-button">
-                                <a href="#">Read More</a>
+                                <a href="{{route('hsmile.service.detail',['id'=>$row->id])}}">Đọc thêm</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
             <!--End single solution style1-->
             <!--Start single solution style1-->
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <div class="single-solution-style1 wow fadeInUp" data-wow-delay="600ms">
-                    <div class="img-holder">
-                        <img src="/frontend/images/services/2.jpg" alt="Awesome Image">
-                        <div class="icon-holder">
-                            <div class="inner-content">
-                                <div class="box">
-                                    <span class="icon-teeth-2"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <h3>Cosmetic Dentistry</h3>
-                        <p>Know how pursue pleasure rationally encounter consequences that extremely anyone loves pursues.</p>
-                        <div class="readmore">
-                            <a href="#"><span class="flaticon-next"></span></a>
-                            <div class="overlay-button">
-                                <a href="#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End single solution style1-->
-            <!--Start single solution style1-->
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <div class="single-solution-style1 wow fadeInUp" data-wow-delay="900ms">
-                    <div class="img-holder">
-                        <img src="/frontend/images/services/3.jpg" alt="Awesome Image">
-                        <div class="icon-holder">
-                            <div class="inner-content">
-                                <div class="box">
-                                    <span class="icon-dentist"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <h3>Laser Dentistry</h3>
-                        <p>To take a trivial example, which us ever undertakes laborious physical exercise, to obtain some advantage.</p>
-                        <div class="readmore">
-                            <a href="#"><span class="flaticon-next"></span></a>
-                            <div class="overlay-button">
-                                <a href="#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End single solution style1-->
 
-            <!--Start single solution style1-->
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <div class="single-solution-style1 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="img-holder">
-                        <img src="/frontend/images/services/4.jpg" alt="Awesome Image">
-                        <div class="icon-holder">
-                            <div class="inner-content">
-                                <div class="box">
-                                    <span class="icon-dental"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <h3>Orthodontics</h3>
-                        <p>To take a trivial example, which us ever undertakes laborious physical exercise, to obtain some advantage.</p>
-                        <div class="readmore">
-                            <a href="#"><span class="icon-plus"></span></a>
-                            <div class="overlay-button">
-                                <a href="#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End single solution style1-->
-            <!--Start single solution style1-->
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <div class="single-solution-style1 wow fadeInUp" data-wow-delay="600ms">
-                    <div class="img-holder">
-                        <img src="/frontend/images/services/5.jpg" alt="Awesome Image">
-                        <div class="icon-holder">
-                            <div class="inner-content">
-                                <div class="box">
-                                    <span class="icon-tooth-3"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <h3>Endodontics</h3>
-                        <p>Denouncing pleasure & praising pain was born and wewill give you a complete account of the system.</p>
-                        <div class="readmore">
-                            <a href="#"><span class="flaticon-next"></span></a>
-                            <div class="overlay-button">
-                                <a href="#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End single solution style1-->
-            <!--Start single solution style1-->
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                <div class="single-solution-style1 wow fadeInUp" data-wow-delay="900ms">
-                    <div class="img-holder">
-                        <img src="/frontend/images/services/6.jpg" alt="Awesome Image">
-                        <div class="icon-holder">
-                            <div class="inner-content">
-                                <div class="box">
-                                    <span class="icon-tooth-2"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <h3>Periodontics</h3>
-                        <p>Know how pursue pleasure rationally encounter consequences that extremely anyone loves pursues.</p>
-                        <div class="readmore">
-                            <a href="#"><span class="flaticon-next"></span></a>
-                            <div class="overlay-button">
-                                <a href="#">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!--End single solution style1-->
         </div>
     </div>

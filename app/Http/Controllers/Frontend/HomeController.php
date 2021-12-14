@@ -10,6 +10,8 @@ use App\Models\News;
 use App\Models\Partner;
 use App\Models\Service;
 use App\Models\Slide;
+use App\Models\Blog;
+
 use App\Models\StaticPage;
 use App\Models\Template;
 use Illuminate\Http\Request;
@@ -21,7 +23,8 @@ class HomeController extends BaseController
         $slide = Slide::where('status', 1)->take(3)->get();
         $service = Service::where('status', 1)->where('parent_id', 0)->take(6)->get();
         $partner = Partner::where('status', 1)->take(4)->get();
-        return view('frontend.home.index', compact('slide', 'service', 'partner'));
+        $blog = Blog::orderBy('created_at', 'DESC')->get();
+        return view('frontend.home.index', compact('slide', 'service', 'partner', 'blog'));
     }
 
     public function service()
@@ -40,6 +43,7 @@ class HomeController extends BaseController
     {
         return view('frontend.form.fom_booking');
     }
+
     public function serviceForHeader()
     {
         $service = Service::where('parent_id', 0)->get();

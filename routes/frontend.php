@@ -21,12 +21,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('hsmile.home');
 Route::get('/aboutus', [AboutController::class, 'index'])->name('hsmile.aboutus');
 Route::get('/doctors', [DoctorController::class, 'index'])->name('hsmile.doctors');
-Route::get('/blog', [BlogController::class, 'index'])->name('hsmile.blog');
+
 Route::get('/price-list', [PriceListController::class, 'index'])->name('hsmile.price_list');
 Route::get('/contact', [ContactController::class, 'index'])->name('hsmile.contact');
 Route::post('/contact-post', [ContactController::class, 'post'])->name('hsmile.contact.post');
@@ -34,10 +35,14 @@ Route::group(['prefix' => 'service'], function () {
     Route::get('/', [ServiceController::class, 'index'])->name('hsmile.services');
     Route::get('/{id}', [ServiceController::class, 'get'])->name('hsmile.service.detail');
 });
+Route::group(['prefix' => 'blog'], function () {
+    Route::get('/', [BlogController::class, 'index'])->name('hsmile.blog');
+    Route::get('/{id}', [BlogController::class, 'get'])->name('hsmile.blog.detail');
+});
 
 Route::group(['prefix' => 'appointment'], function () {
     Route::get('/', [AppointmentController::class, 'index'])->name('hsmile.appointment');
     Route::post('/', [AppointmentController::class, 'booking'])->name('hsmile.booking');
-    Route::post('/get-doctor',[AppointmentController::class, 'getDoctor'] );
+    Route::post('/get-doctor', [AppointmentController::class, 'getDoctor']);
 });
 // không có frontend/ đâu

@@ -7,7 +7,7 @@
         <div class="rev_slider fullwidthabanner" id="rev_slider_two" data-version="5.4.1">
             <ul>
                 @foreach ($slide as $image)
-                    <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1691" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="{{ asset($image->image) }}" data-title="Slide Title" data-transition="parallaxvertical">
+                <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1691" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="{{ asset($image->image) }}" data-title="Slide Title" data-transition="parallaxvertical">
 
                     <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-no-retina="" src="{{ asset($image->image) }}">
 
@@ -173,8 +173,9 @@
                         <h1>Tầm nhìn và sứ mệnh<br> của H-Smile</h1>
                     </div>
                     <div class="about-text-holder">
-                        <p>Dento was started in the year 1995 as a small private dental clinic in Binghamton, NY, USA. Looking for affordable dental care?</p>
-                        <p>To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, pain resultant pleasure praising teachings of the great explorer...</p>
+                        <p>Dento được thành lập vào năm 1995 với tư cách là một phòng khám nha khoa tư nhân nhỏ ở Binghamton, NY, Hoa Kỳ. Tìm kiếm dịch vụ chăm sóc răng miệng giá cả phải chăng?</p>
+                        <p>Lấy một ví dụ tầm thường, ai trong chúng ta đã từng thực hiện bài tập thể dục vất vả, ngoại trừ việc đạt được một số lợi thế từ nó? Nhưng ai có quyền nhận lỗi với một người đàn ông chọn cách tận hưởng một niềm vui không có hậu quả khó chịu, niềm vui dẫn đến đau đớn ca ngợi những lời dạy của nhà thám hiểm vĩ đại ...
+                        </p>
                         <div class="author-box fix">
                             <div class="img-box">
                                 <img src="/frontend/images/resources/ceo.png" alt="Awesome Image">
@@ -208,34 +209,34 @@
         </div>
         <div class="row">
             @if (count($service))
-                @foreach ($service as $row)
-                    <!--Start single solution style1-->
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                        <div class="single-solution-style1 wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
-                            <div class="img-holder">
-                                <img src="{{ $row->image }}" alt="{{ $row->slug }}">
-                                <div class="icon-holder">
-                                    <div class="inner-content">
-                                        <div class="box">
-                                            <span class="icon-teeth-1"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-holder">
-                                <h3>{{ $row->name }}</h3>
-                                <p>{!! $row->short_description !!}</p>
-                                <div class="readmore">
-                                    <a href="{{ route('hsmile.service.detail',['id'=>$row->id]) }}"><span class="icon-plus"></span></a>
-                                    <div class="overlay-button">
-                                        <a href="{{ route('hsmile.service.detail',['id'=>$row->id]) }}">Xem thêm</a>
-                                    </div>
+            @foreach ($service as $row)
+            <!--Start single solution style1-->
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                <div class="single-solution-style1 wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+                    <div class="img-holder">
+                        <img src="{{ $row->image }}" alt="{{ $row->slug }}">
+                        <div class="icon-holder">
+                            <div class="inner-content">
+                                <div class="box">
+                                    <span class="icon-teeth-1"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--End single solution style1-->
-                @endforeach
+                    <div class="text-holder">
+                        <h3>{{ $row->name }}</h3>
+                        <p>{!! $row->short_description !!}</p>
+                        <div class="readmore">
+                            <a href="{{ route('hsmile.service.detail',['id'=>$row->id]) }}"><span class="icon-plus"></span></a>
+                            <div class="overlay-button">
+                                <a href="{{ route('hsmile.service.detail',['id'=>$row->id]) }}">Xem thêm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End single solution style1-->
+            @endforeach
             @endif
         </div>
     </div>
@@ -268,13 +269,13 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-6">
                                 <div class="input-box">
-                                    <input type="text" name="form_name" value="" placeholder="Name*" required="">
+                                    <input type="text" name="form_name" value="" placeholder="Họ và tên*" required="">
                                 </div>
                                 <div class="input-box">
-                                    <input type="text" name="form_phone" value="" placeholder="Phone">
+                                    <input type="text" name="form_phone" value="" placeholder="Số điện thoại">
                                 </div>
                                 <div class="input-box">
-                                    <input type="text" name="date" placeholder="Date" id="datepicker">
+                                    <input type="text" name="date" placeholder="Ngày" id="datepicker">
                                     <div class="icon-box">
                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                     </div>
@@ -295,7 +296,7 @@
                                     </select>
                                 </div>
                                 <div class="input-box">
-                                    <input type="text" name="time" placeholder="Time">
+                                    <input type="text" name="time" placeholder="Thời gian">
                                     <div class="icon-box">
                                         <i class="fa fa-clock-o" aria-hidden="true"></i>
                                     </div>
@@ -305,14 +306,14 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="input-box">
-                                    <textarea name="form_message" placeholder="Your Message.." required=""></textarea>
+                                    <textarea name="form_message" placeholder="Lời nhắn của bạn..." required=""></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="button-box">
-                                    <button class="btn-one" type="submit">Subscribe</button>
+                                    <button class="btn-one" type="submit">Gửi</button>
                                 </div>
                             </div>
                         </div>
@@ -629,42 +630,13 @@
         </div>
         <div class="row">
             <!--Start single blog post-->
+            @foreach($blog as $row)
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="single-blog-post">
                     <div class="img-holder">
-                        <img src="/frontend/images/blog/lat-blog-1.jpg" alt="Awesome Image">
+                        <img src="/frontend/images/blog/v1-1.jpg" alt="Awesome Image">
                         <div class="categorie-button">
-                            <a class="btn-one" href="#">Healthy Teeth</a>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <div class="meta-box">
-                            <div class="author-thumb">
-                                <img src="/frontend/images/blog/author-1.png" alt="Image">
-                            </div>
-                            <ul class="meta-info">
-                                <li><a href="#">By Megan Clarks</a></li>
-                                <li><a href="#">Nov 14, 2018</a></li>
-                            </ul>
-                        </div>
-                        <h3 class="blog-title"><a href="blog-single.html">A guide for dentists and patients</a></h3>
-                        <div class="text-box">
-                            <p>No one rejects, dislikes our avoids pleasures itself, because it is all pleasure, but because those who do not know.</p>
-                        </div>
-                        <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--End single blog post-->
-            <!--Start single blog post-->
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-blog-post">
-                    <div class="img-holder">
-                        <img src="/frontend/images/blog/lat-blog-2.jpg" alt="Awesome Image">
-                        <div class="categorie-button">
-                            <a class="btn-one" href="#">Technology</a>
+                            <a class="btn-one" href="#">{{$row->category}}</a>
                         </div>
                     </div>
                     <div class="text-holder">
@@ -673,50 +645,24 @@
                                 <img src="/frontend/images/blog/author-2.png" alt="Image">
                             </div>
                             <ul class="meta-info">
-                                <li><a href="#">By Megan Clarks</a></li>
-                                <li><a href="#">Nov 14, 2018</a></li>
+                                <li><a href="#">By {{$row->author}}</a></li>
+                                <li><a href="#">{{$row->created_at}}</a></li>
                             </ul>
                         </div>
-                        <h3 class="blog-title"><a href="blog-single.html">Should i go for a smile design?</a></h3>
+                        <h3 class="blog-title"><a href="blog-single.html">{{$row->title}}</a></h3>
                         <div class="text-box">
-                            <p>Nor again is there anyone who love pursues or desires to obtain pain of itself, bepain, but occasionally circumstances.</p>
+                            <p>{{$row->short_desc}}</p>
                         </div>
                         <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
+                            <a class="btn-two" href="{{route('hsmile.blog.detail',['id'=>$row->id])}}"><span class="flaticon-next"></span>Xem thêm</a>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
             <!--End single blog post-->
             <!--Start single blog post-->
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-blog-post">
-                    <div class="img-holder">
-                        <img src="/frontend/images/blog/lat-blog-3.jpg" alt="Awesome Image">
-                        <div class="categorie-button">
-                            <a class="btn-one" href="#">Dental Care</a>
-                        </div>
-                    </div>
-                    <div class="text-holder">
-                        <div class="meta-box">
-                            <div class="author-thumb">
-                                <img src="/frontend/images/blog/author-3.png" alt="Image">
-                            </div>
-                            <ul class="meta-info">
-                                <li><a href="#">By Megan Clarks</a></li>
-                                <li><a href="#">Nov 14, 2018</a></li>
-                            </ul>
-                        </div>
-                        <h3 class="blog-title"><a href="blog-single.html">What you need to know teeth?</a></h3>
-                        <div class="text-box">
-                            <p>It not only helps you to chew and eat your food frames your faceany missing tooth can major impact your quality of life.</p>
-                        </div>
-                        <div class="readmore-button">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>Continue REading</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <!--End single blog post-->
         </div>
     </div>
@@ -730,13 +676,13 @@
             <div class="col-md-12">
                 <ul class="brand">
                     @if (count($partner))
-                        @foreach ($partner as $row)
-                            <!--Start single item-->
-                            <li class="single-item">
-                                <a href="#"><img src="{{ $row->logo }}" alt="{{ $row->name }}"></a>
-                            </li>
-                            <!--End single item-->
-                        @endforeach
+                    @foreach ($partner as $row)
+                    <!--Start single item-->
+                    <li class="single-item">
+                        <a href="#"><img src="{{ $row->logo }}" alt="{{ $row->name }}"></a>
+                    </li>
+                    <!--End single item-->
+                    @endforeach
                     @endif
 
                 </ul>

@@ -1,28 +1,28 @@
 @extends('frontend.layouts.app')
 
 @section('main-content')
-<!--Start breadcrumb area-->     
+<!--Start breadcrumb area-->
 <section class="breadcrumb-area" style="background-image: url(/frontend/images/resources/breadcrumb-bg.jpg);">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
                 <div class="inner-content clearfix">
                     <div class="title float-left">
-                       <h2>Gặp Gỡ Các Nha Sĩ Của Chúng Tôi</h2>
+                        <h2>Gặp Gỡ Các Nha Sĩ Của Chúng Tôi</h2>
                     </div>
                     <div class="breadcrumb-menu float-right">
                         <ul class="clearfix">
                             <li><a href="index-2.html">Trang chủ</a></li>
                             <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
                             <li class="active">Nha sĩ</li>
-                        </ul>    
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-	</div>
+    </div>
 </section>
-<!--End breadcrumb area--> 
+<!--End breadcrumb area-->
 
 <!--Start Doctor area-->
 <section class="doctor-area">
@@ -37,18 +37,19 @@
                                 <li data-tab="#doctor" class="tab-btn left"><span>Tên Nha Sĩ</span></li>
                                 <li data-tab="#specialization" class="tab-btn active-btn right"><span>Chuyên Môn</span></li>
                             </ul>
+                            @foreach($doctor as $row)
                             <div class="tabs-content">
+
                                 <div class="tab" id="doctor">
+
                                     <form name="doctor-form" action="#" method="post">
                                         <div class="row">
                                             <div class="col-xl-12 col-lg-12">
                                                 <div class="input-box">
+
                                                     <select class="selectmenu">
-                                                        <option selected="selected">Nha sĩ 1</option>
-                                                        <option>Nha sĩ 2</option>
-                                                        <option>Nha sĩ 3</option>
-                                                        <option>Nha sĩ 4</option>
-                                                        <option>Nha sĩ 5</option>
+                                                        <option selected="selected">{{$row->name}}</option>
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -56,24 +57,23 @@
                                         <div class="row">
                                             <div class="col-xl-12">
                                                 <div class="button-box">
-                                                    <button class="btn-one" type="submit">Tìm</button>    
-                                                </div> 
+                                                    <button class="btn-one" type="submit">Tìm</button>
+                                                </div>
                                             </div>
-                                        </div>    
-                                    </form>    
+                                        </div>
+                                    </form>
+
                                 </div>
                                 <div class="tab active-tab" id="specialization">
                                     <form name="doctor-form" action="#" method="post">
                                         <div class="row">
                                             <div class="col-xl-12 col-lg-12">
                                                 <div class="input-box">
+
                                                     <select class="selectmenu">
-                                                        <option selected="selected">Chuyên môn 1</option>
-                                                        <option>Chuyên môn 2</option>
-                                                        <option>Chuyên môn 3</option>
-                                                        <option>Chuyên môn 4</option>
-                                                        <option>Chuyên môn 5</option>
-                                                        
+                                                        <option selected="selected">{{$row->majors}}</option>
+
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -81,14 +81,15 @@
                                         <div class="row">
                                             <div class="col-xl-12">
                                                 <div class="button-box">
-                                                    <button class="btn-one" type="submit">Find a Doctor</button>    
-                                                </div> 
+                                                    <button class="btn-one" type="submit">Find a Doctor</button>
+                                                </div>
                                             </div>
-                                        </div>    
+                                        </div>
                                     </form>
                                 </div>
-                            </div>      
-                        </div>   
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
                     <!--End Single Sidebar-->
                     <!--Start Single Sidebar-->
@@ -96,7 +97,7 @@
                         <div class="sidebar-appoinment">
                             <div class="title">
                                 <h3>Make Appointment</h3>
-                            </div> 
+                            </div>
                             <form class="appoinment-form">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -130,10 +131,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">   
-                                        <div class="input-box">    
+                                    <div class="col-md-12">
+                                        <div class="input-box">
                                             <textarea name="form_message" placeholder="Message..." required=""></textarea>
-                                        </div> 
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -145,7 +146,7 @@
                         </div>
                     </div>
                     <!--End Single Sidebar-->
-                </div>    
+                </div>
             </div>
             <div class="col-xl-8">
                 <div class="doctor-content">
@@ -241,7 +242,7 @@
                             </div>
                         </div>
                     </div>
-                    <!--End Single doctor item--> 
+                    <!--End Single doctor item-->
                     <!--Start Single doctor item-->
                     <div class="single-doctor-item wow fadeInUp" data-wow-delay="300ms">
                         <div class="row">
@@ -272,7 +273,7 @@
                             </div>
                         </div>
                     </div>
-                    <!--End Single doctor item--> 
+                    <!--End Single doctor item-->
                     <!--Start Single doctor item-->
                     <div class="single-doctor-item last-child wow fadeInUp" data-wow-delay="600ms">
                         <div class="row">
@@ -303,8 +304,8 @@
                             </div>
                         </div>
                     </div>
-                    <!--End Single doctor item-->                         
-                </div>        
+                    <!--End Single doctor item-->
+                </div>
             </div>
         </div>
     </div>

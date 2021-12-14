@@ -14,7 +14,8 @@ class ServiceController extends BaseController
 
     public function index()
     {
-        return view('frontend.service.index');
+        $service = Service::where('parent_id', 0)->get();
+        return view('frontend.service.index', compact('service'));
     }
     public function get($id)
     {

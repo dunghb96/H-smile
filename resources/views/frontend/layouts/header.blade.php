@@ -64,14 +64,7 @@
                                     </li>
                                     <li class="{{ request()->is('aboutus') ? 'current' : '' }}"><a href="{{ route('hsmile.aboutus') }}">Giới thiệu</a></li>
                                     <li class="dropdown {{ request()->is('services') ? 'current' : '' }}"><a href="{{ route('hsmile.services') }}">Dịch vụ</a>
-                                        <ul>
-                                            <li><a href="spec-dental-implants.html">Dental Implants</a></li>
-                                            <li><a href="spec-cosmetic-dentistry.html">Cosmetic Dentistry</a></li>
-                                            <li><a href="spec-laser-dentistry.html">Laser Dentistry</a></li>
-                                            <li><a href="spec-orthodontics.html">Orthodontics</a></li>
-                                            <li><a href="spec-endodontics.html">Endodontics</a></li>
-                                            <li><a href="spec-periodontics.html">Periodontics</a></li>
-                                        </ul>
+
                                     </li>
                                     <li class="{{ request()->is('doctors') ? 'current' : '' }}"><a href="{{ route('hsmile.doctors') }}">Bác sĩ</a></li>
                                     <li class="dropdown {{ request()->is('blog') ? 'current' : '' }}"><a href="{{ route('hsmile.blog') }}">Tin tức</a>

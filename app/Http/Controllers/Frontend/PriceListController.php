@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
+use App\Models\Service;
+
 
 class PriceListController extends BaseController
 {
@@ -11,8 +13,10 @@ class PriceListController extends BaseController
         parent::__construct();
     }
 
-    public function index() 
+    public function index()
     {
-        return view('frontend.price-list.index');
+        $servicePrice = Service::where('parent_id', 0)->get();
+
+        return view('frontend.price-list.index', compact('servicePrice'));
     }
 }
