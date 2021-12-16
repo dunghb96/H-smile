@@ -51,7 +51,7 @@
             <div class="auth-wrapper auth-v2">
                 <div class="auth-inner row m-0">
                     <!-- Brand logo--><a class="brand-logo" href="javascript:void(0);">
-                        <img src="template/images/favicon.jpg" width="30" height="30"/>
+                        <img src="{{ asset('frontend/images/favicon/favicon40x40.png') }}" width="30" height="30"/>
                         <h2 class="brand-text text-primary ml-1">H-Smile</h2></a>
                     <!-- /Brand logo-->
                     <!-- Left Text-->

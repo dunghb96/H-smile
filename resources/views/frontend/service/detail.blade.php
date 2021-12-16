@@ -1,7 +1,5 @@
-@extends('frontend.layout.index')
-@section('content')
-
-
+@extends('frontend.layouts.app')
+@section('main-content')
 
 <!--Start Specialities Single Area-->
 <section class="specialities-single-area">
