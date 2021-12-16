@@ -9,6 +9,8 @@ use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DoctorController;
 use App\Http\Controllers\Backend\EmployeeController;
+use App\Http\Controllers\Backend\FeedbackController;
+use App\Http\Controllers\Backend\ExaminationScheduleController;
 use App\Http\Controllers\Backend\OptionController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\RoleController;
@@ -84,7 +86,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/loaddata', [ServiceController::class, 'loaddata']);
         Route::post('/edit', [ServiceController::class, 'edit']);
         Route::post('/del', [ServiceController::class, 'del']);
-
     });
 
     Route::group(['prefix' => 'price-list'], function () {
@@ -117,10 +118,22 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     Route::group(['prefix' => 'appointment'], function () {
         Route::get('/', [AppointmentController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.appointment');
         Route::get('/json', [AppointmentController::class, 'json']);
+        Route::post('/duyet', [AppointmentController::class, 'duyet']);
+        Route::post('/get-doctor', [AppointmentController::class, 'getDoctor']);
+        Route::post('/add-schedule', [AppointmentController::class, 'addSchedule']);
         Route::post('/add', [AppointmentController::class, 'add']);
         Route::post('/loaddata', [AppointmentController::class, 'loaddata']);
         Route::post('/edit', [AppointmentController::class, 'edit']);
         Route::post('/del', [AppointmentController::class, 'del']);
+    });
+
+    Route::group(['prefix' => 'examination-schedule'], function () {
+        Route::get('/', [ExaminationScheduleController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.examination_schedule');
+        Route::get('/json', [ExaminationScheduleController::class, 'json']);
+        Route::post('/add', [ExaminationScheduleController::class, 'add']);
+        Route::post('/loaddata', [ExaminationScheduleController::class, 'loaddata']);
+        Route::post('/edit', [ExaminationScheduleController::class, 'edit']);
+        Route::post('/del', [ExaminationScheduleController::class, 'del']);
     });
 
     Route::group(['prefix' => 'patient'], function () {
@@ -148,6 +161,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::get('/accountsettings', [UserController::class, 'accountsettings'])->name('admin.accountsettings');
     });
 
+    Route::group(['prefix' => 'feedback'], function () {
+        Route::get('/', [FeedbackController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.feedback');
+        Route::get('/json', [FeedbackController::class, 'json']);
+        Route::post('/add', [FeedbackController::class, 'add']);
+        Route::post('/loaddata', [FeedbackController::class, 'loaddata']);
+        Route::post('/edit', [FeedbackController::class, 'edit']);
+        Route::post('/del', [FeedbackController::class, 'del']);
+    });
 })
 
 ?>

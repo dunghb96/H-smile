@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
                                     <div class="title">
@@ -77,15 +77,15 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                        </div> -->
+                        <!-- <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
                                     <div class="title">
                                         <h5>Ngày</h5>
                                     </div>
                                     <div class="input-box">
-                                        <input type="text" name="date_at" placeholder="Date" id="datepicker">
+                                        <input type="text" name="date_at" placeholder="Date" id="datepicker" autocomplete="off">
                                         <div class="icon-box">
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                         </div>
@@ -116,7 +116,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
@@ -143,7 +143,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row" style="margin-bottom: 20px;">
+                                        <!-- <div class="row" style="margin-bottom: 20px;">
                                             <div class="col-xl-12">
                                                 <select class="selectmenu select2" name="service">
                                                     <option value="" selected="selected">Chọn dịch vụ</option>
@@ -154,11 +154,11 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <div class="row">
                                             <div class="col-xl-12">
-                                                <textarea name="description" placeholder="Mô tả bệnh tình"></textarea>
+                                                <textarea name="description" placeholder="Mô tả tình trạng"></textarea>
                                             </div>
                                         </div>
 

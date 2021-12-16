@@ -378,85 +378,25 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="testimonial-carousel2 owl-carousel owl-theme">
-                    <!--Start Single Testimonial Item-->
-                    <div class="single-testimonial-style2 text-center">
-                        <div class="quote-icon">
-                            <img src="/frontend/images/icon/1.png" alt="Quote Icon">
+                    @foreach ($feedback as $row)
+                        <!--Start Single Testimonial Item-->
+                        <div class="single-testimonial-style2 text-center">
+                            <div class="quote-icon">
+                                <img src="/frontend/images/icon/1.png" alt="Quote Icon">
+                            </div>
+                            <div class="text-holder">
+                                <p>{{ $row->message }}</p>
+                            </div>
+                            <div class="name">
+                                <h3>{{ $row->name }}</h3>
+                                <span>{{ $row->address }}</span>
+                            </div>
+                            <div class="quote-icon2">
+                                <img src="/frontend/images/icon/2.png" alt="Quote Icon">
+                            </div>
                         </div>
-                        <div class="text-holder">
-                            <p>Đó là một trải nghiệm cả đời với các bạn… .Đây chắc chắn là phòng khám nha khoa tốt nhất mà tôi từng đến. Bây giờ tôi đã lấy lại được chiếc răng của mình, cảm ơn H-smile</p>
-                        </div>
-                        <div class="review-box">
-                            <ul>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                        <div class="name">
-                            <h3>Evelynne Mirando</h3>
-                            <span>Houston</span>
-                        </div>
-                        <div class="quote-icon2">
-                            <img src="/frontend/images/icon/2.png" alt="Quote Icon">
-                        </div>
-                    </div>
-                    <!--End Single Testimonial Item-->
-                    <!--Start Single Testimonial Item-->
-                    <div class="single-testimonial-style2 text-center">
-                        <div class="quote-icon">
-                            <img src="/frontend/images/icon/1.png" alt="Quote Icon">
-                        </div>
-                        <div class="text-holder">
-                            <p>Đó là một trải nghiệm cả đời với các bạn… .Đây chắc chắn là phòng khám nha khoa tốt nhất mà tôi từng đến. Bây giờ tôi đã lấy lại được chiếc răng của mình, cảm ơn H-smile</p>
-                        </div>
-                        <div class="review-box">
-                            <ul>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                        <div class="name">
-                            <h3>Evelynne Mirando</h3>
-                            <span>Houston</span>
-                        </div>
-                        <div class="quote-icon2">
-                            <img src="/frontend/images/icon/2.png" alt="Quote Icon">
-                        </div>
-                    </div>
-                    <!--End Single Testimonial Item-->
-                    <!--Start Single Testimonial Item-->
-                    <div class="single-testimonial-style2 text-center">
-                        <div class="quote-icon">
-                            <img src="/frontend/images/icon/1.png" alt="Quote Icon">
-                        </div>
-                        <div class="text-holder">
-                            <p>Đó là một trải nghiệm cả đời với các bạn… .Đây chắc chắn là phòng khám nha khoa tốt nhất mà tôi từng đến. Bây giờ tôi đã lấy lại được chiếc răng của mình, cảm ơn H-smile</p>
-                        </div>
-                        <div class="review-box">
-                            <ul>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                        <div class="name">
-                            <h3>Evelynne Mirando</h3>
-                            <span>Houston</span>
-                        </div>
-                        <div class="quote-icon2">
-                            <img src="/frontend/images/icon/2.png" alt="Quote Icon">
-                        </div>
-                    </div>
-                    <!--End Single Testimonial Item-->
-
+                        <!--End Single Testimonial Item-->
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -473,7 +413,7 @@
                     <div class="icon-holder">
                         <div class="icon">
                             <div class="inner">
-                                <a class="html5lightbox" title="Dento Video Gallery" href="https://www.youtube.com/watch?v=p25gICT63ek">
+                                <a class="html5lightbox" title="Dento Video Gallery" href="https://www.youtube.com/embed/k0j16iZm-VY">
                                     <span class="icon-play"></span>
                                 </a>
                             </div>
@@ -489,8 +429,8 @@
                         <li>Bọc Sứ: Bảo hành thay thế miễn phí 5 năm.</li>
                         <li>Trồng răng: Bảo hành thay thế miễn phí 3 năm.</li>
                         <li>Trám: Bảo hành 2 năm.</li>
-                        <li>Root Canal: Bảo hành 5 năm.</li>
-                        <li>Nobel Biocare: Bảo hành thay thế miễn phí 20 năm.</li>
+                        <li>Cấy implant: Bảo hành 5 năm.</li>
+                        <li>Niềng răng: Bảo hành miễn phí 20 năm.</li>
                     </ul>
                 </div>
             </div>

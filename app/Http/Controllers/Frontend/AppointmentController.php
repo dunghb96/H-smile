@@ -38,10 +38,10 @@ class AppointmentController extends BaseController
 
         $dataAppointment = [
             'patient_id' => $newPatient->id,
-            'doctor_id' => 1,
+            // 'doctor_id' => 1,
             'service_id' => $request->service,
-            'date_at' =>  Carbon::parse($request->date_at)->format('Y-m-d'),
-            'time_at' => Carbon::parse($request->time_at)->format('H:i'),
+            // 'date_at' =>  Carbon::parse($request->date_at)->format('Y-m-d'),
+            // 'time_at' => Carbon::parse($request->time_at)->format('H:i'),
             'status'=> 1,
             'status_notification' => 1,
 

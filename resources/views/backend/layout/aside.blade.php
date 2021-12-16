@@ -84,6 +84,12 @@
                     <span class="menu-title text-truncate" data-i18n="Chat">Đối tác</span>
                 </a>
             </li>
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="{{ route('admin.feedback') }}">
+                    <i data-feather='users'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Feed back</span>
+                </a>
+            </li>
 
             <li class=" navigation-header">
                 <span data-i18n="Misc">Quản lý đặt lịch</span>
@@ -93,6 +99,12 @@
                 <a class="d-flex align-items-center" href="{{ route('admin.appointment') }}">
                     <i data-feather='message-square'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Yêu cầu</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="{{ route('admin.examination_schedule') }}">
+                    <i data-feather='calendar'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Lịch khám</span>
                 </a>
             </li>
             <li class=" nav-item">
