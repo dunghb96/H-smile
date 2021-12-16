@@ -11,4 +11,16 @@ class Feedback extends Model
     protected $table = 'feedback';
     protected $guarded = [];
 
+    public function saveFeedback($model, $request)
+    {
+
+        $model->name = $request->input('name');
+        $model->address = $request->input('address');
+        $model->message = $request->input('content');
+        $model->status = 1;
+
+        $model->save();
+
+        return $model;
+    }
 }

@@ -84,6 +84,12 @@
                     <span class="menu-title text-truncate" data-i18n="Chat">Đối tác</span>
                 </a>
             </li>
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="{{ route('admin.feedback') }}">
+                    <i data-feather='users'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Feed back</span>
+                </a>
+            </li>
 
             <li class=" navigation-header">
                 <span data-i18n="Misc">Quản lý đặt lịch</span>

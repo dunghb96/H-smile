@@ -11,7 +11,7 @@ use App\Models\Partner;
 use App\Models\Service;
 use App\Models\Slide;
 use App\Models\Blog;
-
+use App\Models\Feedback;
 use App\Models\StaticPage;
 use App\Models\Template;
 use Illuminate\Http\Request;
@@ -24,7 +24,8 @@ class HomeController extends BaseController
         $service = Service::where('status', 1)->where('parent_id', 0)->take(6)->get();
         $partner = Partner::where('status', 1)->take(4)->get();
         $blog = Blog::orderBy('created_at', 'DESC')->get();
-        return view('frontend.home.index', compact('slide', 'service', 'partner', 'blog'));
+        $feedback = Feedback::where('status', 1)->take(5)->get();
+        return view('frontend.home.index', compact('slide', 'service', 'partner', 'blog', 'feedback'));
     }
 
     public function service()
