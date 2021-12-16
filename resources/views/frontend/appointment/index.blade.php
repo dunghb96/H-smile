@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
                                     <div class="title">
@@ -77,8 +77,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                        </div> -->
+                        <!-- <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
                                     <div class="title">
@@ -116,7 +116,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
@@ -143,7 +143,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row" style="margin-bottom: 20px;">
+                                        <!-- <div class="row" style="margin-bottom: 20px;">
                                             <div class="col-xl-12">
                                                 <select class="selectmenu select2" name="service">
                                                     <option value="" selected="selected">Chọn dịch vụ</option>
@@ -154,7 +154,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <div class="row">
                                             <div class="col-xl-12">

@@ -37,6 +37,7 @@
                                             <th>Tên khách hàng</th>
                                             <th>Tuổi</th>
                                             <th>Dịch vụ</th>
+                                            <th></th>
                                             <th>Status</th>
                                             <th></th>
                                         </tr>
@@ -150,6 +151,42 @@
                                             <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
                                         </div>
                                     </form>
+                                </div>
+                            </div>
+
+                            <div class="modal new-user-modal fade" id="addlich">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content pt-0">
+                                        <div class="modal-header mb-1">
+                                            <h5 class="modal-title">Tạo lịch khám</h5>
+                                        </div>
+                                        <div class="modal-body flex-grow-1">
+                                            <form id="frm-add" enctype="multipart/form-data">
+
+
+                                                <div class="form-group">
+                                                    <label for="category">Bác sĩ</label>
+                                                    <select class="form-control" id="doctor" name="doctor" required>
+
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date_at">Ngày</label>
+                                                    <input type="text" id="date_at" name="date_at" class="form-control flatpickr-basic" placeholder="DD/MM/YYYY" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="shift">Ca</label>
+                                                    <select class="form-control" id="shift" name="shift" required>
+                                                        <option value="1">Ca sáng</option>
+                                                        <option value="2">Ca chiều</option>
+                                                    </select>
+                                                </div>
+                                                <button type="button" onclick="saveExamSchedule()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
+                                                <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

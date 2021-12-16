@@ -5,44 +5,41 @@ var url = '';
 var iid = 0;
 $(function () {
 
-    var basicPickr = $('.flatpickr-basic');
-    if (basicPickr.length) {
-        basicPickr.flatpickr({
-            dateFormat: "d/m/Y",
-        });
-    }
-
     'use strict';
+
+    // select2
+    //  select.each(function () {
+    //      var $this = $(this);
+    //      $this.wrap('<div class="position-relative"></div>');
+    //      $this.select2({
+    //          placeholder: 'Select value',
+    //          dropdownParent: $this.parent()
+    //      });
+    //  });
+
     var table_table = $('#tableBasic');
     // DataTable with buttons
     // --------------------------------------------------------------------
     if (table_table.length) {
-        //  console.log(data);
         var table = table_table.DataTable({
-
-            ajax: '/admin/appointment/json',
-
+            ajax: '/admin/examination-schedule/json',
+            // select: {
+            //     style: 'single'
+            // },
             columns: [
                 { data: 'id' },
-                { data: 'full_name' },
-                { data: 'age' },
-                { data: 'services' },
-                { data: 'status' },
-                { data: 'status_word' },
+                { data: 'date_at' },
+                { data: 'shift_name' },
+                { data: 'service' },
+                { data: 'doctor' },
+                { data: 'patient' },
                 { data: '' }
             ],
             columnDefs: [
                 {
-                    targets: 4,
-                    visible: false,
-                },
-                {
                     targets: 6,
                     render: function (data, type, full, meta) {
                         var html = '';
-                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Tạo lịch khám" onclick="duyet(' + full['id'] + ',' + full['status'] + ')">';
-                        html += '<i data-feather="calendar"></i>';
-                        html += '</button> &nbsp;';
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
                         html += '<i class="fas fa-pencil-alt"></i>';
                         html += '</button> &nbsp;';
@@ -66,7 +63,23 @@ $(function () {
                 ">",
             displayLength: 10,
             lengthMenu: [10, 20, 30, 50, 70, 100],
-
+            // drawCallback: function (settings) {
+            //     var api = this.api();
+            //     var rows = api.rows({page: 'current'}).nodes();
+            //     var last = null;
+            //     api
+            //         .column(2, {page: 'current'})
+            //         .data()
+            //         .each(function (group, i) {
+            //             if (last !== group) {
+            //                 $(rows)
+            //                     .eq(i)
+            //                     .before('<tr class="group"><td colspan="8" style="font-weight: bold">' + group + '</td></tr>');
+            //
+            //                 last = group;
+            //             }
+            //         });
+            // },
             language: {
                 sLengthMenu: "Show _MENU_",
                 search: "Search",
@@ -94,52 +107,56 @@ $(function () {
             },
         });
     }
-
-    $('#frm-add').each(function () {
-        var $this = $(this);
-        $this.validate({
-            rules: {
-                name: {
-                    required: true
-                },
-                parent_id: {
-                    required: true
-                },
-                price: {
-                    digits: true
-                }
-            }
-        });
-    });
 });
 
 function loadadd() {
     $("#addnew").modal('show');
-    $(".modal-title").html('Thêm dịch vụ mới');
+    $(".modal-title").html('Thêm nhân viên mới');
     $('#name').val('');
-    $('#short_description').val('');
-    $('#price').val('');
-    $('#parent_id').val('0').change();
-    url = '/admin/service/add';
+    $('#position').val('').change();
+    $('#email').val('');
+    $('#phone_number').val('');
+    $('#username').val('');
+    $('#password').val('');
+    $('#role').val('0').change();
+    url = '/admin/employee/add';
     iid = 0;
 }
 
+function changeType() {
+    var opt = $("#type").val();
+    if (opt == 1) {
+        $('#service_input').removeClass('d-none');
+    } else {
+        $('#service_input').addClass('d-none');
+    }
+
+}
+
 function loaddata(id) {
-    $("#editinfo").modal('show');
-    $(".modal-title").html('Cập nhật dịch vụ');
+    $("#addnew").modal('show');
+    $(".modal-title").html('Cập nhật nhân sự');
     $.ajax({
         type: "POST",
         dataType: "json",
         data: { id: id },
-        url: "/admin/service/loaddata",
+        url: "/admin/employee/loaddata",
         success: function (data) {
-            $('#ename').val(data.name);
-            $('#eprice').val(data.price);
-            $('#eshort_description').val(data.short_description);
-            $('#econtent').val(data.content);
-            $('#parent_id').val(data.parent_id).change();
-            $('#iid').val(id);
-            url = '/admin/service/edit';
+            $('#name').val(data.name);
+            $('#phone_number').val(data.phone_number);
+            $('#email').val(data.email);
+            $('#position').val(data.position);
+            $('#majors').val(data.majors);
+            $('#type').val(data.type).change();
+            $('#short_description').val(data.short_description);
+            if (data.services) {
+                services = data.services.split(',');
+                $('#service').val(services).change();
+            }
+            $('#username').val(data.username);
+            $('#password').val('');
+            $('#role').val(data.rolesOfUser).change();
+            url = '/admin/employee/edit';
             iid = id;
         },
         error: function () {
@@ -150,25 +167,36 @@ function loaddata(id) {
 
 function save() {
     var info = {};
-    var isValid = $('#frm-add').valid();
-
+    var isValid = $('#frm').valid();
     if (iid != 0) {
-        console.log(1);
-        var info = new FormData($("#frm-edit")[0]);
+        info.id = iid;
+        info.name = $("#name").val();
+        info.type = $("#type").val();
+        info.position = $("#position").val();
+        info.majors = $("#majors").val();
+        info.email = $("#email").val();
+        info.phone_number = $("#phone_number").val();
+        info.short_description = $("#short_description").val();
+        info.username = $("#username").val();
+        info.password = $("#epassword").val();
+        info.role = $("#role").val();
+        var service = $("#service").val();
+        let services = '';
+        service.forEach(function (item) {
+            services += item + ',';
+        });
+        info.services = services.slice(0, -1);
         $.ajax({
             type: "POST",
             dataType: "json",
             data: info,
             url: url,
-            contentType: false,
-            processData: false,
             success: function (data) {
                 if (data.success) {
                     notyfi_success(data.msg);
-                    $('#editinfo').modal('hide');
+                    $('#addnew').modal('hide');
                     $("#tableBasic").DataTable().ajax.reload(null, false);
-                }
-                else
+                } else
                     notify_error(data.msg);
             },
             error: function () {
@@ -177,21 +205,33 @@ function save() {
         });
     } else {
         if (isValid) {
-            var info = new FormData($("#frm-add")[0]);
+            info.name = $("#name").val();
+            info.type = $("#type").val();
+            info.position = $("#position").val();
+            info.majors = $("#majors").val();
+            info.email = $("#email").val();
+            info.phone_number = $("#phone_number").val();
+            info.short_description = $("#short_description").val();
+            info.username = $("#username").val();
+            info.password = $("#password").val();
+            info.role = $("#role").val();
+            var service = $("#service").val();
+            let services = '';
+            service.forEach(function (item) {
+                services += item + ',';
+            });
+            info.services = services.slice(0, -1);
             $.ajax({
                 type: "POST",
                 dataType: "json",
                 data: info,
                 url: url,
-                contentType: false,
-                processData: false,
                 success: function (data) {
                     if (data.success) {
                         notyfi_success(data.msg);
                         $('#addnew').modal('hide');
                         $("#tableBasic").DataTable().ajax.reload(null, false);
-                    }
-                    else
+                    } else
                         notify_error(data.msg);
                 },
                 error: function () {
@@ -200,63 +240,7 @@ function save() {
             });
         }
     }
-}
 
-
-function duyet(id, status) {
-    if(status == 1) {
-        $("#addlich").modal('show');
-        $(".modal-title").html('Tạo lịch khám');
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            data: {service: id},
-            url: "/admin/appointment/get-doctor", // giờ anh tạo route rồi lấy dữ liệu doctor ra cho em nha OK
-            success: function (data) {
-                html = '';
-                data.forEach(function (val, index) {
-                    var opt = '<option value="' + val.id + '">' + val.name + '</option>';
-                    html += opt;
-                    $('#doctor').append(html);
-                });
-                $('#doctor').select2({
-                    placeholder: "Chọn bác sĩ",
-                    allowClear: true,
-                    dropdownParent: $('#doctor').parent(),
-                })
-                $('#doctor').val(null).trigger('change');
-            },
-        });
-        iid = id;
-    } else if(status == 2) {
-        notify_error('Lịch khám đang thực hiện');
-    } else if(status == 3) {
-        notify_error('Lịch hẹn đã hoàn thành');
-    }
-    
-}
-
-function saveExamSchedule() {
-    var info = {};
-    info.appointment = iid;
-    info.doctor = $('#doctor').val();
-    info.service = $('#service').val();
-    info.dateat = $('#date_at').val();
-    info.shift = $('#shift').val();
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        data: info,
-        url: "/admin/appointment/add-schedule",
-        success: function (data) {
-            notyfi_success(data.msg);
-            $('#addlich').modal('hide');
-            $("#tableBasic").DataTable().ajax.reload(null, false);
-        },
-        error: function () {
-            notify_error('Lỗi truy xuất database');
-        }
-    });
 }
 
 function del(id) {
@@ -274,7 +258,7 @@ function del(id) {
     }).then(function (result) {
         if (result.value) {
             $.ajax({
-                url: "/admin/service/del",
+                url: "/admin/employee/del",
                 type: 'post',
                 dataType: "json",
                 data: { id: id },

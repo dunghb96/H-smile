@@ -10,12 +10,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Nhân viên</h2>
+                        <h2 class="content-header-title float-left mb-0">Lịch khám</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item">Nhân viên
+                                <li class="breadcrumb-item">Lịch khám
                                 </li>
                             </ol>
                         </div>
@@ -34,17 +34,18 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Họ tên</th>
-                                            <th>Vị trí</th>
-                                            <th>Email</th>
-                                            <th>Số điện thoại</th>
+                                            <th>Ngày hẹn</th>
+                                            <th>Ca</th>
+                                            <th>Dịch vụ</th>
+                                            <th>Bác sĩ</th>
+                                            <th>Bệnh nhân</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                 </table>
                             </div>
 
-                            <div class="modal fade text-left" id="addnew" tabindex="-1" aria-labelledby="myModalLabel18" aria-hidden="true" role="dialog">
+                            <!-- <div class="modal fade text-left" id="addnew" tabindex="-1" aria-labelledby="myModalLabel18" aria-hidden="true" role="dialog">
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -124,11 +125,7 @@
                                                                         <label for="service">Dịch vụ</label>
                                                                         <select id="service" class="select2 js-example-basic-multiple" name="service[]" multiple="multiple" required>
                                                                             <option label=" "></option>
-                                                                            @foreach($services as $service)
-                                                                            <option value="{{ $service->id }}">
-                                                                                {{ $service->name }}
-                                                                            </option>
-                                                                            @endforeach
+                                                                          
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -161,11 +158,7 @@
                                                                         <label for="role">Quyền</label>
                                                                         <select id="role" class="select2 js-example-basic-multiple" name="role[]" multiple="multiple" required>
                                                                             <option label=" "></option>
-                                                                            @foreach($roles as $role)
-                                                                            <option value="{{ $role->id }}">
-                                                                                {{ $role->name }}
-                                                                            </option>
-                                                                            @endforeach
+                                                                          
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -184,7 +177,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>
@@ -196,6 +189,6 @@
 </div>
 @endsection
 @push('js')
-<script src="/backend/app-assets/vendors/js/forms/wizard/bs-stepper.min.js"></script>
-<script src="/backend/assets/js/employee.js"></script>
+<!-- <script src="/backend/app-assets/vendors/js/forms/wizard/bs-stepper.min.js"></script> -->
+<script src="/backend/assets/js/examination-schedule.js"></script>
 @endpush

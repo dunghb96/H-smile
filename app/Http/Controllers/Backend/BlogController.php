@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class BlogController extends BaseController
 {
+    function __construct()
+    {
+        parent:: __construct();
+    }
+    
     public function index()
     {
         $blogs = Blog::orderBy('created_at', 'DESC')->paginate();
