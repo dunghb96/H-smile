@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 
+Route::get('/send-mail', [HomeController::class, 'mail'])->name('mail.sendMail');

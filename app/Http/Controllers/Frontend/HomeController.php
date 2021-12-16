@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Enums\CommonStatus;
 use App\Http\Requests\BookingPostRequest;
 use App\Models\Client;
-use App\Models\News;
+use App\Models\Employee;
 use App\Models\Partner;
 use App\Models\Service;
 use App\Models\Slide;
@@ -23,8 +23,9 @@ class HomeController extends BaseController
         $slide = Slide::where('status', 1)->take(3)->get();
         $service = Service::where('status', 1)->where('parent_id', 0)->take(6)->get();
         $partner = Partner::where('status', 1)->take(4)->get();
-        $blog = Blog::orderBy('created_at', 'DESC')->get();
-        return view('frontend.home.index', compact('slide', 'service', 'partner', 'blog'));
+        $blog = Blog::orderBy('created_at', 'DESC')->paginate(10);
+        $doctor = Employee::where('type', 1)->paginate(10);
+        return view('frontend.home.index', compact('slide', 'service', 'partner', 'blog', 'doctor'));
     }
 
     public function service()

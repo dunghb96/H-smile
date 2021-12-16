@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
-use App\Models\Doctor;
+use App\Models\Employee;
 
 class DoctorController extends BaseController
 {
@@ -14,7 +14,7 @@ class DoctorController extends BaseController
 
     public function index()
     {
-        $doctor = Doctor::orderBy('created_at', 'DESC')->paginate(10);
+        $doctor = Employee::where('type', 1)->paginate(10);
         return view('frontend.doctor.index', compact('doctor'));
     }
 }

@@ -45,42 +45,42 @@
         <div class="row">
             <!--Start Single Welcome Box-->
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-welcome-box text-center">
+                <div class="single text-center">
                     <div class="icon-holder">
                         <img src="/frontend/images/icon/icon-1.png" alt="Icon">
                     </div>
                     <div class="text-holder">
                         <h3>Nha khoa nâng cao</h3>
                         <p>Tố cáo niềm vui & ca ngợi nỗi đau đã ra đời và chúng tôi sẽ cung cấp cho bạn một tài khoản hoàn chỉnh của hệ thống.</p>
-                        <a class="btn-one" href="#">Dịch vụ</a>
+
                     </div>
                 </div>
             </div>
             <!--End Single Welcome Box-->
             <!--Start Single Welcome Box-->
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-welcome-box text-center">
+                <div class="single text-center">
                     <div class="icon-holder">
                         <img src="/frontend/images/icon/icon-2.png" alt="Icon">
                     </div>
                     <div class="text-holder">
                         <h3>Thiết bị hiện đại</h3>
                         <p>Mang lại cho bạn những trải nghiệm hoàn toàn mới khi điều trị và làm đẹp răng</p>
-                        <a class="btn-one" href="#">Xem thêm</a>
+
                     </div>
                 </div>
             </div>
             <!--End Single Welcome Box-->
             <!--Start Single Welcome Box-->
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-welcome-box text-center">
+                <div class="single text-center">
                     <div class="icon-holder">
                         <img src="/frontend/images/icon/icon-3.png" alt="Icon">
                     </div>
                     <div class="text-holder">
                         <h3>Phòng khám tiện nghi</h3>
                         <p>phòng khám của chúng tôi luôn sạch đẹp và đáp ứng tốt các nhu cầu của quý khách</p>
-                        <a class="btn-one" href="#">Xem giá</a>
+
                     </div>
                 </div>
             </div>
@@ -176,20 +176,9 @@
                         <p>Dento được thành lập vào năm 1995 với tư cách là một phòng khám nha khoa tư nhân nhỏ ở Binghamton, NY, Hoa Kỳ. Tìm kiếm dịch vụ chăm sóc răng miệng giá cả phải chăng?</p>
                         <p>Lấy một ví dụ tầm thường, ai trong chúng ta đã từng thực hiện bài tập thể dục vất vả, ngoại trừ việc đạt được một số lợi thế từ nó? Nhưng ai có quyền nhận lỗi với một người đàn ông chọn cách tận hưởng một niềm vui không có hậu quả khó chịu, niềm vui dẫn đến đau đớn ca ngợi những lời dạy của nhà thám hiểm vĩ đại ...
                         </p>
-                        <div class="author-box fix">
-                            <div class="img-box">
-                                <img src="/frontend/images/resources/ceo.png" alt="Awesome Image">
-                            </div>
-                            <div class="text-box">
-                                <h3>Dr. Jerome Sinclair</h3>
-                                <span>CEO & Founder</span>
-                            </div>
-                            <div class="signatire-box">
-                                <img src="/frontend/images/resources/signature.png" alt="Signature">
-                            </div>
-                        </div>
+
                         <div class="read-more">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>More About Us</a>
+                            <a class="btn-two" href="{{ route('hsmile.aboutus') }}"><span class="flaticon-next"></span>Xem thêm</a>
                         </div>
                     </div>
                 </div>
@@ -333,151 +322,41 @@
             <h3>Nha Sĩ Chuyên Nghiệp</h3>
             <h1>Đội có trình độ cao</h1>
         </div>
+
         <div class="row">
+
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+
                 <div class="team-carousel owl-carousel owl-theme">
 
                     <!--Start single item member-->
+                    @foreach($doctor as $row)
                     <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/1.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Daryl Cornelius</h3>
-                                <span>Implantologist</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/2.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Eugene Renolds</h3>
-                                <span>Periodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/3.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Bonnie Alberta</h3>
-                                <span>Orthodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
 
-                    <!--Start single item member-->
-                    <div class="single-team-member">
                         <div class="img-holder">
-                            <img src="/frontend/images/team/1.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Daryl Cornelius</h3>
-                                <span>Implantologist</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/2.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Eugene Renolds</h3>
-                                <span>Periodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/3.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Bonnie Alberta</h3>
-                                <span>Orthodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
 
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
                             <img src="/frontend/images/team/1.jpg" alt="Awesome Image">
                             <div class="overlay-style-one"></div>
+
                             <div class="text-holder text-center">
-                                <h3>Dr. Daryl Cornelius</h3>
+
+                                <h3>{{$row->name}}</h3>
                                 <span>Implantologist</span>
                                 <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
+                                    <a class="btn-one" href="">Know More</a>
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/2.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Eugene Renolds</h3>
-                                <span>Periodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/3.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Bonnie Alberta</h3>
-                                <span>Orthodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
+                    @endforeach
 
                 </div>
             </div>
+
         </div>
+
     </div>
 </section>
 <!--End team area-->
