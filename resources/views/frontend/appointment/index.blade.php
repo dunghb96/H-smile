@@ -166,6 +166,7 @@
                                             <div class="col-xl-12">
                                                 <div class="button-box">
                                                     <button class="btn-one" type="submit">Gửi</button>
+                                                    <a class="btn-one" href="{{ route('hsmile.history') }}">Tra cứu lịch sử</a>
                                                 </div>
                                             </div>
                                         </div>

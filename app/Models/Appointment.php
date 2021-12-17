@@ -27,14 +27,19 @@ class Appointment extends Model
         return $this->hasOne(Service::class, 'id', 'service_id');
     }
 
-    function saveExaminationSchedule($model, $data) 
+    public function doctor()
+    {
+        return $this->hasOne(Employee::class, 'id', 'doctor_id')->where('type', 1);
+    }
+
+    function saveExaminationSchedule($model, $data)
     {
         $model->appointment = $data['appointment'];
         $model->doctor = $data['doctor'];
         $model->date_at = $data['date_at'];
         $model->shift = $data['shift'];
         $model->status = 1;
-        
+
         $model->save();
 
         return $model;
