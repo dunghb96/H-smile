@@ -48,6 +48,22 @@ class AppointmentController extends BaseController
         ];
         $newBooking = Appointment::create($dataAppointment);
 
+        $email = $request->email;
+
+        $data = [
+            'name' => $request->name,
+        ];
+
+        Mail::send('frontend.mail.sendMail', $data, function ($mes) use ($email) {
+
+            $mes->from('nguyenthvu9898@gmail.com');
+
+            $mes->to($email, 'frontend.mail.sendMail')->subject('Mail công việc');
+        });
+
+        return redirect()->route('hsmile.appointment')->with(['status' => 'success', 'flash_message' => 'Đặt lịch hẹn thành công!']);
+    }
+
         return redirect()->route('hsmile.appointment')->with(['status' => 'success', 'flash_message' => 'Đặt lịch hẹn thành công!']);
     }
 
