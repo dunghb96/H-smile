@@ -15,6 +15,11 @@ class ExaminationSchedule extends Model
         2 => 'Ca chiều'
     ];
 
+    const STATUS= [
+        1 => 'Chờ khám',
+        2 => 'Hoàn thành'
+    ];
+
     public function doctors()
     {
         return $this->hasOne(Employee::class, 'id', 'doctor');

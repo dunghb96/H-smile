@@ -12,6 +12,14 @@ $(function () {
         });
     }
 
+    $('#service').select2({
+        placeholder: "Chọn dịch vụ",
+        allowClear: true,
+        dropdownParent: $('#service').parent(),
+    })
+
+    $('#service').val(null).change();
+
     'use strict';
     var table_table = $('#tableBasic');
     // DataTable with buttons
@@ -25,22 +33,38 @@ $(function () {
             columns: [
                 { data: 'id' },
                 { data: 'full_name' },
+                { data: 'patient_id' },
                 { data: 'age' },
                 { data: 'services' },
+                { data: 'service_id' },
                 { data: 'status' },
                 { data: 'status_word' },
                 { data: '' }
             ],
             columnDefs: [
                 {
-                    targets: 4,
+                    targets: 1,
+                    render: function(data, type, full, meta){
+                        return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient('+full['patient_id']+')"><span class="font-weight-bold">'+full['full_name']+'</span></a>'
+                    }
+                },
+                {
+                    targets: 2,
+                    visible: false,
+                },
+                {
+                    targets: 5,
                     visible: false,
                 },
                 {
                     targets: 6,
+                    visible: false,
+                },
+                {
+                    targets: 8,
                     render: function (data, type, full, meta) {
                         var html = '';
-                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Tạo lịch khám" onclick="duyet(' + full['id'] + ',' + full['status'] + ')">';
+                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Tạo lịch khám" onclick="duyet(' + full['id'] + ',' + full['service_id'] + ',' + full['status'] + ')">';
                         html += '<i data-feather="calendar"></i>';
                         html += '</button> &nbsp;';
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
@@ -113,6 +137,11 @@ $(function () {
     });
 });
 
+function loadpatient()
+{
+    $('#patientinfo').modal('show');
+}
+
 function loadadd() {
     $("#addnew").modal('show');
     $(".modal-title").html('Thêm dịch vụ mới');
@@ -153,7 +182,6 @@ function save() {
     var isValid = $('#frm-add').valid();
 
     if (iid != 0) {
-        console.log(1);
         var info = new FormData($("#frm-edit")[0]);
         $.ajax({
             type: "POST",
@@ -202,22 +230,20 @@ function save() {
     }
 }
 
-
-function duyet(id, status) {
+function duyet(id, service, status) {
     if(status == 1) {
         $("#addlich").modal('show');
         $(".modal-title").html('Tạo lịch khám');
         $.ajax({
             type: "POST",
             dataType: "json",
-            data: {service: id},
+            data: {service: service},
             url: "/admin/appointment/get-doctor", // giờ anh tạo route rồi lấy dữ liệu doctor ra cho em nha OK
             success: function (data) {
-                html = '';
+                $('#doctor').html('');
                 data.forEach(function (val, index) {
                     var opt = '<option value="' + val.id + '">' + val.name + '</option>';
-                    html += opt;
-                    $('#doctor').append(html);
+                    $('#doctor').append(opt);
                 });
                 $('#doctor').select2({
                     placeholder: "Chọn bác sĩ",
@@ -225,6 +251,15 @@ function duyet(id, status) {
                     dropdownParent: $('#doctor').parent(),
                 })
                 $('#doctor').val(null).trigger('change');
+                $(window).on('load', function() {
+                    // $('#minlogo').hide();
+                    if (feather) {
+                        feather.replace({
+                            width: 14,
+                            height: 14
+                        });
+                    }
+                })
             },
         });
         iid = id;
@@ -249,9 +284,13 @@ function saveExamSchedule() {
         data: info,
         url: "/admin/appointment/add-schedule",
         success: function (data) {
-            notyfi_success(data.msg);
-            $('#addlich').modal('hide');
-            $("#tableBasic").DataTable().ajax.reload(null, false);
+            if(data.success) {
+                notyfi_success(data.msg);
+                $('#addlich').modal('hide');
+                $("#tableBasic").DataTable().ajax.reload(null, false);
+            } else {
+                notify_error(data.msg);
+            }
         },
         error: function () {
             notify_error('Lỗi truy xuất database');

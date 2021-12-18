@@ -21,7 +21,8 @@ class AppointmentController extends BaseController
 
     public function index()
     {
-        return view('backend.appointment.index');
+        $services = Service::where('status','1')->get();
+        return view('backend.appointment.index',compact('services'));
     }
 
     public function json()
@@ -80,10 +81,11 @@ class AppointmentController extends BaseController
             'date_at' => $dateat,
             'shift' => $shift,
         ];
-        $result = ExaminationSchedule::where('doctor',$doctor)->where('date_at',$dateat)->where('shift',$shift)->where('status','>','0')->get();
+        $result = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('shift',$shift)->where('status','>','0')->get();
         if($result->count() > 3) {
             $jsonObj['success'] = false;
             $jsonObj['msg'] = 'Không còn lịch trống';
+            echo json_encode($jsonObj);
         } else {
             $model = new Appointment();
             $schedule = new ExaminationSchedule();

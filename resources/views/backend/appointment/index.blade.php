@@ -10,12 +10,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Lịch hẹn</h2>
+                        <h2 class="content-header-title float-left mb-0">Yêu cầu</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item">Lịch hẹn
+                                <li class="breadcrumb-item">Yêu cầu
                                 </li>
                             </ol>
                         </div>
@@ -34,11 +34,13 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Tên khách hàng</th>
+                                            <th>Khách hàng</th>
+                                            <th></th>
                                             <th>Tuổi</th>
                                             <th>Dịch vụ</th>
                                             <th></th>
-                                            <th>Status</th>
+                                            <th></th>
+                                            <th>Trạng thái</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -50,47 +52,37 @@
                                     <form class="modal-content pt-0" id="frm-add">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
                                         <div class="modal-header mb-1">
-                                            <h5 class="modal-title">Thêm dịch vụ mới</h5>
+                                            <h5 class="modal-title">Thêm yêu cầu mới</h5>
                                         </div>
                                         <div class="modal-body flex-grow-1">
                                             <div class="form-group">
-                                                <label for="name">Tên dịch vụ</label>
-                                                <input id="name" type="text" class="form-control" name="name" required />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="parent_id">Danh mục</label>
-                                                <select class="form-control" id="parent_id" name="parent_id" required>
-                                                    <option value="0">ROOT</option>
-                                                    {{-- @foreach($services as $service)
+                                                <label for="service">Dịch vụ</label>
+                                                <select class="form-control" id="service" name="service" required>
+                                                    @foreach($services as $service)
                                                         <option value="{{ $service->id }}">{{ $service->name }}</option>
-                                                    @endforeach --}}
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Giá</label>
-                                                <input type="number" class="form-control" id="price" name="price">
+                                                <label>Họ tên</label>
+                                                <input type="number" class="form-control" id="price" name="price" placeholder="Họ và tên">
                                             </div>
                                             <div class="form-group">
-                                                <label>Icon</label>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="icon" name="icon">
-                                                    <label class="custom-file-label" for="image">Chọn Icon</label>
-                                                </div>
+                                                <label>Tuổi</label>
+                                                <input type="number" class="form-control" id="price" name="price" placeholder="Tuổi">
                                             </div>
                                             <div class="form-group">
-                                                <label>Hình ảnh</label>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="image" name="image">
-                                                    <label class="custom-file-label" for="image">Chọn hình ảnh</label>
-                                                </div>
+                                                <label>Số điện thoại</label>
+                                                <input type="number" class="form-control" id="price" name="price" placeholder="Số điện thoại">
                                             </div>
                                             <div class="form-group">
-                                                <label for="short_description">Mô tả</label>
-                                                <input id="short_description" type="text" class="form-control" name="short_description" placeholder="Mô tả ngắn" />
+                                                <label>Email</label>
+                                                <input type="number" class="form-control" id="price" name="price" placeholder="Email">
                                             </div>
+                                            
                                             <div class="form-group">
-                                                <label for="content">Chi tiết</label>
-                                                <textarea id="content" name="content" rows="3" class="form-control" placeholder="Chi tiết dịch vụ"></textarea>
+                                                <label for="content">Mô tả</label>
+                                                <textarea id="content" name="content" rows="3" class="form-control" placeholder="Mô tả bệnh án"></textarea>
                                             </div>
                                             <button type="button" onclick="save()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
                                             <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
@@ -105,15 +97,15 @@
                                         <input type="hidden" name="id" id="iid">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
                                         <div class="modal-header mb-1">
-                                            <h5 class="modal-title">Thêm dịch vụ mới</h5>
+                                            <h5 class="modal-title">Cập nhật yêu cầu</h5>
                                         </div>
                                         <div class="modal-body flex-grow-1">
                                             <div class="form-group">
-                                                <label for="name">Tên dịch vụ</label>
+                                                <label for="name">Khách hàng</label>
                                                 <input id="ename" type="text" class="form-control" name="name" required />
                                             </div>
                                             <div class="form-group">
-                                                <label for="parent_id">Danh mục</label>
+                                                <label for="parent_id">Dịch vụ</label>
                                                 <select class="form-control" id="eparent_id" name="parent_id" required>
                                                     <option value="0">ROOT</option>
                                                     {{-- @foreach($services as $service)
@@ -151,6 +143,99 @@
                                             <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
                                         </div>
                                     </form>
+                                </div>
+                            </div>
+
+                            <div class="modal fade text-left" id="patientinfo" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel16">Thông tin khách hàng</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input type="hidden" id="id" name="id" />
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <ul class="nav nav-pills" role="tablist">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link d-flex align-items-center active" id="information-tab" data-toggle="tab" href="#information" aria-controls="information" role="tab" aria-selected="false">
+                                                                <i data-feather="info"></i><span class="d-none d-sm-block">Thông tin cá nhân</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item" id="tab2">
+                                                            <a class="nav-link d-flex align-items-center" id="account-tab" data-toggle="tab" href="#account" aria-controls="account" role="tab" aria-selected="true">
+                                                                <i data-feather='clipboard'></i><span class="d-none d-sm-block">Dịch vụ đã sử dụng</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="information" aria-labelledby="information-tab" role="tabpanel">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-4">
+                                                                            <span>Họ tên</span>
+                                                                        </div>
+                                                                        <div class="col-sm-8">
+                                                                            <span class="font-weight-bold text-primary" id="name">Nguyễn Văn Hùng</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-4">
+                                                                            <span>Tuổi</span>
+                                                                        </div>
+                                                                        <div class="col-sm-8">
+                                                                            <span class="font-weight-bold text-primary" id="vi_tri"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-4">
+                                                                            <span>Số điện thoại</span>
+                                                                        </div>
+                                                                        <div class="col-sm-8">
+                                                                            <span class="font-weight-bold text-primary" id="name">0346756000</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-4">
+                                                                            <span>Email</span>
+                                                                        </div>
+                                                                        <div class="col-sm-8">
+                                                                            <span class="font-weight-bold text-primary" id="vi_tri">hungnvph11929@fpt.edu.vn</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane" id="account" aria-labelledby="account-tab" role="tabpanel">
+                                                            <div class="table-responsive border rounded mt-1">
+                                                                <h6 class="py-1 mx-1 mb-0 font-medium-2">
+                                                                    <i data-feather="lock" class="font-medium-3 mr-25"></i>
+                                                                    <span class="align-middle">Chi tiết</span>
+                                                                </h6>
+                                                                <table class="table table-striped table-borderless" id="dichvu-list-table">
+                                                                    <thead class="thead-light ">
+                                                                        <tr>
+                                                                            <th></th>
+                                                                            <th>Ngày</th>
+                                                                            <th>Dịch vụ</th>
+                                                                            <th>Bác sĩ</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 

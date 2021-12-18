@@ -66,12 +66,12 @@
                     <span class="menu-title text-truncate" data-i18n="Chat">Dịch vụ</span>
                 </a>
             </li>
-            <li class=" nav-item">
+            <!-- <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#">
                     <i data-feather='clipboard'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Bảng giá</span>
                 </a>
-            </li>
+            </li> -->
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="{{ route('admin.contact') }}">
                     <i data-feather='mail'></i>
@@ -86,7 +86,7 @@
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="{{ route('admin.feedback') }}">
-                    <i data-feather='users'></i>
+                    <i data-feather='message-square'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Feed back</span>
                 </a>
             </li>
@@ -97,7 +97,7 @@
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="{{ route('admin.appointment') }}">
-                    <i data-feather='message-square'></i>
+                    <i data-feather='bell'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Yêu cầu</span>
                 </a>
             </li>
@@ -110,7 +110,7 @@
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="{{ route('admin.patient') }}">
                     <i data-feather='users'></i>
-                    <span class="menu-title text-truncate" data-i18n="Chat">Bệnh nhân</span>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Khách hàng</span>
                 </a>
             </li>
 

@@ -37,147 +37,147 @@
                                             <th>Ngày hẹn</th>
                                             <th>Ca</th>
                                             <th>Dịch vụ</th>
+                                            <th></th>
+                                            <th>Khách hàng</th>
+                                            <th></th>
                                             <th>Bác sĩ</th>
-                                            <th>Bệnh nhân</th>
+                                            <th>Trạng thái</th>
+                                            <th></th>
+                                            <th></th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                 </table>
                             </div>
 
-                            <!-- <div class="modal fade text-left" id="addnew" tabindex="-1" aria-labelledby="myModalLabel18" aria-hidden="true" role="dialog">
+                            <div class="modal new-user-modal fade" id="hentiep">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content pt-0">
+                                        <div class="modal-header mb-1">
+                                            <h5 class="modal-title">Tạo lịch hẹn mới</h5>
+                                        </div>
+                                        <div class="modal-body flex-grow-1">
+                                            <form id="frm-add" enctype="multipart/form-data">
+
+
+                                                <div class="form-group">
+                                                    <label for="category">Bác sĩ</label>
+                                                    <select class="form-control" id="doctor" name="doctor" required>
+
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="date_at">Ngày</label>
+                                                    <input type="text" id="date_at" name="date_at" class="form-control flatpickr-basic" placeholder="DD/MM/YYYY" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="shift">Ca</label>
+                                                    <select class="form-control" id="shift" name="shift" required>
+                                                        <option value="1">Ca sáng</option>
+                                                        <option value="2">Ca chiều</option>
+                                                    </select>
+                                                </div>
+                                                <button type="button" onclick="saveExamSchedule()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
+                                                <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade text-left" id="patientinfo" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="modal-title">Thêm nhân viên mới</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">×</span>
-                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel16">Thông tin khách hàng</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <section class="horizontal-wizard">
-                                                <div class="bs-stepper horizontal-wizard-example" style="box-shadow: 0 0 0 0 #ffff;">
-                                                    <div class="bs-stepper-header">
-                                                        <div class="step" data-target="#tab1">
-                                                            <button type="button" class="step-trigger">
-                                                                <span class="bs-stepper-box">1</span>
-                                                                <span class="bs-stepper-label">
-                                                                    <span class="bs-stepper-title">Thông tin cá nhân</span>
-                                                                </span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="line">
-                                                            <i data-feather="chevron-right" class="font-medium-2"></i>
-                                                        </div>
-                                                        <div class="step" data-target="#tab2">
-                                                            <button type="button" class="step-trigger">
-                                                                <span class="bs-stepper-box">2</span>
-                                                                <span class="bs-stepper-label">
-                                                                    <span class="bs-stepper-title">Tài khoản</span>
-                                                                </span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="bs-stepper-content">
-                                                        <div id="tab1" class="content">
-                                                            <form>
-                                                                <div class="row">
-                                                                    <div class="form-group col-md-6">
-                                                                        <label class="form-label" for="name">Họ tên</label>
-                                                                        <input type="text" name="name" id="name" class="form-control" placeholder="Họ và tên" />
-                                                                    </div>
-                                                                    <div class="form-group col-md-6">
-                                                                        <label class="form-label" for="type">Vị trí</label>
-                                                                        <select class="form-control select2" name="type" id="type" onchange="changeType()">
-                                                                            <option value=""></option>
-                                                                            <option value="1">Nha sĩ</option>
-                                                                            <option value="2">Thu ngân</option>
-                                                                            <option value="3">Quản trị viên</option>
-                                                                        </select>
+                                            <input type="hidden" id="id" name="id" />
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <ul class="nav nav-pills" role="tablist">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link d-flex align-items-center active" id="information-tab" data-toggle="tab" href="#information" aria-controls="information" role="tab" aria-selected="false">
+                                                                <i data-feather="info"></i><span class="d-none d-sm-block">Thông tin cá nhân</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item" id="tab2">
+                                                            <a class="nav-link d-flex align-items-center" id="account-tab" data-toggle="tab" href="#account" aria-controls="account" role="tab" aria-selected="true">
+                                                                <i data-feather='clipboard'></i><span class="d-none d-sm-block">Dịch vụ đã sử dụng</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="information" aria-labelledby="information-tab" role="tabpanel">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-4">
+                                                                            <span>Họ tên</span>
+                                                                        </div>
+                                                                        <div class="col-sm-8">
+                                                                            <span class="font-weight-bold text-primary" id="name">Nguyễn Văn Hùng</span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row">
-                                                                    <div class="form-group col-md-6">
-                                                                        <label class="form-label" for="phone_number">Số điện thoại</label>
-                                                                        <input type="text" name="phone_number" id="phone_number" class="form-control" placeholder="Số điện thoại" />
-                                                                    </div>
-                                                                    <div class="form-group col-md-6">
-                                                                        <label class="form-label" for="email">Email</label>
-                                                                        <input type="text" name="email" id="email" class="form-control" placeholder="Email" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="form-group col-md-6">
-                                                                        <label class="form-label" for="position">Vị trí</label>
-                                                                        <input type="text" name="position" id="position" class="form-control" placeholder="Vị trí" />
-                                                                    </div>
-                                                                    <div class="form-group col-md-6">
-                                                                        <label class="form-label" for="majors">Chuyên ngành</label>
-                                                                        <input type="text" name="majors" id="majors" class="form-control" placeholder="Chuyên ngành" />
+                                                                <div class="col-6">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-4">
+                                                                            <span>Tuổi</span>
+                                                                        </div>
+                                                                        <div class="col-sm-8">
+                                                                            <span class="font-weight-bold text-primary" id="vi_tri"></span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row">
-                                                                    <div class="form-group col-md-6">
-                                                                        <label class="form-label" for="short_description">Giới thiệu</label>
-                                                                        <textarea name="short_description" id="short_description" class="form-control" placeholder="Giới thiệu ngắn" ></textarea>
-                                                                    </div>
-                                                                    <div class="form-group col-md-6 d-none" id="service_input">
-                                                                        <label for="service">Dịch vụ</label>
-                                                                        <select id="service" class="select2 js-example-basic-multiple" name="service[]" multiple="multiple" required>
-                                                                            <option label=" "></option>
-                                                                          
-                                                                        </select>
+                                                                <div class="col-6">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-4">
+                                                                            <span>Số điện thoại</span>
+                                                                        </div>
+                                                                        <div class="col-sm-8">
+                                                                            <span class="font-weight-bold text-primary" id="name">0346756000</span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </form>
-                                                            <div class="d-flex justify-content-between">
-                                                                <button class="btn btn-outline-secondary btn-prev" disabled>
-                                                                    <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
-                                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                                </button>
-                                                                <button class="btn btn-primary btn-next">
-                                                                    <span class="align-middle d-sm-inline-block d-none">Next</span>
-                                                                    <i data-feather="arrow-right" class="align-middle ml-sm-25 ml-0"></i>
-                                                                </button>
+                                                                <div class="col-6">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-sm-4">
+                                                                            <span>Email</span>
+                                                                        </div>
+                                                                        <div class="col-sm-8">
+                                                                            <span class="font-weight-bold text-primary" id="vi_tri">hungnvph11929@fpt.edu.vn</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div id="tab2" class="content">
-                                                            <form id="frm">
-                                                                <div class="row">
-                                                                    <div class="form-group col-md-6">
-                                                                        <label class="form-label" for="username">Tên đăng nhập</label>
-                                                                        <input type="text" name="username" id="username" class="form-control" placeholder="User name" />
-                                                                    </div>
-                                                                    <div class="form-group form-password-toggle col-md-6">
-                                                                        <label class="form-label" for="password">Mật khẩu</label>
-                                                                        <input type="password" id="password" name="password" class="form-control" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="form-group col-md-6">
-                                                                        <label for="role">Quyền</label>
-                                                                        <select id="role" class="select2 js-example-basic-multiple" name="role[]" multiple="multiple" required>
-                                                                            <option label=" "></option>
-                                                                          
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                            <div class="d-flex justify-content-between">
-                                                                <button class="btn btn-primary btn-prev">
-                                                                    <i data-feather="arrow-left" class="align-middle mr-sm-25 mr-0"></i>
-                                                                    <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                                                </button>
-                                                                <button class="btn btn-success btn-submit">Submit</button>
+                                                        <div class="tab-pane" id="account" aria-labelledby="account-tab" role="tabpanel">
+                                                            <div class="table-responsive border rounded mt-1">
+                                                                <h6 class="py-1 mx-1 mb-0 font-medium-2">
+                                                                    <i data-feather="lock" class="font-medium-3 mr-25"></i>
+                                                                    <span class="align-middle">Chi tiết</span>
+                                                                </h6>
+                                                                <table class="table table-striped table-borderless" id="dichvu-list-table">
+                                                                    <thead class="thead-light ">
+                                                                        <tr>
+                                                                            <th></th>
+                                                                            <th>Ngày</th>
+                                                                            <th>Dịch vụ</th>
+                                                                            <th>Bác sĩ</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                </table>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </section>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
 
                         </div>
                     </div>

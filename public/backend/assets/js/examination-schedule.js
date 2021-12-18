@@ -5,6 +5,13 @@ var url = '';
 var iid = 0;
 $(function () {
 
+    var basicPickr = $('.flatpickr-basic');
+    if (basicPickr.length) {
+        basicPickr.flatpickr({
+            dateFormat: "d/m/Y",
+        });
+    }
+
     'use strict';
 
     // select2
@@ -31,24 +38,57 @@ $(function () {
                 { data: 'date_at' },
                 { data: 'shift_name' },
                 { data: 'service' },
-                { data: 'doctor' },
+                { data: 'service_id' },
                 { data: 'patient' },
+                { data: 'patient_id' },
+                { data: 'doctor' },
+                { data: 'status_name' },
+                { data: 'status' },
+                { data: 'appointment' },
                 { data: '' }
             ],
             columnDefs: [
                 {
+                    targets: 4,
+                    visible: false,
+                },
+                {
+                    targets: 5,
+                    render: function(data, type, full, meta){
+                        return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient('+full['patient_id']+')"><span class="font-weight-bold">'+full['patient']+'</span></a>'
+                    }
+                },
+                {
                     targets: 6,
+                    visible: false,
+                },
+                {
+                    targets: 9,
+                    visible: false,
+                },
+                {
+                    targets: 10,
+                    visible: false,
+                },
+                {
+                    targets: 11,
                     render: function (data, type, full, meta) {
                         var html = '';
+                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hoàn thành" onclick="hoanthanh(' + full['id'] + ',' + full['status'] + ',' + full['appointment'] + ')">';
+                        html += '<i data-feather="check"></i>';
+                        html += '</button> &nbsp;';
+                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hẹn tiếp" onclick="hentiep(' + full['id'] + ',' + full['status'] + ',' + full['service_id'] + ')">';
+                        html += '<i data-feather="arrow-right-circle"></i>';
+                        html += '</button> &nbsp;';
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
                         html += '<i class="fas fa-pencil-alt"></i>';
                         html += '</button> &nbsp;';
-                        html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa" onclick="del(' + full['id'] + ')">';
-                        html += '<i class="fas fa-trash-alt"></i>';
-                        html += '</button>';
+                        // html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa" onclick="del(' + full['id'] + ')">';
+                        // html += '<i class="fas fa-trash-alt"></i>';
+                        // html += '</button>';
                         return html;
                     },
-                    width: 150
+                    width: 180
                 }
             ],
             // order: [[0, 'DESC']],
@@ -87,16 +127,16 @@ $(function () {
             },
             // Buttons with Dropdown
             buttons: [
-                {
-                    text: "Thêm mới",
-                    className: "add-new btn btn-primary mt-50",
-                    init: function (api, node, config) {
-                        $(node).removeClass("btn-secondary");
-                    },
-                    action: function (e, dt, node, config) {
-                        loadadd();
-                    },
-                },
+                // {
+                //     text: "Thêm mới",
+                //     className: "add-new btn btn-primary mt-50",
+                //     init: function (api, node, config) {
+                //         $(node).removeClass("btn-secondary");
+                //     },
+                //     action: function (e, dt, node, config) {
+                //         loadadd();
+                //     },
+                // },
             ],
             language: {
                 paginate: {
@@ -108,6 +148,12 @@ $(function () {
         });
     }
 });
+
+function loadpatient()
+{
+    $('#patientinfo').modal('show');
+}
+
 
 function loadadd() {
     $("#addnew").modal('show');
@@ -130,7 +176,6 @@ function changeType() {
     } else {
         $('#service_input').addClass('d-none');
     }
-
 }
 
 function loaddata(id) {
@@ -241,6 +286,96 @@ function save() {
         }
     }
 
+}
+
+function hoanthanh(id,status,appointment) {
+    if(status == 1) {
+        Swal.fire({
+            title: 'Khám xong',
+            text: "Bạn có chắc chắn muốn hoàn thành lịch khám!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Tôi đồng ý',
+            customClass: {
+                confirmButton: 'btn btn-primary',
+                cancelButton: 'btn btn-outline-danger ml-1'
+            },
+            buttonsStyling: false
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    url: "/admin/examination-schedule/hoanthanh",
+                    type: 'post',
+                    dataType: "json",
+                    data: { id: id, appointment: appointment},
+                    success: function (data) {
+                        if (data.success) {
+                            notyfi_success(data.msg);
+                            $("#tableBasic").DataTable().ajax.reload(null, false);
+                        }
+                        else
+                            notify_error(data.msg);
+                    },
+                });
+            }
+        });
+    } else {
+        notify_error("Lịch khám đã kết thúc");
+    }
+    
+}
+
+function hentiep(id,status,service_id) {
+    if(status == 1) {
+        Swal.fire({
+            title: 'Hẹn tiếp',
+            text: "Bạn có muốn hoàn thành lịch khám và tạo lịch hẹn mới!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Tôi đồng ý',
+            customClass: {
+                confirmButton: 'btn btn-primary',
+                cancelButton: 'btn btn-outline-danger ml-1'
+            },
+            buttonsStyling: false
+        }).then(function (result) {
+            if (result.value) {
+                $("#hentiep").modal('show');
+                $(".modal-title").html('Tạo lịch hẹn mới');
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    data: {service: service_id},
+                    url: "/admin/examination-schedule/get-doctor", 
+                    success: function (data) {
+                        $('#doctor').html('');
+                        data.forEach(function (val, index) {
+                            var opt = '<option value="' + val.id + '">' + val.name + '</option>';
+                            $('#doctor').append(opt);
+                        });
+                        $('#doctor').select2({
+                            placeholder: "Chọn bác sĩ",
+                            allowClear: true,
+                            dropdownParent: $('#doctor').parent(),
+                        })
+                        $('#doctor').val(null).trigger('change');
+                        $(window).on('load', function() {
+                            // $('#minlogo').hide();
+                            if (feather) {
+                                feather.replace({
+                                    width: 14,
+                                    height: 14
+                                });
+                            }
+                        })
+                    },
+                });
+            }
+        });
+    } else {
+        notify_error("Lịch khám đã kết thúc");
+    }
+    
 }
 
 function del(id) {

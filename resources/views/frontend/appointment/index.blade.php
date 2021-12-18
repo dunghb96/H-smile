@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-8">
+            <div class="col-xl-12">
                 <div class="appointment-form-left">
                     <form name="appointment-form" action="{{ route('hsmile.booking') }}" method="post">
                         @csrf
@@ -47,7 +47,7 @@
                                         <h5>Dịch vụ</h5>
                                     </div>
                                     <div class="input-box">
-                                        <select class="selectmenu select2" name="service" id="service" onchange="changeSV()">
+                                        <select class="selectmenu select2" name="service" id="service">
                                             <option value="" selected="selected">Chọn dịch vụ</option>
                                             @foreach($services as $service)
                                             <option value="{{ $service->id }}">
@@ -179,7 +179,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-6 col-md-9">
+            <!-- <div class="col-xl-4 col-lg-6 col-md-9">
                 <div class="appointment-right">
                     <form name="appointment-right" action="#" method="post">
                         <div class="confirm-booking">
@@ -192,13 +192,9 @@
                                 <li><span>Giá</span><b>:</b> $65.00</li>
                             </ul>
                         </div>
-                        <!-- <div class="button-box">
-                            <button class="btn-one" type="submit">Xác nhận</button>
-                            <button class="btn-one" type="submit">Hủy</button>
-                        </div> -->
                     </form>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
