@@ -2,6 +2,7 @@
 
 @php
     use App\Models\Appointment;
+    use App\Models\ExaminationSchedule;
 @endphp
 @extends('frontend.layouts.app')
 
@@ -49,7 +50,7 @@
                                 <div class="single-box">
                                     <div class="input-box">
                                         <div class="row">
-                                            <div class="col-xl-12">
+                                            <div class="col-xl-8">
                                                 <input type="text" name="phone" value="{{ $phone ?? '' }}" placeholder="Nhập số điện thoại của bạn" >
                                                 @error('phone')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -72,37 +73,84 @@
             </div>
         </div>
         <div class="row" style="margin-top: 50px">
-            <div class="col-12">
-                @if (isset($customer))
-                    <h1 style="margin-left: 20px; color: #32B6A1"><span style="font-size: medium"> khách hàng :</span> {{ $customer->full_name }}</h1>
-                @else
-                <center><h1 style="margin-left: 20px; color: #32B6A1">Bạn chưa đặt lịch khám</h1></center>
-                @endif
-            </div>
-            @if (isset($list))
-                <table class="table table-bordered" style="text-align: center">
-                    <thead>
-                    <tr>
-                        <th>Stt</th>
-                        <th>Ngày khám</th>
-                        <th>Ca khám</th>
-                        <th>Dịch vụ</th>
-                        <th>Trạng thái</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($list as $row)
+            <div class="row" style="margin: 0 auto;"><h1 style="margin-left: 20px; color: #32B6A1"><span style="font-size: medium"> khách hàng :</span> {{ $customer->full_name }}</h1></div>
+                <div class="row" style="margin: 0 auto;">
+                    <div class="col-12">
+                        @if (isset($customer))
+                            <h2 style="margin-bottom: 20px; color: #32B6A1">Yêu cầu đang chờ duyệt</h2>
+                        @else
+                        <center><h1 style="margin-left: 20px; color: #32B6A1">Bạn chưa đặt lịch khám</h1></center>
+                        @endif
+                    </div>
+                    @if (isset($list1))
+                        <table class="table table-bordered" style="text-align: center">
+                            <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $row->date_at }}</td>
-                                <td>{{ $row->time_at }}</td>
-                                <td>{{ $row->service->name }}</td>
-                                <td>{{ Appointment::STATUS[$row->status] }}</td>
+                                <th>Stt</th>
+                                <th>Ngày khám</th>
+                                <th>Ca khám</th>
+                                <th>Nha sĩ</th>
+                                <th>Dịch vụ</th>
+                                <th>Trạng thái</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            @endif
+                            </thead>
+                            <tbody>
+                                @foreach ($list1 as $row)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $row->date_at }}</td>
+                                        <td>{{ $row->time_at }}</td>
+                                        <td>{{ $row->doctor->name }}</td>
+                                        <td>{{ $row->service->name }}</td>
+                                        <td>{{ Appointment::STATUS[$row->status] }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
+                </div>
+                <div class="row" style="margin: 0 auto;">
+                    <div class="col-12">
+                        @if (isset($list2))
+                            <h2 style="margin-bottom: 20px; color: #32B6A1">Ca khám của bạn</h2>
+                        @else
+                        <center><h1 style="margin-left: 20px; color: #32B6A1">Bạn chưa có lịch sử khám</h1></center>
+                        @endif
+                    </div>
+                    @if (isset($list2))
+                        <table class="table table-bordered" style="text-align: center">
+                            <thead>
+                            <tr>
+                                <th>Stt</th>
+                                <th>Ngày khám</th>
+                                <th>Ca khám</th>
+                                <th>Nha sĩ</th>
+                                <th>Dịch vụ</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($list2 as $row)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $row->date_at }}</td>
+                                        <td>{{ $row->time_at }}</td>
+                                        <td>{{ $row->doctors->name }}</td>
+                                        <td>
+                                            @foreach ($service as $row2)
+                                                @if ($row2->id == $row->appointments->service_id)
+                                                    {{ $row2->name }}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                        <td>{{ ExaminationSchedule::STATUS[$row->status] }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
 </div>

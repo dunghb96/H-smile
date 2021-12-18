@@ -12,6 +12,7 @@ use App\Models\Partner;
 use App\Models\Service;
 use App\Models\Slide;
 use App\Models\Blog;
+use App\Models\ExaminationSchedule;
 use App\Models\Feedback;
 use App\Models\Patient;
 use App\Models\StaticPage;
@@ -63,10 +64,9 @@ class HomeController extends BaseController
     {
         $request->validate(
             [
-                'phone' => 'required|numeric'
+                'phone' => 'numeric'
             ],
             [
-                'phone.required' => 'Hãy nhập số điện thoại',
                 'phone.numeric' => 'Hãy nhập đúng số điện thoại của bạn',
             ]
         );
@@ -74,9 +74,13 @@ class HomeController extends BaseController
             $phone = $request->phone;
             $customer = Patient::where('phone_number', $phone)->first();
             if( $customer) {
-                $list = Appointment::where('patient_id',  $customer->id)->orderBy('created_at')->take(5)->get();
-                $list->load('service', 'doctor');
-                return view('frontend.history.index', compact('list', 'customer', 'phone'));
+                $list = Appointment::where('patient_id',  $customer->id)->where('status', 1)->orderBy('created_at')->take(5);
+                $list1= $list->take(5)->get();
+                $list1->load('service', 'doctor');
+                $listId = Appointment::where('patient_id',  $customer->id)->where('status', 2)->orderBy('created_at')->take(5)->pluck('id');
+                $list2 = ExaminationSchedule::whereIn('appointment', $listId)->take(5)->get();
+                $service = Service::all();
+                return view('frontend.history.index', compact('list1', 'customer', 'phone', 'list2', 'service'));
             }
             return view('frontend.history.index', compact('phone'));
         }

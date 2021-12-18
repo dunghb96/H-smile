@@ -29,6 +29,10 @@ class ExaminationSchedule extends Model
     {
         return $this->hasOne(Patient::class, 'id', 'patient_id');
     }
+    public function appointments()
+    {
+        return $this->hasOne(Appointment::class, 'id', 'appointment');
+    }
 
     function saveExaminationSchedule($model, $data)
     {
