@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Enums\CommonStatus;
 use App\Http\Requests\BookingPostRequest;
+use App\Models\Appointment;
 use App\Models\Client;
 use App\Models\Employee;
 use App\Models\Partner;
@@ -12,6 +13,7 @@ use App\Models\Service;
 use App\Models\Slide;
 use App\Models\Blog;
 use App\Models\Feedback;
+use App\Models\Patient;
 use App\Models\StaticPage;
 use App\Models\Template;
 use Illuminate\Http\Request;
@@ -53,8 +55,32 @@ class HomeController extends BaseController
         return view('frontend.layout.header', compact('service'));
     }
 
-    public function postData(BookingPostRequest $request)
+    public function history()
     {
-        dd(1);
+        return view('frontend.history.index');
     }
+    public function search(Request $request)
+    {
+        $request->validate(
+            [
+                'phone' => 'required|numeric'
+            ],
+            [
+                'phone.required' => 'Hãy nhập số điện thoại',
+                'phone.numeric' => 'Hãy nhập đúng số điện thoại của bạn',
+            ]
+        );
+        if($request->phone) {
+            $phone = $request->phone;
+            $customer = Patient::where('phone_number', $phone)->first();
+            if( $customer) {
+                $list = Appointment::where('patient_id',  $customer->id)->orderBy('created_at')->take(5)->get();
+                $list->load('service', 'doctor');
+                return view('frontend.history.index', compact('list', 'customer', 'phone'));
+            }
+            return view('frontend.history.index', compact('phone'));
+        }
+
+    }
+
 }

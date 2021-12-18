@@ -35,7 +35,6 @@ class Appointment extends Model
     function saveExaminationSchedule($model, $data)
     {
         $model->appointment = $data['appointment'];
-        $model->doctor = $data['doctor'];
         $model->date_at = $data['date_at'];
         $model->shift = $data['shift'];
         $model->status = 1;

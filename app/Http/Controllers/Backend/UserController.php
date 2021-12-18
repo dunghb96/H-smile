@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
+use Spatie\Permission\Traits\HasRoles;
 
 class UserController extends BaseController
 {
+    use HasRoles;
     public function __construct()
     {
         parent::__construct();
@@ -19,5 +21,5 @@ class UserController extends BaseController
         return view('backend.user.accountsettings', compact('data'));
     }
 
-   
+
 }
