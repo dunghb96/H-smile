@@ -22,7 +22,7 @@ class CreateAppointmentsTable extends Migration
             // $table->date('date_at');
             // $table->time('time_at');
             $table->integer('status');
-            $table->integer('status_notification');
+            $table->integer('status_notification')->nullable();
             $table->timestamps();
         });
     }

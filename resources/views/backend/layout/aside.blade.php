@@ -24,6 +24,32 @@
                     <span class="menu-title text-truncate" data-i18n="Dashboards">Dashboard</span>
                 </a>
             </li>
+             {{-- role dortor --}}
+            <li class=" navigation-header">
+                <span data-i18n="Apps &amp; Pages">Lịch khám của tôi</span>
+                <i data-feather="more-horizontal"></i>
+            </li>
+            <li class="nav-item {{ request()->is('admin/today') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.today') }}">
+                    <i data-feather='settings'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Ca khám hôm nay</span>
+                </a>
+            </li>
+            <li class="nav-item {{ request()->is('admin/future') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.future') }}">
+                    <i data-feather='settings'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Ca khám sắp tới</span>
+                </a>
+            </li>
+            <li class="nav-item {{ request()->is('admin/past') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.past') }}">
+                    <i data-feather='settings'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Ca đã khám</span>
+                </a>
+            </li>
+
+
+
             <li class=" navigation-header">
                 <span data-i18n="Apps &amp; Pages">Truy cập nhanh</span>
                 <i data-feather="more-horizontal"></i>

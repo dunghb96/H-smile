@@ -9,6 +9,7 @@ use App\Models\Employee;
 use App\Models\examinationSchedule;
 use App\Models\Patient;
 use App\Models\Service;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Laravel\Ui\Presets\React;
 
@@ -27,12 +28,12 @@ class AppointmentController extends BaseController
 
     public function json()
     {
-        $list = Appointment::with('patients', 'service', 'doctor')->orderBY('id','DESC')->where('status','>','0')->get();
+        $list = Appointment::with('patients', 'service', 'doctor')->orderBY('id','DESC')->where('status','=','1')->get();
         $jsonObj['data'] = $list;
         foreach($list as $key => $row){
             $jsonObj['data'][$key]->full_name = $row->patients->full_name;
             $jsonObj['data'][$key]->services = $row->service->name;
-            $jsonObj['data'][$key]->shift =  Appointment::SHIFT[$row->shift];
+            // $jsonObj['data'][$key]->shift =  (string)Appointment::SHIFT[$row->shift];
             $jsonObj['data'][$key]->doctor_name =  $row->doctor->name;
             $jsonObj['data'][$key]->status_word =  Appointment::STATUS[$row->status];
         }
@@ -46,7 +47,7 @@ class AppointmentController extends BaseController
         echo json_encode($jsonObj);
     }
 
-    function addSchedule (Request $request) 
+    function addSchedule (Request $request)
     {
         $patientid = $request->patient_id;
         $appointment = $request->appointment;
@@ -80,10 +81,10 @@ class AppointmentController extends BaseController
             } else {
                 $jsonObj['success'] = false;
                 $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-            } 
+            }
             echo json_encode($jsonObj);
-            
+
         }
-       
+
     }
 }

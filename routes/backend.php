@@ -47,6 +47,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
+    Route::group(['prefix' => 'doctor'], function () {
+        Route::get('/today', [DashboardController::class, 'today'])->name('admin.today');
+        Route::get('/today/json', [DashboardController::class, 'today_json']);
+        Route::get('/future', [DashboardController::class, 'future'])->name('admin.future');
+        Route::get('/future/json', [DashboardController::class, 'json']);
+        Route::get('/past', [DashboardController::class, 'past'])->name('admin.past');
+        Route::get('/past/json', [DashboardController::class, 'json']);
+    });
+
     Route::group(['prefix' => 'setting'], function () {
         Route::get('/', [SettingController::class, 'index'])->name('admin.setting');
         Route::post('/saveForm', [SettingController::class, 'saveForm']);

@@ -29,7 +29,9 @@ class HomeController extends BaseController
         $blog = Blog::orderBy('created_at', 'DESC')->paginate(10);
         $doctor = Employee::where('type', 1)->paginate(10);
         $feedback = Feedback::where('status', 1)->take(5)->get();
-        return view('frontend.home.index', compact('slide', 'doctor', 'service', 'partner', 'blog', 'feedback'));
+        $countDoctor = $doctor->count();
+        $doneAppoint = ExaminationSchedule::where('status', 2)->count();
+        return view('frontend.home.index', compact('slide', 'doctor', 'service', 'partner', 'blog', 'feedback', 'countDoctor', 'doneAppoint'));
     }
 
     public function service()
@@ -64,9 +66,10 @@ class HomeController extends BaseController
     {
         $request->validate(
             [
-                'phone' => 'numeric'
+                'phone' => 'required|numeric'
             ],
             [
+                'phone.required' => 'Bạn chưa nhập số điện thoại',
                 'phone.numeric' => 'Hãy nhập đúng số điện thoại của bạn',
             ]
         );

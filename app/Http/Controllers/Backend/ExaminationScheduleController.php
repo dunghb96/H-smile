@@ -103,13 +103,13 @@ class ExaminationScheduleController extends BaseController
             } else {
                 $jsonObj['success'] = false;
                 $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-            } 
+            }
             echo json_encode($jsonObj);
-            
+
         }
     }
 
-    // public function add(Request $request) 
+    // public function add(Request $request)
     // {
     //     $model = new ExaminationSchedule();
     //     $result = $model->saveEmployee($model, $request);
@@ -119,7 +119,7 @@ class ExaminationScheduleController extends BaseController
     //     } else {
     //         $jsonObj['success'] = false;
     //         $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-    //     } 
+    //     }
     //     echo json_encode($jsonObj);
     // }
 
@@ -130,7 +130,7 @@ class ExaminationScheduleController extends BaseController
     //     echo json_encode($employee);
     // }
 
-    // public function edit(Request $request) 
+    // public function edit(Request $request)
     // {
     //     $id = $request->input('id');
     //     $model = ExaminationSchedule::find($id);
@@ -141,7 +141,7 @@ class ExaminationScheduleController extends BaseController
     //     } else {
     //         $jsonObj['success'] = false;
     //         $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-    //     } 
+    //     }
     //     echo json_encode($jsonObj);
     // }
 
@@ -157,8 +157,8 @@ class ExaminationScheduleController extends BaseController
     //     } else {
     //         $jsonObj['success'] = false;
     //         $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-    //     } 
+    //     }
     //     echo json_encode($jsonObj);
     // }
-    
+
 }
