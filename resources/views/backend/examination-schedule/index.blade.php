@@ -35,7 +35,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Ngày hẹn</th>
-                                            <th>Ca</th>
+                                            <th>Giờ hẹn</th>
                                             <th>Dịch vụ</th>
                                             <th></th>
                                             <th>Khách hàng</th>

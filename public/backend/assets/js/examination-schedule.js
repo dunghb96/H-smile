@@ -36,7 +36,7 @@ $(function () {
             columns: [
                 { data: 'id' },
                 { data: 'date_at' },
-                { data: 'shift_name' },
+                { data: 'time_at' },
                 { data: 'service' },
                 { data: 'service_id' },
                 { data: 'patient' },

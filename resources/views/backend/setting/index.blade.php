@@ -164,7 +164,7 @@
                             </div>
                             
                             <div class="col-12 d-flex justify-content-between">
-                                <button class="dt-button add-new btn btn-primary" onclick="savetk();"><span>Cập nhật</span></button>
+                                <button class="dt-button add-new btn btn-primary" onclick="save();"><span>Cập nhật</span></button>
                             </div>
 
                         </div>

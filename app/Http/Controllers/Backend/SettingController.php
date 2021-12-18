@@ -33,6 +33,8 @@ class SettingController extends BaseController
             }
         }
 
-        return back()->with(['status' => 'success', 'flash_message' => 'Update success']);
+        $jsonObj['success'] = true;
+        $jsonObj['msg'] = 'Tạo lịch khám thành công';
+        echo json_encode($jsonObj);        
     }
 }

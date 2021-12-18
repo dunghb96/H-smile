@@ -47,7 +47,7 @@
                                         <h5>Dịch vụ</h5>
                                     </div>
                                     <div class="input-box">
-                                        <select class="selectmenu select2" name="service" id="service">
+                                        <select class="selectmenu select2" name="service" id="service" onchange="changeSV()">
                                             <option value="" selected="selected">Chọn dịch vụ</option>
                                             @foreach($services as $service)
                                             <option value="{{ $service->id }}">
@@ -59,25 +59,41 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="row">
+                        <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">
                                     <div class="title">
                                         <h5>Bác sĩ</h5>
                                     </div>
                                     <div class="input-box">
-                                        <select class="selectmenu select2" name="doctor" id="doctor">
-                                            <option value="" selected="selected">Chọn bác sĩ</option>
-                                            @foreach($doctors as $doctor)
+                                        <select class="selectmenu" name="doctor" id="doctor">
+                                            <!-- <option value="" selected="selected">Chọn bác sĩ</option> -->
+                                            <!-- @foreach($doctors as $doctor)
                                             <option value="{{ $doctor->id }}">
                                                 {{ $doctor->name }}
                                             </option>
-                                            @endforeach
+                                            @endforeach -->
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="single-box">
+                                    <div class="title">
+                                        <h5>Ca</h5>
+                                    </div>
+                                    <div class="input-box">
+                                        <select class="selectmenu" name="shift" id="shift">
+                                            <!-- <option value="" selected="selected">Chọn bác sĩ</option> -->
+                                            <option value="1" selected="selected">Ca sáng</option>
+                                            <option value="2" selected="selected">Ca chiều</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="single-box">

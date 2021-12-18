@@ -17,6 +17,11 @@ class Appointment extends Model
         3 => 'Đã hoàn thành',
     ];
 
+    const SHIFT= [
+        1 => 'Ca sáng',
+        2 => 'Ca chiều'
+    ];
+
     public function patients()
     {
         return $this->hasOne(Patient::class, 'id', 'patient_id');
@@ -36,7 +41,8 @@ class Appointment extends Model
     {
         $model->appointment = $data['appointment'];
         $model->date_at = $data['date_at'];
-        $model->shift = $data['shift'];
+        $model->doctor = $data['doctor'];
+        $model->time_at = $data['time_at'];
         $model->status = 1;
 
         $model->save();

@@ -43,7 +43,7 @@ class ExaminationScheduleController extends BaseController
             // $jsonObj['data'][$key]->age       = $row->patients->age;
             // $jsonObj['data'][$key]->services = $row->service->name;
             $jsonObj['data'][$key]->status_name =  ExaminationSchedule::STATUS[$row->status];
-            $jsonObj['data'][$key]->shift_name =  ExaminationSchedule::SHIFT[$row->shift];
+            // $jsonObj['data'][$key]->shift_name =  ExaminationSchedule::SHIFT[$row->shift];
         }
         echo json_encode($jsonObj);
     }

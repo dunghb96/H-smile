@@ -11,6 +11,21 @@ $(function () {
             dateFormat: "d/m/Y",
         });
     }
+    var timePickr = $('.flatpickr-time');
+
+    // if (timePickr.length) {
+    //     timePickr.flatpickr({
+    //         enableTime: true,
+    //         dateFormat: "H:i",
+    //         noCalendar: true
+    //     });
+    // }
+
+    $('#time_at').select2({
+        placeholder: "Chọn giờ hẹn",
+        allowClear: true,
+        dropdownParent: $('#time_at').parent(),
+    })
 
     $('#service').select2({
         placeholder: "Chọn dịch vụ",
@@ -34,10 +49,11 @@ $(function () {
                 { data: 'id' },
                 { data: 'full_name' },
                 { data: 'patient_id' },
-                { data: 'age' },
                 { data: 'services' },
                 { data: 'service_id' },
                 { data: 'status' },
+                { data: 'shift' },
+                { data: 'doctor_name' },
                 { data: 'status_word' },
                 { data: '' }
             ],
@@ -53,15 +69,15 @@ $(function () {
                     visible: false,
                 },
                 {
+                    targets: 4,
+                    visible: false,
+                },
+                {
                     targets: 5,
                     visible: false,
                 },
                 {
-                    targets: 6,
-                    visible: false,
-                },
-                {
-                    targets: 8,
+                    targets: 9,
                     render: function (data, type, full, meta) {
                         var html = '';
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Tạo lịch khám" onclick="duyet(' + full['id'] + ',' + full['service_id'] + ',' + full['status'] + ')">';
@@ -277,7 +293,7 @@ function saveExamSchedule() {
     info.doctor = $('#doctor').val();
     info.service = $('#service').val();
     info.dateat = $('#date_at').val();
-    info.shift = $('#shift').val();
+    info.timeat = $('#time_at').val();
     $.ajax({
         type: "POST",
         dataType: "json",

@@ -36,10 +36,11 @@
                                             <th>ID</th>
                                             <th>Khách hàng</th>
                                             <th></th>
-                                            <th>Tuổi</th>
                                             <th>Dịch vụ</th>
                                             <th></th>
                                             <th></th>
+                                            <th>Ca</th>
+                                            <th>Bác sĩ</th>
                                             <th>Trạng thái</th>
                                             <th></th>
                                         </tr>
@@ -59,7 +60,7 @@
                                                 <label for="service">Dịch vụ</label>
                                                 <select class="form-control" id="service" name="service" required>
                                                     @foreach($services as $service)
-                                                        <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                                    <option value="{{ $service->id }}">{{ $service->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -79,7 +80,7 @@
                                                 <label>Email</label>
                                                 <input type="number" class="form-control" id="price" name="price" placeholder="Email">
                                             </div>
-                                            
+
                                             <div class="form-group">
                                                 <label for="content">Mô tả</label>
                                                 <textarea id="content" name="content" rows="3" class="form-control" placeholder="Mô tả bệnh án"></textarea>
@@ -260,12 +261,21 @@
                                                     <input type="text" id="date_at" name="date_at" class="form-control flatpickr-basic" placeholder="DD/MM/YYYY" />
                                                 </div>
                                                 <div class="form-group">
+                                                    <select class="form-control" id="time_at" name="time_at" required>
+                                                        <option value="07::00">08:00</option>
+                                                        <option value="08:30">08:30</option>
+                                                        <option value="10:00">10:00</option>
+                                                    </select>
+                                                    <!-- <label for="time_at">Giờ hẹn</label>
+                                                    <input type="text" id="time_at" class="form-control flatpickr-time text-left" placeholder="HH:MM" /> -->
+                                                </div>
+                                                <!-- <div class="form-group">
                                                     <label for="shift">Ca</label>
                                                     <select class="form-control" id="shift" name="shift" required>
                                                         <option value="1">Ca sáng</option>
                                                         <option value="2">Ca chiều</option>
                                                     </select>
-                                                </div>
+                                                </div> -->
                                                 <button type="button" onclick="saveExamSchedule()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
                                                 <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
                                             </form>

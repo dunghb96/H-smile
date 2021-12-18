@@ -30,10 +30,6 @@
     <p>Có yêu cầu đặt lịch</p>
     </p>
 
-
-
-
-
 </body>
 
 </html>

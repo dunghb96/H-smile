@@ -39,28 +39,29 @@ class AppointmentController extends BaseController
 
         $dataAppointment = [
             'patient_id' => $newPatient->id,
-            // 'doctor_id' => 1,
+            'doctor_id' => $request->service,
             'service_id' => $request->service,
+            'shift' => $request->shift,
             // 'date_at' =>  Carbon::parse($request->date_at)->format('Y-m-d'),
             // 'time_at' => Carbon::parse($request->time_at)->format('H:i'),
             'status'=> 1,
-            'status_notification' => 1,
+            'status_notification' => 1
 
         ];
         $newBooking = Appointment::create($dataAppointment);
 
-        $email = $request->email;
+        // $email = $request->email;
 
-        $data = [
-            'name' => $request->name,
-        ];
+        // $data = [
+        //     'name' => $request->name,
+        // ];
 
-        Mail::send('frontend.mail.sendMail', $data, function ($mes) use ($email) {
+        // Mail::send('frontend.mail.sendMail', $data, function ($mes) use ($email) {
 
-            $mes->from('nguyenthvu9898@gmail.com');
+        //     $mes->from('nguyenthvu9898@gmail.com');
 
-            $mes->to($email, 'frontend.mail.sendMail')->subject('Mail công việc');
-        });
+        //     $mes->to($email, 'frontend.mail.sendMail')->subject('Mail công việc');
+        // });
 
         return redirect()->route('hsmile.appointment')->with(['status' => 'success', 'flash_message' => 'Đặt lịch hẹn thành công!']);
     }

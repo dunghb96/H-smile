@@ -19,7 +19,7 @@ class CreateExaminationSchedulesTable extends Migration
             $table->string('note')->nullable();
             $table->date('date_at');
             $table->integer('doctor');
-            $table->integer('shift');
+            $table->time('time_at');
             $table->integer('status');
             $table->timestamps();
         });
