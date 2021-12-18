@@ -39,6 +39,7 @@ class Appointment extends Model
 
     function saveExaminationSchedule($model, $data)
     {
+        $model->patient_id = $data['patient_id'];
         $model->appointment = $data['appointment'];
         $model->date_at = $data['date_at'];
         $model->doctor = $data['doctor'];
@@ -48,10 +49,5 @@ class Appointment extends Model
         $model->save();
 
         return $model;
-    }
-
-    function saveSchedule($model, $data)
-    {
-
     }
 }

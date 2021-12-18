@@ -59,7 +59,6 @@
                                         <div class="modal-body flex-grow-1">
                                             <form id="frm-add" enctype="multipart/form-data">
 
-
                                                 <div class="form-group">
                                                     <label for="category">Bác sĩ</label>
                                                     <select class="form-control" id="doctor" name="doctor" required>
@@ -71,10 +70,11 @@
                                                     <input type="text" id="date_at" name="date_at" class="form-control flatpickr-basic" placeholder="DD/MM/YYYY" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="shift">Ca</label>
-                                                    <select class="form-control" id="shift" name="shift" required>
-                                                        <option value="1">Ca sáng</option>
-                                                        <option value="2">Ca chiều</option>
+                                                    <label for="date_at">Ngày</label>
+                                                    <select class="form-control" id="time_at" name="time_at" required>
+                                                        <option value="07::00">07::00</option>
+                                                        <option value="09:30">09:30</option>
+                                                        <option value="10:00">10:00</option>
                                                     </select>
                                                 </div>
                                                 <button type="button" onclick="saveExamSchedule()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
@@ -111,43 +111,43 @@
                                                     <div class="tab-content">
                                                         <div class="tab-pane active" id="information" aria-labelledby="information-tab" role="tabpanel">
                                                             <div class="row">
-                                                                <div class="col-6">
+                                                            <div class="col-12">
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-4">
                                                                             <span>Họ tên</span>
                                                                         </div>
                                                                         <div class="col-sm-8">
-                                                                            <span class="font-weight-bold text-primary" id="name">Nguyễn Văn Hùng</span>
+                                                                            <span class="font-weight-bold text-primary" id="patient-name"></span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12">
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-4">
                                                                             <span>Tuổi</span>
                                                                         </div>
                                                                         <div class="col-sm-8">
-                                                                            <span class="font-weight-bold text-primary" id="vi_tri"></span>
+                                                                            <span class="font-weight-bold text-primary" id="patient-age"></span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12">
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-4">
                                                                             <span>Số điện thoại</span>
                                                                         </div>
                                                                         <div class="col-sm-8">
-                                                                            <span class="font-weight-bold text-primary" id="name">0346756000</span>
+                                                                            <span class="font-weight-bold text-primary" id="patient-phone"></span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-12">
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-4">
                                                                             <span>Email</span>
                                                                         </div>
                                                                         <div class="col-sm-8">
-                                                                            <span class="font-weight-bold text-primary" id="vi_tri">hungnvph11929@fpt.edu.vn</span>
+                                                                            <span class="font-weight-bold text-primary" id="patient-email"></span>
                                                                         </div>
                                                                     </div>
                                                                 </div>

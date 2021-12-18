@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Appointment;
 use App\Models\Employee;
 use App\Models\ExaminationSchedule;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ExaminationScheduleController extends BaseController
@@ -37,7 +38,7 @@ class ExaminationScheduleController extends BaseController
             $jsonObj['data'][$key]->service = $appointment->service->name;
             $jsonObj['data'][$key]->service_id = $appointment->service->id;
             $jsonObj['data'][$key]->doctor = $row->doctors->name;
-            $jsonObj['data'][$key]->patient = $appointment->patients->full_name;
+            $jsonObj['data'][$key]->patient = $row->patients->full_name;
             $jsonObj['data'][$key]->patient_id = $appointment->patients->id;
             // $jsonObj['data'][$key]->full_name = $row->patients->full_name;
             // $jsonObj['data'][$key]->age       = $row->patients->age;
@@ -66,6 +67,46 @@ class ExaminationScheduleController extends BaseController
             $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
         }
         echo json_encode($jsonObj);
+    }
+
+    function hentiep(Request $request)
+    {
+        $patientid = $request->patient;
+        $scheduleid = $request->schedule;
+        $appointment = $request->appointment;
+        $doctor = $request->doctor;
+        $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
+        $timeat = $request->timeat;
+        $data = [
+            'patient_id' => $patientid,
+            'appointment' => $appointment,
+            'doctor' => $doctor,
+            'date_at' => $dateat,
+            'time_at' => $timeat,
+        ];
+        $result = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('time_at',$timeat)->where('status','>','0')->get();
+        if($result->count() > 3) {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Không còn lịch trống';
+            echo json_encode($jsonObj);
+        } else {
+            $model = ExaminationSchedule::find($scheduleid);
+            $model->status = 2;
+            $result = $model->save();
+            if($result){
+                $schedule = new ExaminationSchedule();
+                $result = $schedule->saveExaminationSchedule($schedule, $data);
+                if($result) {
+                    $jsonObj['success'] = true;
+                    $jsonObj['msg'] = 'Hẹn lịch khám tiếp thành công';
+                }
+            } else {
+                $jsonObj['success'] = false;
+                $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+            } 
+            echo json_encode($jsonObj);
+            
+        }
     }
 
     // public function add(Request $request) 

@@ -131,8 +131,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::get('/', [ExaminationScheduleController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.examination_schedule');
         Route::get('/json', [ExaminationScheduleController::class, 'json']);
         Route::post('/hoanthanh', [ExaminationScheduleController::class, 'hoanthanh']);
-        Route::post('/henlai', [ExaminationScheduleController::class, 'henlai']);
+        Route::post('/hentiep', [ExaminationScheduleController::class, 'hentiep']);
         Route::post('/get-doctor', [ExaminationScheduleController::class, 'getDoctor']);
+        Route::post('/henlai', [ExaminationScheduleController::class, 'henlai']);
+
         // Route::post('/add', [ExaminationScheduleController::class, 'add']);
         // Route::post('/loaddata', [ExaminationScheduleController::class, 'loaddata']);
         // Route::post('/edit', [ExaminationScheduleController::class, 'edit']);
@@ -142,7 +144,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     Route::group(['prefix' => 'patient'], function () {
         Route::get('/', [PatientController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.patient');
         Route::get('/json', [PatientController::class, 'json']);
-
+        Route::post('/loaddata', [PatientController::class, 'loaddata']);
+        Route::get('/loadhistory', [PatientController::class, 'loadhistory']);
     });
 
     Route::group(['prefix' => 'employee'], function () {

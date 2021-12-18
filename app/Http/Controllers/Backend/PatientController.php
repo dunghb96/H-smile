@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\ExaminationSchedule;
 use App\Models\Patient;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -26,6 +27,20 @@ class PatientController extends BaseController
         echo json_encode($jsonObj);
     }
 
+    public function loaddata(Request $request)
+    {
+        $id = $request->id;
+        $jsonObj = Patient::find($id);
+        echo json_encode($jsonObj);
+    }
+
+    function loadhistory(Request $request)
+    {
+        $id = $request->id;
+        $jsonObj = ExaminationSchedule::where('patient_id',$id)->get();
+        echo json_encode($jsonObj);
+    }
+
     public function add(Request $request)
     {
         $model = new Service();
@@ -37,13 +52,6 @@ class PatientController extends BaseController
             $jsonObj['success'] = false;
             $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
         }
-        echo json_encode($jsonObj);
-    }
-
-    public function loaddata(Request $request)
-    {
-        $id = $request->id;
-        $jsonObj = Service::find($id);
         echo json_encode($jsonObj);
     }
 

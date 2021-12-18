@@ -3,6 +3,8 @@
  */
 var url = '';
 var iid = 0;
+var appointmentid = 0;
+var patientid = 0;
 $(function () {
 
     var basicPickr = $('.flatpickr-basic');
@@ -11,6 +13,13 @@ $(function () {
             dateFormat: "d/m/Y",
         });
     }
+
+    $('#time_at').select2({
+        placeholder: "Chọn giờ hẹn",
+        allowClear: true,
+        dropdownParent: $('#time_at').parent(),
+    })
+    $('#time_at').val(null).change();
 
     'use strict';
 
@@ -77,7 +86,7 @@ $(function () {
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hoàn thành" onclick="hoanthanh(' + full['id'] + ',' + full['status'] + ',' + full['appointment'] + ')">';
                         html += '<i data-feather="check"></i>';
                         html += '</button> &nbsp;';
-                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hẹn tiếp" onclick="hentiep(' + full['id'] + ',' + full['status'] + ',' + full['service_id'] + ')">';
+                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hẹn tiếp" onclick="hentiep(' + full['id'] + ',' + full['appointment'] + ',' + full['status'] + ',' + full['service_id'] + ',' + full['patient_id'] + ')">';
                         html += '<i data-feather="arrow-right-circle"></i>';
                         html += '</button> &nbsp;';
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
@@ -149,9 +158,26 @@ $(function () {
     }
 });
 
-function loadpatient()
+function loadpatient(id)
 {
+    $('#information-tab').click();
     $('#patientinfo').modal('show');
+    $(".modal-title").html('Thông tin khách hàng');
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        data: { id: id },
+        url: "/admin/patient/loaddata",
+        success: function (data) {
+            $('#patient-name').html(data.full_name);
+            $('#patient-age').html(data.age);
+            $('#patient-phone').html(data.phone_number);
+            $('#patient-email').html(data.email);
+        },
+        error: function () {
+            notify_error('Lỗi truy xuất database');
+        }
+    });
 }
 
 
@@ -325,7 +351,7 @@ function hoanthanh(id,status,appointment) {
     
 }
 
-function hentiep(id,status,service_id) {
+function hentiep(id,appointment,status,service_id,patient) {
     if(status == 1) {
         Swal.fire({
             title: 'Hẹn tiếp',
@@ -359,15 +385,18 @@ function hentiep(id,status,service_id) {
                             dropdownParent: $('#doctor').parent(),
                         })
                         $('#doctor').val(null).trigger('change');
-                        $(window).on('load', function() {
-                            // $('#minlogo').hide();
-                            if (feather) {
-                                feather.replace({
-                                    width: 14,
-                                    height: 14
-                                });
-                            }
-                        })
+                        iid = id;
+                        appointmentid = appointment;
+                        patientid = patient;
+                        // $(window).on('load', function() {
+                        //     // $('#minlogo').hide();
+                        //     if (feather) {
+                        //         feather.replace({
+                        //             width: 14,
+                        //             height: 14
+                        //         });
+                        //     }
+                        // })
                     },
                 });
             }
@@ -375,37 +404,65 @@ function hentiep(id,status,service_id) {
     } else {
         notify_error("Lịch khám đã kết thúc");
     }
-    
 }
 
-function del(id) {
-    Swal.fire({
-        title: 'Xóa dữ liệu',
-        text: "Bạn có chắc chắn muốn xóa!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Tôi đồng ý',
-        customClass: {
-            confirmButton: 'btn btn-primary',
-            cancelButton: 'btn btn-outline-danger ml-1'
+function saveExamSchedule() {
+    var info = {};
+    info.patient = patientid;
+    info.schedule = iid;
+    info.appointment = appointmentid;
+    info.doctor = $('#doctor').val();
+    info.service = $('#service').val();
+    info.dateat = $('#date_at').val();
+    info.timeat = $('#time_at').val();
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        data: info,
+        url: "/admin/examination-schedule/hentiep",
+        success: function (data) {
+            if(data.success) {
+                notyfi_success(data.msg);
+                $('#hentiep').modal('hide');
+                $("#tableBasic").DataTable().ajax.reload(null, false);
+            } else {
+                notify_error(data.msg);
+            }
         },
-        buttonsStyling: false
-    }).then(function (result) {
-        if (result.value) {
-            $.ajax({
-                url: "/admin/employee/del",
-                type: 'post',
-                dataType: "json",
-                data: { id: id },
-                success: function (data) {
-                    if (data.success) {
-                        notyfi_success(data.msg);
-                        $("#tableBasic").DataTable().ajax.reload(null, false);
-                    }
-                    else
-                        notify_error(data.msg);
-                },
-            });
+        error: function () {
+            notify_error('Lỗi truy xuất database');
         }
     });
 }
+
+// function del(id) {
+//     Swal.fire({
+//         title: 'Xóa dữ liệu',
+//         text: "Bạn có chắc chắn muốn xóa!",
+//         icon: 'warning',
+//         showCancelButton: true,
+//         confirmButtonText: 'Tôi đồng ý',
+//         customClass: {
+//             confirmButton: 'btn btn-primary',
+//             cancelButton: 'btn btn-outline-danger ml-1'
+//         },
+//         buttonsStyling: false
+//     }).then(function (result) {
+//         if (result.value) {
+//             $.ajax({
+//                 url: "/admin/employee/del",
+//                 type: 'post',
+//                 dataType: "json",
+//                 data: { id: id },
+//                 success: function (data) {
+//                     if (data.success) {
+//                         notyfi_success(data.msg);
+//                         $("#tableBasic").DataTable().ajax.reload(null, false);
+//                     }
+//                     else
+//                         notify_error(data.msg);
+//                 },
+//             });
+//         }
+//     });
+// }

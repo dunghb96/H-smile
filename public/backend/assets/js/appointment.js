@@ -3,6 +3,7 @@
  */
 var url = '';
 var iid = 0;
+var patient_id = 0;
 $(function () {
 
     var basicPickr = $('.flatpickr-basic');
@@ -26,6 +27,7 @@ $(function () {
         allowClear: true,
         dropdownParent: $('#time_at').parent(),
     })
+    $('#time_at').val(null).change();
 
     $('#service').select2({
         placeholder: "Chọn dịch vụ",
@@ -80,7 +82,7 @@ $(function () {
                     targets: 9,
                     render: function (data, type, full, meta) {
                         var html = '';
-                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Tạo lịch khám" onclick="duyet(' + full['id'] + ',' + full['service_id'] + ',' + full['status'] + ')">';
+                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Tạo lịch khám" onclick="duyet(' + full['id'] + ',' + full['service_id'] + ',' + full['status'] + ',' + full['patient_id'] + ')">';
                         html += '<i data-feather="calendar"></i>';
                         html += '</button> &nbsp;';
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
@@ -153,9 +155,72 @@ $(function () {
     });
 });
 
-function loadpatient()
+function loadpatient(id)
 {
+    $('#information-tab').click();
     $('#patientinfo').modal('show');
+    $(".modal-title").html('Thông tin khách hàng');
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        data: { id: id },
+        url: "/admin/patient/loaddata",
+        success: function (data) {
+            $('#patient-name').html(data.full_name);
+            $('#patient-age').html(data.age);
+            $('#patient-phone').html(data.phone_number);
+            $('#patient-email').html(data.email);
+            loadhistorytb(id);
+        },
+        error: function () {
+            notify_error('Lỗi truy xuất database');
+        }
+    });
+}
+
+function loadhistorytb(id)
+{
+    var table = $('#list-history');
+    if (table.length) {
+        var table = table.DataTable({
+
+            ajax: '/admin/patient/loadhistory?id='+id,
+            destroy: true,
+            columns: [
+                { data: 'status' },
+                { data: 'status' },
+                { data: 'status' },
+                { data: 'status' },
+                { data: 'status' },
+            ],
+            columnDefs: [],
+            // order: [[0, 'DESC']],
+            dom:
+                '<"d-flex justify-content-between align-items-center header-actions mx-1 row mt-75"' +
+                '<"col-lg-12 col-xl-6" l>' +
+                '<"col-lg-12 col-xl-6 pl-xl-75 pl-0"<"dt-action-buttons text-xl-right text-lg-left text-md-right text-left d-flex align-items-center justify-content-lg-end align-items-center flex-sm-nowrap flex-wrap mr-1"<"mr-1"f>B>>' +
+                ">t" +
+                '<"d-flex justify-content-between mx-2 row mb-1"' +
+                '<"col-sm-12 col-md-6"i>' +
+                '<"col-sm-12 col-md-6"p>' +
+                ">",
+            // displayLength: 10,
+            lengthMenu: [10, 20, 30, 50, 70, 100],
+
+            language: {
+                sLengthMenu: "Show _MENU_",
+                search: "Search",
+                searchPlaceholder: "11111111112..",
+            },
+            buttons: [],
+            language: {
+                paginate: {
+                    previous: "&nbsp;",
+                    next: "&nbsp;",
+                },
+            },
+        });
+    }
 }
 
 function loadadd() {
@@ -246,7 +311,7 @@ function save() {
     }
 }
 
-function duyet(id, service, status) {
+function duyet(id, service, status, patient) {
     if(status == 1) {
         $("#addlich").modal('show');
         $(".modal-title").html('Tạo lịch khám');
@@ -278,17 +343,18 @@ function duyet(id, service, status) {
                 })
             },
         });
+        patient_id = patient;
         iid = id;
     } else if(status == 2) {
         notify_error('Lịch khám đang thực hiện');
     } else if(status == 3) {
         notify_error('Lịch hẹn đã hoàn thành');
     }
-    
 }
 
 function saveExamSchedule() {
     var info = {};
+    info.patient_id = patient_id;
     info.appointment = iid;
     info.doctor = $('#doctor').val();
     info.service = $('#service').val();

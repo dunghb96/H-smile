@@ -24,4 +24,30 @@ class ExaminationSchedule extends Model
     {
         return $this->hasOne(Employee::class, 'id', 'doctor');
     }
+
+    public function patients()
+    {
+        return $this->hasOne(Patient::class, 'id', 'patient_id');
+    }
+
+    function saveExaminationSchedule($model, $data)
+    {
+        $model->appointment = $data['appointment'];
+        $model->date_at = $data['date_at'];
+        $model->doctor = $data['doctor'];
+        $model->time_at = $data['time_at'];
+        $model->status = 1;
+
+        $model->save();
+
+        return $model;
+    }
+
+    function saveTT($model)
+    {
+        $model->status = 2;
+        $model->save();
+
+        return $model;
+    }
 }

@@ -48,11 +48,13 @@ class AppointmentController extends BaseController
 
     function addSchedule (Request $request) 
     {
+        $patientid = $request->patient_id;
         $appointment = $request->appointment;
         $doctor = $request->doctor;
-        $dateat = isset($request->dateat) && $request->dateat == '' ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
+        $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
         $timeat = $request->timeat;
         $data = [
+            'patient_id' => $patientid,
             'appointment' => $appointment,
             'doctor' => $doctor,
             'date_at' => $dateat,
