@@ -10,10 +10,10 @@ class SettingController extends BaseController
     private function optionKeys(): array
     {
         $optionKeys = [
-            'site_favicon','site_logo', 'site_logo_footer', 'video',
-            'contact_phone', 'contact_email', 'contact_address', 'contact_google_maps',
-            'social_facebook', 'social_line', 'social_zalo', 'social_youtube', 'social_linkedin', 'social_instagram',
-            'emails_receive_notification','site_title','site_description'
+            'logo', 'favicon', 'logo_footer', 'begin_date',
+            'to_date', 'open', 'close', 'hotline',
+            'email', 'address', 'site_title', 'site_desc', 'map', 'about',
+            'facebook','zalo','youtube'
         ];
 
         return $optionKeys;
@@ -26,15 +26,16 @@ class SettingController extends BaseController
 
     public function saveForm(Request $request)
     {
+        dd(1);
         foreach($this->optionKeys() as $optionKey){
             if($request->has($optionKey)){
                 option([$optionKey => $request->input($optionKey)]);
                 Cache::forget($optionKey);
             }
         }
-
         $jsonObj['success'] = true;
-        $jsonObj['msg'] = 'Tạo lịch khám thành công';
-        echo json_encode($jsonObj);        
+        $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+
+        echo json_encode($jsonObj);
     }
 }

@@ -86,7 +86,6 @@
                         <th>Stt</th>
                         <th>Ngày khám</th>
                         <th>Ca khám</th>
-                        <th>Nha sĩ</th>
                         <th>Dịch vụ</th>
                         <th>Trạng thái</th>
                     </tr>
@@ -97,7 +96,6 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $row->date_at }}</td>
                                 <td>{{ $row->time_at }}</td>
-                                <td>{{ $row->doctor->name }}</td>
                                 <td>{{ $row->service->name }}</td>
                                 <td>{{ Appointment::STATUS[$row->status] }}</td>
                             </tr>

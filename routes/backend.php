@@ -49,7 +49,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
 
     Route::group(['prefix' => 'setting'], function () {
         Route::get('/', [SettingController::class, 'index'])->name('admin.setting');
-        Route::post('/save', [SettingController::class, 'del']);
+        Route::post('/saveForm', [SettingController::class, 'saveForm']);
     });
 
     Route::group(['prefix' => 'slide'], function () {
