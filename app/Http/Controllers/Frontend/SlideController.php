@@ -15,7 +15,6 @@ class SlideController extends BaseController
      */
     public function index()
     {
-
     }
 
     /**

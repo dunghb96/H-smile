@@ -33,7 +33,7 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="single-blog-post">
                     <div class="img-holder">
-                        <img src="/frontend/images/blog/v1-1.jpg" alt="Awesome Image">
+                        <img src="{{ asset($row->image) }}" alt="Awesome Image">
                         <div class="categorie-button">
                             <a class="btn-one" href="#">{{$row->category}}</a>
                         </div>

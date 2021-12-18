@@ -378,28 +378,25 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="testimonial-carousel2 owl-carousel owl-theme">
-                    @if (isset($feedback))
-                         @foreach ($feedback as $row)
-                            <!--Start Single Testimonial Item-->
-                            <div class="single-testimonial-style2 text-center">
-                                <div class="quote-icon">
-                                    <img src="/frontend/images/icon/1.png" alt="Quote Icon">
-                                </div>
-                                <div class="text-holder">
-                                    <p>{{ $row->message }}</p>
-                                </div>
-                                <div class="name">
-                                    <h3>{{ $row->name }}</h3>
-                                    <span>{{ $row->address }}</span>
-                                </div>
-                                <div class="quote-icon2">
-                                    <img src="/frontend/images/icon/2.png" alt="Quote Icon">
-                                </div>
-                            </div>
-                            <!--End Single Testimonial Item-->
-                        @endforeach
-                    @endif
-
+                    @foreach ($feedback as $row)
+                    <!--Start Single Testimonial Item-->
+                    <div class="single-testimonial-style2 text-center">
+                        <div class="quote-icon">
+                            <img src="/frontend/images/icon/1.png" alt="Quote Icon">
+                        </div>
+                        <div class="text-holder">
+                            <p>{{ $row->message }}</p>
+                        </div>
+                        <div class="name">
+                            <h3>{{ $row->name }}</h3>
+                            <span>{{ $row->address }}</span>
+                        </div>
+                        <div class="quote-icon2">
+                            <img src="/frontend/images/icon/2.png" alt="Quote Icon">
+                        </div>
+                    </div>
+                    <!--End Single Testimonial Item-->
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -456,7 +453,7 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="single-blog-post">
                     <div class="img-holder">
-                        <img src="/frontend/images/blog/v1-1.jpg" alt="Awesome Image">
+                        <img src="{{asset($row->image)}}" alt="Awesome Image">
                         <div class="categorie-button">
                             <a class="btn-one" href="#">{{$row->category}}</a>
                         </div>
