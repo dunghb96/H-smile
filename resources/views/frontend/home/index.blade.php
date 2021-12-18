@@ -378,25 +378,28 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="testimonial-carousel2 owl-carousel owl-theme">
-                    @foreach ($feedback as $row)
-                        <!--Start Single Testimonial Item-->
-                        <div class="single-testimonial-style2 text-center">
-                            <div class="quote-icon">
-                                <img src="/frontend/images/icon/1.png" alt="Quote Icon">
+                    @if (isset($feedback))
+                         @foreach ($feedback as $row)
+                            <!--Start Single Testimonial Item-->
+                            <div class="single-testimonial-style2 text-center">
+                                <div class="quote-icon">
+                                    <img src="/frontend/images/icon/1.png" alt="Quote Icon">
+                                </div>
+                                <div class="text-holder">
+                                    <p>{{ $row->message }}</p>
+                                </div>
+                                <div class="name">
+                                    <h3>{{ $row->name }}</h3>
+                                    <span>{{ $row->address }}</span>
+                                </div>
+                                <div class="quote-icon2">
+                                    <img src="/frontend/images/icon/2.png" alt="Quote Icon">
+                                </div>
                             </div>
-                            <div class="text-holder">
-                                <p>{{ $row->message }}</p>
-                            </div>
-                            <div class="name">
-                                <h3>{{ $row->name }}</h3>
-                                <span>{{ $row->address }}</span>
-                            </div>
-                            <div class="quote-icon2">
-                                <img src="/frontend/images/icon/2.png" alt="Quote Icon">
-                            </div>
-                        </div>
-                        <!--End Single Testimonial Item-->
-                    @endforeach
+                            <!--End Single Testimonial Item-->
+                        @endforeach
+                    @endif
+
                 </div>
             </div>
         </div>
