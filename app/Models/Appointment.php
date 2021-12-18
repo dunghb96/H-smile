@@ -13,8 +13,8 @@ class Appointment extends Model
 
     const STATUS = [
         1 => 'Chờ xác nhận',
-        2 => 'Đang thực hiện',
-        3 => 'Đã hoàn thành',
+        2 => 'Đã xác nhận',
+        3 => 'Đã hủy',
     ];
 
     const SHIFT= [

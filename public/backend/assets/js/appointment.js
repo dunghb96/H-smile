@@ -88,7 +88,7 @@ $(function () {
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
                         html += '<i class="fas fa-pencil-alt"></i>';
                         html += '</button> &nbsp;';
-                        html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa" onclick="del(' + full['id'] + ')">';
+                        html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy yêu cầu" onclick="del(' + full['id'] + ')">';
                         html += '<i class="fas fa-trash-alt"></i>';
                         html += '</button>';
                         return html;
@@ -382,8 +382,8 @@ function saveExamSchedule() {
 
 function del(id) {
     Swal.fire({
-        title: 'Xóa dữ liệu',
-        text: "Bạn có chắc chắn muốn xóa!",
+        title: 'Hủy yêu cầu',
+        text: "Bạn có chắc chắn muốn Hủy ?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Tôi đồng ý',
@@ -395,7 +395,7 @@ function del(id) {
     }).then(function (result) {
         if (result.value) {
             $.ajax({
-                url: "/admin/service/del",
+                url: "/admin/appointment/del",
                 type: 'post',
                 dataType: "json",
                 data: { id: id },

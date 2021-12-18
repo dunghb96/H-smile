@@ -87,4 +87,19 @@ class AppointmentController extends BaseController
         }
 
     }
+    public function del(Request $request)
+    {
+        $id = $request->id;
+        $model = Appointment::find($id);
+        $model->status = 3;
+        $result = $model->save();
+        if($result) {
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        } else {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+        }
+        echo json_encode($jsonObj);
+    }
 }
