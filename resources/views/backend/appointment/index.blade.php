@@ -38,10 +38,11 @@
                                             <th></th>
                                             <th>Dịch vụ</th>
                                             <th></th>
-                                            <th></th>
+                                            <th>Ngày hẹn</th>
                                             <th>Ca</th>
                                             <th>Bác sĩ</th>
                                             <th>Trạng thái</th>
+                                            <th></th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -53,12 +54,12 @@
                                     <form class="modal-content pt-0" id="frm-add">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
                                         <div class="modal-header mb-1">
-                                            <h5 class="modal-title">Thêm yêu cầu mới</h5>
+                                            <h5 class="modal-title"></h5>
                                         </div>
                                         <div class="modal-body flex-grow-1">
                                             <div class="form-group">
                                                 <label for="service">Dịch vụ</label>
-                                                <select class="form-control" id="service" name="service" required>
+                                                <select class="form-control" id="service" name="service" required onchange="changeSV()">
                                                     @foreach($services as $service)
                                                     <option value="{{ $service->id }}">{{ $service->name }}</option>
                                                     @endforeach
@@ -67,14 +68,18 @@
                                             <div class="form-group">
                                                 <label for="doctor">Nha sĩ</label>
                                                 <select class="form-control" id="doctor" name="doctor" required>
-                                                    @foreach($doctor as $row)
+                                                    <!-- @foreach($doctor as $row)
                                                     <option value="{{ $row->id }}">{{ $row->name }}</option>
-                                                    @endforeach
+                                                    @endforeach -->
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="date_at">Giờ hẹn</label>
-                                                <select class="form-control" id="time_at" name="time_at" required>
+                                                <label for="adate_at">Ngày</label>
+                                                <input type="text" id="adate_at" name="date_at" class="form-control flatpickr-basic" placeholder="DD/MM/YYYY" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="shift">Ca hẹn</label>
+                                                <select class="form-control" id="shift" name="shift" required>
                                                     <option value="1">Sáng</option>
                                                     <option value="2">Chiều</option>
                                                 </select>
@@ -97,8 +102,8 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="status_desc">Mô tả</label>
-                                                <textarea id="status_desc" name="status_desc" rows="3" class="form-control" placeholder="Mô tả tình trạng"></textarea>
+                                                <label for="note">Mô tả</label>
+                                                <textarea id="note" name="note" rows="3" class="form-control" placeholder="Mô tả tình trạng"></textarea>
                                             </div>
                                             <button type="button" onclick="save()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Thêm yêu cầu</button>
                                             <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>

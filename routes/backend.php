@@ -134,9 +134,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/duyet', [AppointmentController::class, 'duyet']);
         Route::post('/get-doctor', [AppointmentController::class, 'getDoctor']);
         Route::post('/add-schedule', [AppointmentController::class, 'addSchedule']);
-        Route::post('/add', [AppointmentController::class, 'add']);
+        // Route::post('/add', [AppointmentController::class, 'add']);
         Route::post('/loaddata', [AppointmentController::class, 'loaddata']);
-        Route::post('/edit', [AppointmentController::class, 'edit']);
+        // Route::post('/edit', [AppointmentController::class, 'edit']);
+        Route::post('/save', [AppointmentController::class, 'save']);
         Route::post('/del', [AppointmentController::class, 'del']);
     });
 

@@ -6691,6 +6691,11 @@ select:focus {
     top: 19px;
     left: 0;
 }
+.appointment-form-left form .single-box .ca {
+    position: absolute;
+    top: 19px;
+    left: 70px !important;
+}
 .appointment-form-left form .single-box .title h5{
     font-size: 15px;
     font-weight: 500;

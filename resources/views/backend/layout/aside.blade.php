@@ -41,7 +41,6 @@
                 </a>
             </li>
 
-
             <li class=" navigation-header">
                 <span data-i18n="Apps &amp; Pages">Truy cập nhanh</span>
                 <i data-feather="more-horizontal"></i>

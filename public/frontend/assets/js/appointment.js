@@ -1,10 +1,11 @@
 $(function () {
-    // $('#doctor').val('').attr("disabled", true);
+    $('#doctor').val('').attr("disabled", true);
 })
 
 function changeSV()
 {
     var service = $("#service").val();
+    alert(service);
     if(service != '') {
         $.ajax({
             type: "POST",

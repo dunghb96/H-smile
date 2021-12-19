@@ -11,6 +11,7 @@ $(function () {
     if (basicPickr.length) {
         basicPickr.flatpickr({
             dateFormat: "d/m/Y",
+            minDate: "today",
         });
     }
 
@@ -390,13 +391,12 @@ function hentiep(id, appointment, status, service_id, patient) {
                         appointmentid = appointment;
                         patientid = patient;
                         // $(window).on('load', function() {
-                        //     // $('#minlogo').hide();
-                        //     if (feather) {
-                        //         feather.replace({
-                        //             width: 14,
-                        //             height: 14
-                        //         });
-                        //     }
+                            if (feather) {
+                                feather.replace({
+                                    width: 14,
+                                    height: 14
+                                });
+                            }
                         // })
                     },
                 });

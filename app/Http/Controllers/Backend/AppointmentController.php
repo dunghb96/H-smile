@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Appointment;
-use App\Models\BlogCategory;
 use App\Models\Doctor;
 use App\Models\Employee;
 use App\Models\examinationSchedule;
@@ -12,7 +10,6 @@ use App\Models\Patient;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Laravel\Ui\Presets\React;
 
 class AppointmentController extends BaseController
 {
@@ -51,7 +48,7 @@ class AppointmentController extends BaseController
         echo json_encode($jsonObj);
     }
 
-    function addSchedule (Request $request)
+    function addSchedule(Request $request)
     {
         $patientid = $request->patient_id;
         $appointment = $request->appointment;
@@ -107,27 +104,29 @@ class AppointmentController extends BaseController
         echo json_encode($jsonObj);
     }
 
-    public function add(Request $request)
+    public function save(Request $request)
     {
-        $dataDoctor = [
-            'full_name'      =>$request->full_name,
-            'age'            =>$request->age,
-            'phone_number'   =>$request->phone_number,
-            'email'          =>$request->email,
-            'status_desc'    =>$request->status_desc
+            
+        $dataPatient = [
+            'full_name'      => $request->fullname,
+            'age'            => $request->age,
+            'phone_number'   => $request->phonenumber,
+            'email'          => $request->email,
+            'status'         => 1
         ];
-        $result1 = Patient::create($dataDoctor);
-
+        $result1 = Patient::create($dataPatient);
+        $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
         $dataApp = [
             'service_id' => $request->service,
             'doctor_id'  => $request->doctor,
-            'shift'      =>$request->time_at,
-            'patient_id' =>$result1->id,
+            'date_at'    => $dateat,
+            'shift'      => $request->shift,
+            'note'       => $request->note,
+            'patient_id' => $result1->id,
             'status'     => 1
         ];
 
         $result = Appointment::create($dataApp);
-
         if($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
@@ -138,17 +137,19 @@ class AppointmentController extends BaseController
         echo json_encode($jsonObj);
     }
 
-    // public function loaddata(Request $request)
-    // {
-    //     $id = $request->id;
-    //     $model = Appointment::find($id);
-    //     $model2 = Patient::find($model->patient_id);
-    //     $model->patient = $model2->full_name;
-    //     $model->age = $model2->age;
-
-    //     $model->patient = $model2->full_name;
-    //     echo json_encode($jsonObj);
-    // }
+    public function loaddata(Request $request)
+    {
+        $jsonObj = [];
+        $id = $request->id;
+        $jsonObj = Appointment::find($id);
+        $model = Patient::find($jsonObj->patient_id);
+        $jsonObj['patient'] = $model->full_name;
+        $jsonObj['age'] = $model->age;
+        $jsonObj['phone_number'] = $model->phone_number;
+        $jsonObj['email'] = $model->email;
+        $jsonObj['date_at'] = Carbon::parse($model->date_at)->format('Y-m-d');
+        echo json_encode($jsonObj);
+    }
 
     // public function edit(Request $request)
     // {
