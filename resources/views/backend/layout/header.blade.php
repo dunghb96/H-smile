@@ -1,5 +1,6 @@
 <!-- BEGIN: Header-->
-<nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-light navbar-shadow container-xxl">
+<nav
+    class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-light navbar-shadow container-xxl">
     <div class="navbar-container d-flex content">
         <div class="bookmark-wrapper d-flex align-items-center">
             <ul class="nav navbar-nav d-xl-none">
@@ -290,15 +291,25 @@
                 </ul>
             </li> -->
             <li class="nav-item dropdown dropdown-user">
-                <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none">
-                        <span class="user-name font-weight-bolder" id="hungsua1">{{ Auth::user()->name ?? 'Username' }}</span>
+                        <span class="user-name font-weight-bolder"
+                              id="hungsua1">{{ Auth::user()->name ?? 'Username' }}</span>
                         <span class="user-status">{{ Auth::user()->email }}</span>
                     </div>
-                    <span class="avatar">
+                    @if(Auth::user()->avatar != null)
+                        <span class="avatar">
+                        <img class="round" src="{{Auth::user()->avatar}}" alt="avatar" height="40" width="40"
+                             id="hungsua2">
+                        <span class="avatar-status-online"></span>
+                    </span>
+                    @else
+                        <span class="avatar">
                         <img class="round" src="/images/user.svg" alt="avatar" height="40" width="40" id="hungsua2">
                         <span class="avatar-status-online"></span>
                     </span>
+                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
                     <a class="dropdown-item" href="{{ route('admin.accountsettings') }}">

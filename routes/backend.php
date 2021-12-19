@@ -47,6 +47,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
+
     Route::group(['prefix' => 'doctor'], function () {
         Route::get('/today', [DashboardController::class, 'today'])->name('admin.today');
         Route::get('/today/json', [DashboardController::class, 'today_json']);
