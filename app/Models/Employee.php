@@ -11,6 +11,11 @@ class Employee extends Model
     protected $table = 'employees';
     protected $fillable = ['name', 'type', 'short_description', 'email', 'status', 'phone_number', 'position', 'majors', 'services'];
 
+    public function users()
+    {
+        return $this->hasOne(User::class,'employee', 'id');
+    }
+
     public function saveEmployee($model, $request)
     {
         if ($request->hasFile('image')) {

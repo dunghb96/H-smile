@@ -143,6 +143,7 @@
                 email: {
                     required: true,
                     noSpace: true,
+                    email: true
                 },
                 phone_number: {
                     required: true,
@@ -156,7 +157,25 @@
                 }
             },
             messages: {
-
+                name: {
+                    required: "Hãy nhập tên đẩy đủ",
+                    noSpace:  "không được gửi khoảng trống",
+                },
+                email: {
+                    required: "Hãy nhập email",
+                    noSpace:  "không được gửi khoảng trống",
+                    email: "không đúng định dạng email"
+                },
+                phone_number: {
+                    required: "Hãy nhập số điện thoại",
+                    noSpace: "Không được gửi khoảng trống",
+                    digits: "Hãy nhập số",
+                },
+                message: {
+                    required: "Hãy nhập lời nhắn của bạn",
+                    noSpace: "Không được gửi khoảng trống",
+                    maxlength: "Nhập tối đa 1024 ký tự",
+                }
             },
             errorElement: 'div',
             errorPlacement: function (error, element) {
