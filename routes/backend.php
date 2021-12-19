@@ -66,12 +66,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'slide'], function () {
-        Route::get('/', [SlideController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.slide');
+        Route::get('/', [SlideController::class, 'index'])->middleware('permission:list_slides')->name('admin.slide');
         Route::get('/json', [SlideController::class, 'json']);
-        Route::post('/add', [SlideController::class, 'add']);
+        Route::post('/add', [SlideController::class, 'add'])->middleware('permission:add_slides');
         Route::post('/loaddata', [SlideController::class, 'loaddata']);
-        Route::post('/edit', [SlideController::class, 'edit']);
-        Route::post('/del', [SlideController::class, 'del']);
+        Route::post('/edit', [SlideController::class, 'edit'])->middleware('permission:edit_slides');
+        Route::post('/del', [SlideController::class, 'del'])->middleware('permission:delete_slides');
     });
 
     Route::group(['prefix' => 'blog-category'], function () {
@@ -84,7 +84,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'blog'], function () {
-        Route::get('/', [BlogController::class, 'index'])->name('admin.blog');
+        Route::get('/', [BlogController::class, 'index'])->middleware('permission:list_blogs')->name('admin.blog');
         Route::get('/json', [BlogController::class, 'json']);
         Route::post('/add', [BlogController::class, 'add']);
         Route::post('/loaddata', [BlogController::class, 'loaddata']);
@@ -93,7 +93,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'service'], function () {
-        Route::get('/', [ServiceController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.service');
+        Route::get('/', [ServiceController::class, 'index'])->middleware('permission:list_services')->name('admin.service');
         Route::get('/json', [ServiceController::class, 'json']);
         Route::post('/add', [ServiceController::class, 'add']);
         Route::post('/loaddata', [ServiceController::class, 'loaddata']);
@@ -112,7 +112,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'contact'], function () {
-        Route::get('/', [ContactController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.contact');
+        Route::get('/', [ContactController::class, 'index'])->middleware('permission:list_slides')->name('admin.contact');
         Route::get('/json', [ContactController::class, 'json']);
         Route::post('/reply', [ContactController::class, 'add'])->name('admin.partner.add');
         Route::post('/loaddata', [ContactController::class, 'loaddata']);
@@ -120,7 +120,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'partner'], function () {
-        Route::get('/', [PartnerController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.partner');
+        Route::get('/', [PartnerController::class, 'index'])->middleware('permission:list_slides')->name('admin.partner');
         Route::get('/json', [PartnerController::class, 'json']);
         Route::post('/add', [PartnerController::class, 'add'])->name('admin.partner.add');
         Route::post('/loaddata', [PartnerController::class, 'loaddata']);
@@ -129,7 +129,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'appointment'], function () {
-        Route::get('/', [AppointmentController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.appointment');
+        Route::get('/', [AppointmentController::class, 'index'])->middleware('permission:list_slides')->name('admin.appointment');
         Route::get('/json', [AppointmentController::class, 'json']);
         Route::post('/duyet', [AppointmentController::class, 'duyet']);
         Route::post('/get-doctor', [AppointmentController::class, 'getDoctor']);
@@ -142,7 +142,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'examination-schedule'], function () {
-        Route::get('/', [ExaminationScheduleController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.examination_schedule');
+        Route::get('/', [ExaminationScheduleController::class, 'index'])->middleware('permission:list_slides')->name('admin.examination_schedule');
         Route::get('/json', [ExaminationScheduleController::class, 'json']);
         Route::post('/hoanthanh', [ExaminationScheduleController::class, 'hoanthanh']);
         Route::post('/hentiep', [ExaminationScheduleController::class, 'hentiep']);
@@ -156,14 +156,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'patient'], function () {
-        Route::get('/', [PatientController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.patient');
+        Route::get('/', [PatientController::class, 'index'])->middleware('permission:list_slides')->name('admin.patient');
         Route::get('/json', [PatientController::class, 'json']);
         Route::post('/loaddata', [PatientController::class, 'loaddata']);
         Route::get('/loadhistory', [PatientController::class, 'loadhistory']);
     });
 
     Route::group(['prefix' => 'employee'], function () {
-        Route::get('/', [EmployeeController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.employee');
+        Route::get('/', [EmployeeController::class, 'index'])->middleware('permission:list_slides')->name('admin.employee');
         Route::get('/json', [EmployeeController::class, 'json']);
         Route::post('/add', [EmployeeController::class, 'add']);
         Route::post('/loaddata', [EmployeeController::class, 'loaddata']);
@@ -172,20 +172,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'doctor'], function () {
-        Route::get('/', [DoctorController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.doctor');
+        Route::get('/', [DoctorController::class, 'index'])->middleware('permission:list_slides')->name('admin.doctor');
         Route::get('/json', [DoctorController::class, 'json']);
-
     });
 
     Route::group(['prefix' => 'user'], function () {
-        Route::get('/accountsettings', [UserController::class, 'accountsettings'])->name('admin.accountsettings');
+        Route::get('/accountsettings', [UserController::class, 'accountsettings'])->middleware('permission:list_users')->name('admin.accountsettings');
         Route::post('/edit', [UserController::class, 'edit']);
         Route::post('/changePassword',[UserController::class, 'changePassword'])->name('changePasswordPost');
 
     });
 
     Route::group(['prefix' => 'feedback'], function () {
-        Route::get('/', [FeedbackController::class, 'index'])->middleware('permission:show_list_slides')->name('admin.feedback');
+        Route::get('/', [FeedbackController::class, 'index'])->middleware('permission:list_slides')->name('admin.feedback');
         Route::get('/json', [FeedbackController::class, 'json']);
         Route::post('/add', [FeedbackController::class, 'add']);
         Route::post('/loaddata', [FeedbackController::class, 'loaddata']);
@@ -194,7 +193,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'role'], function () {
-        Route::get('/', [RoleController::class, 'index'])->name('admin.role');
+        Route::get('/', [RoleController::class, 'index'])->middleware('permission:list_roles')->name('admin.role');
         Route::get('/json', [RoleController::class, 'json']);
         Route::post('/save', [RoleController::class, 'save']);
         Route::post('/loaddata', [RoleController::class, 'loaddata']);

@@ -28,82 +28,129 @@ return [
     //                ]
     //            ],
 
-    'roles' => [
-        'title' => 'Roles',
+
+
+    'myAppointment' => [
+        'title' => 'Lịch khám của tôi',
         'permissions' => [
-            'show_list_roles' => 'Show list roles',
-            'add_roles' => 'Add roles',
-            'edit_roles' => 'Edit roles',
-            'delete_roles' => 'Delete roles',
+            'list_myApps' => 'Danh sách',
         ]
     ],
 
-    'users' => [
-        'title' => 'Users',
+    'settings' => [
+        'title' => 'Cấu hình website',
         'permissions' => [
-            'show_list_users' => 'Show list users',
-            'add_users' => 'Add users',
-            'edit_users' => 'Edit users',
-            'delete_users' => 'Delete users',
+            'general_settings' => 'General settings',
         ]
     ],
 
     'slides' => [
         'title' => 'Slides',
         'permissions' => [
-            'show_list_slides' => 'Show list slides',
-            'add_slides' => 'Add slides',
-            'edit_slides' => 'Edit slides',
+            'list_slides' => 'Danh sách',
+            'add_slides' => 'Thêm mới',
+            'edit_slides' => 'Cập nhật',
             'delete_slides' => 'Delete slides',
         ]
     ],
 
-
+    'blogs' => [
+        'title' => 'Blogs',
+        'permissions' => [
+            'list_blogs' => 'Danh sách',
+            'add_blogs' => 'Thêm mới',
+            'edit_blogs' => 'Cập nhật',
+            'delete_blogs' => 'Xóa',
+        ]
+    ],
 
     'services' => [
-        'title' => 'Services',
+        'title' => 'Dịch vụ',
         'permissions' => [
-            'show_list_services' => 'Show list services',
-            'add_services' => 'Add services',
-            'edit_services' => 'Edit services',
-            'delete_services' => 'Delete services',
-        ]
-    ],
-
-
-
-    'news' => [
-        'title' => 'News',
-        'permissions' => [
-            'show_list_news' => 'Show list news',
-            'add_news' => 'Add news',
-            'edit_news' => 'Edit news',
-            'delete_news' => 'Delete news',
-        ]
-    ],
-
-
-
-    'menu' => [
-        'title' => 'Menu',
-        'permissions' => [
-            'update_menu' => 'Update menu',
-        ]
-    ],
-
-    'settings' => [
-        'title' => 'Settings',
-        'permissions' => [
-            'genaral_settings' => 'Genaral settings',
-
+            'list_services' => 'Danh sách',
+            'add_services' => 'Thêm mới',
+            'edit_services' => 'Cập nhật',
+            'delete_services' => 'Xóa',
         ]
     ],
 
     'contacts' => [
-        'title' => 'Contacts',
+        'title' => 'Liên hệ',
         'permissions' => [
-            'show_list_contacts' => 'Show list contacts',
-            'delete_contacts' => 'Delete contacts',
+            'list_contacts' => 'Danh sách',
+            'delete_contacts' => 'Cập nhật',
+        ]
+    ],
+
+    'partners' => [
+        'title' => 'Đối tác',
+        'permissions' => [
+            'list_partners' => 'Danh sách',
+            'add_partners' => 'Thêm mới',
+            'edit_partners' => 'Cập nhật',
+            'delete_partners' => 'Xóa',
+        ]
+    ],
+
+    'feedbacks' => [
+        'title' => 'Phản hồi',
+        'permissions' => [
+            'list_feedbacks' => 'Danh sách',
+            'add_feedbacks' => 'Thêm mới',
+            'edit_feedbacks' => 'Cập nhật',
+            'delete_feedbacks' => 'Xóa',
+        ]
+    ],
+
+    'appointments' => [
+        'title' => 'Yêu cầu',
+        'permissions' => [
+            'list_appointments' => 'Danh sách',
+            'add_appointments' => 'Thêm mới',
+            'edit_appointments' => 'Cập nhật',
+            'delete_appointments' => 'Hủy',
+        ]
+    ],
+
+    'schedules' => [
+        'title' => 'Lịch khám',
+        'permissions' => [
+            'list_schedules' => 'Danh sách',
+            'add_schedules' => 'Thêm mới',
+            'edit_schedules' => 'Cập nhật',
+            'delete_schedules' => 'Hủy',
+        ]
+    ],
+
+    'patients' => [
+        'title' => 'Khách hàng',
+        'permissions' => [
+            'list_patients' => 'Danh sách',
+            'add_patients' => 'Thêm mới',
+            'edit_patients' => 'Cập nhật',
+            'delete_patients' => 'Xóa',
+        ]
+    ],
+
+    'employees' => [
+        'title' => 'Nhân sự',
+        'permissions' => [
+            'list_employees' => 'Danh sách',
+            'add_employees' => 'Thêm mới',
+            'edit_employees' => 'Cập nhật',
+            'delete_employees' => 'Xóa',
+        ]
+    ],
+
+
+
+    'roles' => [
+        'title' => 'Set vai trò',
+        'permissions' => [
+            'list_roles' => 'Danh sách',
+            'add_roles' => 'Thêm mới',
+            'edit_roles' => 'Cập nhật',
+            'delete_roles' => 'Xóa',
         ]
     ],
 
