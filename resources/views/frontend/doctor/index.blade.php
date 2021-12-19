@@ -28,6 +28,7 @@
 <section class="doctor-area">
     <div class="container">
         <div class="row">
+            @csrf
             <div class="col-xl-4 col-lg-8">
                 <div class="doctor-sidebar">
                     <!--Start Single Sidebar-->
@@ -37,22 +38,27 @@
                                 <li data-tab="#doctor" class="tab-btn left"><span>Tên Nha Sĩ</span></li>
                                 <li data-tab="#specialization" class="tab-btn active-btn right"><span>Chuyên Môn</span></li>
                             </ul>
-                            @foreach($doctor as $row)
+
                             <div class="tabs-content">
 
                                 <div class="tab" id="doctor">
 
                                     <form name="doctor-form" action="#" method="post">
                                         <div class="row">
+
+
                                             <div class="col-xl-12 col-lg-12">
                                                 <div class="input-box">
 
                                                     <select class="selectmenu">
-                                                        <option selected="selected">{{$row->name}}</option>
-
+                                                        @foreach($doctor as $row)
+                                                        <option>{{$row->name}}</option>
+                                                        @endforeach
                                                     </select>
+
                                                 </div>
                                             </div>
+
                                         </div>
                                         <div class="row">
                                             <div class="col-xl-12">
@@ -65,16 +71,19 @@
 
                                 </div>
                                 <div class="tab active-tab" id="specialization">
+
                                     <form name="doctor-form" action="#" method="post">
                                         <div class="row">
                                             <div class="col-xl-12 col-lg-12">
                                                 <div class="input-box">
 
                                                     <select class="selectmenu">
-                                                        <option selected="selected">{{$row->majors}}</option>
-
+                                                        @foreach($doctor as $row)
+                                                        <option>{{$row->majors}}</option>
+                                                        @endforeach
 
                                                     </select>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -86,9 +95,10 @@
                                             </div>
                                         </div>
                                     </form>
+
                                 </div>
                             </div>
-                            @endforeach
+
                         </div>
                     </div>
                     <!--End Single Sidebar-->
@@ -151,159 +161,33 @@
             <div class="col-xl-8">
                 <div class="doctor-content">
                     <!--Start Single doctor item-->
+                    @foreach($doctor as $row)
                     <div class="single-doctor-item wow fadeInUp" data-wow-delay="300ms">
                         <div class="row">
                             <div class="col-xl-5">
                                 <div class="img-holder">
                                     <img src="/frontend/images/doctor/1.png" alt="Awesome Image">
-                                    <div class="overlay">
-                                        <div class="box">
-                                            <div class="content">
-                                                <a class="btn-one" href="#">Appointment</a>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="col-xl-7">
                                 <div class="text-holder">
                                     <span>Implantologist</span>
-                                    <h3>Dr. Daryl Cornelius</h3>
-                                    <p>Dr. Daryl Cornelius is a renowned dental surgeon and a certified Dental Implantologist. He is the Director our hospitals.</p>
+                                    <h3>{{$row->name}}</h3>
+                                    <p>{{$row->short_description}}</p>
                                     <h6>Qualification</h6>
-                                    <p>BDS , MDS - Plastic And Cosmetic Surgeon,</p>
+
                                     <ul>
-                                        <li><span class="icon-phone"></span>(+760) 987-65-43210</li>
-                                        <li><span class="flaticon-e-mail-envelope"></span>supportyou@example.com</li>
+                                        <li><span class="icon-phone"></span>{{$row->phone_number}}</li>
+                                        <li><span class="flaticon-e-mail-envelope"></span>{{$row->email}}</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                     <!--End Single doctor item-->
                     <!--Start Single doctor item-->
-                    <div class="single-doctor-item wow fadeInUp" data-wow-delay="600ms">
-                        <div class="row">
-                            <div class="col-xl-5">
-                                <div class="img-holder">
-                                    <img src="/frontend/images/doctor/2.png" alt="Awesome Image">
-                                    <div class="overlay">
-                                        <div class="box">
-                                            <div class="content">
-                                                <a class="btn-one" href="#">Appointment</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-7">
-                                <div class="text-holder">
-                                    <span>Periodontist</span>
-                                    <h3>Evelynne Mirando</h3>
-                                    <p>Dr. Evelynne Mirando is a renowned dental surgeon and a certified Dental Implantologist. He is the Director our hospitals.</p>
-                                    <h6>Qualification</h6>
-                                    <p>BDS , MDS - Plastic And Cosmetic Surgeon,</p>
-                                    <ul>
-                                        <li><span class="icon-phone"></span>(+760) 987-65-43210</li>
-                                        <li><span class="flaticon-e-mail-envelope"></span>supportyou@example.com</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single doctor item-->
-                    <!--Start Single doctor item-->
-                    <div class="single-doctor-item wow fadeInUp" data-wow-delay="900ms">
-                        <div class="row">
-                            <div class="col-xl-5">
-                                <div class="img-holder">
-                                    <img src="/frontend/images/doctor/3.png" alt="Awesome Image">
-                                    <div class="overlay">
-                                        <div class="box">
-                                            <div class="content">
-                                                <a class="btn-one" href="#">Appointment</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-7">
-                                <div class="text-holder">
-                                    <span>Prosthodontist</span>
-                                    <h3>Dr. Robert B. Moreau</h3>
-                                    <p>Dr. Robert B. Moreau is a renowned dental surgeon and a certified Dental Implantologist. He is the Director our hospitals.</p>
-                                    <h6>Qualification</h6>
-                                    <p>BDS , MDS - Plastic And Cosmetic Surgeon,</p>
-                                    <ul>
-                                        <li><span class="icon-phone"></span>(+760) 987-65-43210</li>
-                                        <li><span class="flaticon-e-mail-envelope"></span>supportyou@example.com</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single doctor item-->
-                    <!--Start Single doctor item-->
-                    <div class="single-doctor-item wow fadeInUp" data-wow-delay="300ms">
-                        <div class="row">
-                            <div class="col-xl-5">
-                                <div class="img-holder">
-                                    <img src="/frontend/images/doctor/4.png" alt="Awesome Image">
-                                    <div class="overlay">
-                                        <div class="box">
-                                            <div class="content">
-                                                <a class="btn-one" href="#">Appointment</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-7">
-                                <div class="text-holder">
-                                    <span>Prosthodontist</span>
-                                    <h3>Dr. Greg House</h3>
-                                    <p>Dr. Greg House is a renowned dental surgeon and a certified Dental Implantologist. He is the Director our hospitals.</p>
-                                    <h6>Qualification</h6>
-                                    <p>BDS , MDS - Plastic And Cosmetic Surgeon,</p>
-                                    <ul>
-                                        <li><span class="icon-phone"></span>(+760) 987-65-43210</li>
-                                        <li><span class="flaticon-e-mail-envelope"></span>supportyou@example.com</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End Single doctor item-->
-                    <!--Start Single doctor item-->
-                    <div class="single-doctor-item last-child wow fadeInUp" data-wow-delay="600ms">
-                        <div class="row">
-                            <div class="col-xl-5">
-                                <div class="img-holder">
-                                    <img src="/frontend/images/doctor/5.png" alt="Awesome Image">
-                                    <div class="overlay">
-                                        <div class="box">
-                                            <div class="content">
-                                                <a class="btn-one" href="#">Appointment</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-7">
-                                <div class="text-holder">
-                                    <span>Implantologist</span>
-                                    <h3>Dr. Sarah Johnson</h3>
-                                    <p>Dr. Sarah Johnson is a renowned dental surgeon and a certified Dental Implantologist. He is the Director our hospitals.</p>
-                                    <h6>Qualification</h6>
-                                    <p>BDS , MDS - Plastic And Cosmetic Surgeon,</p>
-                                    <ul>
-                                        <li><span class="icon-phone"></span>(+760) 987-65-43210</li>
-                                        <li><span class="flaticon-e-mail-envelope"></span>supportyou@example.com</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!--End Single doctor item-->
                 </div>
             </div>

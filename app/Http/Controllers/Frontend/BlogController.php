@@ -21,6 +21,7 @@ class BlogController extends BaseController
     public function get($id)
     {
         $blog = Blog::find($id);
-        return view('frontend.blog.detail', compact('blog'));
+        $blogAll = Blog::all()->random(4);
+        return view('frontend.blog.detail', compact('blog', 'blogAll'));
     }
 }

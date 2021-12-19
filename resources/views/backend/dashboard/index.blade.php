@@ -18,7 +18,7 @@
                             <div class="col-lg-6 col-md-3 col-6">
                                 <div class="card">
                                     <div class="card-body pb-50">
-                                        <h6>Khách hàng gia hạn</h6>
+                                        <h6>Lưu Lượng truy cập website</h6>
                                         <h2 class="font-weight-bolder mb-1">99%</h2>
                                         <div id="statistics-order-chart"></div>
                                     </div>
@@ -30,7 +30,7 @@
                             <div class="col-lg-6 col-md-3 col-6">
                                 <div class="card card-tiny-line-stats">
                                     <div class="card-body pb-50">
-                                        <h6>Khách hàng mới</h6>
+                                        <h6>lịch khám hôm nay</h6>
                                         <h2 class="font-weight-bolder mb-1">6,24k</h2>
                                         <div id="statistics-profit-chart"></div>
                                     </div>
@@ -59,8 +59,8 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">230k</h4>
-                                                <p class="card-text font-small-3 mb-0">Đơn hàng</p>
+                                                <h4 class="font-weight-bolder mb-0">7888</h4>
+                                                <p class="card-text font-small-3 mb-0">Lượng truy cập</p>
                                             </div>
                                         </div>
                                     </div>
@@ -73,7 +73,7 @@
                                             </div>
                                             <div class="media-body my-auto">
                                                 <h4 class="font-weight-bolder mb-0">8.549k</h4>
-                                                <p class="card-text font-small-3 mb-0">Khách hàng</p>
+                                                <p class="card-text font-small-3 mb-0">Yêu cầu chưa duyệt</p>
                                             </div>
                                         </div>
                                     </div>

@@ -13,6 +13,16 @@ class Employee extends Model
 
     public function saveEmployee($model, $request)
     {
+        if ($request->hasFile('image')) {
+            $image = $request->image->getClientOriginalName();
+            if ($image != '') {
+                $newFileName = uniqid() . '-' . $image;
+                $path = $request->image->storeAs('public/uploads/employee/image', $newFileName);
+                $model->image = str_replace('public', '', $path);
+                $request->file('image')->move('uploads/employee/image', $newFileName);
+            }
+        }
+
         $model->name = $request->input('name');
         $model->type = $request->input('type');
         $model->short_description = $request->input('short_description');
@@ -22,7 +32,7 @@ class Employee extends Model
         $model->majors = $request->input('majors');
         $model->services = $request->input('services');
         $model->status = 1;
-        
+
         $model->save();
 
         return $model;

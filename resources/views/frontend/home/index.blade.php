@@ -42,50 +42,6 @@
             <h1>Hãy thiết kế nụ cười của bạn</h1>
             <p>Răng đóng một vai trò quan trọng trong cuộc sống hàng ngày của bạn. Nó không chỉ giúp bạn nhai và ăn thức ăn mà còn giúp tạo khuôn mặt của bạn. Bất kỳ chiếc răng nào bị mất đều có thể gây ảnh hưởng lớn đến chất lượng cuộc sống của bạn.</p>
         </div>
-        <div class="row">
-            <!--Start Single Welcome Box-->
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-welcome-box text-center">
-                    <div class="icon-holder">
-                        <img src="/frontend/images/icon/icon-1.png" alt="Icon">
-                    </div>
-                    <div class="text-holder">
-                        <h3>Nha khoa nâng cao</h3>
-                        <p>Tố cáo niềm vui & ca ngợi nỗi đau đã ra đời và chúng tôi sẽ cung cấp cho bạn một tài khoản hoàn chỉnh của hệ thống.</p>
-                        <a class="btn-one" href="#">Dịch vụ</a>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Welcome Box-->
-            <!--Start Single Welcome Box-->
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-welcome-box text-center">
-                    <div class="icon-holder">
-                        <img src="/frontend/images/icon/icon-2.png" alt="Icon">
-                    </div>
-                    <div class="text-holder">
-                        <h3>Thiết bị hiện đại</h3>
-                        <p>Mang lại cho bạn những trải nghiệm hoàn toàn mới khi điều trị và làm đẹp răng</p>
-                        <a class="btn-one" href="#">Xem thêm</a>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Welcome Box-->
-            <!--Start Single Welcome Box-->
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-                <div class="single-welcome-box text-center">
-                    <div class="icon-holder">
-                        <img src="/frontend/images/icon/icon-3.png" alt="Icon">
-                    </div>
-                    <div class="text-holder">
-                        <h3>Phòng khám tiện nghi</h3>
-                        <p>phòng khám của chúng tôi luôn sạch đẹp và đáp ứng tốt các nhu cầu của quý khách</p>
-                        <a class="btn-one" href="#">Xem giá</a>
-                    </div>
-                </div>
-            </div>
-            <!--End Single Welcome Box-->
-        </div>
     </div>
 </section>
 <!--End Welcome area-->
@@ -103,7 +59,7 @@
                                 <span class="icon-tooth-3"></span>
                             </div>
                             <h1>
-                                <span class="timer" data-from="1" data-to="4257" data-speed="5000" data-refresh-interval="50">4257 ca</span>
+                                <span class="timer" data-from="1" data-to="{{ $doneAppoint }}" data-speed="5000" data-refresh-interval="50">{{ $doneAppoint }}</span>
                             </h1>
                             <div class="title">
                                 <h3>Đã hoàn thành</h3>
@@ -121,7 +77,7 @@
                                 <span class="icon-doctor-1"></span>
                             </div>
                             <h1>
-                                <span class="timer" data-from="1" data-to="18" data-speed="5000" data-refresh-interval="50">18</span>
+                                <span class="timer" data-from="1" data-to="{{ $countDoctor }}" data-speed="5000" data-refresh-interval="50">{{ $countDoctor }}</span>
                             </h1>
                             <div class="title">
                                 <h3>Nha sĩ chuyên nghiệp</h3>
@@ -173,23 +129,12 @@
                         <h1>Tầm nhìn và sứ mệnh<br> của H-Smile</h1>
                     </div>
                     <div class="about-text-holder">
-                        <p>Dento được thành lập vào năm 1995 với tư cách là một phòng khám nha khoa tư nhân nhỏ ở Binghamton, NY, Hoa Kỳ. Tìm kiếm dịch vụ chăm sóc răng miệng giá cả phải chăng?</p>
+                        <p>H-Smile được thành lập vào năm 2021 với tư cách là một phòng khám nha khoa tư nhân nhỏ ở Binghamton, NY, Hoa Kỳ. Tìm kiếm dịch vụ chăm sóc răng miệng giá cả phải chăng?</p>
                         <p>Lấy một ví dụ tầm thường, ai trong chúng ta đã từng thực hiện bài tập thể dục vất vả, ngoại trừ việc đạt được một số lợi thế từ nó? Nhưng ai có quyền nhận lỗi với một người đàn ông chọn cách tận hưởng một niềm vui không có hậu quả khó chịu, niềm vui dẫn đến đau đớn ca ngợi những lời dạy của nhà thám hiểm vĩ đại ...
                         </p>
-                        <div class="author-box fix">
-                            <div class="img-box">
-                                <img src="/frontend/images/resources/ceo.png" alt="Awesome Image">
-                            </div>
-                            <div class="text-box">
-                                <h3>Dr. Jerome Sinclair</h3>
-                                <span>CEO & Founder</span>
-                            </div>
-                            <div class="signatire-box">
-                                <img src="/frontend/images/resources/signature.png" alt="Signature">
-                            </div>
-                        </div>
+
                         <div class="read-more">
-                            <a class="btn-two" href="#"><span class="flaticon-next"></span>More About Us</a>
+                            <a class="btn-two" href="{{ route('hsmile.aboutus') }}"><span class="flaticon-next"></span>Xem thêm</a>
                         </div>
                     </div>
                 </div>
@@ -246,238 +191,52 @@
 <!--Start Appointment Area-->
 <section class="appointment-area">
     <div class="appointment-title-box" style="background-image: url(/frontend/images/parallax-background/appointment-title-bg.jpg);">
-        <div class="sec-title text-center">
-            <h3>Cuộc Hẹn</h3>
-            <h1>Đặt chỗ trực tuyến cho chuyến thăm</h1>
-        </div>
-    </div>
-    <div class="container appointment-content">
-        <div class="row">
-
-            <div class="col-xl-6 col-lg-6">
-                <div class="appointment-image text-center">
-                    <img src="/frontend/images/resources/appointment.png" alt="Awesome Image">
-                </div>
-            </div>
-
-            <div class="col-xl-6 col-lg-6">
-                <div class="appointment-form">
-                    <div class="text">
-                        <p>Đối với các thắc mắc chung, hãy điện thoại theo số +1 555-7890-123. Đây là nhân viên có nhân viên từ Thứ Hai đến Thứ Sáu, 9 giờ sáng - 5 giờ chiều.</p>
-                    </div>
-                    <form name="appointment-form" action="#" method="post">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6">
-                                <div class="input-box">
-                                    <input type="text" name="form_name" value="" placeholder="Họ và tên*" required="">
-                                </div>
-                                <div class="input-box">
-                                    <input type="text" name="form_phone" value="" placeholder="Số điện thoại">
-                                </div>
-                                <div class="input-box">
-                                    <input type="text" name="date" placeholder="Ngày" id="datepicker">
-                                    <div class="icon-box">
-                                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6">
-                                <div class="input-box">
-                                    <input type="email" name="form_email" value="" placeholder="Email*" required="">
-                                </div>
-                                <div class="input-box">
-                                    <select class="selectmenu">
-                                        <option selected="selected">Nha sĩ</option>
-                                        <option>Dr. Daryl Cornelius</option>
-                                        <option>Evelynne Mirando</option>
-                                        <option>Dr. Robert B. Moreau</option>
-                                        <option>Dr. Greg House</option>
-                                        <option>Dr. Sarah Johnson</option>
-                                    </select>
-                                </div>
-                                <div class="input-box">
-                                    <input type="text" name="time" placeholder="Thời gian">
-                                    <div class="icon-box">
-                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="input-box">
-                                    <textarea name="form_message" placeholder="Lời nhắn của bạn..." required=""></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="button-box">
-                                    <button class="btn-one" type="submit">Gửi</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-        </div>
     </div>
 </section>
 <!--End Appointment Area-->
 
 <!--Start team area-->
 <section class="team-area">
-    <div class="container">
+    <div class="container" style="margin-top: 100px">
         <div class="sec-title text-center">
             <h3>Nha Sĩ Chuyên Nghiệp</h3>
-            <h1>Đội có trình độ cao</h1>
+            <h1>Đội ngũ nha sĩ có trình độ cao</h1>
         </div>
+
         <div class="row">
+
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+
                 <div class="team-carousel owl-carousel owl-theme">
 
                     <!--Start single item member-->
+                    @foreach($doctor as $row)
                     <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/1.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Daryl Cornelius</h3>
-                                <span>Implantologist</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/2.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Eugene Renolds</h3>
-                                <span>Periodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/3.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Bonnie Alberta</h3>
-                                <span>Orthodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
 
-                    <!--Start single item member-->
-                    <div class="single-team-member">
                         <div class="img-holder">
-                            <img src="/frontend/images/team/1.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Daryl Cornelius</h3>
-                                <span>Implantologist</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/2.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Eugene Renolds</h3>
-                                <span>Periodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/3.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Bonnie Alberta</h3>
-                                <span>Orthodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
 
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
                             <img src="/frontend/images/team/1.jpg" alt="Awesome Image">
                             <div class="overlay-style-one"></div>
+
                             <div class="text-holder text-center">
-                                <h3>Dr. Daryl Cornelius</h3>
+
+                                <h3>{{$row->name}}</h3>
                                 <span>Implantologist</span>
                                 <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
+                                    <a class="btn-one" href="">Know More</a>
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/2.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Eugene Renolds</h3>
-                                <span>Periodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/3.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Bonnie Alberta</h3>
-                                <span>Orthodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
+                    @endforeach
 
                 </div>
             </div>
+
         </div>
+
     </div>
 </section>
 <!--End team area-->
@@ -491,7 +250,6 @@
                 <div class="sec-title max-width text-center">
                     <h3>Lời chứng thực</h3>
                     <h1>Khách hàng của chúng tôi nói gì?</h1>
-                    <p>Răng đóng một vai trò quan trọng trong cuộc sống hàng ngày của bạn. Nó không chỉ giúp bạn nhai và ăn thức ăn mà còn giúp tạo khuôn mặt của bạn. Bất kỳ chiếc răng nào bị mất đều có thể gây ảnh hưởng lớn đến chất lượng cuộc sống của bạn.</p>
                     <a class="btn-one" href="#">Xem thêm</a>
                 </div>
             </div>
@@ -499,85 +257,25 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="testimonial-carousel2 owl-carousel owl-theme">
+                    @foreach ($feedback as $row)
                     <!--Start Single Testimonial Item-->
                     <div class="single-testimonial-style2 text-center">
                         <div class="quote-icon">
                             <img src="/frontend/images/icon/1.png" alt="Quote Icon">
                         </div>
                         <div class="text-holder">
-                            <p>Đó là một trải nghiệm cả đời với các bạn… .Đây chắc chắn là phòng khám nha khoa tốt nhất mà tôi từng đến. Bây giờ tôi đã lấy lại được chiếc răng của mình, cảm ơn H-smile</p>
-                        </div>
-                        <div class="review-box">
-                            <ul>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
+                            <p>{{ $row->message }}</p>
                         </div>
                         <div class="name">
-                            <h3>Evelynne Mirando</h3>
-                            <span>Houston</span>
+                            <h3>{{ $row->name }}</h3>
+                            <span>{{ $row->address }}</span>
                         </div>
                         <div class="quote-icon2">
                             <img src="/frontend/images/icon/2.png" alt="Quote Icon">
                         </div>
                     </div>
                     <!--End Single Testimonial Item-->
-                    <!--Start Single Testimonial Item-->
-                    <div class="single-testimonial-style2 text-center">
-                        <div class="quote-icon">
-                            <img src="/frontend/images/icon/1.png" alt="Quote Icon">
-                        </div>
-                        <div class="text-holder">
-                            <p>Đó là một trải nghiệm cả đời với các bạn… .Đây chắc chắn là phòng khám nha khoa tốt nhất mà tôi từng đến. Bây giờ tôi đã lấy lại được chiếc răng của mình, cảm ơn H-smile</p>
-                        </div>
-                        <div class="review-box">
-                            <ul>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                        <div class="name">
-                            <h3>Evelynne Mirando</h3>
-                            <span>Houston</span>
-                        </div>
-                        <div class="quote-icon2">
-                            <img src="/frontend/images/icon/2.png" alt="Quote Icon">
-                        </div>
-                    </div>
-                    <!--End Single Testimonial Item-->
-                    <!--Start Single Testimonial Item-->
-                    <div class="single-testimonial-style2 text-center">
-                        <div class="quote-icon">
-                            <img src="/frontend/images/icon/1.png" alt="Quote Icon">
-                        </div>
-                        <div class="text-holder">
-                            <p>Đó là một trải nghiệm cả đời với các bạn… .Đây chắc chắn là phòng khám nha khoa tốt nhất mà tôi từng đến. Bây giờ tôi đã lấy lại được chiếc răng của mình, cảm ơn H-smile</p>
-                        </div>
-                        <div class="review-box">
-                            <ul>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
-                        </div>
-                        <div class="name">
-                            <h3>Evelynne Mirando</h3>
-                            <span>Houston</span>
-                        </div>
-                        <div class="quote-icon2">
-                            <img src="/frontend/images/icon/2.png" alt="Quote Icon">
-                        </div>
-                    </div>
-                    <!--End Single Testimonial Item-->
-
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -594,7 +292,7 @@
                     <div class="icon-holder">
                         <div class="icon">
                             <div class="inner">
-                                <a class="html5lightbox" title="Dento Video Gallery" href="https://www.youtube.com/watch?v=p25gICT63ek">
+                                <a class="html5lightbox" title="Dento Video Gallery" href="https://www.youtube.com/embed/k0j16iZm-VY">
                                     <span class="icon-play"></span>
                                 </a>
                             </div>
@@ -610,8 +308,8 @@
                         <li>Bọc Sứ: Bảo hành thay thế miễn phí 5 năm.</li>
                         <li>Trồng răng: Bảo hành thay thế miễn phí 3 năm.</li>
                         <li>Trám: Bảo hành 2 năm.</li>
-                        <li>Root Canal: Bảo hành 5 năm.</li>
-                        <li>Nobel Biocare: Bảo hành thay thế miễn phí 20 năm.</li>
+                        <li>Cấy implant: Bảo hành 5 năm.</li>
+                        <li>Niềng răng: Bảo hành miễn phí 20 năm.</li>
                     </ul>
                 </div>
             </div>
@@ -626,7 +324,6 @@
         <div class="sec-title max-width text-center">
             <h3>Tin tức và Tips</h3>
             <h1>Bài đăng mới nhất</h1>
-            <p>Răng đóng một vai trò quan trọng trong cuộc sống hàng ngày của bạn. Nó không chỉ giúp bạn nhai và ăn thức ăn mà còn giúp tạo khuôn mặt của bạn. Bất kỳ chiếc răng nào bị mất đều có thể gây ảnh hưởng lớn đến chất lượng cuộc sống của bạn.</p>
         </div>
         <div class="row">
             <!--Start single blog post-->
@@ -634,7 +331,7 @@
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                 <div class="single-blog-post">
                     <div class="img-holder">
-                        <img src="/frontend/images/blog/v1-1.jpg" alt="Awesome Image">
+                        <img src="{{asset($row->image)}}" alt="Awesome Image">
                         <div class="categorie-button">
                             <a class="btn-one" href="#">{{$row->category}}</a>
                         </div>

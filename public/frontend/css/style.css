@@ -6676,9 +6676,10 @@ select:focus {
     position: relative;
     display: block;
     padding: 50px 50px 20px;
-    border-radius: 0 0px 50px 50px;
--webkit-box-shadow: 0px 1px 15px 3px #f9f9f9;
-box-shadow: 0px 1px 15px 3px #f9f9f9;
+    border-radius:50px;
+    -webkit-box-shadow: 0px 1px 15px 3px #519070;
+    box-shadow: 0px 1px 15px 3px #80aa95;
+
 }
 .appointment-form-left form .single-box{
     position: relative;

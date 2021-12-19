@@ -24,6 +24,32 @@
                     <span class="menu-title text-truncate" data-i18n="Dashboards">Dashboard</span>
                 </a>
             </li>
+             {{-- role dortor --}}
+            <li class=" navigation-header">
+                <span data-i18n="Apps &amp; Pages">Lịch khám của tôi</span>
+                <i data-feather="more-horizontal"></i>
+            </li>
+            <li class="nav-item {{ request()->is('admin/today') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.today') }}">
+                    <i data-feather='settings'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Ca khám hôm nay</span>
+                </a>
+            </li>
+            <li class="nav-item {{ request()->is('admin/future') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.future') }}">
+                    <i data-feather='settings'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Ca khám sắp tới</span>
+                </a>
+            </li>
+            <li class="nav-item {{ request()->is('admin/past') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.past') }}">
+                    <i data-feather='settings'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Ca đã khám</span>
+                </a>
+            </li>
+
+
+
             <li class=" navigation-header">
                 <span data-i18n="Apps &amp; Pages">Truy cập nhanh</span>
                 <i data-feather="more-horizontal"></i>
@@ -66,12 +92,12 @@
                     <span class="menu-title text-truncate" data-i18n="Chat">Dịch vụ</span>
                 </a>
             </li>
-            <li class=" nav-item">
+            <!-- <li class=" nav-item">
                 <a class="d-flex align-items-center" href="#">
                     <i data-feather='clipboard'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Bảng giá</span>
                 </a>
-            </li>
+            </li> -->
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="{{ route('admin.contact') }}">
                     <i data-feather='mail'></i>
@@ -84,6 +110,12 @@
                     <span class="menu-title text-truncate" data-i18n="Chat">Đối tác</span>
                 </a>
             </li>
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="{{ route('admin.feedback') }}">
+                    <i data-feather='message-square'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Feed back</span>
+                </a>
+            </li>
 
             <li class=" navigation-header">
                 <span data-i18n="Misc">Quản lý đặt lịch</span>
@@ -91,14 +123,20 @@
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="{{ route('admin.appointment') }}">
-                    <i data-feather='message-square'></i>
+                    <i data-feather='bell'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Yêu cầu</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a class="d-flex align-items-center" href="{{ route('admin.examination_schedule') }}">
+                    <i data-feather='calendar'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Lịch khám</span>
                 </a>
             </li>
             <li class=" nav-item">
                 <a class="d-flex align-items-center" href="{{ route('admin.patient') }}">
                     <i data-feather='users'></i>
-                    <span class="menu-title text-truncate" data-i18n="Chat">Bệnh nhân</span>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Khách hàng</span>
                 </a>
             </li>
 

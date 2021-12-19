@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use Spatie\Permission\Traits\HasRoles;
+
+
 class UserController extends BaseController
 {
+    use HasRoles;
     public function __construct()
     {
         parent::__construct();

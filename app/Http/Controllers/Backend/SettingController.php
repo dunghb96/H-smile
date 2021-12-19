@@ -10,10 +10,10 @@ class SettingController extends BaseController
     private function optionKeys(): array
     {
         $optionKeys = [
-            'site_favicon','site_logo', 'site_logo_footer', 'video',
-            'contact_phone', 'contact_email', 'contact_address', 'contact_google_maps',
-            'social_facebook', 'social_line', 'social_zalo', 'social_youtube', 'social_linkedin', 'social_instagram',
-            'emails_receive_notification','site_title','site_description'
+            'logo', 'favicon', 'logo_footer', 'start_date',
+            'end_date', 'time_open', 'time_close', 'hotline',
+            'email', 'address', 'site_title', 'site_desc', 'map', 'about',
+            'facebook','zalo','youtube'
         ];
 
         return $optionKeys;
@@ -32,7 +32,81 @@ class SettingController extends BaseController
                 Cache::forget($optionKey);
             }
         }
+        $jsonObj['success'] = true;
+        $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
 
-        return back()->with(['status' => 'success', 'flash_message' => 'Update success']);
+        echo json_encode($jsonObj);
+    }
+
+    function thaylogo(Request $request)
+    {
+        if ($request->hasFile('logo')) {
+            $fname = $request->logo->getClientOriginalName();
+            if($fname != '') {
+                $newFileName = uniqid() . '-' . $fname;
+                $path = $request->logo->storeAs('public/uploads/setting', $newFileName);
+                $logo = str_replace('public', '', $path);
+                $request->file('logo')->move('uploads/setting', $newFileName);
+                // foreach($this->optionKeys() as $optionKey){
+                //     if($request->has($optionKey)){
+                        option(['logo' => $request->input($logo)]);
+                        Cache::forget('logo');
+                //     }
+                // }
+            }
+        }
+        $jsonObj['success'] = true;
+        $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        $jsonObj['filename'] = $logo;
+
+        echo json_encode($jsonObj);
+    }
+
+    function thayfavicon(Request $request)
+    {
+        if ($request->hasFile('favicon')) {
+            $fname = $request->favicon->getClientOriginalName();
+            if($fname != '') {
+                $newFileName = uniqid() . '-' . $fname;
+                $path = $request->favicon->storeAs('public/uploads/setting', $newFileName);
+                $favicon = str_replace('public', '', $path);
+                $request->file('favicon')->move('uploads/setting', $newFileName);
+                // foreach($this->optionKeys() as $optionKey){
+                //     if($request->has($optionKey)){
+                        option(['favicon' => $request->input($favicon)]);
+                        Cache::forget('favicon');
+                //     }
+                // }
+            }
+        }
+        $jsonObj['success'] = true;
+        $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        $jsonObj['filename'] = $favicon;
+
+        echo json_encode($jsonObj);
+    }
+
+    function thaylogofooter(Request $request)
+    {
+        if ($request->hasFile('logo_footer')) {
+            $fname = $request->logo_footer->getClientOriginalName();
+            if($fname != '') {
+                $newFileName = uniqid() . '-' . $fname;
+                $path = $request->logo_footer->storeAs('public/uploads/setting', $newFileName);
+                $logo_footer = str_replace('public', '', $path);
+                $request->file('logo_footer')->move('uploads/setting', $newFileName);
+                // foreach($this->optionKeys() as $optionKey){
+                //     if($request->has($optionKey)){
+                        option(['logo_footer' => $request->input($logo_footer)]);
+                        Cache::forget('logo_footer');
+                //     }
+                // }
+            }
+        }
+        $jsonObj['success'] = true;
+        $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        $jsonObj['filename'] = $logo_footer;
+
+        echo json_encode($jsonObj);
     }
 }

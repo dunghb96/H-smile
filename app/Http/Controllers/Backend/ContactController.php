@@ -23,59 +23,42 @@ class ContactController extends BaseController
         echo json_encode($jsonObj);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function loaddata(Request $request)
     {
-        //
+        $id = $request->id;
+        $jsonObj = Contact::find($id);
+        echo json_encode($jsonObj);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(Request $request)
     {
-        //
+        $id = $request->id;
+        $model = Contact::find($id);
+        $result = $model->saveBlog($model, $request);
+        if($result) {
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        } else {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+        }
+        echo json_encode($jsonObj);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function del(Request $request)
     {
-        //
+        $id = $request->id;
+        $model = Contact::find($id);
+        $model->status = 0;
+        $result = $model->save();
+        if($result) {
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        } else {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+        }
+        echo json_encode($jsonObj);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

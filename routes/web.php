@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 
+Route::post('/resign-email', 'SendMailController@send_mail')->name('send_mail');

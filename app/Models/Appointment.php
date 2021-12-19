@@ -14,7 +14,12 @@ class Appointment extends Model
     const STATUS = [
         1 => 'Chờ xác nhận',
         2 => 'Đã xác nhận',
-        3 => 'Đã hoàn thành',
+        3 => 'Đã hủy',
+    ];
+
+    const SHIFT= [
+        1 => 'Ca sáng',
+        2 => 'Ca chiều'
     ];
 
     public function patients()
@@ -25,5 +30,24 @@ class Appointment extends Model
     public function service()
     {
         return $this->hasOne(Service::class, 'id', 'service_id');
+    }
+
+    public function doctor()
+    {
+        return $this->hasOne(Employee::class, 'id', 'doctor_id')->where('type', 1);
+    }
+
+    function saveExaminationSchedule($model, $data)
+    {
+        $model->patient_id = $data['patient_id'];
+        $model->appointment = $data['appointment'];
+        $model->date_at = $data['date_at'];
+        $model->doctor = $data['doctor'];
+        $model->time_at = $data['time_at'];
+        $model->status = 1;
+
+        $model->save();
+
+        return $model;
     }
 }
