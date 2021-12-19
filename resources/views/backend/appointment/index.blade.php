@@ -66,8 +66,8 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="doctor">Nha sĩ</label>
-                                                <select class="form-control" id="doctor" name="doctor" required>
+                                                <label for="adoctor">Nha sĩ</label>
+                                                <select class="form-control" id="adoctor" name="doctor" required>
                                                     <!-- @foreach($doctor as $row)
                                                     <option value="{{ $row->id }}">{{ $row->name }}</option>
                                                     @endforeach -->
@@ -217,7 +217,7 @@
 
 
                                                 <div class="form-group">
-                                                    <label for="category">Bác sĩ</label>
+                                                    <label for="doctor_id">Bác sĩ</label>
                                                     <select class="form-control" id="doctor_id" name="doctor" required>
 
                                                     </select>

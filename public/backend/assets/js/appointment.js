@@ -248,14 +248,14 @@ function loadhistorytb(id) {
 function loadadd() {
     $("#addnew").modal('show');
     $(".modal-title").html('Thêm yêu cầu mới');
-    $('#doctor').select2({
+    $('#adoctor').select2({
         placeholder: "Chọn nha sĩ",
         allowClear: true,
-        dropdownParent: $('#doctor').parent(),
+        dropdownParent: $('#adoctor').parent(),
     })
-    $('#doctor').val(null).change();
-    $('#doctor').attr("disabled", true);
-    url = '/admin/appointment/edit';
+    $('#adoctor').val(null).change();
+    $('#adoctor').attr("disabled", true);
+    url = '/admin/appointment/add';
     iid = 0;
 }
 
@@ -269,7 +269,7 @@ function loaddata(id) {
         url: "/admin/appointment/loaddata",
         success: function (data) {
             $('#service').val(data.service_id).change();
-            $('#doctor').val(data.doctor_id).change();
+            $('#adoctor').val(data.doctor_id).change();
             $('#adate_at').flatpickr({
                 altInput: true,
                 altFormat: "d/m/Y",
@@ -297,7 +297,7 @@ function save() {
         info.id = iid;
     }
     info.service = $('#service').val();
-    info.doctor = $('#doctor').val();
+    info.doctor = $('#adoctor').val();
     info.dateat = $('#adate_at').val();
     info.shift = $('#shift').val();
     info.fullname = $('#full_name').val();
@@ -366,7 +366,7 @@ function saveExamSchedule() {
     var info = {};
     info.patient_id = patient_id;
     info.appointment = iid;
-    info.doctor = $('#doctor').val();
+    info.doctor = $('#doctor_id').val();
     info.service = $('#service').val();
     info.dateat = $('#date_at').val();
     info.timeat = $('#atime_at').val();
@@ -431,23 +431,23 @@ function changeSV() {
             data: { service: service },
             url: "/admin/appointment/get-doctor",
             success: function (data) {
-                $('#doctor').html('');
+                $('#adoctor').html('');
                 data.forEach(function (val, index) {
                     var opt = '<option value="' + val.id + '">' + val.name + '</option>';
-                    $('#doctor').append(opt);
+                    $('#adoctor').append(opt);
                 });
-                $('#doctor').select2({
+                $('#adoctor').select2({
                     placeholder: "Chọn bác sĩ",
                     allowClear: true,
-                    dropdownParent: $('#doctor').parent(),
+                    dropdownParent: $('#adoctor').parent(),
                 })
-                $('#doctor').val(null).trigger('change');
+                $('#adoctor').val(null).trigger('change');
             },
         });
-        $('#doctor').val('').attr("disabled", false);
+        $('#adoctor').val('').attr("disabled", false);
     } else {
-        $('#doctor').val(null).trigger('change');
-        $('#doctor').attr("disabled", true);
+        $('#adoctor').val(null).trigger('change');
+        $('#adoctor').attr("disabled", true);
     }
 
 }
