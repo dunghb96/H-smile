@@ -73,7 +73,11 @@
             </div>
         </div>
         <div class="row" style="margin-top: 50px">
-            <div class="row" style="margin: 0 auto;"><h1 style="margin-left: 20px; color: #32B6A1"><span style="font-size: medium"> khách hàng :</span> {{ $customer->full_name }}</h1></div>
+            @if (isset($customer))
+                <div class="row" style="margin: 0 auto;">
+                    <h1 style="margin-left: 20px; color: #32B6A1"><span style="font-size: medium"> khách hàng :</span> {{ $customer->full_name }}</h1>
+                </div>
+            @endif
                 <div class="row" style="margin: 0 auto;">
                     <div class="col-12">
                         @if (isset($customer))

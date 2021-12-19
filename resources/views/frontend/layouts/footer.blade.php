@@ -17,8 +17,7 @@
                             </a>
                         </div>
                         <div class="text-box fix">
-                            <p>H-Sile được thành lập vào năm 2021 với tư cách là một phòng khám nha khoa tư nhân nhỏ ở Hà Nội, Việt Nam. Tìm kiếm dịch vụ chăm sóc răng miệng giá cả phải chăng?</p>
-                            <p class="bottom-text">Để lấy một ví dụ tầm thường, ai trong chúng ta cũng từng thực hiện các bài tập thể dục vất vả, ngoại trừ để đạt được.</p>
+                            <p>{{ getCachedOption('about') }}</p>
                         </div>
                         <div class="button fix">
                             <a class="btn-one" href="{{ route('hsmile.aboutus') }}">Xem thêm</a>

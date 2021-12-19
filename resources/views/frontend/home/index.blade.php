@@ -95,13 +95,13 @@
                                 <span class="icon-hospital"></span>
                             </div>
                             <h1>
-                                <span class="timer" data-from="1" data-to="6" data-speed="5000" data-refresh-interval="50">6</span>
+                                <span class="timer" data-from="1" data-to="1" data-speed="5000" data-refresh-interval="50">1</span>
                             </h1>
                             <div class="title">
-                                <h3>Chứng chỉ và giải thưởng</h3>
+                                <h3>Cơ Sở</h3>
                             </div>
                             <div class="text">
-                                <p>Những giá trị mà chũng tôi mang lại được công nhận qua các chứng chỉ và giải thưởng</p>
+                                <p>Chúng tôi sẽ mở rộng chi nhánh trong tương lai</p>
                             </div>
                         </div>
                     </li>
@@ -126,13 +126,13 @@
                 <div class="inner-content">
                     <div class="sec-title">
                         <h3>Giới thiệu</h3>
-                        <h1>Tầm nhìn và sứ mệnh<br> của H-Smile</h1>
+                        <h1>Sứ mệnh của H-Smile</h1>
                     </div>
                     <div class="about-text-holder">
-                        <p>H-Smile được thành lập vào năm 2021 với tư cách là một phòng khám nha khoa tư nhân nhỏ ở Binghamton, NY, Hoa Kỳ. Tìm kiếm dịch vụ chăm sóc răng miệng giá cả phải chăng?</p>
-                        <p>Lấy một ví dụ tầm thường, ai trong chúng ta đã từng thực hiện bài tập thể dục vất vả, ngoại trừ việc đạt được một số lợi thế từ nó? Nhưng ai có quyền nhận lỗi với một người đàn ông chọn cách tận hưởng một niềm vui không có hậu quả khó chịu, niềm vui dẫn đến đau đớn ca ngợi những lời dạy của nhà thám hiểm vĩ đại ...
+                        <p>Nha khoa thẩm mỹ quốc tế H-Smile được thành lập với tôn chỉ giúp đỡ khách hàng thay đổi cuộc sống thông qua nụ cười mới mang lại hạnh phúc và sự thành công. H-Smile quan tâm và chú trọng đến vấn đề sức khỏe và tính thẩm mỹ cao trong dịch vụ nha khoa. Chúng tôi cam kết tư vấn thật tâm, hiệu quả và cung cấp dịch vụ chất lượng hoàn hảo đem lại sự trải nghiệm tuyệt vời nhất cho khách hàng trên mỗi hệ thống của nha khoa H-Smile.
+                            H-Smile hiểu rằng, mỗi khách hàng đến với chúng tôi luôn có 1 câu chuyện riêng, một nhu cầu và mong muốn riêng.
+                            Thấu hiểu được tâm lý đó H-Smile lựa chọn giải pháp tối ưu cho khách hàng trong quá trình tư vấn nha khoa thẩm mỹ. Đặc biệt, chúng tôi tự hào rằng các kỹ thuật thẩm mỹ nha của H-Smile được cập nhật thường xuyên, là công nghệ tiên tiến và mới nhất trên thế giời, bảo toàn răng gốc tối đa, an toàn, bêng vững theo thời gian. Hữu xạ tự nhiên hương đó cũng là lý do vì sao H-Smile lại có tỷ lệ giới thiệu khách hàng từ khách hàng cũ cao nhất trong giới nha khoa thẩm mỹ.
                         </p>
-
                         <div class="read-more">
                             <a class="btn-two" href="{{ route('hsmile.aboutus') }}"><span class="flaticon-next"></span>Xem thêm</a>
                         </div>
@@ -191,6 +191,79 @@
 <!--Start Appointment Area-->
 <section class="appointment-area">
     <div class="appointment-title-box" style="background-image: url(/frontend/images/parallax-background/appointment-title-bg.jpg);">
+        <div class="sec-title text-center">
+            <h3>Cuộc Hẹn</h3>
+            <h1>Đặt chỗ trực tuyến cho chuyến thăm</h1>
+        </div>
+    </div>
+    <div class="container appointment-content">
+        <div class="row">
+
+            <div class="col-xl-6 col-lg-6">
+                <div class="appointment-image text-center">
+                    <img src="/frontend/images/resources/appointment.png" alt="Awesome Image">
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-6">
+                <div class="appointment-form">
+                    <form name="appointment-form" action="#" method="post">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="input-box">
+                                    <input type="text" name="form_name" value="" placeholder="Họ và tên*" required="">
+                                </div>
+                                <div class="input-box">
+                                    <input type="text" name="form_phone" value="" placeholder="Số điện thoại">
+                                </div>
+                                <div class="input-box">
+                                    <input type="text" name="date" placeholder="Ngày" id="datepicker">
+                                    <div class="icon-box">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="input-box">
+                                    <input type="email" name="form_email" value="" placeholder="Email*" required="">
+                                </div>
+                                <div class="input-box">
+                                    <select class="selectmenu">
+                                        <option selected="selected">Nha sĩ</option>
+                                        <option>Dr. Daryl Cornelius</option>
+                                        <option>Evelynne Mirando</option>
+                                        <option>Dr. Robert B. Moreau</option>
+                                        <option>Dr. Greg House</option>
+                                        <option>Dr. Sarah Johnson</option>
+                                    </select>
+                                </div>
+                                <div class="input-box">
+                                    <input type="text" name="time" placeholder="Thời gian">
+                                    <div class="icon-box">
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="input-box">
+                                    <textarea name="form_message" placeholder="Lời nhắn của bạn..." required=""></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="button-box">
+                                    <button class="btn-one" type="submit">Gửi</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
 <!--End Appointment Area-->

@@ -48,19 +48,19 @@
                                                 <li>
                                                     <div class="text">
                                                         <h5>Địa chỉ</h5>
-                                                        <p>Số 1 Ngô Văn Sở, Trần Hưng Đạo, Hoàn Kiếm, Hà Nội</p>
+                                                        <p>{{ getCachedOption('address') }}</p>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="text">
                                                         <h5>Phone</h5>
-                                                        <p>+84 988 077 68
+                                                        <p>{{ getCachedOption('hotline') }}</p>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="text">
                                                         <h5>Email</h5>
-                                                        <p>hsmile@gmail.com</p>
+                                                        <p>{{ getCachedOption('email') }}</p>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -72,7 +72,7 @@
                         <div class="col-xl-8">
                             <div class="google-map-box">
                             <iframe style="border:0; width: 100%; height: 350px;"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.307443384207!2d105.84752411437815!3d21.02038099344149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab928ae4efdb%3A0xdc9feb22c4e3ecce!2zMSBOZ8O0IFbEg24gU-G7nywgVHLhuqduIEjGsG5nIMSQ4bqhbywgSG_DoG4gS2nhur9tLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1636623294768!5m2!1svi!2s"
+                            src="{{ getCachedOption('map') }}"
                             frameborder="0" allowfullscreen></iframe>
                             </div>
                         </div>

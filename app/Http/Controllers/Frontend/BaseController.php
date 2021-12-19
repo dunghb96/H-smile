@@ -17,12 +17,46 @@ class BaseController extends Controller
         $this->middleware(function ($request, $next) {
             $menu = getCachedOption("menu");
             $menu = $menu ? json_decode($menu) : [];
-            $menu_footer = getCachedOption("menu-footer");
-            $menu_footer = $menu_footer ? json_decode($menu_footer) : [];
+            $start_date = getCachedOption("start_date");
+            $end_date = getCachedOption("end_date");
+            if( $start_date == 1 ) {
+                $startDate = 'Thứ 2';
+            } elseif ( $start_date == 2 ) {
+                $startDate = 'Thứ 3';
+            } elseif ( $start_date == 3 ) {
+                $startDate = 'Thứ 4';
+            } elseif ( $start_date == 4 ) {
+                $startDate = 'Thứ 5';
+            } elseif ( $start_date == 5 ) {
+                $startDate = 'Thứ 6';
+            } elseif ( $start_date == 6 ) {
+                $startDate = 'Thứ 7';
+            } elseif ( $start_date == 7 ) {
+                $startDate = 'CN';
+            } else{
+                $startDate = '';
+            }
+            if( $end_date == 1 ) {
+                $endDate = 'Thứ 2';
+            } elseif ($end_date == 2 ) {
+                $endDate = 'Thứ 3';
+            } elseif ($end_date == 3 ) {
+                $endDate = 'Thứ 4';
+            } elseif ($end_date == 4 ) {
+                $endDate = 'Thứ 5';
+            } elseif ($end_date == 5 ) {
+                $endDate = 'Thứ 6';
+            } elseif ($end_date == 6 ) {
+                $endDate = 'Thứ 7';
+            } elseif ($end_date == 7 ) {
+                $endDate = 'CN';
+            } else{
+                $endDate = '';
+            }
+
             View::share([
-                'menu' => $menu,
-                'menu_footer' => $menu_footer,
-                // 'servicePages' => $this->getServicePagesMenu('service'),
+                'endDate'   => $endDate,
+                'startDate' => $startDate
             ]);
 
             return $next($request);

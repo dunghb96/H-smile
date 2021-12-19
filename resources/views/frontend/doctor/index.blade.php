@@ -28,7 +28,6 @@
 <section class="doctor-area">
     <div class="container">
         <div class="row">
-            @csrf
             <div class="col-xl-4 col-lg-8">
                 <div class="doctor-sidebar">
                     <!--Start Single Sidebar-->

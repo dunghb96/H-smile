@@ -123,7 +123,7 @@
                             <div class="col-lg-3 col-md-6">
                                 <div class="form-group">
                                     <label for="hotline">Hotline</label>
-                                    <input id="hotline" name="hotline" type="text" value="{{ old('hotline') ?? option('hotline') }}" class="form-control" />
+                                    <input id="hotline" name="hotline" type="number" value="{{ old('hotline') ?? option('hotline') }}" class="form-control" />
                                 </div>
                             </div>
 

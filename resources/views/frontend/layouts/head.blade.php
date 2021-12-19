@@ -3,7 +3,7 @@
     <title>H-Smile</title>
 
     <!-- responsive meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="{{ getCachedOption('site_title') }}" content="{{ getCachedOption('site_desc') }}">
     <!-- For IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
