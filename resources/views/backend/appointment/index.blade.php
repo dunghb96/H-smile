@@ -75,9 +75,8 @@
                                             <div class="form-group">
                                                 <label for="date_at">Giờ hẹn</label>
                                                 <select class="form-control" id="time_at" name="time_at" required>
-                                                    <option value="07:00">07:00</option>
-                                                    <option value="09:30">09:30</option>
-                                                    <option value="10:00">10:00</option>
+                                                    <option value="1">Sáng</option>
+                                                    <option value="2">Chiều</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
