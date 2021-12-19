@@ -26,8 +26,9 @@ class RoleController extends BaseController
 
     public function index()
     {
+        $permissionGroups = PermissionGroup::isAvailable()->with('permissions')->orderBy('name')->get();
         $data = $this->roleModel->orderBy('name')->get();
-        return view('backend.role.list', compact('data'));
+        return view('backend.role.index', compact('data','permissionGroups'));
     }
 
     public function showFormAdd()

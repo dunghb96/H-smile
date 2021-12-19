@@ -189,11 +189,11 @@ function loadpatient(id)
 
 function loadhistorytb(id)
 {
-    var table = $('#list-history');
-    if (table.length) {
-        var table = table.DataTable({
-
+    var listhistory = $('#listhistory');
+    if (listhistory.length) {
+        var listhistory = listhistory.DataTable({
             ajax: '/admin/patient/loadhistory?id='+id,
+            // "bDestroy": true,
             destroy: true,
             columns: [
                 { data: 'status' },
@@ -215,7 +215,6 @@ function loadhistorytb(id)
                 ">",
             // displayLength: 10,
             lengthMenu: [10, 20, 30, 50, 70, 100],
-
             language: {
                 sLengthMenu: "Show _MENU_",
                 search: "Search",

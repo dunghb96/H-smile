@@ -59,6 +59,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     Route::group(['prefix' => 'setting'], function () {
         Route::get('/', [SettingController::class, 'index'])->name('admin.setting');
         Route::post('/saveForm', [SettingController::class, 'saveForm']);
+        Route::post('/thaylogo', [SettingController::class, 'thaylogo']);
+        Route::post('/thayfavicon', [SettingController::class, 'thayfavicon']);
+        Route::post('/thaylogofooter', [SettingController::class, 'thaylogofooter']);
     });
 
     Route::group(['prefix' => 'slide'], function () {
@@ -184,6 +187,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/edit', [FeedbackController::class, 'edit']);
         Route::post('/del', [FeedbackController::class, 'del']);
     });
+
+    Route::group(['prefix' => 'role'], function () {
+        Route::get('/', [RoleController::class, 'index'])->name('admin.role');
+    });
+
 })
 
 ?>

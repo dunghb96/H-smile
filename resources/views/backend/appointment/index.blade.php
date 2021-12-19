@@ -182,7 +182,7 @@
                                                                     <i data-feather="lock" class="font-medium-3 mr-25"></i>
                                                                     <span class="align-middle">Chi tiết</span>
                                                                 </h6>
-                                                                <table class="table table-striped table-borderless" id="list-history">
+                                                                <table class="table table-striped table-borderless" id="listhistory">
                                                                     <thead class="thead-light ">
                                                                         <tr>
                                                                             <th>Ngày</th>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePriceListsTable extends Migration
+class CreateOptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreatePriceListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('price_lists', function (Blueprint $table) {
-            $table->id();
-            $table->integer('service_id');
-            $table->string('name');
-            $table->string('price');
-            $table->timestamps();
+        Schema::create('options', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('key')->unique();
+            $table->json('value')->nullable();
         });
     }
 
@@ -29,6 +27,6 @@ class CreatePriceListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('price_lists');
+        Schema::dropIfExists('options');
     }
 }
