@@ -39,17 +39,19 @@
      // --------------------------------------------------------------------
      if (table_table.length) {
          var table = table_table.DataTable({
-             ajax: '/admin/doctor/today/json',
+             ajax: '/admin/doctor/past/json',
              // select: {
              //     style: 'single'
              // },
              columns: [
                  { data: 'id' },
+                 { data: 'date_at' },
                  { data: 'time_at' },
                  { data: 'service' },
                  { data: 'service_id' },
                  { data: 'patient' },
                  { data: 'patient_id' },
+                 { data: 'phone' },
                  { data: 'status_name' },
                  { data: 'status' },
                  { data: 'appointment' },
@@ -57,31 +59,29 @@
              ],
              columnDefs: [
                  {
-                     targets: 3,
-                     visible: false,
-                 },
-                 {
-                     targets: 4,
-                     render: function(data, type, full, meta){
-                         return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient('+full['patient_id']+')"><span class="font-weight-bold">'+full['patient']+'</span></a>'
-                     }
+                    targets: 4,
+                    visible: false,
                  },
                  {
                      targets: 5,
-                     visible: false,
-                 },
-
-                 {
-                     targets: 7,
-                     visible: false,
+                     render: function (data, type, full, meta) {
+                         return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient(' + full['patient_id'] + ')"><span class="font-weight-bold">' + full['patient'] + '</span></a>'
+                     }
                  },
                  {
-                    targets: 8,
-                    visible: false,
-                },
-
+                     targets: 6,
+                     visible: false,
+                 },
                  {
                      targets: 9,
+                     visible: false,
+                 },
+                 {
+                    targets: 10,
+                    visible: false,
+                },
+                 {
+                     targets: 11,
                      render: function (data, type, full, meta) {
                          var html = '';
                          html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hoàn thành" onclick="hoanthanh(' + full['id'] + ',' + full['status'] + ',' + full['appointment'] + ')">';
@@ -90,12 +90,12 @@
                          html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hẹn tiếp" onclick="hentiep(' + full['id'] + ',' + full['appointment'] + ',' + full['status'] + ',' + full['service_id'] + ',' + full['patient_id'] + ')">';
                          html += '<i data-feather="arrow-right-circle"></i>';
                          html += '</button> &nbsp;';
-                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
-                         html += '<i class="fas fa-pencil-alt"></i>';
-                         html += '</button> &nbsp;';
-                         // html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa" onclick="del(' + full['id'] + ')">';
-                         // html += '<i class="fas fa-trash-alt"></i>';
-                         // html += '</button>';
+                         // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
+                         // html += '<i class="fas fa-pencil-alt"></i>';
+                         // html += '</button> &nbsp;';
+                         html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy lịch khám" onclick="del(' + full['id'] + ',' + full['status'] + ')">';
+                         html += '<i class="fas fa-trash-alt"></i>';
+                         html += '</button>';
                          return html;
                      },
                      width: 180
@@ -159,8 +159,7 @@
      }
  });
 
- function loadpatient(id)
- {
+ function loadpatient(id) {
      $('#information-tab').click();
      $('#patientinfo').modal('show');
      $(".modal-title").html('Thông tin khách hàng');
@@ -315,8 +314,8 @@
 
  }
 
- function hoanthanh(id,status,appointment) {
-     if(status == 1) {
+ function hoanthanh(id, status, appointment) {
+     if (status == 1) {
          Swal.fire({
              title: 'Khám xong',
              text: "Bạn có chắc chắn muốn hoàn thành lịch khám!",
@@ -334,7 +333,7 @@
                      url: "/admin/examination-schedule/hoanthanh",
                      type: 'post',
                      dataType: "json",
-                     data: { id: id, appointment: appointment},
+                     data: { id: id, appointment: appointment },
                      success: function (data) {
                          if (data.success) {
                              notyfi_success(data.msg);
@@ -346,14 +345,16 @@
                  });
              }
          });
-     } else {
-         notify_error("Lịch khám đã kết thúc");
+     } else if (status == 2) {
+         notify_error("Lịch khám đã hoàn thành");
+     } else if (status == 3) {
+         notify_error("Lịch khám đã bị hủy");
      }
 
  }
 
- function hentiep(id,appointment,status,service_id,patient) {
-     if(status == 1) {
+ function hentiep(id, appointment, status, service_id, patient) {
+     if (status == 1) {
          Swal.fire({
              title: 'Hẹn tiếp',
              text: "Bạn có muốn hoàn thành lịch khám và tạo lịch hẹn mới!",
@@ -372,7 +373,7 @@
                  $.ajax({
                      type: "POST",
                      dataType: "json",
-                     data: {service: service_id},
+                     data: { service: service_id },
                      url: "/admin/examination-schedule/get-doctor",
                      success: function (data) {
                          $('#doctor').html('');
@@ -402,8 +403,10 @@
                  });
              }
          });
-     } else {
-         notify_error("Lịch khám đã kết thúc");
+     } else if (status == 2) {
+         notify_error("Lịch khám đã hoàn thành");
+     } else if (status == 3) {
+         notify_error("Lịch khám đã bị hủy");
      }
  }
 
@@ -422,7 +425,7 @@
          data: info,
          url: "/admin/examination-schedule/hentiep",
          success: function (data) {
-             if(data.success) {
+             if (data.success) {
                  notyfi_success(data.msg);
                  $('#hentiep').modal('hide');
                  $("#tableBasic").DataTable().ajax.reload(null, false);
@@ -436,34 +439,40 @@
      });
  }
 
- // function del(id) {
- //     Swal.fire({
- //         title: 'Xóa dữ liệu',
- //         text: "Bạn có chắc chắn muốn xóa!",
- //         icon: 'warning',
- //         showCancelButton: true,
- //         confirmButtonText: 'Tôi đồng ý',
- //         customClass: {
- //             confirmButton: 'btn btn-primary',
- //             cancelButton: 'btn btn-outline-danger ml-1'
- //         },
- //         buttonsStyling: false
- //     }).then(function (result) {
- //         if (result.value) {
- //             $.ajax({
- //                 url: "/admin/employee/del",
- //                 type: 'post',
- //                 dataType: "json",
- //                 data: { id: id },
- //                 success: function (data) {
- //                     if (data.success) {
- //                         notyfi_success(data.msg);
- //                         $("#tableBasic").DataTable().ajax.reload(null, false);
- //                     }
- //                     else
- //                         notify_error(data.msg);
- //                 },
- //             });
- //         }
- //     });
- // }
+ function del(id, status) {
+     if (status == 1) {
+         Swal.fire({
+             title: 'Hủy lịch khám',
+             text: "Bạn có chắc chắn muốn hủy ?",
+             icon: 'warning',
+             showCancelButton: true,
+             confirmButtonText: 'Tôi đồng ý',
+             customClass: {
+                 confirmButton: 'btn btn-primary',
+                 cancelButton: 'btn btn-outline-danger ml-1'
+             },
+             buttonsStyling: false
+         }).then(function (result) {
+             if (result.value) {
+                 $.ajax({
+                     url: "/admin/examination-schedule/del",
+                     type: 'post',
+                     dataType: "json",
+                     data: { id: id },
+                     success: function (data) {
+                         if (data.success) {
+                             notyfi_success(data.msg);
+                             $("#tableBasic").DataTable().ajax.reload(null, false);
+                         }
+                         else
+                             notify_error(data.msg);
+                     },
+                 });
+             }
+         });
+     } else if (status == 2) {
+         notify_error("Lịch khám đã hoàn thành");
+     } else if (status == 3) {
+         notify_error("Lịch khám đã bị hủy");
+     }
+ }

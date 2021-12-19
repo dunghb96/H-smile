@@ -52,9 +52,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::get('/today', [DashboardController::class, 'today'])->name('admin.today');
         Route::get('/today/json', [DashboardController::class, 'today_json']);
         Route::get('/future', [DashboardController::class, 'future'])->name('admin.future');
-        Route::get('/future/json', [DashboardController::class, 'json']);
+        Route::get('/future/json', [DashboardController::class, 'future_json']);
         Route::get('/past', [DashboardController::class, 'past'])->name('admin.past');
-        Route::get('/past/json', [DashboardController::class, 'json']);
+        Route::get('/past/json', [DashboardController::class, 'past_json']);
     });
 
     Route::group(['prefix' => 'setting'], function () {
