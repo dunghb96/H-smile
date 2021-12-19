@@ -27,24 +27,22 @@ class RoleController extends BaseController
     public function index()
     {
         $permissionGroups = PermissionGroup::isAvailable()->with('permissions')->orderBy('name')->get();
-        $data = $this->roleModel->orderBy('name')->get();
-        return view('backend.role.index', compact('data','permissionGroups'));
+        // $data = $this->roleModel->orderBy('name')->get();
+        return view('backend.role.index', compact('permissionGroups'));
     }
 
-    public function showFormAdd()
+    public function json()
     {
-        $permissionGroups = PermissionGroup::isAvailable()->with('permissions')->orderBy('name')->get();
-
-        return view('backend.role.add', compact('permissionGroups'));
+        $jsonObj['data'] = Role::orderBy('id','DESC')->get();
+        echo json_encode($jsonObj);
     }
 
-    public function postFormAdd(Request $request)
+    public function save(Request $request)
     {
-        $this->__validate($request);
-
         $roleName = $request->input('name');
         if ($this->roleModel->isExistRole($roleName, 'web')){
-            return redirect()->back()->withInput()->with(['status' => 'danger', 'flash_message' => 'Role is exist!']);
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Quyền đã tồn tại trong hệ thống';
         }
 
         DB::transaction(function () use ($request, $roleName) {
@@ -58,76 +56,107 @@ class RoleController extends BaseController
             }
         });
 
-        return redirect()->route('role.list')->with(['status' => 'success', 'flash_message' => 'Add success']);
+        $jsonObj['success'] = true;
+        $jsonObj['msg'] = 'Cập nhập dữ liệu thành công';
     }
 
-    public function showFormEdit($id)
-    {
-        $data = $this->roleModel->findOrFail($id);
-        if ($data->name == 'Admin'){
-            return redirect()->back()->with(['status' => 'danger', 'flash_message' => "You can't modify Admin role."]);
-        }
-        $permissionGroups = PermissionGroup::isAvailable()->with('permissions')->orderBy('name')->get();
-        $permissionSelected = $this->roleHasPermissionModel->getPermissionIdByRoleId($id);
+    // public function showFormAdd()
+    // {
+    //     $permissionGroups = PermissionGroup::isAvailable()->with('permissions')->orderBy('name')->get();
 
-        return view('backend.role.edit', compact('data','permissionGroups', 'permissionSelected'));
-    }
+    //     return view('backend.role.add', compact('permissionGroups'));
+    // }
 
-    public function postFormEdit(Request $request, $id)
-    {
-        $this->__validate($request);
+    // public function postFormAdd(Request $request)
+    // {
+    //     $this->__validate($request);
 
-        $roleName = $request->input('name');
-        $role = Role::findOrFail($id);
+    //     $roleName = $request->input('name');
+    //     if ($this->roleModel->isExistRole($roleName, 'web')){
+    //         return redirect()->back()->withInput()->with(['status' => 'danger', 'flash_message' => 'Role is exist!']);
+    //     }
 
-        if ($role->name == 'backend'){
-            return redirect()->back()->with(['status' => 'danger', 'flash_message' => "You can't modify backend role."]);
-        }
+    //     DB::transaction(function () use ($request, $roleName) {
+    //         $role = Role::create([
+    //             'name' => $roleName,
+    //         ]);
 
-        if ($role->name <> $roleName && $this->roleModel->isExistRole($roleName, 'web')){
-            return redirect()->back()->withInput()->with(['status' => 'danger', 'flash_message' => 'Role is exist!']);
-        }
+    //         $permissions = $request->input('permissions');
+    //         if (is_array($permissions) && count($permissions)){
+    //             $role->syncPermissions($permissions);
+    //         }
+    //     });
 
-        DB::transaction(function () use ($request, $role) {
-            $role->name = $request->input('name');
-            $role->save();
+    //     return redirect()->route('role.list')->with(['status' => 'success', 'flash_message' => 'Add success']);
+    // }
 
-            $permissions = $request->input('permissions');
-            if (is_array($permissions) && count($permissions)){
-                $role->syncPermissions($permissions);
-            }
-        });
+    // public function showFormEdit($id)
+    // {
+    //     $data = $this->roleModel->findOrFail($id);
+    //     if ($data->name == 'Admin'){
+    //         return redirect()->back()->with(['status' => 'danger', 'flash_message' => "You can't modify Admin role."]);
+    //     }
+    //     $permissionGroups = PermissionGroup::isAvailable()->with('permissions')->orderBy('name')->get();
+    //     $permissionSelected = $this->roleHasPermissionModel->getPermissionIdByRoleId($id);
 
-        return redirect()->route('role.list')->with(['status' => 'success', 'flash_message' => 'Update success']);
-    }
+    //     return view('backend.role.edit', compact('data','permissionGroups', 'permissionSelected'));
+    // }
 
-    public function delete(Request $request)
-    {
-        $id = $request->post('item_id');
+    // public function postFormEdit(Request $request, $id)
+    // {
+    //     $this->__validate($request);
 
-        $role = Role::with('role_has_permission')->findOrFail($id);
+    //     $roleName = $request->input('name');
+    //     $role = Role::findOrFail($id);
 
-        //        remove Role from user
-        $users = User::role($id)->get(); // Returns all users with the role = $id
-        foreach ($users as $user){
-            $user->removeRole($id);
-        }
-        //delete role has permissions
-        $role->role_has_permission()->delete();
-        //delete role
-        $role->delete();
+    //     if ($role->name == 'backend'){
+    //         return redirect()->back()->with(['status' => 'danger', 'flash_message' => "You can't modify backend role."]);
+    //     }
 
-        return response()->json([
-            'status' => 'success',
-            'title' => 'Deleted',
-            'message' => 'Delete success'
-        ]);
-    }
+    //     if ($role->name <> $roleName && $this->roleModel->isExistRole($roleName, 'web')){
+    //         return redirect()->back()->withInput()->with(['status' => 'danger', 'flash_message' => 'Role is exist!']);
+    //     }
 
-    public function __validate($request)
-    {
-        $this->validate($request, [
-            'name' => 'required',
-        ]);
-    }
+    //     DB::transaction(function () use ($request, $role) {
+    //         $role->name = $request->input('name');
+    //         $role->save();
+
+    //         $permissions = $request->input('permissions');
+    //         if (is_array($permissions) && count($permissions)){
+    //             $role->syncPermissions($permissions);
+    //         }
+    //     });
+
+    //     return redirect()->route('role.list')->with(['status' => 'success', 'flash_message' => 'Update success']);
+    // }
+
+    // public function delete(Request $request)
+    // {
+    //     $id = $request->post('item_id');
+
+    //     $role = Role::with('role_has_permission')->findOrFail($id);
+
+    //     //        remove Role from user
+    //     $users = User::role($id)->get(); // Returns all users with the role = $id
+    //     foreach ($users as $user){
+    //         $user->removeRole($id);
+    //     }
+    //     //delete role has permissions
+    //     $role->role_has_permission()->delete();
+    //     //delete role
+    //     $role->delete();
+
+    //     return response()->json([
+    //         'status' => 'success',
+    //         'title' => 'Deleted',
+    //         'message' => 'Delete success'
+    //     ]);
+    // }
+
+    // public function __validate($request)
+    // {
+    //     $this->validate($request, [
+    //         'name' => 'required',
+    //     ]);
+    // }
 }

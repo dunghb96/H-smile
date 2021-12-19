@@ -34,8 +34,8 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Tiêu đề</th>
-                                            <th>Hình ảnh</th>
+                                            <th>Vai trò</th>
+                                            <th>Mô tả</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -49,8 +49,7 @@
                                             <h5 class="modal-title">Thêm bài viết mới</h5>
                                         </div>
                                         <div class="modal-body flex-grow-1">
-                                            <form action="" method="POST">
-                                                @csrf
+                                            <form id="frm-add">
                                                 <div class="card">
                                                     <div class="card-body">
                                                         <div class="form-group row">
@@ -92,10 +91,13 @@
                                                 @endforeach
                                                 <!-- </div>
                                                 </div> -->
-                                                <button type="button" onclick="save()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
-                                                <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <button type="button" onclick="save()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
+                                                        <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
+                                                    </div>
+                                                </div>
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
@@ -112,11 +114,5 @@
 </div>
 @endsection
 @push('js')
-<script>
-    $("#check-all").change(function() {
-        $('input:checkbox').not(this).prop('checked', this.checked);
-    });
-</script>
-<script src="/backend/dist/js/pages/form/tinymce/tinymce.js"></script>
-<script src="/backend/assets/js/blog.js"></script>
+<script src="/backend/assets/js/role.js"></script>
 @endpush

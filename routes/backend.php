@@ -190,6 +190,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
 
     Route::group(['prefix' => 'role'], function () {
         Route::get('/', [RoleController::class, 'index'])->name('admin.role');
+        Route::get('/json', [RoleController::class, 'json']);
+        Route::post('/save', [RoleController::class, 'save']);
     });
 
 })
