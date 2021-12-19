@@ -68,7 +68,7 @@
                                                     <label for="description">Mô tả</label>
                                                     <textarea id="description" name="description" rows="5" class="form-control my-editor" placeholder="Chi tiết dịch vụ"></textarea>
                                                 </div>
-                                                <button type="button" onclick="save()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
+                                                <button type="button" onclick="edit()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
                                                 <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
                                             </form>
 

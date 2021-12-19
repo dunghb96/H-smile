@@ -22,6 +22,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
+        'date',
+        'phoneNumber',
+        'identityCard',
+        'address',
+        'description'
     ];
 
     /**
@@ -42,4 +48,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function saveAccountSetting($model, $request)
+    {
+        if ($request->hasFile('avatar')) {
+            $image = $request->image->getClientOriginalName();
+            if ($image != '') {
+                $newFileName = uniqid() . '-' . $image;
+                $path = $request->image->storeAs('public/uploads/user/image', $newFileName);
+                $model->image = str_replace('public', '', $path);
+                $request->file('avatar')->move('uploads/user/image', $newFileName);
+            }
+        }
+
+        $model->price = $request->input('name');
+
+        $model->save();
+
+        return $model;
+    }
 }

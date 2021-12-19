@@ -294,53 +294,19 @@ function save() {
     iid = $("#iid").val();
     if (iid != 0) {
         info.id = iid;
-        console.log("Thành Công");
-        var info = new FormData($("#frm-edit")[0]);
+
+        info.name = $("#name").val();
         $.ajax({
             type: "POST",
             dataType: "json",
             data: info,
             url: "/admin/user/edit",
-            contentType: false,
-            processData: false,
+
             success: function (data) {
                 if (data.success) {
                     notyfi_success(data.msg);
-                    setInterval(function () {
-                        window.location.reload();
-                    }, 1000);
-                } else
-                    notify_error(data.msg);
-            },
-            error: function () {
-                notify_error('Cập nhật không thành công');
-            }
-        });
-    }
-}
-
-
-function editPassword() {
-    var info = {};
-
-    iid = $("#iid").val();
-    if (iid != 0) {
-        info.id = $("#iid").val();
-        console.log("Thành Công");
-        var info = new FormData($("#frm-changePassword")[0]);
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            data: info,
-            url: "/admin/user/changePassword",
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                if (data.success) {
-                    notyfi_success(data.msg);
-                    setInterval(function () {
-                        window.location.href = "logout";
-                    }, 2000);
+                    // $('#addnew').modal('hide');
+                    // $("#tableBasic").DataTable().ajax.reload(null, false);
                 } else
                     notify_error(data.msg);
             },
@@ -351,9 +317,6 @@ function editPassword() {
     }
 
 }
-
-
-
 
 function del(id) {
     Swal.fire({
