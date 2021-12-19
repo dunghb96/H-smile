@@ -64,7 +64,7 @@ class UserController extends BaseController
         if (!(Hash::check($request->input('old-password'), Auth::user()->password))) {
             // The passwords matches
             $jsonObj['success'] = false;
-            $jsonObj['msg'] = 'Mật khẩu hiện tại của bạn không khớp với mật khẩu!';
+            $jsonObj['msg'] = 'Mật khẩu hiện tại của bạn không khớp với mật khẩu..';
 
         } elseif (strcmp($request->get('old-password'), $request->get('new-password')) == 0) {
             // Current password and new password same
