@@ -40,6 +40,7 @@ class ExaminationSchedule extends Model
         $model->appointment = $data['appointment'];
         $model->date_at = $data['date_at'];
         $model->doctor = $data['doctor'];
+        $model->patient_id = $data['patient_id'];
         $model->time_at = $data['time_at'];
         $model->status = 1;
 

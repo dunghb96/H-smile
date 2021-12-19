@@ -12,7 +12,7 @@ $(function () {
             dateFormat: "d/m/Y",
         });
     }
-    var timePickr = $('.flatpickr-time');
+    // var timePickr = $('.flatpickr-time');
 
     // if (timePickr.length) {
     //     timePickr.flatpickr({
@@ -305,19 +305,19 @@ function duyet(id, service, status, patient) {
             type: "POST",
             dataType: "json",
             data: {service: service},
-            url: "/admin/appointment/get-doctor", // giờ anh tạo route rồi lấy dữ liệu doctor ra cho em nha OK
+            url: "/admin/appointment/get-doctor", 
             success: function (data) {
-                $('#doctor').html('');
+                $('#doctor_id').html('');
                 data.forEach(function (val, index) {
                     var opt = '<option value="' + val.id + '">' + val.name + '</option>';
-                    $('#doctor').append(opt);
+                    $('#doctor_id').append(opt);
                 });
-                $('#doctor').select2({
+                $('#doctor_id').select2({
                     placeholder: "Chọn bác sĩ",
                     allowClear: true,
-                    dropdownParent: $('#doctor').parent(),
+                    dropdownParent: $('#doctor_id').parent(),
                 })
-                $('#doctor').val(null).trigger('change');
+                $('#doctor_id').val(null).trigger('change');
                 $(window).on('load', function() {
                     // $('#minlogo').hide();
                     if (feather) {
@@ -345,7 +345,7 @@ function saveExamSchedule() {
     info.doctor = $('#doctor').val();
     info.service = $('#service').val();
     info.dateat = $('#date_at').val();
-    info.timeat = $('#time_at').val();
+    info.timeat = $('#atime_at').val();
     $.ajax({
         type: "POST",
         dataType: "json",

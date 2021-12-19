@@ -108,7 +108,6 @@
                                 </div>
                             </div>
 
-
                             <div class="modal fade text-left" id="patientinfo" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                     <div class="modal-content">
@@ -215,7 +214,7 @@
 
                                                 <div class="form-group">
                                                     <label for="category">Bác sĩ</label>
-                                                    <select class="form-control" id="doctor" name="doctor" required>
+                                                    <select class="form-control" id="doctor_id" name="doctor" required>
 
                                                     </select>
                                                 </div>
@@ -225,8 +224,8 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="date_at">Giờ hẹn</label>
-                                                    <select class="form-control" id="time_at" name="time_at" required>
-                                                        <option value="07::00">07::00</option>
+                                                    <select class="form-control" id="atime_at" name="time_at" required>
+                                                        <option value="07:00">07:00</option>
                                                         <option value="09:30">09:30</option>
                                                         <option value="10:00">10:00</option>
                                                     </select>

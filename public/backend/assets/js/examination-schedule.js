@@ -63,8 +63,8 @@ $(function () {
                 },
                 {
                     targets: 5,
-                    render: function(data, type, full, meta){
-                        return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient('+full['patient_id']+')"><span class="font-weight-bold">'+full['patient']+'</span></a>'
+                    render: function (data, type, full, meta) {
+                        return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient(' + full['patient_id'] + ')"><span class="font-weight-bold">' + full['patient'] + '</span></a>'
                     }
                 },
                 {
@@ -92,7 +92,7 @@ $(function () {
                         // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
                         // html += '<i class="fas fa-pencil-alt"></i>';
                         // html += '</button> &nbsp;';
-                        html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy lịch khám" onclick="del(' + full['id'] + ')">';
+                        html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy lịch khám" onclick="del(' + full['id'] + ',' + full['status'] + ')">';
                         html += '<i class="fas fa-trash-alt"></i>';
                         html += '</button>';
                         return html;
@@ -158,8 +158,7 @@ $(function () {
     }
 });
 
-function loadpatient(id)
-{
+function loadpatient(id) {
     $('#information-tab').click();
     $('#patientinfo').modal('show');
     $(".modal-title").html('Thông tin khách hàng');
@@ -314,8 +313,8 @@ function save() {
 
 }
 
-function hoanthanh(id,status,appointment) {
-    if(status == 1) {
+function hoanthanh(id, status, appointment) {
+    if (status == 1) {
         Swal.fire({
             title: 'Khám xong',
             text: "Bạn có chắc chắn muốn hoàn thành lịch khám!",
@@ -333,7 +332,7 @@ function hoanthanh(id,status,appointment) {
                     url: "/admin/examination-schedule/hoanthanh",
                     type: 'post',
                     dataType: "json",
-                    data: { id: id, appointment: appointment},
+                    data: { id: id, appointment: appointment },
                     success: function (data) {
                         if (data.success) {
                             notyfi_success(data.msg);
@@ -345,14 +344,16 @@ function hoanthanh(id,status,appointment) {
                 });
             }
         });
-    } else {
-        notify_error("Lịch khám đã kết thúc");
+    } else if (status == 2) {
+        notify_error("Lịch khám đã hoàn thành");
+    } else if (status == 3) {
+        notify_error("Lịch khám đã bị hủy");
     }
 
 }
 
-function hentiep(id,appointment,status,service_id,patient) {
-    if(status == 1) {
+function hentiep(id, appointment, status, service_id, patient) {
+    if (status == 1) {
         Swal.fire({
             title: 'Hẹn tiếp',
             text: "Bạn có muốn hoàn thành lịch khám và tạo lịch hẹn mới!",
@@ -371,7 +372,7 @@ function hentiep(id,appointment,status,service_id,patient) {
                 $.ajax({
                     type: "POST",
                     dataType: "json",
-                    data: {service: service_id},
+                    data: { service: service_id },
                     url: "/admin/examination-schedule/get-doctor",
                     success: function (data) {
                         $('#doctor').html('');
@@ -401,8 +402,10 @@ function hentiep(id,appointment,status,service_id,patient) {
                 });
             }
         });
-    } else {
-        notify_error("Lịch khám đã kết thúc");
+    } else if (status == 2) {
+        notify_error("Lịch khám đã hoàn thành");
+    } else if (status == 3) {
+        notify_error("Lịch khám đã bị hủy");
     }
 }
 
@@ -421,7 +424,7 @@ function saveExamSchedule() {
         data: info,
         url: "/admin/examination-schedule/hentiep",
         success: function (data) {
-            if(data.success) {
+            if (data.success) {
                 notyfi_success(data.msg);
                 $('#hentiep').modal('hide');
                 $("#tableBasic").DataTable().ajax.reload(null, false);
@@ -435,34 +438,40 @@ function saveExamSchedule() {
     });
 }
 
-function del(id) {
-    Swal.fire({
-        title: 'Hủy lịch khám',
-        text: "Bạn có chắc chắn muốn hủy ?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Tôi đồng ý',
-        customClass: {
-            confirmButton: 'btn btn-primary',
-            cancelButton: 'btn btn-outline-danger ml-1'
-        },
-        buttonsStyling: false
-    }).then(function (result) {
-        if (result.value) {
-            $.ajax({
-                url: "/admin/examination-schedule/del",
-                type: 'post',
-                dataType: "json",
-                data: { id: id },
-                success: function (data) {
-                    if (data.success) {
-                        notyfi_success(data.msg);
-                        $("#tableBasic").DataTable().ajax.reload(null, false);
-                    }
-                    else
-                        notify_error(data.msg);
-                },
-            });
-        }
-    });
+function del(id, status) {
+    if (status == 1) {
+        Swal.fire({
+            title: 'Hủy lịch khám',
+            text: "Bạn có chắc chắn muốn hủy ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Tôi đồng ý',
+            customClass: {
+                confirmButton: 'btn btn-primary',
+                cancelButton: 'btn btn-outline-danger ml-1'
+            },
+            buttonsStyling: false
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    url: "/admin/examination-schedule/del",
+                    type: 'post',
+                    dataType: "json",
+                    data: { id: id },
+                    success: function (data) {
+                        if (data.success) {
+                            notyfi_success(data.msg);
+                            $("#tableBasic").DataTable().ajax.reload(null, false);
+                        }
+                        else
+                            notify_error(data.msg);
+                    },
+                });
+            }
+        });
+    } else if (status == 2) {
+        notify_error("Lịch khám đã hoàn thành");
+    } else if (status == 3) {
+        notify_error("Lịch khám đã bị hủy");
+    }
 }
