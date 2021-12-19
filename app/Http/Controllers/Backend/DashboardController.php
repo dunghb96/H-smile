@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Date;
 
 class DashboardController extends BaseController
 {
+    function __construct()
+    {
+        parent:: __construct();
+    }
+    
     public function index()
     {
         return view('backend.dashboard.index');

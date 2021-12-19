@@ -41,7 +41,7 @@
                             </div>
 
                             <div class="col-lg-4 d-flex mb-1">
-                                <img id="favicon-img" src="" alt="users avatar" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" width="150" />
+                                <img id="favicon-img" src="{{option('favicon')}}" alt="users avatar" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" width="150" />
                                 <div class="media-body col-lg-12 mt-50">
                                     <div class="d-flex mt-1 px-0">
                                         <label class="btn btn-primary mr-75 mb-0" for="favicon">
@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="col-lg-4 d-flex mb-1">
-                                <img id="logofooter-img" src="" alt="users avatar" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" width="150" />
+                                <img id="logofooter-img" src="{{option('logo_footer')}}" alt="users avatar" class="user-avatar users-avatar-shadow rounded mr-2 my-25 cursor-pointer" width="150" />
                                 <div class="media-body col-lg-12 mt-50">
                                     <div class="d-flex mt-1 px-0">
                                         <label class="btn btn-primary mr-75 mb-0" for="logo_footer">

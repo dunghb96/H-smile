@@ -49,7 +49,7 @@ class SettingController extends BaseController
                 $request->file('logo')->move('uploads/setting', $newFileName);
                 // foreach($this->optionKeys() as $optionKey){
                 //     if($request->has($optionKey)){
-                        option(['logo' => $request->input($logo)]);
+                        option(['logo' => $logo]);
                         Cache::forget('logo');
                 //     }
                 // }
@@ -73,7 +73,7 @@ class SettingController extends BaseController
                 $request->file('favicon')->move('uploads/setting', $newFileName);
                 // foreach($this->optionKeys() as $optionKey){
                 //     if($request->has($optionKey)){
-                        option(['favicon' => $request->input($favicon)]);
+                        option(['favicon' => $favicon]);
                         Cache::forget('favicon');
                 //     }
                 // }
@@ -97,7 +97,7 @@ class SettingController extends BaseController
                 $request->file('logo_footer')->move('uploads/setting', $newFileName);
                 // foreach($this->optionKeys() as $optionKey){
                 //     if($request->has($optionKey)){
-                        option(['logo_footer' => $request->input($logo_footer)]);
+                        option(['logo_footer' => $logo_footer]);
                         Cache::forget('logo_footer');
                 //     }
                 // }
