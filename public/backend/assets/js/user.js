@@ -2,6 +2,8 @@
  * DataTables Basic
  */
 var url = '';
+var iid = 0;
+
 $(function () {
     $('#role').select2({
         placeholder: "Chọn các quyền",
@@ -26,10 +28,10 @@ $(function () {
             //     style: 'single'
             // },
             columns: [
-                { data: 'id' },
-                { data: 'name' },
-                { data: 'email' },
-                { data: '' }
+                {data: 'id'},
+                {data: 'name'},
+                {data: 'email'},
+                {data: ''}
             ],
             columnDefs: [
                 {
@@ -224,7 +226,6 @@ $(function () {
 });
 
 
-
 // function filterColumn(i, val) {
 //     // if (i == 5) {
 //     //     var startDate = $('.start_date').val(),
@@ -260,59 +261,61 @@ $(function () {
 //     });
 // };
 
-function loadadd() {
-    $("#addnew").modal('show');
-    $(".modal-title").html('Thêm tài khoản mới');
-    $('#name').val('');
-    $('#email').val('');
-    $('#password').val('');
-    $('#role').val('').change();
-    url = '/admin/user/add';
-}
+// function loadadd() {
+//     $("#addnew").modal('show');
+//     $(".modal-title").html('Thêm tài khoản mới');
+//     $('#name').val('');
+//     $('#email').val('');
+//     $('#password').val('');
+//     $('#role').val('').change();
+//     url = '/admin/user/edit';
+// }
 
-function loaddata(id) {
-    $("#addnew").modal('show');
-    $(".modal-title").html('Cập nhật tài khoản');
-    $.ajax({
-        type: "GET",
-        dataType: "json",
-        url: "/admin/user/edit/" + id,
-        success: function (data) {
-            $('#name').val(data.data.name);
-            $('#email').val(data.data.email);
-            $('#password').val('');
-            $('#role').val(data.rolesOfUser).change();
-            url = '/admin/user/edit/' + id;
-        },
-        error: function () {
-            notify_error('Lỗi truy xuất database');
-        }
-    });
-}
+// function loaddata(id) {
+//     console.log("Chay loaddata")
+//     $.ajax({
+//         type: "POST",
+//         dataType: "json",
+//         data: { id: id },
+//         url: "/admin/user/loaddata",
+//         success: function (data) {
+//             url = '/admin/user/edit';
+//             iid = $('#iid').val();
+//         },
+//         error: function () {
+//             notify_error('Lỗi truy xuất database');
+//         }
+//     });
+// }
 
 function save() {
     var info = {};
-    info.name = $("#name").val();
-    info.email = $("#email").val();
-    info.password = $("#password").val();
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        data: info,
-        url: url,
-        success: function (data) {
-            if (data.success) {
-                notyfi_success(data.msg);
-                $('#addnew').modal('hide');
-                $("#tableBasic").DataTable().ajax.reload(null, false);
+
+    iid = $("#iid").val();
+    if (iid != 0) {
+        info.id = iid;
+
+        info.name = $("#name").val();
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: info,
+            url: "/admin/user/edit",
+
+            success: function (data) {
+                if (data.success) {
+                    notyfi_success(data.msg);
+                    // $('#addnew').modal('hide');
+                    // $("#tableBasic").DataTable().ajax.reload(null, false);
+                } else
+                    notify_error(data.msg);
+            },
+            error: function () {
+                notify_error('Cập nhật không thành công');
             }
-            else
-                notify_error(data.msg);
-        },
-        error: function () {
-            notify_error('Cập nhật không thành công');
-        }
-    });
+        });
+    }
+
 }
 
 function del(id) {
@@ -333,13 +336,12 @@ function del(id) {
                 url: "/admin/user/delete",
                 type: 'post',
                 dataType: "json",
-                data: { item_id: id },
+                data: {item_id: id},
                 success: function (data) {
                     if (data.success) {
                         notyfi_success(data.msg);
                         $(".user-list-table").DataTable().ajax.reload(null, false);
-                    }
-                    else
+                    } else
                         notify_error(data.msg);
                 },
             });

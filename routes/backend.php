@@ -146,6 +146,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
 
     Route::group(['prefix' => 'user'], function () {
         Route::get('/accountsettings', [UserController::class, 'accountsettings'])->name('admin.accountsettings');
+        Route::post('/edit', [UserController::class, 'edit']);
+        Route::post('/changePassword',[UserController::class, 'changePassword'])->name('changePasswordPost');
+
     });
 
 })
