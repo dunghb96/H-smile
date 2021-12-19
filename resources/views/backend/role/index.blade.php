@@ -46,19 +46,16 @@
                                 <div class="modal-dialog modal-xl">
                                     <div class="modal-content pt-0">
                                         <div class="modal-header mb-1">
-                                            <h5 class="modal-title">Thêm bài viết mới</h5>
+                                            <h5 class="modal-title">Thêm vai trò mới</h5>
                                         </div>
                                         <div class="modal-body flex-grow-1">
                                             <form id="frm-add">
                                                 <div class="card">
                                                     <div class="card-body">
                                                         <div class="form-group row">
-                                                            <label for="name" class="col-sm-2 control-label col-form-label">Name</label>
+                                                            <label for="name" class="col-sm-2 control-label col-form-label">Tên vai trò</label>
                                                             <div class="col-sm-10">
-                                                                <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control">
-                                                                @error('name')
-                                                                <p class="text-danger">{{ $message }}</p>
-                                                                @enderror
+                                                                <input type="text" id="name" name="name" class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -68,7 +65,7 @@
                                                     <div class="card-body"> -->
                                                 <div class="m-2 custom-control custom-checkbox">
                                                     <input type="checkbox" id="check-all" class="custom-control-input">
-                                                    <label class="custom-control-label" for="check-all">Permissions</label>
+                                                    <label class="custom-control-label" for="check-all">Chọn tất cả các quyền</label>
                                                 </div>
                                                 <!-- <div class="card">
                                                     <div class="card-body"> -->
@@ -80,7 +77,7 @@
                                                             @foreach($group->permissions as $permission)
                                                             <div class="col-md-3">
                                                                 <div class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" name="permissions[]" id="permission-{{ $permission->id }}" class="custom-control-input" value="{{ $permission->id }}">
+                                                                    <input type="checkbox" name="permissions[]" id="permission-{{ $permission->id }}" class="custom-control-input permissions" value="{{ $permission->id }}">
                                                                     <label class="custom-control-label" for="permission-{{ $permission->id }}">{{ $permission->title }}</label>
                                                                 </div>
                                                             </div>
@@ -103,6 +100,63 @@
                                 </div>
                             </div>
 
+                            <div class="modal new-user-modal fade" id="editinfo">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content pt-0">
+                                        <div class="modal-header mb-1">
+                                            <h5 class="modal-title">Cập nhật vai trò</h5>
+                                        </div>
+                                        <div class="modal-body flex-grow-1">
+                                            <form id="frm-edit">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="form-group row">
+                                                            <label for="name" class="col-sm-2 control-label col-form-label">Tên vai trò</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" id="ename" name="ename" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- <div class="card">
+                                                    <div class="card-body"> -->
+                                                <div class="m-2 custom-control custom-checkbox">
+                                                    <input type="checkbox" id="check-all" class="custom-control-input">
+                                                    <label class="custom-control-label" for="check-all">Chọn tất cả các quyền</label>
+                                                </div>
+                                                <!-- <div class="card">
+                                                    <div class="card-body"> -->
+                                                @foreach($permissionGroups as $group)
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4>{{ $group->name }}</h4>
+                                                        <div class="row">
+                                                            @foreach($group->permissions as $permission)
+                                                            <div class="col-md-3">
+                                                                <div class="custom-control custom-checkbox">
+                                                                    <input type="checkbox" name="epermissions[]" id="epermission-{{ $permission->id }}" class="custom-control-input" value="{{ $permission->id }}">
+                                                                    <label class="custom-control-label" for="epermission-{{ $permission->id }}" >{{ $permission->title }}</label>
+                                                                </div>
+                                                            </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endforeach
+                                                <!-- </div>
+                                                </div> -->
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <button type="button" onclick="saveedit()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
+                                                        <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                     </div>

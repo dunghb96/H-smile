@@ -81,7 +81,17 @@ $(function () {
             rules: {
                 name: {
                     required: true
-                }
+                },
+            }
+        });
+    });
+    $('#frm-edit').each(function () {
+        var $this = $(this);
+        $this.validate({
+            rules: {
+                ename: {
+                    required: true
+                },
             }
         });
     });
@@ -91,17 +101,19 @@ function loadadd() {
     $("#addnew").modal('show');
     $(".modal-title").html('Thêm vai trò mới');
     $('#name').val('');
-    // $('#category').val(null).trigger('change');
-    // $('#short_desc').val('');
-    // url = '/admin/blog/add';
-    // iid = 0;
 }
 
 function save() {
     var isValid = $('#frm-add').valid();
     var info = {};
+    var data = '';
+    $("input[name='permissions[]']")
+        .map(function () {
+            data += $(this).val() + ',';
+        });
+    info.permissions = data.slice(0, -1);
     info.name = $('#name').val();
-    info.permissions = $('#permissions').val();
+
     if (isValid) {
         $.ajax({
             type: "POST",
@@ -122,4 +134,91 @@ function save() {
             }
         });
     }
+}
+
+function loaddata(id) {
+    $("#editinfo").modal('show');
+    $(".modal-title").html('Cập nhật vai trò');
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        data: { id: id },
+        url: '/admin/role/loaddata',
+        success: function (data) {
+            $('#ename').val(data.data.name);
+            data.permissionsSelected.forEach(function (val, index) {
+                $('#epermission-'+val).attr('checked',true);
+                $('#epermission-'+val).prop('checked', this.checked);
+            });;
+            iid = id;
+        },
+        error: function () {
+            notify_error('Cập nhật không thành công');
+        }
+    });
+}
+
+function saveedit() {
+    var isValid = $('#frm-edit').valid();
+    var info = {};
+    var data = '';
+    $("input[name='epermissions[]']:checked")
+        .map(function () {
+            data += $(this).val() + ',';
+        });
+    info.permissions = data.slice(0, -1);
+    info.name = $('#ename').val();
+    info.id = iid;
+    if (isValid) {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: info,
+            url: '/admin/role/saveedit',
+            success: function (data) {
+                if (data.success) {
+                    notyfi_success(data.msg);
+                    $('#editinfo').modal('hide');
+                    $("#tableBasic").DataTable().ajax.reload(null, false);
+                }
+                else
+                    notify_error(data.msg);
+            },
+            error: function () {
+                notify_error('Cập nhật không thành công');
+            }
+        });
+    }
+}
+
+function del(id) {
+    Swal.fire({
+        title: 'Xóa dữ liệu',
+        text: "Bạn có chắc chắn muốn xóa!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Tôi đồng ý',
+        customClass: {
+            confirmButton: 'btn btn-primary',
+            cancelButton: 'btn btn-outline-danger ml-1'
+        },
+        buttonsStyling: false
+    }).then(function (result) {
+        if (result.value) {
+            $.ajax({
+                url: "/admin/role/del",
+                type: 'post',
+                dataType: "json",
+                data: { id: id },
+                success: function (data) {
+                    if (data.success) {
+                        notyfi_success(data.msg);
+                        $("#tableBasic").DataTable().ajax.reload(null, false);
+                    }
+                    else
+                        notify_error(data.msg);
+                },
+            });
+        }
+    });
 }

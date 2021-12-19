@@ -196,6 +196,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::get('/', [RoleController::class, 'index'])->name('admin.role');
         Route::get('/json', [RoleController::class, 'json']);
         Route::post('/save', [RoleController::class, 'save']);
+        Route::post('/loaddata', [RoleController::class, 'loaddata']);
+        Route::post('/saveedit', [RoleController::class, 'saveedit']);
+        Route::post('/del', [RoleController::class, 'del']);
     });
 
 })

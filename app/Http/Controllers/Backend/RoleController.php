@@ -33,31 +33,101 @@ class RoleController extends BaseController
 
     public function json()
     {
-        $jsonObj['data'] = Role::orderBy('id','DESC')->get();
+        $jsonObj['data'] = Role::orderBy('id', 'DESC')->get();
         echo json_encode($jsonObj);
     }
 
     public function save(Request $request)
     {
         $roleName = $request->input('name');
-        if ($this->roleModel->isExistRole($roleName, 'web')){
+
+        if ($this->roleModel->isExistRole($roleName, 'web')) {
             $jsonObj['success'] = false;
-            $jsonObj['msg'] = 'Quyền đã tồn tại trong hệ thống';
+            $jsonObj['msg'] = 'Tên quyền đã tồn tại trong hệ thống';
+            echo json_encode($jsonObj);
+        } else {
+            DB::transaction(function () use ($request, $roleName) {
+                $role = Role::create([
+                    'name' => $roleName,
+                ]);
+
+                $permissions = $request->input('permissions');
+                $permissions = explode(',', $permissions);
+                // $permissions = $request->input('permissions');
+                if (is_array($permissions) && count($permissions)) {
+                    $role->syncPermissions($permissions);
+                }
+            });
+
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhập dữ liệu thành công';
+            echo json_encode($jsonObj);
         }
+    }
 
-        DB::transaction(function () use ($request, $roleName) {
-            $role = Role::create([
-                'name' => $roleName,
-            ]);
+    function loaddata(Request $request)
+    {
+        $id = $request->id;
+        $data = $this->roleModel->findOrFail($id);
+        // $permissionGroups = PermissionGroup::isAvailable()->with('permissions')->orderBy('name')->get();
+        $permissionSelected = $this->roleHasPermissionModel->getPermissionIdByRoleId($id);
+        $jsonObj['data'] = $data;
+        $jsonObj['permissionsSelected'] = $permissionSelected;
+        echo json_encode($jsonObj);
+    }
 
-            $permissions = $request->input('permissions');
-            if (is_array($permissions) && count($permissions)){
-                $role->syncPermissions($permissions);
-            }
-        });
+    function saveedit(Request $request)
+    {
+        $id = $request->id;
+        $roleName = $request->input('name');
+        $role = Role::findOrFail($id);
+
+        if ($role->name <> $roleName && $this->roleModel->isExistRole($roleName, 'web')) {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Tên quyền đã tồn tại trong hệ thống';
+            echo json_encode($jsonObj);
+        } else {
+            DB::transaction(function () use ($request, $role, $id) {
+                $role->name = $request->input('name');
+                $role->save();
+                $model = RoleHasPermission::where('role_id', $id);
+                $model->delete();
+
+                $permissions = $request->input('permissions');
+                if (is_array($permissions) && count($permissions)) {
+                    $role->syncPermissions($permissions);
+                }
+
+                $permissions = $request->input('permissions');
+                $permissions = explode(',', $permissions);
+                // $permissions = $request->input('permissions');
+                if (is_array($permissions) && count($permissions)) {
+                    $role->syncPermissions($permissions);
+                }
+            });
+
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhập dữ liệu thành công';
+            echo json_encode($jsonObj);
+        }
+    }
+
+    public function del(Request $request)
+    {
+        $id = $request->id;
+
+        $role = Role::with('role_has_permission')->findOrFail($id);
+
+        $users = User::role($id)->get();
+        foreach ($users as $user) {
+            $user->removeRole($id);
+        }
+        $role->role_has_permission()->delete();
+        $role->delete();
 
         $jsonObj['success'] = true;
         $jsonObj['msg'] = 'Cập nhập dữ liệu thành công';
+        echo json_encode($jsonObj);
     }
 
     // public function showFormAdd()

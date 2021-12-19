@@ -98,19 +98,19 @@
                     <span class="menu-title text-truncate" data-i18n="Chat">Bảng giá</span>
                 </a>
             </li> -->
-            <li class=" nav-item">
+            <li class=" nav-item {{ request()->is('admin/contact') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.contact') }}">
                     <i data-feather='mail'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Liên hệ</span>
                 </a>
             </li>
-            <li class=" nav-item">
+            <li class=" nav-item {{ request()->is('admin/partner') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.partner') }}">
                     <i data-feather='users'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Đối tác</span>
                 </a>
             </li>
-            <li class=" nav-item">
+            <li class=" nav-item {{ request()->is('admin/feedback') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.feedback') }}">
                     <i data-feather='message-square'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Feed back</span>
@@ -121,19 +121,19 @@
                 <span data-i18n="Misc">Quản lý đặt lịch</span>
                 <i data-feather="more-horizontal"></i>
             </li>
-            <li class=" nav-item">
+            <li class=" nav-item {{ request()->is('admin/appointment') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.appointment') }}">
                     <i data-feather='bell'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Yêu cầu</span>
                 </a>
             </li>
-            <li class=" nav-item">
+            <li class=" nav-item {{ request()->is('admin/examination-schedule') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.examination_schedule') }}">
                     <i data-feather='calendar'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Lịch khám</span>
                 </a>
             </li>
-            <li class=" nav-item">
+            <li class=" nav-item {{ request()->is('admin/patient') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.patient') }}">
                     <i data-feather='users'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Khách hàng</span>
@@ -144,20 +144,20 @@
                 <span data-i18n="Misc">Quản lý nhân sự</span>
                 <i data-feather="more-horizontal"></i>
             </li>
-            <li class=" nav-item">
+            <li class=" nav-item {{ request()->is('admin/employee') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.employee') }}">
                     <i data-feather='user-plus'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Nhân sự</span>
                 </a>
             </li>
-            <li class=" nav-item">
+            <li class=" nav-item {{ request()->is('admin/doctor') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.doctor') }}">
                     <i data-feather='users'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Bác sĩ</span>
                 </a>
             </li>
-            <li class=" nav-item">
-                <a class="d-flex align-items-center" href="#">
+            <li class=" nav-item mb-2 {{ request()->is('admin/role') ? 'active' : '' }}" >
+                <a class="d-flex align-items-center" href="{{ route('admin.role') }}">
                     <i data-feather='lock'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Phân quyền</span>
                 </a>

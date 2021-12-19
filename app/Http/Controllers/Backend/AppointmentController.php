@@ -37,7 +37,7 @@ class AppointmentController extends BaseController
             $jsonObj['data'][$key]->email = $row->patients->email;
             $jsonObj['data'][$key]->phone = $row->patients->phone;
             $jsonObj['data'][$key]->services = $row->service->name;
-            $jsonObj['data'][$key]->shift =  (string)Appointment::SHIFT[$row->shift];
+            $jsonObj['data'][$key]->shift =  Appointment::SHIFT[$row->shift];
             $jsonObj['data'][$key]->doctor_name =  $row->doctor->name;
             $jsonObj['data'][$key]->status_word =  Appointment::STATUS[$row->status];
         }
