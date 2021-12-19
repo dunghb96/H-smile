@@ -30,7 +30,7 @@ class AppointmentController extends BaseController
 
     public function json()
     {
-        $list = Appointment::with('patients', 'service', 'doctor')->where('status','=','1')->orderBY('created_at')->get();
+        $list = Appointment::with('patients', 'service', 'doctor')->where('status','>','0')->orderBY('created_at')->get();
         $jsonObj['data'] = $list;
         foreach($list as $key => $row){
             $jsonObj['data'][$key]->full_name = $row->patients->full_name;

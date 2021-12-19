@@ -89,12 +89,12 @@ $(function () {
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hẹn tiếp" onclick="hentiep(' + full['id'] + ',' + full['appointment'] + ',' + full['status'] + ',' + full['service_id'] + ',' + full['patient_id'] + ')">';
                         html += '<i data-feather="arrow-right-circle"></i>';
                         html += '</button> &nbsp;';
-                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
-                        html += '<i class="fas fa-pencil-alt"></i>';
-                        html += '</button> &nbsp;';
-                        // html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa" onclick="del(' + full['id'] + ')">';
-                        // html += '<i class="fas fa-trash-alt"></i>';
-                        // html += '</button>';
+                        // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
+                        // html += '<i class="fas fa-pencil-alt"></i>';
+                        // html += '</button> &nbsp;';
+                        html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy lịch khám" onclick="del(' + full['id'] + ')">';
+                        html += '<i class="fas fa-trash-alt"></i>';
+                        html += '</button>';
                         return html;
                     },
                     width: 180
@@ -348,7 +348,7 @@ function hoanthanh(id,status,appointment) {
     } else {
         notify_error("Lịch khám đã kết thúc");
     }
-    
+
 }
 
 function hentiep(id,appointment,status,service_id,patient) {
@@ -372,7 +372,7 @@ function hentiep(id,appointment,status,service_id,patient) {
                     type: "POST",
                     dataType: "json",
                     data: {service: service_id},
-                    url: "/admin/examination-schedule/get-doctor", 
+                    url: "/admin/examination-schedule/get-doctor",
                     success: function (data) {
                         $('#doctor').html('');
                         data.forEach(function (val, index) {
@@ -435,34 +435,34 @@ function saveExamSchedule() {
     });
 }
 
-// function del(id) {
-//     Swal.fire({
-//         title: 'Xóa dữ liệu',
-//         text: "Bạn có chắc chắn muốn xóa!",
-//         icon: 'warning',
-//         showCancelButton: true,
-//         confirmButtonText: 'Tôi đồng ý',
-//         customClass: {
-//             confirmButton: 'btn btn-primary',
-//             cancelButton: 'btn btn-outline-danger ml-1'
-//         },
-//         buttonsStyling: false
-//     }).then(function (result) {
-//         if (result.value) {
-//             $.ajax({
-//                 url: "/admin/employee/del",
-//                 type: 'post',
-//                 dataType: "json",
-//                 data: { id: id },
-//                 success: function (data) {
-//                     if (data.success) {
-//                         notyfi_success(data.msg);
-//                         $("#tableBasic").DataTable().ajax.reload(null, false);
-//                     }
-//                     else
-//                         notify_error(data.msg);
-//                 },
-//             });
-//         }
-//     });
-// }
+function del(id) {
+    Swal.fire({
+        title: 'Hủy lịch khám',
+        text: "Bạn có chắc chắn muốn hủy ?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Tôi đồng ý',
+        customClass: {
+            confirmButton: 'btn btn-primary',
+            cancelButton: 'btn btn-outline-danger ml-1'
+        },
+        buttonsStyling: false
+    }).then(function (result) {
+        if (result.value) {
+            $.ajax({
+                url: "/admin/examination-schedule/del",
+                type: 'post',
+                dataType: "json",
+                data: { id: id },
+                success: function (data) {
+                    if (data.success) {
+                        notyfi_success(data.msg);
+                        $("#tableBasic").DataTable().ajax.reload(null, false);
+                    }
+                    else
+                        notify_error(data.msg);
+                },
+            });
+        }
+    });
+}

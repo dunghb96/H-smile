@@ -145,20 +145,20 @@ class ExaminationScheduleController extends BaseController
     //     echo json_encode($jsonObj);
     // }
 
-    // public function del(Request $request)
-    // {
-    //     $id = $request->input('id');
-    //     $model = ExaminationSchedule::find($id);
-    //     $model->status = 0;
-    //     $result = $model->save();
-    //     if($result){
-    //         $jsonObj['success'] = true;
-    //         $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
-    //     } else {
-    //         $jsonObj['success'] = false;
-    //         $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-    //     }
-    //     echo json_encode($jsonObj);
-    // }
+    public function del(Request $request)
+    {
+        $id = $request->id;
+        $model = ExaminationSchedule::find($id);
+        $model->status = 3;
+        $result = $model->save();
+        if($result){
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        } else {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+        }
+        echo json_encode($jsonObj);
+    }
 
 }

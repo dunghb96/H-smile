@@ -150,7 +150,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         // Route::post('/add', [ExaminationScheduleController::class, 'add']);
         // Route::post('/loaddata', [ExaminationScheduleController::class, 'loaddata']);
         // Route::post('/edit', [ExaminationScheduleController::class, 'edit']);
-        // Route::post('/del', [ExaminationScheduleController::class, 'del']);
+        Route::post('/del', [ExaminationScheduleController::class, 'del']);
     });
 
     Route::group(['prefix' => 'patient'], function () {

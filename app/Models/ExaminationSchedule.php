@@ -17,7 +17,8 @@ class ExaminationSchedule extends Model
 
     const STATUS= [
         1 => 'Chờ khám',
-        2 => 'Hoàn thành'
+        2 => 'Hoàn thành',
+        3 => 'Đã hủy'
     ];
 
     public function doctors()
