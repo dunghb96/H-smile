@@ -65,87 +65,49 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Họ tên</label>
-                                                <input type="number" class="form-control" id="price" name="price" placeholder="Họ và tên">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Tuổi</label>
-                                                <input type="number" class="form-control" id="price" name="price" placeholder="Tuổi">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Số điện thoại</label>
-                                                <input type="number" class="form-control" id="price" name="price" placeholder="Số điện thoại">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="number" class="form-control" id="price" name="price" placeholder="Email">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="content">Mô tả</label>
-                                                <textarea id="content" name="content" rows="3" class="form-control" placeholder="Mô tả bệnh án"></textarea>
-                                            </div>
-                                            <button type="button" onclick="save()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
-                                            <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
-                            <div class="modal modal-slide-in new-user-modal fade" id="editinfo">
-                                <div class="modal-dialog">
-                                    <form class="modal-content pt-0" id="frm-edit">
-                                        <input type="hidden" name="id" id="iid">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
-                                        <div class="modal-header mb-1">
-                                            <h5 class="modal-title">Cập nhật yêu cầu</h5>
-                                        </div>
-                                        <div class="modal-body flex-grow-1">
-                                            <div class="form-group">
-                                                <label for="name">Khách hàng</label>
-                                                <input id="ename" type="text" class="form-control" name="name" required />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="parent_id">Dịch vụ</label>
-                                                <select class="form-control" id="eparent_id" name="parent_id" required>
-                                                    <option value="0">ROOT</option>
-                                                    {{-- @foreach($services as $service)
-                                                        <option value="{{ $service->id }}">{{ $service->name }}</option>
-                                                    @endforeach --}}
+                                                <label for="doctor">Nha sĩ</label>
+                                                <select class="form-control" id="doctor" name="doctor" required>
+                                                    @foreach($doctor as $row)
+                                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Giá</label>
-                                                <input type="number" class="form-control" id="eprice" name="price">
+                                                <label for="date_at">Giờ hẹn</label>
+                                                <select class="form-control" id="time_at" name="time_at" required>
+                                                    <option value="07:00">07:00</option>
+                                                    <option value="09:30">09:30</option>
+                                                    <option value="10:00">10:00</option>
+                                                </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Icon</label>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="eicon" name="icon">
-                                                    <label class="custom-file-label" for="eicon">Chọn Icon</label>
-                                                </div>
+                                                <label>Họ tên</label>
+                                                <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Họ và tên">
                                             </div>
                                             <div class="form-group">
-                                                <label>Hình ảnh</label>
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="eimage" name="image">
-                                                    <label class="custom-file-label" for="eimage">Chọn hình ảnh</label>
-                                                </div>
+                                                <label>Tuổi</label>
+                                                <input type="number" class="form-control" id="age" name="age" placeholder="Tuổi">
                                             </div>
                                             <div class="form-group">
-                                                <label for="short_description">Mô tả</label>
-                                                <input id="eshort_description" type="text" class="form-control" name="short_description" placeholder="Mô tả ngắn" />
+                                                <label>Số điện thoại</label>
+                                                <input type="number" class="form-control" id="phone_number" name="phone_number" placeholder="Số điện thoại">
                                             </div>
                                             <div class="form-group">
-                                                <label for="content">Chi tiết</label>
-                                                <textarea id="econtent" name="content" rows="3" class="form-control" placeholder="Chi tiết dịch vụ"></textarea>
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                                             </div>
-                                            <button type="button" onclick="save()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
+
+                                            <div class="form-group">
+                                                <label for="status_desc">Mô tả</label>
+                                                <textarea id="status_desc" name="status_desc" rows="3" class="form-control" placeholder="Mô tả tình trạng"></textarea>
+                                            </div>
+                                            <button type="button" onclick="save()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Thêm yêu cầu</button>
                                             <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
+
 
                             <div class="modal fade text-left" id="patientinfo" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">

@@ -85,9 +85,6 @@ $(function () {
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Tạo lịch khám" onclick="duyet(' + full['id'] + ',' + full['service_id'] + ',' + full['status'] + ',' + full['patient_id'] + ')">';
                         html += '<i data-feather="calendar"></i>';
                         html += '</button> &nbsp;';
-                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
-                        html += '<i class="fas fa-pencil-alt"></i>';
-                        html += '</button> &nbsp;';
                         html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy yêu cầu" onclick="del(' + full['id'] + ')">';
                         html += '<i class="fas fa-trash-alt"></i>';
                         html += '</button>';
@@ -141,15 +138,27 @@ $(function () {
         var $this = $(this);
         $this.validate({
             rules: {
-                name: {
+                service: {
                     required: true
                 },
-                parent_id: {
+                doctor: {
                     required: true
                 },
-                price: {
-                    digits: true
-                }
+                time_at: {
+                    required: true
+                },
+                full_name: {
+                    required: true
+                },
+                age: {
+                    required: true
+                },
+                phone_number: {
+                    required: true
+                },
+                email: {
+                    required: true
+                },
             }
         });
     });
@@ -241,7 +250,7 @@ function loaddata(id) {
         type: "POST",
         dataType: "json",
         data: { id: id },
-        url: "/admin/service/loaddata",
+        url: "/admin/appointment/loaddata",
         success: function (data) {
             $('#ename').val(data.name);
             $('#eprice').val(data.price);
@@ -262,19 +271,20 @@ function save() {
     var info = {};
     var isValid = $('#frm-add').valid();
 
-    if (iid != 0) {
-        var info = new FormData($("#frm-edit")[0]);
+
+    if (isValid) {
+        var info = new FormData($("#frm-add")[0]);
         $.ajax({
             type: "POST",
             dataType: "json",
             data: info,
-            url: url,
+            url: '/admin/appointment/add',
             contentType: false,
             processData: false,
             success: function (data) {
                 if (data.success) {
                     notyfi_success(data.msg);
-                    $('#editinfo').modal('hide');
+                    $('#addnew').modal('hide');
                     $("#tableBasic").DataTable().ajax.reload(null, false);
                 }
                 else
@@ -284,31 +294,8 @@ function save() {
                 notify_error('Cập nhật không thành công');
             }
         });
-    } else {
-        if (isValid) {
-            var info = new FormData($("#frm-add")[0]);
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                data: info,
-                url: url,
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    if (data.success) {
-                        notyfi_success(data.msg);
-                        $('#addnew').modal('hide');
-                        $("#tableBasic").DataTable().ajax.reload(null, false);
-                    }
-                    else
-                        notify_error(data.msg);
-                },
-                error: function () {
-                    notify_error('Cập nhật không thành công');
-                }
-            });
-        }
     }
+
 }
 
 function duyet(id, service, status, patient) {
