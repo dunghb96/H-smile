@@ -28,8 +28,8 @@
 <section class="pricing-plan-area">
     <div class="container">
         <div class="sec-title max-width text-center">
-            <h1>Relaxed Payment Plans 01</h1>
-            <p>We are proud to have the opportunity to give you the smile of your dreams in affordable cost.</p>
+            <h1>Bảng giá dịch vụ</h1>
+            <p></p>
         </div>
         <div class="row">
             <!--Start single price box-->
@@ -42,22 +42,15 @@
                         <div class="top">
                             <h2><span>{{$item->name}}</span></h2>
                         </div>
-                        <div class="package">
-                            <h3><span>Giá niêm yết</span></h3>
-                        </div>
                     </div>
                     <div class="price-list">
                         @if($item->serviceChildrent->count())
-                        <ul>
-                            @foreach($item->serviceChildrent as $service)
-                            <li>{{$service->name}} : {{$service->price}}</li>
-
-                            @endforeach
-                        </ul>
+                            <ul>
+                                @foreach($item->serviceChildrent as $service)
+                                <li>{{$service->name}}: {{number_format($service->price)}} VND</li>
+                                @endforeach
+                            </ul>
                         @endif
-                    </div>
-                    <div class="table-footer">
-                        <a class="btn-one" href="#">Liên hệ</a>
                     </div>
                 </div>
 
