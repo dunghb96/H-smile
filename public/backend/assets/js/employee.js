@@ -224,7 +224,7 @@ $(function () {
                         if ($type == 1) {
                             return 'Nha sĩ';
                         } else if ($type == 2) {
-                            return 'Thu ngân';
+                            return 'Nhân viên';
                         } else if ($type == 3) {
                             return 'Quản trị viên';
                         }
