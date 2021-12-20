@@ -8,11 +8,11 @@
             <div class="col-xl-12">
                 <div class="inner-content clearfix">
                     <div class="title float-left">
-                       <h2>Giới thiêu</h2>
+                       <h2>Giới thiệu</h2>
                     </div>
                     <div class="breadcrumb-menu float-right">
                         <ul class="clearfix">
-                            <li><a href="index-2.html">Home</a></li>
+                            <li><a href="index-2.html">Trang chủ</a></li>
                             <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
                             <li class="active">Giới thiệu</li>
                         </ul>
@@ -59,7 +59,7 @@
 <!--End About Area-->
 
 <!--Start fact counter area-->
-<section class="fact-counter-area style2">
+<section class="fact-counter-area style2" >
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -71,13 +71,13 @@
                                 <span class="icon-tooth-3"></span>
                             </div>
                             <h1>
-                                <span class="timer" data-from="1" data-to="177" data-speed="5000" data-refresh-interval="50">4257</span>
+                                <span class="timer" data-from="1" data-to="{{ $doneAppoint }}" data-speed="5000" data-refresh-interval="50">{{ $doneAppoint }}</span>
                             </h1>
                             <div class="title">
-                                <h3>Ca Khám Chữa </h3>
+                                <h3>Đã hoàn thành</h3>
                             </div>
                             <div class="text">
-                                <p>Khách hàng hài lòng về dịch vụ của phòng khám</p>
+                                <p>Số dự án đã thành công của chúng tôi.</p>
                             </div>
                         </div>
                     </li>
@@ -89,13 +89,13 @@
                                 <span class="icon-doctor-1"></span>
                             </div>
                             <h1>
-                                <span class="timer" data-from="1" data-to="7" data-speed="5000" data-refresh-interval="50">18</span>
+                                <span class="timer" data-from="1" data-to="{{ $countDoctor }}" data-speed="5000" data-refresh-interval="50">{{ $countDoctor }}</span>
                             </h1>
                             <div class="title">
-                                <h3>Nha Sĩ</h3>
+                                <h3>Nha sĩ chuyên nghiệp</h3>
                             </div>
                             <div class="text">
-                                <p>Có trình độ, kinh nghiệm chuyên môn cao,cùng với đó là sự tận tâm y đức trong công việc</p>
+                                <p>Kinh nghiệm làm việc mang đến cho khách hàng sự tin tưởng</p>
                             </div>
                         </div>
                     </li>
@@ -107,13 +107,13 @@
                                 <span class="icon-hospital"></span>
                             </div>
                             <h1>
-                                <span class="timer" data-from="0" data-to="1" data-speed="5000" data-refresh-interval="50">6</span>
+                                <span class="timer" data-from="1" data-to="1" data-speed="5000" data-refresh-interval="50">1</span>
                             </h1>
                             <div class="title">
-                                <h3>Chi Nhánh</h3>
+                                <h3>Cơ Sở</h3>
                             </div>
                             <div class="text">
-                                <p>Duy nhất tại Hà Nôi</p>
+                                <p>Chúng tôi sẽ mở rộng chi nhánh trong tương lai</p>
                             </div>
                         </div>
                     </li>
@@ -228,154 +228,29 @@
 <!--End Choose area-->
 
 <!--Start team area-->
-<section class="team-area gray-bg">
-    <div class="container">
+<section class="team-area">
+    <div class="container" style="margin-top: 100px">
         <div class="sec-title text-center">
             <h3>Nha Sĩ Chuyên Nghiệp</h3>
-            <h1>Đội có trình độ cao</h1>
+            <h1>Đội ngũ nha sĩ có trình độ cao</h1>
         </div>
+
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 <div class="team-carousel owl-carousel owl-theme">
-
                     <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/1.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Daryl Cornelius</h3>
-                                <span>Implantologist</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
+                    @foreach($doctor as $row)
+                        <div class="single-team-member">
+                            <div class="img-holder">
+                                <img src="{{ $row->users->avatar ? $row->users->avatar :'/frontend/images/team/1.jpg' }}" alt="{{ $row->users->avatar ?? '/frontend/images/team/1.jpg' }}">
+                                <div class="overlay-style-one"></div>
+                                <div class="text-holder text-center">
+                                    <h3>{{$row->name}}</h3>
+                                    <span>{{ $row->majors }}</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/2.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Eugene Renolds</h3>
-                                <span>Periodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/3.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Bonnie Alberta</h3>
-                                <span>Orthodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/1.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Daryl Cornelius</h3>
-                                <span>Implantologist</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/2.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Eugene Renolds</h3>
-                                <span>Periodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/3.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Bonnie Alberta</h3>
-                                <span>Orthodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/1.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Daryl Cornelius</h3>
-                                <span>Implantologist</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/2.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Eugene Renolds</h3>
-                                <span>Periodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-                    <!--Start single item member-->
-                    <div class="single-team-member">
-                        <div class="img-holder">
-                            <img src="/frontend/images/team/3.jpg" alt="Awesome Image">
-                            <div class="overlay-style-one"></div>
-                            <div class="text-holder text-center">
-                                <h3>Dr. Bonnie Alberta</h3>
-                                <span>Orthodontists</span>
-                                <div class="button">
-                                    <a class="btn-one" href="#">Know More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End single item member-->
-
+                    @endforeach
                 </div>
             </div>
         </div>

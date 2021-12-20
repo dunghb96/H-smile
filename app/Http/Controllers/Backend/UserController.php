@@ -128,6 +128,43 @@ class UserController extends BaseController
 
     }
 
+    function thayanh(Request $request)
+    {
+        $model = User::find(Auth::user()->id);
+        if ($request->hasFile('hinhanh')) {
+            $hinhanh = $request->hinhanh->getClientOriginalName();
+            if($hinhanh != '') {
+                $newFileName = uniqid() . '-' . $hinhanh;
+                $path = $request->hinhanh->storeAs('public/uploads/user', $newFileName);
+                $hinhanh = str_replace('public', '', $path);
+                $request->file('hinhanh')->move('uploads/user', $newFileName);
+            }
+        }
+        $model->avatar = $hinhanh;
+        $result = $model->save();
+        if ($result) {
+            Auth::user()->avatar = $hinhanh;
+            $jsonObj['filename'] = $hinhanh;
+            $jsonObj['success'] = true;
+        } else {
+            $jsonObj['msg'] = "Lỗi khi cập nhật database";
+            $jsonObj['success'] = false;
+        }
+        echo json_encode($jsonObj);
+    }
 
+    function xoaanh()
+    {
+        $model = User::find(Auth::user()->id);
+        $model->avatar = '/images/avatar-s-11.jpg';
+        $result = $model->save();
+        if ($result) {
+            Auth::user()->avatar = '/images/avatar-s-11.jpg';
+            $jsonObj['success'] = true;
+        } else {
+            $jsonObj['success'] = false;
+        }
+        echo json_encode($jsonObj);
+    }
 
 }

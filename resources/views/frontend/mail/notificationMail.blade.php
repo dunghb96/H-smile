@@ -52,7 +52,7 @@
                 <!-- Error Inner -->
                 <div class="success-inner">
                     <h1><i class="fa fa-envelope"></i><span>Yêu cầu đặt lịch thành công!</span></h1>
-                    <p>Xin chào, {{$name}}</p>
+                    <p>Xin chào, {{$patient}}</p>
                     <p>Cảm ơn bạn đã tin tưởng dịch vụ của chung tôi, yêu cầu đặt lịch của bạn đã được tiếp nhận. Nhân
                         viên tư vấn sẽ gọi lại và xác minh lịch khám của mình một lần nữa</p>
 
@@ -60,8 +60,8 @@
                     <ul>
                         <li>Dịch vụ: {{$serviceSelected}}</li>
                         <li>Thời gian: {{ $dateSelected }}</li>
-                        <li>Ca khám: {{ $shiftName }}</li>
-                        <li>Tình trạng: {{$descRequest}}</li>
+                        <li>Bác sĩ tiếp nhận: {{ $doctor }}</li>
+                        <li>Tại: {{$timeat}}</li>
                     </ul>
                     <p class="font-weight-bold">Cảm ơn quý khách</p>
 

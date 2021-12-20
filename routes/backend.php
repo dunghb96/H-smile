@@ -49,15 +49,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
 
 
     Route::group(['prefix' => 'doctor'], function () {
-        Route::get('/today', [DashboardController::class, 'today'])->name('admin.today');
+        Route::get('/today', [DashboardController::class, 'today'])->middleware('permission:my_schedules')->name('admin.today');
         Route::get('/today/json', [DashboardController::class, 'today_json']);
-        Route::get('/future', [DashboardController::class, 'future'])->name('admin.future');
+        Route::get('/future', [DashboardController::class, 'future'])->middleware('permission:my_schedules')->name('admin.future');
         Route::get('/future/json', [DashboardController::class, 'future_json']);
         Route::get('/past', [DashboardController::class, 'past'])->name('admin.past');
         Route::get('/past/json', [DashboardController::class, 'past_json']);
     });
 
-    Route::group(['prefix' => 'setting'], function () {
+    Route::group(['prefix' => 'setting', 'middleware' => ['permission:website_settings']], function () {
         Route::get('/', [SettingController::class, 'index'])->name('admin.setting');
         Route::post('/saveForm', [SettingController::class, 'saveForm']);
         Route::post('/thaylogo', [SettingController::class, 'thaylogo']);
@@ -74,7 +74,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/del', [SlideController::class, 'del'])->middleware('permission:delete_slides');
     });
 
-    Route::group(['prefix' => 'blog-category'], function () {
+    Route::group(['prefix' => 'blog-category', 'middleware' => ['permission:list_blogs']], function () {
         Route::get('/', [BlogCategoryController::class, 'index'])->name('admin.blog_category');
         Route::get('/json', [BlogCategoryController::class, 'json']);
         Route::post('/add', [BlogCategoryController::class, 'add']);
@@ -112,7 +112,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'contact'], function () {
-        Route::get('/', [ContactController::class, 'index'])->middleware('permission:list_slides')->name('admin.contact');
+        Route::get('/', [ContactController::class, 'index'])->middleware('permission:list_contacts')->name('admin.contact');
         Route::get('/json', [ContactController::class, 'json']);
         Route::post('/reply', [ContactController::class, 'add'])->name('admin.partner.add');
         Route::post('/loaddata', [ContactController::class, 'loaddata']);
@@ -120,7 +120,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'partner'], function () {
-        Route::get('/', [PartnerController::class, 'index'])->middleware('permission:list_slides')->name('admin.partner');
+        Route::get('/', [PartnerController::class, 'index'])->middleware('permission:list_partners')->name('admin.partner');
         Route::get('/json', [PartnerController::class, 'json']);
         Route::post('/add', [PartnerController::class, 'add'])->name('admin.partner.add');
         Route::post('/loaddata', [PartnerController::class, 'loaddata']);
@@ -129,7 +129,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'appointment'], function () {
-        Route::get('/', [AppointmentController::class, 'index'])->middleware('permission:list_slides')->name('admin.appointment');
+        Route::get('/', [AppointmentController::class, 'index'])->middleware('permission:list_appointments')->name('admin.appointment');
         Route::get('/json', [AppointmentController::class, 'json']);
         Route::post('/duyet', [AppointmentController::class, 'duyet']);
         Route::post('/get-doctor', [AppointmentController::class, 'getDoctor']);
@@ -142,7 +142,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'examination-schedule'], function () {
-        Route::get('/', [ExaminationScheduleController::class, 'index'])->middleware('permission:list_slides')->name('admin.examination_schedule');
+        Route::get('/', [ExaminationScheduleController::class, 'index'])->middleware('permission:list_schedules')->name('admin.examination_schedule');
         Route::get('/json', [ExaminationScheduleController::class, 'json']);
         Route::post('/hoanthanh', [ExaminationScheduleController::class, 'hoanthanh']);
         Route::post('/hentiep', [ExaminationScheduleController::class, 'hentiep']);
@@ -150,20 +150,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/henlai', [ExaminationScheduleController::class, 'henlai']);
 
         // Route::post('/add', [ExaminationScheduleController::class, 'add']);
-        // Route::post('/loaddata', [ExaminationScheduleController::class, 'loaddata']);
-        // Route::post('/edit', [ExaminationScheduleController::class, 'edit']);
+        Route::post('/loaddata', [ExaminationScheduleController::class, 'loaddata']);
+        Route::post('/saveExamSchedule', [ExaminationScheduleController::class, 'saveExamSchedule']);
         Route::post('/del', [ExaminationScheduleController::class, 'del']);
     });
 
     Route::group(['prefix' => 'patient'], function () {
-        Route::get('/', [PatientController::class, 'index'])->middleware('permission:list_slides')->name('admin.patient');
+        Route::get('/', [PatientController::class, 'index'])->middleware('permission:list_patients')->name('admin.patient');
         Route::get('/json', [PatientController::class, 'json']);
         Route::post('/loaddata', [PatientController::class, 'loaddata']);
         Route::get('/loadhistory', [PatientController::class, 'loadhistory']);
     });
 
     Route::group(['prefix' => 'employee'], function () {
-        Route::get('/', [EmployeeController::class, 'index'])->middleware('permission:list_slides')->name('admin.employee');
+        Route::get('/', [EmployeeController::class, 'index'])->middleware('permission:list_employees')->name('admin.employee');
         Route::get('/json', [EmployeeController::class, 'json']);
         Route::post('/add', [EmployeeController::class, 'add']);
         Route::post('/loaddata', [EmployeeController::class, 'loaddata']);
@@ -172,19 +172,21 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'doctor'], function () {
-        Route::get('/', [DoctorController::class, 'index'])->middleware('permission:list_slides')->name('admin.doctor');
+        Route::get('/', [DoctorController::class, 'index'])->middleware('permission:list_doctors')->name('admin.doctor');
         Route::get('/json', [DoctorController::class, 'json']);
     });
 
     Route::group(['prefix' => 'user'], function () {
-        Route::get('/accountsettings', [UserController::class, 'accountsettings'])->middleware('permission:list_users')->name('admin.accountsettings');
+        Route::get('/accountsettings', [UserController::class, 'accountsettings'])->name('admin.accountsettings');
         Route::post('/edit', [UserController::class, 'edit']);
         Route::post('/changePassword',[UserController::class, 'changePassword'])->name('changePasswordPost');
+        Route::post('/thayanh', [UserController::class, 'thayanh']);
+        Route::post('/xoaanh', [UserController::class, 'xoaanh']);
 
     });
 
     Route::group(['prefix' => 'feedback'], function () {
-        Route::get('/', [FeedbackController::class, 'index'])->middleware('permission:list_slides')->name('admin.feedback');
+        Route::get('/', [FeedbackController::class, 'index'])->middleware('permission:list_feedbacks')->name('admin.feedback');
         Route::get('/json', [FeedbackController::class, 'json']);
         Route::post('/add', [FeedbackController::class, 'add']);
         Route::post('/loaddata', [FeedbackController::class, 'loaddata']);

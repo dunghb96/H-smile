@@ -63,6 +63,7 @@ $(function () {
                 { data: 'id' },
                 { data: 'full_name' },
                 { data: 'patient_id' },
+                { data: 'phone' },
                 { data: 'services' },
                 { data: 'service_id' },
                 { data: 'date_at' },
@@ -84,15 +85,15 @@ $(function () {
                     visible: false,
                 },
                 {
-                    targets: 4,
-                    visible: false,
-                },
-                {
-                    targets: 9,
+                    targets: 6,
                     visible: false,
                 },
                 {
                     targets: 10,
+                    visible: false,
+                },
+                {
+                    targets: 11,
                     render: function (data, type, full, meta) {
                         var html = '';
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Tạo lịch khám" onclick="duyet(' + full['id'] + ',' + full['service_id'] + ',' + full['status'] + ',' + full['patient_id'] + ')">';
@@ -157,16 +158,7 @@ $(function () {
                 service: {
                     required: true
                 },
-                doctor: {
-                    required: true
-                },
-                adate_at: {
-                    required: true
-                },
                 full_name: {
-                    required: true
-                },
-                shift: {
                     required: true
                 },
                 phone_number: {
@@ -255,7 +247,7 @@ function loadadd() {
     })
     $('#adoctor').val(null).change();
     $('#adoctor').attr("disabled", true);
-    url = '/admin/appointment/add';
+    url = '/admin/appointment/save';
     iid = 0;
 }
 
@@ -282,7 +274,7 @@ function loaddata(id) {
             $('#phone_number').val(data.phone_number);
             $('#email').val(data.email);
             $('#note').val(data.note);
-            url = '/admin/appointment/edit';
+            url = '/admin/appointment/save';
             iid = id;
         },
         error: function () {
@@ -358,6 +350,8 @@ function duyet(id, service, status, patient) {
     } else if (status == 2) {
         notify_error('Lịch khám đang thực hiện');
     } else if (status == 3) {
+        notify_error('Lịch hẹn đã bị hủy');
+    } else if (status == 4) {
         notify_error('Lịch hẹn đã hoàn thành');
     }
 }

@@ -10,6 +10,7 @@ use App\Models\Patient;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends BaseController
 {
@@ -31,8 +32,19 @@ class AppointmentController extends BaseController
         $jsonObj['data'] = $list;
         foreach($list as $key => $row){
             $jsonObj['data'][$key]->full_name = $row->patients->full_name;
-            $jsonObj['data'][$key]->email = $row->patients->email;
-            $jsonObj['data'][$key]->phone = $row->patients->phone;
+            if($row->patients->email) {
+                $jsonObj['data'][$key]->email = $row->patients->email;
+            } else {
+                $jsonObj['data'][$key]->email = '';
+            }
+
+            if($row->patients->phone_number) {
+                $jsonObj['data'][$key]->phone = $row->patients->phone_number;
+            } else {
+                $jsonObj['data'][$key]->email = '';
+            }
+            
+            
             $jsonObj['data'][$key]->services = $row->service->name;
             $jsonObj['data'][$key]->shift =  Appointment::SHIFT[$row->shift];
             $jsonObj['data'][$key]->doctor_name =  $row->doctor->name;
@@ -62,32 +74,51 @@ class AppointmentController extends BaseController
             'date_at' => $dateat,
             'time_at' => $timeat,
         ];
-        $result = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('time_at',$timeat)->where('status','>','0')->get();
-        if($result->count() > 3) {
+        $result1 = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('status','>','0')->get();
+        $result2 = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('time_at',$timeat)->where('status','>','0')->get();
+        if($result1->count() > 3) {
             $jsonObj['success'] = false;
             $jsonObj['msg'] = 'Không còn lịch trống';
+            echo json_encode($jsonObj);
+        } else if ($result2->count() > 0) {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Lịch hẹn đã tồn tại';
             echo json_encode($jsonObj);
         } else {
             $model = new Appointment();
             $schedule = new ExaminationSchedule();
             $result = $model->saveExaminationSchedule($schedule, $data);
-            if($result){
+
+
+
+//            //gui mail thong bao lich kham
+//            $serviceSelected  = Service::find($appointment->service_id);
+//            $patient = Patient::find($patientid);
+//            $to_name = "H-smile";
+//            $to_email = $patient->email;
+//            $data = array("$patient" => $patient->name,"serviceSelected" => $serviceSelected->name,"dateSelected" => $dateat, 'doctor' => $doctor, 'time_at' => $timeat);
+//            Mail::send('frontend.mail.notificationMail.blade.php', $data, function ($message) use ($to_name, $to_email) {
+//                $message->to($to_email)->subject('Nha Khoa H-Smile đã tiếp nhận yêu cầu đặt lịch của quý khách');
+//                $message->from($to_email, $to_name);
+//            });
+
+
+        if($result) {
                 $model = Appointment::find($appointment);
                 $model->status = 2;
                 $result = $model->save();
                 if($result) {
                     $jsonObj['success'] = true;
-                    $jsonObj['msg'] = 'Tạo lịch khám thành công';
+                    $jsonObj['msg'] = 'Tạo lịch khám thành công ';
                 }
             } else {
                 $jsonObj['success'] = false;
                 $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
             }
             echo json_encode($jsonObj);
-
         }
-
     }
+
     public function del(Request $request)
     {
         $id = $request->id;
@@ -106,7 +137,7 @@ class AppointmentController extends BaseController
 
     public function save(Request $request)
     {
-            
+
         $dataPatient = [
             'full_name'      => $request->fullname,
             'age'            => $request->age,

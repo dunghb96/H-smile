@@ -287,17 +287,12 @@
                     <div class="single-team-member">
 
                         <div class="img-holder">
-
-                            <img src="/frontend/images/team/1.jpg" alt="Awesome Image">
+                            <img src="{{ $row->users->avatar ? $row->users->avatar :'/frontend/images/team/1.jpg' }}" alt="{{ $row->users->avatar ?? '/frontend/images/team/1.jpg' }}">
                             <div class="overlay-style-one"></div>
-
                             <div class="text-holder text-center">
 
                                 <h3>{{$row->name}}</h3>
-                                <span>Implantologist</span>
-                                <div class="button">
-                                    <a class="btn-one" href="">Know More</a>
-                                </div>
+                                <span>{{ $row->majors }}</span>
                             </div>
 
                         </div>

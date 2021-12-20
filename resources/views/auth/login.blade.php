@@ -67,8 +67,8 @@
                             <form class="auth-login-form mt-2" action="{{ route('login') }}" method="POST">
                             @csrf
                                 <div class="form-group">
-                                    <label class="form-label" for="login-email">Username</label>
-                                    <input class="form-control" id="login-email" type="text" name="email" placeholder="gemstech" aria-describedby="login-email" autofocus="" tabindex="1"/>
+                                    <label class="form-label" for="login-email">Email</label>
+                                    <input class="form-control" id="login-email" type="text" name="email" placeholder="Email" aria-describedby="login-email" autofocus="" tabindex="1"/>
                                 </div>
                                 <div class="form-group">
                                     <div class="d-flex justify-content-between">

@@ -30,17 +30,17 @@ return [
 
 
 
-    'myAppointment' => [
-        'title' => 'Lịch khám của tôi',
+    'my_schedules' => [
+        'title' => 'Lịch khám của bác sĩ',
         'permissions' => [
-            'list_myApps' => 'Danh sách',
+            'my_schedules' => 'Danh sách',
         ]
     ],
 
-    'settings' => [
-        'title' => 'Cấu hình website',
+    'website_settings' => [
+        'title' => 'Thông tin website',
         'permissions' => [
-            'general_settings' => 'General settings',
+            'website_settings' => 'Cập nhật',
         ]
     ],
 
@@ -48,9 +48,9 @@ return [
         'title' => 'Slides',
         'permissions' => [
             'list_slides' => 'Danh sách',
-            'add_slides' => 'Thêm mới',
-            'edit_slides' => 'Cập nhật',
-            'delete_slides' => 'Delete slides',
+            'add_slide' => 'Thêm mới',
+            'edit_slide' => 'Cập nhật',
+            'delete_slide' => 'Xóa',
         ]
     ],
 
@@ -58,9 +58,9 @@ return [
         'title' => 'Blogs',
         'permissions' => [
             'list_blogs' => 'Danh sách',
-            'add_blogs' => 'Thêm mới',
-            'edit_blogs' => 'Cập nhật',
-            'delete_blogs' => 'Xóa',
+            'add_blog' => 'Thêm mới',
+            'edit_blog' => 'Cập nhật',
+            'delete_blog' => 'Xóa',
         ]
     ],
 
@@ -68,9 +68,9 @@ return [
         'title' => 'Dịch vụ',
         'permissions' => [
             'list_services' => 'Danh sách',
-            'add_services' => 'Thêm mới',
-            'edit_services' => 'Cập nhật',
-            'delete_services' => 'Xóa',
+            'add_service' => 'Thêm mới',
+            'edit_service' => 'Cập nhật',
+            'delete_service' => 'Xóa',
         ]
     ],
 
@@ -78,7 +78,8 @@ return [
         'title' => 'Liên hệ',
         'permissions' => [
             'list_contacts' => 'Danh sách',
-            'delete_contacts' => 'Cập nhật',
+            'reply_contact' => 'Phản hồi',
+            'delete_contact' => 'Cập nhật',
         ]
     ],
 
@@ -86,19 +87,19 @@ return [
         'title' => 'Đối tác',
         'permissions' => [
             'list_partners' => 'Danh sách',
-            'add_partners' => 'Thêm mới',
-            'edit_partners' => 'Cập nhật',
-            'delete_partners' => 'Xóa',
+            'add_partner' => 'Thêm mới',
+            'edit_partner' => 'Cập nhật',
+            'delete_partner' => 'Xóa',
         ]
     ],
 
     'feedbacks' => [
-        'title' => 'Phản hồi',
+        'title' => 'Đánh giá của khách hàng',
         'permissions' => [
             'list_feedbacks' => 'Danh sách',
-            'add_feedbacks' => 'Thêm mới',
-            'edit_feedbacks' => 'Cập nhật',
-            'delete_feedbacks' => 'Xóa',
+            'add_feedback' => 'Thêm mới',
+            'edit_feedback' => 'Cập nhật',
+            'delete_feedback' => 'Xóa',
         ]
     ],
 
@@ -106,9 +107,9 @@ return [
         'title' => 'Yêu cầu',
         'permissions' => [
             'list_appointments' => 'Danh sách',
-            'add_appointments' => 'Thêm mới',
-            'edit_appointments' => 'Cập nhật',
-            'delete_appointments' => 'Hủy',
+            'add_appointment' => 'Thêm mới',
+            'edit_appointment' => 'Cập nhật',
+            'delete_appointment' => 'Hủy',
         ]
     ],
 
@@ -116,9 +117,9 @@ return [
         'title' => 'Lịch khám',
         'permissions' => [
             'list_schedules' => 'Danh sách',
-            'add_schedules' => 'Thêm mới',
-            'edit_schedules' => 'Cập nhật',
-            'delete_schedules' => 'Hủy',
+            'add_schedule' => 'Thêm mới',
+            'edit_schedule' => 'Cập nhật',
+            'delete_schedule' => 'Hủy',
         ]
     ],
 
@@ -126,9 +127,9 @@ return [
         'title' => 'Khách hàng',
         'permissions' => [
             'list_patients' => 'Danh sách',
-            'add_patients' => 'Thêm mới',
-            'edit_patients' => 'Cập nhật',
-            'delete_patients' => 'Xóa',
+            'add_patient' => 'Thêm mới',
+            'edit_patient' => 'Cập nhật',
+            'delete_patient' => 'Xóa',
         ]
     ],
 
@@ -136,21 +137,29 @@ return [
         'title' => 'Nhân sự',
         'permissions' => [
             'list_employees' => 'Danh sách',
-            'add_employees' => 'Thêm mới',
-            'edit_employees' => 'Cập nhật',
-            'delete_employees' => 'Xóa',
+            'add_employee' => 'Thêm mới',
+            'edit_employee' => 'Cập nhật',
+            'delete_employee' => 'Xóa',
         ]
     ],
 
-
+    'doctors' => [
+        'title' => 'Nha sĩ',
+        'permissions' => [
+            'list_doctors' => 'Danh sách',
+            // 'add_patient' => 'Thêm mới',
+            // 'edit_patient' => 'Cập nhật',
+            // 'delete_patient' => 'Xóa',
+        ]
+    ],
 
     'roles' => [
-        'title' => 'Set vai trò',
+        'title' => 'Phân quyền',
         'permissions' => [
             'list_roles' => 'Danh sách',
-            'add_roles' => 'Thêm mới',
-            'edit_roles' => 'Cập nhật',
-            'delete_roles' => 'Xóa',
+            'add_role' => 'Thêm mới',
+            'edit_role' => 'Cập nhật',
+            'delete_role' => 'Xóa',
         ]
     ],
 

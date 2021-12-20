@@ -90,9 +90,9 @@ $(function () {
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hẹn tiếp" onclick="hentiep(' + full['id'] + ',' + full['appointment'] + ',' + full['status'] + ',' + full['service_id'] + ',' + full['patient_id'] + ')">';
                         html += '<i data-feather="arrow-right-circle"></i>';
                         html += '</button> &nbsp;';
-                        // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
-                        // html += '<i class="fas fa-pencil-alt"></i>';
-                        // html += '</button> &nbsp;';
+                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ',' + full['appointment'] + ',' + full['status'] + ',' + full['service_id'] + ',' + full['patient_id'] + ')">';
+                        html += '<i class="fas fa-pencil-alt"></i>';
+                        html += '</button> &nbsp;';
                         html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy lịch khám" onclick="del(' + full['id'] + ',' + full['status'] + ')">';
                         html += '<i class="fas fa-trash-alt"></i>';
                         html += '</button>';
@@ -157,6 +157,22 @@ $(function () {
             },
         });
     }
+    $('#frm-edit-lich').each(function () {
+        var $this = $(this);
+        $this.validate({
+            rules: {
+                doctor_id: {
+                    required: true
+                },
+                date_at: {
+                    required: true
+                },
+                time_at: {
+                    required: true
+                },
+            }
+        });
+    });
 });
 
 function loadpatient(id) {
@@ -204,68 +220,75 @@ function changeType() {
     }
 }
 
-function loaddata(id) {
-    $("#addnew").modal('show');
-    $(".modal-title").html('Cập nhật nhân sự');
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        data: { id: id },
-        url: "/admin/employee/loaddata",
-        success: function (data) {
-            $('#name').val(data.name);
-            $('#phone_number').val(data.phone_number);
-            $('#email').val(data.email);
-            $('#position').val(data.position);
-            $('#majors').val(data.majors);
-            $('#type').val(data.type).change();
-            $('#short_description').val(data.short_description);
-            if (data.services) {
-                services = data.services.split(',');
-                $('#service').val(services).change();
+function loaddata(id, appointment, status, service_id, patient) {
+    if(status == 1) {
+        $("#editlich").modal('show');
+        $(".modal-title").html('Cập nhật lịch khám');
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: { id: id },
+            url: "/admin/examination-schedule/loaddata",
+            success: function (data) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    data: { service: service_id },
+                    url: "/admin/appointment/get-doctor",
+                    success: function (data) {
+                        $('#doctor_id').html('');
+                        data.forEach(function (val, index) {
+                            var opt = '<option value="' + val.id + '">' + val.name + '</option>';
+                            $('#doctor_id').append(opt);
+                        });
+                        $('#doctor_id').select2({
+                            placeholder: "Chọn bác sĩ",
+                            allowClear: true,
+                            dropdownParent: $('#doctor_id').parent(),
+                        })
+                       
+                    },
+                });
+                $('#doctor_id').val(data.doctor_id).trigger('change');
+                $('#etime_at').val(data.time_at).trigger('change');
+                $('#edate_at').flatpickr({
+                    altInput: true,
+                    altFormat: "d/m/Y",
+                    defaultDate: data.date_at,  
+                    dateFormat: "d/m/Y",
+                    minDate: "today",
+                });
+                
+                iid = id;
+            },
+            error: function () {
+                notify_error('Lỗi truy xuất database');
             }
-            $('#username').val(data.username);
-            $('#password').val('');
-            $('#role').val(data.rolesOfUser).change();
-            url = '/admin/employee/edit';
-            iid = id;
-        },
-        error: function () {
-            notify_error('Lỗi truy xuất database');
-        }
-    });
+        });
+    } else if (status == 2) {
+        notify_error('Lịch khám đã hoàn thành');
+    } else if (status == 3) {
+        notify_error('Lịch khám đã hủy');
+    }
 }
 
-function save() {
+function editExamSchedule() {
     var info = {};
-    var isValid = $('#frm').valid();
-    if (iid != 0) {
+    var isValid = $('#frm-edit-lich').valid();
+    if (isValid) {
         info.id = iid;
-        info.name = $("#name").val();
-        info.type = $("#type").val();
-        info.position = $("#position").val();
-        info.majors = $("#majors").val();
-        info.email = $("#email").val();
-        info.phone_number = $("#phone_number").val();
-        info.short_description = $("#short_description").val();
-        info.username = $("#username").val();
-        info.password = $("#epassword").val();
-        info.role = $("#role").val();
-        var service = $("#service").val();
-        let services = '';
-        service.forEach(function (item) {
-            services += item + ',';
-        });
-        info.services = services.slice(0, -1);
+        info.doctor_id = $("#doctor_id").val();
+        info.date_at = $("#edate_at").val();
+        info.time_at = $("#etime_at").val();
         $.ajax({
             type: "POST",
             dataType: "json",
             data: info,
-            url: url,
+            url: '/admin/examination-schedule/saveExamSchedule',
             success: function (data) {
                 if (data.success) {
                     notyfi_success(data.msg);
-                    $('#addnew').modal('hide');
+                    $('#editlich').modal('hide');
                     $("#tableBasic").DataTable().ajax.reload(null, false);
                 } else
                     notify_error(data.msg);
@@ -274,42 +297,6 @@ function save() {
                 notify_error('Cập nhật không thành công');
             }
         });
-    } else {
-        if (isValid) {
-            info.name = $("#name").val();
-            info.type = $("#type").val();
-            info.position = $("#position").val();
-            info.majors = $("#majors").val();
-            info.email = $("#email").val();
-            info.phone_number = $("#phone_number").val();
-            info.short_description = $("#short_description").val();
-            info.username = $("#username").val();
-            info.password = $("#password").val();
-            info.role = $("#role").val();
-            var service = $("#service").val();
-            let services = '';
-            service.forEach(function (item) {
-                services += item + ',';
-            });
-            info.services = services.slice(0, -1);
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                data: info,
-                url: url,
-                success: function (data) {
-                    if (data.success) {
-                        notyfi_success(data.msg);
-                        $('#addnew').modal('hide');
-                        $("#tableBasic").DataTable().ajax.reload(null, false);
-                    } else
-                        notify_error(data.msg);
-                },
-                error: function () {
-                    notify_error('Cập nhật không thành công');
-                }
-            });
-        }
     }
 
 }

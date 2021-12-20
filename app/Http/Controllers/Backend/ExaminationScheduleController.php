@@ -57,7 +57,7 @@ class ExaminationScheduleController extends BaseController
         $schedule->save();
         $appointment = $request->appointment;
         $appointment = Appointment::find($appointment);
-        $appointment->status = 3;
+        $appointment->status = 4;
         $result = $appointment->save();
         if($result) {
             $jsonObj['success'] = true;
@@ -107,6 +107,34 @@ class ExaminationScheduleController extends BaseController
             echo json_encode($jsonObj);
 
         }
+    }
+
+    function loaddata(Request $request)
+    {
+        $id = $request->id;
+        $jsonObj = ExaminationSchedule::find($id);
+        $jsonObj['date_at'] = Carbon::parse($jsonObj->date_at)->format('d/m/Y');
+        echo json_encode($jsonObj);
+       
+    }
+
+    function saveExamSchedule(Request $request)
+    {
+        $id = $request->id;
+        $schedule = ExaminationSchedule::find($id);
+        $schedule->doctor = $request->doctor_id;
+        $dateat = (isset($request->date_at) && $request->date_at != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->date_at))) : date("Y-m-d");
+        $schedule->date_at = $dateat;
+        $schedule->time_at = $request->time_at;
+        $result = $schedule->save();
+        if($result){
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        } else {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+        }
+        echo json_encode($jsonObj);
     }
 
     // public function add(Request $request)

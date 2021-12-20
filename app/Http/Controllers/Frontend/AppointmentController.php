@@ -45,10 +45,27 @@ class AppointmentController extends BaseController
             'date_at' =>  Carbon::parse($request->date_at)->format('Y-m-d'),
             // 'time_at' => Carbon::parse($request->time_at)->format('H:i'),
             'status'=> 1,
-            'status_notification' => 1
-
+            // 'status_notification' => 1
         ];
         $newBooking = Appointment::create($dataAppointment);
+
+        $serviceSelected  = Service::find($request->service);
+
+        if ($request->shift = 1){
+           $shiftSelected = "Ca sáng";
+        } else {
+            $shiftSelected = "Ca chiều";
+        }
+
+
+        $to_name = "H-smile";
+        $to_email = $request->email;
+        $data = array("name" => $request->name,"serviceSelected" => $serviceSelected->name,"dateSelected" => Carbon::parse($request->date_at)->format('Y-m-d'), "shiftName" => $shiftSelected, "descRequest" => $request->description );
+        Mail::send('frontend.mail.sendmail', $data, function ($message) use ($to_name, $to_email) {
+            $message->to($to_email)->subject('Nha Khoa H-Smile đã tiếp nhận yêu cầu đặt lịch của quý khách');
+            $message->from($to_email, $to_name);
+        });
+
 
         // $email = $request->email;
 

@@ -34,6 +34,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'dev@hsmile.com',
                 'email_verified_at' => now(),
                 'password' => bcrypt('12345678'),
+                'avatar' => '/images/avatar-s-11.jpg',
                 'status' => CommonStatus::Active
             ]);
         }

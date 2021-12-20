@@ -90,7 +90,7 @@
                                                                         <select class="form-control select2" name="type" id="type" onchange="changeType()">
                                                                             <option value=""></option>
                                                                             <option value="1">Nha sĩ</option>
-                                                                            <option value="2">Thu ngân</option>
+                                                                            <option value="2">Nhân viên</option>
                                                                             <option value="3">Quản trị viên</option>
                                                                         </select>
                                                                     </div>
