@@ -32,8 +32,19 @@ class AppointmentController extends BaseController
         $jsonObj['data'] = $list;
         foreach($list as $key => $row){
             $jsonObj['data'][$key]->full_name = $row->patients->full_name;
-            $jsonObj['data'][$key]->email = $row->patients->email;
-            $jsonObj['data'][$key]->phone = $row->patients->phone;
+            if($row->patients->email) {
+                $jsonObj['data'][$key]->email = $row->patients->email;
+            } else {
+                $jsonObj['data'][$key]->email = '';
+            }
+
+            if($row->patients->phone_number) {
+                $jsonObj['data'][$key]->phone = $row->patients->phone_number;
+            } else {
+                $jsonObj['data'][$key]->email = '';
+            }
+            
+            
             $jsonObj['data'][$key]->services = $row->service->name;
             $jsonObj['data'][$key]->shift =  Appointment::SHIFT[$row->shift];
             $jsonObj['data'][$key]->doctor_name =  $row->doctor->name;
