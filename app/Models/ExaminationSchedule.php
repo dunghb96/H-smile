@@ -9,6 +9,7 @@ class ExaminationSchedule extends Model
 {
     use HasFactory;
     protected $table = 'examination_schedules';
+
     protected $guarded = [];
     const SHIFT= [
         1 => 'Ca sáng',

@@ -21,16 +21,16 @@ class AppointmentController extends BaseController
 
     public function index()
     {
-        $services = Service::where('status','1')->get();
-        $doctor = Employee::where('type',1)->get();
-        return view('backend.appointment.index',compact('services', 'doctor'));
+        $services = Service::where('status', '1')->get();
+        $doctor = Employee::where('type', 1)->get();
+        return view('backend.appointment.index', compact('services', 'doctor'));
     }
 
     public function json()
     {
-        $list = Appointment::with('patients', 'service', 'doctor')->where('status','>','0')->orderBY('created_at')->get();
+        $list = Appointment::with('patients', 'service', 'doctor')->where('status', '>', '0')->orderBY('created_at')->get();
         $jsonObj['data'] = $list;
-        foreach($list as $key => $row){
+        foreach ($list as $key => $row) {
             $jsonObj['data'][$key]->full_name = $row->patients->full_name;
             if($row->patients->email) {
                 $jsonObj['data'][$key]->email = $row->patients->email;
@@ -43,12 +43,12 @@ class AppointmentController extends BaseController
             } else {
                 $jsonObj['data'][$key]->email = '';
             }
-            
-            
+
+
             $jsonObj['data'][$key]->services = $row->service->name;
-            $jsonObj['data'][$key]->shift =  Appointment::SHIFT[$row->shift];
-            $jsonObj['data'][$key]->doctor_name =  $row->doctor->name;
-            $jsonObj['data'][$key]->status_word =  Appointment::STATUS[$row->status];
+            $jsonObj['data'][$key]->shift = Appointment::SHIFT[$row->shift];
+            $jsonObj['data'][$key]->doctor_name = $row->doctor->name;
+            $jsonObj['data'][$key]->status_word = Appointment::STATUS[$row->status];
         }
         echo json_encode($jsonObj);
     }
@@ -56,7 +56,7 @@ class AppointmentController extends BaseController
     function getDoctor(Request $request)
     {
         $service = $request->service;
-        $jsonObj = Employee::where('status',1)->where('type',1)->where('services', 'like', '%'.$service.'%')->get();
+        $jsonObj = Employee::where('status', 1)->where('type', 1)->where('services', 'like', '%' . $service . '%')->get();
         echo json_encode($jsonObj);
     }
 
@@ -74,21 +74,25 @@ class AppointmentController extends BaseController
             'date_at' => $dateat,
             'time_at' => $timeat,
         ];
+
         $result1 = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('status','>','0')->get();
         $result2 = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('time_at',$timeat)->where('status','>','0')->get();
         if($result1->count() > 3) {
-            $jsonObj['success'] = false;
-            $jsonObj['msg'] = 'Không còn lịch trống';
-            echo json_encode($jsonObj);
-        } else if ($result2->count() > 0) {
-            $jsonObj['success'] = false;
-            $jsonObj['msg'] = 'Lịch hẹn đã tồn tại';
-            echo json_encode($jsonObj);
-        } else {
-            $model = new Appointment();
-            $schedule = new ExaminationSchedule();
-            $result = $model->saveExaminationSchedule($schedule, $data);
 
+            $result = ExaminationSchedule::where('doctor', $doctor)->whereDate('date_at', $dateat)->where('time_at', $timeat)->where('status', '>', '0')->get();
+            if ($result->count() > 3) {
+
+                $jsonObj['success'] = false;
+                $jsonObj['msg'] = 'Không còn lịch trống';
+                echo json_encode($jsonObj);
+            } else if ($result2->count() > 0) {
+                $jsonObj['success'] = false;
+                $jsonObj['msg'] = 'Lịch hẹn đã tồn tại';
+                echo json_encode($jsonObj);
+            } else {
+                $model = new Appointment();
+                $schedule = new ExaminationSchedule();
+                $result = $model->saveExaminationSchedule($schedule, $data);
 
 
 //            //gui mail thong bao lich kham
@@ -103,21 +107,38 @@ class AppointmentController extends BaseController
 //            });
 
 
-        if($result) {
-                $model = Appointment::find($appointment);
-                $model->status = 2;
-                $result = $model->save();
-                if($result) {
-                    $jsonObj['success'] = true;
-                    $jsonObj['msg'] = 'Tạo lịch khám thành công ';
+                if ($result) {
+                    $model = Appointment::find($appointment);
+                    $model->status = 2;
+                    $result = $model->save();
+                    if ($result) {
+                        $jsonObj['success'] = true;
+                        $jsonObj['msg'] = 'Tạo lịch khám thành công';
+
+                        //            gui mail thong bao lich kham
+                        $patientSelected = Patient::find($patientid);
+                        $serviceSelected = Service::find(Appointment::find($appointment)->service_id);
+                        $doctorSelected = Employee::find(Appointment::find($appointment)->doctor_id);
+
+
+                        $to_name = "H-smile";
+                        $to_email = $patientSelected->email;
+                        $data = array("patientName" => $patientSelected, "serviceSelected" => $serviceSelected, "doctorSelected" => $doctorSelected, "time_at" => $timeat, "dateSelected" => $dateat);
+                        Mail::send('frontend.mail.notificationMail', $data, function ($message) use ($to_name, $to_email) {
+                            $message->to($to_email)->subject('Lịch hẹn khám ');
+                            $message->from($to_email, $to_name);
+                        });
+
+
+                    }
+                } else {
+                    $jsonObj['success'] = false;
+                    $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
                 }
-            } else {
-                $jsonObj['success'] = false;
-                $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+                echo json_encode($jsonObj);
             }
-            echo json_encode($jsonObj);
-        }
-    }
+        }}
+
 
     public function del(Request $request)
     {
@@ -125,7 +146,7 @@ class AppointmentController extends BaseController
         $model = Appointment::find($id);
         $model->status = 3;
         $result = $model->save();
-        if($result) {
+        if ($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
         } else {
@@ -139,26 +160,26 @@ class AppointmentController extends BaseController
     {
 
         $dataPatient = [
-            'full_name'      => $request->fullname,
-            'age'            => $request->age,
-            'phone_number'   => $request->phonenumber,
-            'email'          => $request->email,
-            'status'         => 1
+            'full_name' => $request->fullname,
+            'age' => $request->age,
+            'phone_number' => $request->phonenumber,
+            'email' => $request->email,
+            'status' => 1
         ];
         $result1 = Patient::create($dataPatient);
         $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
         $dataApp = [
             'service_id' => $request->service,
-            'doctor_id'  => $request->doctor,
-            'date_at'    => $dateat,
-            'shift'      => $request->shift,
-            'note'       => $request->note,
+            'doctor_id' => $request->doctor,
+            'date_at' => $dateat,
+            'shift' => $request->shift,
+            'note' => $request->note,
             'patient_id' => $result1->id,
-            'status'     => 1
+            'status' => 1
         ];
 
         $result = Appointment::create($dataApp);
-        if($result) {
+        if ($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
         } else {
