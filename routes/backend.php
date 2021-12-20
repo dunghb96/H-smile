@@ -150,8 +150,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/henlai', [ExaminationScheduleController::class, 'henlai']);
 
         // Route::post('/add', [ExaminationScheduleController::class, 'add']);
-        // Route::post('/loaddata', [ExaminationScheduleController::class, 'loaddata']);
-        // Route::post('/edit', [ExaminationScheduleController::class, 'edit']);
+        Route::post('/loaddata', [ExaminationScheduleController::class, 'loaddata']);
+        Route::post('/saveExamSchedule', [ExaminationScheduleController::class, 'saveExamSchedule']);
         Route::post('/del', [ExaminationScheduleController::class, 'del']);
     });
 

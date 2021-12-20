@@ -216,7 +216,6 @@
                                         <div class="modal-body flex-grow-1">
                                             <form id="frm-add" enctype="multipart/form-data">
 
-
                                                 <div class="form-group">
                                                     <label for="doctor_id">Bác sĩ</label>
                                                     <select class="form-control" id="doctor_id" name="doctor" required>

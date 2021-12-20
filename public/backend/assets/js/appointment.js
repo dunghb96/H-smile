@@ -350,6 +350,8 @@ function duyet(id, service, status, patient) {
     } else if (status == 2) {
         notify_error('Lịch khám đang thực hiện');
     } else if (status == 3) {
+        notify_error('Lịch hẹn đã bị hủy');
+    } else if (status == 4) {
         notify_error('Lịch hẹn đã hoàn thành');
     }
 }

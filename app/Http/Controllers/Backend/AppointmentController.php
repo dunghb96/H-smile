@@ -63,15 +63,21 @@ class AppointmentController extends BaseController
             'date_at' => $dateat,
             'time_at' => $timeat,
         ];
-        $result = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('time_at',$timeat)->where('status','>','0')->get();
-        if($result->count() > 3) {
+        $result1 = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('status','>','0')->get();
+        $result2 = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('time_at',$timeat)->where('status','>','0')->get();
+        if($result1->count() > 3) {
             $jsonObj['success'] = false;
             $jsonObj['msg'] = 'Không còn lịch trống';
+            echo json_encode($jsonObj);
+        } else if ($result2->count() > 0) {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Lịch hẹn đã tồn tại';
             echo json_encode($jsonObj);
         } else {
             $model = new Appointment();
             $schedule = new ExaminationSchedule();
             $result = $model->saveExaminationSchedule($schedule, $data);
+
 
 
 //            //gui mail thong bao lich kham
@@ -86,7 +92,7 @@ class AppointmentController extends BaseController
 //            });
 
 
-            if($result){
+        if($result) {
                 $model = Appointment::find($appointment);
                 $model->status = 2;
                 $result = $model->save();
@@ -99,10 +105,9 @@ class AppointmentController extends BaseController
                 $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
             }
             echo json_encode($jsonObj);
-
         }
-
     }
+
     public function del(Request $request)
     {
         $id = $request->id;

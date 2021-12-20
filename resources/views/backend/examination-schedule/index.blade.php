@@ -72,15 +72,17 @@
                                                 <div class="form-group">
                                                     <label for="date_at">Ngày</label>
                                                     <select class="form-control" id="time_at" name="time_at" required>
-                                                        <option value="07::00">07::00</option>
+                                                        <option value="07:00">07:00</option>
                                                         <option value="09:30">09:30</option>
                                                         <option value="10:00">10:00</option>
+                                                        <option value="14:00">14:00</option>
+                                                        <option value="15:30">15:30</option>
+                                                        <option value="17:00">17:00</option>
                                                     </select>
                                                 </div>
                                                 <button type="button" onclick="saveExamSchedule()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
                                                 <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
                                             </form>
-
                                         </div>
                                     </div>
                                 </div>
@@ -174,6 +176,46 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal new-user-modal fade" id="editlich">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content pt-0">
+                                        <div class="modal-header mb-1">
+                                            <h5 class="modal-title">Cập nhật lịch khám</h5>
+                                        </div>
+                                        <div class="modal-body flex-grow-1">
+                                            <form id="frm-edit-lich" enctype="multipart/form-data">
+
+
+                                                <div class="form-group">
+                                                    <label for="doctor_id">Bác sĩ</label>
+                                                    <select class="form-control" id="doctor_id" name="doctor" required>
+
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="edate_at">Ngày</label>
+                                                    <input type="text" id="edate_at" name="date_at" class="form-control flatpickr-basic" placeholder="DD/MM/YYYY" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="etime_at">Giờ hẹn</label>
+                                                    <select class="form-control" id="etime_at" name="etime_at" required>
+                                                        <option value="07:00:00">07:00</option>
+                                                        <option value="09:30:00">09:30</option>
+                                                        <option value="10:00:00">10:00</option>
+                                                        <option value="14:00:00">14:00</option>
+                                                        <option value="15:30:00">15:30</option>
+                                                        <option value="17:00:00">17:00</option>
+                                                    </select>
+                                                </div>
+                                                <button type="button" onclick="editExamSchedule()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
+                                                <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>
