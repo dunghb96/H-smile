@@ -45,7 +45,7 @@ class AppointmentController extends BaseController
             'date_at' =>  Carbon::parse($request->date_at)->format('Y-m-d'),
             // 'time_at' => Carbon::parse($request->time_at)->format('H:i'),
             'status'=> 1,
-            'status_notification' => 1
+            // 'status_notification' => 1
 
         ];
         $newBooking = Appointment::create($dataAppointment);
