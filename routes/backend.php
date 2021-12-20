@@ -49,6 +49,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
 
 
     Route::group(['prefix' => 'doctor'], function () {
+        Route::get('/', [DoctorController::class, 'index'])->middleware('permission:list_doctors')->name('admin.doctor');
+        Route::get('/json', [DoctorController::class, 'json']);
         Route::get('/today', [DashboardController::class, 'today'])->middleware('permission:my_schedules')->name('admin.today');
         Route::get('/today/json', [DashboardController::class, 'today_json']);
         Route::get('/future', [DashboardController::class, 'future'])->middleware('permission:my_schedules')->name('admin.future');
@@ -169,11 +171,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/loaddata', [EmployeeController::class, 'loaddata']);
         Route::post('/edit', [EmployeeController::class, 'edit']);
         Route::post('/del', [EmployeeController::class, 'del']);
-    });
-
-    Route::group(['prefix' => 'doctor'], function () {
-        Route::get('/', [DoctorController::class, 'index'])->middleware('permission:list_doctors')->name('admin.doctor');
-        Route::get('/json', [DoctorController::class, 'json']);
     });
 
     Route::group(['prefix' => 'user'], function () {
