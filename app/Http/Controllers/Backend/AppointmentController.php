@@ -77,67 +77,51 @@ class AppointmentController extends BaseController
         $result1 = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('status','=','1')->get();
         $result2 = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('time_at',$timeat)->where('status','=','1')->get();
         if($result1->count() > 3) {
-
-            $result = ExaminationSchedule::where('doctor', $doctor)->whereDate('date_at', $dateat)->where('time_at', $timeat)->where('status', '>', '0')->get();
-            if ($result->count() > 3) {
-
-                $jsonObj['success'] = false;
-                $jsonObj['msg'] = 'Không còn lịch trống';
-                echo json_encode($jsonObj);
-            } else if ($result2->count() > 0) {
-                $jsonObj['success'] = false;
-                $jsonObj['msg'] = 'Lịch hẹn đã tồn tại';
-                echo json_encode($jsonObj);
-            } else {
-                $model = new Appointment();
-                $schedule = new ExaminationSchedule();
-                $result = $model->saveExaminationSchedule($schedule, $data);
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Không còn lịch trống';
+            echo json_encode($jsonObj);
+        } else if ($result2->count() > 0) {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Lịch hẹn đã tồn tại';
+            echo json_encode($jsonObj);
+        } else {
+            $model = new Appointment();
+            $schedule = new ExaminationSchedule();
+            $result = $model->saveExaminationSchedule($schedule, $data);
 
 
-//            //gui mail thong bao lich kham
-//            $serviceSelected  = Service::find($appointment->service_id);
-//            $patient = Patient::find($patientid);
-//            $to_name = "H-smile";
-//            $to_email = $patient->email;
-//            $data = array("$patient" => $patient->name,"serviceSelected" => $serviceSelected->name,"dateSelected" => $dateat, 'doctor' => $doctor, 'time_at' => $timeat);
-//            Mail::send('frontend.mail.notificationMail.blade.php', $data, function ($message) use ($to_name, $to_email) {
-//                $message->to($to_email)->subject('Nha Khoa H-Smile đã tiếp nhận yêu cầu đặt lịch của quý khách');
-//                $message->from($to_email, $to_name);
-//            });
-
-
+            if ($result) {
+                $model = Appointment::find($appointment);
+                $model->status = 2;
+                $result = $model->save();
                 if ($result) {
-                    $model = Appointment::find($appointment);
-                    $model->status = 2;
-                    $result = $model->save();
-                    if ($result) {
-                        $jsonObj['success'] = true;
-                        $jsonObj['msg'] = 'Tạo lịch khám thành công';
+                    $jsonObj['success'] = true;
+                    $jsonObj['msg'] = 'Tạo lịch khám thành công';
 
-                        //            gui mail thong bao lich kham
-                        $patientSelected = Patient::find($patientid);
-                        $serviceSelected = Service::find(Appointment::find($appointment)->service_id);
-                        $doctorSelected = Employee::find(Appointment::find($appointment)->doctor_id);
+                    //            gui mail thong bao lich kham
+                    $patientSelected = Patient::find($patientid);
+                    $serviceSelected = Service::find(Appointment::find($appointment)->service_id);
+                    $doctorSelected = Employee::find(Appointment::find($appointment)->doctor_id);
 
 
-                        $to_name = "H-smile";
-                        $to_email = $patientSelected->email;
-                        $data = array("patientName" => $patientSelected, "serviceSelected" => $serviceSelected, "doctorSelected" => $doctorSelected, "time_at" => $timeat, "dateSelected" => $dateat);
-                        Mail::send('frontend.mail.notificationMail', $data, function ($message) use ($to_name, $to_email) {
-                            $message->to($to_email)->subject('Lịch hẹn khám ');
-                            $message->from($to_email, $to_name);
-                        });
+                    $to_name = "H-smile";
+                    $to_email = $patientSelected->email;
+                    $data = array("patientName" => $patientSelected, "serviceSelected" => $serviceSelected, "doctorSelected" => $doctorSelected, "time_at" => $timeat, "dateSelected" => $dateat);
+                    Mail::send('frontend.mail.notificationMail', $data, function ($message) use ($to_name, $to_email) {
+                        $message->to($to_email)->subject('Lịch hẹn khám ');
+                        $message->from($to_email, $to_name);
+                    });
 
 
-                    }
-                } else {
-                    $jsonObj['success'] = false;
-                    $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
                 }
-                echo json_encode($jsonObj);
+            } else {
+                $jsonObj['success'] = false;
+                $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
             }
-        }}
-
+            echo json_encode($jsonObj);
+        }
+        
+    }
 
     public function del(Request $request)
     {
