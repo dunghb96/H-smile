@@ -17,7 +17,7 @@ class EmployeeController extends BaseController
 
     public function index()
     {
-        $services = Service::where('status',1)->get();
+        $services = Service::where('status',1)->where('parent_id', '>', '0')->get();
         $roles = Role::orderBy('name')->get();
         return view('backend.employee.index',compact('roles','services'));
     }
@@ -28,7 +28,7 @@ class EmployeeController extends BaseController
         echo json_encode($jsonObj);
     }
 
-    public function add(Request $request) 
+    public function add(Request $request)
     {
         $model = new Employee();
         $employee = $model->saveEmployee($model, $request);
@@ -47,7 +47,7 @@ class EmployeeController extends BaseController
         } else {
             $jsonObj['success'] = false;
             $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-        } 
+        }
         echo json_encode($jsonObj);
     }
 
@@ -61,7 +61,7 @@ class EmployeeController extends BaseController
         echo json_encode($employee);
     }
 
-    public function edit(Request $request) 
+    public function edit(Request $request)
     {
         $id = $request->input('id');
         $model = Employee::find($id);
@@ -72,7 +72,7 @@ class EmployeeController extends BaseController
         } else {
             $jsonObj['success'] = false;
             $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-        } 
+        }
         echo json_encode($jsonObj);
     }
 
@@ -91,7 +91,7 @@ class EmployeeController extends BaseController
         } else {
             $jsonObj['success'] = false;
             $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-        } 
+        }
         echo json_encode($jsonObj);
     }
 }

@@ -73,9 +73,12 @@
                                                 <div class="form-group">
                                                     <label for="date_at">Ngày</label>
                                                     <select class="form-control" id="time_at" name="time_at" required>
-                                                        <option value="07::00">07::00</option>
+                                                        <option value="07:00">07:00</option>
                                                         <option value="09:30">09:30</option>
                                                         <option value="10:00">10:00</option>
+                                                        <option value="14:00">14:00</option>
+                                                        <option value="15:30">15:30</option>
+                                                        <option value="17:00">17:00</option>
                                                     </select>
                                                 </div>
                                                 <button type="button" onclick="saveExamSchedule()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
