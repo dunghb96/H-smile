@@ -74,11 +74,10 @@ class AppointmentController extends BaseController
             'date_at' => $dateat,
             'time_at' => $timeat,
         ];
-
         $result1 = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('status','=','1')->get();
         $result2 = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('time_at',$timeat)->where('status','=','1')->get();
         if($result1->count() > 3) {
-            
+
             $result = ExaminationSchedule::where('doctor', $doctor)->whereDate('date_at', $dateat)->where('time_at', $timeat)->where('status', '>', '0')->get();
             if ($result->count() > 3) {
 
