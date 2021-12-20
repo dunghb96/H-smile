@@ -36,6 +36,7 @@
                                             <th>ID</th>
                                             <th>Khách hàng</th>
                                             <th></th>
+                                            <th>Số điện thoại</th>
                                             <th>Dịch vụ</th>
                                             <th></th>
                                             <th>Ngày hẹn</th>
@@ -67,7 +68,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="adoctor">Nha sĩ</label>
-                                                <select class="form-control" id="adoctor" name="doctor" required>
+                                                <select class="form-control" id="adoctor" name="doctor">
                                                     <!-- @foreach($doctor as $row)
                                                     <option value="{{ $row->id }}">{{ $row->name }}</option>
                                                     @endforeach -->
@@ -79,14 +80,14 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="shift">Ca hẹn</label>
-                                                <select class="form-control" id="shift" name="shift" required>
+                                                <select class="form-control" id="shift" name="shift">
                                                     <option value="1">Sáng</option>
                                                     <option value="2">Chiều</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Họ tên</label>
-                                                <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Họ và tên">
+                                                <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Họ và tên" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Tuổi</label>
@@ -94,11 +95,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>Số điện thoại</label>
-                                                <input type="number" class="form-control" id="phone_number" name="phone_number" placeholder="Số điện thoại">
+                                                <input type="number" class="form-control" id="phone_number" name="phone_number" placeholder="Số điện thoại" required>
                                             </div>
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                                             </div>
 
                                             <div class="form-group">

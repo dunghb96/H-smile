@@ -32,10 +32,15 @@ class AppointmentController extends BaseController
         foreach($list as $key => $row){
             $jsonObj['data'][$key]->full_name = $row->patients->full_name;
             $jsonObj['data'][$key]->email = $row->patients->email;
-            $jsonObj['data'][$key]->phone = $row->patients->phone;
+            $jsonObj['data'][$key]->phone = $row->patients->phone_number;
             $jsonObj['data'][$key]->services = $row->service->name;
             $jsonObj['data'][$key]->shift =  Appointment::SHIFT[$row->shift];
-            $jsonObj['data'][$key]->doctor_name =  $row->doctor->name;
+            if($row->doctor_id) {
+                $jsonObj['data'][$key]->doctor_name =  $row->doctor->name;
+            } else {
+                $jsonObj['data'][$key]->doctor_name =  '';
+            }
+           
             $jsonObj['data'][$key]->status_word =  Appointment::STATUS[$row->status];
         }
         echo json_encode($jsonObj);
@@ -106,35 +111,83 @@ class AppointmentController extends BaseController
 
     public function save(Request $request)
     {
-            
-        $dataPatient = [
-            'full_name'      => $request->fullname,
-            'age'            => $request->age,
-            'phone_number'   => $request->phonenumber,
-            'email'          => $request->email,
-            'status'         => 1
-        ];
-        $result1 = Patient::create($dataPatient);
-        $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
-        $dataApp = [
-            'service_id' => $request->service,
-            'doctor_id'  => $request->doctor,
-            'date_at'    => $dateat,
-            'shift'      => $request->shift,
-            'note'       => $request->note,
-            'patient_id' => $result1->id,
-            'status'     => 1
-        ];
+        $id = $request->id;
+        if($id > 0) {
+            $appointment = Appointment::find($id);
+            $patientid =  $appointment->patient_id;
+            $patient = Patient::find($id);
+            $patient->full_name = $request->fullname;
+            $patient->age = $request->age;
+            $patient->phone_number = $request->phonenumber;
+            $patient->email = $request->email;
+            $patient->save();
+            // $dataPatient = [
+            //     'full_name'      => $request->fullname,
+            //     'age'            => $request->age,
+            //     'phone_number'   => $request->phonenumber,
+            //     'email'          => $request->email,
+            //     'status'         => 1
+            // ];
+            // $result1 = Patient::create($dataPatient);
+            $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
+            // $dataApp = [
+            //     'service_id' => $request->service,
+            //     'doctor_id'  => $request->doctor,
+            //     'date_at'    => $dateat,
+            //     'shift'      => $request->shift,
+            //     'note'       => $request->note,
+            //     'patient_id' => $result1->id,
+            //     'status'     => 1
+            // ];
 
-        $result = Appointment::create($dataApp);
-        if($result) {
-            $jsonObj['success'] = true;
-            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+            $appointment->service_id = $request->service;
+            $appointment->doctor_id = $request->doctor;
+            $appointment->date_at = $dateat;
+            $appointment->shift = $request->shift;
+            $appointment->note = $request->note;
+            $appointment->patient_id = $id;
+            $result = $appointment->save();
+    
+            // $result = Appointment::create($dataApp);
+            if($result) {
+                $jsonObj['success'] = true;
+                $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+            } else {
+                $jsonObj['success'] = false;
+                $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+            }
+            echo json_encode($jsonObj);
         } else {
-            $jsonObj['success'] = false;
-            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+            $dataPatient = [
+                'full_name'      => $request->fullname,
+                'age'            => $request->age,
+                'phone_number'   => $request->phonenumber,
+                'email'          => $request->email,
+                'status'         => 1
+            ];
+            $result1 = Patient::create($dataPatient);
+            $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
+            $dataApp = [
+                'service_id' => $request->service,
+                'doctor_id'  => $request->doctor,
+                'date_at'    => $dateat,
+                'shift'      => $request->shift,
+                'note'       => $request->note,
+                'patient_id' => $result1->id,
+                'status'     => 1
+            ];
+    
+            $result = Appointment::create($dataApp);
+            if($result) {
+                $jsonObj['success'] = true;
+                $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+            } else {
+                $jsonObj['success'] = false;
+                $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+            }
+            echo json_encode($jsonObj);
         }
-        echo json_encode($jsonObj);
+        
     }
 
     public function loaddata(Request $request)

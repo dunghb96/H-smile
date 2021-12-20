@@ -5,7 +5,6 @@ $(function () {
 function changeSV()
 {
     var service = $("#service").val();
-    alert(service);
     if(service != '') {
         $.ajax({
             type: "POST",

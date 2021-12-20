@@ -244,11 +244,11 @@
 
 @push('js')
 <script src="/frontend/assets/js/appointment.js"></script>
-<script src="{{ asset('user_asset/js/jquery-validation/jquery.validate.min.js') }}"></script>
+<!-- <script src="{{ asset('user_asset/js/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('user_asset/js/jquery-validation/additional-methods.min.js') }}"></script>
 <script src="{{ asset('user_asset/js/jquery-validation/localization/messages_ja.min.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script> -->
 <script>
     $(document).ready(function() {
 
