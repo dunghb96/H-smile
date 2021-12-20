@@ -10,6 +10,7 @@ use App\Models\Patient;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends BaseController
 {
@@ -32,15 +33,10 @@ class AppointmentController extends BaseController
         foreach($list as $key => $row){
             $jsonObj['data'][$key]->full_name = $row->patients->full_name;
             $jsonObj['data'][$key]->email = $row->patients->email;
-            $jsonObj['data'][$key]->phone = $row->patients->phone_number;
+            $jsonObj['data'][$key]->phone = $row->patients->phone;
             $jsonObj['data'][$key]->services = $row->service->name;
             $jsonObj['data'][$key]->shift =  Appointment::SHIFT[$row->shift];
-            if($row->doctor_id) {
-                $jsonObj['data'][$key]->doctor_name =  $row->doctor->name;
-            } else {
-                $jsonObj['data'][$key]->doctor_name =  '';
-            }
-           
+            $jsonObj['data'][$key]->doctor_name =  $row->doctor->name;
             $jsonObj['data'][$key]->status_word =  Appointment::STATUS[$row->status];
         }
         echo json_encode($jsonObj);
@@ -76,13 +72,27 @@ class AppointmentController extends BaseController
             $model = new Appointment();
             $schedule = new ExaminationSchedule();
             $result = $model->saveExaminationSchedule($schedule, $data);
+
+
+//            //gui mail thong bao lich kham
+//            $serviceSelected  = Service::find($appointment->service_id);
+//            $patient = Patient::find($patientid);
+//            $to_name = "H-smile";
+//            $to_email = $patient->email;
+//            $data = array("$patient" => $patient->name,"serviceSelected" => $serviceSelected->name,"dateSelected" => $dateat, 'doctor' => $doctor, 'time_at' => $timeat);
+//            Mail::send('frontend.mail.notificationMail.blade.php', $data, function ($message) use ($to_name, $to_email) {
+//                $message->to($to_email)->subject('Nha Khoa H-Smile đã tiếp nhận yêu cầu đặt lịch của quý khách');
+//                $message->from($to_email, $to_name);
+//            });
+
+
             if($result){
                 $model = Appointment::find($appointment);
                 $model->status = 2;
                 $result = $model->save();
                 if($result) {
                     $jsonObj['success'] = true;
-                    $jsonObj['msg'] = 'Tạo lịch khám thành công';
+                    $jsonObj['msg'] = 'Tạo lịch khám thành công ';
                 }
             } else {
                 $jsonObj['success'] = false;
@@ -111,83 +121,35 @@ class AppointmentController extends BaseController
 
     public function save(Request $request)
     {
-        $id = $request->id;
-        if($id > 0) {
-            $appointment = Appointment::find($id);
-            $patientid =  $appointment->patient_id;
-            $patient = Patient::find($id);
-            $patient->full_name = $request->fullname;
-            $patient->age = $request->age;
-            $patient->phone_number = $request->phonenumber;
-            $patient->email = $request->email;
-            $patient->save();
-            // $dataPatient = [
-            //     'full_name'      => $request->fullname,
-            //     'age'            => $request->age,
-            //     'phone_number'   => $request->phonenumber,
-            //     'email'          => $request->email,
-            //     'status'         => 1
-            // ];
-            // $result1 = Patient::create($dataPatient);
-            $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
-            // $dataApp = [
-            //     'service_id' => $request->service,
-            //     'doctor_id'  => $request->doctor,
-            //     'date_at'    => $dateat,
-            //     'shift'      => $request->shift,
-            //     'note'       => $request->note,
-            //     'patient_id' => $result1->id,
-            //     'status'     => 1
-            // ];
 
-            $appointment->service_id = $request->service;
-            $appointment->doctor_id = $request->doctor;
-            $appointment->date_at = $dateat;
-            $appointment->shift = $request->shift;
-            $appointment->note = $request->note;
-            $appointment->patient_id = $id;
-            $result = $appointment->save();
-    
-            // $result = Appointment::create($dataApp);
-            if($result) {
-                $jsonObj['success'] = true;
-                $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
-            } else {
-                $jsonObj['success'] = false;
-                $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-            }
-            echo json_encode($jsonObj);
+        $dataPatient = [
+            'full_name'      => $request->fullname,
+            'age'            => $request->age,
+            'phone_number'   => $request->phonenumber,
+            'email'          => $request->email,
+            'status'         => 1
+        ];
+        $result1 = Patient::create($dataPatient);
+        $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
+        $dataApp = [
+            'service_id' => $request->service,
+            'doctor_id'  => $request->doctor,
+            'date_at'    => $dateat,
+            'shift'      => $request->shift,
+            'note'       => $request->note,
+            'patient_id' => $result1->id,
+            'status'     => 1
+        ];
+
+        $result = Appointment::create($dataApp);
+        if($result) {
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
         } else {
-            $dataPatient = [
-                'full_name'      => $request->fullname,
-                'age'            => $request->age,
-                'phone_number'   => $request->phonenumber,
-                'email'          => $request->email,
-                'status'         => 1
-            ];
-            $result1 = Patient::create($dataPatient);
-            $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
-            $dataApp = [
-                'service_id' => $request->service,
-                'doctor_id'  => $request->doctor,
-                'date_at'    => $dateat,
-                'shift'      => $request->shift,
-                'note'       => $request->note,
-                'patient_id' => $result1->id,
-                'status'     => 1
-            ];
-    
-            $result = Appointment::create($dataApp);
-            if($result) {
-                $jsonObj['success'] = true;
-                $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
-            } else {
-                $jsonObj['success'] = false;
-                $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-            }
-            echo json_encode($jsonObj);
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
         }
-        
+        echo json_encode($jsonObj);
     }
 
     public function loaddata(Request $request)
