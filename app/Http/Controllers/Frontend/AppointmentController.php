@@ -80,7 +80,9 @@ class AppointmentController extends BaseController
         //     $mes->to($email, 'frontend.mail.sendMail')->subject('Mail công việc');
         // });
 
-        return redirect()->route('hsmile.appointment')->with(['status' => 'success', 'flash_message' => 'Đặt lịch hẹn thành công!']);
+        $alert='Đặt lịch thành công! Hãy kiểm tra email để biết chi tiết thông tin đặt lịch';
+
+        return redirect()->route('hsmile.appointment')->with('alert',$alert);
     }
 
     //     return redirect()->route('hsmile.appointment')->with(['status' => 'success', 'flash_message' => 'Đặt lịch hẹn thành công!']);
