@@ -8,11 +8,11 @@
             <div class="col-xl-12">
                 <div class="inner-content clearfix">
                     <div class="title float-left">
-                       <h2>Giới thiêu</h2>
+                       <h2>Giới thiệu</h2>
                     </div>
                     <div class="breadcrumb-menu float-right">
                         <ul class="clearfix">
-                            <li><a href="index-2.html">Home</a></li>
+                            <li><a href="index-2.html">Trang chủ</a></li>
                             <li><i class="fa fa-angle-right" aria-hidden="true"></i></li>
                             <li class="active">Giới thiệu</li>
                         </ul>
@@ -59,7 +59,7 @@
 <!--End About Area-->
 
 <!--Start fact counter area-->
-<section class="fact-counter-area style2">
+<section class="fact-counter-area style2" >
     <div class="container">
         <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -71,13 +71,13 @@
                                 <span class="icon-tooth-3"></span>
                             </div>
                             <h1>
-                                <span class="timer" data-from="1" data-to="177" data-speed="5000" data-refresh-interval="50">4257</span>
+                                <span class="timer" data-from="1" data-to="{{ $doneAppoint }}" data-speed="5000" data-refresh-interval="50">{{ $doneAppoint }}</span>
                             </h1>
                             <div class="title">
-                                <h3>Ca Khám Chữa </h3>
+                                <h3>Đã hoàn thành</h3>
                             </div>
                             <div class="text">
-                                <p>Khách hàng hài lòng về dịch vụ của phòng khám</p>
+                                <p>Số dự án đã thành công của chúng tôi.</p>
                             </div>
                         </div>
                     </li>
@@ -89,13 +89,13 @@
                                 <span class="icon-doctor-1"></span>
                             </div>
                             <h1>
-                                <span class="timer" data-from="1" data-to="7" data-speed="5000" data-refresh-interval="50">18</span>
+                                <span class="timer" data-from="1" data-to="{{ $countDoctor }}" data-speed="5000" data-refresh-interval="50">{{ $countDoctor }}</span>
                             </h1>
                             <div class="title">
-                                <h3>Nha Sĩ</h3>
+                                <h3>Nha sĩ chuyên nghiệp</h3>
                             </div>
                             <div class="text">
-                                <p>Có trình độ, kinh nghiệm chuyên môn cao,cùng với đó là sự tận tâm y đức trong công việc</p>
+                                <p>Kinh nghiệm làm việc mang đến cho khách hàng sự tin tưởng</p>
                             </div>
                         </div>
                     </li>
@@ -107,13 +107,13 @@
                                 <span class="icon-hospital"></span>
                             </div>
                             <h1>
-                                <span class="timer" data-from="0" data-to="1" data-speed="5000" data-refresh-interval="50">6</span>
+                                <span class="timer" data-from="1" data-to="1" data-speed="5000" data-refresh-interval="50">1</span>
                             </h1>
                             <div class="title">
-                                <h3>Chi Nhánh</h3>
+                                <h3>Cơ Sở</h3>
                             </div>
                             <div class="text">
-                                <p>Duy nhất tại Hà Nôi</p>
+                                <p>Chúng tôi sẽ mở rộng chi nhánh trong tương lai</p>
                             </div>
                         </div>
                     </li>
