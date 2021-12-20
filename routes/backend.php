@@ -57,6 +57,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::get('/future/json', [DashboardController::class, 'future_json']);
         Route::get('/past', [DashboardController::class, 'past'])->name('admin.past');
         Route::get('/past/json', [DashboardController::class, 'past_json']);
+        Route::post('/today/addnote', [DashboardController::class, 'addnote']);
     });
 
     Route::group(['prefix' => 'setting', 'middleware' => ['permission:website_settings']], function () {

@@ -93,9 +93,9 @@
                          // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
                          // html += '<i class="fas fa-pencil-alt"></i>';
                          // html += '</button> &nbsp;';
-                         html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy lịch khám" onclick="del(' + full['id'] + ',' + full['status'] + ')">';
-                         html += '<i class="fas fa-trash-alt"></i>';
-                         html += '</button>';
+                        //  html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy lịch khám" onclick="del(' + full['id'] + ',' + full['status'] + ')">';
+                        //  html += '<i class="fas fa-trash-alt"></i>';
+                        //  html += '</button>';
                          return html;
                      },
                      width: 180
@@ -311,7 +311,6 @@
              });
          }
      }
-
  }
 
  function hoanthanh(id, status, appointment) {
@@ -420,59 +419,59 @@
      info.dateat = $('#date_at').val();
      info.timeat = $('#time_at').val();
      $.ajax({
-         type: "POST",
-         dataType: "json",
-         data: info,
-         url: "/admin/examination-schedule/hentiep",
-         success: function (data) {
-             if (data.success) {
-                 notyfi_success(data.msg);
-                 $('#hentiep').modal('hide');
-                 $("#tableBasic").DataTable().ajax.reload(null, false);
-             } else {
-                 notify_error(data.msg);
-             }
-         },
-         error: function () {
-             notify_error('Lỗi truy xuất database');
-         }
+        type: "POST",
+        dataType: "json",
+        data: info,
+        url: "/admin/examination-schedule/hentiep",
+        success: function (data) {
+            if (data.success) {
+                notyfi_success(data.msg);
+                $('#hentiep').modal('hide');
+                $("#tableBasic").DataTable().ajax.reload(null, false);
+            } else {
+                notify_error(data.msg);
+            }
+        },
+        error: function () {
+            notify_error('Lỗi truy xuất database');
+        }
      });
  }
 
- function del(id, status) {
-     if (status == 1) {
-         Swal.fire({
-             title: 'Hủy lịch khám',
-             text: "Bạn có chắc chắn muốn hủy ?",
-             icon: 'warning',
-             showCancelButton: true,
-             confirmButtonText: 'Tôi đồng ý',
-             customClass: {
-                 confirmButton: 'btn btn-primary',
-                 cancelButton: 'btn btn-outline-danger ml-1'
-             },
-             buttonsStyling: false
-         }).then(function (result) {
-             if (result.value) {
-                 $.ajax({
-                     url: "/admin/examination-schedule/del",
-                     type: 'post',
-                     dataType: "json",
-                     data: { id: id },
-                     success: function (data) {
-                         if (data.success) {
-                             notyfi_success(data.msg);
-                             $("#tableBasic").DataTable().ajax.reload(null, false);
-                         }
-                         else
-                             notify_error(data.msg);
-                     },
-                 });
-             }
-         });
-     } else if (status == 2) {
-         notify_error("Lịch khám đã hoàn thành");
-     } else if (status == 3) {
-         notify_error("Lịch khám đã bị hủy");
-     }
- }
+//  function del(id, status) {
+//      if (status == 1) {
+//          Swal.fire({
+//              title: 'Hủy lịch khám',
+//              text: "Bạn có chắc chắn muốn hủy ?",
+//              icon: 'warning',
+//              showCancelButton: true,
+//              confirmButtonText: 'Tôi đồng ý',
+//              customClass: {
+//                  confirmButton: 'btn btn-primary',
+//                  cancelButton: 'btn btn-outline-danger ml-1'
+//              },
+//              buttonsStyling: false
+//          }).then(function (result) {
+//              if (result.value) {
+//                  $.ajax({
+//                      url: "/admin/examination-schedule/del",
+//                      type: 'post',
+//                      dataType: "json",
+//                      data: { id: id },
+//                      success: function (data) {
+//                          if (data.success) {
+//                              notyfi_success(data.msg);
+//                              $("#tableBasic").DataTable().ajax.reload(null, false);
+//                          }
+//                          else
+//                              notify_error(data.msg);
+//                      },
+//                  });
+//              }
+//          });
+//      } else if (status == 2) {
+//          notify_error("Lịch khám đã hoàn thành");
+//      } else if (status == 3) {
+//          notify_error("Lịch khám đã bị hủy");
+//      }
+//  }

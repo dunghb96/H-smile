@@ -42,6 +42,7 @@
                                             <th>Trạng thái</th>
                                             <th></th>
                                             <th>Mã yêu cầu</th>
+                                            <th>Đơn thuốc</th>
                                             <th></th>
 
                                         </tr>
@@ -176,6 +177,27 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal new-user-modal fade" id="addnote">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content pt-0">
+                                        <div class="modal-header mb-1">
+                                            <h5 class="modal-title">Đơn thuốc</h5>
+                                        </div>
+                                        <div class="modal-body flex-grow-1">
+                                            <form id="frm-add" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <label for="category">Đơn thuốc</label>
+                                                    <textarea id="note" name="note" rows="10" class="form-control" placeholder="Đơn thuốc"></textarea>
+                                                </div>
+                                                <button type="button" onclick="saveNote()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
+                                                <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>

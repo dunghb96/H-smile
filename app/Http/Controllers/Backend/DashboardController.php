@@ -22,7 +22,6 @@ class DashboardController extends BaseController
 
     public function index()
     {
-
         $appointment = Appointment::count();
         $confirm = Appointment::where('status', 2)->count();
         $waiting = Appointment::where('status', 1)->count();
@@ -33,12 +32,8 @@ class DashboardController extends BaseController
         $doctor = Employee::where('type', 1)->get();
         $service = Service::where('parent_id', 0)->get();
         $list = Appointment::orderBY('created_at')->get();
-
-
         return view('backend.dashboard.index', compact('list', 'doctor',  'service', 'patient', 'appointment', 'confirm', 'waiting', 'doneAppoint', 'day', 'date'));
     }
-
-
 
     public function today()
     {
@@ -109,6 +104,22 @@ class DashboardController extends BaseController
             $jsonObj['data'][$key]->patient_id = $appointment->patients->id;
             $jsonObj['data'][$key]->phone = $appointment->patients->phone_number;
             $jsonObj['data'][$key]->status_name =  ExaminationSchedule::STATUS[$row->status];
+        }
+        echo json_encode($jsonObj);
+    }
+
+    function addnote(Request $request)
+    {
+        $id = $request->id;
+        $model = ExaminationSchedule::find($id);
+        $model->note = $request->note;
+        $result = $model->save();
+        if($result) {
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        } else {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
         }
         echo json_encode($jsonObj);
     }

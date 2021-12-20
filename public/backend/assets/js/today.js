@@ -53,6 +53,7 @@
                  { data: 'status_name' },
                  { data: 'status' },
                  { data: 'appointment' },
+                 { data: 'note' },
                  { data: '' }
              ],
              columnDefs: [
@@ -79,9 +80,15 @@
                     targets: 8,
                     visible: false,
                 },
+                // {
+                //     targets: 9,
+                //     render: function(data, type, full, meta){
+                //          return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient('+full['patient_id']+')"><span class="font-weight-bold">'+full['patient']+'</span></a>'
+                //      }
+                // },
 
                  {
-                     targets: 9,
+                     targets: 10,
                      render: function (data, type, full, meta) {
                          var html = '';
                          html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hoàn thành" onclick="hoanthanh(' + full['id'] + ',' + full['status'] + ',' + full['appointment'] + ')">';
@@ -90,7 +97,7 @@
                          html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hẹn tiếp" onclick="hentiep(' + full['id'] + ',' + full['appointment'] + ',' + full['status'] + ',' + full['service_id'] + ',' + full['patient_id'] + ')">';
                          html += '<i data-feather="arrow-right-circle"></i>';
                          html += '</button> &nbsp;';
-                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
+                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="addnote(' + full['id'] + ')">';
                          html += '<i class="fas fa-pencil-alt"></i>';
                          html += '</button> &nbsp;';
                          // html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa" onclick="del(' + full['id'] + ')">';
@@ -407,34 +414,67 @@
      }
  }
 
- function saveExamSchedule() {
-     var info = {};
-     info.patient = patientid;
-     info.schedule = iid;
-     info.appointment = appointmentid;
-     info.doctor = $('#doctor').val();
-     info.service = $('#service').val();
-     info.dateat = $('#date_at').val();
-     info.timeat = $('#time_at').val();
-     $.ajax({
-         type: "POST",
-         dataType: "json",
-         data: info,
-         url: "/admin/examination-schedule/hentiep",
-         success: function (data) {
-             if(data.success) {
-                 notyfi_success(data.msg);
-                 $('#hentiep').modal('hide');
-                 $("#tableBasic").DataTable().ajax.reload(null, false);
-             } else {
-                 notify_error(data.msg);
-             }
-         },
-         error: function () {
-             notify_error('Lỗi truy xuất database');
-         }
-     });
+ function addnote(id)
+ {
+    $("#addnote").modal('show');
+    $(".modal-title").html('Đơn thuốc');
+    $('#note').html();
+    iid = id;
  }
+
+ function saveNote()
+ {
+    var info = {};
+    info.id = iid;
+    info.note = $('#note').val();
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        data: info,
+        url: '/admin/doctor/today/addnote',
+        success: function (data) {
+            if (data.success) {
+                notyfi_success(data.msg);
+                $('#addnote').modal('hide');
+                $("#tableBasic").DataTable().ajax.reload(null, false);
+            }
+            else
+                notify_error(data.msg);
+        },
+        error: function () {
+            notify_error('Cập nhật không thành công');
+        }
+    });
+ }
+
+//  function saveExamSchedule() {
+//      var info = {};
+//      info.patient = patientid;
+//      info.schedule = iid;
+//      info.appointment = appointmentid;
+//      info.doctor = $('#doctor').val();
+//      info.service = $('#service').val();
+//      info.dateat = $('#date_at').val();
+//      info.timeat = $('#time_at').val();
+//      $.ajax({
+//          type: "POST",
+//          dataType: "json",
+//          data: info,
+//          url: "/admin/examination-schedule/hentiep",
+//          success: function (data) {
+//              if(data.success) {
+//                  notyfi_success(data.msg);
+//                  $('#hentiep').modal('hide');
+//                  $("#tableBasic").DataTable().ajax.reload(null, false);
+//              } else {
+//                  notify_error(data.msg);
+//              }
+//          },
+//          error: function () {
+//              notify_error('Lỗi truy xuất database');
+//          }
+//      });
+//  }
 
  // function del(id) {
  //     Swal.fire({
