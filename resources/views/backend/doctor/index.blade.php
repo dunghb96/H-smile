@@ -37,7 +37,7 @@
                                             <th>Họ tên</th>
                                             <th>Số điện thoại</th>
                                             <th>Email</th>
-                                            <th></th>
+                                            <!-- <th></th> -->
                                         </tr>
                                     </thead>
                                 </table>

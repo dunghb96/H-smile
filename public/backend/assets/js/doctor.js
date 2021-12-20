@@ -30,23 +30,23 @@ $(function () {
                 { data: 'name' },
                 { data: 'phone_number' },
                 { data: 'email' },
-                { data: '' }
+                // { data: '' }
             ],
             columnDefs: [
-                {
-                    targets: 4,
-                    render: function (data, type, full, meta) {
-                        var html = '';
-                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
-                        html += '<i class="fas fa-pencil-alt"></i>';
-                        html += '</button> &nbsp;';
-                        html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa" onclick="del(' + full['id'] + ')">';
-                        html += '<i class="fas fa-trash-alt"></i>';
-                        html += '</button>';
-                        return html;
-                    },
-                    width: 150
-                }
+                // {
+                //     targets: 4,
+                //     render: function (data, type, full, meta) {
+                //         var html = '';
+                //         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
+                //         html += '<i class="fas fa-pencil-alt"></i>';
+                //         html += '</button> &nbsp;';
+                //         html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa" onclick="del(' + full['id'] + ')">';
+                //         html += '<i class="fas fa-trash-alt"></i>';
+                //         html += '</button>';
+                //         return html;
+                //     },
+                //     width: 150
+                // }
             ],
             // order: [[0, 'DESC']],
             dom:

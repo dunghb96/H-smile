@@ -85,7 +85,7 @@ $(function () {
                     visible: false,
                 },
                 {
-                    targets: 6,
+                    targets: 5,
                     visible: false,
                 },
                 {
