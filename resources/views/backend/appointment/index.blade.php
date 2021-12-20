@@ -233,6 +233,9 @@
                                                         <option value="07:00">07:00</option>
                                                         <option value="09:30">09:30</option>
                                                         <option value="10:00">10:00</option>
+                                                        <option value="14:00">14:00</option>
+                                                        <option value="15:30">15:30</option>
+                                                        <option value="17:00">17:00</option>
                                                     </select>
                                                 </div>
                                                 <!-- <div class="form-group">
