@@ -84,7 +84,7 @@
                                         <h5>Ngày</h5>
                                     </div>
                                     <div class="input-box">
-                                        <input type="text" name="date_at" placeholder="Date" id="datepicker" autocomplete="off">
+                                        <input type="text" name="date_at" placeholder="Date" id="my_date_picker" autocomplete="off">
                                         <div class="icon-box">
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                         </div>
@@ -244,4 +244,96 @@
 
 @push('js')
 <script src="/frontend/assets/js/appointment.js"></script>
+<script src="{{ asset('user_asset/js/jquery-validation/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('user_asset/js/jquery-validation/additional-methods.min.js') }}"></script>
+<script src="{{ asset('user_asset/js/jquery-validation/localization/messages_ja.min.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" ></script>
+<script>
+    $(document).ready(function() {
+
+        $(function() {
+            $( "#my_date_picker" ).datepicker({
+                dateFormat: 'dd-mm-yy',
+                dayNamesMin: [ "CN", "2", "3", "4", "5", "6", "7" ],
+                monthNames: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ],
+                minDate: 0
+            });
+        });
+    })
+</script>
+
+{{-- <script>
+    (function($) {
+        var beenSubmitted = false;
+        $('#contact_form').validate({
+            rules: {
+                service: {
+                    required: true,
+                },
+                doctor: {
+                    required: true,
+                },
+                date_at: {
+                    required: true,
+                },
+                shift: {
+                    required: true,
+                },
+                name: {
+                    required: true,
+                    noSpace: true,
+                },
+                email: {
+                    required: true,
+                    noSpace: true,
+                    email: true
+                },
+                phone_number: {
+                    required: true,
+                    noSpace: true,
+                    digits: true
+                },
+            },
+            messages: {
+                name: {
+                    required: "Hãy nhập tên đẩy đủ",
+                    noSpace:  "không được gửi khoảng trống",
+                },
+                email: {
+                    required: "Hãy nhập email",
+                    noSpace:  "không được gửi khoảng trống",
+                    email: "không đúng định dạng email"
+                },
+                phone_number: {
+                    required: "Hãy nhập số điện thoại",
+                    noSpace: "Không được gửi khoảng trống",
+                    digits: "Hãy nhập số",
+                },
+            },
+            errorElement: 'div',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                if (element.closest('.show-error').length > 0) {
+                    element.closest('.show-error').find('.contact_form').after(error);
+                } else {
+                    error.insertAfter(element); // default error placement.
+                }
+            },
+
+            submitHandler: function(form) {
+                if (!beenSubmitted) {
+                    beenSubmitted = true;
+                    sendTransactionMessage();
+                }
+            },
+        });
+        $.validator.addMethod("noSpace", function(value, element) {
+            return value == '' || value.trim().length != 0;
+        }, "");
+    })(jQuery)
+</script> --}}
+
 @endpush
+
+
