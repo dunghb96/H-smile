@@ -10,12 +10,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Account Settings</h2>
+                        <h2 class="content-header-title float-left mb-0">Cài đặt tài khoản</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a>
                                 </li>
-                                <li class="breadcrumb-item active"> Account Settings
+                                <li class="breadcrumb-item active"> Cài đặt tài khoản
                                 </li>
                             </ol>
                         </div>
@@ -42,14 +42,14 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="account-pill-password" data-toggle="pill" href="#account-vertical-password" aria-expanded="false">
                                     <i data-feather="lock" class="font-medium-3 mr-1"></i>
-                                    <span class="font-weight-bold">Change Password</span>
+                                    <span class="font-weight-bold">Đổi mật khẩu</span>
                                 </a>
                             </li>
                             <!-- information -->
                             <li class="nav-item">
                                 <a class="nav-link active" id="account-pill-info" data-toggle="pill" href="#account-vertical-info" aria-expanded="false">
                                     <i data-feather="info" class="font-medium-3 mr-1"></i>
-                                    <span class="font-weight-bold">Information</span>
+                                    <span class="font-weight-bold">Thông tin</span>
                                 </a>
                             </li>
 
@@ -145,11 +145,11 @@
                                             <!-- upload and reset button -->
                                             <div class="media-body mt-75 ml-1">
                                                 <label for="hinhanh" class="btn btn-sm btn-primary mb-75 mr-75">Upload</label>
-                                                <button class="btn btn-sm btn-outline-secondary mb-75" onclick="xoaanh()">Reset</button>
+                                                <!-- <button class="btn btn-sm btn-outline-secondary mb-75" onclick="xoaanh()">Reset</button> -->
                                                 <form id="upload-avt">
                                                     <input type="file" id="hinhanh" name="hinhanh" hidden accept="image/*" onchange="thayanh()" />
                                                 </form>
-                                                <p>Allowed JPG, GIF or PNG. Max size of 800kB</p>
+                                                <!-- <p>Allowed JPG, GIF or PNG. Max size of 800kB</p> -->
                                             </div>
                                             <!--/ upload and reset button -->
                                         </div>

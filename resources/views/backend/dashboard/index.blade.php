@@ -271,7 +271,14 @@
     </div>
 </div>
 <!-- END: Content-->
+
+@endsection
+
+@push('js')
+<script>
+    let username = '<?= Auth::user()->name ?>';
+</script>
 <script src="/backend/app-assets/vendors/js/charts/apexcharts.min.js"></script>
 <script src="/backend/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
-<!-- <script src="/js/dashboard.js"></script> -->
-@endsection
+<script src="/backend/assets/js/dashboard.js"></script>
+@endpush
