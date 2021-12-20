@@ -104,189 +104,44 @@ $(function () {
                 },
             },
         });
-        // $('input.dt-input').on('keyup', function () {
-        //     filterColumn($(this).attr('data-column'), $(this).val());
-        // });
-        //$('div.head-label').html('<h6 class="mb-0">Menu</h6>');
     }
 
-    // Delete Record
-    // $('.del-item').on('click', function () {
-    //     var data = $.map(table.rows('.selected').data(), function (item) {
-    //         return item
-    //     });
-    //     if (data != '') {
-    //         Swal.fire({
-    //             title: "Bạn có chắc chắn không?",
-    //             text: "Bạn sẽ ko thể hoàn tác thao tác này!",
-    //             icon: "warning",
-    //             showCancelButton: !0,
-    //             confirmButtonText: "Đồng ý",
-    //             cancelButtonText: "Hủy bỏ",
-    //             customClass: {confirmButton: "btn btn-primary", cancelButton: "btn btn-outline-danger ml-1"},
-    //             buttonsStyling: !1
-    //         }).then((function (t) {
-    //             if(t.value) {
-    //                 data = data[0];
-    //                 $.post("nhanvien/del", {'id': data.id}, function (result) {
-    //                     var result = JSON.parse(result);
-    //                     if (result.success) {
-    //                         table.ajax.reload(null, false);
-    //                     } else {
-    //                         Swal.fire({
-    //                             //  title: 'Error!',
-    //                             position: 'bottom-end',
-    //                             text: result.msg,
-    //                             icon: 'error',
-    //                             customClass: {
-    //                                 confirmButton: 'btn btn-primary'
-    //                             },
-    //                             buttonsStyling: false
-    //                         });
-    //                     }
-    //                 });
-    //             }
-    //         }))
-    //     } else {
-    //         Swal.fire({
-    //             text: 'Chưa có bản ghi được chọn!',
-    //             position: 'bottom-end',
-    //             icon: 'error',
-    //             customClass: {
-    //                 confirmButton: 'btn btn-primary'
-    //             },
-    //             buttonsStyling: false
-    //         });
-    //     }
-    // });
-
-
-    // $('.edit-item').on('click', function () {
-    //     var data = $.map(table.rows('.selected').data(), function (item) {
-    //         return item
-    //     });
-    //     if (data != '') {
-    //             data = data[0];
-    //             window.location.href = baseUrl + 'nhanvien/edit?id=' + data.id;
-    //     } else {
-    //         Swal.fire({
-    //             text: 'Chưa có bản ghi được chọn!',
-    //             position: 'bottom-end',
-    //             icon: 'error',
-    //             customClass: {
-    //                 confirmButton: 'btn btn-primary'
-    //             },
-    //             buttonsStyling: false
-    //         });
-    //     }
-    // });
-
-    // $('.add-item').on('click', function () {
-    //     window.location.href=baseUrl+'nhanvien/add'
-    // });
-
-
-    // $('#data-submit').on('click', function () {
-    //     let url = baseUrl + 'nhanvien/saveadd';
-    //     $('#fm').validate({
-    //         submitHandler: function (form) {
-    //             var formData = new FormData(form);
-    //             $.ajax({
-    //                 url: url,
-    //                 type: 'POST',
-    //                 data: formData,
-    //                 async: false,
-    //                 cache: false,
-    //                 contentType: false,
-    //                 enctype: 'multipart/form-data',
-    //                 processData: false,
-    //                 success: function (result) {
-    //                     var result = eval("(" + result + ")");
-    //                     if (result.success) {
-    //                         window.location.href = baseUrl + "nhanvien";
-    //                     } else {
-    //                         Swal.fire({
-    //                             //  title: 'Error!',
-    //                             position: 'bottom-end',
-    //                             text: result.msg,
-    //                             icon: 'error',
-    //                             customClass: {
-    //                                 confirmButton: 'btn btn-primary'
-    //                             },
-    //                             buttonsStyling: false
-    //                         });
-    //                     }
-    //                 }
-    //             });
-    //             return false;
-    //         }
-    //     });
-    //     $('#fm').submit();
-    // });
+    
 });
 
 
-// function filterColumn(i, val) {
-//     // if (i == 5) {
-//     //     var startDate = $('.start_date').val(),
-//     //         endDate = $('.end_date').val();
-//     //     if (startDate !== '' && endDate !== '') {
-//     //         filterByDate(i, startDate, endDate); // We call our filter function
-//     //     }
-//     //     $('#tableBasic').dataTable().fnDraw();
-//     // } else {
-//         $('#tableBasic').DataTable().column(i).search(val, false, true).draw();
-//     // }
-// }
+function thayanh() {
+    var myform = new FormData($('#upload-avt')[0]);
+    $.ajax({
+        url: "/admin/user/thayanh",
+        type: 'post',
+        data: myform,
+        contentType: false,
+        processData: false,
+        dataType:'json',
+        success: function (data) {
+            if (data.success) {
+                $('#avatar').attr('src', data.filename);
+                $('#hungsua2').attr('src', data.filename);
+            }
+            else
+                notify_error(data.msg);
+        },
+    });
+}
 
-// Advance filter function
-// We pass the column location, the start date, and the end date
-// var filterByDate = function (column, startDate, endDate) {
-//     // Custom filter syntax requires pushing the new filter to the global filter array
-//     $.fn.dataTableExt.afnFiltering.push(function (oSettings, aData, iDataIndex) {
-//         var rowDate = normalizeDate(aData[column]),
-//             start = normalizeDate(startDate),
-//             end = normalizeDate(endDate);
-
-//         // If our date from the row is between the start and end
-//         if (start <= rowDate && rowDate <= end) {
-//             return true;
-//         } else if (rowDate >= start && end === '' && start !== '') {
-//             return true;
-//         } else if (rowDate <= end && start === '' && end !== '') {
-//             return true;
-//         } else {
-//             return false;
-//         }
-//     });
-// };
-
-// function loadadd() {
-//     $("#addnew").modal('show');
-//     $(".modal-title").html('Thêm tài khoản mới');
-//     $('#name').val('');
-//     $('#email').val('');
-//     $('#password').val('');
-//     $('#role').val('').change();
-//     url = '/admin/user/edit';
-// }
-
-// function loaddata(id) {
-//     console.log("Chay loaddata")
-//     $.ajax({
-//         type: "POST",
-//         dataType: "json",
-//         data: { id: id },
-//         url: "/admin/user/loaddata",
-//         success: function (data) {
-//             url = '/admin/user/edit';
-//             iid = $('#iid').val();
-//         },
-//         error: function () {
-//             notify_error('Lỗi truy xuất database');
-//         }
-//     });
-// }
+function xoaanh() {
+    $.ajax({
+        type: "post",
+        url: "/admin/user/xoaanh",
+        success: function (data) {
+            if (data.success){
+                $('#avatar').attr('src', '/images/avatar-s-11.jpg');
+                $('#hungsua2').attr('src', '/images/avatar-s-11.jpg');
+            }
+        },
+    });
+}
 
 function save() {
     var info = {};

@@ -180,6 +180,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::get('/accountsettings', [UserController::class, 'accountsettings'])->middleware('permission:list_users')->name('admin.accountsettings');
         Route::post('/edit', [UserController::class, 'edit']);
         Route::post('/changePassword',[UserController::class, 'changePassword'])->name('changePasswordPost');
+        Route::post('/thayanh', [UserController::class, 'thayanh']);
+        Route::post('/xoaanh', [UserController::class, 'xoaanh']);
 
     });
 
