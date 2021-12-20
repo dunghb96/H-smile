@@ -3,18 +3,42 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Appointment;
+use App\Models\Patient;
+use App\Models\feedback;
 use App\Models\ExaminationSchedule;
 use Carbon\Carbon;
+use App\Models\Employee;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 
 class DashboardController extends BaseController
 {
+    function __construct()
+    {
+        parent::__construct();
+    }
+
     public function index()
     {
-        return view('backend.dashboard.index');
+
+        $appointment = Appointment::count();
+        $confirm = Appointment::where('status', 2)->count();
+        $waiting = Appointment::where('status', 1)->count();
+        $doneAppoint = ExaminationSchedule::where('status', 2)->count();
+        $date = Carbon::now();
+        $day = Carbon::now()->day;
+        $patient = Patient::where('status', 1)->get();
+        $doctor = Employee::where('type', 1)->get();
+        $service = Service::where('parent_id', 0)->get();
+        $list = Appointment::orderBY('created_at')->get();
+
+
+        return view('backend.dashboard.index', compact('list', 'doctor',  'service', 'patient', 'appointment', 'confirm', 'waiting', 'doneAppoint', 'day', 'date'));
     }
+
+
 
     public function today()
     {
@@ -27,7 +51,7 @@ class DashboardController extends BaseController
         $now = Date('Y-m-d');
         $list = ExaminationSchedule::where('date_at', '=', $now)->where('doctor',  $doctor->employee)->where('status', 1)->get();
         $jsonObj['data'] = $list;
-        foreach($list as $key => $row){
+        foreach ($list as $key => $row) {
             $appointment = Appointment::find($row->appointment);
             $jsonObj['data'][$key]->service = $appointment->service->name;
             $jsonObj['data'][$key]->service_id = $appointment->service->id;
@@ -50,10 +74,10 @@ class DashboardController extends BaseController
     {
         $doctor = Auth::guard('web')->user();
         $now = Date('Y-m-d');
-        $tomorrow = date('Y-m-d',strtotime($now . "+1 days"));
-        $list = ExaminationSchedule::where('date_at', '=',$tomorrow)->where('doctor', $doctor->employee)->where('status', 1)->get();
+        $tomorrow = date('Y-m-d', strtotime($now . "+1 days"));
+        $list = ExaminationSchedule::where('date_at', '=', $tomorrow)->where('doctor', $doctor->employee)->where('status', 1)->get();
         $jsonObj['data'] = $list;
-        foreach($list as $key => $row){
+        foreach ($list as $key => $row) {
             $appointment = Appointment::find($row->appointment);
             $jsonObj['data'][$key]->service = $appointment->service->name;
             $jsonObj['data'][$key]->service_id = $appointment->service->id;
@@ -76,7 +100,7 @@ class DashboardController extends BaseController
         $doctor = Auth::guard('web')->user();
         $list = ExaminationSchedule::where('doctor', $doctor->employee)->where('status', 2)->get();
         $jsonObj['data'] = $list;
-        foreach($list as $key => $row){
+        foreach ($list as $key => $row) {
             $appointment = Appointment::find($row->appointment);
             $jsonObj['data'][$key]->service = $appointment->service->name;
             $jsonObj['data'][$key]->service_id = $appointment->service->id;
@@ -88,5 +112,4 @@ class DashboardController extends BaseController
         }
         echo json_encode($jsonObj);
     }
-
 }

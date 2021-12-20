@@ -16,5 +16,8 @@ class Patient extends Model
         0 => 'Nam',
         1 => 'Nữ'
     ];
-
+    public function appointment()
+    {
+        return $this->belongsTo(Appointment::class, 'status', 'id');
+    }
 }

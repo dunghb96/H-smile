@@ -18,8 +18,8 @@
                             <div class="col-lg-6 col-md-3 col-6">
                                 <div class="card">
                                     <div class="card-body pb-50">
-                                        <h6>Lưu Lượng truy cập website</h6>
-                                        <h2 class="font-weight-bolder mb-1">99%</h2>
+                                        <h6>Số ca khám đã hoàn thành</h6>
+                                        <h2 class="font-weight-bolder mb-1">{{$doneAppoint}}</h2>
                                         <div id="statistics-order-chart"></div>
                                     </div>
                                 </div>
@@ -30,8 +30,8 @@
                             <div class="col-lg-6 col-md-3 col-6">
                                 <div class="card card-tiny-line-stats">
                                     <div class="card-body pb-50">
-                                        <h6>lịch khám hôm nay</h6>
-                                        <h2 class="font-weight-bolder mb-1">6,24k</h2>
+                                        <h6>Tổng số yêu cầu khám</h6>
+                                        <h2 class="font-weight-bolder mb-1">{{$appointment}}</h2>
                                         <div id="statistics-profit-chart"></div>
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                             <div class="card-header">
                                 <h4 class="card-title">Báo cáo thống kê</h4>
                                 <div class="d-flex align-items-center">
-                                    <p class="card-text font-small-2 mr-25 mb-0">Tháng 9</p>
+                                    <p class="card-text font-small-2 mr-25 mb-0">Tháng 12</p>
                                 </div>
                             </div>
                             <div class="card-body statistics-body">
@@ -59,8 +59,10 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">7888</h4>
-                                                <p class="card-text font-small-3 mb-0">Lượng truy cập</p>
+
+                                                <h4 class="font-weight-bolder mb-0"> {{$confirm}}</h4>
+                                                <p class="card-text font-small-3 mb-0">Yêu cầu đã được duyệt</p>
+
                                             </div>
                                         </div>
                                     </div>
@@ -72,7 +74,7 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">8.549k</h4>
+                                                <h4 class="font-weight-bolder mb-0">{{$waiting}}</h4>
                                                 <p class="card-text font-small-3 mb-0">Yêu cầu chưa duyệt</p>
                                             </div>
                                         </div>
@@ -85,7 +87,7 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">$9745</h4>
+                                                <h4 class="font-weight-bolder mb-0">5.000.000 VND</h4>
                                                 <p class="card-text font-small-3 mb-0">Doanh số</p>
                                             </div>
                                         </div>
@@ -121,8 +123,8 @@
                             <div class="card-body">
                                 <div class="meetup-header d-flex align-items-center">
                                     <div class="meetup-day">
-                                        <h6 class="mb-0">THU</h6>
-                                        <h3 class="mb-0">24</h3>
+                                        <h6 class="mb-0">NGÀY</h6>
+                                        <h3 class="mb-0">{{$day}}</h3>
                                     </div>
                                     <div class="my-auto">
                                         <h4 class="card-title mb-25">Lịch làm việc</h4>
@@ -136,8 +138,8 @@
                                         </div>
                                     </div>
                                     <div class="media-body">
-                                        <h6 class="mb-0">Sat, May 25, 2020</h6>
-                                        <small>10:AM to 6:PM</small>
+                                        <h6 class="mb-0">{{$date}}</h6>
+
                                     </div>
                                 </div>
                                 <div class="media mt-2">
@@ -147,28 +149,11 @@
                                         </div>
                                     </div>
                                     <div class="media-body">
-                                        <h6 class="mb-0">Central Park</h6>
-                                        <small>Manhattan, New york City</small>
+                                        <h6 class="mb-0">Tòa nhà FPT Polytechnic</h6>
+                                        <small>Phố Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Hà Nội</small>
                                     </div>
                                 </div>
-                                <div class="avatar-group">
-                                    <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Billy Hopkins" class="avatar pull-up">
-                                        <img src="/backend/app-assets/images/portrait/small/avatar-s-9.jpg" alt="Avatar" width="33" height="33" />
-                                    </div>
-                                    <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Amy Carson" class="avatar pull-up">
-                                        <img src="/backend/app-assets/images/portrait/small/avatar-s-6.jpg" alt="Avatar" width="33" height="33" />
-                                    </div>
-                                    <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Brandon Miles" class="avatar pull-up">
-                                        <img src="/backend/app-assets/images/portrait/small/avatar-s-8.jpg" alt="Avatar" width="33" height="33" />
-                                    </div>
-                                    <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Daisy Weber" class="avatar pull-up">
-                                        <img src="/backend/app-assets/images/portrait/small/avatar-s-20.jpg" alt="Avatar" width="33" height="33" />
-                                    </div>
-                                    <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="bottom" data-original-title="Jenny Looper" class="avatar pull-up">
-                                        <img src="/backend/app-assets/images/portrait/small/avatar-s-20.jpg" alt="Avatar" width="33" height="33" />
-                                    </div>
-                                    <h6 class="align-self-center cursor-pointer ml-50 mb-0">+42</h6>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -176,9 +161,10 @@
 
                     <!-- Transaction Card -->
                     <div class="col-lg-8 col-md-6 col-12">
+
                         <div class="card card-transaction">
                             <div class="card-header">
-                                <h4 class="card-title">Quản lý công việc</h4>
+                                <h4 class="card-title">Yêu cầu đặt lịch</h4>
                                 <div class="dropdown chart-dropdown">
                                     <i data-feather="more-vertical" class="font-medium-3 cursor-pointer" data-toggle="dropdown"></i>
                                     <div class="dropdown-menu dropdown-menu-right">
@@ -189,79 +175,162 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="transaction-item">
-                                    <div class="media">
-                                        <div class="avatar bg-light-primary rounded">
-                                            <div class="avatar-content">
-                                                <i data-feather="pocket" class="avatar-icon font-medium-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="transaction-title">Module báo cáo</h6>
-                                            <small>Dự án VELO Edu</small>
-                                        </div>
-                                    </div>
-                                    <div class="font-weight-bolder text-danger">Trễ deadline</div>
-                                </div>
-                                <div class="transaction-item">
-                                    <div class="media">
-                                        <div class="avatar bg-light-success rounded">
-                                            <div class="avatar-content">
-                                                <i data-feather="check" class="avatar-icon font-medium-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="transaction-title">Module Chatbox</h6>
-                                            <small>Dự án G-Office</small>
-                                        </div>
-                                    </div>
-                                    <div class="font-weight-bolder text-success">Hoàn thành</div>
-                                </div>
-                                <div class="transaction-item">
-                                    <div class="media">
-                                        <div class="avatar bg-light-danger rounded">
-                                            <div class="avatar-content">
-                                                <i data-feather="dollar-sign" class="avatar-icon font-medium-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="transaction-title">Module CRM</h6>
-                                            <small>Dự án Rolatex</small>
-                                        </div>
-                                    </div>
-                                    <div class="font-weight-bolder text-success">Hoàn thành</div>
-                                </div>
-                                <div class="transaction-item">
-                                    <div class="media">
-                                        <div class="avatar bg-light-warning rounded">
-                                            <div class="avatar-content">
-                                                <i data-feather="credit-card" class="avatar-icon font-medium-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="transaction-title">Báo giá Bluesea</h6>
-                                            <small>Hỗ trợ khách hàng</small>
-                                        </div>
-                                    </div>
-                                    <div class="font-weight-bolder text-danger">Trễ deadline</div>
-                                </div>
-                                <div class="transaction-item">
-                                    <div class="media">
-                                        <div class="avatar bg-light-info rounded">
-                                            <div class="avatar-content">
-                                                <i data-feather="trending-up" class="avatar-icon font-medium-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="transaction-title">Thu công nợ</h6>
-                                            <small>Dự án Nam Dương</small>
-                                        </div>
-                                    </div>
-                                    <div class="font-weight-bolder text-success">Hoàn thành</div>
-                                </div>
+
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Tên khách hàng</th>
+                                            <th>Trạng thái</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($list as $row)
+                                        <tr>
+                                            <td>{{$row->patients->full_name}}</td>
+                                            <td>@if($row->status==1)
+                                                <span class="text text-danger">chờ xác nhận</span>
+                                                @elseif($row->status==2)
+                                                <span class="text text-warning">Đã xác nhận</span>
+                                                @else
+                                                <span class="text text-success">Đã hủy</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+
+                                </table>
+
+
+
                             </div>
                         </div>
+
+                        <div class="card card-transaction">
+                            <div class="card-header">
+                                <h4 class="card-title">Khách hàng</h4>
+                                <div class="dropdown chart-dropdown">
+                                    <i data-feather="more-vertical" class="font-medium-3 cursor-pointer" data-toggle="dropdown"></i>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="javascript:void(0);">Dự án G-office</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Dự án VELO Edu</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Dự án Nam Dương</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Tên khách hàng</th>
+                                            <th>age</th>
+                                            <th>SĐT</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($patient as $item)
+                                        <tr>
+                                            <td>{{$item->full_name}}</td>
+                                            <td>{{$item->age}}</td>
+                                            <td>{{$item->phone_number}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+
+                                </table>
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="card card-transaction">
+                            <div class="card-header">
+                                <h4 class="card-title">Dịch Vụ</h4>
+                                <div class="dropdown chart-dropdown">
+                                    <i data-feather="more-vertical" class="font-medium-3 cursor-pointer" data-toggle="dropdown"></i>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="javascript:void(0);">Dự án G-office</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Dự án VELO Edu</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Dự án Nam Dương</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Tên dịch vụ</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($service as $item)
+                                        <tr>
+                                            <td>{{$item->name}}</td>
+
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+
+                                </table>
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="card card-transaction">
+                            <div class="card-header">
+                                <h4 class="card-title">Bác sĩ</h4>
+                                <div class="dropdown chart-dropdown">
+                                    <i data-feather="more-vertical" class="font-medium-3 cursor-pointer" data-toggle="dropdown"></i>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="javascript:void(0);">Dự án G-office</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Dự án VELO Edu</a>
+                                        <a class="dropdown-item" href="javascript:void(0);">Dự án Nam Dương</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+
+                                            <th style="width: 200px;">Họ tên</th>
+                                            <th style="width: 200px;">Số điện thoại</th>
+                                            <th style="width: 200px;">chuyên ngành</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($doctor as $item)
+                                        <tr>
+                                            <td>{{$item->name}}</td>
+                                            <td>{{$item->phone_number}}</td>
+                                            <td>{{$item->majors}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+
+                                </table>
+
+
+
+                            </div>
+                        </div>
+
+
                     </div>
+
+
+
                     <!--/ Transaction Card -->
                 </div>
             </section>
