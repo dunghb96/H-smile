@@ -132,7 +132,7 @@
                                     </div>
                                 </div>
                                 <div class="media">
-                                    <div class="avatar bg-light-primary rounded mr-1">
+                                    {{-- <div class="avatar bg-light-primary rounded mr-1">
                                         <div class="avatar-content">
                                             <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
                                         </div>
@@ -140,7 +140,7 @@
                                     <div class="media-body">
                                         <h6 class="mb-0">{{$date}}</h6>
 
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="media mt-2">
                                     <div class="avatar bg-light-primary rounded mr-1">
@@ -159,7 +159,7 @@
                     </div>
                     <!--/ Developer Meetup Card -->
 
-                    <!-- Transaction Card -->
+                    {{-- <!-- Transaction Card -->
                     <div class="col-lg-8 col-md-6 col-12">
 
                         <div class="card card-transaction">
@@ -327,7 +327,7 @@
                         </div>
 
 
-                    </div>
+                    </div> --}}
 
 
 

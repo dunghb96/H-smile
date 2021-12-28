@@ -55,7 +55,7 @@
                  { data: 'status_name' },
                  { data: 'status' },
                  { data: 'appointment' },
-                 { data: '' }
+
              ],
              columnDefs: [
                  {
@@ -79,27 +79,7 @@
                  {
                     targets: 10,
                     visible: false,
-                },
-                 {
-                     targets: 11,
-                     render: function (data, type, full, meta) {
-                         var html = '';
-                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hoàn thành" onclick="hoanthanh(' + full['id'] + ',' + full['status'] + ',' + full['appointment'] + ')">';
-                         html += '<i data-feather="check"></i>';
-                         html += '</button> &nbsp;';
-                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hẹn tiếp" onclick="hentiep(' + full['id'] + ',' + full['appointment'] + ',' + full['status'] + ',' + full['service_id'] + ',' + full['patient_id'] + ')">';
-                         html += '<i data-feather="arrow-right-circle"></i>';
-                         html += '</button> &nbsp;';
-                         // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
-                         // html += '<i class="fas fa-pencil-alt"></i>';
-                         // html += '</button> &nbsp;';
-                        //  html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy lịch khám" onclick="del(' + full['id'] + ',' + full['status'] + ')">';
-                        //  html += '<i class="fas fa-trash-alt"></i>';
-                        //  html += '</button>';
-                         return html;
-                     },
-                     width: 180
-                 }
+                }
              ],
              // order: [[0, 'DESC']],
              dom:

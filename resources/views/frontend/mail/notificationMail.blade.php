@@ -51,7 +51,7 @@
             <div class="col-lg-6 offset-lg-3 col-12">
                 <!-- Error Inner -->
                 <div class="success-inner">
-                    <h1><i class="fa fa-envelope"></i><span>Yêu cầu đặt lịch thành công!</span></h1>
+                    <h1><i class="fa fa-envelope"></i><span>Lịch hẹn khám nha khoa!</span></h1>
                     <p>Xin chào, {{$patientName->full_name}}</p>
                     <p>Cảm ơn bạn đã chờ đợi, chúng tôi đã sắp xếp lịch thành công cho bạn. Vui lòng bạn đến đúng
                         giờ</p>
