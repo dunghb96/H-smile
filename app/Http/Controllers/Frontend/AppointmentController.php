@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Appointment;
+use App\Models\AppointmentServices;
 use App\Models\Doctor;
 use App\Models\Employee;
 use App\Models\Patient;
@@ -27,29 +28,38 @@ class AppointmentController extends BaseController
 
     public function booking(Request $request)
     {
-        $dataPatient = [
-            'full_name' => $request->name,
-            'age' => $request->age,
-            'email' => $request->email,
-            'phone_number' => $request->phone_number,
-            'status_desc' =>  $request->description,
-            'status'=> 1
-        ];
-        $newPatient = Patient::create($dataPatient);
+        // $dataPatient = [
+        //     'full_name' => $request->name,
+        //     'age' => $request->age,
+        //     'email' => $request->email,
+        //     'phone_number' => $request->phone_number,
+        //     'status_desc' =>  $request->description,
+        //     'status'=> 1
+        // ];
+        // $newPatient = Patient::create($dataPatient);
 
         $dataAppointment = [
-            'patient_id' => $newPatient->id,
-            'doctor_id' => $request->doctor,
-            'service_id' => $request->service,
-            'shift' => $request->shift,
-            'date_at' =>  Carbon::parse($request->date_at)->format('Y-m-d'),
-            // 'time_at' => Carbon::parse($request->time_at)->format('H:i'),
-            'status'=> 1,
-            // 'status_notification' => 1
+            'patient_name'   => $request->name,
+            'age'            => $request->age,
+            'service_id'     => $request->service,
+            'shift'          => $request->shift,
+            'date_at'        =>  Carbon::parse($request->date_at)->format('Y-m-d'),
+            'email'          => $request->email,
+            'phone_number'   => $request->phone_number,
+            'status_desc'    =>  $request->description,
+            'status'         => 1,
         ];
         $newBooking = Appointment::create($dataAppointment);
 
-        $serviceSelected  = Service::find($request->service);
+        foreach ($request->service as $service) {
+            AppointmentServices::create([
+                'appointment_id' => $newBooking->id,
+                'service_id'     => $service,
+                'status'         => 1
+            ]);
+        }
+
+        $serviceSelected  = Service::whereIn($request->service);
 
         if ($request->shift = 1){
            $shiftSelected = "Ca sáng";
@@ -58,9 +68,16 @@ class AppointmentController extends BaseController
         }
 
 
+
         $to_name = "H-smile";
         $to_email = $request->email;
-        $data = array("name" => $request->name,"serviceSelected" => $serviceSelected->name,"dateSelected" => Carbon::parse($request->date_at)->format('Y-m-d'), "shiftName" => $shiftSelected, "descRequest" => $request->description );
+        $data = array(
+            "name" => $request->name,
+            "serviceSelected" => $serviceSelected->name,
+            "dateSelected" => Carbon::parse($request->date_at)->format('Y-m-d'),
+            "shiftName" => $shiftSelected,
+            "descRequest" => $request->description
+        );
         Mail::send('frontend.mail.sendmail', $data, function ($message) use ($to_name, $to_email) {
             $message->to($to_email)->subject('Nha Khoa H-Smile đã tiếp nhận yêu cầu đặt lịch của quý khách');
             $message->from($to_email, $to_name);
