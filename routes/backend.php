@@ -25,6 +25,7 @@ use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\PriceListController;
 use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\PatientController;
+use App\Http\Controllers\Backend\ServiceCategoryController;
 use App\Http\Controllers\Backend\SettingController;
 
 /*
@@ -103,6 +104,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/loaddata', [ServiceController::class, 'loaddata']);
         Route::post('/edit', [ServiceController::class, 'edit']);
         Route::post('/del', [ServiceController::class, 'del']);
+    });
+
+    Route::group(['prefix' => 'service-category'], function () {
+        Route::get('/', [ServiceCategoryController::class, 'index'])->middleware('permission:list_service_category')->name('admin.service_category');
+        Route::get('/json', [ServiceCategoryController::class, 'json']);
+        Route::post('/add', [ServiceCategoryController::class, 'add']);
+        Route::post('/loaddata', [ServiceCategoryController::class, 'loaddata']);
+        Route::post('/edit', [ServiceCategoryController::class, 'edit']);
+        Route::post('/del', [ServiceCategoryController::class, 'del']);
     });
 
     Route::group(['prefix' => 'price-list'], function () {

@@ -34,8 +34,12 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
+                                            <th>Ảnh</th>
                                             <th>Tên dịch vụ</th>
-                                            <th>Mô tả</th>
+                                            <th>Danh mục</th>
+                                            <th>Giá</th>
+                                            <th>Thời lượng</th>
+                                            <th>Trạng thái</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -58,14 +62,18 @@
                                                 <label for="category_id">Danh mục</label>
                                                 <select class="form-control" id="category_id" name="category_id" required>
                                                     <option value="0">ROOT</option>
-                                                    @foreach($services as $service)
+                                                    @foreach($service_category as $service)
                                                         <option value="{{ $service->id }}">{{ $service->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Giá</label>
+                                                <label>Giá (VND)</label>
                                                 <input type="number" class="form-control" id="price" name="price">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Thời lượng (phút)</label>
+                                                <input type="number" class="form-control" id="time" name="time">
                                             </div>
                                             <div class="form-group">
                                                 <label>Icon</label>
@@ -113,14 +121,18 @@
                                                 <label for="category_id">Danh mục</label>
                                                 <select class="form-control" id="ecategory_id" name="category_id" required>
                                                     <option value="0">ROOT</option>
-                                                    @foreach($services as $service)
+                                                    @foreach($service_category as $service)
                                                         <option value="{{ $service->id }}">{{ $service->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label>Giá</label>
+                                                <label for="price">Giá (VND)</label>
                                                 <input type="number" class="form-control" id="eprice" name="price">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="time">Thời lượng (phút)</label>
+                                                <input type="number" class="form-control" id="etime" name="time">
                                             </div>
                                             <div class="form-group">
                                                 <label>Icon</label>

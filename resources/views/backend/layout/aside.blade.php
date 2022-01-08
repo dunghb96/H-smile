@@ -95,8 +95,8 @@
                     <span class="menu-title text-truncate" data-i18n="Invoice">Dịch vụ</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="">
-                        <a class="d-flex align-items-center" href="#">
+                    <li class="{{ request()->is('admin/service-category') ? 'active' : '' }}">
+                        <a class="d-flex align-items-center" href="{{ route('admin.service_category') }}">
                             <i data-feather="circle"></i>
                             <span class="menu-item text-truncate" data-i18n="List">Nhóm dịch vụ</span>
                         </a>

@@ -34,13 +34,24 @@ $(function () {
             // },
             columns: [
                 { data: 'id' },
+                { data: 'image' },
                 { data: 'name' },
-                { data: 'short_description' },
+                { data: 'category' },
+                { data: 'price' },
+                { data: 'time' },
+                { data: 'status' },
                 { data: '' }
             ],
             columnDefs: [
                 {
-                    targets: 3,
+                    targets: 1,
+                        render: function (data, type, full, meta) {
+                            var src = full['image'];
+                            return '<img src="' + src + '" width="50" >';
+                        },
+                },
+                {
+                    targets: 7,
                     render: function (data, type, full, meta) {
                         var html = '';
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
@@ -106,6 +117,14 @@ $(function () {
                     required: true
                 },
                 price: {
+                    required: true,
+                    money: true
+                },
+                time: {
+                    required: true,
+                    digit: true
+                },
+                price: {
                     digits: true
                 }
             }
@@ -137,7 +156,8 @@ function loaddata(id) {
             $('#eprice').val(data.price);
             $('#eshort_description').val(data.short_description);
             $('#econtent').val(data.content);
-            $('#category_id').val(data.category_id).change();
+            $('#etime').val(data.time);
+            $('#ecategory_id').val(data.category_id).change();
             $('#iid').val(id);
             url = '/admin/service/edit';
             iid = id;
