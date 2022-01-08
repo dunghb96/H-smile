@@ -9,12 +9,12 @@ class Service extends Model
 {
     use HasFactory;
     protected $table = 'services';
-    protected $fillable = ['name', 'content', 'short_description', 'status', 'parent_id', 'slug', 'price'];
+    protected $fillable = ['name', 'content', 'short_description', 'status', 'category_id', 'slug', 'price'];
     protected $primaryKey = 'id';
 
     public function serviceChildrent()
     {
-        return $this->hasMany(Service::class, 'parent_id');
+        return $this->hasMany(Service::class, 'category_id');
     }
 
     public function saveService($model, $request)
@@ -47,7 +47,7 @@ class Service extends Model
         $model->short_description = $request->input('short_description');
         $model->price = $request->input('price');
         $model->content = $request->input('content');
-        $model->parent_id = $request->input('parent_id');
+        $model->category_id = $request->input('category_id');
         $model->status = 1;
 
         $model->save();

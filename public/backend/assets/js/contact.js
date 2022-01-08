@@ -4,19 +4,19 @@
 var url = '';
 var iid = 0;
 $(function () {
-    $('#parent_id').select2({
+    $('#category_id').select2({
         placeholder: "Chọn dịch vụ cha",
         allowClear: true,
-        dropdownParent: $('#parent_id').parent(),
+        dropdownParent: $('#category_id').parent(),
     })
-    $('#parent_id').val('0').trigger('change');
+    $('#category_id').val('0').trigger('change');
 
-    $('#eparent_id').select2({
+    $('#ecategory_id').select2({
         placeholder: "Chọn dịch vụ cha",
         allowClear: true,
-        dropdownParent: $('#eparent_id').parent(),
+        dropdownParent: $('#ecategory_id').parent(),
     })
-    $('#eparent_id').val('0').trigger('change');
+    $('#ecategory_id').val('0').trigger('change');
 
     'use strict';
     var table_table = $('#tableBasic');
@@ -112,7 +112,7 @@ function loaddata(id) {
             $('#eprice').val(data.price);
             $('#eshort_description').val(data.short_description);
             $('#econtent').val(data.content);
-            $('#parent_id').val(data.parent_id).change();
+            $('#category_id').val(data.category_id).change();
             $('#iid').val(id);
             url = '/admin/service/edit';
             iid = id;

@@ -11,7 +11,7 @@ class showController extends Controller
 {
     public function index()
     {
-        $service = Service::where('parent_id', 0)->get();
+        $service = Service::where('category_id', 0)->get();
 
         return view('frontend.service.list_service', compact('service'));
     }

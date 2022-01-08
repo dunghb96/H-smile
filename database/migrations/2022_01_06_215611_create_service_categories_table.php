@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServicesTable extends Migration
+class CreateServiceCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,10 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
-        ini_set('memory_limit', -1);
-
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('service_categories', function (Blueprint $table) {
             $table->id();
-            $table->integer('category_id');
             $table->string('name', 256);
             $table->string('slug', 256);
-            $table->integer('price')->nullable();
-            $table->integer('time')->nullable();
-            $table->string('icon')->nullable();
-            $table->string('image')->nullable();
-            $table->string('content')->nullable();
-            $table->string('short_description')->nullable();
             $table->integer('status');
             $table->timestamps();
         });
@@ -38,6 +29,6 @@ class CreateServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('service_categories');
     }
 }

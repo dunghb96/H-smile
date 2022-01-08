@@ -5,6 +5,7 @@
 use App\Http\Controllers\Backend\AppointmentController;
 use App\Http\Controllers\Backend\BlogCategoryController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\BookingController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DoctorController;
@@ -146,7 +147,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
 
     Route::group(['prefix' => 'examination-schedule'], function () {
         Route::get('/', [ExaminationScheduleController::class, 'index'])->middleware('permission:list_schedules')->name('admin.examination_schedule');
-        Route::get('/json', [ExaminationScheduleController::class, 'json']);
+        Route::post('/json', [ExaminationScheduleController::class, 'json']);
         Route::post('/hoanthanh', [ExaminationScheduleController::class, 'hoanthanh']);
         Route::post('/hentiep', [ExaminationScheduleController::class, 'hentiep']);
         Route::post('/get-doctor', [ExaminationScheduleController::class, 'getDoctor']);
@@ -195,6 +196,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     Route::group(['prefix' => 'role'], function () {
         Route::get('/', [RoleController::class, 'index'])->middleware('permission:list_roles')->name('admin.role');
         Route::get('/json', [RoleController::class, 'json']);
+        Route::post('/save', [RoleController::class, 'save']);
+        Route::post('/loaddata', [RoleController::class, 'loaddata']);
+        Route::post('/saveedit', [RoleController::class, 'saveedit']);
+        Route::post('/del', [RoleController::class, 'del']);
+    });
+
+    Route::group(['prefix' => 'booking'], function () {
+        Route::get('/', [BookingController::class, 'index'])->name('admin.list_booking');
+        Route::post('/json', [BookingController::class, 'json']);
         Route::post('/save', [RoleController::class, 'save']);
         Route::post('/loaddata', [RoleController::class, 'loaddata']);
         Route::post('/saveedit', [RoleController::class, 'saveedit']);

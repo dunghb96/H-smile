@@ -15,13 +15,13 @@ class ServiceController extends BaseController
 
     public function index()
     {
-        $service = Service::where('parent_id', 0)->get();
+        $service = Service::where('category_id', 0)->get();
         return view('frontend.service.index', compact('service'));
     }
     public function get($id)
     {
         $service = Service::find($id);
-        $serviceRandom = Service::where('parent_id', 0)->get();
+        $serviceRandom = Service::where('category_id', 0)->get();
         $doctor = Employee::where('type', 1)->paginate(2);
         return view('frontend.service.detail', compact('service', "serviceRandom", 'doctor'));
     }

@@ -41,7 +41,6 @@ $(function () {
                             return '<img src="' + src + '" width="200px" >';
                         },
                 },
-
                 {
                     targets: 3,
                     render: function (data, type, full, meta) {

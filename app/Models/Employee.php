@@ -49,7 +49,6 @@ class Employee extends Model
         $model->name = $request['name'];
         $model->email = $request['email'];
         $model->password = bcrypt($request['password']);
-        $model->password = bcrypt($request['password']);
         $model->status = 1;
         $model->save();
 

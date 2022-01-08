@@ -56,7 +56,7 @@
                                                 <input id="name" type="text" class="form-control" name="name" required />
                                             </div>
                                             <div class="form-group">
-                                                <label for="parent_id">Địa chỉ</label>
+                                                <label for="category_id">Địa chỉ</label>
                                                 <input id="address" type="text" class="form-control" name="address" required />
                                             </div>
                                             <div class="form-group">

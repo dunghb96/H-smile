@@ -15,7 +15,7 @@ class PriceListController extends BaseController
 
     public function index()
     {
-        $servicePrice = Service::where('parent_id', 0)->get();
+        $servicePrice = Service::where('category_id', 0)->get();
 
         return view('frontend.price-list.index', compact('servicePrice'));
     }

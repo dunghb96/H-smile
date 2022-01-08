@@ -55,8 +55,8 @@
                                                 <input id="name" type="text" class="form-control" name="name" required />
                                             </div>
                                             <div class="form-group">
-                                                <label for="parent_id">Danh mục</label>
-                                                <select class="form-control" id="parent_id" name="parent_id" required>
+                                                <label for="category_id">Danh mục</label>
+                                                <select class="form-control" id="category_id" name="category_id" required>
                                                     <option value="0">ROOT</option>
                                                     @foreach($services as $service)
                                                         <option value="{{ $service->id }}">{{ $service->name }}</option>
@@ -110,8 +110,8 @@
                                                 <input id="ename" type="text" class="form-control" name="name" required />
                                             </div>
                                             <div class="form-group">
-                                                <label for="parent_id">Danh mục</label>
-                                                <select class="form-control" id="eparent_id" name="parent_id" required>
+                                                <label for="category_id">Danh mục</label>
+                                                <select class="form-control" id="ecategory_id" name="category_id" required>
                                                     <option value="0">ROOT</option>
                                                     @foreach($services as $service)
                                                         <option value="{{ $service->id }}">{{ $service->name }}</option>

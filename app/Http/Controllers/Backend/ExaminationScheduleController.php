@@ -33,19 +33,19 @@ class ExaminationScheduleController extends BaseController
     {
         $list = ExaminationSchedule::where('status','>','0')->orderBy('created_at', 'DESC')->get();
         $jsonObj['data'] = $list;
-        foreach($list as $key => $row){
-            $appointment = Appointment::find($row->appointment);
-            $jsonObj['data'][$key]->service = $appointment->service->name;
-            $jsonObj['data'][$key]->service_id = $appointment->service->id;
-            $jsonObj['data'][$key]->doctor = $row->doctors->name;
-            $jsonObj['data'][$key]->patient = $row->patients->full_name;
-            $jsonObj['data'][$key]->patient_id = $appointment->patients->id;
-            // $jsonObj['data'][$key]->full_name = $row->patients->full_name;
-            // $jsonObj['data'][$key]->age       = $row->patients->age;
-            // $jsonObj['data'][$key]->services = $row->service->name;
-            $jsonObj['data'][$key]->status_name =  ExaminationSchedule::STATUS[$row->status];
-            // $jsonObj['data'][$key]->shift_name =  ExaminationSchedule::SHIFT[$row->shift];
-        }
+        // foreach($list as $key => $row){
+        //     $appointment = Appointment::find($row->appointment);
+        //     $jsonObj['data'][$key]->service = $appointment->service->name;
+        //     $jsonObj['data'][$key]->service_id = $appointment->service->id;
+        //     $jsonObj['data'][$key]->doctor = $row->doctors->name;
+        //     $jsonObj['data'][$key]->patient = $row->patients->full_name;
+        //     $jsonObj['data'][$key]->patient_id = $appointment->patients->id;
+        //     // $jsonObj['data'][$key]->full_name = $row->patients->full_name;
+        //     // $jsonObj['data'][$key]->age       = $row->patients->age;
+        //     // $jsonObj['data'][$key]->services = $row->service->name;
+        //     $jsonObj['data'][$key]->status_name =  ExaminationSchedule::STATUS[$row->status];
+        //     // $jsonObj['data'][$key]->shift_name =  ExaminationSchedule::SHIFT[$row->shift];
+        // }
         echo json_encode($jsonObj);
     }
 

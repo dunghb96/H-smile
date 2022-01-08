@@ -1,464 +1,531 @@
-/**
- * DataTables Basic
- */
-var url = '';
-var iid = 0;
-var appointmentid = 0;
-var patientid = 0;
-$(function () {
+'use-strict';
+var date = new Date(), nhanvien = 0;
+var nextDay = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+// prettier-ignore
+var nextMonth = date.getMonth() === 11 ? new Date(date.getFullYear() + 1, 0, 1) : new Date(date.getFullYear(), date.getMonth() + 1, 1);
+// prettier-ignore
+var prevMonth = date.getMonth() === 11 ? new Date(date.getFullYear() - 1, 0, 1) : new Date(date.getFullYear(), date.getMonth() - 1, 1);
 
-    var basicPickr = $('.flatpickr-basic');
-    if (basicPickr.length) {
-        basicPickr.flatpickr({
-            dateFormat: "d/m/Y",
-            minDate: "today",
-        });
-    }
+var nam = '', thang = '';
 
-    $('#time_at').select2({
-        placeholder: "Chọn giờ hẹn",
-        allowClear: true,
-        dropdownParent: $('#time_at').parent(),
-    })
-    $('#time_at').val(null).change();
+var events = []
 
-    'use strict';
+// RTL Support
+var direction = 'ltr',
+    assetPath = '/backend/app-assets/';
+if ($('html').data('textdirection') == 'rtl') {
+    direction = 'rtl';
+}
 
-    // select2
-    //  select.each(function () {
-    //      var $this = $(this);
-    //      $this.wrap('<div class="position-relative"></div>');
-    //      $this.select2({
-    //          placeholder: 'Select value',
-    //          dropdownParent: $this.parent()
-    //      });
-    //  });
+if ($('body').attr('data-framework') === 'laravel') {
+    assetPath = $('body').attr('data-asset-path');
+}
 
-    var table_table = $('#tableBasic');
-    // DataTable with buttons
-    // --------------------------------------------------------------------
-    if (table_table.length) {
-        var table = table_table.DataTable({
-            ajax: '/admin/examination-schedule/json',
-            // select: {
-            //     style: 'single'
-            // },
-            columns: [
-                { data: 'id' },
-                { data: 'date_at' },
-                { data: 'time_at' },
-                { data: 'service' },
-                { data: 'service_id' },
-                { data: 'patient' },
-                { data: 'patient_id' },
-                { data: 'doctor' },
-                { data: 'status_name' },
-                { data: 'status' },
-                { data: 'appointment' },
-                { data: '' }
-            ],
-            columnDefs: [
-                {
-                    targets: 4,
-                    visible: false,
-                },
-                {
-                    targets: 5,
-                    render: function (data, type, full, meta) {
-                        return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient(' + full['patient_id'] + ')"><span class="font-weight-bold">' + full['patient'] + '</span></a>'
-                    }
-                },
-                {
-                    targets: 6,
-                    visible: false,
-                },
-                {
-                    targets: 9,
-                    visible: false,
-                },
-                {
-                    targets: 10,
-                    visible: false,
-                },
-                {
-                    targets: 11,
-                    render: function (data, type, full, meta) {
-                        var html = '';
-                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hoàn thành" onclick="hoanthanh(' + full['id'] + ',' + full['status'] + ',' + full['appointment'] + ')">';
-                        html += '<i data-feather="check"></i>';
-                        html += '</button> &nbsp;';
-                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hẹn tiếp" onclick="hentiep(' + full['id'] + ',' + full['appointment'] + ',' + full['status'] + ',' + full['service_id'] + ',' + full['patient_id'] + ')">';
-                        html += '<i data-feather="arrow-right-circle"></i>';
-                        html += '</button> &nbsp;';
-                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ',' + full['appointment'] + ',' + full['status'] + ',' + full['service_id'] + ',' + full['patient_id'] + ')">';
-                        html += '<i class="fas fa-pencil-alt"></i>';
-                        html += '</button> &nbsp;';
-                        html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy lịch khám" onclick="del(' + full['id'] + ',' + full['status'] + ')">';
-                        html += '<i class="fas fa-trash-alt"></i>';
-                        html += '</button>';
-                        return html;
-                    },
-                    width: 180
-                }
-            ],
-            // order: [[0, 'DESC']],
-            dom:
-                '<"d-flex justify-content-between align-items-center header-actions mx-1 row mt-75"' +
-                '<"col-lg-12 col-xl-6" l>' +
-                '<"col-lg-12 col-xl-6 pl-xl-75 pl-0"<"dt-action-buttons text-xl-right text-lg-left text-md-right text-left d-flex align-items-center justify-content-lg-end align-items-center flex-sm-nowrap flex-wrap mr-1"<"mr-1"f>B>>' +
-                ">t" +
-                '<"d-flex justify-content-between mx-2 row mb-1"' +
-                '<"col-sm-12 col-md-6"i>' +
-                '<"col-sm-12 col-md-6"p>' +
-                ">",
-            displayLength: 10,
-            lengthMenu: [10, 20, 30, 50, 70, 100],
-            // drawCallback: function (settings) {
-            //     var api = this.api();
-            //     var rows = api.rows({page: 'current'}).nodes();
-            //     var last = null;
-            //     api
-            //         .column(2, {page: 'current'})
-            //         .data()
-            //         .each(function (group, i) {
-            //             if (last !== group) {
-            //                 $(rows)
-            //                     .eq(i)
-            //                     .before('<tr class="group"><td colspan="8" style="font-weight: bold">' + group + '</td></tr>');
-            //
-            //                 last = group;
-            //             }
-            //         });
-            // },
-            language: {
-                sLengthMenu: "Show _MENU_",
-                search: "Search",
-                searchPlaceholder: "11111111112..",
-            },
-            // Buttons with Dropdown
-            buttons: [
-                // {
-                //     text: "Thêm mới",
-                //     className: "add-new btn btn-primary mt-50",
-                //     init: function (api, node, config) {
-                //         $(node).removeClass("btn-secondary");
-                //     },
-                //     action: function (e, dt, node, config) {
-                //         loadadd();
-                //     },
-                // },
-            ],
-            language: {
-                paginate: {
-                    // remove previous & next text from pagination
-                    previous: "&nbsp;",
-                    next: "&nbsp;",
-                },
-            },
-        });
-    }
-    $('#frm-edit-lich').each(function () {
-        var $this = $(this);
-        $this.validate({
-            rules: {
-                doctor_id: {
-                    required: true
-                },
-                date_at: {
-                    required: true
-                },
-                time_at: {
-                    required: true
-                },
-            }
-        });
-    });
+$(document).on('click', '.fc-sidebarToggle-button', function (e) {
+    $('.app-calendar-sidebar, .body-content-overlay').addClass('show');
 });
 
-function loadpatient(id) {
-    $('#information-tab').click();
-    $('#patientinfo').modal('show');
-    $(".modal-title").html('Thông tin khách hàng');
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        data: { id: id },
-        url: "/admin/patient/loaddata",
-        success: function (data) {
-            $('#patient-name').html(data.full_name);
-            $('#patient-age').html(data.age);
-            $('#patient-phone').html(data.phone_number);
-            $('#patient-email').html(data.email);
+$(document).on('click', '.body-content-overlay', function (e) {
+    $('.app-calendar-sidebar, .body-content-overlay').removeClass('show');
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    var calendarabc = document.getElementById('calendar'),
+        eventToUpdate,
+        sidebar = $('.event-sidebar'),
+        calendarsColor = {
+            0: '',
+            1: 'primary',
+            2: 'success',
+            3: 'danger',
+            4: 'warning',
+            5: 'info'
         },
-        error: function () {
-            notify_error('Lỗi truy xuất database');
-        }
+        eventForm = $('.event-form'),
+        addEventBtn = $('.add-event-btn'),
+        // cancelBtn = $('.btn-cancel'),
+        updateEventBtn = $('.update-event-btn'),
+        toggleSidebarBtn = $('.btn-toggle-sidebar'),
+        // eventTitle = $('#title'),
+        eventLabel = $('#select-label'),
+        startDate = $('#start-date'),
+        endDate = $('#end-date'),
+        // eventUrl = $('#event-url'),
+        eventGuests = $('#event-guests'),
+        // eventLocation = $('#event-location'),
+        // allDaySwitch = $('.allDay-switch'),
+        selectAll = $('.select-all'),
+        // calEventFilter = $('.calendar-events-filter'),
+        filterInput = $('.input-filter'),
+        // btnDeleteEvent = $('.btn-delete-event'),
+        calendarEditor = $('#event-description-editor');
+
+    // --------------------------------------------
+    // On add new item, clear sidebar-right field fields
+    // --------------------------------------------
+    $('.add-event button').on('click', function (e) {
+        $('.event-sidebar').addClass('show');
+        $('.sidebar-left').removeClass('show');
+        $('.app-calendar .body-content-overlay').addClass('show');
     });
-}
 
+    // Label  select
+    if (eventLabel.length) {
+        function renderBullets(option) {
+            if (!option.id) {
+                return option.text;
+            }
+            var $bullet =
+                "<span class='bullet bullet-" +
+                $(option.element).data('label') +
+                " bullet-sm mr-50'> " +
+                '</span>' +
+                option.text;
 
-function loadadd() {
-    $("#addnew").modal('show');
-    $(".modal-title").html('Thêm nhân viên mới');
-    $('#name').val('');
-    $('#position').val('').change();
-    $('#email').val('');
-    $('#phone_number').val('');
-    $('#username').val('');
-    $('#password').val('');
-    $('#role').val('0').change();
-    url = '/admin/employee/add';
-    iid = 0;
-}
-
-function changeType() {
-    var opt = $("#type").val();
-    if (opt == 1) {
-        $('#service_input').removeClass('d-none');
-    } else {
-        $('#service_input').addClass('d-none');
+            return $bullet;
+        }
+        eventLabel.wrap('<div class="position-relative"></div>').select2({
+            placeholder: 'Select value',
+            dropdownParent: eventLabel.parent(),
+            templateResult: renderBullets,
+            templateSelection: renderBullets,
+            minimumResultsForSearch: -1,
+            escapeMarkup: function (es) {
+                return es;
+            }
+        });
     }
-}
 
-function loaddata(id, appointment, status, service_id, patient) {
-    if(status == 1) {
-        $("#editlich").modal('show');
-        $(".modal-title").html('Cập nhật lịch khám');
+    // Guests select
+    if (eventGuests.length) {
+        function renderGuestAvatar(option) {
+            if (!option.id) {
+                return option.text;
+            }
+
+            var $avatar =
+                "<div class='d-flex flex-wrap align-items-center'>" +
+                "<div class='avatar avatar-sm my-0 mr-50'>" +
+                "<span class='avatar-content'>" +
+                "<img src='" +
+                assetPath +
+                'images/avatars/' +
+                $(option.element).data('avatar') +
+                "' alt='avatar' />" +
+                '</span>' +
+                '</div>' +
+                option.text +
+                '</div>';
+
+            return $avatar;
+        }
+        eventGuests.wrap('<div class="position-relative"></div>').select2({
+            placeholder: 'Select value',
+            dropdownParent: eventGuests.parent(),
+            closeOnSelect: false,
+            templateResult: renderGuestAvatar,
+            templateSelection: renderGuestAvatar,
+            escapeMarkup: function (es) {
+                return es;
+            }
+        });
+    }
+
+    // Start date picker
+    if (startDate.length) {
+        var start = startDate.flatpickr({
+            enableTime: true,
+            altFormat: 'Y-m-dTH:i:S',
+            onReady: function (selectedDates, dateStr, instance) {
+                if (instance.isMobile) {
+                    $(instance.mobileInput).attr('step', null);
+                }
+            }
+        });
+    }
+
+    // End date picker
+    if (endDate.length) {
+        var end = endDate.flatpickr({
+            enableTime: true,
+            altFormat: 'Y-m-dTH:i:S',
+            onReady: function (selectedDates, dateStr, instance) {
+                if (instance.isMobile) {
+                    $(instance.mobileInput).attr('step', null);
+                }
+            }
+        });
+    }
+
+    // Event click function
+    function eventClick(info) {
+        eventToUpdate = info.event;
+        if (eventToUpdate.url) {
+            info.jsEvent.preventDefault();
+            window.open(eventToUpdate.url, '_blank');
+        }
+
+        sidebar.modal('show');
+        addEventBtn.addClass('d-none');
+        cancelBtn.addClass('d-none');
+        updateEventBtn.removeClass('d-none');
+        btnDeleteEvent.removeClass('d-none');
+
+        // eventTitle.val(eventToUpdate.title);
+        // start.setDate(eventToUpdate.start, true, 'Y-m-d');
+        // eventToUpdate.allDay === true ? allDaySwitch.prop('checked', true) : allDaySwitch.prop('checked', false);
+        // eventToUpdate.end !== null
+        //     ? end.setDate(eventToUpdate.end, true, 'Y-m-d')
+        //     : end.setDate(eventToUpdate.start, true, 'Y-m-d');
+        // sidebar.find(eventLabel).val(eventToUpdate.extendedProps.calendar).trigger('change');
+        // eventToUpdate.extendedProps.location !== undefined ? eventLocation.val(eventToUpdate.extendedProps.location) : null;
+        // eventToUpdate.extendedProps.guests !== undefined
+        //     ? eventGuests.val(eventToUpdate.extendedProps.guests).trigger('change')
+        //     : null;
+        // eventToUpdate.extendedProps.guests !== undefined
+        //     ? calendarEditor.val(eventToUpdate.extendedProps.description)
+        //     : null;
+
+        //  Delete Event
+        btnDeleteEvent.on('click', function () {
+            eventToUpdate.remove();
+            // removeEvent(eventToUpdate.id);
+            sidebar.modal('hide');
+            $('.event-sidebar').removeClass('show');
+            $('.app-calendar .body-content-overlay').removeClass('show');
+        });
+    }
+
+    // Modify sidebar toggler
+    function modifyToggler() {
+        $('.fc-sidebarToggle-button')
+            .empty()
+            .append(feather.icons['menu'].toSvg({ class: 'ficon' }));
+    }
+
+    // Selected Checkboxes
+    function selectedCalendars() {
+        var selected = [];
+        $('.calendar-events-filter input:checked').each(function () {
+            selected.push($(this).attr('data-value'));
+        });
+        return selected;
+    }
+
+    // --------------------------------------------------------------------------------------------------
+    // AXIOS: fetchEvents
+    // * This will be called by fullCalendar to fetch events. Also this can be used to refetch events.
+    // --------------------------------------------------------------------------------------------------
+    function fetchEvents(info, successCallback) {
+
         $.ajax({
             type: "POST",
             dataType: "json",
-            data: { id: id },
-            url: "/admin/examination-schedule/loaddata",
+            data: { nam: nam, thang: thang },
+            url: '/admin/examination-schedule/json',
             success: function (data) {
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    data: { service: service_id },
-                    url: "/admin/appointment/get-doctor",
-                    success: function (data) {
-                        $('#doctor_id').html('');
-                        data.forEach(function (val, index) {
-                            var opt = '<option value="' + val.id + '">' + val.name + '</option>';
-                            $('#doctor_id').append(opt);
-                        });
-                        $('#doctor_id').select2({
-                            placeholder: "Chọn bác sĩ",
-                            allowClear: true,
-                            dropdownParent: $('#doctor_id').parent(),
-                        })
-                       
-                    },
+                events = [];
+                if (data.data) {
+                    let i = 0;
+                    data.data.forEach(function (item) {
+                        let allday = false;
+                        let arr = [];
+                        if (item.id > 0) {
+                            arr = {
+                                id: item.id,
+                                title: item.id,
+                                start: new Date(item.date_at + ' ' + item.start_time),
+                                allDay: allday,
+                                extendedProps: {
+                                    calendar: '1',
+                                }
+                            };
+                            events.push(arr);
+                            i++;
+                        }
+                    })
+                }
+                var calendars = selectedCalendars();
+                // We are reading event object from app-calendar-events.js file directly by including that file above app-calendar file.
+                // You should make an API call, look into above commented API call for reference
+                selectedEvents = events.filter(function (event) {
+                    console.log(event);
+                    return calendars.includes(event.extendedProps.calendar.toLowerCase());
                 });
-                $('#doctor_id').val(data.doctor_id).trigger('change');
-                $('#etime_at').val(data.time_at).trigger('change');
-                $('#edate_at').flatpickr({
-                    altInput: true,
-                    altFormat: "d/m/Y",
-                    defaultDate: data.date_at,  
-                    dateFormat: "d/m/Y",
-                    minDate: "today",
-                });
-                
-                iid = id;
+                // if (selectedEvents.length > 0) {
+                successCallback(selectedEvents);
+                // }
             },
             error: function () {
                 notify_error('Lỗi truy xuất database');
             }
         });
-    } else if (status == 2) {
-        notify_error('Lịch khám đã hoàn thành');
-    } else if (status == 3) {
-        notify_error('Lịch khám đã hủy');
-    }
-}
 
-function editExamSchedule() {
-    var info = {};
-    var isValid = $('#frm-edit-lich').valid();
-    if (isValid) {
-        info.id = iid;
-        info.doctor_id = $("#doctor_id").val();
-        info.date_at = $("#edate_at").val();
-        info.time_at = $("#etime_at").val();
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            data: info,
-            url: '/admin/examination-schedule/saveExamSchedule',
-            success: function (data) {
-                if (data.success) {
-                    notyfi_success(data.msg);
-                    $('#editlich').modal('hide');
-                    $("#tableBasic").DataTable().ajax.reload(null, false);
-                } else
-                    notify_error(data.msg);
-            },
-            error: function () {
-                notify_error('Cập nhật không thành công');
-            }
-        });
     }
 
-}
-
-function hoanthanh(id, status, appointment) {
-    if (status == 1) {
-        Swal.fire({
-            title: 'Khám xong',
-            text: "Bạn có chắc chắn muốn hoàn thành lịch khám!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Tôi đồng ý',
-            customClass: {
-                confirmButton: 'btn btn-primary',
-                cancelButton: 'btn btn-outline-danger ml-1'
-            },
-            buttonsStyling: false
-        }).then(function (result) {
-            if (result.value) {
-                $.ajax({
-                    url: "/admin/examination-schedule/hoanthanh",
-                    type: 'post',
-                    dataType: "json",
-                    data: { id: id, appointment: appointment },
-                    success: function (data) {
-                        if (data.success) {
-                            notyfi_success(data.msg);
-                            $("#tableBasic").DataTable().ajax.reload(null, false);
-                        }
-                        else
-                            notify_error(data.msg);
-                    },
-                });
-            }
-        });
-    } else if (status == 2) {
-        notify_error("Lịch khám đã hoàn thành");
-    } else if (status == 3) {
-        notify_error("Lịch khám đã bị hủy");
-    }
-
-}
-
-function hentiep(id, appointment, status, service_id, patient) {
-    if (status == 1) {
-        Swal.fire({
-            title: 'Hẹn tiếp',
-            text: "Bạn có muốn hoàn thành lịch khám và tạo lịch hẹn mới!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Tôi đồng ý',
-            customClass: {
-                confirmButton: 'btn btn-primary',
-                cancelButton: 'btn btn-outline-danger ml-1'
-            },
-            buttonsStyling: false
-        }).then(function (result) {
-            if (result.value) {
-                $("#hentiep").modal('show');
-                $(".modal-title").html('Tạo lịch hẹn mới');
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    data: { service: service_id },
-                    url: "/admin/examination-schedule/get-doctor",
-                    success: function (data) {
-                        $('#doctor').html('');
-                        data.forEach(function (val, index) {
-                            var opt = '<option value="' + val.id + '">' + val.name + '</option>';
-                            $('#doctor').append(opt);
-                        });
-                        $('#doctor').select2({
-                            placeholder: "Chọn bác sĩ",
-                            allowClear: true,
-                            dropdownParent: $('#doctor').parent(),
-                        })
-                        $('#doctor').val(null).trigger('change');
-                        iid = id;
-                        appointmentid = appointment;
-                        patientid = patient;
-                        // $(window).on('load', function() {
-                            if (feather) {
-                                feather.replace({
-                                    width: 14,
-                                    height: 14
-                                });
-                            }
-                        // })
-                    },
-                });
-            }
-        });
-    } else if (status == 2) {
-        notify_error("Lịch khám đã hoàn thành");
-    } else if (status == 3) {
-        notify_error("Lịch khám đã bị hủy");
-    }
-}
-
-function saveExamSchedule() {
-    var info = {};
-    info.patient = patientid;
-    info.schedule = iid;
-    info.appointment = appointmentid;
-    info.doctor = $('#doctor').val();
-    info.service = $('#service').val();
-    info.dateat = $('#date_at').val();
-    info.timeat = $('#time_at').val();
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        data: info,
-        url: "/admin/examination-schedule/hentiep",
-        success: function (data) {
-            if (data.success) {
-                notyfi_success(data.msg);
-                $('#hentiep').modal('hide');
-                $("#tableBasic").DataTable().ajax.reload(null, false);
-            } else {
-                notify_error(data.msg);
+    // Calendar plugins
+    var calendar = new FullCalendar.Calendar(calendarabc, {
+        initialView: 'listMonth',
+        events: fetchEvents,
+        eventOrder: "id",
+        editable: true,
+        dragScroll: true,
+        dayMaxEvents: 2,
+        eventResizableFromStart: true,
+        customButtons: {
+            sidebarToggle: {
+                text: 'Sidebar'
             }
         },
-        error: function () {
-            notify_error('Lỗi truy xuất database');
+        headerToolbar: {
+            start: 'sidebarToggle, prev,next, title',
+            end: 'listMonth,timeGridDay,timeGridWeek'
+            // end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+        },
+        direction: direction,
+        initialDate: new Date(),
+        navLinks: true, // can click day/week names to navigate views
+        eventClassNames: function ({ event: calendarEvent }) {
+            console.log(calendarEvent._def.extendedProps.calendar);
+            const colorName = calendarsColor[calendarEvent._def.extendedProps.calendar];
+            if (calendarEvent._def.extendedProps.calendar > 0) {
+                if (colorName) {
+                    if (colorName == 'dark') {
+                        return [
+                            // Background Color
+                            'bg-light-' + colorName,
+                            'text-white',
+                        ];
+                    } else if (colorName != '') {
+                        return [
+                            // Background Color
+                            'bg-light-' + colorName
+                        ];
+                    }
+                } else {
+                    return [
+                        // Background Color
+                        'bg-light-primary',
+                        'text-white',
+                    ];
+                }
+            }
+        },
+        dateClick: function (info) {
+            var date = moment(info.date).format('YYYY-MM-DD');
+            resetValues();
+            sidebar.modal('show');
+            addEventBtn.removeClass('d-none');
+            updateEventBtn.addClass('d-none');
+            btnDeleteEvent.addClass('d-none');
+            startDate.val(date);
+            endDate.val(date);
+        },
+        eventClick: function (info) {
+            eventClick(info);
+        },
+        datesSet: function () {
+            modifyToggler();
+        },
+        viewDidMount: function () {
+            modifyToggler();
         }
     });
-}
 
-function del(id, status) {
-    if (status == 1) {
-        Swal.fire({
-            title: 'Hủy lịch khám',
-            text: "Bạn có chắc chắn muốn hủy ?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Tôi đồng ý',
-            customClass: {
-                confirmButton: 'btn btn-primary',
-                cancelButton: 'btn btn-outline-danger ml-1'
+    // Render calendar
+    calendar.render();
+    // Modify sidebar toggler
+    modifyToggler();
+    // updateEventClass();
+
+    // Validate add new and update form
+    if (eventForm.length) {
+        eventForm.validate({
+            submitHandler: function (form, event) {
+                event.preventDefault();
+                if (eventForm.valid()) {
+                    sidebar.modal('hide');
+                }
             },
-            buttonsStyling: false
-        }).then(function (result) {
-            if (result.value) {
-                $.ajax({
-                    url: "/admin/examination-schedule/del",
-                    type: 'post',
-                    dataType: "json",
-                    data: { id: id },
-                    success: function (data) {
-                        if (data.success) {
-                            notyfi_success(data.msg);
-                            $("#tableBasic").DataTable().ajax.reload(null, false);
-                        }
-                        else
-                            notify_error(data.msg);
-                    },
-                });
+            title: {
+                required: true
+            },
+            rules: {
+                'start-date': { required: true },
+                'end-date': { required: true }
+            },
+            messages: {
+                'start-date': { required: 'Start Date is required' },
+                'end-date': { required: 'End Date is required' }
             }
+
         });
-    } else if (status == 2) {
-        notify_error("Lịch khám đã hoàn thành");
-    } else if (status == 3) {
-        notify_error("Lịch khám đã bị hủy");
     }
-}
+
+    // Sidebar Toggle Btn
+    if (toggleSidebarBtn.length) {
+        toggleSidebarBtn.on('click', function () {
+            cancelBtn.removeClass('d-none');
+        });
+    }
+
+    // ------------------------------------------------
+    // addEvent
+    // ------------------------------------------------
+    function addEvent(eventData) {
+        calendar.addEvent(eventData);
+        calendar.refetchEvents();
+    }
+
+    // ------------------------------------------------
+    // updateEvent
+    // ------------------------------------------------
+    function updateEvent(eventData) {
+        var propsToUpdate = ['id', 'title', 'url'];
+        var extendedPropsToUpdate = ['calendar', 'guests', 'location', 'description'];
+
+        updateEventInCalendar(eventData, propsToUpdate, extendedPropsToUpdate);
+    }
+
+    // ------------------------------------------------
+    // removeEvent
+    // ------------------------------------------------
+    function removeEvent(eventId) {
+        removeEventInCalendar(eventId);
+    }
+
+    // ------------------------------------------------
+    // (UI) updateEventInCalendar
+    // ------------------------------------------------
+    const updateEventInCalendar = (updatedEventData, propsToUpdate, extendedPropsToUpdate) => {
+        const existingEvent = calendar.getEventById(updatedEventData.id);
+
+        // --- Set event properties except date related ----- //
+        // ? Docs: https://fullcalendar.io/docs/Event-setProp
+        // dateRelatedProps => ['start', 'end', 'allDay']
+        // eslint-disable-next-line no-plusplus
+        for (var index = 0; index < propsToUpdate.length; index++) {
+            var propName = propsToUpdate[index];
+            existingEvent.setProp(propName, updatedEventData[propName]);
+        }
+
+        // --- Set date related props ----- //
+        // ? Docs: https://fullcalendar.io/docs/Event-setDates
+        existingEvent.setDates(updatedEventData.start, updatedEventData.end, { allDay: updatedEventData.allDay });
+
+        // --- Set event's extendedProps ----- //
+        // ? Docs: https://fullcalendar.io/docs/Event-setExtendedProp
+        // eslint-disable-next-line no-plusplus
+        for (var index = 0; index < extendedPropsToUpdate.length; index++) {
+            var propName = extendedPropsToUpdate[index];
+            existingEvent.setExtendedProp(propName, updatedEventData.extendedProps[propName]);
+        }
+    };
+
+    // ------------------------------------------------
+    // (UI) removeEventInCalendar
+    // ------------------------------------------------
+    function removeEventInCalendar(eventId) {
+        calendar.getEventById(eventId).remove();
+    }
+
+    // Add new event
+    $(addEventBtn).on('click', function () {
+        if (eventForm.valid()) {
+            var newEvent = {
+                id: calendar.getEvents().length + 1,
+                title: eventTitle.val(),
+                start: startDate.val(),
+                end: endDate.val(),
+                startStr: startDate.val(),
+                endStr: endDate.val(),
+                display: 'block',
+                extendedProps: {
+                    location: eventLocation.val(),
+                    guests: eventGuests.val(),
+                    calendar: eventLabel.val(),
+                    description: calendarEditor.val()
+                }
+            };
+            if (eventUrl.val().length) {
+                newEvent.url = eventUrl.val();
+            }
+            if (allDaySwitch.prop('checked')) {
+                newEvent.allDay = true;
+            }
+            addEvent(newEvent);
+        }
+    });
+
+    // Update new event
+    updateEventBtn.on('click', function () {
+        if (eventForm.valid()) {
+            var eventData = {
+                id: eventToUpdate.id,
+                title: sidebar.find(eventTitle).val(),
+                start: sidebar.find(startDate).val(),
+                end: sidebar.find(endDate).val(),
+                url: eventUrl.val(),
+                extendedProps: {
+                    location: eventLocation.val(),
+                    guests: eventGuests.val(),
+                    calendar: eventLabel.val(),
+                    description: calendarEditor.val()
+                },
+                display: 'block',
+                allDay: allDaySwitch.prop('checked') ? true : false
+            };
+
+            updateEvent(eventData);
+            sidebar.modal('hide');
+        }
+    });
+
+    // Reset sidebar input values
+    function resetValues() {
+        endDate.val('');
+        eventUrl.val('');
+        startDate.val('');
+        eventTitle.val('');
+        eventLocation.val('');
+        allDaySwitch.prop('checked', false);
+        eventGuests.val('').trigger('change');
+        calendarEditor.val('');
+    }
+
+    // When modal hides reset input values
+    sidebar.on('hidden.bs.modal', function () {
+        resetValues();
+    });
+
+    // Hide left sidebar if the right sidebar is open
+    $('.btn-toggle-sidebar').on('click', function () {
+        btnDeleteEvent.addClass('d-none');
+        updateEventBtn.addClass('d-none');
+        addEventBtn.removeClass('d-none');
+        $('.app-calendar-sidebar, .body-content-overlay').removeClass('show');
+    });
+
+    // Select all & filter functionality
+    if (selectAll.length) {
+        selectAll.on('change', function () {
+            var $this = $(this);
+
+            if ($this.prop('checked')) {
+                calEventFilter.find('input').prop('checked', true);
+            } else {
+                calEventFilter.find('input').prop('checked', false);
+            }
+            calendar.refetchEvents();
+        });
+    }
+
+    if (filterInput.length) {
+        filterInput.on('change', function () {
+            $('.input-filter:checked').length < calEventFilter.find('input').length
+                ? selectAll.prop('checked', false)
+                : selectAll.prop('checked', true);
+            calendar.refetchEvents();
+        });
+    }
+});

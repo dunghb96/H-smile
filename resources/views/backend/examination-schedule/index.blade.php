@@ -2,235 +2,148 @@
 
 @section('content')
 
+<link rel="stylesheet" type="text/css" href="/backend/app-assets/css/pages/app-calendar.css">
 <div class="app-content content ">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
     <div class="content-wrapper container-xxl p-0">
         <div class="content-header row">
-            <div class="content-header-left col-md-9 col-12 mb-2">
-                <div class="row breadcrumbs-top">
-                    <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Lịch khám</h2>
-                        <div class="breadcrumb-wrapper">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a>
-                                </li>
-                                <li class="breadcrumb-item">Lịch khám
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="content-body">
-            <!-- Row grouping -->
-            <section id="row-grouping-datatable">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-datatable">
-                                <table class="datatables-basic table" id="tableBasic">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Ngày hẹn</th>
-                                            <th>Giờ hẹn</th>
-                                            <th>Dịch vụ</th>
-                                            <th></th>
-                                            <th>Khách hàng</th>
-                                            <th></th>
-                                            <th>Bác sĩ</th>
-                                            <th>Trạng thái</th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-
-                            <div class="modal new-user-modal fade" id="hentiep">
-                                <div class="modal-dialog modal-sm">
-                                    <div class="modal-content pt-0">
-                                        <div class="modal-header mb-1">
-                                            <h5 class="modal-title">Tạo lịch hẹn mới</h5>
+            <!-- Full calendar start -->
+            <section>
+                <div class="app-calendar overflow-hidden border">
+                    <div class="row no-gutters">
+                        <!-- Sidebar -->
+                        <div class="col app-calendar-sidebar flex-grow-0 overflow-hidden d-flex flex-column" id="app-calendar-sidebar">
+                            <div class="sidebar-wrapper">
+                                <div class="card-body d-flex justify-content-center">
+                                    <button class="btn btn-primary btn-toggle-sidebar btn-block" data-toggle="modal" data-target="#add-new-sidebar">
+                                        <span class="align-middle">Thêm lịch hẹn mới</span>
+                                    </button>
+                                </div>
+                                <div class="card-body pb-0">
+                                    <h5 class="section-label mb-1">
+                                        <span class="align-middle">Lọc</span>
+                                    </h5>
+                                    <div class="custom-control custom-checkbox mb-1">
+                                        <input type="checkbox" class="custom-control-input select-all" id="select-all" checked />
+                                        <label class="custom-control-label" for="select-all">Tất cả</label>
+                                    </div>
+                                    <div class="calendar-events-filter">
+                                        <div class="custom-control custom-control-danger custom-checkbox mb-1">
+                                            <input type="checkbox" class="custom-control-input input-filter" id="1" data-value="1" checked />
+                                            <label class="custom-control-label" for="1">Chưa xác nhận</label>
                                         </div>
-                                        <div class="modal-body flex-grow-1">
-                                            <form id="frm-add" enctype="multipart/form-data">
-
-                                                <div class="form-group">
-                                                    <label for="category">Bác sĩ</label>
-                                                    <select class="form-control" id="doctor" name="doctor" required>
-
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="date_at">Ngày</label>
-                                                    <input type="text" id="date_at" name="date_at" class="form-control flatpickr-basic" placeholder="DD/MM/YYYY" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="date_at">Ngày</label>
-                                                    <select class="form-control" id="time_at" name="time_at" required>
-                                                        <option value="07:00">07:00</option>
-                                                        <option value="09:30">09:30</option>
-                                                        <option value="10:00">10:00</option>
-                                                        <option value="14:00">14:00</option>
-                                                        <option value="15:30">15:30</option>
-                                                        <option value="17:00">17:00</option>
-                                                    </select>
-                                                </div>
-                                                <button type="button" onclick="saveExamSchedule()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
-                                                <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
-                                            </form>
+                                        <div class="custom-control custom-control-primary custom-checkbox mb-1">
+                                            <input type="checkbox" class="custom-control-input input-filter" id="2" data-value="2" checked />
+                                            <label class="custom-control-label" for="2">Xác nhận</label>
+                                        </div>
+                                        <div class="custom-control custom-control-warning custom-checkbox mb-1">
+                                            <input type="checkbox" class="custom-control-input input-filter" id="3" data-value="3" checked />
+                                            <label class="custom-control-label" for="3">Không đến</label>
+                                        </div>
+                                        <div class="custom-control custom-control-success custom-checkbox mb-1">
+                                            <input type="checkbox" class="custom-control-input input-filter" id="4" data-value="4" checked />
+                                            <label class="custom-control-label" for="4">Hủy</label>
+                                        </div>
+                                        <div class="custom-control custom-control-info custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input input-filter" id="5" data-value="5" checked />
+                                            <label class="custom-control-label" for="5">Đã đến</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="mt-auto">
+                                <img src="/backend/app-assets/images/pages/calendar-illustration.png" alt="Calendar illustration" class="img-fluid" />
+                            </div>
+                        </div>
+                        <!-- /Sidebar -->
 
-                            <div class="modal fade text-left" id="patientinfo" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" id="myModalLabel16">Thông tin khách hàng</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <input type="hidden" id="id" name="id" />
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <ul class="nav nav-pills" role="tablist">
-                                                        <li class="nav-item">
-                                                            <a class="nav-link d-flex align-items-center active" id="information-tab" data-toggle="tab" href="#information" aria-controls="information" role="tab" aria-selected="false">
-                                                                <i data-feather="info"></i><span class="d-none d-sm-block">Thông tin cá nhân</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="nav-item" id="tab2">
-                                                            <a class="nav-link d-flex align-items-center" id="account-tab" data-toggle="tab" href="#account" aria-controls="account" role="tab" aria-selected="true">
-                                                                <i data-feather='clipboard'></i><span class="d-none d-sm-block">Dịch vụ đã sử dụng</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="tab-content">
-                                                        <div class="tab-pane active" id="information" aria-labelledby="information-tab" role="tabpanel">
-                                                            <div class="row">
-                                                            <div class="col-12">
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-4">
-                                                                            <span>Họ tên</span>
-                                                                        </div>
-                                                                        <div class="col-sm-8">
-                                                                            <span class="font-weight-bold text-primary" id="patient-name"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-4">
-                                                                            <span>Tuổi</span>
-                                                                        </div>
-                                                                        <div class="col-sm-8">
-                                                                            <span class="font-weight-bold text-primary" id="patient-age"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-4">
-                                                                            <span>Số điện thoại</span>
-                                                                        </div>
-                                                                        <div class="col-sm-8">
-                                                                            <span class="font-weight-bold text-primary" id="patient-phone"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-12">
-                                                                    <div class="form-group row">
-                                                                        <div class="col-sm-4">
-                                                                            <span>Email</span>
-                                                                        </div>
-                                                                        <div class="col-sm-8">
-                                                                            <span class="font-weight-bold text-primary" id="patient-email"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tab-pane" id="account" aria-labelledby="account-tab" role="tabpanel">
-                                                            <div class="table-responsive border rounded mt-1">
-                                                                <h6 class="py-1 mx-1 mb-0 font-medium-2">
-                                                                    <i data-feather="lock" class="font-medium-3 mr-25"></i>
-                                                                    <span class="align-middle">Chi tiết</span>
-                                                                </h6>
-                                                                <table class="table table-striped table-borderless" id="dichvu-list-table">
-                                                                    <thead class="thead-light ">
-                                                                        <tr>
-                                                                            <th></th>
-                                                                            <th>Ngày</th>
-                                                                            <th>Dịch vụ</th>
-                                                                            <th>Bác sĩ</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                        <!-- Calendar -->
+                        <div class="col position-relative">
+                            <div class="card shadow-none border-0 mb-0 rounded-0">
+                                <div class="card-body pb-0">
+                                    <div id="calendar">
+                                        
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="modal new-user-modal fade" id="editlich">
-                                <div class="modal-dialog modal-sm">
-                                    <div class="modal-content pt-0">
-                                        <div class="modal-header mb-1">
-                                            <h5 class="modal-title">Cập nhật lịch khám</h5>
-                                        </div>
-                                        <div class="modal-body flex-grow-1">
-                                            <form id="frm-edit-lich" enctype="multipart/form-data">
-
-
-                                                <div class="form-group">
-                                                    <label for="doctor_id">Bác sĩ</label>
-                                                    <select class="form-control" id="doctor_id" name="doctor" required>
-
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="edate_at">Ngày</label>
-                                                    <input type="text" id="edate_at" name="date_at" class="form-control flatpickr-basic" placeholder="DD/MM/YYYY" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="etime_at">Giờ hẹn</label>
-                                                    <select class="form-control" id="etime_at" name="etime_at" required>
-                                                        <option value="07:00:00">07:00</option>
-                                                        <option value="09:30:00">09:30</option>
-                                                        <option value="10:00:00">10:00</option>
-                                                        <option value="14:00:00">14:00</option>
-                                                        <option value="15:30:00">15:30</option>
-                                                        <option value="17:00:00">17:00</option>
-                                                    </select>
-                                                </div>
-                                                <button type="button" onclick="editExamSchedule()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
-                                                <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                        <!-- /Calendar -->
+                        <div class="body-content-overlay"></div>
+                    </div>
+                </div>
+                <!-- Calendar Add/Update/Delete event modal-->
+                <div class="modal modal-slide-in event-sidebar fade" id="add-new-sidebar">
+                    <div class="modal-dialog sidebar-lg">
+                        <div class="modal-content p-0">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+                            <div class="modal-header mb-1">
+                                <h5 class="modal-title">Đặt lịch</h5>
                             </div>
-
+                            <div class="modal-body flex-grow-1 pb-sm-0 pb-3">
+                                <form class="event-form needs-validation" data-ajax="false" novalidate>
+                                    <div class="form-group position-relative">
+                                        <label for="booking-date" class="form-label">Ngày, giờ</label>
+                                        <input type="text" class="form-control" id="booking-date" name="booking_date" placeholder="Ngày, giờ" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">Tên khách hàng</label>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Event Title" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone-number" class="form-label">Số điện thoại</label>
+                                        <input type="text" class="form-control" id="phone-number" name="phone_number" placeholder="Event Title" required />
+                                    </div>
+                                    <div class="form-group select2-primary">
+                                        <label for="services" class="form-label">Dịch vụ</label>
+                                        <select class="select2 select-add-guests form-control w-100" id="services" multiple>
+                                            <option data-avatar="1-small.png" value="Jane Foster">Jane Foster</option>
+                                            <option data-avatar="3-small.png" value="Donna Frank">Donna Frank</option>
+                                            <option data-avatar="5-small.png" value="Gabrielle Robertson">Gabrielle Robertson</option>
+                                            <option data-avatar="7-small.png" value="Lori Spears">Lori Spears</option>
+                                            <option data-avatar="9-small.png" value="Sandy Vega">Sandy Vega</option>
+                                            <option data-avatar="11-small.png" value="Cheryl May">Cheryl May</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status" class="form-label">Tình trạng</label>
+                                        <select class="select2 status form-control w-100" id="status" name="status">
+                                            <option data-label="primary" value="Business" selected>Xác nhận</option>
+                                            <option data-label="danger" value="Personal">Chưa xác nhận</option>
+                                            <option data-label="warning" value="Family">Không đến</option>
+                                            <option data-label="success" value="Holiday">Hủy</option>
+                                            <option data-label="info" value="ETC">Đã đến</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Nội dung đặt hẹn</label>
+                                        <textarea name="note" id="note" class="form-control"></textarea>
+                                    </div>
+                                    <div class="form-group d-flex">
+                                        <button type="submit" class="btn btn-primary add-event-btn mr-1">Add</button>
+                                        <button type="button" class="btn btn-outline-secondary btn-cancel" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary update-event-btn d-none mr-1">Update</button>
+                                        <button class="btn btn-outline-danger btn-delete-event d-none">Delete</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!--/ Calendar Add/Update/Delete event modal-->
             </section>
-            <!--/ Row grouping -->
+            <!-- Full calendar end -->
+
         </div>
     </div>
 </div>
+
 @endsection
+
 @push('js')
-<!-- <script src="/backend/app-assets/vendors/js/forms/wizard/bs-stepper.min.js"></script> -->
+<script src="/backend/app-assets/vendors/js/extensions/moment.min.js"></script>
+<script src="/backend/app-assets/vendors/js/calendar/fullcalendar.min.js"></script>
 <script src="/backend/assets/js/examination-schedule.js"></script>
 @endpush

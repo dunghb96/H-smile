@@ -4,12 +4,12 @@
 var url = '';
 var iid = 0;
 $(function () {
-    $('#parent_id').select2({
+    $('#category_id').select2({
         placeholder: "Chọn danh mục",
         allowClear: true,
-        dropdownParent: $('#parent_id').parent(),
+        dropdownParent: $('#category_id').parent(),
     })
-    $('#parent_id').val('0').trigger('change');
+    $('#category_id').val('0').trigger('change');
 
     'use strict';
     var table_table = $('#tableBasic');
@@ -111,7 +111,7 @@ function loadadd() {
     $(".modal-title").html('Thêm dịch vụ mới');
     $('#name').val('');
     $('#description').val('');
-    $('#parent_id').val('0').change();
+    $('#category_id').val('0').change();
     url = '/admin/doctor/add';
     iid = 0;
 }
@@ -127,7 +127,7 @@ function loaddata(id) {
             $('#name').val(data.name);
             $('#short_description').val(data.short_description);
             $('#content').val(data.content);
-            $('#parent_id').val(data.parent_id).change();
+            $('#category_id').val(data.category_id).change();
             url = '/admin/doctor/edit';
             iid = id;
         },
@@ -145,10 +145,10 @@ function save() {
     info.name = $("#name").val();
     info.short_description = $("#short_description").val();
     info.content = $("#content").val();
-    info.parent_id = $("#parent_id").val();
+    info.category_id = $("#category_id").val();
     if (info.name == '') {
         notify_error('Tên dịch vụ trống');
-    } else if (info.parent_id == '') {
+    } else if (info.category_id == '') {
         notify_error('Danh mục dịch vụ trống');
     } else {
         $.ajax({

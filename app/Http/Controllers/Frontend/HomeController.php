@@ -24,7 +24,7 @@ class HomeController extends BaseController
     public function index()
     {
         $slide = Slide::where('status', 1)->take(3)->get();
-        $service = Service::where('status', 1)->where('parent_id', 0)->take(6)->get();
+        $service = Service::where('status', 1)->where('category_id', 0)->take(6)->get();
         $partner = Partner::where('status', 1)->take(4)->get();
         $blog = Blog::orderBy('created_at', 'DESC')->paginate(10);
         $doctor = Employee::where('type', 1)->paginate(10);
@@ -36,14 +36,14 @@ class HomeController extends BaseController
 
     public function service()
     {
-        $service = Service::where('parent_id', 0)->get();
-        $serviceHeader = Service::orderby('id', 'DESC')->where('parent_id', 0)->get();
+        $service = Service::where('category_id', 0)->get();
+        $serviceHeader = Service::orderby('id', 'DESC')->where('category_id', 0)->get();
         return view('frontend.home.index', compact('service', 'serviceHeader'));
     }
 
     public function price()
     {
-        $service = Service::where('parent_id', 0)->get();
+        $service = Service::where('category_id', 0)->get();
         return view('frontend.price.index', compact('service'));
     }
     public function form()
@@ -53,8 +53,8 @@ class HomeController extends BaseController
 
     public function serviceForHeader()
     {
-        $service = Service::where('parent_id', 0)->get();
-        $serviceHeader = Service::orderby('id', 'DESC')->where('parent_id', 0)->get();
+        $service = Service::where('category_id', 0)->get();
+        $serviceHeader = Service::orderby('id', 'DESC')->where('category_id', 0)->get();
         return view('frontend.layout.header', compact('service'));
     }
 

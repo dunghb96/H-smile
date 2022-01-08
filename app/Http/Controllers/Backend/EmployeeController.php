@@ -17,7 +17,7 @@ class EmployeeController extends BaseController
 
     public function index()
     {
-        $services = Service::where('status',1)->where('parent_id', '>', '0')->get();
+        $services = Service::where('status',1)->where('category_id', '>', '0')->get();
         $roles = Role::orderBy('name')->get();
         return view('backend.employee.index',compact('roles','services'));
     }
@@ -65,8 +65,14 @@ class EmployeeController extends BaseController
     {
         $id = $request->input('id');
         $model = Employee::find($id);
-        $model->saveEmployee($model,$request);
-        if($model->save()){
+        $user = User::where('employee',$model->id)->first();
+        $userModel = User::find($user->id);
+        $model->saveEmployee($model, $request);
+        $userModel->email = $request->email;
+        $userModel->name = $request->username;
+        $userModel->password = bcrypt($request->password);
+        $result = $userModel->save();
+        if($result){
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
         } else {

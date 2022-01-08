@@ -1,6 +1,6 @@
 @php
     use App\Models\Service;
-    $service = Service::where('status', 1)->where('parent_id', 0)->take(6)->get();
+    $service = Service::where('status', 1)->where('category_id', 0)->take(6)->get();
 @endphp
 
 <!--Start footer area-->

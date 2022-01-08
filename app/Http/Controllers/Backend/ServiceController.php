@@ -89,9 +89,9 @@ class ServiceController extends BaseController
 
     // public function categoryRecusive($id, $text = '')
     // {
-    //     $service = Service::where('parent_id', 0)->get();
+    //     $service = Service::where('category_id', 0)->get();
     //     foreach ($service as $value) {
-    //         if ($value['parent_id'] == $id) {
+    //         if ($value['category_id'] == $id) {
     //             $this->htmlSlelect .= "<option value='" . $value['id'] . "'>" . $text . $value['name'] . "</option>";
     //             $this->categoryRecusive($value['id'], $text . '--');
     //         }

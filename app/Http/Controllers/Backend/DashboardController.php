@@ -30,7 +30,7 @@ class DashboardController extends BaseController
         $day = Carbon::now()->day;
         $patient = Patient::where('status', 1)->get();
         $doctor = Employee::where('type', 1)->get();
-        $service = Service::where('parent_id', 0)->get();
+        $service = Service::where('category_id', 0)->get();
         $list = Appointment::orderBY('created_at')->get();
         return view('backend.dashboard.index', compact('list', 'doctor',  'service', 'patient', 'appointment', 'confirm', 'waiting', 'doneAppoint', 'day', 'date'));
     }
