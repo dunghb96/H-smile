@@ -22,7 +22,7 @@ class AppointmentController extends BaseController
     public function index()
     {
         $doctors = Employee::where('type','1')->where('status','1')->get();
-        $services = Service::where('status','1')->where('parent_id', '>', '0')->get();
+        $services = Service::where('status','1')->get();
         return view('frontend.appointment.index',compact('doctors','services'));
     }
 
