@@ -37,13 +37,15 @@
                     </div>
                 </div>
             </div>
-            @if(session('alert'))
+            @if(session('alert') == "Đặt lịch thành công! Hãy kiểm tra email để biết chi tiết thông tin đặt lịch")
                 <section class='alert alert-success'>{{session('alert')}}</section>
             @endif
+
             <div class="row">
                 <div class="col-xl-12">
                     <div class="appointment-form-left">
-                        <form name="appointment-form" action="{{ route('hsmile.booking') }}" method="post">
+                        <form id="form-send" name="appointment-form" action="{{ route('hsmile.booking') }}"
+                              method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-xl-12 col-lg-12">
@@ -52,7 +54,8 @@
                                             <h5>Dịch vụ</h5>
                                         </div>
                                         <div class="input-box">
-                                            <select class="selectmenu select2" name="service[]" id="service"  multiple="multiple" required>
+                                            <select class="selectmenu select2" name="service[]" id="service"
+                                                    multiple="multiple" required>
                                                 <option value="" selected="selected">Chọn dịch vụ</option>
                                                 @foreach ($services as $service)
                                                     <option value="{{ $service->id }}">
@@ -71,7 +74,8 @@
                                             <h5>Ngày</h5>
                                         </div>
                                         <div class="input-box">
-                                            <input type="text" name="date_at" placeholder="Date" id="my_date_picker" autocomplete="off" required>
+                                            <input type="text" name="date_at" placeholder="Date" id="my_date_picker"
+                                                   autocomplete="off" required>
                                             <div class="icon-box">
                                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                                             </div>
@@ -104,7 +108,8 @@
                                         <div class="input-box">
                                             <div class="row">
                                                 <div class="col-xl-8">
-                                                    <input type="text" name="name" value="" placeholder="Họ và Tên" required>
+                                                    <input type="text" name="name" value="" placeholder="Họ và Tên"
+                                                           required>
                                                 </div>
                                                 <div class="col-xl-4 col-lg-12">
                                                     <div class="single-box">
@@ -112,7 +117,8 @@
                                                             <h5>Tuổi</h5>
                                                         </div>
                                                         <div class="input-box">
-                                                            <input type="text" name="age" value="" placeholder="Tuổi" required>
+                                                            <input type="text" name="age" value="" placeholder="Tuổi"
+                                                                   required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,30 +126,62 @@
 
                                             <div class="row">
                                                 <div class="col-xl-6">
-                                                    <input type="text" name="phone_number" value="" placeholder="Số điện thoại" required>
+                                                    <input type="text" name="phone_number" id="phone_number" value=""
+                                                           placeholder="Số điện thoại" required>
                                                 </div>
                                                 <div class="col-xl-6">
-                                                    <input type="text" name="email" value="" placeholder="Email" required>
+                                                    <input type="text" name="email" value="" placeholder="Email"
+                                                           required>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-xl-6">
-                                                    <input type="text" name="address" value="" placeholder="Địa chỉ" required>
+                                                    <input type="text" name="address" value="" placeholder="Địa chỉ"
+                                                           required>
                                                 </div>
                                                 <div class="col-xl-6" style="margin-top: 15px;">
-                                                    <label for="gender"><span style="color: black">Giới tính  :</span> &nbsp;&nbsp;&nbsp;
-                                                        <input type="radio" name="gender" value="0" required>  Nam &nbsp; &nbsp;
-                                                        <input type="radio" name="gender" value="1" required>  Nữ &nbsp; &nbsp;
-                                                        <input type="radio" name="gender" value="2" required>  Khác &nbsp; &nbsp;
+                                                    <label for="gender"><span style="color: black">Giới tính  :</span>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <input type="radio" name="gender" value="0" required> Nam &nbsp;
+                                                        &nbsp;
+                                                        <input type="radio" name="gender" value="1" required> Nữ &nbsp;
+                                                        &nbsp;
+                                                        <input type="radio" name="gender" value="2" required> Khác
+                                                        &nbsp; &nbsp;
                                                     </label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-xl-12">
-                                                    <textarea name="note" placeholder="Mô tả tình trạng" ></textarea>
+                                                    <textarea name="note" placeholder="Mô tả tình trạng"></textarea>
                                                 </div>
                                             </div>
+
+                                            <div class="row">
+                                                <div class="col-xl-8">
+                                                    <input type="text" name="nhapOtp" placeholder="Nhập OTP">
+                                                    @error('nhapOtp')
+                                                    <div class="alert alert-danger" role="alert">
+                                                        {{ $message }}
+                                                    </div>
+                                                    @enderror
+
+                                                </div>
+                                                <div class="col-xl-4">
+                                                    <button type="button" class="btn btn-secondary p-3" id="btnOtp"
+                                                            onclick="layOTP()">Nhận OTP
+                                                    </button>
+                                                </div>
+                                                <div id="errorOTP" class="col-xl-12" style="display: none;">
+                                                    <div id="errorOTPMessage" class="alert alert-danger" role="alert">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @if(session('alert') == "Sai mã OTP")
+                                                <section
+                                                    class='alert alert-danger'>{{session('alert')}}</section>
+                                            @endif
 
                                             <div class="row">
                                                 <div class="col-xl-12">
@@ -167,7 +205,7 @@
     <!--End Appointment area -->
 @endsection
 @push('css')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 @endpush
 
 @push('js')
@@ -184,6 +222,55 @@
                 });
             });
         })
+
+
+        function hideBtn() {
+            var btn = document.querySelector("#btnOtp");
+            var time = 20;
+            timer = setInterval(function () {
+                if (time === 0) {
+                    btn.disabled = false;
+                    btn.innerHTML = "Gửi lại OTP";
+                    time = 20;
+                    clearInterval(timer);  //Stop timing
+                } else {
+                    btn.disabled = true;
+                    btn.innerHTML = "Gửi lại sau " + time + "(s)";
+                    time--;
+                }
+            }, 1000)
+        }
+
+        function layOTP() {
+            if (document.querySelector("#phone_number").value.length <= 0) {
+                document.querySelector("#errorOTP").style.display = "block";
+                document.querySelector("#errorOTPMessage").innerHTML = "Nhập số điện thoại";
+            } else {
+                document.querySelector("#errorOTP").style.display = "none";
+
+                var info = {};
+                var info = new FormData($("#form-send")[0]);
+                $.ajax({
+                    type: "post",
+                    dataType: "json",
+                    data: info,
+                    url: "/send-sms-notification",
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if (data.success) {
+                            // notyfi_success(data.msg);
+                        }
+                    }
+
+                })
+                hideBtn();
+            }
+
+
+        }
+
+
     </script>
 @endpush
 

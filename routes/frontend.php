@@ -48,4 +48,6 @@ Route::group(['prefix' => 'appointment'], function () {
     Route::post('/', [AppointmentController::class, 'booking'])->name('hsmile.booking');
     Route::post('/get-doctor', [AppointmentController::class, 'getDoctor']);
 });
+
+Route::post('send-sms-notification', [AppointmentController::class, 'sendSmsNotificaition'])->name("send-sms-notification");
 // không có frontend/ đâu
