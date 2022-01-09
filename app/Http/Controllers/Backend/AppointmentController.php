@@ -31,25 +31,27 @@ class AppointmentController extends BaseController
         $list = Appointment::with('patients', 'service', 'doctor')->where('status', '>', '0')->orderBY('created_at')->get();
         $jsonObj['data'] = $list;
         foreach ($list as $key => $row) {
-            $jsonObj['data'][$key]->full_name = $row->patients->full_name;
-            if($row->patients->email) {
-                $jsonObj['data'][$key]->email = $row->patients->email;
-            } else {
-                $jsonObj['data'][$key]->email = '';
-            }
+            // $jsonObj['data'][$key]->full_name = $row->patients->full_name;
+            // if($row->patients->email) {
+            //     $jsonObj['data'][$key]->email = $row->patients->email;
+            // } else {
+            //     $jsonObj['data'][$key]->email = '';
+            // }
 
-            if($row->patients->phone_number) {
-                $jsonObj['data'][$key]->phone = $row->patients->phone_number;
-            } else {
-                $jsonObj['data'][$key]->email = '';
-            }
+            // if($row->patients->phone_number) {
+            //     $jsonObj['data'][$key]->phone = $row->patients->phone_number;
+            // } else {
+            //     $jsonObj['data'][$key]->email = '';
+            // }
 
 
-            $jsonObj['data'][$key]->services = $row->service->name;
+
+            // $jsonObj['data'][$key]->services = $row->service->name;
             $jsonObj['data'][$key]->shift = Appointment::SHIFT[$row->shift];
-            $jsonObj['data'][$key]->doctor_name = $row->doctor->name;
+            // $jsonObj['data'][$key]->doctor_name = $row->doctor->name;
             $jsonObj['data'][$key]->status_word = Appointment::STATUS[$row->status];
         }
+        // dd($jsonObj);
         echo json_encode($jsonObj);
     }
 
@@ -120,14 +122,14 @@ class AppointmentController extends BaseController
             }
             echo json_encode($jsonObj);
         }
-        
+
     }
 
     public function del(Request $request)
     {
         $id = $request->id;
         $model = Appointment::find($id);
-        $model->status = 3;
+        $model->status = 0;
         $result = $model->save();
         if ($result) {
             $jsonObj['success'] = true;
@@ -141,26 +143,21 @@ class AppointmentController extends BaseController
 
     public function save(Request $request)
     {
-
-        $dataPatient = [
-            'full_name' => $request->fullname,
+        $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
+        $dataApp = [
+            'staff_id' => 2,
+            'name' => $request->fullname,
             'age' => $request->age,
             'phone_number' => $request->phonenumber,
             'email' => $request->email,
-            'status' => 1
-        ];
-        $result1 = Patient::create($dataPatient);
-        $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
-        $dataApp = [
-            'service_id' => $request->service,
-            'doctor_id' => $request->doctor,
-            'date_at' => $dateat,
+            'services' => implode(",",$request->service),
+            'date' => $dateat,
             'shift' => $request->shift,
+            'address' => $request->address,
+            'gender' => $request->gender,
             'note' => $request->note,
-            'patient_id' => $result1->id,
             'status' => 1
         ];
-
         $result = Appointment::create($dataApp);
         if ($result) {
             $jsonObj['success'] = true;

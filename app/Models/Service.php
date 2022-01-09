@@ -12,9 +12,15 @@ class Service extends Model
     protected $fillable = ['name', 'content', 'short_description', 'status', 'category_id', 'slug', 'price'];
     protected $primaryKey = 'id';
 
-    public function serviceChildrent()
+    const STATUS = [
+        0 => 'deleted',
+        1 => 'active',
+        2 => 'non active'
+    ];
+
+    public function ServiceCategory()
     {
-        return $this->hasMany(Service::class, 'category_id');
+        return $this->belongsTo(ServiceCategory::class, 'category_id', 'id' );
     }
 
     public function saveService($model, $request)
@@ -45,6 +51,7 @@ class Service extends Model
         $model->name = $request->input('name');
         $model->slug = $slug;
         $model->short_description = $request->input('short_description');
+        $model->time = $request->input('time');
         $model->price = $request->input('price');
         $model->content = $request->input('content');
         $model->category_id = $request->input('category_id');

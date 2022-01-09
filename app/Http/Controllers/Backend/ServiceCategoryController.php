@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Service;
 use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redis;
 
-class ServiceController extends BaseController
+class ServiceCategoryController extends BaseController
 {
     public function __construct()
     {
@@ -16,27 +17,29 @@ class ServiceController extends BaseController
 
     public function index()
     {
-        $service_category = ServiceCategory::where('status', 1)->get();
-        return view('backend.service.index', compact('service_category'));
+        $service_category = ServiceCategory::all();
+        $status = ServiceCategory::STATUS;
+        return view('backend.service_category.index', compact('service_category', 'status'));
     }
 
     public function json()
     {
-        $list = Service::where('status', '>', 0)->get();
+        $list = ServiceCategory::where('status', '>' ,0)->get();
         $jsonObj['data'] = $list;
-        foreach($list as $key => $value) {
-            $jsonObj['data'][$key]->price = number_format($value->price).' VND';
-            $jsonObj['data'][$key]->time = $value->time.' phút';
-            $jsonObj['data'][$key]->category = $value->ServiceCategory->name;
-            $jsonObj['data'][$key]->status = Service::STATUS[$value->status];
+        foreach($list as $key => $row) {
+            $jsonObj['data'][$key]->status_word = ServiceCategory::STATUS[$row->status];
         }
         echo json_encode($jsonObj);
     }
 
     public function add(Request $request)
     {
-        $model = new Service();
-        $result = $model->saveService($model, $request);
+        $data = [
+            'name'   => $request->name,
+            'slug'   => Str::slug($request->name, '-'),
+            'status' => $request->status
+        ];
+        $result = ServiceCategory::create($data);
         if($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
@@ -50,15 +53,20 @@ class ServiceController extends BaseController
     public function loaddata(Request $request)
     {
         $id = $request->id;
-        $jsonObj = Service::find($id);
+        $jsonObj = ServiceCategory::find($id);
         echo json_encode($jsonObj);
     }
 
     public function edit(Request $request)
     {
         $id = $request->id;
-        $model = service::find($id);
-        $result = $model->saveService($model, $request);
+        $model = ServiceCategory::find($id);
+        $data = [
+            'name'   => $request->name,
+            'slug'   => Str::slug($request->name, '-'),
+            'status' => $request->status
+        ];
+        $result = $model->update($data);
         if($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
@@ -72,7 +80,7 @@ class ServiceController extends BaseController
     public function del(Request $request)
     {
         $id = $request->id;
-        $model = service::find($id);
+        $model = ServiceCategory::find($id);
         $model->status = 0;
         $result = $model->save();
         if($result) {

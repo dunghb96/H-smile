@@ -21,59 +21,49 @@ class AppointmentController extends BaseController
 
     public function index()
     {
-        $doctors = Employee::where('type','1')->where('status','1')->get();
-        $services = Service::where('status','1')->where('parent_id', '>', '0')->get();
-        return view('frontend.appointment.index',compact('doctors','services'));
+        $services = Service::where('status','1')->get();
+        return view('frontend.appointment.index',compact('services'));
     }
 
     public function booking(Request $request)
     {
-        // $dataPatient = [
-        //     'full_name' => $request->name,
-        //     'age' => $request->age,
-        //     'email' => $request->email,
-        //     'phone_number' => $request->phone_number,
-        //     'status_desc' =>  $request->description,
-        //     'status'=> 1
-        // ];
-        // $newPatient = Patient::create($dataPatient);
 
-        $dataAppointment = [
-            'patient_name'   => $request->name,
-            'age'            => $request->age,
-            'service_id'     => $request->service,
-            'shift'          => $request->shift,
-            'date_at'        =>  Carbon::parse($request->date_at)->format('Y-m-d'),
-            'email'          => $request->email,
-            'phone_number'   => $request->phone_number,
-            'status_desc'    =>  $request->description,
-            'status'         => 1,
+        $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
+        $dataApp = [
+            'patient_code' => random_int(100000000, 999999999),
+            // đang fix cứng staff_id
+            'staff_id' => 2,
+            'name' => $request->name,
+            'age' => $request->age,
+            'phone_number' => $request->phone_number,
+            'email' => $request->email,
+            'services' => implode(",",$request->service),
+            'date' => $dateat,
+            'shift' => $request->shift,
+            'address' => $request->address,
+            'gender' => $request->gender,
+            'note' => $request->note,
+            'status' => 1
         ];
-        $newBooking = Appointment::create($dataAppointment);
+        $result = Appointment::create($dataApp);
 
-        foreach ($request->service as $service) {
-            AppointmentServices::create([
-                'appointment_id' => $newBooking->id,
-                'service_id'     => $service,
-                'status'         => 1
-            ]);
-        }
-
-        $serviceSelected  = Service::whereIn($request->service);
-
+        $serviceSelected  = Service::whereIn('id', $request->service)->get();
         if ($request->shift = 1){
            $shiftSelected = "Ca sáng";
         } else {
             $shiftSelected = "Ca chiều";
         }
-
+        $list_name = '';
+        foreach($serviceSelected as $row) {
+            $list_name .= $row->name.', ';
+        }
 
 
         $to_name = "H-smile";
         $to_email = $request->email;
         $data = array(
             "name" => $request->name,
-            "serviceSelected" => $serviceSelected->name,
+            "serviceSelected" => rtrim($list_name, ', '),
             "dateSelected" => Carbon::parse($request->date_at)->format('Y-m-d'),
             "shiftName" => $shiftSelected,
             "descRequest" => $request->description
