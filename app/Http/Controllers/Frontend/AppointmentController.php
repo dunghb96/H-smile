@@ -28,32 +28,26 @@ class AppointmentController extends BaseController
 
     public function booking(Request $request)
     {
-        // $dataPatient = [
-        //     'full_name' => $request->name,
-        //     'age' => $request->age,
-        //     'email' => $request->email,
-        //     'phone_number' => $request->phone_number,
-        //     'status_desc' =>  $request->description,
-        //     'status'=> 1
-        // ];
-        // $newPatient = Patient::create($dataPatient);
-
-        $dataAppointment = [
-            'patient_name'   => $request->name,
-            'age'            => $request->age,
-            'service_id'     => $request->service,
-            'shift'          => $request->shift,
-            'date_at'        =>  Carbon::parse($request->date_at)->format('Y-m-d'),
-            'email'          => $request->email,
-            'phone_number'   => $request->phone_number,
-            'status_desc'    =>  $request->description,
-            'status'         => 1,
+        $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
+        $dataApp = [
+            'staff_id' => 2,
+            'name' => $request->fullname,
+            'age' => $request->age,
+            'phone_number' => $request->phonenumber,
+            'email' => $request->email,
+            'services' => $request->service,
+            'date' => $dateat,
+            'shift' => $request->shift,
+            'address' => $request->address,
+            'gender' => $request->gender,
+            'note' => $request->note,
+            'status' => 1
         ];
-        $newBooking = Appointment::create($dataAppointment);
+        $result = Appointment::create($dataApp);
 
         foreach ($request->service as $service) {
             AppointmentServices::create([
-                'appointment_id' => $newBooking->id,
+                'appointment_id' => $result->id,
                 'service_id'     => $service,
                 'status'         => 1
             ]);

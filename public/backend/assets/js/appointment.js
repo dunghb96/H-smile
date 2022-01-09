@@ -61,43 +61,41 @@ $(function () {
 
             columns: [
                 { data: 'id' },
-                { data: 'full_name' },
-                { data: 'patient_id' },
-                { data: 'phone' },
+                { data: 'name' },
+                { data: 'phone_number' },
                 { data: 'services' },
-                { data: 'service_id' },
-                { data: 'date_at' },
+                // { data: 'service_id' },
+                { data: 'date' },
                 { data: 'shift' },
-                { data: 'doctor_name' },
                 { data: 'status_word' },
                 { data: 'status' },
                 { data: '' }
             ],
             columnDefs: [
+                // {
+                //     targets: 1,
+                //     render: function (data, type, full, meta) {
+                //         return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient(' + full['patient_id'] + ')"><span class="font-weight-bold">' + full['full_name'] + '</span></a>'
+                //     }
+                // },
+                // {
+                //     targets: 4,
+                //     visible: false,
+                // },
                 {
-                    targets: 1,
-                    render: function (data, type, full, meta) {
-                        return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient(' + full['patient_id'] + ')"><span class="font-weight-bold">' + full['full_name'] + '</span></a>'
-                    }
-                },
-                {
-                    targets: 2,
+                    targets: 7,
                     visible: false,
                 },
+                // {
+                //     targets: 10,
+                //     visible: false,
+                // },
                 {
-                    targets: 5,
-                    visible: false,
-                },
-                {
-                    targets: 10,
-                    visible: false,
-                },
-                {
-                    targets: 11,
+                    targets: 8,
                     render: function (data, type, full, meta) {
                         var html = '';
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Tạo lịch khám" onclick="duyet(' + full['id'] + ',' + full['service_id'] + ',' + full['status'] + ',' + full['patient_id'] + ')">';
-                        html += '<i data-feather="calendar"></i>';
+                        html += '<i class="fas fa-calendar"></i>';
                         html += '</button> &nbsp;';
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
                         html += '<i class="fas fa-pencil-alt"></i>';
@@ -296,6 +294,8 @@ function save() {
     info.age = $('#age').val();
     info.phonenumber = $('#phone_number').val();
     info.email = $('#email').val();
+    info.address = $('#address').val();
+    info.gender = $('input[name=gender]:checked', '#addnew').val();
     info.note = $('#note').val();
     var isValid = $('#frm-add').valid();
     if (isValid) {

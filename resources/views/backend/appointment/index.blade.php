@@ -35,13 +35,12 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Khách hàng</th>
-                                            <th></th>
+                                            {{-- <th></th> --}}
                                             <th>Số điện thoại</th>
                                             <th>Dịch vụ</th>
-                                            <th></th>
+                                            {{-- <th></th> --}}
                                             <th>Ngày hẹn</th>
                                             <th>Ca</th>
-                                            <th>Bác sĩ</th>
                                             <th>Trạng thái</th>
                                             <th></th>
                                             <th></th>
@@ -66,14 +65,14 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="form-group">
+                                            {{-- <div class="form-group">
                                                 <label for="adoctor">Nha sĩ</label>
                                                 <select class="form-control" id="adoctor" name="doctor">
                                                     <!-- @foreach($doctor as $row)
                                                     <option value="{{ $row->id }}">{{ $row->name }}</option>
                                                     @endforeach -->
                                                 </select>
-                                            </div>
+                                            </div> --}}
                                             <div class="form-group">
                                                 <label for="adate_at">Ngày</label>
                                                 <input type="text" id="adate_at" name="date_at" class="form-control flatpickr-basic" placeholder="DD/MM/YYYY" />
@@ -100,6 +99,16 @@
                                             <div class="form-group">
                                                 <label>Email</label>
                                                 <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Địa chỉ</label>
+                                                <input type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Giới tính : </label>&nbsp; &nbsp;
+                                                <input type="radio" class="gender" name="gender" value="0" required>  Nam &nbsp; &nbsp;
+                                                <input type="radio" class="gender" name="gender" value="1" required>  Nữ &nbsp; &nbsp;
+                                                <input type="radio" class="gender" name="gender" value="2" required>  Khác &nbsp; &nbsp;
                                             </div>
 
                                             <div class="form-group">

@@ -12,15 +12,24 @@ class Appointment extends Model
     protected $guarded = [];
 
     const STATUS = [
+        0 => 'Hủy',
         1 => 'Chờ xác nhận',
         2 => 'Đã xác nhận',
-        3 => 'Đã hủy',
-        4 => 'Đã hoàn thành'
+        3 => 'Đã đến',
+        4 => 'Đang thực hiện',
+        5 => 'Không đến',
+        6 => 'Hoàn thành'
     ];
 
     const SHIFT= [
         1 => 'Ca sáng',
         2 => 'Ca chiều'
+    ];
+
+    const GENDER = [
+        0 => 'nam',
+        1 => 'nữ',
+        2 => 'khác'
     ];
 
     public function patients()

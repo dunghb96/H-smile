@@ -20,9 +20,12 @@ class CreateAppointmentsTable extends Migration
             $table->date('date')->nullable();
             $table->integer('shift')->nullable();
             $table->string('name')->nullable();
+            $table->integer('age')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('email')->nullable();
             $table->string('services')->nullable();
+            $table->string('address')->nullable();
+            $table->integer('gender')->nullable();
             $table->string('note')->nullable();
             $table->integer('status');
             $table->timestamps();
