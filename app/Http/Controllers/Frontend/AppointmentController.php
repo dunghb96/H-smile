@@ -30,6 +30,8 @@ class AppointmentController extends BaseController
 
         $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
         $dataApp = [
+            'patient_code' => random_int(100000000, 999999999),
+            // đang fix cứng staff_id
             'staff_id' => 2,
             'name' => $request->name,
             'age' => $request->age,
