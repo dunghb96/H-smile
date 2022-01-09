@@ -44,7 +44,7 @@ class DashboardController extends BaseController
     {
         $doctor = Auth::guard('web')->user();
         $now = Date('Y-m-d');
-        $list = ExaminationSchedule::where('date_at', '=', $now)->where('doctor',  $doctor->employee)->where('status', 1)->get();
+        $list = ExaminationSchedule::where('date_at', '=', $now)->where('doctor',  $doctor->employee)->where('status', '>', 0)->get();
         $jsonObj['data'] = $list;
         foreach ($list as $key => $row) {
             $appointment = Appointment::find($row->appointment);
