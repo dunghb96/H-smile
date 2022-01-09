@@ -183,6 +183,11 @@
                                                     class='alert alert-danger'>{{session('alert')}}</section>
                                             @endif
 
+
+                                            <section
+                                                class='alert alert-danger'>{{Cookie::get('patient_code')}}
+                                            </section>
+
                                             <div class="row">
                                                 <div class="col-xl-12">
                                                     <div class="button-box">

@@ -10,6 +10,7 @@ use App\Models\Patient;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends BaseController
@@ -67,11 +68,10 @@ class AppointmentController extends BaseController
             ]
         );
         if ($request->get("nhapOtp") == session()->get('otp')) {
-            $alert = 'Đặt lịch thành công! Hãy kiểm tra email để biết chi tiết thông tin đặt lịch';
 
             $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
             $dataApp = [
-                'patient_code' => random_int(100000000, 999999999),
+                'patient_code' => Cookie::get('patient_code') !== false ? Cookie::get('patient_code') : random_int(100000000, 999999999),
                 // đang fix cứng staff_id
                 'staff_id' => 2,
                 'name' => $request->name,
@@ -87,6 +87,8 @@ class AppointmentController extends BaseController
                 'status' => 1
             ];
             $result = Appointment::create($dataApp);
+
+            //Set cookie
 
             $serviceSelected = Service::whereIn('id', $request->service)->get();
             if ($request->shift = 1) {
@@ -129,9 +131,16 @@ class AppointmentController extends BaseController
             // });
 
 
+            if (Cookie::get('patient_code') !== true) {
+                Cookie::queue('patient_code', $dataApp['patient_code'], 99999999999);
+            }
+
+            $alert = "Đặt lịch thành công! Hãy kiểm tra email để biết chi tiết thông tin đặt lịch";
         } else {
             $alert = 'Sai mã OTP';
         }
+
+
         return redirect()->route('hsmile.appointment')->with('alert', $alert);
 
 
