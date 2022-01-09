@@ -59,7 +59,7 @@
                                         <div class="modal-body flex-grow-1">
                                             <div class="form-group">
                                                 <label for="service">Dịch vụ</label>
-                                                <select class="form-control" id="service" name="service" required onchange="changeSV()">
+                                                <select class="form-control" id="service" name="service[]" required onchange="changeSV()">
                                                     @foreach($services as $service)
                                                     <option value="{{ $service->id }}">{{ $service->name }}</option>
                                                     @endforeach

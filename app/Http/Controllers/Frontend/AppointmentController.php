@@ -21,7 +21,6 @@ class AppointmentController extends BaseController
 
     public function index()
     {
-        // $doctors = Employee::where('type','1')->where('status','1')->get();
         $services = Service::where('status','1')->get();
         return view('frontend.appointment.index',compact('services'));
     }
@@ -36,7 +35,7 @@ class AppointmentController extends BaseController
             'age' => $request->age,
             'phone_number' => $request->phone_number,
             'email' => $request->email,
-            'services' => $request->service,
+            'services' => implode(",",$request->service),
             'date' => $dateat,
             'shift' => $request->shift,
             'address' => $request->address,
@@ -44,32 +43,25 @@ class AppointmentController extends BaseController
             'note' => $request->note,
             'status' => 1
         ];
-        dd($dataApp );
         $result = Appointment::create($dataApp);
 
-        foreach ($request->service as $service) {
-            AppointmentServices::create([
-                'appointment_id' => $result->id,
-                'service_id'     => $service,
-                'status'         => 1
-            ]);
-        }
-
-        $serviceSelected  = Service::whereIn($request->service);
-
+        $serviceSelected  = Service::whereIn('id', $request->service)->get();
         if ($request->shift = 1){
            $shiftSelected = "Ca sáng";
         } else {
             $shiftSelected = "Ca chiều";
         }
-
+        $list_name = '';
+        foreach($serviceSelected as $row) {
+            $list_name .= $row->name.', ';
+        }
 
 
         $to_name = "H-smile";
         $to_email = $request->email;
         $data = array(
             "name" => $request->name,
-            "serviceSelected" => $serviceSelected->name,
+            "serviceSelected" => rtrim($list_name, ', '),
             "dateSelected" => Carbon::parse($request->date_at)->format('Y-m-d'),
             "shiftName" => $shiftSelected,
             "descRequest" => $request->description

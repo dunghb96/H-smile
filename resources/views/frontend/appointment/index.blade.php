@@ -52,7 +52,7 @@
                                             <h5>Dịch vụ</h5>
                                         </div>
                                         <div class="input-box">
-                                            <select class="selectmenu select2" name="service[]" id="service"  multiple="multiple">
+                                            <select class="selectmenu select2" name="service[]" id="service"  multiple="multiple" required>
                                                 <option value="" selected="selected">Chọn dịch vụ</option>
                                                 @foreach ($services as $service)
                                                     <option value="{{ $service->id }}">
@@ -71,8 +71,7 @@
                                             <h5>Ngày</h5>
                                         </div>
                                         <div class="input-box">
-                                            <input type="text" name="date_at" placeholder="Date" id="my_date_picker"
-                                                   autocomplete="off">
+                                            <input type="text" name="date_at" placeholder="Date" id="my_date_picker" autocomplete="off" required>
                                             <div class="icon-box">
                                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                                             </div>
@@ -105,7 +104,7 @@
                                         <div class="input-box">
                                             <div class="row">
                                                 <div class="col-xl-8">
-                                                    <input type="text" name="name" value="" placeholder="Họ và Tên" required="">
+                                                    <input type="text" name="name" value="" placeholder="Họ và Tên" required>
                                                 </div>
                                                 <div class="col-xl-4 col-lg-12">
                                                     <div class="single-box">
@@ -113,7 +112,7 @@
                                                             <h5>Tuổi</h5>
                                                         </div>
                                                         <div class="input-box">
-                                                            <input type="text" name="age" value="" placeholder="Tuổi">
+                                                            <input type="text" name="age" value="" placeholder="Tuổi" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -142,7 +141,7 @@
 
                                             <div class="row">
                                                 <div class="col-xl-12">
-                                                    <textarea name="note" placeholder="Mô tả tình trạng"></textarea>
+                                                    <textarea name="note" placeholder="Mô tả tình trạng" ></textarea>
                                                 </div>
                                             </div>
 

@@ -150,7 +150,7 @@ class AppointmentController extends BaseController
             'age' => $request->age,
             'phone_number' => $request->phonenumber,
             'email' => $request->email,
-            'services' => $request->service,
+            'services' => implode(",",$request->service),
             'date' => $dateat,
             'shift' => $request->shift,
             'address' => $request->address,
