@@ -1,5 +1,10 @@
 @extends('backend.layout.app')
 
+@push('css')
+<link rel="stylesheet" type="text/css" href="/backend/assets/css/test.css">
+<!-- <link rel="stylesheet" type="text/css" href="/backend/assets/css/test1.css"> -->
+@endpush
+
 @section('content')
 
 <link rel="stylesheet" type="text/css" href="/backend/app-assets/css/pages/app-calendar.css">
@@ -18,11 +23,73 @@
                         <div class="col app-calendar-sidebar flex-grow-0 overflow-hidden d-flex flex-column" id="app-calendar-sidebar">
                             <div class="sidebar-wrapper">
                                 <div class="card-body d-flex justify-content-center">
-                                    <button class="btn btn-primary btn-toggle-sidebar btn-block" data-toggle="modal" data-target="#add-new-sidebar">
-                                        <span class="align-middle">Thêm lịch hẹn mới</span>
-                                    </button>
+                                    <select class="select2 select-label form-control w-100" id="bac-si" name="bac-si">
+                                        @foreach($doctors as $doctor)
+                                        <option value="{{ $doctor->id }}">
+                                            {{ $doctor->name }}
+                                        </option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                <div class="card-body pb-0">
+                                <div class="card-body d-flex justify-content-center">
+                                    <span class="align-middle">Danh sách lịch chờ xếp</span>
+                                </div>
+
+                                <div class="sidebar-list">
+                                    <div class="list-group" style="position: relative;height: 450px;" id="list-schedule">
+                                        <a href="javascript:void(0)" onclick="xeplich()" class="list-group-item list-group-item-action">
+                                            <span class="align-middle">#123 Niềng răng</span> <br>
+                                            <span class="align-middle">Nguyễn Văn Hùng</span> <br>
+                                            <span class="align-middle">034675600</span>
+                                        </a>
+                                        <a href="javascript:void(0)" onclick="xeplich()" class="list-group-item list-group-item-action">
+                                            <span class="align-middle">#123 Niềng răng</span> <br>
+                                            <span class="align-middle">Nguyễn Văn Hùng</span> <br>
+                                            <span class="align-middle">034675600</span>
+                                        </a>
+                                        <a href="javascript:void(0)" onclick="xeplich()" class="list-group-item list-group-item-action">
+                                            <span class="align-middle">#123 Niềng răng</span> <br>
+                                            <span class="align-middle">Nguyễn Văn Hùng</span> <br>
+                                            <span class="align-middle">034675600</span>
+                                        </a>
+                                        <a href="javascript:void(0)" onclick="xeplich()" class="list-group-item list-group-item-action">
+                                            <span class="align-middle">#123 Niềng răng</span> <br>
+                                            <span class="align-middle">Nguyễn Văn Hùng</span> <br>
+                                            <span class="align-middle">034675600</span>
+                                        </a>
+                                        <a href="javascript:void(0)" onclick="xeplich()" class="list-group-item list-group-item-action">
+                                            <span class="align-middle">#123 Niềng răng</span> <br>
+                                            <span class="align-middle">Nguyễn Văn Hùng</span> <br>
+                                            <span class="align-middle">034675600</span>
+                                        </a>
+                                        <a href="javascript:void(0)" onclick="xeplich()" class="list-group-item list-group-item-action">
+                                            <span class="align-middle">#123 Niềng răng</span> <br>
+                                            <span class="align-middle">Nguyễn Văn Hùng</span> <br>
+                                            <span class="align-middle">034675600</span>
+                                        </a>
+                                        <a href="javascript:void(0)" onclick="xeplich()" class="list-group-item list-group-item-action">
+                                            <span class="align-middle">#123 Niềng răng</span> <br>
+                                            <span class="align-middle">Nguyễn Văn Hùng</span> <br>
+                                            <span class="align-middle">034675600</span>
+                                        </a>
+                                        <a href="javascript:void(0)" onclick="xeplich()" class="list-group-item list-group-item-action">
+                                            <span class="align-middle">#123 Niềng răng</span> <br>
+                                            <span class="align-middle">Nguyễn Văn Hùng</span> <br>
+                                            <span class="align-middle">034675600</span>
+                                        </a>
+                                        <a href="javascript:void(0)" onclick="xeplich()" class="list-group-item list-group-item-action">
+                                            <span class="align-middle">#123 Niềng răng</span> <br>
+                                            <span class="align-middle">Nguyễn Văn Hùng</span> <br>
+                                            <span class="align-middle">034675600</span>
+                                        </a>
+                                        <a href="javascript:void(0)" onclick="xeplich()" class="list-group-item list-group-item-action">
+                                            <span class="align-middle">#123 Niềng răng</span> <br>
+                                            <span class="align-middle">Nguyễn Văn Hùng</span> <br>
+                                            <span class="align-middle">034675600</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-body pb-0 d-none">
                                     <h5 class="section-label mb-1">
                                         <span class="align-middle">Lọc</span>
                                     </h5>
@@ -65,7 +132,7 @@
                             <div class="card shadow-none border-0 mb-0 rounded-0">
                                 <div class="card-body pb-0">
                                     <div id="calendar">
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -74,13 +141,73 @@
                         <div class="body-content-overlay"></div>
                     </div>
                 </div>
+
+                <div class="modal fade text-left" id="xep-lich" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel16"></h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-validate" enctype="multipart/form-data" id="frm-add" style="font-size: 12px;">
+                                    <div class="row">
+                                        <span class="col-6">Tên khách hàng:</span>
+                                        <span class="col-6">Nguyễn Văn Hùng</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col-6">Số điện thoại:</span>
+                                        <span class="col-6">0346756000</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col-6">Dịch vụ:</span>
+                                        <span class="col-6">Niềng răng</span>
+                                    </div>
+                                    <div class="row">
+                                        <span class="col-6">Thời lượng:</span>
+                                        <span class="col-6">45 phút</span>
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label for="doctor">Tên tình trạng</label>
+                                        <select class="select2 select-label form-control w-100" id="doctor" name="doctor">
+                                            @foreach($doctors as $doctor)
+                                            <option value="{{ $doctor->id }}">
+                                                {{ $doctor->name }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="start_time">Giờ vào</label>
+                                        <input type="text" id="start_time" name="start_time" class="form-control flatpickr-time text-left" placeholder="HH:MM" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="end_time">Giờ ra</label>
+                                        <input type="text" id="end_time" name="end_time" class="form-control flatpickr-time text-left" placeholder="HH:MM" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="description">Mô tả</label>
+                                        <textarea name="description" class="form-control" id="description" cols="30" rows="5"></textarea>
+                                    </div>
+
+                                    <div class="d-flex flex-sm-row flex-column mt-2">
+                                        <button type="button" onclick="save()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
+                                        <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Calendar Add/Update/Delete event modal-->
-                <div class="modal modal-slide-in event-sidebar fade" id="add-new-sidebar">
+                <!-- <div class="modal modal-slide-in event-sidebar fade" id="xep-lich">
                     <div class="modal-dialog sidebar-lg">
                         <div class="modal-content p-0">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
                             <div class="modal-header mb-1">
-                                <h5 class="modal-title">Đặt lịch</h5>
+                                <h5 class="modal-title">Xếp lịch</h5>
                             </div>
                             <div class="modal-body flex-grow-1 pb-sm-0 pb-3">
                                 <form class="event-form needs-validation" data-ajax="false" novalidate>
@@ -131,7 +258,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!--/ Calendar Add/Update/Delete event modal-->
             </section>
             <!-- Full calendar end -->

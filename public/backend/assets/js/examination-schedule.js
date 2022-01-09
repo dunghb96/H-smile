@@ -1,4 +1,14 @@
 'use-strict';
+$('#bac-si').select2({
+    placeholder: "Chọn nha sỹ",
+    // allowClear: true,
+    dropdownParent: $('#bac-si').parent(),
+})
+$('#bac-si').val(null).trigger('change');
+
+var chatUsersListWrapper = $('#list-schedule');
+var chatUserList = new PerfectScrollbar(chatUsersListWrapper[0]);
+
 var date = new Date(), nhanvien = 0;
 var nextDay = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
 // prettier-ignore
@@ -529,3 +539,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+function xeplich() {
+    $("#xep-lich").modal('show');
+    $(".modal-title").html('Xếp lịch');
+    $('#doctor').select2({
+        placeholder: "Chọn nha sỹ",
+        dropdownParent: $('#doctor').parent(),
+    })
+    var startTime = $('#start_time');
+    var endTime = $('#end_time');
+    if (startTime.length) {
+        startTime.flatpickr({
+            enableTime: true,
+            dateFormat: "H:i",
+            noCalendar: true
+        });
+    }
+    if (endTime.length) {
+        endTime.flatpickr({
+            enableTime: true,
+            dateFormat: "H:i",
+            noCalendar: true
+        });
+    }
+    $('#doctor').val(null).trigger('change');
+}

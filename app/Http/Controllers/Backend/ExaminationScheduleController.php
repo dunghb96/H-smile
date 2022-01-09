@@ -25,8 +25,8 @@ class ExaminationScheduleController extends BaseController
     public function index()
     {
         // $services = Service::where('status',1)->get();
-        // $roles = Role::orderBy('name')->get();
-        return view('backend.examination-schedule.index');
+        $doctors = Employee::where('status',1)->where('type',1)->orderBy('name')->get();
+        return view('backend.examination-schedule.index',compact('doctors'));
     }
 
     public function json()
