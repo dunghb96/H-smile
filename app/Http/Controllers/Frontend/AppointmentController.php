@@ -21,19 +21,20 @@ class AppointmentController extends BaseController
 
     public function index()
     {
-        $doctors = Employee::where('type','1')->where('status','1')->get();
+        // $doctors = Employee::where('type','1')->where('status','1')->get();
         $services = Service::where('status','1')->get();
-        return view('frontend.appointment.index',compact('doctors','services'));
+        return view('frontend.appointment.index',compact('services'));
     }
 
     public function booking(Request $request)
     {
+
         $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
         $dataApp = [
             'staff_id' => 2,
-            'name' => $request->fullname,
+            'name' => $request->name,
             'age' => $request->age,
-            'phone_number' => $request->phonenumber,
+            'phone_number' => $request->phone_number,
             'email' => $request->email,
             'services' => $request->service,
             'date' => $dateat,
@@ -43,6 +44,7 @@ class AppointmentController extends BaseController
             'note' => $request->note,
             'status' => 1
         ];
+        dd($dataApp );
         $result = Appointment::create($dataApp);
 
         foreach ($request->service as $service) {

@@ -95,9 +95,7 @@
                                 </div>
                             </div>
                             <div class="row">
-
                             </div>
-
                             <div class="row">
                                 <div class="col-xl-12 col-lg-12">
                                     <div class="single-box">
@@ -107,8 +105,7 @@
                                         <div class="input-box">
                                             <div class="row">
                                                 <div class="col-xl-8">
-                                                    <input type="text" name="name" value="" placeholder="Họ và Tên"
-                                                           required="">
+                                                    <input type="text" name="name" value="" placeholder="Họ và Tên" required="">
                                                 </div>
                                                 <div class="col-xl-4 col-lg-12">
                                                     <div class="single-box">
@@ -135,17 +132,17 @@
                                                     <input type="text" name="address" value="" placeholder="Địa chỉ" required>
                                                 </div>
                                                 <div class="col-xl-6" style="margin-top: 15px;">
-                                                    <label for="genrder"><span style="color: black">Giới tính  :</span> &nbsp;&nbsp;&nbsp;
-                                                        <input type="radio" name="genrder" value="0" required>  Nam &nbsp; &nbsp;
-                                                        <input type="radio" name="genrder" value="1" required>  Nữ &nbsp; &nbsp;
-                                                        <input type="radio" name="genrder" value="2" required>  Khác &nbsp; &nbsp;
+                                                    <label for="gender"><span style="color: black">Giới tính  :</span> &nbsp;&nbsp;&nbsp;
+                                                        <input type="radio" name="gender" value="0" required>  Nam &nbsp; &nbsp;
+                                                        <input type="radio" name="gender" value="1" required>  Nữ &nbsp; &nbsp;
+                                                        <input type="radio" name="gender" value="2" required>  Khác &nbsp; &nbsp;
                                                     </label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-xl-12">
-                                                    <textarea name="description" placeholder="Mô tả tình trạng"></textarea>
+                                                    <textarea name="note" placeholder="Mô tả tình trạng"></textarea>
                                                 </div>
                                             </div>
 
@@ -158,12 +155,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>
