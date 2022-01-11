@@ -122,10 +122,10 @@ $(function () {
                 },
                 time: {
                     required: true,
-                    digit: true
+                    // digit: true
                 },
                 price: {
-                    digits: true
+                    // digits: true
                 }
             }
         });
@@ -133,6 +133,7 @@ $(function () {
 });
 
 function loadadd() {
+    console.log(123);
     $("#addnew").modal('show');
     $(".modal-title").html('Thêm dịch vụ mới');
     $('#name').val('');
@@ -171,7 +172,7 @@ function loaddata(id) {
 function save() {
     var info = {};
     var isValid = $('#frm-add').valid();
-
+    console.log(isValid);
     if (iid != 0) {
         console.log(1);
         var info = new FormData($("#frm-edit")[0]);

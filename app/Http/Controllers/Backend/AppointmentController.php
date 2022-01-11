@@ -30,28 +30,18 @@ class AppointmentController extends BaseController
     {
         $list = Appointment::with('patients', 'service', 'doctor')->where('status', '>', '0')->orderBY('created_at')->get();
         $jsonObj['data'] = $list;
+
         foreach ($list as $key => $row) {
-            // $jsonObj['data'][$key]->full_name = $row->patients->full_name;
-            // if($row->patients->email) {
-            //     $jsonObj['data'][$key]->email = $row->patients->email;
-            // } else {
-            //     $jsonObj['data'][$key]->email = '';
-            // }
-
-            // if($row->patients->phone_number) {
-            //     $jsonObj['data'][$key]->phone = $row->patients->phone_number;
-            // } else {
-            //     $jsonObj['data'][$key]->email = '';
-            // }
-
-
-
-            // $jsonObj['data'][$key]->services = $row->service->name;
+            $arrService = explode(',',$row->services);
+            $listName = '';
+            foreach($arrService as  $row2) {
+                $listName .=  Service::find($row2)->name.'</br>';
+            }
+            $listName = rtrim($listName, '</br>');
+            $jsonObj['data'][$key]->list_service = $listName;
             $jsonObj['data'][$key]->shift = Appointment::SHIFT[$row->shift];
-            // $jsonObj['data'][$key]->doctor_name = $row->doctor->name;
             $jsonObj['data'][$key]->status_word = Appointment::STATUS[$row->status];
         }
-        // dd($jsonObj);
         echo json_encode($jsonObj);
     }
 

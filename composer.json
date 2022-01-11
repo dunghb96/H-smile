@@ -16,7 +16,8 @@
         "laravel/ui": "^3.3",
         "mews/captcha": "^3.2",
         "spatie/laravel-permission": "^5.1",
-        "unisharp/laravel-filemanager": "^2.2"
+        "unisharp/laravel-filemanager": "^2.2",
+        "vonage/client": "^2.4"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

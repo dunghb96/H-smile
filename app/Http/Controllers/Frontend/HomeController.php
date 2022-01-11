@@ -18,6 +18,7 @@ use App\Models\Patient;
 use App\Models\StaticPage;
 use App\Models\Template;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class HomeController extends BaseController
 {
@@ -46,6 +47,7 @@ class HomeController extends BaseController
         $service = Service::where('category_id', 0)->get();
         return view('frontend.price.index', compact('service'));
     }
+
     public function form()
     {
         return view('frontend.form.fom_booking');
@@ -60,8 +62,11 @@ class HomeController extends BaseController
 
     public function history()
     {
-        return view('frontend.history.index');
+        $historyDatas = Appointment::where('patient_code', Cookie::get('patient_code'))->where('status', 1)->orderBy('created_at', 'ASC')->get();
+
+        return view('frontend.history.index', compact('historyDatas', $historyDatas));
     }
+
     public function search(Request $request)
     {
         $request->validate(
@@ -73,14 +78,14 @@ class HomeController extends BaseController
                 'phone.numeric' => 'Hãy nhập đúng số điện thoại của bạn',
             ]
         );
-        if($request->phone) {
+        if ($request->phone) {
             $phone = $request->phone;
             $customer = Patient::where('phone_number', $phone)->first();
-            if( $customer) {
-                $list = Appointment::where('patient_id',  $customer->id)->where('status', 1)->orderBy('created_at')->take(5);
-                $list1= $list->take(5)->get();
+            if ($customer) {
+                $list = Appointment::where('patient_id', $customer->id)->where('status', 1)->orderBy('created_at')->take(5);
+                $list1 = $list->take(5)->get();
                 $list1->load('service', 'doctor');
-                $listId = Appointment::where('patient_id',  $customer->id)->where('status', 2)->orderBy('created_at')->take(5)->pluck('id');
+                $listId = Appointment::where('patient_id', $customer->id)->where('status', 2)->orderBy('created_at')->take(5)->pluck('id');
                 $list2 = ExaminationSchedule::whereIn('appointment', $listId)->take(5)->get();
                 $service = Service::all();
                 return view('frontend.history.index', compact('list1', 'customer', 'phone', 'list2', 'service'));

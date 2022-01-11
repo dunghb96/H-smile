@@ -63,7 +63,7 @@ $(function () {
                 { data: 'id' },
                 { data: 'name' },
                 { data: 'phone_number' },
-                { data: 'services' },
+                { data: 'list_service' },
                 // { data: 'service_id' },
                 { data: 'date' },
                 { data: 'shift' },

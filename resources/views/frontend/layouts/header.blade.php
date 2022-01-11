@@ -7,7 +7,8 @@
             <div class="col-xl-12">
                 <div class="top-left-style2 float-left">
                     <ul>
-                        <li><span class="icon-clock"></span><b>{{ $startDate }} - {{ $endDate }}:</b> {{ getCachedOption('time_open') }} đến {{ getCachedOption('time_close') }}</li>
+                        <li><span class="icon-clock"></span><b>{{ $startDate }} - {{ $endDate }}
+                                :</b> {{ getCachedOption('time_open') }} đến {{ getCachedOption('time_close') }}</li>
                         <li><span class="icon-phone"></span><b>Hotline:</b> {{ getCachedOption('hotline') }}</li>
                     </ul>
                 </div>
@@ -32,7 +33,7 @@
                         <nav class="main-menu style1 style2 clearfix">
                             <div class="navbar-header clearfix">
                                 <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                    data-target=".navbar-collapse">
+                                        data-target=".navbar-collapse">
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
