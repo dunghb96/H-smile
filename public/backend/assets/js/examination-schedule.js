@@ -1,14 +1,69 @@
 'use-strict';
-$('#bac-si').select2({
-    placeholder: "Chọn nha sỹ",
-    // allowClear: true,
-    dropdownParent: $('#bac-si').parent(),
+var uid = '';
+var thoiluong = '';
+$(function () {
+    $('#bac-si').select2({
+        placeholder: "Chọn nha sỹ",
+        // allowClear: true,
+        dropdownParent: $('#bac-si').parent(),
+    })
+    firstDoctor = $("#bac-si option:first-child").val();
+    $('#bac-si').val(firstDoctor).trigger('change');
+    $('#doctor').select2({
+        placeholder: "Chọn nha sỹ",
+        dropdownParent: $('#doctor').parent(),
+    })
+    $('#edoctor').select2({
+        placeholder: "Chọn nha sỹ",
+        dropdownParent: $('#edoctor').parent(),
+    })
+    var startTime = $('#start_time');
+    // var estartTime = ;
+    if (startTime.length) {
+        startTime.flatpickr({
+            enableTime: true,
+            dateFormat: "H:i",
+            noCalendar: true
+        });
+    }
+    // if (estartTime.length) {
+        $('#estart_time').flatpickr({
+            enableTime: true,
+            dateFormat: "H:i",
+            noCalendar: true
+        });
+    // }
+    
+    $('#doctor').val(null).trigger('change');
+    var chatUsersListWrapper = $('#list-schedule');
+    var chatUserList = new PerfectScrollbar(chatUsersListWrapper[0]);
+    $('#frm-xl').each(function () {
+        var $this = $(this);
+        $this.validate({
+            rules: {
+                doctor: {
+                    required: true
+                },
+                start_time: {
+                    required: true
+                }
+            }
+        });
+    });
+    $('#frm-update').each(function () {
+        var $this = $(this);
+        $this.validate({
+            rules: {
+                edoctor: {
+                    required: true
+                },
+                estart_time: {
+                    required: true
+                }
+            }
+        });
+    });
 })
-$('#bac-si').val(null).trigger('change');
-
-var chatUsersListWrapper = $('#list-schedule');
-var chatUserList = new PerfectScrollbar(chatUsersListWrapper[0]);
-
 var date = new Date(), nhanvien = 0;
 var nextDay = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
 // prettier-ignore
@@ -39,6 +94,11 @@ $(document).on('click', '.body-content-overlay', function (e) {
     $('.app-calendar-sidebar, .body-content-overlay').removeClass('show');
 });
 
+$(document).on('click', '.list-group-item', function (e) {
+    id = $(this).data('id');
+    xeplich(id);
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     var calendarabc = document.getElementById('calendar'),
         eventToUpdate,
@@ -58,16 +118,18 @@ document.addEventListener('DOMContentLoaded', function () {
         toggleSidebarBtn = $('.btn-toggle-sidebar'),
         // eventTitle = $('#title'),
         eventLabel = $('#select-label'),
-        startDate = $('#start-date'),
-        endDate = $('#end-date'),
+        estartTime = $('#estart_time'),
+        eendTime = $('#eend_time'),
         // eventUrl = $('#event-url'),
-        eventGuests = $('#event-guests'),
+        // eventGuests = $('#event-guests'),
         // eventLocation = $('#event-location'),
         // allDaySwitch = $('.allDay-switch'),
-        selectAll = $('.select-all'),
+        // selectAll = $('.select-all'),
         // calEventFilter = $('.calendar-events-filter'),
-        filterInput = $('.input-filter'),
+        // filterInput = $('.input-filter'),
         // btnDeleteEvent = $('.btn-delete-event'),
+        btnXL = $('#btn-xl'),
+        selectDoctor = $('#bac-si');
         calendarEditor = $('#event-description-editor');
 
     // --------------------------------------------
@@ -107,65 +169,76 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Guests select
-    if (eventGuests.length) {
-        function renderGuestAvatar(option) {
-            if (!option.id) {
-                return option.text;
-            }
+    // if (eventGuests.length) {
+    //     function renderGuestAvatar(option) {
+    //         if (!option.id) {
+    //             return option.text;
+    //         }
 
-            var $avatar =
-                "<div class='d-flex flex-wrap align-items-center'>" +
-                "<div class='avatar avatar-sm my-0 mr-50'>" +
-                "<span class='avatar-content'>" +
-                "<img src='" +
-                assetPath +
-                'images/avatars/' +
-                $(option.element).data('avatar') +
-                "' alt='avatar' />" +
-                '</span>' +
-                '</div>' +
-                option.text +
-                '</div>';
+    //         var $avatar =
+    //             "<div class='d-flex flex-wrap align-items-center'>" +
+    //             "<div class='avatar avatar-sm my-0 mr-50'>" +
+    //             "<span class='avatar-content'>" +
+    //             "<img src='" +
+    //             assetPath +
+    //             'images/avatars/' +
+    //             $(option.element).data('avatar') +
+    //             "' alt='avatar' />" +
+    //             '</span>' +
+    //             '</div>' +
+    //             option.text +
+    //             '</div>';
 
-            return $avatar;
-        }
-        eventGuests.wrap('<div class="position-relative"></div>').select2({
-            placeholder: 'Select value',
-            dropdownParent: eventGuests.parent(),
-            closeOnSelect: false,
-            templateResult: renderGuestAvatar,
-            templateSelection: renderGuestAvatar,
-            escapeMarkup: function (es) {
-                return es;
-            }
-        });
-    }
+    //         return $avatar;
+    //     }
+    //     eventGuests.wrap('<div class="position-relative"></div>').select2({
+    //         placeholder: 'Select value',
+    //         dropdownParent: eventGuests.parent(),
+    //         closeOnSelect: false,
+    //         templateResult: renderGuestAvatar,
+    //         templateSelection: renderGuestAvatar,
+    //         escapeMarkup: function (es) {
+    //             return es;
+    //         }
+    //     });
+    // }
 
     // Start date picker
-    if (startDate.length) {
-        var start = startDate.flatpickr({
+    // if (estartTime.length) {
+    //     estartTime.flatpickr({
+    //         enableTime: true,
+    //         dateFormat: "H:i",
+    //         noCalendar: true
+    //     });
+    // }
+    // if (estartTime.length) {
+        $('#estart_time').flatpickr({
             enableTime: true,
-            altFormat: 'Y-m-dTH:i:S',
+            noCalendar: true,
+            dateFormat: "H:i",
+            altFormat: "H:i",
+            time_24hr: true,
+            enableSeconds: true,
             onReady: function (selectedDates, dateStr, instance) {
                 if (instance.isMobile) {
                     $(instance.mobileInput).attr('step', null);
                 }
             }
         });
-    }
+    // }
 
     // End date picker
-    if (endDate.length) {
-        var end = endDate.flatpickr({
-            enableTime: true,
-            altFormat: 'Y-m-dTH:i:S',
-            onReady: function (selectedDates, dateStr, instance) {
-                if (instance.isMobile) {
-                    $(instance.mobileInput).attr('step', null);
-                }
-            }
-        });
-    }
+    // if (endDate.length) {
+    //     var end = endDate.flatpickr({
+    //         enableTime: true,
+    //         altFormat: 'Y-m-dTH:i:S',
+    //         onReady: function (selectedDates, dateStr, instance) {
+    //             if (instance.isMobile) {
+    //                 $(instance.mobileInput).attr('step', null);
+    //             }
+    //         }
+    //     });
+    // }
 
     // Event click function
     function eventClick(info) {
@@ -177,12 +250,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
         sidebar.modal('show');
         addEventBtn.addClass('d-none');
-        cancelBtn.addClass('d-none');
+        // cancelBtn.addClass('d-none');
         updateEventBtn.removeClass('d-none');
-        btnDeleteEvent.removeClass('d-none');
-
+        // btnDeleteEvent.removeClass('d-none');
+        $('#data-ename').html(eventToUpdate.extendedProps.customer_name);
+        $('#data-ephone').html(eventToUpdate.extendedProps.phone_number);
+        $('#data-eservice').html(eventToUpdate.extendedProps.service_name);
+        $('#data-etime').html(eventToUpdate.extendedProps.service_time+' phút');
+        $('#edoctor').val(eventToUpdate.extendedProps.doctor_id).trigger('change');
+        // estartTime.setDate(eventToUpdate.start, true, 'H:i');
+        // $('#estart_time').flatpickr({
+        //     enableTime: true,
+        //     noCalendar: true,
+        //     dateFormat: "H:i",
+        //     altFormat: "H:i",
+        //     time_24hr: true,
+        //     enableSeconds: true,
+        //     onReady: function (selectedDates, dateStr, instance) {
+        //         if (instance.isMobile) {
+        //             $(instance.mobileInput).attr('step', null);
+        //         }
+        //     }
+        // });
+        $('#estart_time').flatpickr({
+            altInput: true,
+            defaultDate: eventToUpdate.start,
+            altFormat: "H:i",
+            dateFormat: "H:i",
+        });
+        $('#eend_time').flatpickr({
+            altInput: true,
+            defaultDate: eventToUpdate.end,
+            altFormat: "H:i",
+            dateFormat: "H:i",
+        });
+        eendTime.attr("disabled", true);
+        uid = eventToUpdate.extendedProps.id;
+        thoiluong = eventToUpdate.extendedProps.service_time;
+        
         // eventTitle.val(eventToUpdate.title);
-        // start.setDate(eventToUpdate.start, true, 'Y-m-d');
+        // estartTime.setDate(eventToUpdate.start, true, 'Y-m-d H:i:s');
         // eventToUpdate.allDay === true ? allDaySwitch.prop('checked', true) : allDaySwitch.prop('checked', false);
         // eventToUpdate.end !== null
         //     ? end.setDate(eventToUpdate.end, true, 'Y-m-d')
@@ -197,13 +304,13 @@ document.addEventListener('DOMContentLoaded', function () {
         //     : null;
 
         //  Delete Event
-        btnDeleteEvent.on('click', function () {
-            eventToUpdate.remove();
-            // removeEvent(eventToUpdate.id);
-            sidebar.modal('hide');
-            $('.event-sidebar').removeClass('show');
-            $('.app-calendar .body-content-overlay').removeClass('show');
-        });
+        // btnDeleteEvent.on('click', function () {
+        //     eventToUpdate.remove();
+        //     // removeEvent(eventToUpdate.id);
+        //     sidebar.modal('hide');
+        //     $('.event-sidebar').removeClass('show');
+        //     $('.app-calendar .body-content-overlay').removeClass('show');
+        // });
     }
 
     // Modify sidebar toggler
@@ -227,11 +334,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // * This will be called by fullCalendar to fetch events. Also this can be used to refetch events.
     // --------------------------------------------------------------------------------------------------
     function fetchEvents(info, successCallback) {
-
+        doctorId = selectDoctor.val();
         $.ajax({
             type: "POST",
             dataType: "json",
-            data: { nam: nam, thang: thang },
+            data: { doctor_id: doctorId, nam: nam, thang: thang },
             url: '/admin/examination-schedule/json',
             success: function (data) {
                 events = [];
@@ -243,11 +350,18 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (item.id > 0) {
                             arr = {
                                 id: item.id,
-                                title: item.id,
+                                title: '#'+item.id+' '+item.service_name,
                                 start: new Date(item.date_at + ' ' + item.start_time),
+                                end: new Date(item.date_at + ' ' + item.end_time),
                                 allDay: allday,
                                 extendedProps: {
+                                    id: item.id,
                                     calendar: '1',
+                                    doctor_id: item.doctor_id,
+                                    service_name: item.service_name,
+                                    service_time: item.service_time,
+                                    customer_name: item.customer_name,
+                                    phone_number: item.phone_number,
                                 }
                             };
                             events.push(arr);
@@ -259,7 +373,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 // We are reading event object from app-calendar-events.js file directly by including that file above app-calendar file.
                 // You should make an API call, look into above commented API call for reference
                 selectedEvents = events.filter(function (event) {
-                    console.log(event);
                     return calendars.includes(event.extendedProps.calendar.toLowerCase());
                 });
                 // if (selectedEvents.length > 0) {
@@ -281,6 +394,8 @@ document.addEventListener('DOMContentLoaded', function () {
         editable: true,
         dragScroll: true,
         dayMaxEvents: 2,
+        selectOverlap: false,
+        eventOverlap:false,
         eventResizableFromStart: true,
         customButtons: {
             sidebarToggle: {
@@ -296,7 +411,6 @@ document.addEventListener('DOMContentLoaded', function () {
         initialDate: new Date(),
         navLinks: true, // can click day/week names to navigate views
         eventClassNames: function ({ event: calendarEvent }) {
-            console.log(calendarEvent._def.extendedProps.calendar);
             const colorName = calendarsColor[calendarEvent._def.extendedProps.calendar];
             if (calendarEvent._def.extendedProps.calendar > 0) {
                 if (colorName) {
@@ -322,14 +436,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         },
         dateClick: function (info) {
-            var date = moment(info.date).format('YYYY-MM-DD');
-            resetValues();
-            sidebar.modal('show');
-            addEventBtn.removeClass('d-none');
-            updateEventBtn.addClass('d-none');
-            btnDeleteEvent.addClass('d-none');
-            startDate.val(date);
-            endDate.val(date);
+            // var date = moment(info.date).format('YYYY-MM-DD');
+            // resetValues();
+            // sidebar.modal('show');
+            // addEventBtn.removeClass('d-none');
+            // updateEventBtn.addClass('d-none');
+            // btnDeleteEvent.addClass('d-none');
+            // startDate.val(date);
+            // endDate.val(date);
         },
         eventClick: function (info) {
             eventClick(info);
@@ -440,67 +554,92 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Add new event
-    $(addEventBtn).on('click', function () {
-        if (eventForm.valid()) {
-            var newEvent = {
-                id: calendar.getEvents().length + 1,
-                title: eventTitle.val(),
-                start: startDate.val(),
-                end: endDate.val(),
-                startStr: startDate.val(),
-                endStr: endDate.val(),
-                display: 'block',
-                extendedProps: {
-                    location: eventLocation.val(),
-                    guests: eventGuests.val(),
-                    calendar: eventLabel.val(),
-                    description: calendarEditor.val()
-                }
-            };
-            if (eventUrl.val().length) {
-                newEvent.url = eventUrl.val();
-            }
-            if (allDaySwitch.prop('checked')) {
-                newEvent.allDay = true;
-            }
-            addEvent(newEvent);
-        }
-    });
+    // $(addEventBtn).on('click', function () {
+    //     if (eventForm.valid()) {
+    //         var newEvent = {
+    //             id: calendar.getEvents().length + 1,
+    //             title: eventTitle.val(),
+    //             start: startDate.val(),
+    //             end: endDate.val(),
+    //             startStr: startDate.val(),
+    //             endStr: endDate.val(),
+    //             display: 'block',
+    //             extendedProps: {
+    //                 location: eventLocation.val(),
+    //                 guests: eventGuests.val(),
+    //                 calendar: eventLabel.val(),
+    //                 description: calendarEditor.val()
+    //             }
+    //         };
+    //         if (eventUrl.val().length) {
+    //             newEvent.url = eventUrl.val();
+    //         }
+    //         if (allDaySwitch.prop('checked')) {
+    //             newEvent.allDay = true;
+    //         }
+    //         addEvent(newEvent);
+    //     }
+    // });
 
     // Update new event
     updateEventBtn.on('click', function () {
-        if (eventForm.valid()) {
-            var eventData = {
-                id: eventToUpdate.id,
-                title: sidebar.find(eventTitle).val(),
-                start: sidebar.find(startDate).val(),
-                end: sidebar.find(endDate).val(),
-                url: eventUrl.val(),
-                extendedProps: {
-                    location: eventLocation.val(),
-                    guests: eventGuests.val(),
-                    calendar: eventLabel.val(),
-                    description: calendarEditor.val()
-                },
-                display: 'block',
-                allDay: allDaySwitch.prop('checked') ? true : false
-            };
+        // if (eventForm.valid()) {
+        //     var eventData = {
+        //         id: eventToUpdate.id,
+        //         title: sidebar.find(eventTitle).val(),
+        //         start: sidebar.find(startDate).val(),
+        //         end: sidebar.find(endDate).val(),
+        //         url: eventUrl.val(),
+        //         extendedProps: {
+        //             location: eventLocation.val(),
+        //             guests: eventGuests.val(),
+        //             calendar: eventLabel.val(),
+        //             description: calendarEditor.val()
+        //         },
+        //         display: 'block',
+        //         allDay: allDaySwitch.prop('checked') ? true : false
+        //     };
 
-            updateEvent(eventData);
-            sidebar.modal('hide');
+        //     updateEvent(eventData);
+        //     sidebar.modal('hide');
+        // }
+        var isValid = $('#frm-update').valid();
+        if (isValid) {
+            var info = {};
+            info.id = uid;
+            info.doctor_id = $('#edoctor').val();
+            info.start_time = $('#estart_time').val();
+            info.end_time = $('#eend_time').val();
+            info.note = $('#enote').val();
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: info,
+                url: "/admin/examination-schedule/xeplich",
+                success: function (data) {
+                    if (data.success) {
+                        calendar.refetchEvents();
+                        sidebar.modal('hide');
+                        notyfi_success(data.msg);
+                    }
+                },
+                error: function () {
+                    notify_error('Lỗi truy xuất database');
+                }
+            });
         }
     });
 
     // Reset sidebar input values
     function resetValues() {
-        endDate.val('');
-        eventUrl.val('');
-        startDate.val('');
-        eventTitle.val('');
-        eventLocation.val('');
-        allDaySwitch.prop('checked', false);
-        eventGuests.val('').trigger('change');
-        calendarEditor.val('');
+        // endDate.val('');
+        // eventUrl.val('');
+        // startDate.val('');
+        // eventTitle.val('');
+        // eventLocation.val('');
+        // allDaySwitch.prop('checked', false);
+        // eventGuests.val('').trigger('change');
+        // calendarEditor.val('');
     }
 
     // When modal hides reset input values
@@ -517,51 +656,125 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Select all & filter functionality
-    if (selectAll.length) {
-        selectAll.on('change', function () {
-            var $this = $(this);
+    // if (selectAll.length) {
+    //     selectAll.on('change', function () {
+    //         var $this = $(this);
 
-            if ($this.prop('checked')) {
-                calEventFilter.find('input').prop('checked', true);
-            } else {
-                calEventFilter.find('input').prop('checked', false);
-            }
-            calendar.refetchEvents();
-        });
-    }
+    //         if ($this.prop('checked')) {
+    //             calEventFilter.find('input').prop('checked', true);
+    //         } else {
+    //             calEventFilter.find('input').prop('checked', false);
+    //         }
+    //         calendar.refetchEvents();
+    //     });
+    // }
 
-    if (filterInput.length) {
-        filterInput.on('change', function () {
-            $('.input-filter:checked').length < calEventFilter.find('input').length
-                ? selectAll.prop('checked', false)
-                : selectAll.prop('checked', true);
-            calendar.refetchEvents();
-        });
-    }
+    // if (filterInput.length) {
+    //     filterInput.on('change', function () {
+    //         $('.input-filter:checked').length < calEventFilter.find('input').length
+    //             ? selectAll.prop('checked', false)
+    //             : selectAll.prop('checked', true);
+    //         calendar.refetchEvents();
+    //     });
+    // }
+
+    selectDoctor.on('select2:select', function (e) {
+        //calendar.removeAllEvents();
+        calendar.refetchEvents();
+    });
+
+    btnXL.on('click', function () {
+        var isValid = $('#frm-xl').valid();
+        if (isValid) {
+            var info = {};
+            info.id = uid;
+            info.doctor_id = $('#doctor').val();
+            info.start_time = $('#start_time').val();
+            info.end_time = $('#end_time').val();
+            info.note = $('#note').val();
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: info,
+                url: "/admin/examination-schedule/xeplich",
+                success: function (data) {
+                    if (data.success) {
+                        calendar.refetchEvents();
+                        $("#xep-lich").modal('hide');
+                        $('#schedule-'+id).addClass('d-none');
+                        notyfi_success(data.msg);
+                        
+                    }
+                },
+                error: function () {
+                    notify_error('Lỗi truy xuất database');
+                }
+            });
+        }
+    })
 });
 
-function xeplich() {
+function xeplich(id) {
     $("#xep-lich").modal('show');
     $(".modal-title").html('Xếp lịch');
-    $('#doctor').select2({
-        placeholder: "Chọn nha sỹ",
-        dropdownParent: $('#doctor').parent(),
-    })
-    var startTime = $('#start_time');
-    var endTime = $('#end_time');
-    if (startTime.length) {
-        startTime.flatpickr({
-            enableTime: true,
-            dateFormat: "H:i",
-            noCalendar: true
-        });
-    }
-    if (endTime.length) {
-        endTime.flatpickr({
-            enableTime: true,
-            dateFormat: "H:i",
-            noCalendar: true
-        });
-    }
-    $('#doctor').val(null).trigger('change');
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        data: { id: id },
+        url: "/admin/examination-schedule/loaddata",
+        success: function (data) {
+            $('#data-name').html(data.customer_name);
+            $('#data-phone').html(data.phone_number);
+            $('#data-service').html(data.service_name);
+            $('#data-time').html(data.service_time + ' phút');
+            $('#end_time').attr("disabled", true);
+            thoiluong = data.service_time;
+            uid = id;
+        },
+        error: function () {
+            notify_error('Lỗi truy xuất database');
+        }
+    });
+}
+
+function gioRa() {
+    startTime = $('#start_time').val();
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        data: { start_time: startTime, time: thoiluong },
+        url: "/admin/examination-schedule/changeTime",
+        success: function (data) {
+            $('#end_time').flatpickr({
+                altInput: true,
+                defaultDate: data.end_time,
+                altFormat: "H:i",
+                dateFormat: "H:i",
+            });
+        },
+        error: function () {
+            notify_error('Lỗi truy xuất database');
+        }
+    });
+}
+
+function egioRa() {
+    startTime = $('#estart_time').val();
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        data: { start_time: startTime, time: thoiluong },
+        url: "/admin/examination-schedule/changeTime",
+        success: function (data) {
+            $('#eend_time').flatpickr({
+                altInput: true,
+                defaultDate: data.end_time,
+                altFormat: "H:i",
+                dateFormat: "H:i",
+            });
+        },
+        error: function () {
+            notify_error('Lỗi truy xuất database');
+        }
+    });
 }

@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use App\Models\Employee;
 use App\Models\ExaminationSchedule;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 
 class ExaminationScheduleController extends BaseController
@@ -18,34 +19,34 @@ class ExaminationScheduleController extends BaseController
     function getDoctor(Request $request)
     {
         $service = $request->service;
-        $jsonObj = Employee::where('status',1)->where('type',1)->where('services', 'like', '%'.$service.'%')->get();
+        $jsonObj = Employee::where('status', 1)->where('type', 1)->where('services', 'like', '%' . $service . '%')->get();
         echo json_encode($jsonObj);
     }
 
     public function index()
     {
-        // $services = Service::where('status',1)->get();
-        $doctors = Employee::where('status',1)->where('type',1)->orderBy('name')->get();
-        return view('backend.examination-schedule.index',compact('doctors'));
+        $schedules = ExaminationSchedule::where('status', 2)->get();
+        foreach ($schedules as $key => $schedule) {
+            $schedules[$key]->service_name = $schedule->service->name;
+            $schedules[$key]->customer_name = $schedule->patient->full_name;
+            $schedules[$key]->phone_number = $schedule->patient->phone_number;
+        }
+        $doctors = Employee::where('status', 1)->where('type', 1)->orderBy('name')->get();
+        return view('backend.examination-schedule.index', compact('doctors', 'schedules'));
     }
 
     public function json()
     {
-        $list = ExaminationSchedule::where('status','>','0')->orderBy('created_at', 'DESC')->get();
-        $jsonObj['data'] = $list;
-        // foreach($list as $key => $row){
-        //     $appointment = Appointment::find($row->appointment);
-        //     $jsonObj['data'][$key]->service = $appointment->service->name;
-        //     $jsonObj['data'][$key]->service_id = $appointment->service->id;
-        //     $jsonObj['data'][$key]->doctor = $row->doctors->name;
-        //     $jsonObj['data'][$key]->patient = $row->patients->full_name;
-        //     $jsonObj['data'][$key]->patient_id = $appointment->patients->id;
-        //     // $jsonObj['data'][$key]->full_name = $row->patients->full_name;
-        //     // $jsonObj['data'][$key]->age       = $row->patients->age;
-        //     // $jsonObj['data'][$key]->services = $row->service->name;
-        //     $jsonObj['data'][$key]->status_name =  ExaminationSchedule::STATUS[$row->status];
-        //     // $jsonObj['data'][$key]->shift_name =  ExaminationSchedule::SHIFT[$row->shift];
-        // }
+        $thang = (isset($_REQUEST['thang']) && ($_REQUEST['thang'] != '')) ? $_REQUEST['thang'] : date("m");
+        $nam = (isset($_REQUEST['nam']) && ($_REQUEST['nam'] != '')) ? $_REQUEST['nam'] : date("Y");
+        $doctor_id = isset($_REQUEST['doctor_id']) ? $_REQUEST['doctor_id'] : '';
+        $jsonObj['data'] = ExaminationSchedule::where('status', '3')->where('doctor_id', $doctor_id)->orderBy('created_at', 'DESC')->get();
+        foreach ($jsonObj['data'] as $key => $item) {
+            $jsonObj['data'][$key]->service_name = $item->service->name;
+            $jsonObj['data'][$key]->service_time = $item->service->time;
+            $jsonObj['data'][$key]->customer_name = $item->patient->full_name;
+            $jsonObj['data'][$key]->phone_number = $item->patient->phone_number;
+        }
         echo json_encode($jsonObj);
     }
 
@@ -59,7 +60,7 @@ class ExaminationScheduleController extends BaseController
         $appointment = Appointment::find($appointment);
         $appointment->status = 4;
         $result = $appointment->save();
-        if($result) {
+        if ($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
         } else {
@@ -84,8 +85,8 @@ class ExaminationScheduleController extends BaseController
             'date_at' => $dateat,
             'time_at' => $timeat,
         ];
-        $result = ExaminationSchedule::where('doctor',$doctor)->whereDate('date_at',$dateat)->where('time_at',$timeat)->where('status','>','0')->get();
-        if($result->count() > 3) {
+        $result = ExaminationSchedule::where('doctor', $doctor)->whereDate('date_at', $dateat)->where('time_at', $timeat)->where('status', '>', '0')->get();
+        if ($result->count() > 3) {
             $jsonObj['success'] = false;
             $jsonObj['msg'] = 'Không còn lịch trống';
             echo json_encode($jsonObj);
@@ -93,10 +94,10 @@ class ExaminationScheduleController extends BaseController
             $model = ExaminationSchedule::find($scheduleid);
             $model->status = 2;
             $result = $model->save();
-            if($result){
+            if ($result) {
                 $schedule = new ExaminationSchedule();
                 $result = $schedule->saveExaminationSchedule($schedule, $data);
-                if($result) {
+                if ($result) {
                     $jsonObj['success'] = true;
                     $jsonObj['msg'] = 'Hẹn lịch khám tiếp thành công';
                 }
@@ -105,7 +106,6 @@ class ExaminationScheduleController extends BaseController
                 $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
             }
             echo json_encode($jsonObj);
-
         }
     }
 
@@ -113,9 +113,37 @@ class ExaminationScheduleController extends BaseController
     {
         $id = $request->id;
         $jsonObj = ExaminationSchedule::find($id);
-        $jsonObj['date_at'] = Carbon::parse($jsonObj->date_at)->format('d/m/Y');
+        $jsonObj->service_name = $jsonObj->service->name;
+        $jsonObj->service_time = $jsonObj->service->time;
+        $jsonObj->customer_name = $jsonObj->patient->full_name;
+        $jsonObj->phone_number = $jsonObj->patient->phone_number;
+        // $jsonObj['date_at'] = Carbon::parse($jsonObj->date_at)->format('d/m/Y');
         echo json_encode($jsonObj);
-       
+    }
+
+    function changeTime(Request $request)
+    {
+        $gio = $request->start_time;
+        $thoiluong = $request->time;
+        $giora = date_create($gio);
+        date_add($giora, date_interval_create_from_date_string("$thoiluong minutes"));
+        $jsonObj['end_time'] = date_format($giora, "H:i");
+        echo json_encode($jsonObj);
+    }
+
+    public function xeplich(Request $request)
+    {
+        $id = $request->id;
+        $model = ExaminationSchedule::find($id);
+        $result = $model->xeplich($model, $request);
+        if ($result) {
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        } else {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+        }
+        echo json_encode($jsonObj);
     }
 
     function saveExamSchedule(Request $request)
@@ -127,7 +155,7 @@ class ExaminationScheduleController extends BaseController
         $schedule->date_at = $dateat;
         $schedule->time_at = $request->time_at;
         $result = $schedule->save();
-        if($result){
+        if ($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
         } else {
@@ -179,7 +207,7 @@ class ExaminationScheduleController extends BaseController
         $model = ExaminationSchedule::find($id);
         $model->status = 3;
         $result = $model->save();
-        if($result){
+        if ($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
         } else {
@@ -188,5 +216,4 @@ class ExaminationScheduleController extends BaseController
         }
         echo json_encode($jsonObj);
     }
-
 }
