@@ -67,6 +67,14 @@
                 </a>
             </li>
             @endcan
+
+            <li class="nav-item {{ request()->is('admin/slide') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.medicine') }}">
+                    <i data-feather='sliders'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Danh sách thuốc</span>
+                </a>
+            </li>
+
             @can('list_blogs')
             <li class="nav-item {{ request()->is(['admin/blog','admin/blog-category']) ? 'has-sub sidebar-group-active open' : '' }}">
                 <a class="d-flex align-items-center" href="#">

@@ -97,6 +97,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/del', [BlogController::class, 'del']);
     });
 
+    Route::group(['prefix' => 'medicine'], function () {
+        Route::get('/', [ServiceController::class, 'index'])->middleware('permission:list_services')->name('admin.medicine');
+        Route::get('/json', [ServiceController::class, 'json']);
+        Route::post('/add', [ServiceController::class, 'add']);
+        Route::post('/loaddata', [ServiceController::class, 'loaddata']);
+        Route::post('/edit', [ServiceController::class, 'edit']);
+        Route::post('/del', [ServiceController::class, 'del']);
+    });
+
     Route::group(['prefix' => 'service'], function () {
         Route::get('/', [ServiceController::class, 'index'])->middleware('permission:list_services')->name('admin.service');
         Route::get('/json', [ServiceController::class, 'json']);

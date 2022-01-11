@@ -189,7 +189,7 @@
 <!--End services style2 area-->
 
 <!--Start Appointment Area-->
-<section class="appointment-area">
+{{-- <section class="appointment-area">
     <div class="appointment-title-box" style="background-image: url(/frontend/images/parallax-background/appointment-title-bg.jpg);">
         <div class="sec-title text-center">
             <h3>Cuộc Hẹn</h3>
@@ -265,7 +265,7 @@
 
         </div>
     </div>
-</section>
+</section> --}}
 <!--End Appointment Area-->
 
 <!--Start team area-->
