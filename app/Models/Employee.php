@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Employee extends Model
 {
@@ -55,5 +56,15 @@ class Employee extends Model
         $model->assignRole($request['role']);
 
         return $model;
+    }
+
+    /**
+     * Get the examinationSchedule that owns the Employee
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function examinationSchedule()
+    {
+        return $this->hasMany(ExaminationSchedule::class, 'doctor_id', 'id')->whereBetween('date_at', [Carbon::MONDAY, Carbon::FRIDAY]);
     }
 }

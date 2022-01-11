@@ -10,7 +10,6 @@
         </div>
         <div class="content-body">
             <section id="dashboard-ecommerce">
-
                 <div class="row match-height">
                     <div class="col-lg-4 col-12">
                         <div class="row match-height">
@@ -18,7 +17,7 @@
                             <div class="col-lg-6 col-md-3 col-6">
                                 <div class="card">
                                     <div class="card-body pb-50">
-                                        <h6>Số ca khám đã hoàn thành</h6>
+                                        <h6>Doanh thu theo tháng {{$date->month}}</h6>
                                         <h2 class="font-weight-bolder mb-1">{{$doneAppoint}}</h2>
                                         <div id="statistics-order-chart"></div>
                                     </div>
@@ -30,8 +29,8 @@
                             <div class="col-lg-6 col-md-3 col-6">
                                 <div class="card card-tiny-line-stats">
                                     <div class="card-body pb-50">
-                                        <h6>Tổng số yêu cầu khám</h6>
-                                        <h2 class="font-weight-bolder mb-1">{{$appointment}}</h2>
+                                        <h6>Tổng số yêu cầu khám trong ngày </h6>
+                                        <h2 class="font-weight-bolder mb-1">{{$total_appointment}}</h2>
                                         <div id="statistics-profit-chart"></div>
                                     </div>
                                 </div>
@@ -54,23 +53,24 @@
                                     <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
                                         <div class="media">
                                             <div class="avatar bg-light-primary mr-2">
-                                                <div class="avatar-content">
+<div class="avatar-content">
                                                     <i data-feather="trending-up" class="avatar-icon"></i>
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
 
                                                 <h4 class="font-weight-bolder mb-0"> {{$confirm}}</h4>
-                                                <p class="card-text font-small-3 mb-0">Yêu cầu đã được duyệt</p>
+                                                <p class="card-text font-small-3 mb-0">Số lượng ca khám trong ngày</p>
 
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
                                         <div class="media">
-                                            <div class="avatar bg-light-info mr-2">
+
+                                            <div class="avatar bg-light-danger mr-2">
                                                 <div class="avatar-content">
-                                                    <i data-feather="user" class="avatar-icon"></i>
+                                                    <i data-feather="box" class="avatar-icon"></i>
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
@@ -87,21 +87,21 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">5.000.000 VND</h4>
-                                                <p class="card-text font-small-3 mb-0">Doanh số</p>
+                                                <h4 class="font-weight-bolder mb-0"> {{number_format($total_revenue_day)}} VNĐ</h4>
+                                                <p class="card-text font-small-3 mb-0">Doanh số ngày hôm nay</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
                                         <div class="media">
-                                            <div class="avatar bg-light-danger mr-2">
+                                            <div class="avatar bg-light-info mr-2">
                                                 <div class="avatar-content">
-                                                    <i data-feather="box" class="avatar-icon"></i>
+<i data-feather="user" class="avatar-icon"></i>
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">70%</h4>
-                                                <p class="card-text font-small-3 mb-0">Mục tiêu</p>
+                                                <h4 class="font-weight-bolder mb-0">{{$doctors->count()}}</h4>
+                                                <p class="card-text font-small-3 mb-0">Tổng số bác sĩ</p>
                                             </div>
                                         </div>
                                     </div>
@@ -111,55 +111,91 @@
                     </div>
                     <!--/ Revenue Report Card -->
                 </div>
-
+                <br>
                 <div class="row match-height">
+                    <div class="col-lg-6 col-3">
+                        <div class="card card-company-table">
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Tên bác sĩ</th>
+                                                <th>Doanh thu</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($doctors as $key => $item)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <div class="font-weight-bolder">{{$key+1}}</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <span>{{$item->name}}</span>
+                                                    </div>
+                                                </td>
+                                                <td class="text-nowrap">
+                                                    <div class="d-flex flex-column">
+                                                        <span class="font-weight-bolder mb-25">{{number_format($item->total_moneny_doctor)}} VNĐ</span>
+                                                    </div>
+</td>
+                                            </tr>
+                                            @endforeach
 
-                    <!-- Developer Meetup Card -->
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="card card-developer-meetup">
-                            <div class="meetup-img-wrapper rounded-top text-center">
-                                <img src="/backend/app-assets/images/illustration/email.svg" alt="Meeting Pic" height="170" />
-                            </div>
-                            <div class="card-body">
-                                <div class="meetup-header d-flex align-items-center">
-                                    <div class="meetup-day">
-                                        <h6 class="mb-0">NGÀY</h6>
-                                        <h3 class="mb-0">{{$day}}</h3>
-                                    </div>
-                                    <div class="my-auto">
-                                        <h4 class="card-title mb-25">Lịch làm việc</h4>
-                                        <p class="card-text mb-0">Lịch hẹn khách hàng</p>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class="media">
-                                    {{-- <div class="avatar bg-light-primary rounded mr-1">
-                                        <div class="avatar-content">
-                                            <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="mb-0">{{$date}}</h6>
-
-                                    </div> --}}
-                                </div>
-                                <div class="media mt-2">
-                                    <div class="avatar bg-light-primary rounded mr-1">
-                                        <div class="avatar-content">
-                                            <i data-feather="map-pin" class="avatar-icon font-medium-3"></i>
-                                        </div>
-                                    </div>
-                                    <div class="media-body">
-                                        <h6 class="mb-0">Tòa nhà FPT Polytechnic</h6>
-                                        <small>Phố Trịnh Văn Bô, Xuân Phương, Nam Từ Liêm, Hà Nội</small>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
-                    <!--/ Developer Meetup Card -->
+                    <div class="col-lg-6 col-3">
+                        <div class="card card-company-table">
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Tên dịch vụ</th>
+                                                <th>Giá dịch vụ</th>
+                                                <th>Doanh thu</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($services as $key => $service)
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div>
+                                                                <div class="font-small-2 text-muted">{{$service->name}}</div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <span>{{number_format($service->price)}} VNĐ</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-nowrap">
+                                                        <div class="d-flex flex-column">
+                                                            <span class="font-small-2 text-muted">{{number_format($service->total_moneny_service)}} VNĐ</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
 
-                    {{-- <!-- Transaction Card -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+{{-- <!-- Transaction Card -->
                     <div class="col-lg-8 col-md-6 col-12">
 
                         <div class="card card-transaction">
@@ -213,7 +249,7 @@
                                 <h4 class="card-title">Khách hàng</h4>
                                 <div class="dropdown chart-dropdown">
                                     <i data-feather="more-vertical" class="font-medium-3 cursor-pointer" data-toggle="dropdown"></i>
-                                    <div class="dropdown-menu dropdown-menu-right">
+<div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="javascript:void(0);">Dự án G-office</a>
                                         <a class="dropdown-item" href="javascript:void(0);">Dự án VELO Edu</a>
                                         <a class="dropdown-item" href="javascript:void(0);">Dự án Nam Dương</a>
@@ -270,7 +306,7 @@
 
                                         </tr>
                                     </thead>
-                                    <tbody>
+<tbody>
                                         @foreach($service as $item)
                                         <tr>
                                             <td>{{$item->name}}</td>

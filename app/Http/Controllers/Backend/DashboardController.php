@@ -22,17 +22,47 @@ class DashboardController extends BaseController
 
     public function index()
     {
-        $appointment = Appointment::count();
-        $confirm = Appointment::where('status', 2)->count();
+        $date = Carbon::now();
+        $date_now = date('Y-m-d');
+        // doanh thu theo tháng hiện tại
+        $appointment = Appointment::all();
+        $total_appointment = Appointment::all()->count();
+        $confirm = Appointment::where('status', 2)->where('date', $date_now)->count();
         $waiting = Appointment::where('status', 1)->count();
         $doneAppoint = ExaminationSchedule::where('status', 2)->count();
-        $date = Carbon::now();
         $day = Carbon::now()->day;
         $patient = Patient::where('status', 1)->get();
-        $doctor = Employee::where('type', 1)->get();
-        $service = Service::where('category_id', 0)->get();
         $list = Appointment::orderBY('created_at')->get();
-        return view('backend.dashboard.index', compact('list', 'doctor',  'service', 'patient', 'appointment', 'confirm', 'waiting', 'doneAppoint', 'day', 'date'));
+        $total_revenue_day = 0;
+        $appointment_list_id_services = Appointment::where('status', 6)->where('date', $date_now)->pluck('services')->toArray();
+        foreach($appointment_list_id_services as $key => $service_id)
+        {
+            $list_id_services[$key] = explode(',', $service_id);
+            $array_total_moneny[$key] = Service::whereIn('id', $list_id_services[$key])->pluck('price')->toArray();
+        }
+        if(isset($array_total_moneny)){
+            foreach($array_total_moneny as $key => $total_moneny){
+                $total_revenue_day += array_sum($total_moneny);
+            }
+        }
+        $services = Service::where('status', 1)->get();
+        foreach($services as $service){
+            $list_schedule = ExaminationSchedule::where('service_id', $service->id)->get();
+            $count = $list_schedule->count();
+            foreach($list_schedule as  $schedule){
+                $service['total_moneny_service'] = $schedule->service->price * $count;
+            }
+        }
+        $doctors = Employee::where('type', 1)->get();
+
+        foreach($doctors as $doctor){
+            $list_schedule_doctor = ExaminationSchedule::where('doctor_id', $doctor->id)->get();
+            foreach($list_schedule_doctor as  $schedule){
+                $doctor['total_moneny_doctor'] += $schedule->service->price;
+            }
+        }
+
+        return view('backend.dashboard.index', compact('list', 'doctors',  'services', 'patient', 'total_appointment', 'confirm', 'waiting', 'doneAppoint', 'day', 'date', 'total_revenue_day', 'list_schedule'));
     }
 
     public function today()

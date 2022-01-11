@@ -41,9 +41,9 @@ class ExaminationSchedule extends Model
     {
         return $this->hasOne(Appointment::class, 'id', 'appointment');
     }
-    public function Prescription()
-    {
-        return $this->hasMany(Prescription::class, 'id', 'schedule_id');
+
+    public function order(){
+        return $this->hasOne(Order::class, 'id', 'order_id');
     }
 
     function saveExaminationSchedule($model, $data)
