@@ -30,17 +30,18 @@ class AppointmentController extends BaseController
     {
         $list = Appointment::with('patients', 'service', 'doctor')->where('status', '>', '0')->orderBY('created_at')->get();
         $jsonObj['data'] = $list;
+
         foreach ($list as $key => $row) {
             $arrService = explode(',',$row->services);
-            $services = Service::whereIn('id', $arrService)->pluck('name');
-            // foreach($services as $key2 => $row2) {
-            //     $jsonObj['data2'][$key2]->service .= $row2.'</br>';
-            // }
-            // dd($jsonObj);
+            $listName = '';
+            foreach($arrService as  $row2) {
+                $listName .=  Service::find($row2)->name.'</br>';
+            }
+            $listName = rtrim($listName, '</br>');
+            $jsonObj['data'][$key]->list_service = $listName;
             $jsonObj['data'][$key]->shift = Appointment::SHIFT[$row->shift];
             $jsonObj['data'][$key]->status_word = Appointment::STATUS[$row->status];
         }
-        // dd($jsonObj);
         echo json_encode($jsonObj);
     }
 
