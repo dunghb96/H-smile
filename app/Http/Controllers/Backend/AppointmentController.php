@@ -164,12 +164,11 @@ class AppointmentController extends BaseController
         $jsonObj = [];
         $id = $request->id;
         $jsonObj = Appointment::find($id);
-        $model = Patient::find($jsonObj->patient_id);
-        $jsonObj['patient'] = $model->full_name;
-        $jsonObj['age'] = $model->age;
-        $jsonObj['phone_number'] = $model->phone_number;
-        $jsonObj['email'] = $model->email;
-        $jsonObj['date_at'] = Carbon::parse($model->date_at)->format('Y-m-d');
+        $jsonObj['patient'] = $jsonObj->name;
+        $jsonObj['age'] = $jsonObj->age;
+        $jsonObj['phone_number'] = $jsonObj->phone_number;
+        $jsonObj['email'] = $jsonObj->email;
+        $jsonObj['date_at'] = Carbon::parse($jsonObj->date)->format('Y-m-d');
         echo json_encode($jsonObj);
     }
 

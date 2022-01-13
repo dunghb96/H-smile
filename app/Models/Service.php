@@ -17,6 +17,10 @@ class Service extends Model
         1 => 'active',
         2 => 'non active'
     ];
+    const STATUS_2 = [
+        1 => 'active',
+        2 => 'non active'
+    ];
 
     public function ServiceCategory()
     {
@@ -25,7 +29,6 @@ class Service extends Model
 
     public function saveService($model, $request)
     {
-
         if ($request->hasFile('icon')) {
             $icon = $request->icon->getClientOriginalName();
             if($icon != '') {
@@ -55,8 +58,11 @@ class Service extends Model
         $model->price = $request->input('price');
         $model->content = $request->input('content');
         $model->category_id = $request->input('category_id');
-        $model->status = 1;
-
+        if ($request->status) {
+            $model->status = $request->status;
+        } else {
+            $model->status = 1;
+        }
         $model->save();
 
         return $model;
