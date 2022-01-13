@@ -46,9 +46,70 @@
             </li>
             @endcan
             @endif
+
+            @canany(['list_appointments', 'list_schedules', 'list_patients'])
+            <li class=" navigation-header">
+                <span data-i18n="Misc">Quản lý đặt lịch</span>
+                <i data-feather="more-horizontal"></i>
+            </li>
+            @can('list_appointments')
+            <li class=" nav-item {{ request()->is('admin/appointment') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.appointment') }}">
+                    <i data-feather='bell'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Yêu cầu</span>
+                </a>
+            </li>
+            @endcan
+            @can('list_schedules')
+            <li class=" nav-item {{ request()->is('admin/examination-schedule') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.examination_schedule') }}">
+                    <i data-feather='calendar'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Lịch khám</span>
+                </a>
+            </li>
+            @endcan
+            @can('list_patients')
+            <li class=" nav-item {{ request()->is('admin/patient') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.patient') }}">
+                    <i data-feather='users'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Khách hàng</span>
+                </a>
+            </li>
+            @endcan
+            @endcanany
+
+            @canany(['list_employees', 'list_roles'])
+            <li class=" navigation-header">
+                <span data-i18n="Misc">Quản lý nhân sự</span>
+                <i data-feather="more-horizontal"></i>
+            </li>
+            @can('list_employees')
+            <li class=" nav-item {{ request()->is('admin/employee') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.employee') }}">
+                    <i data-feather='user-plus'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Nhân sự</span>
+                </a>
+            </li>
+            <li class=" nav-item {{ request()->is('admin/doctor') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.doctor') }}">
+                    <i data-feather='users'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Nha sĩ</span>
+                </a>
+            </li>
+            @endcan
+            @can('list_roles')
+            <li class=" nav-item mb-2 {{ request()->is('admin/role') ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.role') }}">
+                    <i data-feather='lock'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Phân quyền</span>
+                </a>
+            </li>
+            @endcan
+            @endcanany
+
             @canany(['general_settings', 'list_slides', 'list_blogs', 'list_blogs', 'list_services', 'list_contacts', 'list_partners', 'list_feedbacks'])
             <li class=" navigation-header">
-                <span data-i18n="Apps &amp; Pages">Truy cập nhanh</span>
+                <span data-i18n="Apps &amp; Pages">Quản lý website</span>
                 <i data-feather="more-horizontal"></i>
             </li>
             @can('website_settings')
@@ -138,66 +199,6 @@
                 <a class="d-flex align-items-center" href="{{ route('admin.feedback') }}">
                     <i data-feather='message-square'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Feed back</span>
-                </a>
-            </li>
-            @endcan
-            @endcanany
-
-            @canany(['list_appointments', 'list_schedules', 'list_patients'])
-            <li class=" navigation-header">
-                <span data-i18n="Misc">Quản lý đặt lịch</span>
-                <i data-feather="more-horizontal"></i>
-            </li>
-            @can('list_appointments')
-            <li class=" nav-item {{ request()->is('admin/appointment') ? 'active' : '' }}">
-                <a class="d-flex align-items-center" href="{{ route('admin.appointment') }}">
-                    <i data-feather='bell'></i>
-                    <span class="menu-title text-truncate" data-i18n="Chat">Yêu cầu</span>
-                </a>
-            </li>
-            @endcan
-            @can('list_schedules')
-            <li class=" nav-item {{ request()->is('admin/examination-schedule') ? 'active' : '' }}">
-                <a class="d-flex align-items-center" href="{{ route('admin.examination_schedule') }}">
-                    <i data-feather='calendar'></i>
-                    <span class="menu-title text-truncate" data-i18n="Chat">Lịch khám</span>
-                </a>
-            </li>
-            @endcan
-            @can('list_patients')
-            <li class=" nav-item {{ request()->is('admin/patient') ? 'active' : '' }}">
-                <a class="d-flex align-items-center" href="{{ route('admin.patient') }}">
-                    <i data-feather='users'></i>
-                    <span class="menu-title text-truncate" data-i18n="Chat">Khách hàng</span>
-                </a>
-            </li>
-            @endcan
-            @endcanany
-
-            @canany(['list_employees', 'list_roles'])
-            <li class=" navigation-header">
-                <span data-i18n="Misc">Quản lý nhân sự</span>
-                <i data-feather="more-horizontal"></i>
-            </li>
-            @can('list_employees')
-            <li class=" nav-item {{ request()->is('admin/employee') ? 'active' : '' }}">
-                <a class="d-flex align-items-center" href="{{ route('admin.employee') }}">
-                    <i data-feather='user-plus'></i>
-                    <span class="menu-title text-truncate" data-i18n="Chat">Nhân sự</span>
-                </a>
-            </li>
-            <li class=" nav-item {{ request()->is('admin/doctor') ? 'active' : '' }}">
-                <a class="d-flex align-items-center" href="{{ route('admin.doctor') }}">
-                    <i data-feather='users'></i>
-                    <span class="menu-title text-truncate" data-i18n="Chat">Nha sĩ</span>
-                </a>
-            </li>
-            @endcan
-            @can('list_roles')
-            <li class=" nav-item mb-2 {{ request()->is('admin/role') ? 'active' : '' }}">
-                <a class="d-flex align-items-center" href="{{ route('admin.role') }}">
-                    <i data-feather='lock'></i>
-                    <span class="menu-title text-truncate" data-i18n="Chat">Phân quyền</span>
                 </a>
             </li>
             @endcan

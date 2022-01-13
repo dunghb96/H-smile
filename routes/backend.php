@@ -172,8 +172,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/hentiep', [ExaminationScheduleController::class, 'hentiep']);
         Route::post('/get-doctor', [ExaminationScheduleController::class, 'getDoctor']);
         Route::post('/henlai', [ExaminationScheduleController::class, 'henlai']);
-
-        // Route::post('/add', [ExaminationScheduleController::class, 'add']);
+        Route::post('/changeTime', [ExaminationScheduleController::class, 'changeTime']);
+        Route::post('/xeplich', [ExaminationScheduleController::class, 'xeplich']);
         Route::post('/loaddata', [ExaminationScheduleController::class, 'loaddata']);
         Route::post('/saveExamSchedule', [ExaminationScheduleController::class, 'saveExamSchedule']);
         Route::post('/del', [ExaminationScheduleController::class, 'del']);

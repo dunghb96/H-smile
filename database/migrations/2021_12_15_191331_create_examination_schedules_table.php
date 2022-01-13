@@ -17,12 +17,12 @@ class CreateExaminationSchedulesTable extends Migration
             $table->id();
             $table->integer('order_id');
             $table->integer('customer_id');
-            $table->integer('doctor_id');
+            $table->integer('doctor_id')->nullable();
             $table->integer('service_id');
             $table->date('date_at');
-            $table->time('start_time');
-            $table->time('end_time');
-            $table->string('note');
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
+            $table->string('note')->nullable();
             $table->integer('status');
             $table->timestamps();
         });
