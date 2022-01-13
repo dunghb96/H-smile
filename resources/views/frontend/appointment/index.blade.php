@@ -68,6 +68,26 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-xl-12 col-lg-12">
+                                    <div class="single-box">
+                                        <div class="title">
+                                            <h5>Nha sĩ</h5>
+                                        </div>
+                                        <div class="input-box">
+                                            <select class="selectmenu select2" name="service[]" id="service"
+                                                    multiple="multiple" required>
+                                                <option value="" selected="selected">Chọn nha sĩ</option>
+                                                @foreach ($services as $service)
+                                                    <option value="{{ $service->id }}">
+                                                        {{ $service->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-xl-6 col-lg-12">
                                     <div class="single-box">
                                         <div class="title">

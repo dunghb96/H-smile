@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\DoctorController;
 use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Backend\ExaminationScheduleController;
+use App\Http\Controllers\Backend\MedicineController;
 use App\Http\Controllers\Backend\OptionController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\RoleController;
@@ -98,12 +99,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'medicine'], function () {
-        Route::get('/', [ServiceController::class, 'index'])->middleware('permission:list_services')->name('admin.medicine');
-        Route::get('/json', [ServiceController::class, 'json']);
-        Route::post('/add', [ServiceController::class, 'add']);
-        Route::post('/loaddata', [ServiceController::class, 'loaddata']);
-        Route::post('/edit', [ServiceController::class, 'edit']);
-        Route::post('/del', [ServiceController::class, 'del']);
+        Route::get('/', [MedicineController::class, 'index'])->middleware('permission:list_services')->name('admin.medicine');
+        Route::get('/json', [MedicineController::class, 'json']);
+        Route::post('/add', [MedicineController::class, 'add']);
+        Route::post('/loaddata', [MedicineController::class, 'loaddata']);
+        Route::post('/edit', [MedicineController::class, 'edit']);
+        Route::post('/del', [MedicineController::class, 'del']);
     });
 
     Route::group(['prefix' => 'service'], function () {
