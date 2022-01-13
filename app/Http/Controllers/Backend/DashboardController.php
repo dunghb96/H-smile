@@ -63,7 +63,7 @@ class DashboardController extends BaseController
             }
         }
 
-        return view('backend.dashboard.index', compact('list', 'doctors',  'services', 'patient', 'total_appointment', 'confirm', 'waiting', 'doneAppoint', 'day', 'date', 'total_revenue_day', 'list_schedule'));
+        return view('backend.dashboard.index', compact('list', 'doctors',  'services', 'patient', 'total_appointment', 'confirm', 'waiting', 'doneAppoint', 'day', 'date', 'total_revenue_day'));
 
         return view('backend.dashboard.index', compact('list', 'doctor', 'service', 'patient', 'appointment', 'confirm', 'waiting', 'doneAppoint', 'day', 'date'));
 
