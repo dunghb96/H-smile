@@ -8,6 +8,8 @@ use App\Models\feedback;
 use App\Models\ExaminationSchedule;
 use Carbon\Carbon;
 use App\Models\Employee;
+use App\Models\Medicine;
+use App\Models\Prescription;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -72,13 +74,14 @@ class DashboardController extends BaseController
     public function today()
     {
         $list = Appointment::all();
+        $medicine = Medicine::all();
 //        $jsonObj['data'] = $list;
 //
 //        $ser = $jsonObj['data'][0]->services;
 //        $service = Service::find($ser)->name;
 //        return response()->json($list[0]['status']);
 
-        return view('backend.doctor.today');
+        return view('backend.doctor.today', compact('medicine'));
     }
 
     public function today_json()
@@ -152,17 +155,25 @@ class DashboardController extends BaseController
 
     function addnote(Request $request)
     {
-        $id = $request->id;
-        $model = ExaminationSchedule::find($id);
-        $model->note = $request->note;
-        $result = $model->save();
-        if ($result) {
-            $jsonObj['success'] = true;
-            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
-        } else {
-            $jsonObj['success'] = false;
-            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+        $medicine = $request->get('medicine');
+        $quantity = $request->get('quantity');
+        if ($medicine) {
+            foreach ($medicine as $key => $value) {
+                Prescription::create([
+                    'schedule_id' => 1,
+                    'medicine_name'=>$value,
+                    'quantity'=>$quantity[$key]
+                ]);
+            }
         }
-        echo json_encode($jsonObj);
+        return redirect()->back();
+        // if ($result) {
+        //     $jsonObj['success'] = true;
+        //     $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        // } else {
+        //     $jsonObj['success'] = false;
+        //     $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+        // }
+        // echo json_encode($jsonObj);
     }
 }

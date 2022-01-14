@@ -40,9 +40,7 @@
                                             <th>Trạng thái</th>
                                             <th>Mã yêu cầu</th>
                                             <th>Đơn thuốc</th>
-
                                             <th></th>
-
                                         </tr>
                                         </thead>
                                     </table>
@@ -211,22 +209,31 @@
                                 <div class="modal new-user-modal fade" id="addnote">
                                     <div class="modal-dialog modal-sm">
                                         <div class="modal-content pt-0">
-                                            <div class="modal-header mb-1">
+                                            <div class="modal-header mb-2">
                                                 <h5 class="modal-title">Đơn thuốc</h5>
                                             </div>
                                             <div class="modal-body flex-grow-1">
-                                                <form id="frm-add" enctype="multipart/form-data">
-                                                    <div class="form-group">
-                                                        <label for="category">Đơn thuốc</label>
-                                                        <textarea id="note" name="note" rows="10" class="form-control"
-                                                                  placeholder="Đơn thuốc"></textarea>
+                                                <form action="{{ route('admin.addnote') }}" method="post" id="frm-add" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div id="form_medicine">
+                                                        <div class="form-group" style="display: inline-block">
+                                                            <div class="row">
+                                                                <label for="service">Tên thuốc</label>
+                                                                <select class="form-control medicine" class="medicine" name="medicine[]" required >
+                                                                    @foreach($medicine as $row)
+                                                                        <option value="{{ $row->name }}">{{ $row->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="row">
+                                                                <label for="quantity">Số lượng</label>
+                                                                <input class="form-control medicine" type="text" class="quantity" name="quantity[]" required>
+                                                            </div>
+                                                            <button type="button" class="btn btn-success mb-1 mb-sm-0 mr-0 mr-sm-1" onclick="addMedicine()">thêm</button>
+                                                        </div>
                                                     </div>
-                                                    <button type="button" onclick="saveNote()"
-                                                            class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật
-                                                    </button>
-                                                    <button type="reset" class="btn btn-outline-secondary"
-                                                            data-dismiss="modal">Bỏ qua
-                                                    </button>
+                                                    <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
+                                                    <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
                                                 </form>
 
                                             </div>
@@ -244,8 +251,45 @@
     </div>
 
 @endsection
+@push('css')
+    <style>
+        /* .medicine {
+            width: 40%;
+        } */
+    </style>
+
+@endpush
 @push('js')
-    <!-- <script src="/backend/app-assets/vendors/js/forms/wizard/bs-stepper.min.js"></script> -->
     <script src="/backend/assets/js/today.js"></script>
+    <script>
+        function addMedicine () {
+            $("#form_medicine").append(`
+                <div class="form-group" style="display: inline-block">
+                    <div class="row">
+                        <label for="service">Tên thuốc</label>
+                        <select class="form-control medicine" id="service" name="service[]" required >
+                            @foreach($medicine as $row)
+                            <option value="{{ $row->id }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="row">
+                        <label for="quantity">Số lượng</label>
+                        <input class="form-control medicine" type="text" name="quantity[]" required>
+                    </div>
+                    <button type="button" class="btn btn-success mb-1 mb-sm-0 mr-0 mr-sm-1" onclick="addMedicine()">thêm</button>
+                </div>
+            `);
+        }
+        function addnote(id) {
+            $("#addnote").modal('show');
+            $(".modal-title").html('Đơn thuốc');
+            $('#note').html();
+            iid = id;
+        }
+
+    </script>
+    <!-- <script src="/backend/app-assets/vendors/js/forms/wizard/bs-stepper.min.js"></script> -->
+
 
 @endpush
