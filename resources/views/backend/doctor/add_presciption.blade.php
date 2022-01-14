@@ -44,8 +44,11 @@
                         </div>
                     </div>
                 </div>
+                <br>
                 <div class="row">
-                    <button type="submit"  class="btn btn-primary">Tạo đơn thuốc</button>
+                    <div class="col-3">
+                        <button type="submit"  class="btn btn-primary">Tạo đơn thuốc</button>
+                    </div>
                 </div>
             </form>
             <!--/ Row grouping -->

@@ -64,11 +64,7 @@ class DashboardController extends BaseController
                 $doctor['total_moneny_doctor'] += $schedule->service->price;
             }
         }
-
         return view('backend.dashboard.index', compact('list', 'doctors',  'services', 'patient', 'total_appointment', 'confirm', 'waiting', 'doneAppoint', 'day', 'date', 'total_revenue_day'));
-
-        return view('backend.dashboard.index', compact('list', 'doctor', 'service', 'patient', 'appointment', 'confirm', 'waiting', 'doneAppoint', 'day', 'date'));
-
     }
 
     public function today()
@@ -172,6 +168,17 @@ class DashboardController extends BaseController
     }
     public function store(Request $request)
     {
-        dd($request->all());
+        $list_medicine_name = $request->medicine_name;
+        $list_quantity = $request->quantity;
+        $list_prescription_use = [];
+        foreach($list_medicine_name as $key =>$value_medicine_name){
+            $data_create = [
+                'schedule_id' => 1,
+                'medicine_name' => $value_medicine_name,
+                'quantity' => $list_quantity[$key]
+            ];
+            $list_prescription_use[$key] =  Prescription::create($data_create);
+        }
+        return view('backend.medicine.prescription_use' ,compact('list_prescription_use'));
     }
 }
