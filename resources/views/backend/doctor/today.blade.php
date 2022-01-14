@@ -206,7 +206,40 @@
                                     </div>
                                 </div>
 
-                                <div class="modal new-user-modal fade" id="addnote">
+                                {{-- <div class="modal new-user-modal fade" id="addnote">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content pt-0">
+                                            <div class="modal-header mb-2">
+                                                <h5 class="modal-title">Tạo đơn thuốc</h5>
+                                            </div>
+                                            <div class="modal-body flex-grow-1">
+                                                <form action="{{ route('admin.addnote') }}" method="post" id="frm-add" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div id="form_medicine">
+                                                        <div class="form-group" style="display: inline-block">
+                                                            <div class="row">
+                                                                <label for="service">Tên thuốc</label>
+                                                                <select class="form-control medicine" class="medicine" name="medicine[]" required >
+                                                                    @foreach($medicine as $row)
+                                                                        <option value="{{ $row->name }}">{{ $row->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="row">
+                                                                <label for="quantity">Số lượng</label>
+                                                                <input class="form-control medicine" type="text" class="quantity" name="quantity[]" required>
+                                                            </div>
+                                                            <button type="button" class="btn btn-success mb-1 mb-sm-0 mr-0 mr-sm-1" onclick="addMedicine()">thêm</button>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Tạo mới</button>
+                                                    <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                {{-- <div class="modal new-user-modal " id="list_medicin" style="display: block;">
                                     <div class="modal-dialog modal-sm">
                                         <div class="modal-content pt-0">
                                             <div class="modal-header mb-2">
@@ -233,14 +266,13 @@
                                                         </div>
                                                     </div>
                                                     <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
+                                                    <a href="#"class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Xuất đơn thuốc</a>
                                                     <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
                                                 </form>
-
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -281,12 +313,7 @@
                 </div>
             `);
         }
-        function addnote(id) {
-            $("#addnote").modal('show');
-            $(".modal-title").html('Đơn thuốc');
-            $('#note').html();
-            iid = id;
-        }
+
 
     </script>
     <!-- <script src="/backend/app-assets/vendors/js/forms/wizard/bs-stepper.min.js"></script> -->

@@ -75,6 +75,7 @@ class DashboardController extends BaseController
     {
         $list = Appointment::all();
         $medicine = Medicine::all();
+
 //        $jsonObj['data'] = $list;
 //
 //        $ser = $jsonObj['data'][0]->services;
@@ -153,27 +154,24 @@ class DashboardController extends BaseController
         echo json_encode($jsonObj);
     }
 
-    function addnote(Request $request)
+    public function addMedicine(Request $request)
     {
-        $medicine = $request->get('medicine');
-        $quantity = $request->get('quantity');
-        if ($medicine) {
-            foreach ($medicine as $key => $value) {
-                Prescription::create([
-                    'schedule_id' => 1,
-                    'medicine_name'=>$value,
-                    'quantity'=>$quantity[$key]
-                ]);
-            }
-        }
-        return redirect()->back();
-        // if ($result) {
-        //     $jsonObj['success'] = true;
-        //     $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
-        // } else {
-        //     $jsonObj['success'] = false;
-        //     $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-        // }
-        // echo json_encode($jsonObj);
+        $id = $request->get('id');
+        return response()->json([
+            'id' => $id,
+            'msg'=> 'success'
+        ]);
+    }
+
+    function addMedicineNew(Request $request, $id)
+    {
+        $list = Appointment::all();
+        $medicine = Medicine::all();
+        $info = Appointment::find($id);
+        return view('backend.doctor.add_presciption', compact('list', 'medicine', 'info'));
+    }
+    public function store(Request $request)
+    {
+        dd($request->all());
     }
 }

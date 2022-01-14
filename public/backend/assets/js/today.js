@@ -78,7 +78,7 @@ $(function () {
                             // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hẹn tiếp" onclick="hentiep(' + full['id'] + ',' + full['appointment'] + ',' + full['status'] + ',' + full['service_id'] + ',' + full['patient_id'] + ')">';
                             // html += '<i data-feather="arrow-right-circle"></i>';
                             // html += '</button> &nbsp;';
-                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="addnote(' + full['id'] + ')">';
+                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect add_medicine" title="Chỉnh sửa" data-id="'+full['id']+'" onclick="addnote(' + full['id'] + ')">';
                             html += '<i class="fas fa-pencil-alt"></i>';
                             html += '</button> &nbsp;';
 
@@ -427,11 +427,22 @@ function hentiep(id, appointment, status, service_id, patient) {
     }
 }
 
+
 function addnote(id) {
-    $("#addnote").modal('show');
-    $(".modal-title").html('Đơn thuốc');
-    $('#note').html();
-    iid = id;
+    console.log(id);
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        data: id,
+        url: '/admin/doctor/today/addMedicine',
+        success: function (data) {
+            window.location.href = '/admin/doctor/today/addMedicineNew/'+id;
+            console.log(123);
+        },
+        error: function () {
+            notify_error('Cập nhật không thành công');
+        }
+    });
 }
 
 function saveNote() {
