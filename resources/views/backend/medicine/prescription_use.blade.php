@@ -24,7 +24,11 @@
             </div>
         </div>
         <div class="content-body">
-            <button class="btn btn-info">Xuất đơn thuốc</button>
+            <div class="row">
+                <div class="col">
+                    <a href="{{ route('export.prescription.pdf') }}" class="btn btn-info float-right" style="margin-right: 20px;">Xuất đơn thuốc</a>
+                </div>
+            </div>
             <section>
                 <div class="row">
                     <div class="col-12">

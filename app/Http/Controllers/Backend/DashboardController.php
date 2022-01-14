@@ -14,7 +14,7 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
-
+use PDF;
 class DashboardController extends BaseController
 {
     function __construct()
@@ -180,5 +180,20 @@ class DashboardController extends BaseController
             $list_prescription_use[$key] =  Prescription::create($data_create);
         }
         return view('backend.medicine.prescription_use' ,compact('list_prescription_use'));
+    }
+    public function prescriptionPdf()
+    {
+
+        $data = [
+            'title' => 'Welcome to laratutorials.com',
+            'date' => date('m/d/Y')
+        ];
+
+        $pdf = PDF::loadView('backend.medicine.prescriptionPdf', $data);
+        return $pdf->download('itsolutionstuff.pdf');
+
+    //     $html_content = $view->render();
+    //     PDF::writeHTML($html_content, true, false, true, false, '');
+    //     PDF::Output('領　収　書', 'I');
     }
 }

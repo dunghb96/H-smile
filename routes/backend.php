@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('export-prescription-pdf', [DashboardController::class, 'prescriptionPdf'])->name('export.prescription.pdf');
 
 
     Route::group(['prefix' => 'doctor'], function () {
