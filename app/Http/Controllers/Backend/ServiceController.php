@@ -17,7 +17,8 @@ class ServiceController extends BaseController
     public function index()
     {
         $service_category = ServiceCategory::where('status', 1)->get();
-        return view('backend.service.index', compact('service_category'));
+        $status = Service::STATUS_2;
+        return view('backend.service.index', compact('service_category', 'status'));
     }
 
     public function json()

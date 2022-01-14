@@ -171,19 +171,17 @@
                                                 <tr>
                                                     <td>
                                                         <div class="d-flex align-items-center">
-                                                            <div>
-                                                                <div class="font-small-2 text-muted">{{$service->name}}</div>
-                                                            </div>
+                                                            <span>{{$service->name}}</span>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div class="d-flex align-items-center">
-                                                            <span>{{number_format($service->price)}} VNĐ</span>
+                                                            <div class="font-small-2 text-muted">{{number_format($service->price)}} VNĐ</div>
                                                         </div>
                                                     </td>
-                                                    <td class="text-nowrap">
-                                                        <div class="d-flex flex-column">
-                                                            <span class="font-small-2 text-muted">{{number_format($service->total_moneny_service)}} VNĐ</span>
+                                                    <td >
+                                                        <div class="d-flex align-items-center">
+                                                            <span >{{number_format($service->total_moneny_service)}} VNĐ</span>
                                                         </div>
                                                     </td>
                                                 </tr>

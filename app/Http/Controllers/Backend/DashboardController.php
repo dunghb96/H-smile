@@ -8,6 +8,8 @@ use App\Models\feedback;
 use App\Models\ExaminationSchedule;
 use Carbon\Carbon;
 use App\Models\Employee;
+use App\Models\Medicine;
+use App\Models\Prescription;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -72,13 +74,15 @@ class DashboardController extends BaseController
     public function today()
     {
         $list = Appointment::all();
+        $medicine = Medicine::all();
+
 //        $jsonObj['data'] = $list;
 //
 //        $ser = $jsonObj['data'][0]->services;
 //        $service = Service::find($ser)->name;
 //        return response()->json($list[0]['status']);
 
-        return view('backend.doctor.today');
+        return view('backend.doctor.today', compact('medicine'));
     }
 
     public function today_json()
@@ -150,19 +154,24 @@ class DashboardController extends BaseController
         echo json_encode($jsonObj);
     }
 
-    function addnote(Request $request)
+    public function addMedicine(Request $request)
     {
-        $id = $request->id;
-        $model = ExaminationSchedule::find($id);
-        $model->note = $request->note;
-        $result = $model->save();
-        if ($result) {
-            $jsonObj['success'] = true;
-            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
-        } else {
-            $jsonObj['success'] = false;
-            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-        }
-        echo json_encode($jsonObj);
+        $id = $request->get('id');
+        return response()->json([
+            'id' => $id,
+            'msg'=> 'success'
+        ]);
+    }
+
+    function addMedicineNew(Request $request, $id)
+    {
+        $list = Appointment::all();
+        $medicine = Medicine::all();
+        $info = Appointment::find($id);
+        return view('backend.doctor.add_presciption', compact('list', 'medicine', 'info'));
+    }
+    public function store(Request $request)
+    {
+        dd($request->all());
     }
 }

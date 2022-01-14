@@ -125,7 +125,11 @@ $(function () {
                     // digit: true
                 },
                 price: {
+                    required: true,
                     // digits: true
+                },
+                status: {
+                    required: true,
                 }
             }
         });
@@ -159,6 +163,7 @@ function loaddata(id) {
             $('#econtent').val(data.content);
             $('#etime').val(data.time);
             $('#ecategory_id').val(data.category_id).change();
+            $('#estatus').val(data.category_id).change();
             $('#iid').val(id);
             url = '/admin/service/edit';
             iid = id;
