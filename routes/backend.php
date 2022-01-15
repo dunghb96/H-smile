@@ -158,14 +158,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     Route::group(['prefix' => 'appointment'], function () {
         Route::get('/', [AppointmentController::class, 'index'])->middleware('permission:list_appointments')->name('admin.appointment');
         Route::get('/json', [AppointmentController::class, 'json']);
-        Route::post('/duyet', [AppointmentController::class, 'duyet']);
-        Route::post('/get-doctor', [AppointmentController::class, 'getDoctor']);
-        Route::post('/add-schedule', [AppointmentController::class, 'addSchedule']);
-        // Route::post('/add', [AppointmentController::class, 'add']);
+        // Route::post('/duyet', [AppointmentController::class, 'duyet']);
+        // Route::post('/get-doctor', [AppointmentController::class, 'getDoctor']);
+        // Route::post('/add-schedule', [AppointmentController::class, 'addSchedule']);
         Route::post('/loaddata', [AppointmentController::class, 'loaddata']);
-        // Route::post('/edit', [AppointmentController::class, 'edit']);
-        Route::post('/save', [AppointmentController::class, 'save']);
+        Route::post('/add', [AppointmentController::class, 'add']);
+        Route::post('/edit', [AppointmentController::class, 'edit']);
+        Route::post('/xacnhan', [AppointmentController::class, 'xacnhan']);
         Route::post('/del', [AppointmentController::class, 'del']);
+        Route::get('/order-detail', [AppointmentController::class, 'orderDetail']);
+        Route::get('/order-print', [AppointmentController::class, 'orderPrint'])->name('order.print');
+        Route::post('/loadorder', [AppointmentController::class, 'loadOrder']);
+        Route::post('/loadorderdetail', [AppointmentController::class, 'loadOrderDetail']);
     });
 
     Route::group(['prefix' => 'examination-schedule'], function () {

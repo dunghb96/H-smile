@@ -27,7 +27,6 @@ class AppointmentController extends BaseController
         return view('frontend.appointment.index',compact('doctors','services'));
     }
 
-
     public function sendSmsNotificaition(Request $request)
     {
         $basic = new \Vonage\Client\Credentials\Basic("c81f1ad7", "1Wgm12n3DtgkGK5h");
@@ -57,33 +56,31 @@ class AppointmentController extends BaseController
 
     public function booking(Request $request)
     {
-        $request->validate(
-            [
-                'nhapOtp' => 'required|max:4',
-                'phone_number' => 'required'
-            ],
-            [
-                'nhapOtp.required' => 'Hãy nhập Mã OTP',
-                'nhapOtp.max' => 'OTP tối đa 4 số',
-                'phone_number' => 'Số điện thoại không được để trống'
-            ]
-        );
-        if ($request->get("nhapOtp") == session()->get('otp')) {
+        // $request->validate(
+        //     [
+        //         'nhapOtp' => 'required|max:4',
+        //         'phone_number' => 'required'
+        //     ],
+        //     [
+        //         'nhapOtp.required' => 'Hãy nhập Mã OTP',
+        //         'nhapOtp.max' => 'OTP tối đa 4 số',
+        //         'phone_number' => 'Số điện thoại không được để trống'
+        //     ]
+        // );
+        // if ($request->get("nhapOtp") == session()->get('otp')) {
 
             $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
             $dataApp = [
-                'patient_code' => Cookie::get('patient_code') !== false ? Cookie::get('patient_code') : random_int(100000000, 999999999),
-                // đang fix cứng staff_id
-                'staff_id' => 2,
+                // 'patient_code' => Cookie::get('patient_code') !== false ? Cookie::get('patient_code') : random_int(100000000, 999999999),
                 'name' => $request->name,
-                'age' => $request->age,
+                // 'age' => $request->age,
                 'phone_number' => $request->phone_number,
                 'email' => $request->email,
                 'services' => implode(",", $request->service),
                 'date' => $dateat,
                 'shift' => $request->shift,
-                'address' => $request->address,
-                'gender' => $request->gender,
+                // 'address' => $request->address,
+                // 'gender' => $request->gender,
                 'note' => $request->note,
                 'status' => 1
             ];
@@ -101,7 +98,6 @@ class AppointmentController extends BaseController
             foreach ($serviceSelected as $row) {
                 $list_name .= $row->name . ', ';
             }
-
 
             $to_name = "H-smile";
             $to_email = $request->email;
@@ -132,14 +128,14 @@ class AppointmentController extends BaseController
             // });
 
 
-            if (Cookie::get('patient_code') !== true) {
-                Cookie::queue('patient_code', $dataApp['patient_code'], 99999999999);
-            }
+            // if (Cookie::get('patient_code') !== true) {
+            //     Cookie::queue('patient_code', $dataApp['patient_code'], 99999999999);
+            // }
 
             $alert = "Đặt lịch thành công! Hãy kiểm tra email để biết chi tiết thông tin đặt lịch";
-        } else {
-            $alert = 'Sai mã OTP';
-        }
+        // } else {
+        //     $alert = 'Sai mã OTP';
+        // }
 
 
         return redirect()->route('hsmile.appointment')->with('alert', $alert);

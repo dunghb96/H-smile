@@ -25,7 +25,10 @@ class ExaminationScheduleController extends BaseController
 
     public function index()
     {
-        $schedules = ExaminationSchedule::where('status', 2)->get();
+        $date = date('Y-m-d');
+        $dateat = strtotime('+3 day', strtotime($date));
+        $dateat = date('Y-m-d',$dateat);
+        $schedules = ExaminationSchedule::where('status', 1)->where('date_at','<=',$dateat)->get();
         foreach ($schedules as $key => $schedule) {
             $schedules[$key]->service_name = $schedule->service->name;
             $schedules[$key]->customer_name = $schedule->patient->full_name;
@@ -40,8 +43,9 @@ class ExaminationScheduleController extends BaseController
         $thang = (isset($_REQUEST['thang']) && ($_REQUEST['thang'] != '')) ? $_REQUEST['thang'] : date("m");
         $nam = (isset($_REQUEST['nam']) && ($_REQUEST['nam'] != '')) ? $_REQUEST['nam'] : date("Y");
         $doctor_id = isset($_REQUEST['doctor_id']) ? $_REQUEST['doctor_id'] : '';
-        $jsonObj['data'] = ExaminationSchedule::where('status', '3')->where('doctor_id', $doctor_id)->orderBy('created_at', 'DESC')->get();
+        $jsonObj['data'] = ExaminationSchedule::where('status', '2')->where('doctor_id', $doctor_id)->orderBy('created_at', 'DESC')->get();
         foreach ($jsonObj['data'] as $key => $item) {
+            // $jsonObj['data'][$key]->date_at = Carbon::parse($item->date_at)->format('d/m/Y');
             $jsonObj['data'][$key]->service_name = $item->service->name;
             $jsonObj['data'][$key]->service_time = $item->service->time;
             $jsonObj['data'][$key]->customer_name = $item->patient->full_name;
@@ -50,64 +54,64 @@ class ExaminationScheduleController extends BaseController
         echo json_encode($jsonObj);
     }
 
-    function hoanthanh(Request $request)
-    {
-        $schedule = $request->id;
-        $schedule = ExaminationSchedule::find($schedule);
-        $schedule->status = 2;
-        $schedule->save();
-        $appointment = $request->appointment;
-        $appointment = Appointment::find($appointment);
-        $appointment->status = 4;
-        $result = $appointment->save();
-        if ($result) {
-            $jsonObj['success'] = true;
-            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
-        } else {
-            $jsonObj['success'] = false;
-            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-        }
-        echo json_encode($jsonObj);
-    }
+    // function hoanthanh(Request $request)
+    // {
+    //     $schedule = $request->id;
+    //     $schedule = ExaminationSchedule::find($schedule);
+    //     $schedule->status = 2;
+    //     $schedule->save();
+    //     $appointment = $request->appointment;
+    //     $appointment = Appointment::find($appointment);
+    //     $appointment->status = 4;
+    //     $result = $appointment->save();
+    //     if ($result) {
+    //         $jsonObj['success'] = true;
+    //         $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+    //     } else {
+    //         $jsonObj['success'] = false;
+    //         $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+    //     }
+    //     echo json_encode($jsonObj);
+    // }
 
-    function hentiep(Request $request)
-    {
-        $patientid = $request->patient;
-        $scheduleid = $request->schedule;
-        $appointment = $request->appointment;
-        $doctor = $request->doctor;
-        $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
-        $timeat = $request->timeat;
-        $data = [
-            'patient_id' => $patientid,
-            'appointment' => $appointment,
-            'doctor' => $doctor,
-            'date_at' => $dateat,
-            'time_at' => $timeat,
-        ];
-        $result = ExaminationSchedule::where('doctor', $doctor)->whereDate('date_at', $dateat)->where('time_at', $timeat)->where('status', '>', '0')->get();
-        if ($result->count() > 3) {
-            $jsonObj['success'] = false;
-            $jsonObj['msg'] = 'Không còn lịch trống';
-            echo json_encode($jsonObj);
-        } else {
-            $model = ExaminationSchedule::find($scheduleid);
-            $model->status = 2;
-            $result = $model->save();
-            if ($result) {
-                $schedule = new ExaminationSchedule();
-                $result = $schedule->saveExaminationSchedule($schedule, $data);
-                if ($result) {
-                    $jsonObj['success'] = true;
-                    $jsonObj['msg'] = 'Hẹn lịch khám tiếp thành công';
-                }
-            } else {
-                $jsonObj['success'] = false;
-                $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-            }
-            echo json_encode($jsonObj);
-        }
-    }
+    // function hentiep(Request $request)
+    // {
+    //     $patientid = $request->patient;
+    //     $scheduleid = $request->schedule;
+    //     $appointment = $request->appointment;
+    //     $doctor = $request->doctor;
+    //     $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
+    //     $timeat = $request->timeat;
+    //     $data = [
+    //         'patient_id' => $patientid,
+    //         'appointment' => $appointment,
+    //         'doctor' => $doctor,
+    //         'date_at' => $dateat,
+    //         'time_at' => $timeat,
+    //     ];
+    //     $result = ExaminationSchedule::where('doctor', $doctor)->whereDate('date_at', $dateat)->where('time_at', $timeat)->where('status', '>', '0')->get();
+    //     if ($result->count() > 3) {
+    //         $jsonObj['success'] = false;
+    //         $jsonObj['msg'] = 'Không còn lịch trống';
+    //         echo json_encode($jsonObj);
+    //     } else {
+    //         $model = ExaminationSchedule::find($scheduleid);
+    //         $model->status = 2;
+    //         $result = $model->save();
+    //         if ($result) {
+    //             $schedule = new ExaminationSchedule();
+    //             $result = $schedule->saveExaminationSchedule($schedule, $data);
+    //             if ($result) {
+    //                 $jsonObj['success'] = true;
+    //                 $jsonObj['msg'] = 'Hẹn lịch khám tiếp thành công';
+    //             }
+    //         } else {
+    //             $jsonObj['success'] = false;
+    //             $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+    //         }
+    //         echo json_encode($jsonObj);
+    //     }
+    // }
 
     function loaddata(Request $request)
     {
@@ -117,7 +121,7 @@ class ExaminationScheduleController extends BaseController
         $jsonObj->service_time = $jsonObj->service->time;
         $jsonObj->customer_name = $jsonObj->patient->full_name;
         $jsonObj->phone_number = $jsonObj->patient->phone_number;
-        // $jsonObj['date_at'] = Carbon::parse($jsonObj->date_at)->format('d/m/Y');
+        $jsonObj['date_at'] = Carbon::parse($jsonObj->date_at)->format('d/m/Y');
         echo json_encode($jsonObj);
     }
 

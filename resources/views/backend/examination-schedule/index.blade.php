@@ -125,6 +125,10 @@
                                     </div>
                                     <hr>
                                     <div class="form-group">
+                                        <label for="date_at">Ngày</label>
+                                        <input type="text" id="date_at" name="date_at" class="form-control flatpickr-basic" placeholder="DD/MM/YYYY" />
+                                    </div>
+                                    <div class="form-group">
                                         <label for="doctor">Bác sĩ</label>
                                         <select class="select2 select-label form-control w-100" id="doctor" name="doctor">
                                             @foreach($doctors as $doctor)
@@ -185,6 +189,10 @@
                                         <span class="col-6" id="data-etime"></span>
                                     </div>
                                     <hr>
+                                    <div class="form-group">
+                                        <label for="edate_at">Ngày</label>
+                                        <input type="text" id="edate_at" name="date_at" class="form-control flatpickr-basic" placeholder="DD/MM/YYYY" />
+                                    </div>
                                     <div class="form-group">
                                         <label for="edoctor">Bác sĩ</label>
                                         <select class="select2 select-label form-control w-100" id="edoctor" name="doctor">

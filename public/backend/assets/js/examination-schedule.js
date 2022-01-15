@@ -26,14 +26,7 @@ $(function () {
             noCalendar: true
         });
     }
-    // if (estartTime.length) {
-        $('#estart_time').flatpickr({
-            enableTime: true,
-            dateFormat: "H:i",
-            noCalendar: true
-        });
-    // }
-    
+
     $('#doctor').val(null).trigger('change');
     var chatUsersListWrapper = $('#list-schedule');
     var chatUserList = new PerfectScrollbar(chatUsersListWrapper[0]);
@@ -100,7 +93,7 @@ $(document).on('click', '.list-group-item', function (e) {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    var calendarabc = document.getElementById('calendar'),
+    var calendarEl = document.getElementById('calendar'),
         eventToUpdate,
         sidebar = $('.event-sidebar'),
         calendarsColor = {
@@ -130,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // btnDeleteEvent = $('.btn-delete-event'),
         btnXL = $('#btn-xl'),
         selectDoctor = $('#bac-si');
-        calendarEditor = $('#event-description-editor');
+    calendarEditor = $('#event-description-editor');
 
     // --------------------------------------------
     // On add new item, clear sidebar-right field fields
@@ -168,78 +161,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Guests select
-    // if (eventGuests.length) {
-    //     function renderGuestAvatar(option) {
-    //         if (!option.id) {
-    //             return option.text;
-    //         }
-
-    //         var $avatar =
-    //             "<div class='d-flex flex-wrap align-items-center'>" +
-    //             "<div class='avatar avatar-sm my-0 mr-50'>" +
-    //             "<span class='avatar-content'>" +
-    //             "<img src='" +
-    //             assetPath +
-    //             'images/avatars/' +
-    //             $(option.element).data('avatar') +
-    //             "' alt='avatar' />" +
-    //             '</span>' +
-    //             '</div>' +
-    //             option.text +
-    //             '</div>';
-
-    //         return $avatar;
-    //     }
-    //     eventGuests.wrap('<div class="position-relative"></div>').select2({
-    //         placeholder: 'Select value',
-    //         dropdownParent: eventGuests.parent(),
-    //         closeOnSelect: false,
-    //         templateResult: renderGuestAvatar,
-    //         templateSelection: renderGuestAvatar,
-    //         escapeMarkup: function (es) {
-    //             return es;
-    //         }
-    //     });
-    // }
-
-    // Start date picker
-    // if (estartTime.length) {
-    //     estartTime.flatpickr({
-    //         enableTime: true,
-    //         dateFormat: "H:i",
-    //         noCalendar: true
-    //     });
-    // }
-    // if (estartTime.length) {
-        $('#estart_time').flatpickr({
-            enableTime: true,
-            noCalendar: true,
-            dateFormat: "H:i",
-            altFormat: "H:i",
-            time_24hr: true,
-            enableSeconds: true,
-            onReady: function (selectedDates, dateStr, instance) {
-                if (instance.isMobile) {
-                    $(instance.mobileInput).attr('step', null);
-                }
-            }
-        });
-    // }
-
-    // End date picker
-    // if (endDate.length) {
-    //     var end = endDate.flatpickr({
-    //         enableTime: true,
-    //         altFormat: 'Y-m-dTH:i:S',
-    //         onReady: function (selectedDates, dateStr, instance) {
-    //             if (instance.isMobile) {
-    //                 $(instance.mobileInput).attr('step', null);
-    //             }
-    //         }
-    //     });
-    // }
-
     // Event click function
     function eventClick(info) {
         eventToUpdate = info.event;
@@ -253,41 +174,36 @@ document.addEventListener('DOMContentLoaded', function () {
         // cancelBtn.addClass('d-none');
         updateEventBtn.removeClass('d-none');
         // btnDeleteEvent.removeClass('d-none');
+        dateat = new Date(eventToUpdate.extendedProps.date_at.replace(/-/g, "/"));
+        $('#edate_at').flatpickr({
+            altInput: true,
+            altFormat: "d/m/Y",
+            defaultDate: dateat,
+            dateFormat: "d/m/Y",
+        });
         $('#data-ename').html(eventToUpdate.extendedProps.customer_name);
         $('#data-ephone').html(eventToUpdate.extendedProps.phone_number);
         $('#data-eservice').html(eventToUpdate.extendedProps.service_name);
-        $('#data-etime').html(eventToUpdate.extendedProps.service_time+' phút');
+        $('#data-etime').html(eventToUpdate.extendedProps.service_time + ' phút');
         $('#edoctor').val(eventToUpdate.extendedProps.doctor_id).trigger('change');
-        // estartTime.setDate(eventToUpdate.start, true, 'H:i');
-        // $('#estart_time').flatpickr({
-        //     enableTime: true,
-        //     noCalendar: true,
-        //     dateFormat: "H:i",
-        //     altFormat: "H:i",
-        //     time_24hr: true,
-        //     enableSeconds: true,
-        //     onReady: function (selectedDates, dateStr, instance) {
-        //         if (instance.isMobile) {
-        //             $(instance.mobileInput).attr('step', null);
-        //         }
-        //     }
-        // });
+
         $('#estart_time').flatpickr({
             altInput: true,
             defaultDate: eventToUpdate.start,
             altFormat: "H:i",
+            enableTime: true,
             dateFormat: "H:i",
+            noCalendar: true
         });
         $('#eend_time').flatpickr({
-            altInput: true,
             defaultDate: eventToUpdate.end,
-            altFormat: "H:i",
-            dateFormat: "H:i",
+            dateFormat: "H:i"
         });
-        eendTime.attr("disabled", true);
+        $('#eend_time').attr("disabled", true);
+        $('#enote').val(eventToUpdate.extendedProps.note);
         uid = eventToUpdate.extendedProps.id;
         thoiluong = eventToUpdate.extendedProps.service_time;
-        
+
         // eventTitle.val(eventToUpdate.title);
         // estartTime.setDate(eventToUpdate.start, true, 'Y-m-d H:i:s');
         // eventToUpdate.allDay === true ? allDaySwitch.prop('checked', true) : allDaySwitch.prop('checked', false);
@@ -329,6 +245,37 @@ document.addEventListener('DOMContentLoaded', function () {
         return selected;
     }
 
+    // Event click function
+    function eventDrop(info) {
+        eventToUpdate = info.event;
+        var data = {};
+        start_time = String(eventToUpdate.start);
+        start_time = start_time.split(" ");
+        end_time = String(eventToUpdate.end);
+        end_time = end_time.split(" ");
+        data.id = eventToUpdate.extendedProps.id;
+        data.date_at = eventToUpdate.extendedProps.date_at;
+        data.doctor_id = eventToUpdate.extendedProps.doctor_id;
+        data.start_time = start_time[4];
+        data.end_time = end_time[4];
+        data.note = eventToUpdate.extendedProps.note;
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: data,
+            url: "/admin/examination-schedule/xeplich",
+            success: function (data) {
+                if (data.success) {
+                    calendar.refetchEvents();
+                    notyfi_success(data.msg);
+                }
+            },
+            error: function () {
+                notify_error('Lỗi truy xuất database');
+            }
+        });
+    }
+
     // --------------------------------------------------------------------------------------------------
     // AXIOS: fetchEvents
     // * This will be called by fullCalendar to fetch events. Also this can be used to refetch events.
@@ -350,18 +297,22 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (item.id > 0) {
                             arr = {
                                 id: item.id,
-                                title: '#'+item.id+' '+item.service_name,
+                                title: '#' + item.id + ' ' + item.service_name,
                                 start: new Date(item.date_at + ' ' + item.start_time),
                                 end: new Date(item.date_at + ' ' + item.end_time),
                                 allDay: allday,
                                 extendedProps: {
                                     id: item.id,
                                     calendar: '1',
+                                    date_at: item.date_at,
                                     doctor_id: item.doctor_id,
                                     service_name: item.service_name,
                                     service_time: item.service_time,
                                     customer_name: item.customer_name,
                                     phone_number: item.phone_number,
+                                    note: item.note,
+                                    start_time: item.start_time,
+                                    end_time: item.end_time
                                 }
                             };
                             events.push(arr);
@@ -387,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Calendar plugins
-    var calendar = new FullCalendar.Calendar(calendarabc, {
+    var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'listMonth',
         events: fetchEvents,
         eventOrder: "id",
@@ -395,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function () {
         dragScroll: true,
         dayMaxEvents: 2,
         selectOverlap: false,
-        eventOverlap:false,
+        eventOverlap: false,
         eventResizableFromStart: true,
         customButtons: {
             sidebarToggle: {
@@ -453,6 +404,9 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         viewDidMount: function () {
             modifyToggler();
+        },
+        eventDrop: function (info) {
+            eventDrop(info);
         }
     });
 
@@ -607,6 +561,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isValid) {
             var info = {};
             info.id = uid;
+            info.date_at = $('#edate_at').val();
             info.doctor_id = $('#edoctor').val();
             info.start_time = $('#estart_time').val();
             info.end_time = $('#eend_time').val();
@@ -688,6 +643,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isValid) {
             var info = {};
             info.id = uid;
+            info.date_at = $('#date_at').val();
             info.doctor_id = $('#doctor').val();
             info.start_time = $('#start_time').val();
             info.end_time = $('#end_time').val();
@@ -701,9 +657,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (data.success) {
                         calendar.refetchEvents();
                         $("#xep-lich").modal('hide');
-                        $('#schedule-'+id).addClass('d-none');
+                        $('#schedule-' + id).addClass('d-none');
                         notyfi_success(data.msg);
-                        
+
                     }
                 },
                 error: function () {
@@ -728,6 +684,13 @@ function xeplich(id) {
             $('#data-service').html(data.service_name);
             $('#data-time').html(data.service_time + ' phút');
             $('#end_time').attr("disabled", true);
+            $('#date_at').flatpickr({
+                altInput: true,
+                altFormat: "d/m/Y",
+                defaultDate: data.date_at,
+                dateFormat: "d/m/Y",
+                minDate: "today",
+            });
             thoiluong = data.service_time;
             uid = id;
         },

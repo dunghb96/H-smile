@@ -26,5 +26,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&amp ;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500&display=swap" rel="stylesheet">
     @yield('head')
+    @stack('css')
 
 </head>

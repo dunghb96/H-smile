@@ -47,17 +47,37 @@ class Appointment extends Model
         return $this->hasOne(Employee::class, 'id', 'doctor_id')->where('type', 1);
     }
 
-    function saveExaminationSchedule($model, $data)
-    {
-        $model->patient_id = $data['patient_id'];
-        $model->appointment = $data['appointment'];
-        $model->date_at = $data['date_at'];
-        $model->doctor = $data['doctor'];
-        $model->time_at = $data['time_at'];
-        $model->status = 1;
+    // function saveExaminationSchedule($model, $data)
+    // {
+    //     $model->patient_id = $data['patient_id'];
+    //     $model->appointment = $data['appointment'];
+    //     $model->date_at = $data['date_at'];
+    //     $model->doctor = $data['doctor'];
+    //     $model->time_at = $data['time_at'];
+    //     $model->status = 1;
 
-        $model->save();
+    //     $model->save();
 
-        return $model;
-    }
+    //     return $model;
+    // }
+
+    // function saveAppointment($model, $data) {
+    //     $model->customer_id = $data['customer_id'];
+    //     $model->customer_id = $data['customer_id'];
+    //     $model->name = $data['name'];
+    //     $model->age = $data['age'];
+    //     $model->phone_number = $data['phone_number'];
+    //     $model->email = $data['email'];
+    //     $model->services = $data['services'];
+    //     $model->date = $data['date'];
+    //     $model->shift = $data['shift'];
+    //     $model->address = $data['address'];
+    //     $model->gender = $data['gender'];
+    //     $model->note = $data['note'];
+    //     $model->status = $data['status'];
+
+    //     $model->save();
+
+    //     return $model;
+    // }
 }

@@ -46,34 +46,31 @@ class ExaminationSchedule extends Model
         return $this->hasOne(Order::class, 'id', 'order_id');
     }
 
-    function saveExaminationSchedule($model, $data)
-    {
-        $model->appointment = $data['appointment'];
-        $model->date_at = $data['date_at'];
-        $model->doctor = $data['doctor'];
-        $model->patient_id = $data['patient_id'];
-        $model->time_at = $data['time_at'];
-        $model->status = 1;
+    // function saveExaminationSchedule($model, $data)
+    // {
+    //     $model->appointment = $data['appointment'];
+    //     $model->date_at = $data['date_at'];
+    //     $model->doctor = $data['doctor'];
+    //     $model->patient_id = $data['patient_id'];
+    //     $model->time_at = $data['time_at'];
+    //     $model->status = 1;
 
-        $model->save();
+    //     $model->save();
 
-        return $model;
-    }
+    //     return $model;
+    // }
 
     public function xeplich($model, $request)
     {
+        $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
+        $starttime = (isset($request->start_time) && $request->start_time != '') ? date("H:i:s", strtotime($request->start_time)) : '';
+        $endtime = (isset($request->end_time) && $request->end_time != '') ? date("H:i:s", strtotime($request->end_time)) : '';
+        // echo $endtime;
+        $model->date_at = $dateat;
         $model->doctor_id = $request->input('doctor_id');
-        $model->start_time = $request->input('start_time');
-        $model->end_time = $request->input('end_time');
+        $model->start_time = $starttime;
+        $model->end_time = $endtime;
         $model->note = $request->input('note');
-        $model->status = 3;
-        $model->save();
-
-        return $model;
-    }
-
-    function saveTT($model)
-    {
         $model->status = 2;
         $model->save();
 

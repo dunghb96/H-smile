@@ -58,7 +58,7 @@
 <!-- thm custom script -->
 <script src="/frontend/js/custom.js"></script>
 @yield('script')
-
+@stack('js')
 <script>
     $.ajaxSetup({
         headers: {

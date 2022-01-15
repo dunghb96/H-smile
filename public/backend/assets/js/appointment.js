@@ -41,13 +41,19 @@ $(function () {
     })
     $('#time_at').val(null).change();
 
-    $('#service').select2({
-        placeholder: "Chọn dịch vụ",
+    $('#services').select2({
+        placeholder: "Chọn tối đa 3 dịch vụ",
         allowClear: true,
-        dropdownParent: $('#service').parent(),
+        dropdownParent: $('#services').parent(),
     })
+    $('#services').val('').change();
 
-    $('#service').val(null).change();
+    $('#customer').select2({
+        placeholder: "Tìm nhanh khách hàng",
+        allowClear: true,
+        dropdownParent: $('#customer').parent(),
+    })
+    $('#customer').val('').change();
 
     'use strict';
     var table_table = $('#tableBasic');
@@ -94,9 +100,17 @@ $(function () {
                     targets: 8,
                     render: function (data, type, full, meta) {
                         var html = '';
-                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Tạo lịch khám" onclick="duyet(' + full['id'] + ',' + full['service_id'] + ',' + full['status'] + ',' + full['patient_id'] + ')">';
-                        html += '<i class="fas fa-calendar"></i>';
-                        html += '</button> &nbsp;';
+                        var status = full['status'];
+                        if(status==2) {
+                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chi tiết đơn hàng" onclick="loadorder(' + full['id'] + ')">';
+                            html += '<i class="fas fa-shopping-basket"></i>';
+                            html += '</button> &nbsp;';
+                        }
+                        if(status==1) {
+                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Xác nhận" onclick="xacnhan(' + full['id'] + ',' + full['status'] + ')">';
+                            html += '<i class="far fa-calendar-check"></i>';
+                            html += '</button> &nbsp;';
+                        }
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
                         html += '<i class="fas fa-pencil-alt"></i>';
                         html += '</button> &nbsp;';
@@ -170,82 +184,90 @@ $(function () {
     });
 });
 
-function loadpatient(id) {
-    $('#information-tab').click();
-    $('#patientinfo').modal('show');
-    $(".modal-title").html('Thông tin khách hàng');
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        data: { id: id },
-        url: "/admin/patient/loaddata",
-        success: function (data) {
-            $('#patient-name').html(data.full_name);
-            $('#patient-age').html(data.age);
-            $('#patient-phone').html(data.phone_number);
-            $('#patient-email').html(data.email);
-            loadhistorytb(id);
-        },
-        error: function () {
-            notify_error('Lỗi truy xuất database');
-        }
-    });
-}
+// function loadpatient(id) {
+//     $('#information-tab').click();
+//     $('#patientinfo').modal('show');
+//     $(".modal-title").html('Thông tin khách hàng');
+//     $.ajax({
+//         type: "POST",
+//         dataType: "json",
+//         data: { id: id },
+//         url: "/admin/patient/loaddata",
+//         success: function (data) {
+//             $('#patient-name').html(data.full_name);
+//             $('#patient-age').html(data.age);
+//             $('#patient-phone').html(data.phone_number);
+//             $('#patient-email').html(data.email);
+//             loadhistorytb(id);
+//         },
+//         error: function () {
+//             notify_error('Lỗi truy xuất database');
+//         }
+//     });
+// }
 
-function loadhistorytb(id) {
-    var listhistory = $('#listhistory');
-    if (listhistory.length) {
-        var listhistory = listhistory.DataTable({
-            ajax: '/admin/patient/loadhistory?id=' + id,
-            // "bDestroy": true,
-            destroy: true,
-            columns: [
-                { data: 'status' },
-                { data: 'status' },
-                { data: 'status' },
-                { data: 'status' },
-                { data: 'status' },
-            ],
-            columnDefs: [],
-            // order: [[0, 'DESC']],
-            dom:
-                '<"d-flex justify-content-between align-items-center header-actions mx-1 row mt-75"' +
-                '<"col-lg-12 col-xl-6" l>' +
-                '<"col-lg-12 col-xl-6 pl-xl-75 pl-0"<"dt-action-buttons text-xl-right text-lg-left text-md-right text-left d-flex align-items-center justify-content-lg-end align-items-center flex-sm-nowrap flex-wrap mr-1"<"mr-1"f>B>>' +
-                ">t" +
-                '<"d-flex justify-content-between mx-2 row mb-1"' +
-                '<"col-sm-12 col-md-6"i>' +
-                '<"col-sm-12 col-md-6"p>' +
-                ">",
-            // displayLength: 10,
-            lengthMenu: [10, 20, 30, 50, 70, 100],
-            language: {
-                sLengthMenu: "Show _MENU_",
-                search: "Search",
-                searchPlaceholder: "11111111112..",
-            },
-            buttons: [],
-            language: {
-                paginate: {
-                    previous: "&nbsp;",
-                    next: "&nbsp;",
-                },
-            },
-        });
-    }
-}
+// function loadhistorytb(id) {
+//     var listhistory = $('#listhistory');
+//     if (listhistory.length) {
+//         var listhistory = listhistory.DataTable({
+//             ajax: '/admin/patient/loadhistory?id=' + id,
+//             // "bDestroy": true,
+//             destroy: true,
+//             columns: [
+//                 { data: 'status' },
+//                 { data: 'status' },
+//                 { data: 'status' },
+//                 { data: 'status' },
+//                 { data: 'status' },
+//             ],
+//             columnDefs: [],
+//             // order: [[0, 'DESC']],
+//             dom:
+//                 '<"d-flex justify-content-between align-items-center header-actions mx-1 row mt-75"' +
+//                 '<"col-lg-12 col-xl-6" l>' +
+//                 '<"col-lg-12 col-xl-6 pl-xl-75 pl-0"<"dt-action-buttons text-xl-right text-lg-left text-md-right text-left d-flex align-items-center justify-content-lg-end align-items-center flex-sm-nowrap flex-wrap mr-1"<"mr-1"f>B>>' +
+//                 ">t" +
+//                 '<"d-flex justify-content-between mx-2 row mb-1"' +
+//                 '<"col-sm-12 col-md-6"i>' +
+//                 '<"col-sm-12 col-md-6"p>' +
+//                 ">",
+//             // displayLength: 10,
+//             lengthMenu: [10, 20, 30, 50, 70, 100],
+//             language: {
+//                 sLengthMenu: "Show _MENU_",
+//                 search: "Search",
+//                 searchPlaceholder: "11111111112..",
+//             },
+//             buttons: [],
+//             language: {
+//                 paginate: {
+//                     previous: "&nbsp;",
+//                     next: "&nbsp;",
+//                 },
+//             },
+//         });
+//     }
+// }
 
 function loadadd() {
     $("#addnew").modal('show');
     $(".modal-title").html('Thêm yêu cầu mới');
-    $('#adoctor').select2({
-        placeholder: "Chọn nha sĩ",
-        allowClear: true,
-        dropdownParent: $('#adoctor').parent(),
-    })
-    $('#adoctor').val(null).change();
-    $('#adoctor').attr("disabled", true);
-    url = '/admin/appointment/save';
+    // $('#adoctor').select2({
+    //     placeholder: "Chọn nha sĩ",
+    //     allowClear: true,
+    //     dropdownParent: $('#adoctor').parent(),
+    // })
+    // $('#adoctor').val(null).change();
+    // $('#adoctor').attr("disabled", true);
+    $('#customer').val('').change();
+    $('#services').val('').change();
+    $('#date_at').val('');
+    $('#full_name').val('');
+    $('#age').val('');
+    $('#phone_number').val('');
+    $('#email').val('');
+    $('#address').val('');
+    url = '/admin/appointment/add';
     iid = 0;
 }
 
@@ -258,12 +280,13 @@ function loaddata(id) {
         data: { id: id },
         url: "/admin/appointment/loaddata",
         success: function (data) {
-            $('#service').val(data.service_id).change();
-            $('#adoctor').val(data.doctor_id).change();
-            $('#adate_at').flatpickr({
+            val = data.services.split(',');
+            $("#services").val(val).change();
+            $('#doctor').val(data.doctor_id).change();
+            $('#date_at').flatpickr({
                 altInput: true,
                 altFormat: "d/m/Y",
-                defaultDate: data.date_at,
+                defaultDate: data.date,
                 dateFormat: "d/m/Y",
             });
             $('#shift').val(data.shift).change();
@@ -272,7 +295,7 @@ function loaddata(id) {
             $('#phone_number').val(data.phone_number);
             $('#email').val(data.email);
             $('#note').val(data.note);
-            url = '/admin/appointment/save';
+            url = '/admin/appointment/edit';
             iid = id;
         },
         error: function () {
@@ -281,21 +304,60 @@ function loaddata(id) {
     });
 }
 
+function xacnhan(id, status) {
+    if(status==1) {
+        $("#addnew").modal('show');
+        $(".modal-title").html('Xác nhận lịch hẹn');
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: { id: id },
+            url: "/admin/appointment/loaddata",
+            success: function (data) {
+                val = data.services.split(',');
+                $("#services").val(val).change();
+                $('#doctor').val(data.doctor_id).change();
+                $('#date_at').flatpickr({
+                    altInput: true,
+                    altFormat: "d/m/Y",
+                    defaultDate: data.date,
+                    dateFormat: "d/m/Y",
+                });
+                $('#shift').val(data.shift).change();
+                $('#full_name').val(data.patient);
+                $('#age').val(data.age);
+                $('#phone_number').val(data.phone_number);
+                $('#email').val(data.email);
+                $('#note').val(data.note);
+                url = '/admin/appointment/xacnhan';
+                iid = id;
+            },
+            error: function () {
+                notify_error('Lỗi truy xuất database');
+            }
+        });
+    } else {
+        notify_error('Lịch hẹn đã được xác nhận');
+    }
+}
+
 function save() {
     var info = {};
     if (iid > 0) {
         info.id = iid;
     }
-    info.service = $('#service').val();
-    info.doctor = $('#adoctor').val();
-    info.dateat = $('#adate_at').val();
+    info.customer_id = $('#customer').val();
+    info.service = $('#services').val();
+    // info.doctor = $('#adoctor').val();
+    info.dateat = $('#date_at').val();
     info.shift = $('#shift').val();
     info.fullname = $('#full_name').val();
     info.age = $('#age').val();
     info.phonenumber = $('#phone_number').val();
     info.email = $('#email').val();
     info.address = $('#address').val();
-    info.gender = $('input[name=gender]:checked', '#addnew').val();
+    info.gender = $("input[type='radio'][name='gender']:checked").val();
+    // info.gender = $('input[name=gender]:checked', '#addnew').val();
     info.note = $('#note').val();
     var isValid = $('#frm-add').valid();
     if (isValid) {
@@ -321,67 +383,72 @@ function save() {
 
 }
 
-function duyet(id, service, status, patient) {
-    if (status == 1) {
-        $("#addlich").modal('show');
-        $(".modal-title").html('Tạo lịch khám');
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            data: { service: service },
-            url: "/admin/appointment/get-doctor",
-            success: function (data) {
-                $('#doctor_id').html('');
-                data.forEach(function (val, index) {
-                    var opt = '<option value="' + val.id + '">' + val.name + '</option>';
-                    $('#doctor_id').append(opt);
-                });
-                $('#doctor_id').select2({
-                    placeholder: "Chọn bác sĩ",
-                    allowClear: true,
-                    dropdownParent: $('#doctor_id').parent(),
-                })
-                $('#doctor_id').val(null).trigger('change');
+// function duyet(id, service, status, patient) {
+//     if (status == 1) {
+//         $("#addlich").modal('show');
+//         $(".modal-title").html('Tạo lịch khám');
+//         $.ajax({
+//             type: "POST",
+//             dataType: "json",
+//             data: { service: service },
+//             url: "/admin/appointment/get-doctor",
+//             success: function (data) {
+//                 $('#doctor_id').html('');
+//                 data.forEach(function (val, index) {
+//                     var opt = '<option value="' + val.id + '">' + val.name + '</option>';
+//                     $('#doctor_id').append(opt);
+//                 });
+//                 $('#doctor_id').select2({
+//                     placeholder: "Chọn bác sĩ",
+//                     allowClear: true,
+//                     dropdownParent: $('#doctor_id').parent(),
+//                 })
+//                 $('#doctor_id').val(null).trigger('change');
 
-            },
-        });
-        patient_id = patient;
-        iid = id;
-    } else if (status == 2) {
-        notify_error('Lịch khám đang thực hiện');
-    } else if (status == 3) {
-        notify_error('Lịch hẹn đã bị hủy');
-    } else if (status == 4) {
-        notify_error('Lịch hẹn đã hoàn thành');
-    }
-}
+//             },
+//         });
+//         patient_id = patient;
+//         iid = id;
+//     } else if (status == 2) {
+//         notify_error('Lịch khám đang thực hiện');
+//     } else if (status == 3) {
+//         notify_error('Lịch hẹn đã bị hủy');
+//     } else if (status == 4) {
+//         notify_error('Lịch hẹn đã hoàn thành');
+//     }
+// }
 
-function saveExamSchedule() {
-    var info = {};
-    info.patient_id = patient_id;
-    info.appointment = iid;
-    info.doctor = $('#doctor_id').val();
-    info.service = $('#service').val();
-    info.dateat = $('#date_at').val();
-    info.timeat = $('#atime_at').val();
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        data: info,
-        url: "/admin/appointment/add-schedule",
-        success: function (data) {
-            if (data.success) {
-                notyfi_success(data.msg);
-                $('#addlich').modal('hide');
-                $("#tableBasic").DataTable().ajax.reload(null, false);
-            } else {
-                notify_error(data.msg);
-            }
-        },
-        error: function () {
-            notify_error('Lỗi truy xuất database');
-        }
-    });
+// function saveExamSchedule() {
+//     var info = {};
+//     info.patient_id = patient_id;
+//     info.appointment = iid;
+//     info.doctor = $('#doctor_id').val();
+//     info.service = $('#services').val();
+//     info.dateat = $('#date_at').val();
+//     info.timeat = $('#atime_at').val();
+//     $.ajax({
+//         type: "POST",
+//         dataType: "json",
+//         data: info,
+//         url: "/admin/appointment/add-schedule",
+//         success: function (data) {
+//             if (data.success) {
+//                 notyfi_success(data.msg);
+//                 $('#addlich').modal('hide');
+//                 $("#tableBasic").DataTable().ajax.reload(null, false);
+//             } else {
+//                 notify_error(data.msg);
+//             }
+//         },
+//         error: function () {
+//             notify_error('Lỗi truy xuất database');
+//         }
+//     });
+// }
+
+function loadorder(id) {
+    localStorage.setItem('appointment_id', id);
+    window.location.href = './admin/appointment/order-detail';
 }
 
 function del(id) {
