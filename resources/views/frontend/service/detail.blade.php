@@ -44,9 +44,9 @@
                                             </tr>
                                         </thead>
                                         <tbody class="table-body">
-                                            @if($service->serviceChildrent->count())
+                                            @if($serviceRandom->count())
                                             <tr>
-                                                @foreach($service->serviceChildrent as $service1)
+                                                @foreach($serviceRandom as $service1)
                                                 <td>
                                                     <p>{{$service1->name}}</p>
                                                 </td>
@@ -129,9 +129,9 @@
                         <div class="inner">
                             <h3>Dịch vụ liên qua</h3>
 
-                            @if($service->serviceChildrent->count())
+                            @if($serviceRandom->count())
                             <ul class="specialities-categories">
-                                @foreach($service->serviceChildrent as $service1)
+                                @foreach($serviceRandom as $service1)
                                 <li class="active"><a href="#">{{$service1->name}}</a></li>
 
                                 @endforeach

@@ -21,8 +21,8 @@ class ServiceController extends BaseController
     public function get($id)
     {
         $service = Service::find($id);
-        $serviceRandom = Service::where('category_id', 0)->get();
-        $doctor = Employee::where('type', 1)->paginate(2);
+        $serviceRandom = Service::where('status', Service::STATUS_ACTIVE)->get();
+        $doctor = Employee::where('type', 1)->paginate(3);
         return view('frontend.service.detail', compact('service', "serviceRandom", 'doctor'));
     }
 }

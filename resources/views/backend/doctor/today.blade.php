@@ -37,9 +37,8 @@
                                             <th>Giờ hẹn</th>
                                             <th>Dịch vụ</th>
                                             <th>Khách hàng</th>
+                                            <th>Số điện thoại</th>
                                             <th>Trạng thái</th>
-                                            <th>Mã yêu cầu</th>
-                                            <th>Đơn thuốc</th>
                                             <th></th>
                                         </tr>
                                         </thead>

@@ -22,9 +22,11 @@ class ExaminationSchedule extends Model
         3 => 'Đã hủy'
     ];
 
+    const STATUS_WAITING = 1;
+
     public function doctors()
     {
-        return $this->hasOne(Employee::class, 'id', 'doctor');
+        return $this->hasOne(Employee::class, 'id', 'doctor_id');
     }
 
     public function patient()

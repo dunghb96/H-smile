@@ -83,27 +83,23 @@ class DashboardController extends BaseController
 
     public function today_json()
     {
-//        $doctor = Auth::guard('web')->user();
-//        $now = Date('Y-m-d');
-//        $list = ExaminationSchedule::where('date_at', '=', $now)->where('doctor',  $doctor->employee)->where('status', '>', 0)->get();
-        $list = Appointment::all();
+        $doctor = Auth::guard('web')->user();
+        $now = Date('Y-m-d');
+        $list = ExaminationSchedule::where('date_at', '=', $now)->where('doctor_id',  $doctor->employee)->where('status', '>', 0)->orderBy('status')->get();
         $jsonObj['data'] = $list;
         foreach ($list as $key => $row) {
-            $jsonObj['data'][$key]->services = $service = Service::find($row->services)->name;
-
-//            $jsonObj['data'][$key]->service_id = $appointment->service->id;
-//            $jsonObj['data'][$key]->doctor = $row->doctors->name;
-//            $jsonObj['data'][$key]->patient = $row->patients->full_name;
-//            $jsonObj['data'][$key]->patient_id = $appointment->patients->id;
-//            $jsonObj['data'][$key]->phone = $appointment->patients->phone_number;
-//            $jsonObj['data'][$key]->status_name =  ExaminationSchedule::STATUS[$row->status];
+            $jsonObj['data'][$key]->services = $row->service->name;
+            $jsonObj['data'][$key]->doctor    = $row->doctors->name;
+            $jsonObj['data'][$key]->patients  = $row->patient->full_name;
+            $jsonObj['data'][$key]->phone     = $row->patient->phone_number;
+            $jsonObj['data'][$key]->start_time = Carbon::parse($row->start_time)->format("H:i");
+            $jsonObj['data'][$key]->status_name =  ExaminationSchedule::STATUS[$row->status];
         }
         echo json_encode($jsonObj);
     }
 
     public function future()
     {
-
         return view('backend.doctor.future');
     }
 
@@ -112,18 +108,17 @@ class DashboardController extends BaseController
         $doctor = Auth::guard('web')->user();
         $now = Date('Y-m-d');
         $tomorrow = date('Y-m-d', strtotime($now . "+1 days"));
-        $list = ExaminationSchedule::where('date_at', '=', $tomorrow)->where('doctor', $doctor->employee)->where('status', 1)->get();
+        $list = ExaminationSchedule::where('date_at', '=', $tomorrow)->where('doctor_id', $doctor->employee)->where('status', ExaminationSchedule::STATUS_WAITING)->get();
         $jsonObj['data'] = $list;
         foreach ($list as $key => $row) {
-            $appointment = Appointment::find($row->appointment);
-            $jsonObj['data'][$key]->service = $appointment->service->name;
-            $jsonObj['data'][$key]->service_id = $appointment->service->id;
+            $jsonObj['data'][$key]->services = $row->service->name;
             $jsonObj['data'][$key]->doctor = $row->doctors->name;
-            $jsonObj['data'][$key]->patient = $row->patients->full_name;
-            $jsonObj['data'][$key]->patient_id = $appointment->patients->id;
-            $jsonObj['data'][$key]->phone = $appointment->patients->phone_number;
+            $jsonObj['data'][$key]->patients = $row->patient->full_name;
+            $jsonObj['data'][$key]->phone = $row->patient->phone_number;
+            $jsonObj['data'][$key]->start_time = Carbon::parse($row->start_time)->format("H:i");
             $jsonObj['data'][$key]->status_name = ExaminationSchedule::STATUS[$row->status];
         }
+// dd($jsonObj);
         echo json_encode($jsonObj);
     }
 
@@ -181,9 +176,13 @@ class DashboardController extends BaseController
         }
         return view('backend.medicine.prescription_use' ,compact('list_prescription_use'));
     }
+    public function editPre($id)
+    {
+        return view('backend.prescription.edit');
+    }
+
     public function prescriptionPdf()
     {
-
         $data = [
             'title' => 'Đơn thuốc #000',
             'date' => date('m/d/Y')
@@ -191,9 +190,6 @@ class DashboardController extends BaseController
 
         $pdf = PDF::loadView('backend.medicine.prescriptionPdf', $data);
         return $pdf->download('Don-thoc.pdf');
-
-    //     $html_content = $view->render();
-    //     PDF::writeHTML($html_content, true, false, true, false, '');
-    //     PDF::Output('領　収　書', 'I');
     }
+
 }

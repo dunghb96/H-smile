@@ -46,15 +46,12 @@
              columns: [
                  { data: 'id' },
                  { data: 'date_at' },
-                 { data: 'time_at' },
-                 { data: 'service' },
+                 { data: 'start_time' },
+                 { data: 'services' },
                  { data: 'service_id' },
-                 { data: 'patient' },
-                 { data: 'patient_id' },
+                 { data: 'patients' },
                  { data: 'phone' },
                  { data: 'status_name' },
-                 { data: 'status' },
-                 { data: 'appointment' },
 
              ],
              columnDefs: [
@@ -62,24 +59,6 @@
                     targets: 4,
                     visible: false,
                  },
-                 {
-                     targets: 5,
-                     render: function (data, type, full, meta) {
-                         return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient(' + full['patient_id'] + ')"><span class="font-weight-bold">' + full['patient'] + '</span></a>'
-                     }
-                 },
-                 {
-                     targets: 6,
-                     visible: false,
-                 },
-                 {
-                     targets: 9,
-                     visible: false,
-                 },
-                 {
-                    targets: 10,
-                    visible: false,
-                }
              ],
              // order: [[0, 'DESC']],
              dom:

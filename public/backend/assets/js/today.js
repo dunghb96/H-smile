@@ -45,15 +45,10 @@ $(function () {
                 // },
                 columns: [
                     {data: 'id'},
-                    {data: 'date'},
+                    {data: 'start_time'},
                     {data: 'services'},
-
-                    {
-                        render: function (data, type, full, meta) {
-                            return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient(' + full['patient_id'] + ')"><span class="font-weight-bold">' + full['name'] + '</span></a>'
-                        },
-                    },
-
+                    {data: 'patients'},
+                    {data: 'phone'},
                     {
                         render: function (data, type, full, meta) {
                             if (full['status'] = "1") {
@@ -62,14 +57,17 @@ $(function () {
                         },
                     },
 
-                    // { data: 'status_name' },
-                    // { data: 'status' },
-                    // { data: 'appointment' },
-                    // { data: 'note' },
-                    // { data: '' }
 
+                ],
+                columnDefs: [
                     {
-                        targets: 10,
+                        targets: 3,
+                        render: function (data, type, full, meta) {
+                            return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient(' + full['customer_id'] + ')"><span class="font-weight-bold">' + full['patients'] + '</span></a>'
+                        },
+                    },
+                    {
+                        targets: 6,
                         render: function (data, type, full, meta) {
                             var html = '';
                             // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hoàn thành" onclick="hoanthanh(' + full['id'] + ',' + full['status'] + ',' + full['appointment'] + ')">';
@@ -78,8 +76,8 @@ $(function () {
                             // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hẹn tiếp" onclick="hentiep(' + full['id'] + ',' + full['appointment'] + ',' + full['status'] + ',' + full['service_id'] + ',' + full['patient_id'] + ')">';
                             // html += '<i data-feather="arrow-right-circle"></i>';
                             // html += '</button> &nbsp;';
-                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect add_medicine" title="Chỉnh sửa" data-id="'+full['id']+'" onclick="addnote(' + full['id'] + ')">';
-                            html += '<i class="fas fa-pencil-alt"></i>';
+                            html += '<button type="button" class="btn btn-icon btn-outline-success waves-effect add_medicine" title="Đơn thuốc" data-id="'+full['id']+'" onclick="addnote(' + full['id'] + ')">';
+                            html += '<i class="fas fa-briefcase-medical"></i>';
                             html += '</button> &nbsp;';
 
                             // html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa" onclick="del(' + full['id'] + ')">';
@@ -89,37 +87,6 @@ $(function () {
                         },
                         width: 180
                     }
-
-                ],
-                columnDefs: [
-                    // {
-                    //     targets: 6,
-                    //     visible: false,
-                    // },
-
-                    // {
-                    //     targets: 11,
-                    //     render: function (data, type, full, meta) {
-                    //         return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient(' + full['patient_id'] + ')"><span class="font-weight-bold">' + full['name'] + '</span></a>'
-                    //     },
-                    // },
-
-                    // {
-                    //     targets: 4,
-                    //     visible: false,
-                    // },
-                    //  {
-                    //     targets: 8,
-                    //     visible: false,
-                    // },
-                    // {
-                    //     targets: 9,
-                    //     render: function(data, type, full, meta){
-                    //          return '<a href="javascript:void(0)" class="user_name text-primary" onclick="loadpatient('+full['patient_id']+')"><span class="font-weight-bold">'+full['patient']+'</span></a>'
-                    //      }
-                    // },
-
-
                 ],
                 // order: [[0, 'DESC']],
                 dom:
