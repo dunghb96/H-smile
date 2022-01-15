@@ -23,7 +23,7 @@ class ServiceController extends BaseController
 
     public function json()
     {
-        $list = Service::where('status', '>', 0)->get();
+        $list = Service::where('status', '>', 0)->orderBy('category_id')->get();
         $jsonObj['data'] = $list;
         foreach($list as $key => $value) {
             $jsonObj['data'][$key]->price = number_format($value->price).' VND';

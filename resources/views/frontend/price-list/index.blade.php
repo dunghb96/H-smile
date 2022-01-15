@@ -34,7 +34,7 @@
         <div class="row">
             <!--Start single price box-->
 
-            @foreach($servicePrice as $item)
+            @foreach($service_cate as $item)
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 text-center">
 
                 <div class="single-price-box">
@@ -44,9 +44,9 @@
                         </div>
                     </div>
                     <div class="price-list">
-                        @if($item->serviceChildrent->count())
+                        @if($item->services->count())
                             <ul>
-                                @foreach($item->serviceChildrent as $service)
+                                @foreach($item->services as $service)
                                 <li>{{$service->name}}: {{number_format($service->price)}} VND</li>
                                 @endforeach
                             </ul>

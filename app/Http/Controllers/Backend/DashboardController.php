@@ -185,12 +185,12 @@ class DashboardController extends BaseController
     {
 
         $data = [
-            'title' => 'Welcome to laratutorials.com',
+            'title' => 'Đơn thuốc #000',
             'date' => date('m/d/Y')
         ];
 
         $pdf = PDF::loadView('backend.medicine.prescriptionPdf', $data);
-        return $pdf->download('itsolutionstuff.pdf');
+        return $pdf->download('Don-thoc.pdf');
 
     //     $html_content = $view->render();
     //     PDF::writeHTML($html_content, true, false, true, false, '');
