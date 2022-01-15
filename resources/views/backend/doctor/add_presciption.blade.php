@@ -26,6 +26,7 @@
             <!-- Row grouping -->
            <form action="{{ route('admin.doctor.store_prescription')}}" method="post" >
             @csrf
+            <input type="hidden" name="schedule_id" value="{{ $info->id }}" >
                 <div class="add_medicine">
                     <div class="row add_div">
                         <div class="col-2">
@@ -96,7 +97,7 @@
             </div>
             <div class="col-2">
                 <a class="btn btn-success" onclick="addMedicine()">Thêm</a>
-                <a class="btn btn-danger" onclick="deleteMedicine()">Xóa</a>
+                <a class="btn btn-danger delete_medicine" onclick="deleteMedicine()">Xóa</a>
             </div>
         </div>
     `);

@@ -158,28 +158,32 @@ class DashboardController extends BaseController
     {
         $medicine = Medicine::all();
         $info = ExaminationSchedule::find($id);
-        $list_prescription_use = Prescription::where('schedule_id', $id)->get();
+        $prescription_use = Prescription::where('schedule_id', $id)->first();
 
-        if (count($list_prescription_use)) {
-            return view('backend.medicine.prescription_use' ,compact('list_prescription_use'));
+        if ($prescription_use) {
+            return view('backend.medicine.prescription_use' ,compact('prescription_use'));
         } else {
             return view('backend.doctor.add_presciption', compact('medicine', 'info'));
         }
     }
     public function store(Request $request)
     {
-        $list_medicine_name = $request->medicine_name;
-        $list_quantity = $request->quantity;
-        $list_prescription_use = [];
-        foreach($list_medicine_name as $key =>$value_medicine_name){
-            $data_create = [
-                'schedule_id' => 1,
-                'medicine_name' => $value_medicine_name,
-                'quantity' => $list_quantity[$key]
-            ];
-            $list_prescription_use[$key] =  Prescription::create($data_create);
-        }
-        return view('backend.medicine.prescription_use' ,compact('list_prescription_use'));
+        // dd($request->all());
+        $list_medicine_id = implode(",", $request->medicine_id);
+        $list_quantity = implode(",", $request->total_quantity);
+        $list_detail = implode(",", $request->detail);
+
+        $data_create = [
+            'schedule_id'    => (int)$request->scheduled_id,
+            'medicine_id'    => $list_medicine_id,
+            'total_quantity' => $list_quantity,
+            'detail'         => $list_detail,
+            'note'           => $request->note
+
+        ];
+        $prescription_use =  Prescription::create($data_create);
+
+        return view('backend.medicine.prescription_use' ,compact('prescription_use'));
     }
     public function editPre($id)
     {
