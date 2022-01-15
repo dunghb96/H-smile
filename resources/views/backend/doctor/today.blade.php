@@ -45,51 +45,6 @@
                                     </table>
                                 </div>
 
-                                <div class="modal new-user-modal fade" id="hentiep">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content pt-0">
-                                            <div class="modal-header mb-1">
-                                                <h5 class="modal-title">Tạo lịch hẹn mới</h5>
-                                            </div>
-                                            <div class="modal-body flex-grow-1">
-                                                <form id="frm-add" enctype="multipart/form-data">
-
-                                                    <div class="form-group">
-                                                        <label for="category">Bác sĩ</label>
-                                                        <select class="form-control" id="doctor" name="doctor" required>
-
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="date_at">Ngày</label>
-                                                        <input type="text" id="date_at" name="date_at"
-                                                               class="form-control flatpickr-basic"
-                                                               placeholder="DD/MM/YYYY"/>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="date_at">Ngày</label>
-                                                        <select class="form-control" id="time_at" name="time_at"
-                                                                required>
-                                                            <option value="07:00">07:00</option>
-                                                            <option value="09:30">09:30</option>
-                                                            <option value="10:00">10:00</option>
-                                                            <option value="14:00">14:00</option>
-                                                            <option value="15:30">15:30</option>
-                                                            <option value="17:00">17:00</option>
-                                                        </select>
-                                                    </div>
-                                                    <button type="button" onclick="saveExamSchedule()"
-                                                            class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật
-                                                    </button>
-                                                    <button type="reset" class="btn btn-outline-secondary"
-                                                            data-dismiss="modal">Bỏ qua
-                                                    </button>
-                                                </form>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="modal fade text-left" id="patientinfo" role="dialog"
                                      aria-labelledby="myModalLabel16" aria-hidden="true">
@@ -108,17 +63,7 @@
                                                                    id="information-tab" data-toggle="tab"
                                                                    href="#information" aria-controls="information"
                                                                    role="tab" aria-selected="false">
-                                                                    <i data-feather="info"></i><span
-                                                                        class="d-none d-sm-block">Thông tin cá nhân</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="nav-item" id="tab2">
-                                                                <a class="nav-link d-flex align-items-center"
-                                                                   id="account-tab" data-toggle="tab" href="#account"
-                                                                   aria-controls="account" role="tab"
-                                                                   aria-selected="true">
-                                                                    <i data-feather='clipboard'></i><span
-                                                                        class="d-none d-sm-block">Dịch vụ đã sử dụng</span>
+                                                                    <i data-feather="info"></i><span class="d-none d-sm-block">Thông tin cá nhân</span>
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -144,9 +89,7 @@
                                                                                 <span>Tuổi</span>
                                                                             </div>
                                                                             <div class="col-sm-8">
-                                                                                <span
-                                                                                    class="font-weight-bold text-primary"
-                                                                                    id="patient-age"></span>
+                                                                                <span class="font-weight-bold text-primary" id="patient-age"></span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -156,9 +99,7 @@
                                                                                 <span>Số điện thoại</span>
                                                                             </div>
                                                                             <div class="col-sm-8">
-                                                                                <span
-                                                                                    class="font-weight-bold text-primary"
-                                                                                    id="patient-phone"></span>
+                                                                                <span class="font-weight-bold text-primary" id="patient-phone"></span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -168,15 +109,13 @@
                                                                                 <span>Email</span>
                                                                             </div>
                                                                             <div class="col-sm-8">
-                                                                                <span
-                                                                                    class="font-weight-bold text-primary"
-                                                                                    id="patient-email"></span>
+                                                                                <span class="font-weight-bold text-primary" id="patient-email"></span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="tab-pane" id="account"
+                                                            {{-- <div class="tab-pane" id="account"
                                                                  aria-labelledby="account-tab" role="tabpanel">
                                                                 <div class="table-responsive border rounded mt-1">
                                                                     <h6 class="py-1 mx-1 mb-0 font-medium-2">
@@ -196,7 +135,7 @@
                                                                         </thead>
                                                                     </table>
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -205,73 +144,7 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="modal new-user-modal fade" id="addnote">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content pt-0">
-                                            <div class="modal-header mb-2">
-                                                <h5 class="modal-title">Tạo đơn thuốc</h5>
-                                            </div>
-                                            <div class="modal-body flex-grow-1">
-                                                <form action="{{ route('admin.addnote') }}" method="post" id="frm-add" enctype="multipart/form-data">
-                                                    @csrf
-                                                    <div id="form_medicine">
-                                                        <div class="form-group" style="display: inline-block">
-                                                            <div class="row">
-                                                                <label for="service">Tên thuốc</label>
-                                                                <select class="form-control medicine" class="medicine" name="medicine[]" required >
-                                                                    @foreach($medicine as $row)
-                                                                        <option value="{{ $row->name }}">{{ $row->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label for="quantity">Số lượng</label>
-                                                                <input class="form-control medicine" type="text" class="quantity" name="quantity[]" required>
-                                                            </div>
-                                                            <button type="button" class="btn btn-success mb-1 mb-sm-0 mr-0 mr-sm-1" onclick="addMedicine()">thêm</button>
-                                                        </div>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Tạo mới</button>
-                                                    <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
-                                {{-- <div class="modal new-user-modal " id="list_medicin" style="display: block;">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content pt-0">
-                                            <div class="modal-header mb-2">
-                                                <h5 class="modal-title">Đơn thuốc</h5>
-                                            </div>
-                                            <div class="modal-body flex-grow-1">
-                                                <form action="{{ route('admin.addnote') }}" method="post" id="frm-add" enctype="multipart/form-data">
-                                                    @csrf
-                                                    <div id="form_medicine">
-                                                        <div class="form-group" style="display: inline-block">
-                                                            <div class="row">
-                                                                <label for="service">Tên thuốc</label>
-                                                                <select class="form-control medicine" class="medicine" name="medicine[]" required >
-                                                                    @foreach($medicine as $row)
-                                                                        <option value="{{ $row->name }}">{{ $row->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <div class="row">
-                                                                <label for="quantity">Số lượng</label>
-                                                                <input class="form-control medicine" type="text" class="quantity" name="quantity[]" required>
-                                                            </div>
-                                                            <button type="button" class="btn btn-success mb-1 mb-sm-0 mr-0 mr-sm-1" onclick="addMedicine()">thêm</button>
-                                                        </div>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
-                                                    <a href="#"class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Xuất đơn thuốc</a>
-                                                    <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
+
                             </div>
                         </div>
                     </div>
@@ -292,29 +165,6 @@
 @endpush
 @push('js')
     <script src="/backend/assets/js/today.js"></script>
-    <script>
-        function addMedicine () {
-            $("#form_medicine").append(`
-                <div class="form-group" style="display: inline-block">
-                    <div class="row">
-                        <label for="service">Tên thuốc</label>
-                        <select class="form-control medicine" id="service" name="service[]" required >
-                            @foreach($medicine as $row)
-                            <option value="{{ $row->id }}">{{ $row->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="row">
-                        <label for="quantity">Số lượng</label>
-                        <input class="form-control medicine" type="text" name="quantity[]" required>
-                    </div>
-                    <button type="button" class="btn btn-success mb-1 mb-sm-0 mr-0 mr-sm-1" onclick="addMedicine()">thêm</button>
-                </div>
-            `);
-        }
-
-
-    </script>
     <!-- <script src="/backend/app-assets/vendors/js/forms/wizard/bs-stepper.min.js"></script> -->
 
 

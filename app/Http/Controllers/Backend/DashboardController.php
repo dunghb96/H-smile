@@ -28,7 +28,7 @@ class DashboardController extends BaseController
         $date_now = date('Y-m-d');
         // doanh thu theo tháng hiện tại
         $appointment = Appointment::all();
-        $total_appointment = Appointment::all()->count();
+        $total_appointment = Appointment::where('created_at', $date_now)->count();
         $confirm = Appointment::where('status', 2)->where('date', $date_now)->count();
         $waiting = Appointment::where('status', 1)->count();
         $doneAppoint = ExaminationSchedule::where('status', 2)->count();
@@ -37,7 +37,7 @@ class DashboardController extends BaseController
         $list = Appointment::orderBY('created_at')->get();
 
         $total_revenue_day = 0;
-        $appointment_list_id_services = Appointment::where('status', 6)->where('date', $date_now)->pluck('services')->toArray();
+        $appointment_list_id_services = ExaminationSchedule::where('status', '>=', ExaminationSchedule::STATUS_DONE)->where('date_at', $date_now)->pluck('service_id')->toArray();
         foreach($appointment_list_id_services as $key => $service_id)
         {
             $list_id_services[$key] = explode(',', $service_id);
@@ -50,16 +50,16 @@ class DashboardController extends BaseController
         }
         $services = Service::where('status', 1)->get();
         foreach($services as $service){
-            $list_schedule = ExaminationSchedule::where('service_id', $service->id)->get();
+            $list_schedule = ExaminationSchedule::where('date_at', '=', $date_now)->where('service_id', $service->id)->where('status', '>=', ExaminationSchedule::STATUS_DONE)->get();
+
             $count = $list_schedule->count();
             foreach($list_schedule as  $schedule){
                 $service['total_moneny_service'] = $schedule->service->price * $count;
             }
         }
         $doctors = Employee::where('type', 1)->get();
-
         foreach($doctors as $doctor){
-            $list_schedule_doctor = ExaminationSchedule::where('doctor_id', $doctor->id)->get();
+            $list_schedule_doctor = ExaminationSchedule::where('date_at', '=', $date_now)->where('doctor_id', $doctor->id)->where('status', '>=', ExaminationSchedule::STATUS_DONE)->get();
             foreach($list_schedule_doctor as  $schedule){
                 $doctor['total_moneny_doctor'] += $schedule->service->price;
             }

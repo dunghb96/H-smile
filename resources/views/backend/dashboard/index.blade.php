@@ -14,7 +14,7 @@
                     <div class="col-lg-4 col-12">
                         <div class="row match-height">
                             <!-- Bar Chart - Orders -->
-                            <div class="col-lg-6 col-md-3 col-6">
+                            {{-- <div class="col-lg-6 col-md-3 col-6">
                                 <div class="card">
                                     <div class="card-body pb-50">
                                         <h6>Doanh thu theo tháng {{$date->month}}</h6>
@@ -22,7 +22,7 @@
                                         <div id="statistics-order-chart"></div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!--/ Bar Chart - Orders -->
 
                             <!-- Line Chart - Profit -->
@@ -45,7 +45,7 @@
                             <div class="card-header">
                                 <h4 class="card-title">Báo cáo thống kê</h4>
                                 <div class="d-flex align-items-center">
-                                    <p class="card-text font-small-2 mr-25 mb-0">Tháng 12</p>
+                                    <p class="card-text font-small-2 mr-25 mb-0"></p>
                                 </div>
                             </div>
                             <div class="card-body statistics-body">
@@ -53,7 +53,7 @@
                                     <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
                                         <div class="media">
                                             <div class="avatar bg-light-primary mr-2">
-<div class="avatar-content">
+                                                <div class="avatar-content">
                                                     <i data-feather="trending-up" class="avatar-icon"></i>
                                                 </div>
                                             </div>
@@ -96,7 +96,7 @@
                                         <div class="media">
                                             <div class="avatar bg-light-info mr-2">
                                                 <div class="avatar-content">
-<i data-feather="user" class="avatar-icon"></i>
+                                                    <i data-feather="user" class="avatar-icon"></i>
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">

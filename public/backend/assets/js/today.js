@@ -72,6 +72,10 @@ $(function () {
                             html += '<i class="fas fa-briefcase-medical"></i>';
                             html += '</button> &nbsp;';
 
+                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chuyển trạng thái" onclick="suaTrangThai(' + full['id'] +')">';
+                            html += '<i class="fas fa-pencil-alt"></i>';
+                            html += '</button> &nbsp;';
+
                             // html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa" onclick="del(' + full['id'] + ')">';
                             // html += '<i class="fas fa-trash-alt"></i>';
                             // html += '</button>';
@@ -423,6 +427,41 @@ function saveNote() {
         },
         error: function () {
             notify_error('Cập nhật không thành công');
+        }
+    });
+}
+
+function suaTrangThai(id) {
+    $('#patientinfo').modal('show');
+}
+function suaTrangThai(id) {
+    $("#changestatus").modal('show');
+    $(".modal-title").html('Thay đổi trạng thái');
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        data: {id: id},
+        url: "/admin/employee/loaddata",
+        success: function (data) {
+            $('#name').val(data.name);
+            $('#phone_number').val(data.phone_number);
+            $('#email').val(data.email);
+            $('#position').val(data.position);
+            $('#majors').val(data.majors);
+            $('#type').val(data.type).change();
+            $('#short_description').val(data.short_description);
+            if (data.services) {
+                services = data.services.split(',');
+                $('#service').val(services).change();
+            }
+            $('#username').val(data.username);
+            $('#password').val('');
+            $('#role').val(data.rolesOfUser).change();
+            url = '/admin/employee/edit';
+            iid = id;
+        },
+        error: function () {
+            notify_error('Lỗi truy xuất database');
         }
     });
 }

@@ -27,21 +27,31 @@
            <form action="{{ route('admin.doctor.store_prescription')}}" method="post" >
             @csrf
                 <div class="add_medicine">
-                    <div class="row">
-                        <div class="col-4">
-                            <select class="form-control" name="medicine_name[]" id="">
+                    <div class="row add_div">
+                        <div class="col-2">
+                            <select class="form-control" name="medicine_id[]" id="">
                                 @foreach ($medicine as $row)
                                     <option value="{{ $row->name }}">{{ $row->name }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-4">
-                            <input type="text" class="form-control" name="quantity[]" placeholder="Số lượng">
+                        <div class="col-2">
+                            <input type="text" class="form-control" name="total_quantity[]" placeholder="Số lượng">
                         </div>
-                        <div class="col-4">
+                        <div class="col-5">
+                            <input type="text" class="form-control" name="detail[]" placeholder="Thời gian và liều lượng">
+                        </div>
+                        <div class="col-2">
                             <a class="btn btn-success" onclick="addMedicine()">Thêm</a>
                             <a class="btn btn-danger" onclick="deleteMedicine()">Xóa</a>
                         </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-10">
+                        <label for="">Ghi chú</label>
+                        <textarea class="form-control" placeholder=""name="note" id="" cols="80" rows="10"></textarea>
                     </div>
                 </div>
                 <br>
@@ -57,26 +67,38 @@
 </div>
 
 @endsection
+
+@push('css')
+    <style>
+        .add_div {
+            margin-bottom: 10px;
+        }
+    </style>
+@endpush
+
 @push('js')
 <script>
     function addMedicine () {
     $(".add_medicine").append(`
-               <div class="row">
-                    <div class="col-4">
-                        <select class="form-control" name="medicine_name[]" id="">
-                            @foreach ($medicine as $row)
-                                <option value="{{ $row->name }}">{{ $row->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-4">
-                        <input type="text" class="form-control" name="quantity[]" placeholder="Số lượng">
-                    </div>
-                    <div class="col-4">
-                        <a class="btn btn-success"  onclick="addMedicine()">Thêm</a>
-                        <a class="btn btn-danger delete_medicine" onclick="deleteMedicine()">Xóa</a>
-                    </div><br>
-                </div>
+        <div class="row add_div">
+            <div class="col-2">
+                <select class="form-control" name="medicine_id[]" id="">
+                    @foreach ($medicine as $row)
+                        <option value="{{ $row->name }}">{{ $row->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-2">
+                <input type="text" class="form-control" name="total_quantity[]" placeholder="Số lượng">
+            </div>
+            <div class="col-5">
+                <input type="text" class="form-control" name="detail[]" placeholder="Thời gian và liều lượng">
+            </div>
+            <div class="col-2">
+                <a class="btn btn-success" onclick="addMedicine()">Thêm</a>
+                <a class="btn btn-danger" onclick="deleteMedicine()">Xóa</a>
+            </div>
+        </div>
     `);
     function deleteMedicine(e) {
         console.log(123);

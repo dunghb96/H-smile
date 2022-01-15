@@ -17,12 +17,14 @@ class ExaminationSchedule extends Model
     ];
 
     const STATUS= [
+        0 => 'Hủy',
         1 => 'Chờ khám',
-        2 => 'Hoàn thành',
-        3 => 'Đã hủy'
+        2 => 'Đang khám',
+        3 => 'Hoàn thành'
     ];
 
     const STATUS_WAITING = 1;
+    const STATUS_DONE = 2;
 
     public function doctors()
     {
