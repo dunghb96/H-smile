@@ -171,12 +171,20 @@
 
                                             <div class="row border-b-2 brc-default-l2"></div>
 
-
-
-
+                                            @if($orderOne->status == "1")
+                                                <div>
+                                                    <p class="font-weight-bold">Thông tin thanh toán</p>
+                                                    <p class="">STK: 0101001194240</p>
+                                                    <p class="">CTK: NGUYEN VAN LONG</p>
+                                                    <img src="{{asset('/uploads/qrpay/Capture.JPG')}}" width="150"/>
+                                                </div>
+                                            @endif
                                             <div class="row mt-3">
                                                 <div class="col-12 col-sm-7 text-grey-d2 text-95 mt-2 mt-lg-0">
-                                                    Nội dung chuyển khoản: {{$orderOne->pay_content}}
+                                                    @if($orderOne->status == "1")
+                                                        Nội dung chuyển khoản: {{$orderOne->pay_content}}
+                                                    @endif
+
                                                 </div>
 
                                                 <div
@@ -239,11 +247,11 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div>
-                            <span class="text-danger">Không đóng trình duyệt khi thanh toán </span>
-                        </div>
-
+                        @if($orderOne->status == "1")
+                            <div>
+                                <span class="text-danger">Không đóng trình duyệt khi thanh toán </span>
+                            </div>
+                        @endif
 
                     </div>
 
