@@ -280,7 +280,7 @@ function loaddata(id) {
         data: { id: id },
         url: "/admin/appointment/loaddata",
         success: function (data) {
-            val = data.services.split(',');
+            var val = data.services.split(',');
             $("#services").val(val).change();
             $('#doctor').val(data.doctor_id).change();
             $('#date_at').flatpickr({

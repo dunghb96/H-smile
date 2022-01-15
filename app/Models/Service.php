@@ -21,6 +21,7 @@ class Service extends Model
         1 => 'active',
         2 => 'non active'
     ];
+    const STATUS_ACTIVE = 1;
 
     public function ServiceCategory()
     {

@@ -15,7 +15,7 @@ class ServiceController extends BaseController
 
     public function index()
     {
-        $service = Service::where('category_id', 0)->get();
+        $service = Service::where('status', Service::STATUS_ACTIVE)->get();
         return view('frontend.service.index', compact('service'));
     }
     public function get($id)
