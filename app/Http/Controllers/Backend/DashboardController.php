@@ -156,10 +156,15 @@ class DashboardController extends BaseController
 
     function addMedicineNew(Request $request, $id)
     {
-        $list = Appointment::all();
         $medicine = Medicine::all();
-        $info = Appointment::find($id);
-        return view('backend.doctor.add_presciption', compact('list', 'medicine', 'info'));
+        $info = ExaminationSchedule::find($id);
+        $list_prescription_use = Prescription::where('schedule_id', $id)->get();
+
+        if (count($list_prescription_use)) {
+            return view('backend.medicine.prescription_use' ,compact('list_prescription_use'));
+        } else {
+            return view('backend.doctor.add_presciption', compact('medicine', 'info'));
+        }
     }
     public function store(Request $request)
     {

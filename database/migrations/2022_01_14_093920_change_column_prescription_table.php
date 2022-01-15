@@ -15,8 +15,11 @@ class ChangeColumnPrescriptionTable extends Migration
 
     public function up()
     {
-        DB::statement('ALTER TABLE `prescriptions` CHANGE  `medicine_name` `medicine_name` VARCHAR(256)  NULL DEFAULT NULL');
-        DB::statement('ALTER TABLE `prescriptions` CHANGE  `quantity` `quantity` VARCHAR(256)  NULL DEFAULT NULL');
+        DB::statement('ALTER TABLE `prescriptions` CHANGE  `medicine_name` `medicine_id` VARCHAR(256)  NULL DEFAULT NULL');
+        DB::statement('ALTER TABLE `prescriptions` CHANGE  `quantity` `total_quantity` VARCHAR(1024)  NULL DEFAULT NULL');
+        DB::statement('ALTER TABLE `prescriptions` ADD  `timing`  VARCHAR(256)  NULL DEFAULT NULL');
+        DB::statement('ALTER TABLE `prescriptions` ADD  `detail_time`  VARCHAR(256)  NULL DEFAULT NULL');
+        DB::statement('ALTER TABLE `prescriptions` ADD  `note`  TEXT  NULL DEFAULT NULL');
     }
 
     /**

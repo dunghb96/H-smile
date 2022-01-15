@@ -49,15 +49,7 @@ $(function () {
                     {data: 'services'},
                     {data: 'patients'},
                     {data: 'phone'},
-                    {
-                        render: function (data, type, full, meta) {
-                            if (full['status'] = "1") {
-                                return '<span class="font-weight-bold">' + "Chờ duyệt" + '</span>'
-                            }
-                        },
-                    },
-
-
+                    {data: 'status_name'},
                 ],
                 columnDefs: [
                     {
