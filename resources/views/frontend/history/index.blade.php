@@ -90,29 +90,47 @@
                             <div class="tab-pane fade" id="pills-profile" role="tabpanel"
                                  aria-labelledby="pills-profile-tab">
 
-{{--                                <table class="table">--}}
-{{--                                    <thead class="thead-dark">--}}
-{{--                                    <tr>--}}
-{{--                                        <th scope="col">STT</th>--}}
-{{--                                        <th scope="col">Tên</th>--}}
-{{--                                        <th scope="col">Dịch vụ</th>--}}
-{{--                                        <th scope="col">Thời gian</th>--}}
-{{--                                        <th scope="col">Trạng thái</th>--}}
-{{--                                    </tr>--}}
-{{--                                    </thead>--}}
-{{--                                    <tbody>--}}
-{{--                                    @foreach($historyDatas2 as $historyData2)--}}
-{{--                                        <tr>--}}
-{{--                                            <th scope="row">{{$loop->iteration}}</th>--}}
-{{--                                            <td>{{ $historyData2->name }} </td>--}}
-{{--                                            <td>{{$historyData2->service->name}}</td>--}}
-{{--                                            <td>{{ date('d-m-Y H:i:s', strtotime($historyData2->created_at))}}</td>--}}
-{{--                                            <td><p class="badge badge-success p-1">Đã xác nhận</td>--}}
-{{--                                        </tr>--}}
-{{--                                    @endforeach--}}
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">STT</th>
+                                        <th scope="col">Tên</th>
+                                        <th scope="col">Dịch vụ</th>
+                                        <th scope="col">Trang thái</th>
+                                        <th scope="col">Hành động</th>
 
-{{--                                    </tbody>--}}
-{{--                                </table>--}}
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($listOrderByPatient as $lobp)
+                                        <tr>
+                                            <th scope="row">{{$loop->iteration}}</th>
+                                            <td>
+                                                {{ $lobp->appointments->name }}
+                                            </td>
+
+                                            <td>
+                                                @foreach(\App\Models\Order::find($lobp->id)->orderdetail as $lodt)
+                                                    <p>{{ \App\Models\Service::find($lodt->service_id)->name }}</p>
+                                                @endforeach
+                                            </td>
+                                            <td class="badge badge-success p-2 mt-2">Đã duyệt lịch</td>
+
+                                            <td>
+                                                @if($lobp->status == "1")
+                                                <a class="text-warning" href="{{ '/order/' . $lobp->id }}">Chưa thanh toán </a>
+                                                @elseif($lobp->status == "2")
+                                                    <a class="text-success" href="{{ '/order/' . $lobp->id }}">Đã thanh toán </a>
+                                                @endif
+                                            </td>
+
+                                        </tr>
+
+
+                                    @endforeach
+
+                                    </tbody>
+                                </table>
 
 
                             </div>

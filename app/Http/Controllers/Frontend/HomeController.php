@@ -8,6 +8,8 @@ use App\Http\Requests\BookingPostRequest;
 use App\Models\Appointment;
 use App\Models\Client;
 use App\Models\Employee;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Partner;
 use App\Models\Service;
 use App\Models\Slide;
@@ -63,8 +65,9 @@ class HomeController extends BaseController
     public function history()
     {
         $historyDatas = Appointment::where('patient_code', Cookie::get('patient_code'))->where('status', 1)->orderBy('created_at', 'ASC')->get();
+        $listOrderByPatient = Order::where('customer_id', Cookie::get('patient_code'))->get();
 
-        return view('frontend.history.index', compact('historyDatas', $historyDatas));
+        return view('frontend.history.index', compact('historyDatas', $historyDatas, 'listOrderByPatient', $listOrderByPatient));
     }
 
     public function search(Request $request)
