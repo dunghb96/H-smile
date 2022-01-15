@@ -10,7 +10,7 @@ use App\Http\Controllers\Frontend\PriceListController;
 use App\Http\Controllers\Frontend\ServiceController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Frontend\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Frontend Routes
@@ -48,6 +48,20 @@ Route::group(['prefix' => 'appointment'], function () {
     Route::post('/', [AppointmentController::class, 'booking'])->name('hsmile.booking');
     Route::post('/get-doctor', [AppointmentController::class, 'getDoctor']);
 });
+
+Route::group(['prefix' => 'order'], function () {
+    Route::get('/{id}', [OrderController::class, 'detail'])->name('hsmile.order.detail');
+    Route::get('/checkOrder', [OrderController::class, 'checkPayOrder']);
+});
+
+
+Route::get('/payOrder/{id}', [OrderController::class, 'payOrder'])->name('hsmile.order.payOrder');
+
+Route::get('/banksuccess', [OrderController::class, 'bankSuccess'])->name("hsmile.order.bankSuccess");
+
+
+
+
 
 Route::post('send-sms-notification', [AppointmentController::class, 'sendSmsNotificaition'])->name("send-sms-notification");
 // không có frontend/ đâu

@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->integer('total_price');
             $table->integer('total_time');
             $table->integer('status');
+            $table->string('pay_content')->nullable();
             $table->timestamps();
         });
     }
