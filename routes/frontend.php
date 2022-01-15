@@ -51,7 +51,6 @@ Route::group(['prefix' => 'appointment'], function () {
 
 Route::group(['prefix' => 'order'], function () {
     Route::get('/{id}', [OrderController::class, 'detail'])->name('hsmile.order.detail');
-    Route::get('/checkOrder', [OrderController::class, 'checkPayOrder']);
 });
 
 

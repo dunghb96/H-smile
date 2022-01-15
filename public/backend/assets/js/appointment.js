@@ -324,6 +324,7 @@ function xacnhan(id, status) {
                     dateFormat: "d/m/Y",
                 });
                 $('#shift').val(data.shift).change();
+                $('#patient_code').val(data.patient_code);
                 $('#full_name').val(data.patient);
                 $('#age').val(data.age);
                 $('#phone_number').val(data.phone_number);
@@ -347,6 +348,7 @@ function save() {
         info.id = iid;
     }
     info.customer_id = $('#customer').val();
+    info.patient_code = $('#patient_code').val();
     info.service = $('#services').val();
     // info.doctor = $('#adoctor').val();
     info.dateat = $('#date_at').val();

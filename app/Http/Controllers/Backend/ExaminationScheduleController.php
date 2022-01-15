@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Appointment;
 use App\Models\Employee;
 use App\Models\ExaminationSchedule;
+use App\Models\Patient;
+use App\Models\Service;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ExaminationScheduleController extends BaseController
 {
@@ -143,6 +146,20 @@ class ExaminationScheduleController extends BaseController
         if ($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+
+
+                             $patientSelected = Patient::find($model->customer_id);
+                             $serviceSelected = Service::find($model->service_id);
+                             $doctorSelected = Employee::find($model->doctor_id);
+
+                             $to_name = "H-smile";
+                             $to_email = $patientSelected->email;
+                             $data = array("patientName" => $patientSelected, "serviceSelected" => $serviceSelected, "doctorSelected" => $doctorSelected, "dateSelected" => $model->date_at);
+                             Mail::send('frontend.mail.notificationMail', $data, function ($message) use ($to_name, $to_email) {
+                                 $message->to($to_email)->subject('Lịch hẹn khám ');
+                                 $message->from($to_email, $to_name);
+                             });
+
         } else {
             $jsonObj['success'] = false;
             $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';

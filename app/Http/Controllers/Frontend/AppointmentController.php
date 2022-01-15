@@ -71,7 +71,7 @@ class AppointmentController extends BaseController
 
             $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
             $dataApp = [
-                // 'patient_code' => Cookie::get('patient_code') !== false ? Cookie::get('patient_code') : random_int(100000000, 999999999),
+                 'patient_code' => Cookie::get('patient_code') !== false ? Cookie::get('patient_code') : random_int(100000000, 999999999),
                 'name' => $request->name,
                 // 'age' => $request->age,
                 'phone_number' => $request->phone_number,

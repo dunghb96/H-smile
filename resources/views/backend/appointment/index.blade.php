@@ -57,6 +57,8 @@
                                             <h5 class="modal-title"></h5>
                                         </div>
                                         <div class="modal-body flex-grow-1">
+                                            <input type="hidden" id="patient_code" name="patient_code">
+
                                             <div class="form-group">
                                                 <label for="customer">Khách hàng</label>
                                                 <select class="form-control" id="customer" name="customer">
@@ -64,7 +66,7 @@
                                                     <option value="{{ $row->id }}">{{ $row->full_name }}</option>
                                                     @endforeach
                                                 </select>
-                                            </div> 
+                                            </div>
                                             <div class="form-group">
                                                 <label for="services">Dịch vụ</label>
                                                 <select class="select2 form-control" id="services" name="services[]" multiple="multiple" required>

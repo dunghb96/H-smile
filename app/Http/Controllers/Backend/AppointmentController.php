@@ -24,10 +24,10 @@ class AppointmentController extends BaseController
 
     public function index()
     {
-        $services = Service::where('status','1')->where('category_id', '>', '0')->get();
-        $customers = Patient::where('status','1')->get();
-        $doctor = Employee::where('type',1)->get();
-        return view('backend.appointment.index',compact('services', 'doctor', 'customers'));
+        $services = Service::where('status', '1')->where('category_id', '>', '0')->get();
+        $customers = Patient::where('status', '1')->get();
+        $doctor = Employee::where('type', 1)->get();
+        return view('backend.appointment.index', compact('services', 'doctor', 'customers'));
     }
 
     public function orderDetail()
@@ -44,10 +44,10 @@ class AppointmentController extends BaseController
     {
         $jsonObj = [];
         $appointment_id = $request->appointment_id;
-        
+
         $jsonObj = Order::where('appointment_id', $appointment_id)->first();
         $staff_id = $jsonObj->staff_id;
-        if($staff_id>0) {
+        if ($staff_id > 0) {
             $staff = Employee::find($staff_id);
             $jsonObj['staff_name'] = $staff->name;
         }
@@ -61,11 +61,12 @@ class AppointmentController extends BaseController
         echo json_encode($jsonObj);
     }
 
-    function loadOrderDetail(Request $request) {
+    function loadOrderDetail(Request $request)
+    {
         $jsonObj = [];
         $orderDetail = OrderDetail::where('order_id', $request->order_id)->get();
-        foreach($orderDetail as $key => $item) {
-            $jsonObj[$key]['stt'] = $key+1;
+        foreach ($orderDetail as $key => $item) {
+            $jsonObj[$key]['stt'] = $key + 1;
             $service_id = $item->service_id;
             $service = Service::find($service_id);
             $jsonObj[$key]['service_name'] = $service->name;
@@ -81,10 +82,10 @@ class AppointmentController extends BaseController
         $jsonObj['data'] = $list;
 
         foreach ($list as $key => $row) {
-            $arrService = explode(',',$row->services);
+            $arrService = explode(',', $row->services);
             $listName = '';
-            foreach($arrService as  $row2) {
-                $listName .=  Service::find($row2)->name.'</br>';
+            foreach ($arrService as $row2) {
+                $listName .= Service::find($row2)->name . '</br>';
             }
             $listName = rtrim($listName, '</br>');
             $jsonObj['data'][$key]->date = date("d/m/Y", strtotime(str_replace('/', '-', $row->date)));
@@ -185,7 +186,7 @@ class AppointmentController extends BaseController
             'age' => $request->age,
             'phone_number' => $request->phonenumber,
             'email' => $request->email,
-            'services' => implode(",",$request->service),
+            'services' => implode(",", $request->service),
             'date' => $dateat,
             'shift' => $request->shift,
             'address' => $request->address,
@@ -213,7 +214,7 @@ class AppointmentController extends BaseController
             'age' => $request->age,
             'phone_number' => $request->phonenumber,
             'email' => $request->email,
-            'services' => implode(",",$request->service),
+            'services' => implode(",", $request->service),
             'date' => $dateat,
             'shift' => $request->shift,
             'address' => $request->address,
@@ -236,8 +237,9 @@ class AppointmentController extends BaseController
     public function xacnhan(Request $request)
     {
         // Thêm khách hàng mới
-        if(!$request->customer>0) {
+        if (!$request->customer > 0) {
             $customer = [
+                'patient_code' => $request->patient_code,
                 'full_name' => $request->fullname,
                 'age' => $request->age,
                 'phone_number' => $request->phonenumber,
@@ -251,7 +253,7 @@ class AppointmentController extends BaseController
         } else {
             $customer_id = $request->customer_id;
         }
-        
+
         // Update lịch hẹn
         $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
         $data = [
@@ -261,7 +263,7 @@ class AppointmentController extends BaseController
             'age' => $request->age,
             'phone_number' => $request->phonenumber,
             'email' => $request->email,
-            'services' => implode(",",$request->service),
+            'services' => implode(",", $request->service),
             'date' => $dateat,
             'shift' => $request->shift,
             'address' => $request->address,
@@ -272,27 +274,30 @@ class AppointmentController extends BaseController
         $id = $request->id;
         $model = Appointment::find($id);
         $result = $model->update($data);
-        
+
         // Tạo đơn hàng
         $total_price = 0;
         $total_time = 0;
-        foreach($request->service as $service) {
+        foreach ($request->service as $service) {
             $service = Service::find($service);
             $total_price += $service->price;
             $total_time += $service->time;
         }
         $order = [
+            'patient_code' => $request->patient_code,
             'customer_id' => $customer_id,
             'appointment_id' => $id,
             'total_price' => $total_price,
             'total_time' => $total_time,
-            'status' => 1
+            'status' => 1,
+            'pay_content' => "hsmile " . random_int(1000000,9999999999)
+
         ];
         $order = Order::create($order);
 
         // Tạo đơn hàng chi tiết
         $order_id = $order->id;
-        foreach($request->service as $service) {
+        foreach ($request->service as $service) {
             $orderDetail = [
                 'order_id' => $order_id,
                 'service_id' => $service,
@@ -301,7 +306,7 @@ class AppointmentController extends BaseController
             $result = OrderDetail::create($orderDetail);
         }
         //Tạo lịch khám trạng thái chờ
-        foreach($request->service as $service) {
+        foreach ($request->service as $service) {
             $schedule = [
                 'customer_id' => $customer_id,
                 'order_id' => $order_id,
@@ -312,7 +317,7 @@ class AppointmentController extends BaseController
             ];
             $result = ExaminationSchedule::create($schedule);
         }
-        
+
         if ($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';

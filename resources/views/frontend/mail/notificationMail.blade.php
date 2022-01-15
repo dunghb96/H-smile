@@ -59,8 +59,8 @@
                     <p>Thông tin lịch khám</p>
                     <ul>
                         <li>Dịch vụ: {{$serviceSelected->name}}</li>
-                        <li>Thời gian: {{ date('d-m-Y', strtotime($dateSelected)) }}</li>
-                        <li>Thời gian: lúc {{ $time_at }}</li>
+                        <li>Thời gian: {{ date('d-m-Y H:i', strtotime($dateSelected)) }}</li>
+{{--                        <li>Thời gian: lúc {{ $time_at }}</li>--}}
 
                         <li>Bác sĩ tiếp nhận: {{ $doctorSelected->name }}</li>
                         <li>Email bác sĩ: {{ $doctorSelected->email }}</li>

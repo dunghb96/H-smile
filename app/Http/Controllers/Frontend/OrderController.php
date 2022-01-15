@@ -20,7 +20,7 @@ class OrderController extends BaseController
     {
         $orderOne = Order::find($id);
         $orderDetailOne = Order::find($id)->orderdetail;
-        $infoPatien = Patient::where('patient_code', $orderOne->customer_id)->first();
+        $infoPatien = Patient::where('patient_code', $orderOne->patient_code)->first();
         session(['order_id' => $id]);
 
 //        $patient_code = Cookie::get('patient_code');
@@ -37,7 +37,7 @@ class OrderController extends BaseController
         $total_price = $order->total_price;
 
         foreach ($json as $key => $val) {
-            if ($val['content_bank'] == $pay_content && $val['money'] == $total_price) {
+            if ($val['content_bank'] == $pay_content && $val['money'] >= $total_price) {
                 $order->status = 2;
                 $order->save();
             }
