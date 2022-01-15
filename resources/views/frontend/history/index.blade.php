@@ -63,8 +63,8 @@
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                  aria-labelledby="pills-home-tab">
                                 <table class="table">
-                                    <thead class="thead-dark">
-                                    <tr>
+                                    <thead style="background-color: #32b6a1">
+                                    <tr class="text-white">
                                         <th scope="col">STT</th>
                                         <th scope="col">Tên</th>
                                         <th scope="col">Dịch vụ</th>
@@ -77,7 +77,11 @@
                                         <tr>
                                             <th scope="row">{{$loop->iteration}}</th>
                                             <td>{{ $historyData->name }} </td>
-                                            <td>{{$historyData->service->name}}</td>
+                                            <td>
+                                                @foreach(explode(",",$historyData->services) as $serviceByAppoinment)
+                                                {{ \App\Models\Service::find($serviceByAppoinment)->name }}
+                                                @endforeach
+                                            </td>
                                             <td>{{ date('d-m-Y H:i:s', strtotime($historyData->created_at))}}</td>
                                             <td><p class="badge badge-warning p-1">Chờ xác nhận</td>
                                         </tr>
@@ -91,8 +95,8 @@
                                  aria-labelledby="pills-profile-tab">
 
                                 <table class="table">
-                                    <thead class="thead-dark">
-                                    <tr>
+                                    <thead style="background-color: #32b6a1">
+                                    <tr class="text-white">
                                         <th scope="col">STT</th>
                                         <th scope="col">Tên</th>
                                         <th scope="col">Dịch vụ</th>
@@ -106,7 +110,7 @@
                                         <tr>
                                             <th scope="row">{{$loop->iteration}}</th>
                                             <td>
-                                                {{ $lobp->appointments->name }}
+                                                {{ $lobp->patient->full_name }}
                                             </td>
 
                                             <td>

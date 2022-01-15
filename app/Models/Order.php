@@ -16,6 +16,11 @@ class Order extends Model
         return $this->hasOne(Appointment::class, 'id', 'appointment_id');
     }
 
+    public function patient()
+    {
+        return $this->hasOne(Patient::class, 'id', 'customer_id');
+    }
+
 
     public function orderdetail(){
         return $this->hasMany(OrderDetail::class);
@@ -23,7 +28,7 @@ class Order extends Model
 
 
 
-    
+
 }
 
 

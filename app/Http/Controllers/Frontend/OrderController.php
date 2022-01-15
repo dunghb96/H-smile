@@ -20,8 +20,8 @@ class OrderController extends BaseController
     {
         $orderOne = Order::find($id);
         $orderDetailOne = Order::find($id)->orderdetail;
-        $infoPatien = Patient::where('patient_code', $orderOne->patient_code)->first();
-        session(['order_id' => $id]);
+        $infoPatien = Patient::find($orderOne->customer_id);
+//        session(['order_id' => $id]);
 
 //        $patient_code = Cookie::get('patient_code');
 //        $orderByPatient = Order::where('customer_id', $patient_code)->get();

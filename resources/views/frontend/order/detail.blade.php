@@ -172,22 +172,6 @@
                                             <div class="row border-b-2 brc-default-l2"></div>
 
 
-                                            <div class="table-responsive">
-                                                <table
-                                                    class="table table-striped table-borderless border-0 border-b-2 brc-default-l1">
-                                                    <thead class="bg-none bgc-default-tp1">
-                                                    <tr class="text-white">
-                                                        <th class="opacity-2">#</th>
-                                                        <th>Description</th>
-                                                        <th>Qty</th>
-                                                        <th>Unit Price</th>
-                                                        <th width="140">Amount</th>
-                                                    </tr>
-                                                    </thead>
-
-
-                                                </table>
-                                            </div>
 
 
                                             <div class="row mt-3">
