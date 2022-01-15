@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->integer('staff_id')->nullable();
             $table->integer('customer_id');
+            $table->integer('patient_code')->nullable();
             $table->integer('appointment_id');
             $table->integer('total_price');
             $table->integer('total_time');
