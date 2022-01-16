@@ -173,9 +173,9 @@
                                             </div>
                                         </div>
 
-                                        <!-- <div class="row">
+                                       <div class="row">
                                             <div class="col-xl-8">
-                                                <input type="text" name="nhapOtp" placeholder="Nhập OTP">
+                                                <input type="text" name="nhapOtp" id="nhapOtp" placeholder="Nhập OTP" onkeyup="showBtnSubmit()">
                                                 @error('nhapOtp')
                                                 <div class="alert alert-danger" role="alert">
                                                     {{ $message }}
@@ -197,13 +197,13 @@
                                         @endif
 
 
-                                        <section class='alert alert-danger'>{{Cookie::get('patient_code')}}
-                                        </section> -->
+{{--                                        <section class='alert alert-danger'>{{Cookie::get('patient_code')}}--}}
+{{--                                        </section>--}}
 
                                         <div class="row">
                                             <div class="col-xl-12">
                                                 <div class="button-box">
-                                                    <button class="btn-one" type="submit">Gửi</button>
+                                                    <button class="btn-one btn-secondary" type="submit" id="sendAppoinment" disabled>Gửi</button>
                                                     <a class="btn-one" href="{{ route('hsmile.history') }}">Tra cứu lịch sử</a>
                                                 </div>
                                             </div>
@@ -231,7 +231,7 @@
     .select2-dropdown--below, .select2-dropdown--above {
         width: 620px !important;
     }
-    
+
     .select2-search__field {
         height: 20px !important;
         /* overflow: auto !important; */
@@ -254,6 +254,11 @@
         });
     })
 
+
+
+    function showBtnSubmit(){
+        $("#sendAppoinment").prop("disabled", false);
+    }
 
     function hideBtn() {
         var btn = document.querySelector("#btnOtp");

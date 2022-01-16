@@ -79,11 +79,17 @@
                                             <td>{{ $historyData->name }} </td>
                                             <td>
                                                 @foreach(explode(",",$historyData->services) as $serviceByAppoinment)
-                                                {{ \App\Models\Service::find($serviceByAppoinment)->name }}
+                                                    {{ \App\Models\Service::find($serviceByAppoinment)->name }}
                                                 @endforeach
                                             </td>
                                             <td>{{ date('d-m-Y H:i:s', strtotime($historyData->created_at))}}</td>
-                                            <td><p class="badge badge-warning p-1">Chờ xác nhận</td>
+                                            <td>
+                                                @if($historyData->status == "1")
+                                                    <p class="badge badge-warning">Chờ duyệt</p>
+                                                @elseif($historyData->status == "2")
+                                                    <p class="badge badge-success">Đã duyệt</p>
+                                                @endif
+                                            </td>
                                         </tr>
                                     @endforeach
 
@@ -100,7 +106,8 @@
                                         <th scope="col">STT</th>
                                         <th scope="col">Tên</th>
                                         <th scope="col">Dịch vụ</th>
-                                        <th scope="col">Trang thái</th>
+                                        <th scope="col">Thời gian khám</th>
+                                        <th scope="col">Thông tin bác sĩ</th>
                                         <th scope="col">Hành động</th>
 
                                     </tr>
@@ -110,21 +117,55 @@
                                         <tr>
                                             <th scope="row">{{$loop->iteration}}</th>
                                             <td>
-                                                {{ $lobp->patient->full_name }}
+                                                @if(\App\Models\Patient::all()->count()>0)
+                                                    {{ $lobp->patient->full_name }}
+                                                @endif
                                             </td>
 
                                             <td>
                                                 @foreach(\App\Models\Order::find($lobp->id)->orderdetail as $lodt)
-                                                    <p>{{ \App\Models\Service::find($lodt->service_id)->name }}</p>
+                                                    <p>{{ \App\Models\Service::find($lodt->service_id)->name }}
+                                                        {{--                                                        @foreach(\App\Models\ExaminationSchedule::where('order_id', $lobp->id)->where('service_id', $lodt->service_id)->get() as $dateAccept)--}}
+                                                        {{--                                                           <span>Ngày: {{$dateAccept->date_at}}</span>--}}
+                                                        {{--                                                            <span>Giờ vào: {{ $dateAccept->start_time }} </span>--}}
+                                                        {{--                                                        @endforeach--}}
+
+                                                    </p>
                                                 @endforeach
                                             </td>
-                                            <td class="badge badge-success p-2 mt-2">Đã duyệt lịch</td>
+
+                                            <td>
+                                                @foreach(\App\Models\Order::find($lobp->id)->orderdetail as $lodt)
+                                                    @foreach(\App\Models\ExaminationSchedule::where('order_id', $lobp->id)->where('service_id', $lodt->service_id)->get() as $dateAccept)
+                                                        <span>Ngày: {{$dateAccept->date_at}}</span>
+                                                        <span>Giờ vào: {{ $dateAccept->start_time }} </span>
+                                                        @endforeach
+
+                                                        </p>
+                                                    @endforeach
+                                            </td>
+
+
+                                            <td>
+                                                @foreach(\App\Models\Order::find($lobp->id)->orderdetail as $lodt)
+                                                    @foreach(\App\Models\ExaminationSchedule::where('order_id', $lobp->id)->where('service_id', $lodt->service_id)->get() as $dateAccept)
+                                                        @if($dateAccept->doctor_id != null)
+                                                            <span>Bác sĩ: {{\App\Models\Employee::find($dateAccept->doctor_id)->name }} </span>
+                                                            <span>- {{\App\Models\Employee::find($dateAccept->doctor_id)->phone_number }}</span>
+                                                            @endif
+                                                            @endforeach
+                                                            </p>
+                                                            @endforeach
+                                            </td>
+
 
                                             <td>
                                                 @if($lobp->status == "1")
-                                                <a class="text-warning" href="{{ '/order/' . $lobp->id }}">Chưa thanh toán </a>
+                                                    <a class="text-warning" href="{{ '/order/' . $lobp->id }}">Chưa
+                                                        thanh toán </a>
                                                 @elseif($lobp->status == "2")
-                                                    <a class="text-success" href="{{ '/order/' . $lobp->id }}">Đã thanh toán </a>
+                                                    <a class="text-success" href="{{ '/order/' . $lobp->id }}">Đã thanh
+                                                        toán </a>
                                                 @endif
                                             </td>
 

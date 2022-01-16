@@ -64,7 +64,7 @@ class HomeController extends BaseController
 
     public function history()
     {
-        $historyDatas = Appointment::where('patient_code', Cookie::get('patient_code'))->where('status', 1)->orderBy('created_at', 'ASC')->get();
+        $historyDatas = Appointment::where('patient_code', Cookie::get('patient_code'))->orderBy('created_at', 'ASC')->get();
         $listOrderByPatient = Order::where('patient_code', Cookie::get('patient_code'))->get();
 
         return view('frontend.history.index', compact('historyDatas', $historyDatas, 'listOrderByPatient', $listOrderByPatient));
