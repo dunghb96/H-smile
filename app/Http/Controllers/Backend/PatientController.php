@@ -85,4 +85,10 @@ class PatientController extends BaseController
         }
         echo json_encode($jsonObj);
     }
+
+    function getCustomer(Request $request) {
+        $id = $request->id;
+        $jsonObj = Patient::find($id);
+        echo json_encode($jsonObj);
+    }
 }

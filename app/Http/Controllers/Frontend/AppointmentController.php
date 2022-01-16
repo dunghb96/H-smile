@@ -71,7 +71,7 @@ class AppointmentController extends BaseController
 
             $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
             $dataApp = [
-                 'patient_code' => Cookie::get('patient_code') !== false ? Cookie::get('patient_code') : random_int(100000000, 999999999),
+                'patient_code' => Cookie::get('patient_code') !== false ? Cookie::get('patient_code') : random_int(100000000, 999999999),
                 'name' => $request->name,
                 // 'age' => $request->age,
                 'phone_number' => $request->phone_number,
@@ -85,6 +85,14 @@ class AppointmentController extends BaseController
                 'status' => 1
             ];
             $result = Appointment::create($dataApp);
+            $appointment_id = $result->id;
+            $data = Patient::where('full_name','LIKE', $request->name)->where('phone_number','LIKE', $request->phone_number)->where('status','>',0)->first();
+            if($data) {
+                $customer_id = $data->id;
+                $model = Appointment::find($appointment_id);
+                $data = ['customer_id' => $customer_id];
+                $model->update($data);
+            }
 
             //Set cookie
 

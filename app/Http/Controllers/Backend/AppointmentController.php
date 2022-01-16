@@ -51,6 +51,7 @@ class AppointmentController extends BaseController
             $staff = Employee::find($staff_id);
             $jsonObj['staff_name'] = $staff->name;
         }
+        $jsonObj['total_price'] = number_format($jsonObj->total_price);
         $customer_id = $jsonObj->customer_id;
         $customer = Patient::find($customer_id);
         $jsonObj['customer_name'] = $customer->full_name;
@@ -96,12 +97,12 @@ class AppointmentController extends BaseController
         echo json_encode($jsonObj);
     }
 
-    function getDoctor(Request $request)
-    {
-        $service = $request->service;
-        $jsonObj = Employee::where('status', 1)->where('type', 1)->where('services', 'like', '%' . $service . '%')->get();
-        echo json_encode($jsonObj);
-    }
+    // function getDoctor(Request $request)
+    // {
+    //     $service = $request->service;
+    //     $jsonObj = Employee::where('status', 1)->where('type', 1)->where('services', 'like', '%' . $service . '%')->get();
+    //     echo json_encode($jsonObj);
+    // }
 
     // function addSchedule(Request $request)
     // {
@@ -167,6 +168,7 @@ class AppointmentController extends BaseController
         $model = Appointment::find($id);
         $model->status = 0;
         $result = $model->save();
+        $model = Order::find($id);
         if ($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
@@ -237,28 +239,33 @@ class AppointmentController extends BaseController
     public function xacnhan(Request $request)
     {
         // Thêm khách hàng mới
-        if (!$request->customer > 0) {
-            $customer = [
-                'patient_code' => $request->patient_code,
-                'full_name' => $request->fullname,
-                'age' => $request->age,
-                'phone_number' => $request->phonenumber,
-                'email' => $request->email,
-                'address' => $request->address,
-                'gender' => $request->gender,
-                'status' => 1
-            ];
-            $result = Patient::create($customer);
-            $customer_id = $result->id;
+        if(!$request->customer>0) {
+            $data = Patient::where('full_name','LIKE', $request->fullname)->where('phone_number','LIKE', $request->phonenumber)->where('status','>',0)->first();
+            if($data) {
+                $customer_id = $data->id;
+            } else {
+                $customer = [
+                    'full_name' => $request->fullname,
+                    'age' => $request->age,
+                    'phone_number' => $request->phonenumber,
+                    'email' => $request->email,
+                    'address' => $request->address,
+                    'gender' => $request->gender,
+                    'status' => 1
+                ];
+                $result = Patient::create($customer);
+                $customer_id = $result->id;
+            }
         } else {
             $customer_id = $request->customer_id;
         }
-
+        
+        
         // Update lịch hẹn
         $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
         $data = [
             'staff_id' => Auth::user()->id,
-            'customer_id' => $request->customer_id,
+            'customer_id' => $customer_id,
             'name' => $request->fullname,
             'age' => $request->age,
             'phone_number' => $request->phonenumber,
@@ -337,7 +344,7 @@ class AppointmentController extends BaseController
         $jsonObj['age'] = $jsonObj->age;
         $jsonObj['phone_number'] = $jsonObj->phone_number;
         $jsonObj['email'] = $jsonObj->email;
-        $jsonObj['date'] = Carbon::parse($jsonObj->date)->format('Y-m-d');
+        $jsonObj['date'] = Carbon::parse($jsonObj->date)->format('d/m/Y');
         echo json_encode($jsonObj);
     }
 
@@ -355,4 +362,17 @@ class AppointmentController extends BaseController
     //     }
     //     echo json_encode($jsonObj);
     // }
+
+    function checkAppointment(Request $request) {
+        $id = $request->id;
+        $order = Order::where("appointment_id",$id)->first();
+        $order_id = $order->id;
+        $schedule = ExaminationSchedule::where("order_id",$order_id)->where("status",2)->count();
+        if($schedule>0) {
+            $jsonObj['success'] = false;
+        } else {
+            $jsonObj['success'] = true;
+        }
+        echo json_encode($jsonObj);
+    }
 }

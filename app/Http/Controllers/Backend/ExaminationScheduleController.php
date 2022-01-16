@@ -30,8 +30,8 @@ class ExaminationScheduleController extends BaseController
     {
         $date = date('Y-m-d');
         $dateat = strtotime('+3 day', strtotime($date));
-        $dateat = date('Y-m-d',$dateat);
-        $schedules = ExaminationSchedule::where('status', 1)->where('date_at','<=',$dateat)->get();
+        $dateat = date('Y-m-d', $dateat);
+        $schedules = ExaminationSchedule::where('status', 1)->where('date_at', '<=', $dateat)->get();
         foreach ($schedules as $key => $schedule) {
             $schedules[$key]->service_name = $schedule->service->name;
             $schedules[$key]->customer_name = $schedule->patient->full_name;
@@ -141,28 +141,43 @@ class ExaminationScheduleController extends BaseController
     public function xeplich(Request $request)
     {
         $id = $request->id;
-        $model = ExaminationSchedule::find($id);
-        $result = $model->xeplich($model, $request);
-        if ($result) {
-            $jsonObj['success'] = true;
-            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        $dateat = (isset($request->date_at) && $request->date_at != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->date_at))) : '';
+        $start_time = date("Y-m-d H:i:s", strtotime($dateat . " " . $request->start_time .":00"));
+        $end_time = date("Y-m-d H:i:s", strtotime($dateat . " " . $request->end_time .":00"));
 
-
-                             $patientSelected = Patient::find($model->customer_id);
-                             $serviceSelected = Service::find($model->service_id);
-                             $doctorSelected = Employee::find($model->doctor_id);
-
-                             $to_name = "H-smile";
-                             $to_email = $patientSelected->email;
-                             $data = array("patientName" => $patientSelected, "serviceSelected" => $serviceSelected, "doctorSelected" => $doctorSelected, "dateSelected" => $model->date_at);
-                             Mail::send('frontend.mail.notificationMail', $data, function ($message) use ($to_name, $to_email) {
-                                 $message->to($to_email)->subject('Lịch hẹn khám ');
-                                 $message->from($to_email, $to_name);
-                             });
-
+        $data = ExaminationSchedule::where('id', '!=', $id)->where('date_at', 'LIKE', $dateat)->where('doctor_id', $request->doctor_id)->where('status', 2)->get();
+        if (count($data)>0) {
+            foreach ($data as $item) {
+                $startTime = date("Y-m-d H:i:s", strtotime($item['date_at'] . " " . $item['start_time']));
+                $endTime = date("Y-m-d H:i:s", strtotime($item['date_at'] . " " . $item['end_time']));
+                if ($start_time > $startTime && $start_time < $endTime) {
+                    $jsonObj['success'] = false;
+                    $jsonObj['msg'] = 'Bác sĩ đã có lịch khám trong khung giờ này!';
+                } else if ($end_time > $startTime && $end_time < $endTime) {
+                    $jsonObj['success'] = false;
+                    $jsonObj['msg'] = 'Bác sĩ đã có lịch khám trong khung giờ này!';
+                } else {
+                    $model = ExaminationSchedule::find($id);
+                    $result = $model->xeplich($model, $request);
+                    if ($result) {
+                        $jsonObj['success'] = true;
+                        $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+                    } else {
+                        $jsonObj['success'] = false;
+                        $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+                    }
+                }
+            }
         } else {
-            $jsonObj['success'] = false;
-            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+            $model = ExaminationSchedule::find($id);
+            $result = $model->xeplich($model, $request);
+            if ($result) {
+                $jsonObj['success'] = true;
+                $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+            } else {
+                $jsonObj['success'] = false;
+                $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+            }
         }
         echo json_encode($jsonObj);
     }

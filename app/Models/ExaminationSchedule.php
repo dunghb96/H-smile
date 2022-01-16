@@ -66,7 +66,7 @@ class ExaminationSchedule extends Model
 
     public function xeplich($model, $request)
     {
-        $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
+        $dateat = (isset($request->date_at) && $request->date_at != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->date_at))) : date("Y-m-d");
         $starttime = (isset($request->start_time) && $request->start_time != '') ? date("H:i:s", strtotime($request->start_time)) : '';
         $endtime = (isset($request->end_time) && $request->end_time != '') ? date("H:i:s", strtotime($request->end_time)) : '';
         // echo $endtime;

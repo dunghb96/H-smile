@@ -39,7 +39,6 @@
                                             <th>Danh mục</th>
                                             <th>Giá</th>
                                             <th>Thời lượng</th>
-                                            <th>Trạng thái</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -133,15 +132,6 @@
                                             <div class="form-group">
                                                 <label for="time">Thời lượng (phút)</label>
                                                 <input type="number" class="form-control" id="etime" name="time">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="category_id">Trạng thái</label>
-                                                <select class="form-control" id="estatus" name="status" required>
-                                                    <option value="0">ROOT</option>
-                                                    @foreach($status as $key => $value)
-                                                        <option value="{{ $key }}">{{ $value }}</option>
-                                                    @endforeach
-                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label>Icon</label>

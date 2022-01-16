@@ -170,6 +170,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::get('/order-print', [AppointmentController::class, 'orderPrint'])->name('order.print');
         Route::post('/loadorder', [AppointmentController::class, 'loadOrder']);
         Route::post('/loadorderdetail', [AppointmentController::class, 'loadOrderDetail']);
+        Route::post('/checkappointment', [AppointmentController::class, 'checkAppointment']);
     });
 
     Route::group(['prefix' => 'examination-schedule'], function () {
@@ -190,6 +191,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::get('/', [PatientController::class, 'index'])->middleware('permission:list_patients')->name('admin.patient');
         Route::get('/json', [PatientController::class, 'json']);
         Route::post('/loaddata', [PatientController::class, 'loaddata']);
+        Route::post('/getcustomer', [PatientController::class, 'getCustomer']);
         Route::get('/loadhistory', [PatientController::class, 'loadhistory']);
     });
 

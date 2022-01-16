@@ -57,11 +57,10 @@
                                             <h5 class="modal-title"></h5>
                                         </div>
                                         <div class="modal-body flex-grow-1">
-                                            <input type="hidden" id="patient_code" name="patient_code">
-
-                                            <div class="form-group">
+                                            <input type="hidden" id="patient_code" name="patient_code" />
+                                            <div class="form-group" id="customer-div">
                                                 <label for="customer">Khách hàng</label>
-                                                <select class="form-control" id="customer" name="customer">
+                                                <select class="form-control" id="customer" name="customer" onchange="changeKH()">
                                                     @foreach($customers as $row)
                                                     <option value="{{ $row->id }}">{{ $row->full_name }}</option>
                                                     @endforeach
@@ -115,11 +114,26 @@
                                                 <input type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ" >
                                             </div>
                                             <div class="form-group">
+                                                <label class="d-block mb-1">Giới tính</label>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="nam" name="gioi_tinh" class="custom-control-input" value="0" />
+                                                    <label class="custom-control-label" for="nam">Nam</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="nu" name="gioi_tinh" class="custom-control-input" value="1" />
+                                                    <label class="custom-control-label" for="nu">Nữ</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="khac" name="gioi_tinh" class="custom-control-input" value="2" />
+                                                    <label class="custom-control-label" for="khac">Khác</label>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="form-group">
                                                 <label>Giới tính : </label>&nbsp; &nbsp;
                                                 <input type="radio" class="gender" name="gender" value="0" >  Nam &nbsp; &nbsp;
                                                 <input type="radio" class="gender" name="gender" value="1" >  Nữ &nbsp; &nbsp;
                                                 <input type="radio" class="gender" name="gender" value="2" >  Khác &nbsp; &nbsp;
-                                            </div>
+                                            </div> -->
 
                                             <div class="form-group">
                                                 <label for="note">Mô tả</label>
@@ -132,7 +146,7 @@
                                 </div>
                             </div>
 
-                            <div class="modal fade text-left" id="patientinfo" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                            <!-- <div class="modal fade text-left" id="patientinfo" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -224,7 +238,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!-- <div class="modal new-user-modal fade" id="addlich">
                                 <div class="modal-dialog modal-sm">

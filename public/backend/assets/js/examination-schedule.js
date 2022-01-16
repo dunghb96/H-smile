@@ -348,6 +348,7 @@ document.addEventListener('DOMContentLoaded', function () {
         selectOverlap: false,
         eventOverlap: false,
         eventResizableFromStart: true,
+        slotDuration: "00:15:00",
         customButtons: {
             sidebarToggle: {
                 text: 'Sidebar'
@@ -659,7 +660,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         $("#xep-lich").modal('hide');
                         $('#schedule-' + id).addClass('d-none');
                         notyfi_success(data.msg);
-
+                    } else {
+                        notify_error(data.msg);
                     }
                 },
                 error: function () {

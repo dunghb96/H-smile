@@ -97,16 +97,16 @@ $(function () {
                 //     visible: false,
                 // },
                 {
-                    targets: 8,
+                    targets: -1,
                     render: function (data, type, full, meta) {
                         var html = '';
                         var status = full['status'];
-                        if(status==2) {
+                        if (status == 2) {
                             html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chi tiết đơn hàng" onclick="loadorder(' + full['id'] + ')">';
                             html += '<i class="fas fa-shopping-basket"></i>';
                             html += '</button> &nbsp;';
                         }
-                        if(status==1) {
+                        if (status == 1) {
                             html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Xác nhận" onclick="xacnhan(' + full['id'] + ',' + full['status'] + ')">';
                             html += '<i class="far fa-calendar-check"></i>';
                             html += '</button> &nbsp;';
@@ -114,7 +114,7 @@ $(function () {
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
                         html += '<i class="fas fa-pencil-alt"></i>';
                         html += '</button> &nbsp;';
-                        html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy yêu cầu" onclick="del(' + full['id'] + ')">';
+                        html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy yêu cầu" onclick="del(' + full['id'] + ',' + full['status'] + ')">';
                         html += '<i class="fas fa-trash-alt"></i>';
                         html += '</button>';
                         return html;
@@ -261,7 +261,16 @@ function loadadd() {
     // $('#adoctor').attr("disabled", true);
     $('#customer').val('').change();
     $('#services').val('').change();
-    $('#date_at').val('');
+    // $('#date_at').val('');
+    start = Date.now();
+    $('#date_at').flatpickr({
+        altInput: true,
+        altFormat: "d/m/Y",
+        defaultDate: start,
+        dateFormat: "d/m/Y",
+        minDate: "today"
+    });
+
     $('#full_name').val('');
     $('#age').val('');
     $('#phone_number').val('');
@@ -282,7 +291,6 @@ function loaddata(id) {
         success: function (data) {
             var val = data.services.split(',');
             $("#services").val(val).change();
-            $('#doctor').val(data.doctor_id).change();
             $('#date_at').flatpickr({
                 altInput: true,
                 altFormat: "d/m/Y",
@@ -290,10 +298,26 @@ function loaddata(id) {
                 dateFormat: "d/m/Y",
             });
             $('#shift').val(data.shift).change();
-            $('#full_name').val(data.patient);
-            $('#age').val(data.age);
-            $('#phone_number').val(data.phone_number);
-            $('#email').val(data.email);
+            if (data.customer_id) {
+                $('#customer-div').removeClass("d-none");
+                $('#customer').val(data.customer_id).change();
+                $('#customer').attr("disabled",true);
+            } else {
+                $('#customer').val(null).change();
+                $('#customer-div').addClass("d-none");
+                $('#full_name').val(data.patient);
+                $('#age').val(data.age);
+                $('#phone_number').val(data.phone_number);
+                $('#email').val(data.email);
+                if (data.gender == 0) {
+                    $("#nam").prop("checked", true).trigger("click");
+                } else if (data.gender == 1) {
+                    $("#nu").prop("checked", true).trigger("click");
+                } else {
+                    $("#khac").prop("checked", true).trigger("click");
+                }
+                $('#address').val(data.address);
+            }
             $('#note').val(data.note);
             url = '/admin/appointment/edit';
             iid = id;
@@ -305,7 +329,7 @@ function loaddata(id) {
 }
 
 function xacnhan(id, status) {
-    if(status==1) {
+    if (status == 1) {
         $("#addnew").modal('show');
         $(".modal-title").html('Xác nhận lịch hẹn');
         $.ajax({
@@ -316,7 +340,6 @@ function xacnhan(id, status) {
             success: function (data) {
                 val = data.services.split(',');
                 $("#services").val(val).change();
-                $('#doctor').val(data.doctor_id).change();
                 $('#date_at').flatpickr({
                     altInput: true,
                     altFormat: "d/m/Y",
@@ -325,10 +348,22 @@ function xacnhan(id, status) {
                 });
                 $('#shift').val(data.shift).change();
                 $('#patient_code').val(data.patient_code);
-                $('#full_name').val(data.patient);
-                $('#age').val(data.age);
-                $('#phone_number').val(data.phone_number);
-                $('#email').val(data.email);
+                if (data.customer_id) {
+                    $('#customer').val(data.customer_id).change();
+                } else {
+                    $('#customer').val(null).change();
+                    $('#full_name').val(data.patient);
+                    $('#age').val(data.age);
+                    $('#phone_number').val(data.phone_number);
+                    $('#email').val(data.email);
+                    if (data.gender == 0)
+                        $("#nam").prop("checked", true).trigger("click");
+                    else if (data.gender == 1)
+                        $("#nu").prop("checked", true).trigger("click");
+                    else
+                        $("#khac").prop("checked", true).trigger("click");
+                    $('#address').val(data.address);
+                }
                 $('#note').val(data.note);
                 url = '/admin/appointment/xacnhan';
                 iid = id;
@@ -359,7 +394,6 @@ function save() {
     info.email = $('#email').val();
     info.address = $('#address').val();
     info.gender = $("input[type='radio'][name='gender']:checked").val();
-    // info.gender = $('input[name=gender]:checked', '#addnew').val();
     info.note = $('#note').val();
     var isValid = $('#frm-add').valid();
     if (isValid) {
@@ -382,7 +416,6 @@ function save() {
             }
         });
     }
-
 }
 
 // function duyet(id, service, status, patient) {
@@ -453,65 +486,152 @@ function loadorder(id) {
     window.location.href = './admin/appointment/order-detail';
 }
 
-function del(id) {
-    Swal.fire({
-        title: 'Hủy yêu cầu',
-        text: "Bạn có chắc chắn muốn hủy ?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Tôi đồng ý',
-        customClass: {
-            confirmButton: 'btn btn-primary',
-            cancelButton: 'btn btn-outline-danger ml-1'
-        },
-        buttonsStyling: false
-    }).then(function (result) {
-        if (result.value) {
-            $.ajax({
-                url: "/admin/appointment/del",
-                type: 'post',
-                dataType: "json",
-                data: { id: id },
-                success: function (data) {
-                    if (data.success) {
-                        notyfi_success(data.msg);
-                        $("#tableBasic").DataTable().ajax.reload(null, false);
-                    }
-                    else
-                        notify_error(data.msg);
-                },
-            });
-        }
-    });
+function del(id, status) {
+    if (status == 1) {
+        Swal.fire({
+            title: 'Hủy yêu cầu',
+            text: "Bạn có chắc chắn muốn hủy ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Tôi đồng ý',
+            customClass: {
+                confirmButton: 'btn btn-primary',
+                cancelButton: 'btn btn-outline-danger ml-1'
+            },
+            buttonsStyling: false
+        }).then(function (result) {
+            if (result.value) {
+                $.ajax({
+                    url: "/admin/appointment/del",
+                    type: 'post',
+                    dataType: "json",
+                    data: { id: id },
+                    success: function (data) {
+                        if (data.success) {
+                            notyfi_success(data.msg);
+                            $("#tableBasic").DataTable().ajax.reload(null, false);
+                        }
+                        else
+                            notify_error(data.msg);
+                    },
+                });
+            }
+        });
+    } else if (status == 2) {
+        $.ajax({
+            url: "/admin/appointment/checkappointment",
+            type: 'post',
+            dataType: "json",
+            data: { id: id },
+            success: function (data) {
+                if (data.success) {
+                    Swal.fire({
+                        title: 'Hủy yêu cầu',
+                        text: "Bạn có chắc chắn muốn hủy ?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Tôi đồng ý',
+                        customClass: {
+                            confirmButton: 'btn btn-primary',
+                            cancelButton: 'btn btn-outline-danger ml-1'
+                        },
+                        buttonsStyling: false
+                    }).then(function (result) {
+                        if (result.value) {
+                            $.ajax({
+                                url: "/admin/appointment/del",
+                                type: 'post',
+                                dataType: "json",
+                                data: { id: id },
+                                success: function (data) {
+                                    if (data.success) {
+                                        notyfi_success(data.msg);
+                                        $("#tableBasic").DataTable().ajax.reload(null, false);
+                                    }
+                                    else
+                                        notify_error(data.msg);
+                                },
+                            });
+                        }
+                    });
+                }
+                else
+                    notify_error('Đơn hàng đang thực hiện không thể xóa');
+            },
+        });
+    } else if (status == 3) {
+        notify_error('Đơn hàng đã hoàn thành không thể xóa!');
+    }
 }
 
-function changeSV() {
-    var service = $("#service").val();
-    if (service != null) {
+// function changeSV() {
+//     var service = $("#service").val();
+//     if (service != null) {
+//         $.ajax({
+//             type: "POST",
+//             dataType: "json",
+//             data: { service: service },
+//             url: "/admin/appointment/get-doctor",
+//             success: function (data) {
+//                 $('#adoctor').html('');
+//                 data.forEach(function (val, index) {
+//                     var opt = '<option value="' + val.id + '">' + val.name + '</option>';
+//                     $('#adoctor').append(opt);
+//                 });
+//                 $('#adoctor').select2({
+//                     placeholder: "Chọn bác sĩ",
+//                     allowClear: true,
+//                     dropdownParent: $('#adoctor').parent(),
+//                 })
+//                 $('#adoctor').val(null).trigger('change');
+//             },
+//         });
+//         $('#adoctor').val('').attr("disabled", false);
+//     } else {
+//         $('#adoctor').val(null).trigger('change');
+//         $('#adoctor').attr("disabled", true);
+//     }
+
+// }
+
+function changeKH() {
+    var customer = $("#customer").val();
+    if (customer) {
         $.ajax({
             type: "POST",
             dataType: "json",
-            data: { service: service },
-            url: "/admin/appointment/get-doctor",
+            data: { id: customer },
+            url: "/admin/patient/getcustomer",
             success: function (data) {
-                $('#adoctor').html('');
-                data.forEach(function (val, index) {
-                    var opt = '<option value="' + val.id + '">' + val.name + '</option>';
-                    $('#adoctor').append(opt);
-                });
-                $('#adoctor').select2({
-                    placeholder: "Chọn bác sĩ",
-                    allowClear: true,
-                    dropdownParent: $('#adoctor').parent(),
-                })
-                $('#adoctor').val(null).trigger('change');
+                $('#full_name').val(data.full_name).attr("disabled", true);
+                $('#age').val(data.age).attr("disabled", true);
+                $('#phone_number').val(data.phone_number).attr("disabled", true);
+                $('#email').val(data.email).attr("disabled", true);
+                $('#address').val(data.address).attr("disabled", true);
+                if (data.gender == 0) {
+                    $("#nam").prop("checked", true).trigger("click");
+                    $("#nu").attr("disabled", true);
+                    $("#khac").attr("disabled", true);
+                } else if (data.gender == 1) {
+                    $("#nu").prop("checked", true).trigger("click");
+                    $("#nam").attr("disabled", true);
+                    $("#khac").attr("disabled", true);
+                } else {
+                    $("#khac").prop("checked", true).trigger("click");
+                    $("#nu").attr("disabled", true);
+                    $("#nam").attr("disabled", true);
+                }
             },
         });
-        $('#adoctor').val('').attr("disabled", false);
     } else {
-        $('#adoctor').val(null).trigger('change');
-        $('#adoctor').attr("disabled", true);
+        $('#full_name').val('').attr("disabled", false);
+        $('#age').val('').attr("disabled", false);
+        $('#phone_number').val('').attr("disabled", false);
+        $('#email').val('').attr("disabled", false);
+        $('#address').val('').attr("disabled", false);
+        $("#nam").prop("checked", false).trigger("click").attr("disabled", false);
+        $("#nu").prop("checked", false).trigger("click").attr("disabled", false);
+        $("#khac").prop("checked", false).trigger("click").attr("disabled", false);
     }
 
 }
-

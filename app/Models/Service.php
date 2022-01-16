@@ -59,11 +59,7 @@ class Service extends Model
         $model->price = $request->input('price');
         $model->content = $request->input('content');
         $model->category_id = $request->input('category_id');
-        if ($request->status) {
-            $model->status = $request->status;
-        } else {
-            $model->status = 1;
-        }
+        $model->status = 1;
         $model->save();
 
         return $model;

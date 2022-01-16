@@ -39,7 +39,6 @@ $(function () {
                 { data: 'category' },
                 { data: 'price' },
                 { data: 'time' },
-                { data: 'status' },
                 { data: '' }
             ],
             columnDefs: [
@@ -51,7 +50,7 @@ $(function () {
                         },
                 },
                 {
-                    targets: 7,
+                    targets: -1,
                     render: function (data, type, full, meta) {
                         var html = '';
                         html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
@@ -163,7 +162,6 @@ function loaddata(id) {
             $('#econtent').val(data.content);
             $('#etime').val(data.time);
             $('#ecategory_id').val(data.category_id).change();
-            $('#estatus').val(data.category_id).change();
             $('#iid').val(id);
             url = '/admin/service/edit';
             iid = id;
@@ -177,9 +175,7 @@ function loaddata(id) {
 function save() {
     var info = {};
     var isValid = $('#frm-add').valid();
-    console.log(isValid);
     if (iid != 0) {
-        console.log(1);
         var info = new FormData($("#frm-edit")[0]);
         $.ajax({
             type: "POST",
@@ -202,7 +198,6 @@ function save() {
             }
         });
     } else {
-        console.log(2);
         if (isValid) {
             var info = new FormData($("#frm-add")[0]);
             $.ajax({
@@ -227,8 +222,6 @@ function save() {
             });
         }
     }
-
-
 }
 
 function del(id) {

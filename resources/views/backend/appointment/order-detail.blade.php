@@ -71,7 +71,7 @@
                                             <span class="font-weight-bold">Người thanh toán:</span> <span class="ml-75" id="staff_name"></span>
                                         </p>
                                     </div>
-                                    <div class="col-md-6 d-flex justify-content-end order-md-2 order-1">
+                                    <div class="col-md-6 d-flex justify-content-end order-md-3 order-1">
                                         <div class="invoice-total-wrapper">
                                             <div class="invoice-total-item">
                                                 <p class="invoice-total-title">Tổng cộng:</p>
