@@ -131,7 +131,7 @@ class AppointmentController extends BaseController
 
 
                 $alert = "Đặt lịch thành công! Hãy kiểm tra email để biết chi tiết thông tin đặt lịch";
-
+                $request->session()->forget('otp');
             } else {
                 $alert = 'Sai mã OTP';
             }
