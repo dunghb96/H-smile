@@ -203,13 +203,20 @@ class DashboardController extends BaseController
 
     public function storeEditMedicine(Request $request, $id)
     {
-        dd($request->all());
-        $medicine = Medicine::all();
-        $pre = Prescription::find($id);
-        $medicines = explode(',', $pre->medicine_id);
-        $quantity = explode(',', $pre->total_quantity);
-        $detail   = explode(',', $pre->detail);
-        return view('backend.medicine.prescription_use', compact('medicine', 'pre', 'medicines', 'quantity', 'detail'));
+        $prescription_use = Prescription::find($id);
+        $medicine = implode(',', $request->medicine_id);
+        $quantity = implode(',', $request->total_quantity);
+        $detail   = implode(',', $request->detail);
+        $prescription_use->update([
+            'medicine_id'       => $medicine,
+            'total_quantity' => $quantity,
+            'detail'        => $detail,
+            'note'           => $request->note
+            ]);
+        $medicine = explode(',', $medicine);
+        $quantity = explode(',', $quantity);
+        $detail   = explode(',', $detail);
+        return view('backend.medicine.prescription_use', compact('medicine', 'prescription_use', 'quantity', 'detail'));
     }
 
     public function prescriptionPdf()
