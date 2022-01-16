@@ -24,12 +24,14 @@
                     </div>
                 </div>
                 <div class="content-body">
+                    <a class="btn btn-success add_medicine" >Thêm</a>
+                    <br>
                     <!-- Row grouping -->
                 <form action="{{ route('admin.doctor.store_prescription')}}" id="add_pre" method="post" >
                     @csrf
                     {{-- @dd($info->id) --}}
                     <input type="hidden" name="schedule_id" value="{{ $info->id }}" >
-                        <div class="add_medicine">
+                        <div class="add_medicines">
                             <div class="row add_div">
                                 <div class="col-2">
                                     <select class="form-control" name="medicine_id[]" id="" required>
@@ -45,7 +47,6 @@
                                     <input type="text" class="form-control" name="detail[]" placeholder="Thời gian và liều lượng" required>
                                 </div>
                                 <div class="col-2">
-                                    <a class="btn btn-success add_medicine" >Thêm</a>
                                     <a class="btn btn-danger delete_medicine" >Xóa</a>
                                 </div>
                             </div>
@@ -167,7 +168,6 @@
                         <input type="text" class="form-control" name="detail[]" placeholder="Thời gian và liều lượng" required>
                     </div>
                     <div class="col-2">
-                        <a class="btn btn-success add_medicine" >Thêm</a>
                         <a class="btn btn-danger delete_medicine" >Xóa</a>
                     </div>
                 </div>
