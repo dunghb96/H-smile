@@ -191,9 +191,25 @@ class DashboardController extends BaseController
         $detail   = explode(',', $prescription_use->detail);
         return view('backend.medicine.prescription_use' ,compact('prescription_use', 'medicine', 'quantity', 'detail'));
     }
-    public function editPre($id)
+    public function editMedicine($id)
     {
-        return view('backend.prescription.edit');
+        $medicine = Medicine::all();
+        $pre = Prescription::find($id);
+        $medicines = explode(',', $pre->medicine_id);
+        $quantity = explode(',', $pre->total_quantity);
+        $detail   = explode(',', $pre->detail);
+        return view('backend.doctor.add_presciption', compact('medicine', 'pre', 'medicines', 'quantity', 'detail'));
+    }
+
+    public function storeEditMedicine(Request $request, $id)
+    {
+        dd($request->all());
+        $medicine = Medicine::all();
+        $pre = Prescription::find($id);
+        $medicines = explode(',', $pre->medicine_id);
+        $quantity = explode(',', $pre->total_quantity);
+        $detail   = explode(',', $pre->detail);
+        return view('backend.medicine.prescription_use', compact('medicine', 'pre', 'medicines', 'quantity', 'detail'));
     }
 
     public function prescriptionPdf()

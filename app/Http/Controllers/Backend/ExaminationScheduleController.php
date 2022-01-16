@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Appointment;
 use App\Models\Employee;
 use App\Models\ExaminationSchedule;
+use App\Models\Order;
 use App\Models\Patient;
 use App\Models\Service;
 use Carbon\Carbon;
@@ -269,7 +270,15 @@ class ExaminationScheduleController extends BaseController
     public function done(Request $request)
     {
         $id = $request->id;
+        $schedule =  ExaminationSchedule::find($id);
         $result =  ExaminationSchedule::find($id)->update(['status'=>ExaminationSchedule::STATUS_DONE]);
+        $count_schedule = ExaminationSchedule::where('order_id', $schedule->order_id)->where('status', '>', 0)->where('status', '<>', 4)->count();
+        $count_done     = ExaminationSchedule::where('order_id', $schedule->order_id)->where('status', '=', ExaminationSchedule::STATUS_DONE)->count();
+
+        if ($count_schedule == $count_done) {
+            $order = Order::find($schedule->order_id);
+            $result = Appointment::find($order->appointment_id)->update(['status' => 3]);
+        }
         if ($result) {
             $jsonObj['success'] = true;
             $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';

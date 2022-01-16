@@ -15,10 +15,7 @@ class Appointment extends Model
         0 => 'Hủy',
         1 => 'Chờ xác nhận',
         2 => 'Đã xác nhận',
-        3 => 'Đã đến',
-        4 => 'Đang thực hiện',
-        5 => 'Không đến',
-        6 => 'Hoàn thành'
+        3 => 'Hoàn thành'
     ];
 
     const SHIFT= [

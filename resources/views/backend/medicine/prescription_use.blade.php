@@ -68,17 +68,17 @@
             <section>
                 <div class="row">
                     <div class="col-12">
-                        <div class="container">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Tên thuốc</th>
-                                        <th scope="col">Số lượng</th>
-                                        <th scope="col">Thời gian và liều lượng</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if (isset($medicine))
+                        @if (isset($medicine))
+                            <div class="container">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Tên thuốc</th>
+                                            <th scope="col">Số lượng</th>
+                                            <th scope="col">Thời gian và liều lượng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                         @foreach ($medicine as $key => $value)
                                             <tr>
                                                 <td>{{$value}}</td>
@@ -86,20 +86,20 @@
                                                 <td>{{$detail[$key]}}</td>
                                             </tr>
                                         @endforeach
-                                    @endif
-                                </tbody>
-                            </table>
-                            <div class="row">
-                                <div class="col-10">
-                                    <h4>Ghi chú</h4>
-                                    <p>{{ $prescription_use->note }}</p>
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <div class="col-10">
+                                        <h4>Ghi chú</h4>
+                                        <p>{{ $prescription_use->note }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
                         <br>
                         <div class="row">
                             <div class="col">
-                                <a style="margin: 0 auto;" class="btn btn-warning" href="">Chỉnh sửa</a>
+                                <a style="margin: 0 auto;" class="btn btn-warning" href="{{ route('admin.editMedicineNew', ['id' => $prescription_use->id]) }}">Chỉnh sửa</a>
                                 <a href="{{ route('export.prescription.pdf') }}" class="btn btn-info" style="margin-right: 20px;">Xuất đơn thuốc</a>
                             </div>
                         </div>

@@ -64,6 +64,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::get('/today/addMedicine', [DashboardController::class, 'addMedicine'])->name('admin.addMedicine');
         Route::get('/today/addMedicineNew/{id?}', [DashboardController::class, 'addMedicineNew'])->name('admin.addMedicineNew');
         Route::post('/today/addMedicineNew/{id?}', [DashboardController::class, 'store'])->name('admin.doctor.store_prescription');
+        Route::get('/today/editMedicine/{id}', [DashboardController::class, 'editMedicine'])->name('admin.editMedicineNew');
+        Route::post('/today/editMedicine/{id}', [DashboardController::class, 'storeEditMedicine'])->name('admin.doctor.store_edit_prescription');
+
     });
 
     Route::group(['prefix' => 'setting', 'middleware' => ['permission:website_settings']], function () {
