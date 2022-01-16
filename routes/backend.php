@@ -185,6 +185,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/loaddata', [ExaminationScheduleController::class, 'loaddata']);
         Route::post('/saveExamSchedule', [ExaminationScheduleController::class, 'saveExamSchedule']);
         Route::post('/del', [ExaminationScheduleController::class, 'del']);
+        Route::post('confirm', [ExaminationScheduleController::class, 'confirm']);
+        Route::post('done', [ExaminationScheduleController::class, 'done']);
     });
 
     Route::group(['prefix' => 'patient'], function () {

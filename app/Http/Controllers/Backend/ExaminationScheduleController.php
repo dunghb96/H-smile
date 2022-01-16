@@ -252,4 +252,31 @@ class ExaminationScheduleController extends BaseController
         }
         echo json_encode($jsonObj);
     }
+    public function confirm(Request $request)
+    {
+        $id = $request->id;
+        $result =  ExaminationSchedule::find($id)->update(['status'=>ExaminationSchedule::STATUS_DOING]);
+        if ($result) {
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        } else {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+        }
+        echo json_encode($jsonObj);
+    }
+
+    public function done(Request $request)
+    {
+        $id = $request->id;
+        $result =  ExaminationSchedule::find($id)->update(['status'=>ExaminationSchedule::STATUS_DONE]);
+        if ($result) {
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        } else {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+        }
+        echo json_encode($jsonObj);
+    }
 }

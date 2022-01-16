@@ -85,7 +85,7 @@ class DashboardController extends BaseController
     {
         $doctor = Auth::guard('web')->user();
         $now = Date('Y-m-d');
-        $list = ExaminationSchedule::where('date_at', '=', $now)->where('doctor_id',  $doctor->employee)->where('status', '>', 0)->orderBy('status')->get();
+        $list = ExaminationSchedule::where('date_at', '=', $now)->where('doctor_id',  $doctor->employee)->where('status', '>=', ExaminationSchedule::STATUS_WAITING)->orderBy('status')->get();
         $jsonObj['data'] = $list;
         foreach ($list as $key => $row) {
             $jsonObj['data'][$key]->services = $row->service->name;
@@ -161,29 +161,35 @@ class DashboardController extends BaseController
         $prescription_use = Prescription::where('schedule_id', $id)->first();
 
         if ($prescription_use) {
-            return view('backend.medicine.prescription_use' ,compact('prescription_use'));
+            $medicine = explode(',', $prescription_use->medicine_id);
+            $quantity = explode(',', $prescription_use->total_quantity);
+            $detail   = explode(',', $prescription_use->detail);
+            return view('backend.medicine.prescription_use' ,compact('prescription_use', 'medicine', 'quantity', 'detail'));
         } else {
             return view('backend.doctor.add_presciption', compact('medicine', 'info'));
         }
     }
     public function store(Request $request)
     {
-        // dd($request->all());
+
         $list_medicine_id = implode(",", $request->medicine_id);
         $list_quantity = implode(",", $request->total_quantity);
         $list_detail = implode(",", $request->detail);
 
         $data_create = [
-            'schedule_id'    => (int)$request->scheduled_id,
+            'schedule_id'    => (int)$request->schedule_id,
             'medicine_id'    => $list_medicine_id,
             'total_quantity' => $list_quantity,
             'detail'         => $list_detail,
             'note'           => $request->note
 
         ];
-        $prescription_use =  Prescription::create($data_create);
 
-        return view('backend.medicine.prescription_use' ,compact('prescription_use'));
+        $prescription_use =  Prescription::create($data_create);
+        $medicine = explode(',', $prescription_use->medicine_id);
+        $quantity = explode(',', $prescription_use->total_quantity);
+        $detail   = explode(',', $prescription_use->detail);
+        return view('backend.medicine.prescription_use' ,compact('prescription_use', 'medicine', 'quantity', 'detail'));
     }
     public function editPre($id)
     {

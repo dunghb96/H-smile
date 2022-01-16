@@ -61,19 +61,20 @@ $(function () {
                     {
                         targets: 6,
                         render: function (data, type, full, meta) {
+                            var status = full['status'];
                             var html = '';
-                            // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hoàn thành" onclick="hoanthanh(' + full['id'] + ',' + full['status'] + ',' + full['appointment'] + ')">';
-                            // html += '<i data-feather="check"></i>';
-                            // html += '</button> &nbsp;';
+                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hoàn thành" onclick="confirmStatus(' + full['id'] +')">';
+                            html += '<i class="fas fa-door-open"></i>';
+                            html += '</button> &nbsp;';
                             // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hẹn tiếp" onclick="hentiep(' + full['id'] + ',' + full['appointment'] + ',' + full['status'] + ',' + full['service_id'] + ',' + full['patient_id'] + ')">';
                             // html += '<i data-feather="arrow-right-circle"></i>';
                             // html += '</button> &nbsp;';
-                            html += '<button type="button" class="btn btn-icon btn-outline-success waves-effect add_medicine" title="Đơn thuốc" data-id="'+full['id']+'" onclick="addnote(' + full['id'] + ')">';
+                            html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect add_medicine" title="Đơn thuốc" data-id="'+full['id']+'" onclick="addnote(' + full['id'] + ')">';
                             html += '<i class="fas fa-briefcase-medical"></i>';
                             html += '</button> &nbsp;';
 
-                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chuyển trạng thái" onclick="suaTrangThai(' + full['id'] +')">';
-                            html += '<i class="fas fa-pencil-alt"></i>';
+                            html += '<button type="button" class="btn btn-icon btn-outline-success waves-effect" title="Chuyển trạng thái" onclick="done(' + full['id'] + ')">';
+                            html += '<i class="fas fa-check-square"></i>';
                             html += '</button> &nbsp;';
 
                             // html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa" onclick="del(' + full['id'] + ')">';
@@ -431,40 +432,9 @@ function saveNote() {
     });
 }
 
-function suaTrangThai(id) {
-    $('#patientinfo').modal('show');
-}
-function suaTrangThai(id) {
-    $("#changestatus").modal('show');
-    $(".modal-title").html('Thay đổi trạng thái');
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        data: {id: id},
-        url: "/admin/employee/loaddata",
-        success: function (data) {
-            $('#name').val(data.name);
-            $('#phone_number').val(data.phone_number);
-            $('#email').val(data.email);
-            $('#position').val(data.position);
-            $('#majors').val(data.majors);
-            $('#type').val(data.type).change();
-            $('#short_description').val(data.short_description);
-            if (data.services) {
-                services = data.services.split(',');
-                $('#service').val(services).change();
-            }
-            $('#username').val(data.username);
-            $('#password').val('');
-            $('#role').val(data.rolesOfUser).change();
-            url = '/admin/employee/edit';
-            iid = id;
-        },
-        error: function () {
-            notify_error('Lỗi truy xuất database');
-        }
-    });
-}
+// function suaTrangThai(id) {
+//     $('#patientinfo').modal('show');
+// }
 
 //  function saveExamSchedule() {
 //      var info = {};
@@ -495,35 +465,66 @@ function suaTrangThai(id) {
 //      });
 //  }
 
-// function del(id) {
-//     Swal.fire({
-//         title: 'Xóa dữ liệu',
-//         text: "Bạn có chắc chắn muốn xóa!",
-//         icon: 'warning',
-//         showCancelButton: true,
-//         confirmButtonText: 'Tôi đồng ý',
-//         customClass: {
-//             confirmButton: 'btn btn-primary',
-//             cancelButton: 'btn btn-outline-danger ml-1'
-//         },
-//         buttonsStyling: false
-//     }).then(function (result) {
-//         if (result.value) {
-//             $.ajax({
-//                 url: "/admin/employee/del",
-//                 type: 'post',
-//                 dataType: "json",
-//                 data: { id: id },
-//                 success: function (data) {
-//                     if (data.success) {
-//                         notyfi_success(data.msg);
-//                         $("#tableBasic").DataTable().ajax.reload(null, false);
-//                     }
-//                     else
-//                         notify_error(data.msg);
-//                 },
-//             });
-//         }
-//     });
-// }
+function done(id) {
+    Swal.fire({
+        title: 'Xác nhận hoàn thành',
+        text: "Xác nhận hoàn thành cho lịch hẹn này ?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Tôi đồng ý',
+        customClass: {
+            confirmButton: 'btn btn-primary',
+            cancelButton: 'btn btn-outline-danger ml-1'
+        },
+        buttonsStyling: false
+    }).then(function (result) {
+        if (result.value) {
+            $.ajax({
+                url: "/admin/examination-schedule/done",
+                type: 'post',
+                dataType: "json",
+                data: { id: id },
+                success: function (data) {
+                    if (data.success) {
+                        notyfi_success(data.msg);
+                        $("#tableBasic").DataTable().ajax.reload(null, false);
+                    }
+                    else
+                        notify_error(data.msg);
+                },
+            });
+        }
+    });
+}
+function confirmStatus(id) {
+    Swal.fire({
+        title: 'Xác nhận vào khám',
+        text: "Xác nhận vào khám cho lịch hẹn này ?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Tôi đồng ý',
+        customClass: {
+            confirmButton: 'btn btn-primary',
+            cancelButton: 'btn btn-outline-danger ml-1'
+        },
+        buttonsStyling: false
+    }).then(function (result) {
+        if (result.value) {
+            $.ajax({
+                url: "/admin/examination-schedule/confirm",
+                type: 'post',
+                dataType: "json",
+                data: { id: id },
+                success: function (data) {
+                    if (data.success) {
+                        notyfi_success(data.msg);
+                        $("#tableBasic").DataTable().ajax.reload(null, false);
+                    }
+                    else
+                        notify_error(data.msg);
+                },
+            });
+        }
+    });
+}
 

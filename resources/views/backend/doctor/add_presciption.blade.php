@@ -26,6 +26,7 @@
             <!-- Row grouping -->
            <form action="{{ route('admin.doctor.store_prescription')}}" method="post" >
             @csrf
+            {{-- @dd($info->id) --}}
             <input type="hidden" name="schedule_id" value="{{ $info->id }}" >
                 <div class="add_medicine">
                     <div class="row add_div">

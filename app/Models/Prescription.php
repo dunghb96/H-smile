@@ -10,4 +10,9 @@ class Prescription extends Model
     use HasFactory;
     protected $table = 'prescriptions';
     protected $guarded = [];
+
+    public function examinationSchedule()
+    {
+        return $this->hasOne(ExaminationSchedule::class, 'id', 'schedule_id');
+    }
 }
