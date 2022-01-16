@@ -171,11 +171,9 @@
                             </div>
                             <div class="col-xl-7">
                                 <div class="text-holder">
-                                    <span>Implantologist</span>
+                                    <span>{{ $row->majors }}</span>
                                     <h3>{{$row->name}}</h3>
                                     <p>{{$row->short_description}}</p>
-                                    <h6>Qualification</h6>
-
                                     <ul>
                                         <li><span class="icon-phone"></span>{{$row->phone_number}}</li>
                                         <li><span class="flaticon-e-mail-envelope"></span>{{$row->email}}</li>
