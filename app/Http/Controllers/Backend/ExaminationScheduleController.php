@@ -162,13 +162,26 @@ class ExaminationScheduleController extends BaseController
                     $jsonObj['msg'] = 'Bác sĩ đã có lịch khám trong khung giờ này!';
                     echo json_encode($jsonObj);
                     return false;
-                } 
+                }
             }
             $model = ExaminationSchedule::find($id);
             $result = $model->xeplich($model, $request);
             if ($result) {
                 $jsonObj['success'] = true;
                 $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+
+                $patientSelected = Patient::find($model->customer_id);
+                $serviceSelected = Service::find($model->service_id);
+                $doctorSelected = Employee::find($model->doctor_id);
+
+                $to_name = "H-smile";
+                $to_email = $patientSelected->email;
+                $data = array("patientName" => $patientSelected, "serviceSelected" => $serviceSelected, "doctorSelected" => $doctorSelected, "dateSelected" => $model->date_at);
+                Mail::send('frontend.mail.notificationMail', $data, function ($message) use ($to_name, $to_email) {
+                    $message->to($to_email)->subject('Lịch hẹn khám ');
+                    $message->from($to_email, $to_name);
+                });
+
             } else {
                 $jsonObj['success'] = false;
                 $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
@@ -179,6 +192,19 @@ class ExaminationScheduleController extends BaseController
             if ($result) {
                 $jsonObj['success'] = true;
                 $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+
+                $patientSelected = Patient::find($model->customer_id);
+                $serviceSelected = Service::find($model->service_id);
+                $doctorSelected = Employee::find($model->doctor_id);
+
+                $to_name = "H-smile";
+                $to_email = $patientSelected->email;
+                $data = array("patientName" => $patientSelected, "serviceSelected" => $serviceSelected, "doctorSelected" => $doctorSelected, "dateSelected" => $model->date_at);
+                Mail::send('frontend.mail.notificationMail', $data, function ($message) use ($to_name, $to_email) {
+                    $message->to($to_email)->subject('Lịch hẹn khám ');
+                    $message->from($to_email, $to_name);
+                });
+
             } else {
                 $jsonObj['success'] = false;
                 $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';

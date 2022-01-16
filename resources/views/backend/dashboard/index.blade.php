@@ -60,7 +60,7 @@
                                             <div class="media-body my-auto">
 
                                                 <h4 class="font-weight-bolder mb-0"> {{$confirm}}</h4>
-                                                <p class="card-text font-small-3 mb-0">Số lượng ca khám trong ngày</p>
+                                                <p class="card-text font-small-3 mb-0">Số ca khám trong ngày</p>
 
                                             </div>
                                         </div>
@@ -88,7 +88,7 @@
                                             </div>
                                             <div class="media-body my-auto">
                                                 <h4 class="font-weight-bolder mb-0"> {{number_format($total_revenue_day)}} VNĐ</h4>
-                                                <p class="card-text font-small-3 mb-0">Doanh số ngày hôm nay</p>
+                                                <p class="card-text font-small-3 mb-0">Doanh thu hôm nay</p>
                                             </div>
                                         </div>
                                     </div>

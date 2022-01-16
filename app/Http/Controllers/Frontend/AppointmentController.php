@@ -22,6 +22,8 @@ class AppointmentController extends BaseController
 
     public function index()
     {
+        // dd(Cookie::get('patient_code'));
+        // Cookie::queue(Cookie::forget('patient_code'));
         $doctors = Employee::where('type','1')->where('status','1')->get();
         $services = Service::where('status','1')->where('category_id', '>', '0')->get();
         return view('frontend.appointment.index',compact('doctors','services'));
@@ -56,22 +58,9 @@ class AppointmentController extends BaseController
 
     public function booking(Request $request)
     {
-        // $request->validate(
-        //     [
-        //         'nhapOtp' => 'required|max:4',
-        //         'phone_number' => 'required'
-        //     ],
-        //     [
-        //         'nhapOtp.required' => 'Hãy nhập Mã OTP',
-        //         'nhapOtp.max' => 'OTP tối đa 4 số',
-        //         'phone_number' => 'Số điện thoại không được để trống'
-        //     ]
-        // );
-        // if ($request->get("nhapOtp") == session()->get('otp')) {
-
             $dateat = (isset($request->dateat) && $request->dateat != '') ? date("Y-m-d", strtotime(str_replace('/', '-', $request->dateat))) : date("Y-m-d");
             $dataApp = [
-                'patient_code' => Cookie::get('patient_code') !== false ? Cookie::get('patient_code') : random_int(100000000, 999999999),
+                'patient_code' => Cookie::get('patient_code') !== null ? Cookie::get('patient_code') : random_int(100000000, 999999999),
                 'name' => $request->name,
                 // 'age' => $request->age,
                 'phone_number' => $request->phone_number,
@@ -84,6 +73,7 @@ class AppointmentController extends BaseController
                 'note' => $request->note,
                 'status' => 1
             ];
+            // echo Cookie::get('patient_code');
             $result = Appointment::create($dataApp);
             $appointment_id = $result->id;
             $data = Patient::where('full_name','LIKE', $request->name)->where('phone_number','LIKE', $request->phone_number)->where('status','>',0)->first();
@@ -92,6 +82,9 @@ class AppointmentController extends BaseController
                 $model = Appointment::find($appointment_id);
                 $data = ['customer_id' => $customer_id];
                 $model->update($data);
+            }
+            if (Cookie::get('patient_code') == null) {
+                Cookie::queue('patient_code', $dataApp['patient_code'], 99999999999);
             }
 
             //Set cookie
@@ -107,19 +100,19 @@ class AppointmentController extends BaseController
                 $list_name .= $row->name . ', ';
             }
 
-            $to_name = "H-smile";
-            $to_email = $request->email;
-            $data = array(
-                "name" => $request->name,
-                "serviceSelected" => rtrim($list_name, ', '),
-                "dateSelected" => Carbon::parse($request->date_at)->format('Y-m-d'),
-                "shiftName" => $shiftSelected,
-                "descRequest" => $request->description
-            );
-            Mail::send('frontend.mail.sendmail', $data, function ($message) use ($to_name, $to_email) {
-                $message->to($to_email)->subject('Nha Khoa H-Smile đã tiếp nhận yêu cầu đặt lịch của quý khách');
-                $message->from($to_email, $to_name);
-            });
+            // $to_name = "H-smile";
+            // $to_email = $request->email;
+            // $data = array(
+            //     "name" => $request->name,
+            //     "serviceSelected" => rtrim($list_name, ', '),
+            //     "dateSelected" => Carbon::parse($request->date_at)->format('Y-m-d'),
+            //     "shiftName" => $shiftSelected,
+            //     "descRequest" => $request->description
+            // );
+            // Mail::send('frontend.mail.sendmail', $data, function ($message) use ($to_name, $to_email) {
+            //     $message->to($to_email)->subject('Nha Khoa H-Smile đã tiếp nhận yêu cầu đặt lịch của quý khách');
+            //     $message->from($to_email, $to_name);
+            // });
 
 
             // $email = $request->email;
@@ -135,10 +128,6 @@ class AppointmentController extends BaseController
             //     $mes->to($email, 'frontend.mail.sendMail')->subject('Mail công việc');
             // });
 
-
-            // if (Cookie::get('patient_code') !== true) {
-            //     Cookie::queue('patient_code', $dataApp['patient_code'], 99999999999);
-            // }
 
             $alert = "Đặt lịch thành công! Hãy kiểm tra email để biết chi tiết thông tin đặt lịch";
         // } else {

@@ -29,7 +29,7 @@ class DashboardController extends BaseController
         // doanh thu theo tháng hiện tại
         $appointment = Appointment::all();
         $total_appointment = Appointment::where('created_at', $date_now)->count();
-        $confirm = Appointment::where('status', 2)->where('date', $date_now)->count();
+        $confirm = ExaminationSchedule::where('status', '>', 0)->where('date_at', $date_now)->count();
         $waiting = Appointment::where('status', 1)->count();
         $doneAppoint = ExaminationSchedule::where('status', 2)->count();
         $day = Carbon::now()->day;
