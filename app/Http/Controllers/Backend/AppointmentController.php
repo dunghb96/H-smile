@@ -30,53 +30,6 @@ class AppointmentController extends BaseController
         return view('backend.appointment.index', compact('services', 'doctor', 'customers'));
     }
 
-    public function orderDetail()
-    {
-        return view('backend.appointment.order-detail');
-    }
-
-    public function orderPrint()
-    {
-        return view('backend.appointment.order-print');
-    }
-
-    function loadOrder(Request $request)
-    {
-        $jsonObj = [];
-        $appointment_id = $request->appointment_id;
-
-        $jsonObj = Order::where('appointment_id', $appointment_id)->first();
-        $staff_id = $jsonObj->staff_id;
-        if ($staff_id > 0) {
-            $staff = Employee::find($staff_id);
-            $jsonObj['staff_name'] = $staff->name;
-        }
-        $jsonObj['total_price'] = number_format($jsonObj->total_price);
-        $customer_id = $jsonObj->customer_id;
-        $customer = Patient::find($customer_id);
-        $jsonObj['customer_name'] = $customer->full_name;
-        $jsonObj['customer_phone'] = $customer->phone_number;
-        $jsonObj['customer_email'] = $customer->email;
-        $jsonObj['customer_address'] = $customer->address;
-        $jsonObj['create_at'] = Carbon::parse($jsonObj->create_at)->format('d/m/Y H:i:s');
-        echo json_encode($jsonObj);
-    }
-
-    function loadOrderDetail(Request $request)
-    {
-        $jsonObj = [];
-        $orderDetail = OrderDetail::where('order_id', $request->order_id)->get();
-        foreach ($orderDetail as $key => $item) {
-            $jsonObj[$key]['stt'] = $key + 1;
-            $service_id = $item->service_id;
-            $service = Service::find($service_id);
-            $jsonObj[$key]['service_name'] = $service->name;
-            $jsonObj[$key]['service_price'] = number_format($service->price);
-            $jsonObj[$key]['service_time'] = $service->time;
-        }
-        echo json_encode($jsonObj);
-    }
-
     public function json()
     {
         $list = Appointment::with('patients', 'service', 'doctor')->where('status', '>', '0')->orderBY('created_at')->get();
@@ -85,9 +38,9 @@ class AppointmentController extends BaseController
         foreach ($list as $key => $row) {
             $arrService = explode(',', $row->services);
             $listName = '';
-            foreach ($arrService as $row2) {
+            foreach ($arrService as $row2) { 
                 $listName .= Service::find($row2)->name . '</br>';
-            }
+            } 
             $listName = rtrim($listName, '</br>');
             $jsonObj['data'][$key]->date = date("d/m/Y", strtotime(str_replace('/', '-', $row->date)));
             $jsonObj['data'][$key]->list_service = $listName;
@@ -96,13 +49,6 @@ class AppointmentController extends BaseController
         }
         echo json_encode($jsonObj);
     }
-
-    // function getDoctor(Request $request)
-    // {
-    //     $service = $request->service;
-    //     $jsonObj = Employee::where('status', 1)->where('type', 1)->where('services', 'like', '%' . $service . '%')->get();
-    //     echo json_encode($jsonObj);
-    // }
 
     // function addSchedule(Request $request)
     // {
@@ -298,7 +244,6 @@ class AppointmentController extends BaseController
             'total_time' => $total_time,
             'status' => 1,
             'pay_content' => "hsmile " . random_int(1000000,9999999999)
-
         ];
         $order = Order::create($order);
 
@@ -347,21 +292,6 @@ class AppointmentController extends BaseController
         $jsonObj['date'] = Carbon::parse($jsonObj->date)->format('d/m/Y');
         echo json_encode($jsonObj);
     }
-
-    // public function edit(Request $request)
-    // {
-    //     $id = $request->id;
-    //     $model = BlogCategory::find($id);
-    //     $result = $model->saveBlogCate($model, $request);
-    //     if($result) {
-    //         $jsonObj['success'] = true;
-    //         $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
-    //     } else {
-    //         $jsonObj['success'] = false;
-    //         $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-    //     }
-    //     echo json_encode($jsonObj);
-    // }
 
     function checkAppointment(Request $request) {
         $id = $request->id;

@@ -15,25 +15,6 @@ $(function () {
         });
     }
 
-    $(window).on('load', function () {
-        // $('#minlogo').hide();
-        if (feather) {
-            feather.replace({
-                width: 14,
-                height: 14
-            });
-        }
-    })
-    // var timePickr = $('.flatpickr-time');
-
-    // if (timePickr.length) {
-    //     timePickr.flatpickr({
-    //         enableTime: true,
-    //         dateFormat: "H:i",
-    //         noCalendar: true
-    //     });
-    // }
-
     $('#time_at').select2({
         placeholder: "Chọn giờ hẹn",
         allowClear: true,
@@ -60,52 +41,39 @@ $(function () {
     // DataTable with buttons
     // --------------------------------------------------------------------
     if (table_table.length) {
-        //  console.log(data);
         var table = table_table.DataTable({
-
-            ajax: '/admin/appointment/json',
-
+            ajax: '/admin/order/json',
             columns: [
                 { data: 'id' },
-                { data: 'name' },
-                { data: 'phone_number' },
-                { data: 'list_service' },
-                // { data: 'service_id' },
-                { data: 'date' },
-                { data: 'shift' },
-                { data: 'status_word' },
-                { data: 'status' },
+                { data: 'customer_name' },
+                { data: 'services_name' },
+                { data: 'total_time' },
+                { data: 'total_price' },
+                { data: 'status_name' },
+                { data: 'appointment_id' },
                 { data: '' }
             ],
             columnDefs: [
                 {
-                    targets: 7,
-                    visible: false,
+                    targets: 6,
+                    visible: false
                 },
                 {
                     targets: -1,
                     render: function (data, type, full, meta) {
                         var html = '';
-                        var status = full['status'];
-                        if (status == 2) {
-                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chi tiết đơn hàng" onclick="loadorder(' + full['id'] + ')">';
-                            html += '<i class="fas fa-shopping-basket"></i>';
-                            html += '</button> &nbsp;';
-                        }
-                        if (status == 1) {
-                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Xác nhận" onclick="xacnhan(' + full['id'] + ',' + full['status'] + ')">';
-                            html += '<i class="far fa-calendar-check"></i>';
-                            html += '</button> &nbsp;';
-                        }
-                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
-                        html += '<i class="fas fa-pencil-alt"></i>';
+                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chi tiết đơn hàng" onclick="loadorder(' + full['appointment_id'] + ')">';
+                        html += '<i class="fas fa-shopping-basket"></i>';
                         html += '</button> &nbsp;';
-                        html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Hủy yêu cầu" onclick="del(' + full['id'] + ',' + full['status'] + ')">';
-                        html += '<i class="fas fa-trash-alt"></i>';
+                        // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
+                        // html += '<i class="fas fa-pencil-alt"></i>';
+                        // html += '</button> &nbsp;';
+                        // html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa đơn hàng" onclick="del(' + full['id'] + ',' + full['status'] + ')">';
+                        // html += '<i class="fas fa-trash-alt"></i>';
                         html += '</button>';
                         return html;
                     },
-                    width: 150
+                    width: 100
                 }
             ],
             // order: [[0, 'DESC']],
@@ -128,16 +96,16 @@ $(function () {
             },
             // Buttons with Dropdown
             buttons: [
-                {
-                    text: "Thêm mới",
-                    className: "add-new btn btn-primary mt-50",
-                    init: function (api, node, config) {
-                        $(node).removeClass("btn-secondary");
-                    },
-                    action: function (e, dt, node, config) {
-                        loadadd();
-                    },
-                },
+                // {
+                //     text: "Thêm mới",
+                //     className: "add-new btn btn-primary mt-50",
+                //     init: function (api, node, config) {
+                //         $(node).removeClass("btn-secondary");
+                //     },
+                //     action: function (e, dt, node, config) {
+                //         loadadd();
+                //     },
+                // },
             ],
             language: {
                 paginate: {
@@ -170,29 +138,6 @@ $(function () {
     });
 });
 
-function loadadd() {
-    $("#addnew").modal('show');
-    $(".modal-title").html('Thêm yêu cầu mới');
-    $('#customer').val('').change();
-    $('#services').val('').change();
-    start = Date.now();
-    $('#date_at').flatpickr({
-        altInput: true,
-        altFormat: "d/m/Y",
-        defaultDate: start,
-        dateFormat: "d/m/Y",
-        minDate: "today"
-    });
-
-    $('#full_name').val('');
-    $('#age').val('');
-    $('#phone_number').val('');
-    $('#email').val('');
-    $('#address').val('');
-    url = '/admin/appointment/add';
-    iid = 0;
-}
-
 function loaddata(id) {
     $("#addnew").modal('show');
     $(".modal-title").html('Cập nhật yêu cầu');
@@ -214,7 +159,7 @@ function loaddata(id) {
             if (data.customer_id) {
                 $('#customer-div').removeClass("d-none");
                 $('#customer').val(data.customer_id).change();
-                $('#customer').attr("disabled",true);
+                $('#customer').attr("disabled", true);
             } else {
                 $('#customer').val(null).change();
                 $('#customer-div').addClass("d-none");
@@ -331,8 +276,8 @@ function save() {
     }
 }
 
-function loadorder(id) {
-    localStorage.setItem('appointment_id', id);
+function loadorder(appointment_id) {
+    localStorage.setItem('appointment_id', appointment_id);
     window.location.href = './admin/order/order-detail';
 }
 
@@ -412,46 +357,4 @@ function del(id, status) {
     } else if (status == 3) {
         notify_error('Đơn hàng đã hoàn thành không thể xóa!');
     }
-}
-
-function changeKH() {
-    var customer = $("#customer").val();
-    if (customer) {
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            data: { id: customer },
-            url: "/admin/patient/getcustomer",
-            success: function (data) {
-                $('#full_name').val(data.full_name).attr("disabled", true);
-                $('#age').val(data.age).attr("disabled", true);
-                $('#phone_number').val(data.phone_number).attr("disabled", true);
-                $('#email').val(data.email).attr("disabled", true);
-                $('#address').val(data.address).attr("disabled", true);
-                if (data.gender == 0) {
-                    $("#nam").prop("checked", true).trigger("click");
-                    $("#nu").attr("disabled", true);
-                    $("#khac").attr("disabled", true);
-                } else if (data.gender == 1) {
-                    $("#nu").prop("checked", true).trigger("click");
-                    $("#nam").attr("disabled", true);
-                    $("#khac").attr("disabled", true);
-                } else {
-                    $("#khac").prop("checked", true).trigger("click");
-                    $("#nu").attr("disabled", true);
-                    $("#nam").attr("disabled", true);
-                }
-            },
-        });
-    } else {
-        $('#full_name').val('').attr("disabled", false);
-        $('#age').val('').attr("disabled", false);
-        $('#phone_number').val('').attr("disabled", false);
-        $('#email').val('').attr("disabled", false);
-        $('#address').val('').attr("disabled", false);
-        $("#nam").prop("checked", false).trigger("click").attr("disabled", false);
-        $("#nu").prop("checked", false).trigger("click").attr("disabled", false);
-        $("#khac").prop("checked", false).trigger("click").attr("disabled", false);
-    }
-
 }

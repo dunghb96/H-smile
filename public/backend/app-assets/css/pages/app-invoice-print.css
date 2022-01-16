@@ -19,7 +19,7 @@ body {
 
 .invoice-print .invoice-total-wrapper {
   width: 100%;
-  max-width: 12rem; }
+  max-width: 14rem; }
 
 .invoice-print .invoice-total-wrapper .invoice-total-item {
   display: flex;

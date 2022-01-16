@@ -2,7 +2,6 @@ var appointment_id = localStorage.getItem('appointment_id');
 $(function () {
     'use strict';
     loadorder(appointment_id);
-    // setTimeout(function () {window.print()}, 5000);
 });
 
 function loadorder(appointment_id) {
@@ -10,7 +9,7 @@ function loadorder(appointment_id) {
         type: "POST",
         dataType: "json",
         data: { appointment_id: appointment_id },
-        url: "/admin/appointment/loadorder",
+        url: "/admin/order/loadorder",
         success: function (data) {
             $('#order_id').html('#'+data.id);
             $('#customer_name').html(data.customer_name);
@@ -31,7 +30,7 @@ function loadorder(appointment_id) {
                 type: "POST",
                 dataType: "json",
                 data: { order_id: data.id },
-                url: "/admin/appointment/loadorderdetail",
+                url: "/admin/order/loadorderdetail",
                 success: function (data) {
                     data.map(item => {
                         return $('#order-detail').append('<tr> <td class="py-1"> <span class="font-weight-bold">' + item.stt + '</span> </td> <td class="py-1"><p class="card-text font-weight-bold mb-25">' + item.service_name + '</p></td> <td class="py-1"> <span class="font-weight-bold">' + item.service_time + ' phút</span></td> <td class="py-1"> <span class="font-weight-bold">' + item.service_price + ' VNĐ</span> </td> </tr>');

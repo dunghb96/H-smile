@@ -93,7 +93,6 @@ $(function () {
 });
 
 function loadadd() {
-    console.log("tạo mới");
     $("#addnew").modal('show');
     $(".modal-title").html('Thêm dịch vụ mới');
     $('#name').val('');

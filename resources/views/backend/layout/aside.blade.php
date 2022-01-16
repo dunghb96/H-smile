@@ -68,6 +68,12 @@
                 </a>
             </li>
             @endcan
+            <li class=" nav-item {{ request()->is(['admin/order','admin/order/*']) ? 'active' : '' }}">
+                <a class="d-flex align-items-center" href="{{ route('admin.order') }}">
+                    <i data-feather='calendar'></i>
+                    <span class="menu-title text-truncate" data-i18n="Chat">Đơn hàng</span>
+                </a>
+            </li>
             @can('list_patients')
             <li class=" nav-item {{ request()->is('admin/patient') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.patient') }}">

@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Backend\SlideController;
 use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PriceListController;
 use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\PatientController;
@@ -161,19 +162,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     Route::group(['prefix' => 'appointment'], function () {
         Route::get('/', [AppointmentController::class, 'index'])->middleware('permission:list_appointments')->name('admin.appointment');
         Route::get('/json', [AppointmentController::class, 'json']);
-        // Route::post('/duyet', [AppointmentController::class, 'duyet']);
-        // Route::post('/get-doctor', [AppointmentController::class, 'getDoctor']);
-        // Route::post('/add-schedule', [AppointmentController::class, 'addSchedule']);
         Route::post('/loaddata', [AppointmentController::class, 'loaddata']);
         Route::post('/add', [AppointmentController::class, 'add']);
         Route::post('/edit', [AppointmentController::class, 'edit']);
         Route::post('/xacnhan', [AppointmentController::class, 'xacnhan']);
         Route::post('/del', [AppointmentController::class, 'del']);
-        Route::get('/order-detail', [AppointmentController::class, 'orderDetail']);
-        Route::get('/order-print', [AppointmentController::class, 'orderPrint'])->name('order.print');
-        Route::post('/loadorder', [AppointmentController::class, 'loadOrder']);
-        Route::post('/loadorderdetail', [AppointmentController::class, 'loadOrderDetail']);
-        Route::post('/checkappointment', [AppointmentController::class, 'checkAppointment']);
     });
 
     Route::group(['prefix' => 'examination-schedule'], function () {
@@ -190,6 +183,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/del', [ExaminationScheduleController::class, 'del']);
         Route::post('confirm', [ExaminationScheduleController::class, 'confirm']);
         Route::post('done', [ExaminationScheduleController::class, 'done']);
+    });
+
+    Route::group(['prefix' => 'order'], function () {
+        Route::get('/', [OrderController::class, 'index'])->name('admin.order');
+        Route::get('/json', [OrderController::class, 'json']);
+        Route::get('/order-detail', [OrderController::class, 'orderDetail']);
+        Route::get('/order-print', [OrderController::class, 'orderPrint'])->name('order.print');
+        Route::post('/loadorder', [OrderController::class, 'loadOrder']);
+        Route::post('/loadorderdetail', [OrderController::class, 'loadOrderDetail']);
+        Route::post('/checkappointment', [OrderController::class, 'checkAppointment']);
+        Route::post('/henlai', [OrderController::class, 'henlai']);
+        Route::post('/saveHL', [OrderController::class, 'saveHL']);
     });
 
     Route::group(['prefix' => 'patient'], function () {

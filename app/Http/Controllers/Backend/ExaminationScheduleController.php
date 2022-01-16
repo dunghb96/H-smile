@@ -47,7 +47,7 @@ class ExaminationScheduleController extends BaseController
         $thang = (isset($_REQUEST['thang']) && ($_REQUEST['thang'] != '')) ? $_REQUEST['thang'] : date("m");
         $nam = (isset($_REQUEST['nam']) && ($_REQUEST['nam'] != '')) ? $_REQUEST['nam'] : date("Y");
         $doctor_id = isset($_REQUEST['doctor_id']) ? $_REQUEST['doctor_id'] : '';
-        $jsonObj['data'] = ExaminationSchedule::where('status', '2')->where('doctor_id', $doctor_id)->orderBy('created_at', 'DESC')->get();
+        $jsonObj['data'] = ExaminationSchedule::whereIn('status', ['2','3'])->where('doctor_id', $doctor_id)->orderBy('created_at', 'DESC')->get();
         foreach ($jsonObj['data'] as $key => $item) {
             // $jsonObj['data'][$key]->date_at = Carbon::parse($item->date_at)->format('d/m/Y');
             $jsonObj['data'][$key]->service_name = $item->service->name;
@@ -146,28 +146,32 @@ class ExaminationScheduleController extends BaseController
         $start_time = date("Y-m-d H:i:s", strtotime($dateat . " " . $request->start_time .":00"));
         $end_time = date("Y-m-d H:i:s", strtotime($dateat . " " . $request->end_time .":00"));
 
-        $data = ExaminationSchedule::where('id', '!=', $id)->where('date_at', 'LIKE', $dateat)->where('doctor_id', $request->doctor_id)->where('status', 2)->get();
+        $data = ExaminationSchedule::where('id', '!=', $id)->where('date_at', 'LIKE', $dateat)->where('doctor_id', $request->doctor_id)->whereIn('status', ['2','3'])->get();
         if (count($data)>0) {
             foreach ($data as $item) {
                 $startTime = date("Y-m-d H:i:s", strtotime($item['date_at'] . " " . $item['start_time']));
                 $endTime = date("Y-m-d H:i:s", strtotime($item['date_at'] . " " . $item['end_time']));
-                if ($start_time > $startTime && $start_time < $endTime) {
+                if ($start_time < $startTime && $start_time > $endTime) {
                     $jsonObj['success'] = false;
                     $jsonObj['msg'] = 'Bác sĩ đã có lịch khám trong khung giờ này!';
-                } else if ($end_time > $startTime && $end_time < $endTime) {
-                    $jsonObj['success'] = false;
-                    $jsonObj['msg'] = 'Bác sĩ đã có lịch khám trong khung giờ này!';
-                } else {
-                    $model = ExaminationSchedule::find($id);
-                    $result = $model->xeplich($model, $request);
-                    if ($result) {
-                        $jsonObj['success'] = true;
-                        $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
-                    } else {
-                        $jsonObj['success'] = false;
-                        $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
-                    }
+                    echo json_encode($jsonObj);
+                    return false;
                 }
+                if ($start_time >= $startTime && $start_time < $endTime) {
+                    $jsonObj['success'] = false;
+                    $jsonObj['msg'] = 'Bác sĩ đã có lịch khám trong khung giờ này!';
+                    echo json_encode($jsonObj);
+                    return false;
+                } 
+            }
+            $model = ExaminationSchedule::find($id);
+            $result = $model->xeplich($model, $request);
+            if ($result) {
+                $jsonObj['success'] = true;
+                $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+            } else {
+                $jsonObj['success'] = false;
+                $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
             }
         } else {
             $model = ExaminationSchedule::find($id);

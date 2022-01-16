@@ -61,7 +61,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="order-detail">
-                                        
+
                                     </tbody>
                                 </table>
                             </div>
@@ -136,6 +136,69 @@
                 </div>
             </section>
 
+            <div class="modal fade text-left" id="hen-lai" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel16"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-validate" enctype="multipart/form-data" id="frm-xl" style="font-size: 12px;">
+                                <div class="row">
+                                    <span class="col-6">Tên khách hàng:</span>
+                                    <span class="col-6" id="data-name"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col-6">Số điện thoại:</span>
+                                    <span class="col-6" id="data-phone"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col-6">Dịch vụ:</span>
+                                    <span class="col-6" id="data-service"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col-6">Thời lượng:</span>
+                                    <span class="col-6" id="data-time"></span>
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label for="date_at">Ngày</label>
+                                    <input type="text" id="date_at" name="date_at" class="form-control flatpickr-basic" placeholder="DD/MM/YYYY" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="doctor">Bác sĩ</label>
+                                    <select class="select2 select-label form-control w-100" id="doctor" name="doctor">
+                                        @foreach($doctors as $doctor)
+                                        <option value="{{ $doctor->id }}">
+                                            {{ $doctor->name }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="start_time">Giờ vào</label>
+                                    <input type="text" id="start_time" name="start_time" class="form-control flatpickr-time text-left" placeholder="HH:MM" onchange="gioRa()" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="end_time">Giờ ra</label>
+                                    <input type="text" id="end_time" name="end_time" class="form-control flatpickr-time text-left" placeholder="HH:MM" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="note">Mô tả</label>
+                                    <textarea name="note" class="form-control" id="note" cols="30" rows="5"></textarea>
+                                </div>
+
+                                <div class="d-flex flex-sm-row flex-column mt-2">
+                                    <button type="button" onclick="saveHL()" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Cập nhật</button>
+                                    <button type="reset" class="btn btn-outline-secondary" data-dismiss="modal">Bỏ qua</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Send Invoice Sidebar -->
             <div class="modal modal-slide-in fade" id="send-invoice-sidebar" aria-hidden="true">
                 <div class="modal-dialog sidebar-lg">
@@ -163,10 +226,10 @@
                                 <div class="form-group">
                                     <label for="invoice-message" class="form-label">Message</label>
                                     <textarea class="form-control" name="invoice-message" id="invoice-message" cols="3" rows="11" placeholder="Message...">
-Dear Queen Consolidated,
-Thank you for your business, always a pleasure to work with you!
-We have generated a new invoice in the amount of $95.59
-We would appreciate payment of this invoice by 05/11/2019</textarea>
+                                        Dear Queen Consolidated,
+                                        Thank you for your business, always a pleasure to work with you!
+                                        We have generated a new invoice in the amount of $95.59
+                                        We would appreciate payment of this invoice by 05/11/2019</textarea>
                                 </div>
                                 <div class="form-group">
                                     <span class="badge badge-light-primary">
@@ -186,7 +249,7 @@ We would appreciate payment of this invoice by 05/11/2019</textarea>
             <!-- /Send Invoice Sidebar -->
 
             <!-- Add Payment Sidebar -->
-            <div class="modal modal-slide-in fade" id="add-payment-sidebar" aria-hidden="true">
+            <!-- <div class="modal modal-slide-in fade" id="add-payment-sidebar" aria-hidden="true">
                 <div class="modal-dialog sidebar-lg">
                     <div class="modal-content p-0">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
@@ -231,7 +294,7 @@ We would appreciate payment of this invoice by 05/11/2019</textarea>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- /Add Payment Sidebar -->
 
         </div>
