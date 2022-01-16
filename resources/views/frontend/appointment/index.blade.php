@@ -175,7 +175,7 @@
 
                                        <div class="row">
                                             <div class="col-xl-8">
-                                                <input type="text" name="nhapOtp" id="nhapOtp" placeholder="Nhập OTP" onkeyup="showBtnSubmit()">
+                                                <input type="text" name="nhapOtp" id="nhapOtp" placeholder="Nhập OTP" required>
                                                 @error('nhapOtp')
                                                 <div class="alert alert-danger" role="alert">
                                                     {{ $message }}
@@ -256,9 +256,6 @@
 
 
 
-    function showBtnSubmit(){
-        $("#sendAppoinment").prop("disabled", false);
-    }
 
     function hideBtn() {
         var btn = document.querySelector("#btnOtp");
