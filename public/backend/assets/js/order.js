@@ -61,13 +61,17 @@ $(function () {
                 {
                     targets: -1,
                     render: function (data, type, full, meta) {
+                        var status = full['status'];
                         var html = '';
-                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chi tiết đơn hàng" onclick="loadorder(' + full['appointment_id'] + ')">';
+                        html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chi tiết đơn hàng" onclick="loadorder(' + full['id'] + ')">';
                         html += '<i class="fas fa-shopping-basket"></i>';
                         html += '</button> &nbsp;';
-                        // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chỉnh sửa" onclick="loaddata(' + full['id'] + ')">';
-                        // html += '<i class="fas fa-pencil-alt"></i>';
-                        // html += '</button> &nbsp;';
+                        if(status==1) {
+                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Đã thanh toán" onclick="thanhtoan(' + full['id'] + ')">';
+                            html += '<i class="fas fa-clipboard-check"></i>';
+                            html += '</button> &nbsp;';
+                        }
+                        
                         // html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa đơn hàng" onclick="del(' + full['id'] + ',' + full['status'] + ')">';
                         // html += '<i class="fas fa-trash-alt"></i>';
                         html += '</button>';
@@ -276,8 +280,8 @@ function save() {
     }
 }
 
-function loadorder(appointment_id) {
-    localStorage.setItem('appointment_id', appointment_id);
+function loadorder(order_id) {
+    localStorage.setItem('order_id', order_id);
     window.location.href = './admin/order/order-detail';
 }
 
@@ -357,4 +361,36 @@ function del(id, status) {
     } else if (status == 3) {
         notify_error('Đơn hàng đã hoàn thành không thể xóa!');
     }
+}
+
+function thanhtoan(id) {
+    Swal.fire({
+        title: 'Xác nhận thanh toán',
+        text: "Bạn có chắc chắn đã thanh toán đơn hàng?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Tôi đồng ý',
+        customClass: {
+            confirmButton: 'btn btn-primary',
+            cancelButton: 'btn btn-outline-danger ml-1'
+        },
+        buttonsStyling: false
+    }).then(function (result) {
+        if (result.value) {
+            $.ajax({
+                url: "/admin/order/thanhtoan",
+                type: 'post',
+                dataType: "json",
+                data: { id: id },
+                success: function (data) {
+                    if (data.success) {
+                        notyfi_success(data.msg);
+                        $("#tableBasic").DataTable().ajax.reload(null, false);
+                    }
+                    else
+                        notify_error(data.msg);
+                },
+            });
+        }
+    });
 }

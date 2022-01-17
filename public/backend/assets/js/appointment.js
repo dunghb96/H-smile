@@ -75,6 +75,7 @@ $(function () {
                 { data: 'shift' },
                 { data: 'status_word' },
                 { data: 'status' },
+                { data: 'order_id' },
                 { data: '' }
             ],
             columnDefs: [
@@ -83,12 +84,16 @@ $(function () {
                     visible: false,
                 },
                 {
+                    targets: 8,
+                    visible: false,
+                },
+                {
                     targets: -1,
                     render: function (data, type, full, meta) {
                         var html = '';
                         var status = full['status'];
                         if (status == 2) {
-                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chi tiết đơn hàng" onclick="loadorder(' + full['id'] + ')">';
+                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Chi tiết đơn hàng" onclick="loadorder(' + full['order_id'] + ')">';
                             html += '<i class="fas fa-shopping-basket"></i>';
                             html += '</button> &nbsp;';
                         }
@@ -105,7 +110,7 @@ $(function () {
                         html += '</button>';
                         return html;
                     },
-                    width: 150
+                    width: 120
                 }
             ],
             // order: [[0, 'DESC']],
@@ -331,8 +336,8 @@ function save() {
     }
 }
 
-function loadorder(id) {
-    localStorage.setItem('appointment_id', id);
+function loadorder(order_id) {
+    localStorage.setItem('order_id', order_id);
     window.location.href = './admin/order/order-detail';
 }
 

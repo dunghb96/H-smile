@@ -195,6 +195,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/checkappointment', [OrderController::class, 'checkAppointment']);
         Route::post('/henlai', [OrderController::class, 'henlai']);
         Route::post('/saveHL', [OrderController::class, 'saveHL']);
+        Route::post('/thanhtoan', [OrderController::class, 'thanhtoan']);
     });
 
     Route::group(['prefix' => 'patient'], function () {

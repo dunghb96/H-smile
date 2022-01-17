@@ -36,6 +36,13 @@ class AppointmentController extends BaseController
         $jsonObj['data'] = $list;
 
         foreach ($list as $key => $row) {
+            $id = $row->id;
+            $order = Order::where('appointment_id',$id)->first();
+            if($order) {
+                $jsonObj['data'][$key]->order_id = $order->id;
+            } else {
+                $jsonObj['data'][$key]->order_id = 0;
+            }
             $arrService = explode(',', $row->services);
             $listName = '';
             foreach ($arrService as $row2) { 

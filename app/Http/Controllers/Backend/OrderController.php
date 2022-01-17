@@ -10,6 +10,7 @@ use App\Models\Patient;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends BaseController
 {
@@ -65,22 +66,46 @@ class OrderController extends BaseController
     function loadOrder(Request $request)
     {
         $jsonObj = [];
-        $appointment_id = $request->appointment_id;
+        // $appointment_id = isset($request->appointment_id) ? $request->appointment_id : 0;
+        // if($appointment_id > 0) {
+        //     $jsonObj = Order::where('appointment_id', $appointment_id)->first();
+        //     $staff_id = isset($jsonObj->staff_id) ? $jsonObj->staff_id : 0;
+        //     if ($staff_id > 0) {
+        //         $staff = Employee::find($staff_id);
+        //         $jsonObj['staff_name'] = $staff->name;
+        //     } else {
+        //         $jsonObj['staff_name'] = '';
+        //     }
+        //     $jsonObj['total_price'] = number_format($jsonObj->total_price);
+        //     $customer_id = $jsonObj->customer_id;
+        //     $customer = Patient::find($customer_id);
+        //     $jsonObj['customer_name'] = $customer->full_name;
+        //     $jsonObj['customer_phone'] = $customer->phone_number;
+        //     $jsonObj['customer_email'] = $customer->email;
+        //     $jsonObj['customer_address'] = $customer->address;
+        //     $jsonObj['create_at'] = Carbon::parse($jsonObj->create_at)->format('d/m/Y H:i:s');
+        // }
 
-        $jsonObj = Order::where('appointment_id', $appointment_id)->first();
-        $staff_id = $jsonObj->staff_id;
-        if ($staff_id > 0) {
-            $staff = Employee::find($staff_id);
-            $jsonObj['staff_name'] = $staff->name;
+        $order_id = isset($request->order_id) ? $request->order_id : 0;
+        if($order_id > 0) {
+            $jsonObj = Order::find($order_id); 
+            $staff_id = isset($jsonObj->staff_id) ? $jsonObj->staff_id : 0;
+            if ($staff_id > 0) { 
+                $staff = Employee::find($staff_id); 
+                $jsonObj['staff_name'] = $staff->name;
+            } else { 
+                $jsonObj['staff_name'] = '';
+            } 
+            $jsonObj['total_price'] = number_format($jsonObj->total_price);
+            $customer_id = $jsonObj->customer_id;
+            $customer = Patient::find($customer_id);
+            $jsonObj['customer_name'] = $customer->full_name;
+            $jsonObj['customer_phone'] = $customer->phone_number;
+            $jsonObj['customer_email'] = $customer->email;
+            $jsonObj['customer_address'] = $customer->address;
+            $jsonObj['create_at'] = Carbon::parse($jsonObj->create_at)->format('d/m/Y H:i:s');
         }
-        $jsonObj['total_price'] = number_format($jsonObj->total_price);
-        $customer_id = $jsonObj->customer_id;
-        $customer = Patient::find($customer_id);
-        $jsonObj['customer_name'] = $customer->full_name;
-        $jsonObj['customer_phone'] = $customer->phone_number;
-        $jsonObj['customer_email'] = $customer->email;
-        $jsonObj['customer_address'] = $customer->address;
-        $jsonObj['create_at'] = Carbon::parse($jsonObj->create_at)->format('d/m/Y H:i:s');
+        
         echo json_encode($jsonObj);
     }
 
@@ -192,6 +217,22 @@ class OrderController extends BaseController
             }
         }
         echo json_encode($jsonObj);
+    }
 
+    function thanhtoan(Request $request)
+    {
+        $id = $request->id;
+        $order = Order::find($id);
+        $order->staff_id = Auth::user()->id;
+        $order->status = 2;
+        $result = $order->save();
+        if ($result) {
+            $jsonObj['success'] = true;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu thành công';
+        } else {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Cập nhật dữ liệu không thành công';
+        }
+        echo json_encode($jsonObj);
     }
 }

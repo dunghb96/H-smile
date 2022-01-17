@@ -1,11 +1,11 @@
-var appointment_id = localStorage.getItem('appointment_id');
+var order_id = localStorage.getItem('order_id');
 var thoiluong = 0;
 var customerid = 0;
 var patient_code = '';
 var serviceid = 0;
 
 $(function () {
-    loadorder(appointment_id);
+    loadorder(order_id);
     $('#doctor').select2({
         placeholder: "Chọn nha sỹ",
         dropdownParent: $('#doctor').parent(),
@@ -30,11 +30,11 @@ $(function () {
     });
 })
 
-function loadorder(appointment_id) {
+function loadorder(order_id) {
     $.ajax({
         type: "POST",
         dataType: "json",
-        data: { appointment_id: appointment_id },
+        data: { order_id: order_id },
         url:  "/admin/order/loadorder",
         success: function (data) {
             var customer_id = data.customer_id;
@@ -46,7 +46,8 @@ function loadorder(appointment_id) {
             $('#create_at').html(data.create_at);
             if(data.status == 1) {
                 $('#order_status').html('Chưa thanh toán');
-            } else {
+            } 
+            if(data.status == 2) {
                 $('#order_status').html('Đã thanh toán');
             }
             $('#total_price').html(data.total_price+' VNĐ');
