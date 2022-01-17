@@ -45,7 +45,6 @@
              // },
              columns: [
                  { data: 'id' },
-                 { data: 'date_at' },
                  { data: 'start_time' },
                  { data: 'services' },
                  { data: 'service_id' },
@@ -56,7 +55,7 @@
              ],
              columnDefs: [
                  {
-                    targets: 4,
+                    targets: 3,
                     visible: false,
                  },
              ],

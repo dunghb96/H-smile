@@ -185,7 +185,24 @@ document.addEventListener('DOMContentLoaded', function () {
         $('#data-ephone').html(eventToUpdate.extendedProps.phone_number);
         $('#data-eservice').html(eventToUpdate.extendedProps.service_name);
         $('#data-etime').html(eventToUpdate.extendedProps.service_time + ' phút');
-        $('#edoctor').val(eventToUpdate.extendedProps.doctor_id).trigger('change');
+        $('#edoctor').html('');
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: { service_id: eventToUpdate.extendedProps.service_id },
+            async: false,
+            url: "/admin/examination-schedule/get-doctor",
+            success: function (data) {
+                $('#edoctor').wrap('<div class="position-relative"></div>').select2({
+                    placeholder: "Chọn nha sỹ",
+                    dropdownAutoWidth: true,
+                    dropdownParent: $('#edoctor').parent(),
+                    width: '100%',
+                    data: data
+                });
+            },
+        });
+        $('#edoctor').val(eventToUpdate.extendedProps.doctor_id).change();
 
         $('#estart_time').flatpickr({
             altInput: true,
@@ -306,6 +323,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     calendar: '1',
                                     date_at: item.date_at,
                                     doctor_id: item.doctor_id,
+                                    service_id: item.service_id,
                                     service_name: item.service_name,
                                     service_time: item.service_time,
                                     customer_name: item.customer_name,
@@ -694,6 +712,23 @@ function xeplich(id) {
                 minDate: "today",
             });
             thoiluong = data.service_time;
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                data: { service_id: data.service_id },
+                async: false,
+                url: "/admin/examination-schedule/get-doctor",
+                success: function (data) {
+                    $('#doctor').wrap('<div class="position-relative"></div>').select2({
+                        placeholder: "Chọn nha sỹ",
+                        dropdownAutoWidth: true,
+                        dropdownParent: $('#doctor').parent(),
+                        width: '100%',
+                        data: data
+                    });
+                },
+            });
+            $('#doctor').val(null).change();
             uid = id;
         },
         error: function () {

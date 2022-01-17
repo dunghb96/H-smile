@@ -30,12 +30,18 @@ class EmployeeController extends BaseController
 
     public function add(Request $request)
     {
+        if($request->password != $request->confirm_password) {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Mật khẩu không khớp';
+            echo json_encode($jsonObj);
+            return false;
+        }
         $model = new Employee();
         $employee = $model->saveEmployee($model, $request);
         $user = new User();
         $data = [
             'employee' => $employee->id,
-            'name' => $request->username,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
             'role' => $request->role
@@ -63,13 +69,19 @@ class EmployeeController extends BaseController
 
     public function edit(Request $request)
     {
+        if($request->password != $request->confirm_password) {
+            $jsonObj['success'] = false;
+            $jsonObj['msg'] = 'Mật khẩu không khớp';
+            echo json_encode($jsonObj);
+            return false;
+        }
         $id = $request->input('id');
         $model = Employee::find($id);
         $user = User::where('employee',$model->id)->first();
         $userModel = User::find($user->id);
         $model->saveEmployee($model, $request);
         $userModel->email = $request->email;
-        $userModel->name = $request->username;
+        $userModel->name = $request->name;
         $userModel->password = bcrypt($request->password);
         $result = $userModel->save();
         if($result){

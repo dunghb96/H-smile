@@ -38,9 +38,7 @@ class Employee extends Model
         $model->majors = $request->input('majors');
         $model->services = $request->input('services');
         $model->status = 1;
-
         $model->save();
-
         return $model;
     }
 

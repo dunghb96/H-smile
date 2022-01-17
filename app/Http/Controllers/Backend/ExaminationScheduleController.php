@@ -22,8 +22,12 @@ class ExaminationScheduleController extends BaseController
 
     function getDoctor(Request $request)
     {
-        $service = $request->service;
-        $jsonObj = Employee::where('status', 1)->where('type', 1)->where('services', 'like', '%' . $service . '%')->get();
+        $service_id = $request->service_id;
+        $doctors = Employee::where('status', 1)->where('type', 1)->where('services', 'like', '%' . $service_id . '%')->get();
+        foreach($doctors as $key => $item) {
+            $jsonObj[$key]['id'] = $item->id;
+            $jsonObj[$key]['text'] = $item->name;
+        }
         echo json_encode($jsonObj);
     }
 
@@ -38,7 +42,7 @@ class ExaminationScheduleController extends BaseController
             $schedules[$key]->customer_name = $schedule->patient->full_name;
             $schedules[$key]->phone_number = $schedule->patient->phone_number;
         }
-        $doctors = Employee::where('status', 1)->where('type', 1)->orderBy('name')->get();
+        $doctors = Employee::where('status','>', 0)->where('type', 1)->orderBy('name')->get();
         return view('backend.examination-schedule.index', compact('doctors', 'schedules'));
     }
 
@@ -50,6 +54,7 @@ class ExaminationScheduleController extends BaseController
         $jsonObj['data'] = ExaminationSchedule::whereIn('status', ['2','3'])->where('doctor_id', $doctor_id)->orderBy('created_at', 'DESC')->get();
         foreach ($jsonObj['data'] as $key => $item) {
             // $jsonObj['data'][$key]->date_at = Carbon::parse($item->date_at)->format('d/m/Y');
+            $jsonObj['data'][$key]->service_id = $item->service->id;
             $jsonObj['data'][$key]->service_name = $item->service->name;
             $jsonObj['data'][$key]->service_time = $item->service->time;
             $jsonObj['data'][$key]->customer_name = $item->patient->full_name;
@@ -121,6 +126,7 @@ class ExaminationScheduleController extends BaseController
     {
         $id = $request->id;
         $jsonObj = ExaminationSchedule::find($id);
+        $jsonObj->service_id = $jsonObj->service->id;
         $jsonObj->service_name = $jsonObj->service->name;
         $jsonObj->service_time = $jsonObj->service->time;
         $jsonObj->customer_name = $jsonObj->patient->full_name;

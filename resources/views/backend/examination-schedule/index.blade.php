@@ -131,11 +131,7 @@
                                     <div class="form-group">
                                         <label for="doctor">Bác sĩ</label>
                                         <select class="select2 select-label form-control w-100" id="doctor" name="doctor">
-                                            @foreach($doctors as $doctor)
-                                            <option value="{{ $doctor->id }}">
-                                                {{ $doctor->name }}
-                                            </option>
-                                            @endforeach
+                                           
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -196,11 +192,7 @@
                                     <div class="form-group">
                                         <label for="edoctor">Bác sĩ</label>
                                         <select class="select2 select-label form-control w-100" id="edoctor" name="doctor">
-                                            @foreach($doctors as $doctor)
-                                            <option value="{{ $doctor->id }}">
-                                                {{ $doctor->name }}
-                                            </option>
-                                            @endforeach
+                                           
                                         </select>
                                     </div>
                                     <div class="form-group">

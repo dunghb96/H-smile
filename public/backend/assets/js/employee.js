@@ -1,48 +1,8 @@
-/**
- * DataTables Basic
- */
 var url = '';
 var iid = 0;
 $(function () {
-
     'use strict';
-    var bsStepper = document.querySelectorAll('.bs-stepper'),
-        select = $('.select2'),
-        horizontalWizard = document.querySelector('.horizontal-wizard-example'),
-        verticalWizard = document.querySelector('.vertical-wizard-example'),
-        modernWizard = document.querySelector('.modern-wizard-example'),
-        modernVerticalWizard = document.querySelector('.modern-vertical-wizard-example');
-
-    // Adds crossed class
-    if (typeof bsStepper !== undefined && bsStepper !== null) {
-        for (var el = 0; el < bsStepper.length; ++el) {
-            bsStepper[el].addEventListener('show.bs-stepper', function (event) {
-                var index = event.detail.indexStep;
-                var numberOfSteps = $(event.target).find('.step').length - 1;
-                var line = $(event.target).find('.step');
-
-                // The first for loop is for increasing the steps,
-                // the second is for turning them off when going back
-                // and the third with the if statement because the last line
-                // can't seem to turn off when I press the first item. ¯\_(ツ)_/¯
-
-                for (var i = 0; i < index; i++) {
-                    line[i].classList.add('crossed');
-
-                    for (var j = index; j < numberOfSteps; j++) {
-                        line[j].classList.remove('crossed');
-                    }
-                }
-                if (event.detail.to == 0) {
-                    for (var k = index; k < numberOfSteps; k++) {
-                        line[k].classList.remove('crossed');
-                    }
-                    line[0].classList.remove('crossed');
-                }
-            });
-        }
-    }
-
+    var select = $('.select2');
     // select2
     select.each(function () {
         var $this = $(this);
@@ -53,153 +13,7 @@ $(function () {
         });
     });
 
-    // Horizontal Wizard
-    // --------------------------------------------------------------------
-    if (typeof horizontalWizard !== undefined && horizontalWizard !== null) {
-        var numberedStepper = new Stepper(horizontalWizard),
-            $form = $(horizontalWizard).find('form');
-        $form.each(function () {
-            var $this = $(this);
-            $this.validate({
-                rules: {
-                    name: {
-                        required: true
-                    },
-                    email: {
-                        required: true
-                    },
-                    phone_number: {
-                        required: true
-                    },
-                    type: {
-                        required: true
-                    },
-                    short_description: {
-                        required: true
-                    },
-                    username: {
-                        required: true
-                    },
-                    password: {
-                        required: true
-                    },
-                    role: {
-                        required: true
-                    },
-                    address: {
-                        required: true
-                    },
-                }
-            });
-        });
-
-        $(horizontalWizard)
-            .find('.btn-next')
-            .each(function () {
-                $(this).on('click', function (e) {
-                    var isValid = $(this).parent().siblings('form').valid();
-                    if (isValid) {
-                        numberedStepper.next();
-                    } else {
-                        e.preventDefault();
-                    }
-                });
-            });
-
-        $(horizontalWizard)
-            .find('.btn-prev')
-            .on('click', function () {
-                numberedStepper.previous();
-            });
-
-        $(horizontalWizard)
-            .find('.btn-submit')
-            .on('click', function () {
-                var isValid = $(this).parent().siblings('form').valid();
-                if (isValid) {
-                    // alert('Submitted..!!');
-                    save();
-                }
-            });
-    }
-
-    // Vertical Wizard
-    // --------------------------------------------------------------------
-    if (typeof verticalWizard !== undefined && verticalWizard !== null) {
-        var verticalStepper = new Stepper(verticalWizard, {
-            linear: false
-        });
-        $(verticalWizard)
-            .find('.btn-next')
-            .on('click', function () {
-                verticalStepper.next();
-            });
-        $(verticalWizard)
-            .find('.btn-prev')
-            .on('click', function () {
-                verticalStepper.previous();
-            });
-
-        $(verticalWizard)
-            .find('.btn-submit')
-            .on('click', function () {
-                alert('Submitted..!!');
-            });
-    }
-
-    // Modern Wizard
-    // --------------------------------------------------------------------
-    if (typeof modernWizard !== undefined && modernWizard !== null) {
-        var modernStepper = new Stepper(modernWizard, {
-            linear: false
-        });
-        $(modernWizard)
-            .find('.btn-next')
-            .on('click', function () {
-                modernStepper.next();
-            });
-        $(modernWizard)
-            .find('.btn-prev')
-            .on('click', function () {
-                modernStepper.previous();
-            });
-
-        $(modernWizard)
-            .find('.btn-submit')
-            .on('click', function () {
-                alert('Submitted..!!');
-            });
-    }
-
-    // Modern Vertical Wizard
-    // --------------------------------------------------------------------
-    if (typeof modernVerticalWizard !== undefined && modernVerticalWizard !== null) {
-        var modernVerticalStepper = new Stepper(modernVerticalWizard, {
-            linear: false
-        });
-        $(modernVerticalWizard)
-            .find('.btn-next')
-            .on('click', function () {
-                modernVerticalStepper.next();
-            });
-        $(modernVerticalWizard)
-            .find('.btn-prev')
-            .on('click', function () {
-                modernVerticalStepper.previous();
-            });
-
-        $(modernVerticalWizard)
-            .find('.btn-submit')
-            .on('click', function () {
-                alert('Submitted..!!');
-            });
-    }
-
     var table_table = $('#tableBasic');
-    // $('#nhanvien').select2();
-    // $('#tinh_trang').select2({
-    //     minimumResultsForSearch: Infinity
-    // });
     // DataTable with buttons
     // --------------------------------------------------------------------
     if (table_table.length) {
@@ -301,6 +115,26 @@ $(function () {
             },
         });
     }
+
+    // $('#frm-add').each(function () {
+    //     var $this = $(this);
+    //     $this.validate({
+    //         rules: {
+    //             name: {
+    //                 required: true
+    //             },
+    //             role: {
+    //                 required: true
+    //             },
+    //             password: {
+    //                 required: true
+    //             },
+    //             confirm_password: {
+    //                 required: true
+    //             },
+    //         }
+    //     });
+    // });
 });
 
 function loadadd() {
@@ -310,8 +144,8 @@ function loadadd() {
     $('#position').val('').change();
     $('#email').val('');
     $('#phone_number').val('');
-    $('#username').val('');
     $('#password').val('');
+    $('#confirm_password').val('');
     $('#role').val('0').change();
     url = '/admin/employee/add';
     iid = 0;
@@ -341,7 +175,7 @@ function loaddata(id) {
             $('#email').val(data.email);
             $('#position').val(data.position);
             $('#majors').val(data.majors);
-            $('#type').val(data.type).change();
+            $('#type').val(data.type);
             $('#short_description').val(data.short_description);
             if (data.services) {
                 services = data.services.split(',');
@@ -349,6 +183,7 @@ function loaddata(id) {
             }
             $('#username').val(data.username);
             $('#password').val('');
+            $('#confirm_password').val('');
             $('#role').val(data.rolesOfUser).change();
             url = '/admin/employee/edit';
             iid = id;
@@ -361,18 +196,22 @@ function loaddata(id) {
 
 function save() {
     var info = {};
-    var isValid = $('#frm').valid();
-    if (iid != 0) {
-        info.id = iid;
+    var isValid = $('#frm-add').valid();
+    if (isValid) {
+        if (iid != 0) {
+            info.id = iid;
+        }
+
         info.name = $("#name").val();
-        info.type = $("#type").val();
         info.position = $("#position").val();
+        info.type = $("#type").val();
         info.majors = $("#majors").val();
         info.email = $("#email").val();
         info.phone_number = $("#phone_number").val();
         info.short_description = $("#short_description").val();
         info.username = $("#username").val();
-        info.password = $("#epassword").val();
+        info.password = $("#password").val();
+        info.confirm_password = $("#confirm_password").val();
         info.role = $("#role").val();
         var service = $("#service").val();
         let services = '';
@@ -397,44 +236,7 @@ function save() {
                 notify_error('Cập nhật không thành công');
             }
         });
-    } else {
-        if (isValid) {
-            info.name = $("#name").val();
-            info.type = $("#type").val();
-            info.position = $("#position").val();
-            info.majors = $("#majors").val();
-            info.email = $("#email").val();
-            info.phone_number = $("#phone_number").val();
-            info.short_description = $("#short_description").val();
-            info.username = $("#username").val();
-            info.password = $("#password").val();
-            info.role = $("#role").val();
-            var service = $("#service").val();
-            let services = '';
-            service.forEach(function (item) {
-                services += item + ',';
-            });
-            info.services = services.slice(0, -1);
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                data: info,
-                url: url,
-                success: function (data) {
-                    if (data.success) {
-                        notyfi_success(data.msg);
-                        $('#addnew').modal('hide');
-                        $("#tableBasic").DataTable().ajax.reload(null, false);
-                    } else
-                        notify_error(data.msg);
-                },
-                error: function () {
-                    notify_error('Cập nhật không thành công');
-                }
-            });
-        }
     }
-    
 }
 
 function del(id) {
@@ -467,4 +269,23 @@ function del(id) {
             });
         }
     });
+}
+
+function changeRole() {
+    var roles = $('#role').val();
+    if (roles.length > 0) {
+        roles.forEach(function (item) {
+            if (item == 2) {
+                $('#type').val(1);
+                $('#service_input').val('').change();
+                $('#service_input').removeClass('d-none');
+            } else {
+                $('#service_input').val('').change();
+                $('#service_input').addClass('d-none');
+            }
+        });
+    } else {
+        $('#service_input').val('').change();
+        $('#service_input').addClass('d-none');
+    }
 }

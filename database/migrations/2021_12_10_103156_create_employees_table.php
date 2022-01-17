@@ -17,10 +17,10 @@ class CreateEmployeesTable extends Migration
             $table->id();
             $table->string('name',256);
             $table->string('email',256)->nullable();
-            $table->string('phone_number',256)->nullable();
+            $table->string('phone_number',256);
             $table->string('majors',256)->nullable();
             $table->string('position',256)->nullable();
-            $table->string('short_description',256);
+            $table->string('short_description',256)->nullable();
             $table->integer('type');
             $table->string('services')->nullable();
             $table->integer('status');

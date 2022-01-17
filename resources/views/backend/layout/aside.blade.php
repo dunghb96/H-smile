@@ -68,12 +68,14 @@
                 </a>
             </li>
             @endcan
+            @can('list_orders')
             <li class=" nav-item {{ request()->is(['admin/order','admin/order/*']) ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.order') }}">
-                    <i data-feather='calendar'></i>
+                    <i data-feather='shopping-cart'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Đơn hàng</span>
                 </a>
             </li>
+            @endcan
             @can('list_patients')
             <li class=" nav-item {{ request()->is('admin/patient') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.patient') }}">
@@ -134,14 +136,14 @@
                 </a>
             </li>
             @endcan
-
+            @can('list_medicines')
             <li class="nav-item {{ request()->is('admin/slide') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.medicine') }}">
                     <i data-feather='sliders'></i>
                     <span class="menu-title text-truncate" data-i18n="Chat">Danh sách thuốc</span>
                 </a>
             </li>
-
+            @endcan
             @can('list_blogs')
             <li class="nav-item {{ request()->is(['admin/blog','admin/blog-category']) ? 'has-sub sidebar-group-active open' : '' }}">
                 <a class="d-flex align-items-center" href="#">
@@ -164,6 +166,7 @@
                 </ul>
             </li>
             @endcan
+            @can('list_services')
             <li class="nav-item ">
                 <a class="d-flex align-items-center" href="#">
                     <i data-feather="file-text"></i>
@@ -184,6 +187,7 @@
                     </li>
                 </ul>
             </li>
+            @endcan
             @can('list_contacts')
             <li class=" nav-item {{ request()->is('admin/contact') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.contact') }}">

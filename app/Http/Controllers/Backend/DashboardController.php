@@ -57,7 +57,7 @@ class DashboardController extends BaseController
                 $service['total_moneny_service'] = $schedule->service->price * $count;
             }
         }
-        $doctors = Employee::where('type', 1)->get();
+        $doctors = Employee::where('status','>',0)->where('type', 1)->get();
         foreach($doctors as $doctor){
             $list_schedule_doctor = ExaminationSchedule::where('date_at', '=', $date_now)->where('doctor_id', $doctor->id)->where('status', '>=', ExaminationSchedule::STATUS_DONE)->get();
             foreach($list_schedule_doctor as  $schedule){

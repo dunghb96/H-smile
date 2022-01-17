@@ -34,7 +34,6 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Ngày</th>
                                             <th>Giờ hẹn</th>
                                             <th>Dịch vụ</th>
                                             <th></th>

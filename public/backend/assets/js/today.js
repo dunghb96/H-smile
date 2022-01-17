@@ -63,23 +63,20 @@ $(function () {
                         render: function (data, type, full, meta) {
                             var status = full['status'];
                             var html = '';
-                            html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hoàn thành" onclick="confirmStatus(' + full['id'] +')">';
-                            html += '<i class="fas fa-door-open"></i>';
-                            html += '</button> &nbsp;';
-                            // html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Hẹn tiếp" onclick="hentiep(' + full['id'] + ',' + full['appointment'] + ',' + full['status'] + ',' + full['service_id'] + ',' + full['patient_id'] + ')">';
-                            // html += '<i data-feather="arrow-right-circle"></i>';
-                            // html += '</button> &nbsp;';
-                            html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect add_medicine" title="Đơn thuốc" data-id="'+full['id']+'" onclick="addnote(' + full['id'] + ')">';
-                            html += '<i class="fas fa-briefcase-medical"></i>';
-                            html += '</button> &nbsp;';
+                            if(status==2) {
+                                html += '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Vào khám" onclick="confirmStatus(' + full['id'] +')">';
+                                html += '<i class="fas fa-door-open"></i>';
+                                html += '</button> &nbsp;';
+                            }
+                            if(status==3) {
+                                html += '<button type="button" class="btn btn-icon btn-outline-success waves-effect" title="Khám xong" onclick="done(' + full['id'] + ')">';
+                                html += '<i class="fas fa-check-square"></i>';
+                                html += '</button> &nbsp;';
 
-                            html += '<button type="button" class="btn btn-icon btn-outline-success waves-effect" title="Chuyển trạng thái" onclick="done(' + full['id'] + ')">';
-                            html += '<i class="fas fa-check-square"></i>';
-                            html += '</button> &nbsp;';
-
-                            // html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect" title="Xóa" onclick="del(' + full['id'] + ')">';
-                            // html += '<i class="fas fa-trash-alt"></i>';
-                            // html += '</button>';
+                                html += '<button type="button" class="btn btn-icon btn-outline-danger waves-effect add_medicine" title="Tạo đơn thuốc" data-id="'+full['id']+'" onclick="addnote(' + full['id'] + ')">';
+                                html += '<i class="fas fa-briefcase-medical"></i>';
+                                html += '</button> &nbsp;';
+                            }
                             return html;
                         },
                         width: 180

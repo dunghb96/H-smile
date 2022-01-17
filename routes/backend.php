@@ -87,8 +87,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/del', [SlideController::class, 'del'])->middleware('permission:delete_slides');
     });
 
-    Route::group(['prefix' => 'blog-category', 'middleware' => ['permission:list_blogs']], function () {
-        Route::get('/', [BlogCategoryController::class, 'index'])->name('admin.blog_category');
+    Route::group(['prefix' => 'blog-category'], function () {
+        Route::get('/', [BlogCategoryController::class, 'index'])->middleware('permission:list_blogs')->name('admin.blog_category');
         Route::get('/json', [BlogCategoryController::class, 'json']);
         Route::post('/add', [BlogCategoryController::class, 'add']);
         Route::post('/loaddata', [BlogCategoryController::class, 'loaddata']);
@@ -106,7 +106,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'medicine'], function () {
-        Route::get('/', [MedicineController::class, 'index'])->middleware('permission:list_services')->name('admin.medicine');
+        Route::get('/', [MedicineController::class, 'index'])->middleware('permission:list_medicines')->name('admin.medicine');
         Route::get('/json', [MedicineController::class, 'json']);
         Route::post('/add', [MedicineController::class, 'add']);
         Route::post('/loaddata', [MedicineController::class, 'loaddata']);
@@ -186,7 +186,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
     });
 
     Route::group(['prefix' => 'order'], function () {
-        Route::get('/', [OrderController::class, 'index'])->name('admin.order');
+        Route::get('/', [OrderController::class, 'index'])->middleware('permission:list_orders')->name('admin.order');
         Route::get('/json', [OrderController::class, 'json']);
         Route::get('/order-detail', [OrderController::class, 'orderDetail']);
         Route::get('/order-print', [OrderController::class, 'orderPrint'])->name('order.print');

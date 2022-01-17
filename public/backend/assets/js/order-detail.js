@@ -62,6 +62,7 @@ function loadorder(appointment_id) {
                     data.map(item => {
                         var status = item.schedule_status;
                         var statusName = "";
+                        var btnHL = "";
                         if(status==1) {
                             statusName = 'Chờ xếp lịch';
                         } else if (status==2) {
@@ -72,8 +73,10 @@ function loadorder(appointment_id) {
                             statusName = 'Quá hạn';
                         } else if (status==5) {
                             statusName = 'Hoàn thành';
+                            btnHL = '<button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Tạo lịch hẹn" onclick="henlai('+item.order_id+','+item.service_id+','+customer_id+')"><i class="far fa-calendar-alt"></i></button>';
                         }
-                        return $('#order-detail').append('<tr> <td class="py-1"> <span class="font-weight-bold">'+item.stt+'</span> </td> <td class="py-1"><p class="card-text font-weight-bold mb-25">'+item.service_name+'</p></td> <td class="py-1"> <span class="font-weight-bold">'+item.service_time+' phút</span></td> <td class="py-1"> <span class="font-weight-bold">'+item.service_price+' VNĐ</span> </td> <td class="py-1"> <span class="font-weight-bold">'+statusName+'</span> </td><td class="py-1"> <span class="font-weight-bold"><button type="button" class="btn btn-icon btn-outline-primary waves-effect" title="Tạo lịch hẹn" onclick="henlai('+item.order_id+','+item.service_id+','+customer_id+')"><i class="far fa-calendar-alt"></i></button></span> </td> </tr>');
+
+                        return $('#order-detail').append('<tr> <td class="py-1"> <span class="font-weight-bold">'+item.stt+'</span> </td> <td class="py-1"><p class="card-text font-weight-bold mb-25">'+item.service_name+'</p></td> <td class="py-1"> <span class="font-weight-bold">'+item.service_time+' phút</span></td> <td class="py-1"> <span class="font-weight-bold">'+item.service_price+' VNĐ</span> </td> <td class="py-1"> <span class="font-weight-bold">'+statusName+'</span> </td><td class="py-1">'+btnHL+'</td> </tr>');
                     });
                 },
                 error: function () {
