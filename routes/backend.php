@@ -67,6 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], functi
         Route::post('/today/addMedicineNew/{id?}', [DashboardController::class, 'store'])->name('admin.doctor.store_prescription');
         Route::get('/today/editMedicine/{id}', [DashboardController::class, 'editMedicine'])->name('admin.editMedicineNew');
         Route::post('/today/editMedicine/{id}', [DashboardController::class, 'storeEditMedicine'])->name('admin.doctor.store_edit_prescription');
+        Route::get('/today/in-medicine/{id}', [DashboardController::class, 'inMedicine'])->name('schedule.in_medicine');
 
     });
 

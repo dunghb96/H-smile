@@ -17,7 +17,7 @@
     </div>
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
-        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation" style="min-height:1000px;">
             <li class=" nav-item {{ request()->is('admin/dashboard') ? 'active' : '' }}">
                 <a class="d-flex align-items-center" href="{{ route('admin.dashboard') }}">
                     <i data-feather="home"></i>

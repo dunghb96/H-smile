@@ -171,7 +171,6 @@ class DashboardController extends BaseController
     }
     public function store(Request $request)
     {
-
         $list_medicine_id = implode(",", $request->medicine_id);
         $list_quantity = implode(",", $request->total_quantity);
         $list_detail = implode(",", $request->detail);
@@ -182,7 +181,6 @@ class DashboardController extends BaseController
             'total_quantity' => $list_quantity,
             'detail'         => $list_detail,
             'note'           => $request->note
-
         ];
 
         $prescription_use =  Prescription::create($data_create);
@@ -191,6 +189,7 @@ class DashboardController extends BaseController
         $detail   = explode(',', $prescription_use->detail);
         return view('backend.medicine.prescription_use' ,compact('prescription_use', 'medicine', 'quantity', 'detail'));
     }
+
     public function editMedicine($id)
     {
         $medicine = Medicine::all();
@@ -228,6 +227,15 @@ class DashboardController extends BaseController
 
         $pdf = PDF::loadView('backend.medicine.prescriptionPdf', $data);
         return $pdf->download('Don-thoc.pdf');
+    }
+
+    function inMedicine($id) 
+    {
+        $prescription_use =  Prescription::find($id);
+        $medicine = explode(',', $prescription_use->medicine_id);
+        $quantity = explode(',', $prescription_use->total_quantity);
+        $detail   = explode(',', $prescription_use->detail);
+        return view('backend.medicine.in-medicine' ,compact('prescription_use', 'medicine', 'quantity', 'detail'));
     }
 
 }
