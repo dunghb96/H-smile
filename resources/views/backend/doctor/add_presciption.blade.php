@@ -87,6 +87,8 @@
                     </div>
                 </div>
                 <div class="content-body">
+                    <a class="btn btn-success add_medicine" >Thêm</a>
+                    <br>
                     <!-- Row grouping -->
                     <form action="{{ route('admin.doctor.store_edit_prescription', ['id' => $pre->id])}}" id="edit_pre" method="post" >
                         @csrf
@@ -107,7 +109,7 @@
                                         <input type="text" class="form-control" name="detail[]" value="{{ $detail ? $detail[$key] : ''}}" placeholder="Thời gian và liều lượng" required>
                                     </div>
                                     <div class="col-2">
-                                        <a class="btn btn-success add_medicine" >Thêm</a>
+
                                         <a class="btn btn-danger delete_medicine" >Xóa</a>
                                     </div>
                                 </div>
