@@ -38,9 +38,9 @@ $(function () {
                         if ($type == 1) {
                             return 'Nha sĩ';
                         } else if ($type == 2) {
-                            return 'Nhân viên';
-                        } else if ($type == 3) {
                             return 'Quản trị viên';
+                        } else if ($type == 3) {
+                            return 'Nhân viên';
                         }
                     }
                 },
@@ -279,7 +279,12 @@ function changeRole() {
                 $('#type').val(1);
                 $('#service_input').val('').change();
                 $('#service_input').removeClass('d-none');
+            } else if (item == 1){
+                $('#type').val(2);
+                $('#service_input').val('').change();
+                $('#service_input').addClass('d-none');
             } else {
+                $('#type').val(3);
                 $('#service_input').val('').change();
                 $('#service_input').addClass('d-none');
             }

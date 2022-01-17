@@ -31,7 +31,7 @@ class AppointmentController extends BaseController
 
     public function sendSmsNotificaition(Request $request)
     {
-        $basic = new \Vonage\Client\Credentials\Basic("c81f1ad7", "1Wgm12n3DtgkGK5h");
+        $basic = new \Vonage\Client\Credentials\Basic("53b1df35", "SbnDwekaSFC9s0Rb");
         $client = new \Vonage\Client($basic);
         $randomOtp = random_int(1000, 9999);
 
@@ -40,7 +40,6 @@ class AppointmentController extends BaseController
         if ($phoneNumberRequest[0] == "0") {
             $phoneNumberRequest = str_replace("$phoneNumberRequest[0]", "84", $phoneNumberRequest);
         }
-
         $response = $client->sms()->send(
             new \Vonage\SMS\Message\SMS($phoneNumberRequest, "HSMILE", $randomOtp)
         );

@@ -196,14 +196,10 @@
                                         <section class='alert alert-danger'>{{session('alert')}}</section>
                                         @endif
 
-
-{{--                                        <section class='alert alert-danger'>{{Cookie::get('patient_code')}}--}}
-{{--                                        </section>--}}
-
                                         <div class="row">
                                             <div class="col-xl-12">
                                                 <div class="button-box">
-                                                    <button class="btn-one btn-secondary" type="submit" id="sendAppoinment" disabled>Gửi</button>
+                                                    <button class="btn-one btn-secondary" type="submit" id="sendAppoinment" >Gửi</button>
                                                     <a class="btn-one" href="{{ route('hsmile.history') }}">Tra cứu lịch sử</a>
                                                 </div>
                                             </div>
