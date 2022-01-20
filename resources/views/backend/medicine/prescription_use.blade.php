@@ -99,7 +99,7 @@
                         <br>
                         <div class="row">
                             <div class="col">
-                                <a  style="margin: 0 auto;" class="btn btn-warning" href="{{ route('admin.editMedicineNew', ['id' => $prescription_use->id]) }}">Chỉnh sửa</a>
+                                <a  style="margin: 0 auto;" class="btn btn-primary" href="{{ route('admin.editMedicineNew', ['id' => $prescription_use->id]) }}">Chỉnh sửa</a>
                                 <a target="_blank" href="{{ route('schedule.in_medicine', ['id' => $prescription_use->id]) }}" class="btn btn-info" style="margin-right: 20px;">In đơn thuốc</a>
                             </div>
                         </div>

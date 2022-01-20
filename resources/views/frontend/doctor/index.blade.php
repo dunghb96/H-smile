@@ -165,7 +165,7 @@
                         <div class="row">
                             <div class="col-xl-5">
                                 <div class="img-holder">
-                                    <img src="/frontend/images/doctor/1.png" alt="Awesome Image">
+                                    <img src="{{ asset($row->users->avatar) }}" alt="Awesome Image">
 
                                 </div>
                             </div>

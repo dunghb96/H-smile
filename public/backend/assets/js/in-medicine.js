@@ -1,4 +1,4 @@
 $(function () {
     'use strict';
-    window.print();
+    setTimeout(function () {window.print()}, 2000);
 });

@@ -27,13 +27,13 @@ class HomeController extends BaseController
     public function index()
     {
         $slide = Slide::where('status', 1)->take(3)->get();
-        $service = Service::where('status', 1)->where('category_id', 0)->take(6)->get();
+        $service = Service::where('status', Service::STATUS_ACTIVE)->take(6)->get();
         $partner = Partner::where('status', 1)->take(4)->get();
         $blog = Blog::orderBy('created_at', 'DESC')->paginate(10);
         $doctor = Employee::where('type', 1)->paginate(10);
         $feedback = Feedback::where('status', 1)->take(5)->get();
         $countDoctor = $doctor->count();
-        $doneAppoint = ExaminationSchedule::where('status', 2)->count();
+        $doneAppoint = ExaminationSchedule::where('status', 5)->count();
         return view('frontend.home.index', compact('slide', 'doctor', 'service', 'partner', 'blog', 'feedback', 'countDoctor', 'doneAppoint'));
     }
 

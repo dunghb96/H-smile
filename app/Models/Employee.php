@@ -16,6 +16,13 @@ class Employee extends Model
     {
         return $this->hasOne(User::class,'employee', 'id');
     }
+    public function today_schedule()
+    {
+        $date_now = date('Y-m-d');
+        $today_schedule = $this->hasMany(ExaminationSchedule::class,'doctor_id', 'id')->where('date_at', $date_now)->where('status', '>', 0);
+        // dd($today_schedule);
+        return $today_schedule;
+    }
 
     public function saveEmployee($model, $request)
     {

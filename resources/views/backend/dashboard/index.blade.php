@@ -120,8 +120,9 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>STT</th>
+                                                <th></th>
                                                 <th>Tên bác sĩ</th>
+                                                <th>Lịch khám</th>
                                                 <th>Doanh thu</th>
                                             </tr>
                                         </thead>
@@ -131,7 +132,7 @@
                                                 <td>
                                                     <div class="d-flex align-items-center">
                                                         <div>
-                                                            <div class="font-weight-bolder">{{$key+1}}</div>
+                                                            <img src="{{ asset($item->users->avatar) }}" width="30" alt="">
                                                         </div>
                                                     </div>
                                                 </td>
@@ -140,11 +141,16 @@
                                                         <span>{{$item->name}}</span>
                                                     </div>
                                                 </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <span>{{$item->today_schedule->count()}}</span>
+                                                    </div>
+                                                </td>
                                                 <td class="text-nowrap">
                                                     <div class="d-flex flex-column">
                                                         <span class="font-weight-bolder mb-25">{{number_format($item->total_moneny_doctor)}} VNĐ</span>
                                                     </div>
-</td>
+                                                </td>
                                             </tr>
                                             @endforeach
 
